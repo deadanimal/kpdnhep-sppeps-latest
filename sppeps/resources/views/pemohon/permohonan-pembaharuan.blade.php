@@ -23,7 +23,7 @@
 <div class="container-fluid d-flex justify-content-center flex-wrap">
     <div class="row d-flex justify-content-center" style="width: 100%;">
         <div class="p-2" style="text-align: center; background-color: #e0bbfe; height:100px; width:65%;">
-            <h3 class="h4 text-white mt-3"><strong>PERMOHONAN BAHARU</strong></h3>
+            <h3 class="h4 text-white mt-3"><strong>PERMOHONAN PEMBAHARUAN</strong></h3>
         </div>
     </div>
 
@@ -63,10 +63,15 @@
                         </div>
                     </div>
                     <div class="col-1"></div>
+
                     <div class="col form-group pr-0">
+                        <label for="noPermit"><i class="fas fa-id-card"></i><strong> No. Permit</strong></label>
+                        <input type="text" class="form-control" value="10523" name="noPermit" disabled>
+                    </div>
+                    <!-- <div class="col form-group pr-0">
                         <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
                         <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="d-flex flex-nowrap pb-2">
@@ -76,9 +81,10 @@
                     </div>
                     <div class="col-1"></div>
                     <div class="col form-group pr-0">
-                        <label for="age"><i class="fas fa-calendar-alt"></i><strong> Umur</strong></label>
-                        <input type="text" class="form-control" id="age" aria-describedby="age" [value]="userdata.umur" disabled>
+                        <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
+                        <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
                     </div>
+
                 </div>
 
                 <div class="d-flex flex-nowrap pb-2">
@@ -96,8 +102,8 @@
                     </div>
                     <div class="col-1"></div>
                     <div class="col form-group pr-0">
-                        <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
-                        <input type="email" name="emelori" class="form-control" id="email" aria-describedby="email" [(ngModel)]="this.emelori">
+                        <label for="age"><i class="fas fa-calendar-alt"></i><strong> Umur</strong></label>
+                        <input type="text" class="form-control" id="age" aria-describedby="age" [value]="userdata.umur" disabled>
                     </div>
                 </div>
 
@@ -141,15 +147,59 @@
                     </div>
                 </div>
 
-
-                <div class="form-group pb-2">
-                    <div class="col-6 form-group p-0">
-                        <label for="occupation"><i class="fas fa-briefcase"></i><strong> Pekerjaan
-                                Sekarang</strong></label>
-                        <input type="text" class="col-5 form-control" id="occupation" aria-describedby="occupation" name="pk_sek" [(ngModel)]="pk_sek">
+                <div class="d-flex flex-nowrap pb-2">
+                    <div class="col-7 form-group p-0">
+                    </div>
+                    <div class="col form-group pr-0">
+                        <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
+                        <input type="email" name="emel" class="form-control" id="email">
                     </div>
                 </div>
+                <hr>
 
+
+                <div class="form-group pb-2">
+                    <label for="EPSworkStatus"><i class="fas fa-briefcase"></i><strong> Status Pekerjaan
+                            EPS</strong></label>
+                    <!-- <input type="text" class="col-5 form-control" id="occupation" aria-describedby="occupation"
+                            placeholder=""> -->
+                    <div class="row">
+                        <div class="col">
+                            <input type="radio" name="EPSworkStatus" id="fullTime">
+                            <label class="pl-2" for="EPSworkStatus">Sepenuh Masa</label>
+                            <br>
+                            <div class="row pl-4">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for="date">Dari Tahun: </label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control col-5" name="date" id="date" value="" [disabled]="epsWorkStatusDate" [(ngModel)]="dari_tahun">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="radio" name="EPSworkStatus" id="partTime">
+                            <label class="pl-2" for="EPSworkStatus">Pekerjaan Sampingan</label>
+                            <div class="row pl-4">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for="occupation">Sila nyatakan pekerjaan
+                                            tetap anda: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control col-5" id="occupation" name="occupation" value="" [disabled]="epsWorkStatusOccu" [(ngModel)]="p_sampingan">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
                 <div class="form-group pb-2">
                     <label for="education"><i class="fas fa-graduation-cap"></i><strong> Tahap Pendidikan
                             Tertinggi</strong></label>
@@ -236,7 +286,7 @@
 
                         </div>
                         <div class="col-3">
-                            <input type="radio" name="panelInfo" id="no" (click)="formDeactive()">
+                            <input type="radio" name="panelInfo" id="no" class="form-check-input">
                             <label class="pl-2" for="panelInfo">Tidak</label>
                         </div>
                         <br>
@@ -330,41 +380,29 @@
 
                 </div>
 
-                <div class="form-group">
-                    <label for="activityInfo"><strong> Adakah anda tahu tentang aktiviti pemilikan semula barangan
-                            di bawah
-                            Akta
-                            Sewa Beli 1967?</strong></label>
-                    <!-- <input type="text" class="col-5 form-control" id="occupation" aria-describedby="occupation"
-                        placeholder=""> -->
-                    <div class="row">
-                        <div class="col">
-                            <label>Skop Tugas</label>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jobScope" [value]="1" [(ngModel)]="skop_tugas">
-                                    <label class="form-check-label" for="inlineCheckbox1">Ya</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jobScope" [value]="0" [(ngModel)]="skop_tugas">
-                                    <label class="form-check-label" for="jobScope">Tidak</label>
+                <div class="form-group pb-2">
+                    <label for=""><strong> Adakah anda pernah menghadiri kursus EPS yang dianjurkan oleh
+                            KPDNHEP?</strong></label>
+                    <!-- <input type="text" class="form-control" id="state" aria-describedby="state" placeholder=""> -->
+                    <div>
+                        <input type="radio" name="panelInfo" id="yes" [checked]="!yearAttend" (click)="yearAttendActive()">
+                        <label class="pl-2" for="panelInfo">Ya</label>
+                        <div class="row ml-5">
+                            <div class="col-5">
+                                <div class="form-group row">
+                                    <label for="yearAttend">Tahun Dihadiri: </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="expiryMonth" [disabled]="yearAttend" [(ngModel)]="tahun_h">
+                                            <option value="">Pilih Tahun</option>
+
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <label>Prosedur dan Peraturan EPS:</label>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="yes" name="procedure" [value]="1" [(ngModel)]="pp_eps">
-                                    <label class="form-check-label" for="procedure">Ya</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="no" name="procedure" [value]="0" [(ngModel)]="pp_eps">
-                                    <label class="form-check-label" for="procedure">Tidak</label>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="radio" name="panelInfo" id="no" [checked]="yearAttend" (click)="yearAttendDeactive()">
+                        <label class="pl-2" for="panelInfo">Tidak</label>
                     </div>
                 </div>
 
@@ -374,33 +412,24 @@
                         <label class="pb-2"><strong> Muat Naik Dokumen</strong></label>
                     </div>
 
-                    <div class="form-group d-flex flex-wrap">
-                        <!-- <label class="col-2 p-2" for="image">Lesen Memandu</label>
-                        <div class="form-control col-6" id="fileList">Pilih Fail (format jpeg, png dan
-                            pdf
-                            sahaja)</div>
-                        <label class="btn form-control col-2" style="background-color: #1d1da1; color:white;">
-                            <i class="fa fa-upload" aria-hidden="true"></i> Muat Naik<input type="file" style="display: none;" name="image">
-                        </label> -->
+                    <label class="col mt-1" for="image">Lesen Memandu:</label>
+                    <br>
+                    <!-- actual upload which is hidden -->
+                    <input type="file" id="actual-btn" hidden />
+                    <!-- our custom upload button -->
+                    <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                    <!-- name of file chosen -->
+                    <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                    <br>
 
-
-                        <label class="col-2 mt-1" for="image">Lesen Memandu:</label>
-
-                        <br>
-                        <!-- actual upload which is hidden -->
-                        <input type="file" id="actual-btn" hidden />
-                        <!-- our custom upload button -->
-                        <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
-                        <!-- name of file chosen -->
-                        <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
-
-
-
-
-
-
-
-                    </div>
+                    <label class="col mt-1" for="image">Surat Sokongan (Bank/Syarikat Sewa Beli):</label>
+                    <br>
+                    <!-- actual upload which is hidden -->
+                    <input type="file" id="actual-btn2" hidden />
+                    <!-- our custom upload button -->
+                    <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                    <!-- name of file chosen -->
+                    <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
                 </div>
             </div>
 
@@ -426,7 +455,7 @@
             </div>
 
             <div class="p-3 d-flex justify-content-center">
-                <input type="button" class=" btn btn btn-danger btn-lg m-2" value="BATAL" >
+                <input type="button" class=" btn btn btn-danger btn-lg m-2" value="BATAL">
                 <input type="button" class=" btn btn-info btn-lg m-2" value="SIMPAN">
                 <input type="submit" class=" btn btn-success btn-lg m-2" value="HANTAR">
             </div>
@@ -442,11 +471,20 @@
 
 <script>
     const actualBtn = document.getElementById('actual-btn');
-
     const fileChosen = document.getElementById('file-chosen');
 
     actualBtn.addEventListener('change', function() {
         fileChosen.textContent = this.files[0].name
     })
 </script>
+
+<script>
+    const actualBtn2 = document.getElementById('actual-btn2');
+    const fileChosen2 = document.getElementById('file-chosen2');
+
+    actualBtn2.addEventListener('change', function() {
+        fileChosen2.textContent = this.files[0].name
+    })
+</script>
+
 @stop

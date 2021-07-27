@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col p-3 d-flex justify-content-center">
-                    <a class="nav-link text-white" [routerLink]="['/user/application-status']">
+                    <a class="nav-link text-white" href="/status-permohonan">
                         <div class="card d-flex justify-content-center align-items-center" id="rcorners1">
                             <div class="card-body d-flex align-items-center">
                                 <i class="fas fa-search fa-5x" style="color: #272b4a;"></i>
