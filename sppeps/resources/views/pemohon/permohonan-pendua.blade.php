@@ -96,7 +96,7 @@
                             <strong> No. Telefon</strong>
                         </label>
                         <div class="d-flex flex-nowrap align-items-center">
-                            <input type="number" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" disabled>
+                            <input type="number" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone">
 
                         </div>
                     </div>
@@ -110,8 +110,9 @@
                 <div class="d-flex flex-nowrap pb-2">
                     <div class="col-6 form-group p-0">
                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
-                        <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address" disabled>
-                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" disabled>
+                        <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address">
+                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address">
+                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address">
                     </div>
                     <div class="col-1"></div>
                     <div class="col pr-0">
@@ -121,26 +122,47 @@
                                     <path d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
                                 </svg>
                                 <strong> Poskod</strong></label>
-                            <input type="number" class="form-control" id="poskod" aria-describedby="poskod" name="poskod" disabled>
+                            <input type="number" class="form-control" id="poskod" aria-describedby="poskod" name="poskod">
                         </div>
                         <div class="form-group">
                             <label for="state"><i class="fas fa-map"></i><strong> Negeri</strong></label>
-                            <input type="text" class="form-control" id="negeri" name="negeri" disabled>
+                            <input type="text" class="form-control" id="negeri" name="negeri">
                         </div>
                     </div>
                 </div>
 
                 <div class="d-flex flex-nowrap pb-2">
-                    <div class="col-7 form-group p-0">
+                    <div class="col-6 form-group p-0">
+                        <label for="state"><i class="fas fa-map"></i><strong> Negeri Kutipan Permit</strong></label>
+                        <select class="form-control" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
+                            <option selected>--Pilih Negeri--</option>
+                            <option value="Perlis">Perlis</option>
+                            <option value="Kedah">Kedah</option>
+                            <option value="Pulau Pinang">Pulau Pinang</option>
+                            <option value="Perak">Perak</option>
+                            <option value="Selangor">Selangor</option>
+                            <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                            <option value="WP Putrajaya">W. P. Putrajaya</option>
+                            <option value="WP Labuan">W. P. Labuan</option>
+                            <option value="Melaka">Melaka</option>
+                            <option value="Negeri Sembilan">Negeri Sembilan</option>
+                            <option value="Johor">Johor</option>
+                            <option value="Pahang">Pahang</option>
+                            <option value="Terengganu">Terengganu</option>
+                            <option value="Kelantan">Kelantan</option>
+                            <option value="Sabah">Sabah</option>
+                            <option value="Sarawak">Sarawak</option>
+                        </select>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col form-group pr-0">
                         <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
-                        <input type="email" name="emel" class="form-control" id="email" disabled>
+                        <input type="email" name="emel" class="form-control" id="email">
                     </div>
                 </div>
 
                 <div class="p-2" style="width: 100%; background-color:#2e095f;">
-                    <h6 class=" text-white m-0">Bahagian II : Maklumat Permohonan</h6>
+                    <h6 class=" text-white m-0">Bahagian II : Maklumat Tambahan</h6>
                 </div>
 
                 <div class="form-group pb-2 pt-4">
@@ -165,9 +187,9 @@
                             </div>
                             <div class="form-check ">
                                 <input class="form-check-input" type="radio" id="inlineCheckbox1" name="resonTolose" [value]="4" [(ngModel)]="alasan_kehilangan" (click)="otherReasonActive()">
-                                <label class="form-check-label" for="inlineCheckbox1">Lain-lain</label>
+                                <label class="form-check-label" for="inlineCheckbox1">Lain-lain Alasan</label>
                                 <br>
-                                <label for="other_reason">Nyatakan alasan anda: </label>
+                                <label for="other_reason">Sila Nyatakan: </label>
                                 <input type="text" class="form-control col-6" name="other_reason" [(ngModel)]="lain_kehilangan" [disabled]="otherReason" />
                             </div>
                         </div>
@@ -225,6 +247,7 @@
                         <option value="Selangor">Selangor</option>
                         <option value="WPKualaLumpur">W. P. Kuala Lumpur</option>
                         <option value="WPPutrajaya">W. P. Putrajaya</option>
+                        <option value="WP Labuan">W. P. Labuan</option>
                         <option value="Melaka">Melaka</option>
                         <option value="NegeriSembilan">Negeri Sembilan</option>
                         <option value="Johor">Johor</option>
@@ -237,7 +260,7 @@
                 </div>
 
                 <div class="form-group pb-2">
-                    <label for="reportNumber"><strong> No. Laporan Polis</strong></label>
+                    <label for="reportNumber"><strong> No. Repot Polis</strong></label>
                     <input type="text" name="no_lpr_polis" class="form-control col-4" id="reportNumber" aria-describedby="reportNumber" placeholder="" [(ngModel)]="no_laporan">
                 </div>
 
@@ -247,17 +270,54 @@
                         <label class="pb-2"><strong> Muat Naik Dokumen</strong></label>
                     </div>
 
-                    <label class="col mt-1" for="image">Salinan Laporan Polis</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="mt-1">Kad Pengenalan (Depan)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
 
-                    
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="mt-1" for="image">Kad Pengenalan (Belakang)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn2" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="col mt-1" for="image">Salinan Repot Polis</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                            <br>
+
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
 
@@ -268,7 +328,7 @@
 
 
             <div class="p-2" style="width: 100%; background-color:#2e095f;">
-                <h6 class=" text-white m-0">Bahagian III : Akuan Permohonan</h6>
+                <h6 class=" text-white m-0">Bahagian III : Pengesahan Permohonan</h6>
             </div>
 
             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">

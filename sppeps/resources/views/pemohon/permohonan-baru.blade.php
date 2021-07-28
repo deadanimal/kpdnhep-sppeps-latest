@@ -33,13 +33,13 @@
             @csrf
 
             <div class="p-2 " style="width: 100%; background-color:#2e095f; border-radius: 10px 10px 0px 0px;">
-                <h6 class="text-white m-0">Bahagian I : Maklumat Pemohon</h6>
+                <h6 class="text-white m-0"> A. Maklumat Pemohonan</h6>
             </div>
 
             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
 
 
-
+                <!-- maklumat permohonan -->
                 <div class="row form-group p-3 d-flex justify-content-center">
 
                     <!-- <div class="image-upload">
@@ -72,7 +72,12 @@
                 <div class="d-flex flex-nowrap pb-2">
                     <div class="col-6 form-group p-0">
                         <label for="gender"> <i class="fas fa-venus-mars"></i><strong> Jantina</strong></label>
-                        <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
+                        <!-- <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled> -->
+                        <select name="gender" id="gender" class="form-control">
+                            <option value="">--Sila Pilih--</option>
+                            <option value="Lelaki">Lelaki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
                     </div>
                     <div class="col-1"></div>
                     <div class="col form-group pr-0">
@@ -106,6 +111,7 @@
                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
                         <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address" [(ngModel)]="this.alamat1ori">
                         <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
+                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
                     </div>
                     <div class="col-1"></div>
                     <div class="col pr-0">
@@ -128,6 +134,7 @@
                                 <option value="Selangor">Selangor</option>
                                 <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
                                 <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                <option value="WP Labuan">W. P. Labuan</option>
                                 <option value="Melaka">Melaka</option>
                                 <option value="Negeri Sembilan">Negeri Sembilan</option>
                                 <option value="Johor">Johor</option>
@@ -140,6 +147,42 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="d-flex flex-nowrap pb-2">
+                    <div class="col-6 form-group p-0">
+                        <div class="form-group">
+                            <label for="state"><i class="fas fa-map"></i><strong> Negeri Kutipan Permit</strong></label>
+                            <select class="form-control" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
+                                <option selected>--Pilih Negeri--</option>
+                                <option value="Perlis">Perlis</option>
+                                <option value="Kedah">Kedah</option>
+                                <option value="Pulau Pinang">Pulau Pinang</option>
+                                <option value="Perak">Perak</option>
+                                <option value="Selangor">Selangor</option>
+                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                <option value="WP Labuan">W. P. Labuan</option>
+                                <option value="Melaka">Melaka</option>
+                                <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                <option value="Johor">Johor</option>
+                                <option value="Pahang">Pahang</option>
+                                <option value="Terengganu">Terengganu</option>
+                                <option value="Kelantan">Kelantan</option>
+                                <option value="Sabah">Sabah</option>
+                                <option value="Sarawak">Sarawak</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+                <hr>
+
+                <div class="p-2 " style="width: 100%; background-color:#2e095f; border-radius: 10px 10px 0px 0px;">
+                    <h6 class="text-white m-0"> B. Maklumat Tambahan</h6>
+                </div>
+
+
 
 
                 <div class="form-group pb-2">
@@ -225,7 +268,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for=""><strong>Adakah anda bekerja sebagai panel bank/syarikat sewa beli</strong></label>
+                    <label for=""><strong>Adakah anda bekerja sebagai panel bank/syarikat sewa beli?</strong></label>
                     <!-- <input type="text" class="form-control" id="state" aria-describedby="state" placeholder=""> -->
 
 
@@ -241,6 +284,32 @@
                         </div>
                         <br>
                         <!-- //if yes appear -->
+                        <div class="row">
+                            <div class="col-5 form-group">
+                                <div class="form-group">
+                                    <label for="bank" class="col-sm"><strong>Nama Institusi Kewangan: </strong></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-1"></div> -->
+                            <div class="col-5 form-group">
+                                <div class="form-group">
+                                    <label for="phoneNumber" class="col-sm">
+                                        <strong>No. Telefon Institusi Kewangan:</strong>
+                                    </label>
+                                    <div class="col-sm-8">
+
+                                        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control form-control-sm">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- if no appear -->
                         <div>
                             <label class="pl-4">
                                 <strong>Sila nyatakan panel yang anda ikuti dan isi maklumat panel
@@ -252,39 +321,10 @@
                         <div class="row">
                             <div class="col-1"></div>
 
-                            <div class="col-5 form-group">
-                                <div class="form-group">
-                                    <label for="bank" class="col-sm-2"><strong> Bank: </strong></label>
-                                    <div class="col-sm-10">
-                                        <!-- <input type="text" class="form-control" id="staticEmail" value="email@example.com"> -->
-                                        <select name="panelBank" class="col-7 form-control form-control-sm" aria-label="Default select example" [disabled]="formCheck" [(ngModel)]="panel_bank">
-                                            <option selected>--Sila Pilih--</option>
-                                            <option value="1">Maybank</option>
-                                            <option value="2">Bank Rakyat</option>
-                                            <option value="3">RHB Bank</option>
-                                            <option value="4">HSBC Bank Malaysia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-1"></div>
-                            <div class="col-5 form-group">
-                                <div class="form-group">
-                                    <label for="phoneNumber" class="col-sm">
-                                        <strong>No. Telefon (bank):</strong>
-                                    </label>
-                                    <div class="col-sm-8">
-
-                                        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control form-control-sm">
-
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="form-group row pl-4">
                                 <div class="col-md-3">
                                     <label for="panelName">
-                                        <strong> <span style="color: red;">*</span>Nama Panel: </strong>
+                                        <strong> Nama Panel: </strong>
                                     </label>
                                 </div>
                                 <div class="col">
@@ -295,7 +335,7 @@
                             <div class="form-group row pl-4">
                                 <div class="col-md-3">
                                     <label for="panelName">
-                                        <strong> <span style="color: red;">*</span>No Kad Pengenalan: </strong>
+                                        <strong> No. Kad Pengenalan: </strong>
                                     </label>
                                 </div>
                                 <div class="col">
@@ -306,7 +346,7 @@
                             <div class="form-group row pl-4">
                                 <div class="col-md-3">
                                     <label for="permitNumber">
-                                        <strong> <span style="color: red;">*</span>No Permit: </strong>
+                                        <strong> No. Permit: </strong>
                                     </label>
                                 </div>
                                 <div class="col">
@@ -317,7 +357,7 @@
                             <div class="form-group row pl-4">
                                 <div class="col-md-3">
                                     <label for="phoneNumber">
-                                        <strong> <span style="color: red;">*</span>No. Telefon: </strong> </label>
+                                        <strong> No. Telefon: </strong> </label>
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control form-control-sm" id="phoneNumber" name="no_telPanel">
@@ -374,7 +414,7 @@
                         <label class="pb-2"><strong> Muat Naik Dokumen</strong></label>
                     </div>
 
-                    <div class="form-group d-flex flex-wrap">
+                    <div class="form-group">
                         <!-- <label class="col-2 p-2" for="image">Lesen Memandu</label>
                         <div class="form-control col-6" id="fileList">Pilih Fail (format jpeg, png dan
                             pdf
@@ -382,32 +422,57 @@
                         <label class="btn form-control col-2" style="background-color: #1d1da1; color:white;">
                             <i class="fa fa-upload" aria-hidden="true"></i> Muat Naik<input type="file" style="display: none;" name="image">
                         </label> -->
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1">Kad Pengenalan (Depan)</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
 
+                            </div>
+                        </div>
 
-                        <label class="col-2 mt-1" for="image">Lesen Memandu:</label>
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1" for="image">Kad Pengenalan (Belakang)</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn2" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
 
-                        <br>
-                        <!-- actual upload which is hidden -->
-                        <input type="file" id="actual-btn" hidden />
-                        <!-- our custom upload button -->
-                        <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
-                        <!-- name of file chosen -->
-                        <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1" for="image">Lesen Memandu</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn3" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen3" class="mt-1">Tiada Fail Dipilih</span>
 
-
-
-
-
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
 
-            <!-- <span><span style="color: red;">*</span>WAJIB diisi</span> -->
-
             <div class="p-2" style="width: 100%; background-color:#2e095f;">
-                <h6 class=" text-white m-0">Bahagian II : Akuan Permohonan</h6>
+                <h6 class=" text-white m-0">C. Pengesahan Permohonan</h6>
             </div>
 
             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
@@ -426,7 +491,7 @@
             </div>
 
             <div class="p-3 d-flex justify-content-center">
-                <input type="button" class=" btn btn btn-danger btn-lg m-2" value="BATAL" >
+                <input type="button" class=" btn btn btn-danger btn-lg m-2" value="BATAL">
                 <input type="button" class=" btn btn-info btn-lg m-2" value="SIMPAN">
                 <input type="submit" class=" btn btn-success btn-lg m-2" value="HANTAR">
             </div>
@@ -447,6 +512,24 @@
 
     actualBtn.addEventListener('change', function() {
         fileChosen.textContent = this.files[0].name
+    })
+</script>
+<script>
+    const actualBtn2 = document.getElementById('actual-btn2');
+
+    const fileChosen2 = document.getElementById('file-chosen2');
+
+    actualBtn2.addEventListener('change', function() {
+        fileChosen2.textContent = this.files[0].name
+    })
+</script>
+<script>
+    const actualBtn3 = document.getElementById('actual-btn3');
+
+    const fileChosen3 = document.getElementById('file-chosen3');
+
+    actualBtn3.addEventListener('change', function() {
+        fileChosen3.textContent = this.files[0].name
     })
 </script>
 @stop

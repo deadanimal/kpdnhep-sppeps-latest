@@ -207,7 +207,7 @@
               </div>
             </li>
             <li class="nav-item mx-2">
-              <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+              <a role="button" href="/semakan-status-eps" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" aria-expanded="false">
                 Semakan Status EPS
               </a>
             </li>

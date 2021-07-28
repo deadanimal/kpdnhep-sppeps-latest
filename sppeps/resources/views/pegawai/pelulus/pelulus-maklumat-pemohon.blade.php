@@ -218,7 +218,7 @@
             <div class="card card-frame">
 
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">Sokongan Permohonan</h6>
+                    <h6 class="text-uppercade ">Kelulusan Permohonan</h6>
                 </div>
                 <div class="card-body">
                     <form class="d-flex justify-content-center font-black" style="width: 100%;" (ngSubmit)="onSubmit(submit)">

@@ -237,36 +237,36 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Tetapan</span>
+                        <span class="nav-link-text ms-1">Pentadbiran CMS</span>
                     </a>
                     <div class="collapse " id="basicExamples">
                         <ul class="nav ms-4 ps-3">
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/tetapan-arkib-bergambar">
                                     <span class="sidenav-mini-icon"> AB </span>
                                     <span class="sidenav-normal"> Arkib Bergambar</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/tetapan-arkib-dokumen">
                                     <span class="sidenav-mini-icon"> AD </span>
                                     <span class="sidenav-normal"> Arkib Dokumen</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/tetapan-banner">
                                     <span class="sidenav-mini-icon"> B </span>
                                     <span class="sidenav-normal"> Banner</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/tetapan-faq">
                                     <span class="sidenav-mini-icon"> F </span>
                                     <span class="sidenav-normal"> FAQ</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/tetapan-pengumuman">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Pengumuman</span>
                                 </a>
@@ -299,38 +299,38 @@
                     <div class="collapse " id="basicExamples">
                         <ul class="nav ms-4 ps-3">
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/peratusan-kelulusan-permit">
                                     <span class="sidenav-mini-icon"> AB </span>
                                     <span class="sidenav-normal"> Peratusan Kelulusan Permit</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/peratusan-permit-ditolak">
                                     <span class="sidenav-mini-icon"> AD </span>
                                     <span class="sidenav-normal"> Peratusan Permit Ditolak</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/laporan-sejarah-permohonan">
                                     <span class="sidenav-mini-icon"> B </span>
                                     <span class="sidenav-normal"> Laporan Sejarah Permohonan
                                     </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/laporan-senarai-hitam">
                                     <span class="sidenav-mini-icon"> F </span>
                                     <span class="sidenav-normal"> Laporan Permohonan Disenarai Hitam</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/statistik-pemegang-permit">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Statistik Pemegang Permit</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#gettingStartedExample">
+                                <a class="nav-link" href="/statistik-kutipan-fi">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Statistik Kutipan FI</span>
                                 </a>

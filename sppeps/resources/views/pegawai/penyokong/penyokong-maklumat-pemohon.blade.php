@@ -14,7 +14,7 @@
 
             <div class="card card-frame">
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">maklumat permohonan</h6>
+                    <h6 class="text-uppercade ">Maklumat Permohonan</h6>
                 </div>
 
 

@@ -41,6 +41,10 @@ Route::get('/faq', function () {
     return view('global.faq');
 });
 
+Route::get('/semakan-status-eps', function () {
+    return view('global.semakan-status-eps');
+});
+
 
 //pemohon
 Route::get('/dashboard-pemohon', function () {
@@ -178,8 +182,48 @@ Route::get('/laporan-sejarah-permohonan', function () {
     return view('laporan-statistik.laporan-sejarah-permohonan');
 });
 
+Route::get('/laporan-senarai-hitam', function () {
+    return view('laporan-statistik.laporan-senarai-hitam');
+});
+
+Route::get('/statistik-pemegang-permit', function () {
+    return view('laporan-statistik.statistik-pemegang-permit');
+});
+
+Route::get('/statistik-kutipan-fi', function () {
+    return view('laporan-statistik.statistik-kutipan-fi');
+});
 
 
+// admin hq
+
+Route::get('/tetapan-arkib-bergambar', function () {
+    return view('pegawai.admin-hq.tetapan-arkib-bergambar');
+});
+
+Route::get('/tetapan-arkib-bergambar-senarai', function () {
+    return view('pegawai.admin-hq.tetapan-arkib-bergambar-senarai');
+});
+
+Route::get('/tetapan-arkib-dokumen', function () {
+    return view('pegawai.admin-hq.tetapan-arkib-dokumen');
+});
+
+Route::get('/tetapan-arkib-dokumen-senarai', function () {
+    return view('pegawai.admin-hq.tetapan-arkib-dokumen-senarai');
+});
+
+Route::get('/tetapan-pengumuman', function () {
+    return view('pegawai.admin-hq.tetapan-pengumuman');
+});
+
+Route::get('/tetapan-banner', function () {
+    return view('pegawai.admin-hq.tetapan-banner');
+});
+
+Route::get('/tetapan-faq', function () {
+    return view('pegawai.admin-hq.tetapan-faq');
+});
 
 
 

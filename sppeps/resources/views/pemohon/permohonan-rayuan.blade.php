@@ -84,7 +84,7 @@
                             <strong> No. Telefon</strong>
                         </label>
                         <div class="d-flex flex-nowrap align-items-center">
-                            <input type="number" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" disabled>
+                            <input type="text" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone">
 
                         </div>
                     </div>
@@ -98,8 +98,9 @@
                 <div class="d-flex flex-nowrap pb-2">
                     <div class="col-6 form-group p-0">
                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
-                        <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address" disabled>
-                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" disabled>
+                        <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address">
+                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address">
+                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address">
                     </div>
                     <div class="col-1"></div>
                     <div class="col pr-0">
@@ -109,21 +110,42 @@
                                     <path d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
                                 </svg>
                                 <strong> Poskod</strong></label>
-                            <input type="number" class="form-control" id="poskod" aria-describedby="poskod" name="poskod" disabled>
+                            <input type="text" class="form-control" id="poskod" aria-describedby="poskod" name="poskod">
                         </div>
                         <div class="form-group">
                             <label for="state"><i class="fas fa-map"></i><strong> Negeri</strong></label>
-                            <input type="text" class="form-control" id="negeri" name="negeri" disabled>
+                            <input type="text" class="form-control" id="negeri" name="negeri">
                         </div>
                     </div>
                 </div>
 
                 <div class="d-flex flex-nowrap pb-2">
-                    <div class="col-7 form-group p-0">
+                    <div class="col-6 form-group p-0">
+                        <label for="state"><i class="fas fa-map"></i><strong> Negeri Kutipan Permit</strong></label>
+                        <select class="form-control" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
+                            <option selected>--Pilih Negeri--</option>
+                            <option value="Perlis">Perlis</option>
+                            <option value="Kedah">Kedah</option>
+                            <option value="Pulau Pinang">Pulau Pinang</option>
+                            <option value="Perak">Perak</option>
+                            <option value="Selangor">Selangor</option>
+                            <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                            <option value="WP Putrajaya">W. P. Putrajaya</option>
+                            <option value="WP Labuan">W. P. Labuan</option>
+                            <option value="Melaka">Melaka</option>
+                            <option value="Negeri Sembilan">Negeri Sembilan</option>
+                            <option value="Johor">Johor</option>
+                            <option value="Pahang">Pahang</option>
+                            <option value="Terengganu">Terengganu</option>
+                            <option value="Kelantan">Kelantan</option>
+                            <option value="Sabah">Sabah</option>
+                            <option value="Sarawak">Sarawak</option>
+                        </select>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col form-group pr-0">
                         <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
-                        <input type="email" name="emel" class="form-control" id="email" disabled>
+                        <input type="email" name="emel" class="form-control" id="email">
                     </div>
                 </div>
 
@@ -150,9 +172,9 @@
                         <div class="col">
                             <div class="form-check ">
                                 <input class="form-check-input" type="radio" id="inlineCheckbox3k" name="resonTolose" [value]="3" [(ngModel)]="sebab_ditolak" (click)="otherReasonActive()">
-                                <label class="form-check-label" for="inlineCheckbox1">Lain-lain</label>
+                                <label class="form-check-label" for="inlineCheckbox1">Sebab-sebab Lain</label>
                                 <br>
-                                <label for="other_reason">Nyatakan alasan anda: </label>
+                                <label for="other_reason">Sila Nyatakan: </label>
                                 <input type="text" class="form-control col-6" name="other_reason" [(ngModel)]="lain_alasan" [disabled]="otherReason" />
                             </div>
                         </div>
@@ -160,7 +182,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="resonTolose"><strong> Permohonan Penggantian Kali Ke</strong></label>
+                    <label for="resonTolose"><strong> Permohonan Rayuan Kali Ke</strong></label>
                     <!-- <input type="text" class="form-control" id="education" aria-describedby="education" placeholder=""> -->
                     <br>
                     <div class="row">
@@ -208,62 +230,121 @@
                         <label class="pb-2"><strong> Muat Naik Dokumen</strong></label>
                     </div>
 
-                    <label class="col mt-1" for="image"><span style="color: red;">*</span> Surat Tapisan Rekod Jenayah daripada PDRM Bukit Aman</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="mt-1">Kad Pengenalan (Depan)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
 
-                    <label class="col mt-1" for="image"><span style="color: red;">*</span> Surat Sokongan daripada Institusi Kewangan</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn2" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                        </div>
+                    </div>
 
-                    <label class="col mt-1" for="image">Dokumen Sokongan Lain 1 (jika ada)</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn3" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen3" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="mt-1" for="image">Kad Pengenalan (Belakang)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn2" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
 
-                    <label class="col mt-1" for="image">Dokumen Sokongan Lain 2 (jika ada)</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn4" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn4" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen4" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                        </div>
+                    </div>
 
-                    <label class="col mt-1" for="image">Dokumen Sokongan Lain 3 (jika ada)</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn5" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn5" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen5" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="col mt-1" for="image"> Surat Tapisan Rekod Jenayah daripada PDRM Bukit Aman</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                            <br>
 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="col mt-1" for="image"> Surat Sokongan daripada Institusi Kewangan</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn2" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 1 (jika ada)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn3" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen3" class="mt-1">Tiada Fail Dipilih</span>
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 2 (jika ada)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn4" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn4" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen4" class="mt-1">Tiada Fail Dipilih</span>
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 3 (jika ada)</label>
+                        </div>
+                        <div class="col">
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="actual-btn5" hidden />
+                            <!-- our custom upload button -->
+                            <label for="actual-btn5" class="upload-btn mt-0">Pilih Fail</label>
+                            <!-- name of file chosen -->
+                            <span id="file-chosen5" class="mt-1">Tiada Fail Dipilih</span>
+                            <br>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
             <!-- <div class="form-group row">
-                <span><span style="color: red;">*</span>WAJIB diisi</span>
+                <span>WAJIB diisi</span>
             </div> -->
 
 

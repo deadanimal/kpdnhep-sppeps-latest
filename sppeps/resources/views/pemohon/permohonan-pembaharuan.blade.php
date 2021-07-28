@@ -33,7 +33,7 @@
             @csrf
 
             <div class="p-2 " style="width: 100%; background-color:#2e095f; border-radius: 10px 10px 0px 0px;">
-                <h6 class="text-white m-0">Bahagian I : Maklumat Pemohon</h6>
+                <h6 class="text-white m-0">A. Maklumat Permohonan</h6>
             </div>
 
             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
@@ -78,6 +78,11 @@
                     <div class="col-6 form-group p-0">
                         <label for="gender"> <i class="fas fa-venus-mars"></i><strong> Jantina</strong></label>
                         <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
+                        <!-- <select name="gender" id="gender" class="form-control">
+                            <option value="">--Sila Pilih--</option>
+                            <option value="Lelaki">Lelaki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select> -->
                     </div>
                     <div class="col-1"></div>
                     <div class="col form-group pr-0">
@@ -96,7 +101,7 @@
                             <strong> No. Telefon</strong>
                         </label>
                         <div class="d-flex flex-nowrap align-items-center">
-                            <input type="number" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" [(ngModel)]=" this.notelefonori">
+                            <input type="text" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" [(ngModel)]=" this.notelefonori">
 
                         </div>
                     </div>
@@ -111,6 +116,7 @@
                     <div class="col-6 form-group p-0">
                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
                         <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address" [(ngModel)]="this.alamat1ori">
+                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
                         <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
                     </div>
                     <div class="col-1"></div>
@@ -134,6 +140,7 @@
                                 <option value="Selangor">Selangor</option>
                                 <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
                                 <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                <option value="WP Labuan">W. P. Labuan</option>
                                 <option value="Melaka">Melaka</option>
                                 <option value="Negeri Sembilan">Negeri Sembilan</option>
                                 <option value="Johor">Johor</option>
@@ -148,14 +155,39 @@
                 </div>
 
                 <div class="d-flex flex-nowrap pb-2">
-                    <div class="col-7 form-group p-0">
+                    <div class="col-6 form-group p-0">
+                        <label for="state"><i class="fas fa-map"></i><strong> Negeri Kutipan Permit</strong></label>
+                        <select class="form-control" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
+                            <option selected>--Pilih Negeri--</option>
+                            <option value="Perlis">Perlis</option>
+                            <option value="Kedah">Kedah</option>
+                            <option value="Pulau Pinang">Pulau Pinang</option>
+                            <option value="Perak">Perak</option>
+                            <option value="Selangor">Selangor</option>
+                            <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                            <option value="WP Putrajaya">W. P. Putrajaya</option>
+                            <option value="WP Labuan">W. P. Labuan</option>
+                            <option value="Melaka">Melaka</option>
+                            <option value="Negeri Sembilan">Negeri Sembilan</option>
+                            <option value="Johor">Johor</option>
+                            <option value="Pahang">Pahang</option>
+                            <option value="Terengganu">Terengganu</option>
+                            <option value="Kelantan">Kelantan</option>
+                            <option value="Sabah">Sabah</option>
+                            <option value="Sarawak">Sarawak</option>
+                        </select>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col form-group pr-0">
                         <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
                         <input type="email" name="emel" class="form-control" id="email">
                     </div>
                 </div>
                 <hr>
+
+                <div class="p-2 " style="width: 100%; background-color:#2e095f; border-radius: 10px 10px 0px 0px;">
+                    <h6 class="text-white m-0">A. Maklumat Tambahan</h6>
+                </div>
 
 
                 <div class="form-group pb-2">
@@ -166,14 +198,15 @@
                     <div class="row">
                         <div class="col">
                             <input type="radio" name="EPSworkStatus" id="fullTime">
-                            <label class="pl-2" for="EPSworkStatus">Sepenuh Masa</label>
+                            <label class="pl-2" for="EPSworkStatus">Sepenuh masa sebagai EPS</label>
                             <br>
                             <div class="row pl-4">
                                 <div class="col">
                                     <div class="form-group row">
                                         <label for="date">Dari Tahun: </label>
                                         <div class="col-sm-10">
-                                            <input type="date" class="form-control col-5" name="date" id="date" value="" [disabled]="epsWorkStatusDate" [(ngModel)]="dari_tahun">
+                                            <!-- patut dlm select senarai tahun-->
+                                            <input type="text" class="form-control col-5" name="date" id="date" value="" [disabled]="epsWorkStatusDate" [(ngModel)]="dari_tahun">
                                         </div>
                                     </div>
                                 </div>
@@ -392,10 +425,11 @@
                                 <div class="form-group row">
                                     <label for="yearAttend">Tahun Dihadiri: </label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="expiryMonth" [disabled]="yearAttend" [(ngModel)]="tahun_h">
+                                        <input type="text" class="form-control form-control-sm" name="tahunDihadiri">
+                                        <!-- <select class="form-control" name="expiryMonth" [disabled]="yearAttend" [(ngModel)]="tahun_h">
                                             <option value="">Pilih Tahun</option>
 
-                                        </select>
+                                        </select> -->
                                     </div>
                                 </div>
                             </div>
@@ -412,31 +446,75 @@
                         <label class="pb-2"><strong> Muat Naik Dokumen</strong></label>
                     </div>
 
-                    <label class="col mt-1" for="image">Lesen Memandu:</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
-                    <br>
+                    <div class="form-group">
 
-                    <label class="col mt-1" for="image">Surat Sokongan (Bank/Syarikat Sewa Beli):</label>
-                    <br>
-                    <!-- actual upload which is hidden -->
-                    <input type="file" id="actual-btn2" hidden />
-                    <!-- our custom upload button -->
-                    <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
-                    <!-- name of file chosen -->
-                    <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1">Kad Pengenalan (Depan)</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1" for="image">Kad Pengenalan (Belakang)</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn2" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1" for="image">Lesen Memandu:</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                                <br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="mt-1" for="image">Surat Sokongan (Bank/Syarikat Sewa Beli):</label>
+                            </div>
+                            <div class="col">
+                                <!-- actual upload which is hidden -->
+                                <input type="file" id="actual-btn2" hidden />
+                                <!-- our custom upload button -->
+                                <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                                <!-- name of file chosen -->
+                                <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <!-- <span><span style="color: red;">*</span>WAJIB diisi</span> -->
 
             <div class="p-2" style="width: 100%; background-color:#2e095f;">
-                <h6 class=" text-white m-0">Bahagian II : Akuan Permohonan</h6>
+                <h6 class=" text-white m-0">C. Pengesahan Permohonan</h6>
             </div>
 
             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">

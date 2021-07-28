@@ -14,7 +14,7 @@
 
             <div class="card card-frame">
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">maklumat permohonan</h6>
+                    <h6 class="text-uppercade ">Maklumat Permohonan</h6>
                 </div>
 
 
@@ -133,7 +133,7 @@
             <div class="card card-frame">
 
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">PENGESAHAN TAPISAN REKOD JENAYAH</h6>
+                    <h6 class="text-uppercade ">Pengesahan Tapisan Rekod Jenayah</h6>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="">
@@ -181,6 +181,4 @@
 
 
 
-
-</div>
 @stop
