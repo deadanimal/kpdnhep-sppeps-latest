@@ -140,7 +140,7 @@
                         </div>
                         <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
                             <label class="p-2" for="search">Carian: </label>
-                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" />
+                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="Masukkan no. kad pengenalan" (keyup)="updateFilter($event)" />
                         </div>
                     </div>
 
@@ -151,9 +151,9 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No. Permit</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Permit lulus</th>
-                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH Permit tamat</th>
+                                            <!-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No. Permit</th> -->
+                                            <!-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Permit lulus</th> -->
+                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH Permit tamat</th> -->
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
@@ -167,7 +167,7 @@
                                             <td>
                                                 <span class="text-secondary text-sm font-weight-bold">1</span>
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <span class="text-secondary text-sm font-weight-bold">29109</span>
                                             </td>
                                             <td>
@@ -175,7 +175,7 @@
                                             </td>
                                             <td>
                                                 <span class="text-secondary text-sm font-weight-bold">22/11/2022</span>
-                                            </td>
+                                            </td> -->
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
                                             </td>

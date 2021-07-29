@@ -152,12 +152,14 @@
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No. Permit</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Permit lulus</th>
-                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH Permit tamat</th>
+                                            <!-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Permit lulus</th> -->
+                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH Permit tamat</th> -->
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
-                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TINDAKAN PEGAWAI</th> -->
+                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Jumlah bayaran</th>
+                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tempoh sah laku</th>
+                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tarikh bayaran</th>
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th> -->
                                             <!-- <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th> -->
                                         </tr>

@@ -48,7 +48,19 @@
             <div class="card m-2">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h5> Kelulusan Permit Mengikut Jantina</h5>
+
+                    <div class="row mb-0">
+                        <div class="col">
+                            <h5> Kelulusan Permit Mengikut Jantina</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                                <option disabled selected hidden><b>Cetak</b></option>
+                                <option class="dropdown-item" value="PDF">Pdf</option>
+                                <option class="dropdown-item" value="XLSX">Excel</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body p-3">
@@ -63,7 +75,19 @@
             <div class="card m-2">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h5> Kelulusan Permit Mengikut Negeri</h5>
+
+                    <div class="row mb-0">
+                        <div class="col">
+                            <h5> Kelulusan Permit Mengikut Negeri</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                                <option disabled selected hidden><b>Cetak</b></option>
+                                <option class="dropdown-item" value="PDF">Pdf</option>
+                                <option class="dropdown-item" value="XLSX">Excel</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body p-3">
@@ -140,7 +164,7 @@
                         </div>
                         <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
                             <label class="p-2" for="search">Carian: </label>
-                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" />
+                            <input class="col-4 form-control form-control-sm" type="text" name="search" placeholder="Masukkan no. kad pengenalan atau no permit" (keyup)="updateFilter($event)" />
                         </div>
                     </div>
 
@@ -214,7 +238,8 @@
 
 <!-- Styles -->
 <style>
-    #chartdiv, #chartdiv2 {
+    #chartdiv,
+    #chartdiv2 {
         width: 100%;
         height: 500px;
     }

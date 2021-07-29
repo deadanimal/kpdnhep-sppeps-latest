@@ -13,6 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//auth
+Route::get('/login', function () {
+    return view('auth.login_');
+});
+
+Route::get('/lupa-kata-laluan', function () {
+    return view('auth.forgot-password_');
+});
+
+Route::get('/register', function () {
+    return view('auth.register_');
+});
+
+Route::get('/semak-ic', function () {
+    return view('auth.semakan-kad-pengenalan');
+});
+
+Route::get('/kemaskini-profil', function () {
+    return view('auth.profile-update_');
+});
+
+Route::get('/change-password', function () {
+    return view('auth.change-password');
+});
+
+
+
+
 Route::get('/', function () {
     return view('global.landing-page');
 });
@@ -160,14 +188,6 @@ Route::get('/pelulus-tugasan-selesai', function () {
 });
 
 
-
-//admin hq
-
-Route::get('/pengurusan-data', function () {
-    return view('pegawai.admin-hq.pengurusan-data');
-});
-
-
 // laporan Statistik
 
 Route::get('/peratusan-kelulusan-permit', function () {
@@ -195,7 +215,27 @@ Route::get('/statistik-kutipan-fi', function () {
 });
 
 
-// admin hq
+//admin hq
+
+Route::get('/pengurusan-data', function () {
+    return view('pegawai.admin-hq.pengurusan-data');
+});
+
+Route::get('/kemaskini-maklumat-pemohon', function () {
+    return view('pegawai.admin-hq.kemaskini-maklumat-pemohon');
+});
+
+Route::get('/peranan-pegawai', function () {
+    return view('pegawai.admin-hq.peranan-pegawai');
+});
+
+Route::get('/tambah-peranan-pegawai', function () {
+    return view('pegawai.admin-hq.tambah-peranan-pegawai');
+});
+
+Route::get('/tambah-peranan-pegawai-2', function () {
+    return view('pegawai.admin-hq.tambah-peranan-pegawai-2');
+});
 
 Route::get('/tetapan-arkib-bergambar', function () {
     return view('pegawai.admin-hq.tetapan-arkib-bergambar');
@@ -224,6 +264,28 @@ Route::get('/tetapan-banner', function () {
 Route::get('/tetapan-faq', function () {
     return view('pegawai.admin-hq.tetapan-faq');
 });
+
+
+Route::get('/log-pemohon', function () {
+    return view('pegawai.admin-hq.at-log-pemohon');
+});
+
+Route::get('/lihat-log-pemohon', function () {
+    return view('pegawai.admin-hq.at-lihat-log-pemohon');
+});
+
+Route::get('/log-pengguna', function () {
+    return view('pegawai.admin-hq.at-log-pengguna');
+});
+
+Route::get('/lihat-log-pengguna', function () {
+    return view('pegawai.admin-hq.at-lihat-log-pengguna');
+});
+
+Route::get('/peranan-pdrm', function () {
+    return view('pegawai.admin-hq.peranan-pdrm');
+});
+
 
 
 

@@ -24,7 +24,8 @@
                     <thead class="thead-light">
                         <tr>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Kategori MS</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Kategori EN</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tindakan</th>
                         </tr>
@@ -32,6 +33,7 @@
                     <tbody>
                         <tr>
                             <td class="text-sm font-weight-normal">1</td>
+                            <td class="text-sm font-weight-normal">Umum</td>
                             <td class="text-sm font-weight-normal">Umum</td>
                             <td class="text-sm font-weight-normal">
                                 <span class="badge badge-info">Aktif</span>
@@ -185,7 +187,11 @@
                         <div class="card-body">
                             <form role="form text-left">
                                 <div class="form-group">
-                                    <label for="title">Nama Kategori</label>
+                                    <label for="title">Nama Kategori MS</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Nama Kategori EN</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
 
@@ -231,7 +237,12 @@
                         <div class="card-body">
                             <form role="form text-left">
                                 <div class="form-group">
-                                    <label for="title">Nama Kategori</label>
+                                    <label for="title">Nama Kategori MS</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Nama Kategori EN</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
 
@@ -277,14 +288,25 @@
                         <div class="card-body">
                             <form role="form text-left">
                                 <div class="form-group">
-                                    <label for="title">Tajuk</label>
+                                    <label for="title">Tajuk MS</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Kandungan</label>
+                                    <label for="title">Tajuk EN</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="title">Kandungan MS</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Kandungan EN</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="title">Turutan</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
@@ -336,14 +358,25 @@
                         <div class="card-body">
                             <form role="form text-left">
                                 <div class="form-group">
-                                    <label for="title">Tajuk</label>
+                                    <label for="title">Tajuk MS</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Kandungan</label>
+                                    <label for="title">Tajuk EN</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="title">Kandungan MS</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Kandungan EN</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="title">Turutan</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">

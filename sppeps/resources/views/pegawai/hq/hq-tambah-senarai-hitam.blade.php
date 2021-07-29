@@ -147,8 +147,9 @@
 
                                 </div>
 
-                                <div>
-                                    <input type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0" value="Hantar">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-round bg-gradient-danger text-capitalize" data-bs-dismiss="modal">Batal</button>
+                                    <button type="Submit" class="btn btn-round bg-gradient-success text-capitalize">Simpan</button>
                                 </div>
                             </form>
                         </div>

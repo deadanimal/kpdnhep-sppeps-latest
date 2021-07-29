@@ -114,8 +114,8 @@
                                                     <span class="badge badge-dark"> Disenarai Hitam</span>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <button class="btn btn-sm btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-form2">
-                                                        <i class="fas fa-edit"></i>
+                                                    <button class="btn btn-sm bg-gradient-info" data-bs-toggle="modal" data-bs-target="#modal-form2">
+                                                        Kemaskini
                                                     </button>
                                                 </td>
                                             </tr>
@@ -153,8 +153,9 @@
 
                                 </div>
 
-                                <div>
-                                    <input type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0" value="Hantar">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-round bg-gradient-danger text-capitalize" data-bs-dismiss="modal">Batal</button>
+                                    <button type="Submit" class="btn btn-round bg-gradient-success text-capitalize">Simpan</button>
                                 </div>
                             </form>
                         </div>

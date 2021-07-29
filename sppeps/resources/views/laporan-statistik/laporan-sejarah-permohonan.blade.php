@@ -151,12 +151,15 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No. Permit</th>
+                                            <!-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No. Permit</th>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Permit lulus</th>
-                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH Permit tamat</th>
+                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH Permit tamat</th> -->
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
+                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">jenis permohonan</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH hantar permohonan</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">status</th> <!-- (lulus, gagal, dalam proses, senaraihitam)-->
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TINDAKAN PEGAWAI</th> -->
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th> -->
                                             <!-- <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th> -->
@@ -167,15 +170,7 @@
                                             <td>
                                                 <span class="text-secondary text-sm font-weight-bold">1</span>
                                             </td>
-                                            <td>
-                                                <span class="text-secondary text-sm font-weight-bold">29109</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-secondary text-sm font-weight-bold">22/11/2021</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-secondary text-sm font-weight-bold">22/11/2022</span>
-                                            </td>
+
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
                                             </td>
@@ -184,6 +179,17 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-sm font-weight-bold"> Pemohonan Baharu</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-sm font-weight-bold"> 25-1-2019</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    <span class="badge badge-success">Lulus</span>
+                                                </span>
                                             </td>
                                             <!-- <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold"> </span>
@@ -214,7 +220,8 @@
 
 <!-- Styles -->
 <style>
-    #chartdiv, #chartdiv2 {
+    #chartdiv,
+    #chartdiv2 {
         width: 100%;
         height: 500px;
     }

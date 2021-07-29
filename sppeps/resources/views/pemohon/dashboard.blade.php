@@ -3,6 +3,8 @@
 @section('content')
 
 <div class="container-fluid py-4" style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
+    <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal" data-bs-target="#modal-form">Borang Profile</button>
+    <a href="/kemaskini-profil">Kemaskini Profil</a>
 
     <div class="container-fluid d-flex justify-content-center" style="height:700px">
         <div id="portalcontent">
@@ -79,7 +81,116 @@
             </div>
         </div>
     </div>
-
-
 </div>
+
+<div class="col-md-4">
+    <!-- <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal" data-bs-target="#modal-form">Form</button> -->
+    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card card-plain">
+                        <div class="card-header pb-0 text-left">
+                            <h3 class="font-weight-bolder text-info text-gradient">Maklumat Profil</h3>
+                            <!-- <p class="mb-0">Enter your email and password to sign in</p> -->
+                        </div>
+                        <div class="card-body">
+                            <form role="form text-left">
+                                <div class="form-group col-6">
+
+                                    <label for="image">Gambar Profil</label>
+                                    <br>
+                                    <label class="btn bg-gradient-info form-control col-6 m-0">
+                                        <i class="fa fa-image"></i> Pilih Gambar<input type="file" style="display: none;" name="image">
+                                    </label>
+                                    <!-- <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder=""> -->
+                                </div>
+
+                                <div class="form-group">
+                                    <small class="text-xs mb-3">Pemohon perlu memasukkan gambar profil berukuran passport dalam format jpg. Gambar ini akan digunakan untuk dicetak atas kad permit.</small>
+                                    <br>
+                                    <div id="fileList" class="text-sm">Tiada Gambar Dipilih</div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Nama</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">No. Kad Pengenalan</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Umur</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">E-mel</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Tarikh Lahir</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Jantina</label>
+                                    <!-- <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" > -->
+
+                                    <select name="jantina" id="jantina" class="form-control form-control-sm">
+                                        <option value="">Sila Pilih</option>
+                                        <option value="">Lelaki</option>
+                                        <option value="">Perempuan</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Alamat</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="Alamat 1">
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="Alamat 2">
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="Alamat 3">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Poskod</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder=" eg: 62623">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Negeri</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">No. Telefon bimbit</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="1234567890">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">No. Telefon Rumah</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="1234567890">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">No. Telefon Pejabat</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="1234567890">
+                                </div>
+                                <div class="text-center d-flex justify-content-end">
+                                    <button type="button" class="btn btn-round bg-gradient-danger text-capitalize" data-bs-dismiss="modal">Batal</button>
+                                    <button type="Submit" class="btn btn-round bg-gradient-success text-capitalize">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @stop
