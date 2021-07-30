@@ -30,6 +30,10 @@ Route::get('/semak-ic', function () {
     return view('auth.semakan-kad-pengenalan');
 });
 
+Route::get('/profil', function () {
+    return view('auth.profile_');
+});
+
 Route::get('/kemaskini-profil', function () {
     return view('auth.profile-update_');
 });
@@ -97,6 +101,10 @@ Route::get('/permohonan-rayuan', function () {
 
 Route::get('/status-permohonan', function () {
     return view('pemohon.status-permohonan');
+});
+
+Route::get('/test', function () {
+    return view('pemohon.test');
 });
 
 

@@ -1,10 +1,10 @@
-@extends('layouts.baseUser')
+@extends('layouts.base-pemohon')
 
 @section('content')
 
 <div class="container-fluid py-4" style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
-    <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal" data-bs-target="#modal-form">Borang Profile</button>
-    <a href="/kemaskini-profil">Kemaskini Profil</a>
+    <!-- <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal" data-bs-target="#modal-form">Borang Profile</button>
+    <a href="/kemaskini-profil">Kemaskini Profil</a> -->
 
     <div class="container-fluid d-flex justify-content-center" style="height:700px">
         <div id="portalcontent">
