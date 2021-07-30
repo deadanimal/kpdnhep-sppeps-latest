@@ -429,7 +429,7 @@
                     <div class="row p-3 mb-0">
                         <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                             <label class="d-flex flex-nowrap mb-0">
-                                <span class="pl-0 pt-2 pr-2">papar</span>
+                                <span class="pl-0 pt-2 pr-2">Papar</span>
                                 <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
                                     <option value="5">5</option>
                                     <option value="10">10</option>

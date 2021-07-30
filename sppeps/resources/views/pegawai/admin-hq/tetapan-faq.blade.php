@@ -16,10 +16,17 @@
                     <div class="col">
                         <h5>Senarai Kategori</h5>
                     </div>
+
+                    <div class="col">
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn bg-gradient-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-form">Tambah</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
-                <button class="btn bg-gradient-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-form">Tambah</button>
+                
+
                 <table class="table table-flush" id="datatable-basic">
                     <thead class="thead-light">
                         <tr>
@@ -108,7 +115,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">kandungan</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> turutan</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">kategori</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh Cipta</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh Kemaskini</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tindakan</th>
                             </tr>
@@ -376,7 +383,7 @@
                                     <label for="title">Kandungan EN</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="title">Turutan</label>
                                     <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">

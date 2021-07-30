@@ -124,10 +124,13 @@
     <!-- End Google Tag Manager (noscript) -->
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
         <div class="sidenav-header">
+
+            
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/default.html" target="_blank">
                 <img src="../../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold">Soft UI Dashboard PRO</span>
+                <span class="ms-1 font-weight-bold">Sistem Percetakan Permit <br>
+                    Ejen Pemilikan Semula</span>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -173,7 +176,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/pdrm-tugasan-baru">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>spaceship</title>
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -211,7 +214,7 @@
                         <span class="nav-link-text ms-1">Tugasan Selesai</span>
                     </a>
                 </li>
-                
+
                 <!-- <li class="nav-item">
                     <hr class="horizontal dark" />
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DOCS</h6>
@@ -333,7 +336,7 @@
                 </li> -->
             </ul>
         </div>
-        
+
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
@@ -702,6 +705,7 @@
             const globeRadius = 100;
             const globeWidth = 4098 / 2;
             const globeHeight = 1968 / 2;
+
             function convertFlatCoordsToSphereCoords(x, y) {
                 let latitude = ((x - globeWidth) / globeWidth) * -180;
                 let longitude = ((y - globeHeight) / globeHeight) * -90;
@@ -714,6 +718,7 @@
                     z: Math.sin(latitude) * radius
                 };
             }
+
             function makeMagic(points) {
                 const {
                     width,
@@ -766,6 +771,7 @@
                 camera.orbitControls.enableRotate = true;
                 camera.orbitControls.autoRotate = true;
                 camera.position.z = -265;
+
                 function animate() {
                     // orbitControls.autoRotate is enabled so orbitControls.update
                     // must be called inside animation loop.
@@ -775,6 +781,7 @@
                 }
                 animate();
             }
+
             function hasWebGL() {
                 const gl =
                     canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
@@ -784,6 +791,7 @@
                     return false;
                 }
             }
+
             function init() {
                 if (hasWebGL()) {
                     window

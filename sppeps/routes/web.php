@@ -34,6 +34,10 @@ Route::get('/profil', function () {
     return view('auth.profile_');
 });
 
+Route::get('/profil-pegawai', function () {
+    return view('auth.profil-pegawai');
+});
+
 Route::get('/kemaskini-profil', function () {
     return view('auth.profile-update_');
 });
@@ -290,6 +294,15 @@ Route::get('/peranan-pdrm', function () {
     return view('pegawai.admin-hq.peranan-pdrm');
 });
 
+
+//
+Route::get('/semakan-status-permohonan', function () {
+    return view('pegawai.semakan-status-permohonan');
+});
+
+Route::get('/maklumat-status', function () {
+    return view('pegawai.maklumat-status');
+});
 
 
 
