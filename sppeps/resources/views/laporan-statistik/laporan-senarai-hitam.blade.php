@@ -48,7 +48,19 @@
             <div class="card m-2">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h5> Kelulusan Permit Mengikut Jantina</h5>
+                    
+                    <div class="row mb-0">
+                        <div class="col">
+                        <h5> Permohonan Disenarai Hitam mengikut Jantina</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
+                                <option disabled selected hidden><b>Cetak</b></option>
+                                <option class="dropdown-item" value="PDF">Pdf</option>
+                                <option class="dropdown-item" value="XLSX">Excel</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body p-3">
@@ -63,7 +75,19 @@
             <div class="card m-2">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h5> Kelulusan Permit Mengikut Negeri</h5>
+                    
+                    <div class="row mb-0">
+                        <div class="col">
+                        <h5> Permohonan Disenarai Hitam mengikut Negeri</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
+                                <option disabled selected hidden><b>Cetak</b></option>
+                                <option class="dropdown-item" value="PDF">Pdf</option>
+                                <option class="dropdown-item" value="XLSX">Excel</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body p-3">
@@ -81,10 +105,10 @@
 
                     <div class="row mb-0">
                         <div class="col">
-                            <h5> Senarai Pemohon Disenarai hitam</h5>
+                            <h5> Senarai Pemohon Disenarai Hitam</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
                                 <option disabled selected hidden><b>Cetak</b></option>
                                 <option class="dropdown-item" value="PDF">Pdf</option>
                                 <option class="dropdown-item" value="XLSX">Excel</option>
