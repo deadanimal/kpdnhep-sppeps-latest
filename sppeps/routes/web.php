@@ -103,10 +103,6 @@ Route::get('/status-permohonan', function () {
     return view('pemohon.status-permohonan');
 });
 
-Route::get('/test', function () {
-    return view('pemohon.test');
-});
-
 
 //pdrm
 Route::get('/pdrm-tugasan-baru', function () {

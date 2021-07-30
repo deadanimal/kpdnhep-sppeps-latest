@@ -54,7 +54,7 @@
                             <h5> Kelulusan Permit Mengikut Jantina</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
                                 <option disabled selected hidden><b>Cetak</b></option>
                                 <option class="dropdown-item" value="PDF">Pdf</option>
                                 <option class="dropdown-item" value="XLSX">Excel</option>
@@ -81,7 +81,7 @@
                             <h5> Kelulusan Permit Mengikut Negeri</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
                                 <option disabled selected hidden><b>Cetak</b></option>
                                 <option class="dropdown-item" value="PDF">Pdf</option>
                                 <option class="dropdown-item" value="XLSX">Excel</option>
@@ -108,7 +108,7 @@
                             <h5> Senarai Permit Lulus</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
                                 <option disabled selected hidden><b>Cetak</b></option>
                                 <option class="dropdown-item" value="PDF">Pdf</option>
                                 <option class="dropdown-item" value="XLSX">Excel</option>

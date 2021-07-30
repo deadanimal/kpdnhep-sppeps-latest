@@ -1,4 +1,4 @@
-@extends('layouts.baseUser')
+@extends('layouts.base-pemohon')
 
 @section('content')
 

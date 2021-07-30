@@ -48,7 +48,19 @@
             <div class="card m-2">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h5> Kelulusan Permit Mengikut Jantina</h5>
+                    <!-- <h5> Kelulusan Permit Mengikut Jantina</h5> -->
+                    <div class="row mb-0">
+                        <div class="col">
+                            <h5>Pemegang Pemit yang Sah dan Aktif mengikut Jantina</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
+                                <option disabled selected hidden><b>Cetak</b></option>
+                                <option class="dropdown-item" value="PDF">Pdf</option>
+                                <option class="dropdown-item" value="XLSX">Excel</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body p-3">
@@ -63,7 +75,19 @@
             <div class="card m-2">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h5> Kelulusan Permit Mengikut Negeri</h5>
+                    <!-- <h5> Kelulusan Permit Mengikut Negeri</h5> -->
+                    <div class="row mb-0">
+                        <div class="col">
+                            <h5>Pemegang Permit yang Sah dan Aktif mengikut Negeri</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
+                                <option disabled selected hidden><b>Cetak</b></option>
+                                <option class="dropdown-item" value="PDF">Pdf</option>
+                                <option class="dropdown-item" value="XLSX">Excel</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body p-3">
@@ -81,10 +105,10 @@
 
                     <div class="row mb-0">
                         <div class="col">
-                            <h5> Senarai Permit Lulus</h5>
+                            <h5> Senarai Pemegang Permit yang Sah dan Aktifs</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <select class="btn btn-sm btn-light dropdown-toggle" id="selectid">
+                            <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
                                 <option disabled selected hidden><b>Cetak</b></option>
                                 <option class="dropdown-item" value="PDF">Pdf</option>
                                 <option class="dropdown-item" value="XLSX">Excel</option>
@@ -158,7 +182,7 @@
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tempoh sah laku</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH mula</th> 
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH mula</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TARIKH tamat</th>
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TINDAKAN PEGAWAI</th> -->
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th> -->
@@ -217,7 +241,8 @@
 
 <!-- Styles -->
 <style>
-    #chartdiv, #chartdiv2 {
+    #chartdiv,
+    #chartdiv2 {
         width: 100%;
         height: 500px;
     }
