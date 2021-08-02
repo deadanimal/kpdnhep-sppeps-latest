@@ -130,8 +130,6 @@
                                     <option value="Pulau Pinang">Pulau Pinang</option>
                                     <option value="Perak">Perak</option>
                                     <option value="Selangor">Selangor</option>
-                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
                                     <option value="Melaka">Melaka</option>
                                     <option value="Negeri Sembilan">Negeri Sembilan</option>
                                     <option value="Johor">Johor</option>
@@ -140,6 +138,9 @@
                                     <option value="Kelantan">Kelantan</option>
                                     <option value="Sabah">Sabah</option>
                                     <option value="Sarawak">Sarawak</option>
+                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                    <option value="WP Labuan">W. P. Labuan</option>
                                 </select>
                             </label>
                         </div>
@@ -152,7 +153,7 @@
                     <div class="row p-3 mb-0">
                         <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                             <label class="d-flex flex-nowrap mb-0">
-                                <span class="p-2">Papar</span>
+                                <span class="p-2">Papar </span>
                                 <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
                                     <option value="5">5</option>
                                     <option value="10">10</option>

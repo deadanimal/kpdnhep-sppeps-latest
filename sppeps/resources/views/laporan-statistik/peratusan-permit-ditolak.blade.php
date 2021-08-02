@@ -7,7 +7,7 @@
     <div class="p-3">
 
         <div>
-            <h4>Peratusan Permit Permit Ditolak</h4>
+            <h4>Peratusan Permit Ditolak</h4>
         </div>
 
         <div class="container-fluid mt-4">
@@ -130,8 +130,6 @@
                                     <option value="Pulau Pinang">Pulau Pinang</option>
                                     <option value="Perak">Perak</option>
                                     <option value="Selangor">Selangor</option>
-                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
                                     <option value="Melaka">Melaka</option>
                                     <option value="Negeri Sembilan">Negeri Sembilan</option>
                                     <option value="Johor">Johor</option>
@@ -140,6 +138,9 @@
                                     <option value="Kelantan">Kelantan</option>
                                     <option value="Sabah">Sabah</option>
                                     <option value="Sarawak">Sarawak</option>
+                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                    <option value="WP Labuan">W. P. Labuan</option>
                                 </select>
                             </label>
                         </div>
@@ -181,6 +182,7 @@
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
+                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tarikh permit ditolak</th>
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TINDAKAN PEGAWAI</th> -->
                                             <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th> -->
                                             <!-- <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th> -->
@@ -208,6 +210,9 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-sm font-weight-bold">22/11/2022</span>
                                             </td>
                                             <!-- <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold"> </span>

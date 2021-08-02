@@ -47,8 +47,6 @@ Route::get('/change-password', function () {
 });
 
 
-
-
 Route::get('/', function () {
     return view('global.landing-page');
 });
@@ -148,6 +146,10 @@ Route::get('/hq-tugasan-baru', function () {
 
 Route::get('/hq-maklumat-pemohon', function () {
     return view('pegawai.hq.hq-maklumat-pemohon');
+});
+
+Route::get('/hq-maklumat-pemohon-rayuan-pendua', function () {
+    return view('pegawai.hq.hq-maklumat-pemohon-rayuan-pendua');
 });
 
 Route::get('/hq-disemak-pdrm', function () {

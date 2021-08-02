@@ -77,7 +77,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Nama</th>
+                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Nama Pemohon</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Kad Pengenalan</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tindakan</th>
@@ -96,7 +96,7 @@
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="text-secondary text-sm font-weight-bold">
-                                                 Perak
+                                                Perak
                                             </span>
                                         </td>
                                         <td class="align-middle text-center">

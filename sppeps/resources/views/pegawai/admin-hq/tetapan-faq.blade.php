@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
 
                 <table class="table table-flush" id="datatable-basic">
                     <thead class="thead-light">
@@ -195,11 +195,11 @@
                             <form role="form text-left">
                                 <div class="form-group">
                                     <label for="title">Nama Kategori MS</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Nama Kategori EN</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
@@ -245,12 +245,12 @@
                             <form role="form text-left">
                                 <div class="form-group">
                                     <label for="title">Nama Kategori MS</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Nama Kategori EN</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
@@ -296,32 +296,45 @@
                             <form role="form text-left">
                                 <div class="form-group">
                                     <label for="title">Tajuk MS</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Tajuk EN</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Kandungan MS</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Kandungan EN</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Turutan</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <!-- <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" > -->
+                                    <select name="turutan" id="turutan" class="form-control">
+                                        <option value="">--Sila Pilih--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Kategori</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <!-- <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" > -->
+                                    <select name="kategori" id="kategori" class="form-control">
+                                        <option value="">--Sila Pilih--</option>
+                                        <option value="umum">Umum</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -366,32 +379,32 @@
                             <form role="form text-left">
                                 <div class="form-group">
                                     <label for="title">Tajuk MS</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Tajuk EN</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Kandungan MS</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Kandungan EN</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Turutan</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Kategori</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" [(ngModel)]="tajuk">
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="">
                                 </div>
 
                                 <div class="form-group">

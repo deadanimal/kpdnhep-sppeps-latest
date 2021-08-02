@@ -14,7 +14,7 @@
 
             <div class="card card-frame">
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">maklumat permohonan</h6>
+                    <h6 class="text-capitalize ">maklumat permohonan</h6>
                 </div>
 
 
@@ -122,7 +122,7 @@
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="panelBank"><strong>Nama Panel Bank</strong></label>
+                                        <label for="panelBank"><strong>Nama Institusi Kewangan</strong></label>
                                         <input type="text" class="form-control col-9" id="panelBank" aria-describedby="panelBank" placeholder="" value="Maybank Berhad" disabled [value]="infos.panel_bank">
 
                                     </div>
@@ -135,7 +135,7 @@
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="bankPhoneNumber"><strong>No. Telefon Bank</strong></label>
+                                        <label for="bankPhoneNumber"><strong>No. Telefon Institusi Kewangan</strong></label>
                                         <input type="text" class="form-control col-9" id="bankPhoneNumber" aria-describedby="bankPhoneNumber" placeholder="" disabled [value]="infos.notel_bank">
 
                                     </div>

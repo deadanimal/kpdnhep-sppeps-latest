@@ -7,7 +7,7 @@
     <div class="p-3">
 
         <div>
-            <h5>Semakan Permohonan</h5>
+            <h5>Sokongan Permohonan</h5>
         </div>
 
         <div class="row">
@@ -429,7 +429,7 @@
                     <div class="row p-3 mb-0">
                         <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                             <label class="d-flex flex-nowrap mb-0">
-                                <span class="pl-0 pt-2 pr-2">Papar</span>
+                                <span class="pl-0 pt-2 pr-2">Papar </span>
                                 <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
                                     <option value="5">5</option>
                                     <option value="10">10</option>
@@ -461,7 +461,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH PERMOHONAN</th>
+                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Diterima</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">JENIS PERMOHONAN</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>

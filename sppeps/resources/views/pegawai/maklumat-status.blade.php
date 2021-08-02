@@ -15,7 +15,7 @@
             <div class="card">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h6>Maklumat Permohonan</h6>
+                    <h6>Carian Pemohon</h6>
                 </div>
 
                 <div class="card-body p-3">
@@ -47,7 +47,7 @@
             <div class="card">
 
                 <div class="card-header" style="background-color: #f7e8ff;">
-                    <h6> Tugasan Baru</h6>
+                    <h6> Senarai Status Permohonan</h6>
                 </div>
 
                 <div class="card-body p-3">

@@ -18,13 +18,13 @@
                 <div class="container mt-4">
 
                     <div class="form-group mt-3">
-                        <label for="nric">No. Kad Penganalan</label>
+                        <label for="nric">No. Kad Pengenalan</label>
                         <input type="text" class="form-control" name="nric" placeholder="" disabled>
                     </div>
 
                     <div class="form-group">
                         <label for="email">E-mel</label>
-                        <input type="email" class="form-control" id="email" placeholder="abc123@gmail.com">
+                        <input type="email" class="form-control" id="email" placeholder="e.g abc123@gmail.com">
                     </div>
 
                     <div class="form-group">
@@ -39,7 +39,7 @@
 
                     <div class="form-group mt-3">
                         <div class="input-group mb-4">
-                            <input type="submit" class="btn bg-gradient-info btn-lg w-100">
+                            <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize" value="Daftar Akaun">
                         </div>
                     </div>
 

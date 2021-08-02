@@ -130,8 +130,6 @@
                                     <option value="Pulau Pinang">Pulau Pinang</option>
                                     <option value="Perak">Perak</option>
                                     <option value="Selangor">Selangor</option>
-                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
                                     <option value="Melaka">Melaka</option>
                                     <option value="Negeri Sembilan">Negeri Sembilan</option>
                                     <option value="Johor">Johor</option>
@@ -140,6 +138,9 @@
                                     <option value="Kelantan">Kelantan</option>
                                     <option value="Sabah">Sabah</option>
                                     <option value="Sarawak">Sarawak</option>
+                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                    <option value="WP Labuan">W. P. Labuan</option>
                                 </select>
                             </label>
                         </div>
@@ -164,7 +165,7 @@
                         </div>
                         <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
                             <label class="p-2" for="search">Carian: </label>
-                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" />
+                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="Masukkan no. kad pengenalan atau no. permit" (keyup)="updateFilter($event)" />
                         </div>
                     </div>
 
@@ -180,7 +181,7 @@
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                             <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH disenarai hitam</th>
-                                            <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">status</th>
+                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">status</th> -->
                                             
                                             
                                             
@@ -206,9 +207,9 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
                                             </td>
-                                            <!-- <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold"> </span>
-                                                </td> -->
+                                            <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold"> 22-09-2020</span>
+                                                </td>
                                             <!-- <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-success"> Telah Disemak</span>
                                             </td>

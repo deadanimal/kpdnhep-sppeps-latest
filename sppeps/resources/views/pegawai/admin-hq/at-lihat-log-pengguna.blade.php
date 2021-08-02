@@ -19,7 +19,7 @@
                 <div class="card-body p-3">
                     <div class="row">
                         <p>ID Pengguna: </p>
-                        <p>Nama Penuh : Yuzrita binti Md. Yusoff</p>
+                        <p>Nama Pengguna : Yuzrita binti Md. Yusoff</p>
                         <p>Status : Aktif</p>
                         <p>Log Masuk Terakhir : 13/08/2021 10:23</p>
                         <p>Peranan : Pelulus</p>

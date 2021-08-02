@@ -40,7 +40,11 @@
                                     </label>
                                 </div>
                             </div>
-
+                            <div class="row mt-2">
+                                <div class="form-group" style="outline: 1px dashed red;">
+                                    <small class="text-xs mb-3">Pemohon perlu memasukkan gambar profil berukuran passport dalam format jpg. Gambar ini akan digunakan untuk dicetak atas kad permit.</small>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -75,7 +79,7 @@
                             <!-- <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="" > -->
 
                             <select name="jantina" id="jantina" class="form-control form-control-sm">
-                                <option value="">Sila Pilih</option>
+                                <option value="">--Sila Pilih--</option>
                                 <option value="">Lelaki</option>
                                 <option value="">Perempuan</option>
                             </select>
@@ -102,9 +106,6 @@
                                 <option value="Pulau Pinang">Pulau Pinang</option>
                                 <option value="Perak">Perak</option>
                                 <option value="Selangor">Selangor</option>
-                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                <option value="WP Labuan">W. P. Labuan</option>
                                 <option value="Melaka">Melaka</option>
                                 <option value="Negeri Sembilan">Negeri Sembilan</option>
                                 <option value="Johor">Johor</option>
@@ -113,6 +114,9 @@
                                 <option value="Kelantan">Kelantan</option>
                                 <option value="Sabah">Sabah</option>
                                 <option value="Sarawak">Sarawak</option>
+                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                <option value="WP Labuan">W. P. Labuan</option>
                             </select>
                         </div>
 

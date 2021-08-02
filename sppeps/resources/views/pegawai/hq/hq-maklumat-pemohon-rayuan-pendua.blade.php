@@ -14,7 +14,7 @@
 
             <div class="card card-frame">
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">maklumat permohonan</h6>
+                    <h6 class="text-capitalize ">maklumat permohonan</h6>
                 </div>
 
 
@@ -229,17 +229,21 @@
                                 <div class="d-flex flex-nowrap">
                                     <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                         <label for="action" class="col-sm-3 ">Tindakan</label>
-                                        <div class="col-5">
-                                            <input type="text" class="form-control col-9" id="action" aria-describedby="" placeholder="" value="Telah Dihantar ke Badan Agensi(PDRM)" disabled>
+                                        <div class="col-sm-5">
+                                            <select id="action" class="form-control" name="tindakan" [(ngModel)]="this.tindakan">
+                                                <option selected>Sila Pilih</option>
+                                                <option value="Diluluskan">Diluluskan</option>
+                                                <option value="Tidak Diluluskan">Tidak Diluluskan</option>
+                                                <!-- <option>Tidak Diluluskan</option> -->
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-nowrap">
                                     <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
-                                        <label for="result" class="col-sm-3 ">Keputusan Tapisan Badan
-                                            Agensi(PDRM)</label>
-                                        <div class="col-5">
-                                            <input type="text" class="form-control col-9" id="action" aria-describedby="result" placeholder="" value="Tiada Rekod Jenayah" [value]="" disabled>
+                                        <label for="catatan" class="col-sm-3 ">Catatan</label>
+                                        <div class="col-sm-5">
+                                            <textarea class="form-control" id="catatan" name="catatan" [(ngModel)]="this.catatan"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +251,7 @@
                                 <div class="p-3 d-flex justify-content-center">
                                     <input type="button" class="btn btn-danger text-uppercase m-1" value="BATAL">
 
-                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR ke penyokong</button>
+                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +262,6 @@
         </div>
 
     </div>
-
 
 </div>
 

@@ -22,6 +22,10 @@
                             @csrf
                             <div class="row">
                                 <div class="col">
+                                    <label for="tarikhmula">No. Kad Pengenalan</label>
+                                    <input class="form-control form-control-sm" type="text" name="ic" />
+                                </div>
+                                <div class="col">
                                     <label for="tarikhmula">Tarikh Mula</label>
                                     <input class="form-control form-control-sm" type="date" name="tarikhmula" />
                                 </div>
@@ -53,7 +57,7 @@
                     <div class="row p-3 mb-0">
                         <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                             <label class="d-flex flex-nowrap mb-0">
-                                <span class="pl-0 pt-2 pr-2">Papar</span>
+                                <span class="pl-0 pt-2 pr-2">Papar </span>
                                 <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
                                     <option value="5">5</option>
                                     <option value="10">10</option>
@@ -63,7 +67,7 @@
                                 <span class="p-2">rekod</span>
                             </label>
                         </div>
-                        <div class="col form-group mb-0 p-0" id="datatable_search">
+                        <!-- <div class="col form-group mb-0 p-0" id="datatable_search">
                             <div class="row">
                                 <div class="col-sm-4 d-flex justify-content-end m-0">
                                     <label class="pr-2 m-0 mt-2" for="search">Carian: </label>
@@ -72,7 +76,7 @@
                                     <input class="form-control form-control-sm" type="text" name="search" placeholder="Carian" (keyup)="updateFilter($event)" />
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
 
@@ -82,6 +86,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
+                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">No. Kad Pengenalan</th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Nama Pengguna</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">E-mel</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th>
@@ -97,6 +102,9 @@
                                     <tr>
                                         <td>
                                             <span class="text-secondary text-sm font-weight-bold">1</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-secondary text-sm font-weight-bold">970304050689</span>
                                         </td>
                                         <td>
                                             <span class="text-secondary text-sm font-weight-bold">Abu Samad</span>
@@ -116,7 +124,7 @@
                                             Pembantu Tadbir
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            15/02/2021
+                                            15/02/2021 12:09:13
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             Pegawai Pemproses Negeri

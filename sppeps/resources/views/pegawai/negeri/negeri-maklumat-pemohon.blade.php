@@ -14,7 +14,7 @@
 
             <div class="card card-frame">
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">maklumat permohonan</h6>
+                    <h6 class="text-capitalize ">maklumat permohonan</h6>
                 </div>
 
 
@@ -122,7 +122,7 @@
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="panelBank"><strong>Nama Panel Bank</strong></label>
+                                        <label for="panelBank"><strong>Nama Institusi Kewangan</strong></label>
                                         <input type="text" class="form-control col-9" id="panelBank" aria-describedby="panelBank" placeholder="" value="Maybank Berhad" disabled [value]="infos.panel_bank">
 
                                     </div>
@@ -135,7 +135,7 @@
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="bankPhoneNumber"><strong>No. Telefon Bank</strong></label>
+                                        <label for="bankPhoneNumber"><strong>No. Telefon Institusi Kewangan</strong></label>
                                         <input type="text" class="form-control col-9" id="bankPhoneNumber" aria-describedby="bankPhoneNumber" placeholder="" disabled [value]="infos.notel_bank">
 
                                     </div>
@@ -218,7 +218,7 @@
             <div class="card card-frame">
 
                 <div class="card-header" style="background-color: #f5e7f2;">
-                    <h6 class="text-uppercade ">Pengesahan Maklumat Permohonan</h6>
+                    <h6 class="text-uppercade ">Pengesahan Semakan Permohonan</h6>
                 </div>
                 <div class="card-body">
                     <form class="d-flex justify-content-center font-black" style="width: 100%;" (ngSubmit)="onSubmit(submit)">
@@ -231,7 +231,7 @@
                                         <label for="action" class="col-sm-3 ">Tindakan</label>
                                         <div class="col-sm-5">
                                             <select id="action" class="form-control" name="tindakan" [(ngModel)]="this.tindakan">
-                                                <option selected>Sila Pilih</option>
+                                                <option selected>--Sila Pilih--</option>
                                                 <option value="Permohonan Lengkap">Permohonan Lengkap</option>
                                                 <option value="Permohonan Tidak Lengkap">Permohonan Tidak Lengkap</option>
                                                 

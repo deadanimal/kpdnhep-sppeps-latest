@@ -31,12 +31,7 @@
 
                         </div>
 
-                        <!-- <div class="form-group">
-                            <small class="text-xs mb-3">Pemohon perlu memasukkan gambar profil berukuran passport dalam format jpg. Gambar ini akan digunakan untuk dicetak atas kad permit.</small>
-                            <br>
-                            <div id="fileList" class="text-sm">Tiada Gambar Dipilih</div>
-
-                        </div> -->
+                        
                         <div class="form-group">
                             <label for="title">Nama</label>
                             <input type="text" class="form-control form-control-sm" id="title" aria-describedby="title" placeholder="" disabled>

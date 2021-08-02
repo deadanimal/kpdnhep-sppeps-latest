@@ -6,7 +6,7 @@
     <div class="p-3">
 
         <div>
-            <h5>Konfigurasi Peranan Pegawai</h5>
+            <h5> Peranan Pegawai</h5>
         </div>
 
         <div class="container-fluid mt-4" style="padding: 0px !important;">

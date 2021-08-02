@@ -51,7 +51,7 @@
                     <!-- <h5> Kelulusan Permit Mengikut Jantina</h5> -->
                     <div class="row mb-0">
                         <div class="col">
-                            <h5>Pemegang Pemit yang Sah dan Aktif mengikut Jantina</h5>
+                            <h5>Pemegang Permit yang Sah dan Aktif mengikut Jantina</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
                             <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
@@ -130,8 +130,6 @@
                                     <option value="Pulau Pinang">Pulau Pinang</option>
                                     <option value="Perak">Perak</option>
                                     <option value="Selangor">Selangor</option>
-                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
                                     <option value="Melaka">Melaka</option>
                                     <option value="Negeri Sembilan">Negeri Sembilan</option>
                                     <option value="Johor">Johor</option>
@@ -140,6 +138,9 @@
                                     <option value="Kelantan">Kelantan</option>
                                     <option value="Sabah">Sabah</option>
                                     <option value="Sarawak">Sarawak</option>
+                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                    <option value="WP Labuan">W. P. Labuan</option>
                                 </select>
                             </label>
                         </div>
@@ -164,7 +165,7 @@
                         </div>
                         <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
                             <label class="p-2" for="search">Carian: </label>
-                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" />
+                            <input class="col-6 form-control form-control-sm" type="text" name="search" placeholder="Masukkan no. kad pengenalan atau no. permit" (keyup)="updateFilter($event)" />
                         </div>
                     </div>
 

@@ -6,7 +6,7 @@
     <div class="p-3">
 
         <div>
-            <h5>Konfigurasi Peranan Pegawai</h5>
+            <h5> Peranan Pegawai</h5>
         </div>
 
         <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -26,24 +26,24 @@
                                 </div>
 
                                 <div class="col">
-                                    <select class="form-control form-control-sm">
-                                        <option>Pilih Negeri</option>
-                                        <option value="">perlis</option>
-                                        <option value="">Kedah</option>
-                                        <option value="">Pulau Pinang</option>
-                                        <option value="">Perak</option>
-                                        <option value="">Selangor</option>
-                                        <option value="">Negeri Sembilan</option>
-                                        <option value="">Melaka</option>
-                                        <option value="">Johor</option>
-                                        <option value="">Kelantan</option>
-                                        <option value="">Terengganu</option>
-                                        <option value="">Pahang</option>
-                                        <option value="">Sabah</option>
-                                        <option value="">Sarawak</option>
-                                        <option value="">W.P Kuala Lumpur</option>
-                                        <option value="">W.P Putrajaya</option>
-                                        <option value="">W.P Labuan</option>
+                                    <select class="form-control form-control-sm" aria-label="Default select example" name="negeri">
+                                        <option selected>--Pilih Negeri--</option>
+                                        <option value="Perlis">Perlis</option>
+                                        <option value="Kedah">Kedah</option>
+                                        <option value="Pulau Pinang">Pulau Pinang</option>
+                                        <option value="Perak">Perak</option>
+                                        <option value="Selangor">Selangor</option>
+                                        <option value="Melaka">Melaka</option>
+                                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                        <option value="Johor">Johor</option>
+                                        <option value="Pahang">Pahang</option>
+                                        <option value="Terengganu">Terengganu</option>
+                                        <option value="Kelantan">Kelantan</option>
+                                        <option value="Sabah">Sabah</option>
+                                        <option value="Sarawak">Sarawak</option>
+                                        <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                        <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                        <option value="WP Labuan">W. P. Labuan</option>
                                     </select>
                                 </div>
 
@@ -141,7 +141,7 @@
                                         <td class="align-middle text-center text-sm">
                                             <span class="text-secondary text-sm font-weight-bold"> Pembantu Tadbir</span>
                                         </td>
-                                        
+
                                         <td class="align-middle text-center">
                                             <a href="/tambah-peranan-pegawai-2">
                                                 <i class="fas fa-pencil-alt"></i>

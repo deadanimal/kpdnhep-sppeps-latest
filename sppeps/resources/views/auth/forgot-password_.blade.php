@@ -22,7 +22,7 @@
                         <i class="fas fa-unlock-alt fa-8x text-dark"></i>
                     </div>
                     <div class="form-group mt-3">
-                        <label>No. Kad Penganalan</label>
+                        <label>No. Kad Pengenalan</label>
                         <div class="input-group mb-4">
                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             <input class="form-control text-center" placeholder="e.g XXXXXXXXXXXX" type="text">
@@ -49,7 +49,7 @@
                     </div> -->
                     <div class="form-group mt-3">
                         <div class="input-group mb-4">
-                            <input type="submit" class="btn bg-gradient-info btn-lg w-100">
+                            <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize" value="reset kata laluan">
                         </div>
                     </div>
 

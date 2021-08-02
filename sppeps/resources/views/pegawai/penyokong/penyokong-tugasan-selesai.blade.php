@@ -79,12 +79,12 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH PERMOHONAN</th>
-                                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">JENIS PERMOHONAN</th>
+                                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH Sokongan</th>
+                                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">JENIS Sokongan</th>
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                                 <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th> -->
-                                                <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TINDAKAN PEGAWAI</th> -->
+                                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Catatan</th>
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th>
                                                 <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th>
                                             </tr>
@@ -109,9 +109,9 @@
                                                 <!-- <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
                                                 </td> -->
-                                                <!-- <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold"> </span>
-                                                </td> -->
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold">Catatan 1 </span>
+                                                </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-success"> Telah Disokong</span>
                                                 </td>
@@ -141,9 +141,9 @@
                                                 <!-- <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
                                                 </td> -->
-                                                <!-- <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold"> </span>
-                                                </td> -->
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold">Catatan 2 </span>
+                                                </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-danger"> Tidak Disokong</span>
                                                 </td>

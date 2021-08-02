@@ -46,7 +46,7 @@
                             <div class="col-1"></div>
                             <div class="col form-group pr-0">
                                 <label for="gender"><strong> Jantina</strong></label>
-                                <input type="text" class="form-control" id="age" aria-describedby="age" placeholder="" value="Perempuan" [value]="infos.jantina" >
+                                <input type="text" class="form-control" id="age" aria-describedby="age" placeholder="" value="Perempuan" [value]="infos.jantina">
                             </div>
                         </div>
 
@@ -54,45 +54,63 @@
                             <div class="col-6 form-group p-0">
 
                                 <label for="address"><strong> Alamat</strong></label>
-                                <input type="text" class="col-9 form-control" id="address1" aria-describedby="address" placeholder=""  [value]="info.alamat">
-                                <input type="text" class="col-9 form-control" id="address2" aria-describedby="address" placeholder=""  [value]="infos.alamat2">
+                                <input type="text" class="col-9 form-control" id="address1" aria-describedby="address" placeholder="" [value]="info.alamat">
+                                <input type="text" class="col-9 form-control" id="address2" aria-describedby="address" placeholder="" [value]="infos.alamat2">
                             </div>
                             <div class="col-1"></div>
                             <div class="col form-group pr-0">
                                 <label for="email"><strong> E-mel</strong></label>
-                                <input type="email" class="form-control" id="email" aria-describedby="email" placeholder=""  [value]="infos.emel">
+                                <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" [value]="infos.emel">
                             </div>
                         </div>
 
                         <div class="d-flex flex-nowrap">
                             <div class="col-6 form-group p-0">
                                 <label for="state"><strong>Negeri</strong></label>
-                                <input type="text" class="form-control col-9" id="state" aria-describedby="state" placeholder="" value="Selangor"  [value]="infos.negeri">
-
+                                <input type="text" class="form-control col-9" id="state" aria-describedby="state" placeholder="" value="Selangor" [value]="infos.negeri">
+                                <!-- <select class="form-control form-control-sm" aria-label="Default select example" name="negeri">
+                                    <option selected>--Pilih Negeri--</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Pulau Pinang">Pulau Pinang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Johor">Johor</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Sabah">Sabah</option>
+                                    <option value="Sarawak">Sarawak</option>
+                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                    <option value="WP Labuan">W. P. Labuan</option>
+                                </select> -->
                             </div>
                             <div class="col-1"></div>
                             <div class="col form-group pr-0">
                                 <label for="phoneNumber"><strong>No. Telefon</strong></label>
-                                <input type="text" class="form-control" id="phoneNumber" aria-describedby="phoneNumber" placeholder="" value="01234567890"  [value]="infos.notelbimbit">
+                                <input type="text" class="form-control" id="phoneNumber" aria-describedby="phoneNumber" placeholder="" value="01234567890" [value]="infos.notelbimbit">
                             </div>
                         </div>
 
                         <div class="d-flex flex-nowrap">
                             <div class="col-6 form-group p-0">
                                 <label for="occupation"><strong>Pekerjaan Sekarang</strong></label>
-                                <input type="text" class="form-control col-9" id="occupation" aria-describedby="occupation" placeholder="" value="Kontraktor"  [value]="infos.pekerjaan_skrg">
+                                <input type="text" class="form-control col-9" id="occupation" aria-describedby="occupation" placeholder="" value="Kontraktor" [value]="infos.pekerjaan_skrg">
 
                             </div>
                             <div class="col-1"></div>
                             <div class="col form-group pr-0">
                                 <label for="licence"><strong>Lesen Memandu yang Sah</strong></label>
-                                <input type="text" class="form-control" id="licence" aria-describedby="licence" placeholder="" value="B2, D"  [value]="infos.lesen_sah">
+                                <input type="text" class="form-control" id="licence" aria-describedby="licence" placeholder="" value="B2, D" [value]="infos.lesen_sah">
                             </div>
                         </div>
                         <div class="d-flex flex-nowrap">
                             <div class="col-6 form-group p-0">
                                 <label for="education"><strong>Tahap Pendidikan Tertinggi</strong></label>
-                                <input type="text" class="form-control col-9" id="education" aria-describedby="education" placeholder="" value="Ijazah"  [value]="infos.pendidikan_tinggi">
+                                <input type="text" class="form-control col-9" id="education" aria-describedby="education" placeholder="" value="Ijazah" [value]="infos.pendidikan_tinggi">
 
                             </div>
                         </div>
@@ -101,7 +119,7 @@
                             <div class="col-6 form-group p-0">
                                 <label for="question1"><strong>Adakah anda akan bekerja sebagai panel <br> bank/syarikat sewa
                                         beli?</strong></label>
-                                <input type="text" class="form-control col-9" id="question1" aria-describedby="question1" placeholder="" value="Ya"  [value]="infos.bank_or_sewa">
+                                <input type="text" class="form-control col-9" id="question1" aria-describedby="question1" placeholder="" value="Ya" [value]="infos.bank_or_sewa">
 
                             </div>
                             <div class="col-1"></div>

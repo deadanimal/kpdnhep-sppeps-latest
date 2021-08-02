@@ -20,7 +20,7 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tajuk</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh Cipta</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh Kemaskini</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Tindakan</th>
                         </tr>
                     </thead>
@@ -39,7 +39,7 @@
                                 <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                <a href="javascript:;" class="btn btn-sm bg-gradient-info" data-toggle="tooltip" data-original-title="Edit user">
                                     Lihat
                                 </a>
                             </td>
@@ -59,7 +59,7 @@
                                 <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                <a href="javascript:;" class="btn btn-sm bg-gradient-info" data-toggle="tooltip" data-original-title="Edit user">
                                     Lihat
                                 </a>
                             </td>
@@ -79,13 +79,13 @@
                                 <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                <a href="javascript:;" class="btn btn-sm bg-gradient-info" data-toggle="tooltip" data-original-title="Edit user">
                                     Lihat
                                 </a>
                             </td>
                         </tr>
 
-                        
+
                     </tbody>
                 </table>
             </div>

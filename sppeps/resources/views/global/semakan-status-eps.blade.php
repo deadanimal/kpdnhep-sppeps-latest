@@ -19,7 +19,7 @@
                                 <input type="text" class="form-control text-center" id="nric" placeholder="Sila masukkan no. kad pengenalan tanpa '-'">
                             </div>
                             <div class="form-group text-uppercase d-flex justify-content-center pt-5">
-                                <input type="submit" class="btn text-white" style="background-color: #1d1da1;" value="Semak" (click)="semakEPS()">
+                                <input type="submit" class="btn text-white text-capitalize" style="background-color: #1d1da1;" value="Semak" (click)="semakEPS()">
                             </div>
                         </form>
                     </div>
@@ -33,7 +33,7 @@
                                     <tr>
                                         <!-- <th>No.</th> -->
                                         <th>No. Kad Pengenalan</th>
-                                        <th>Nama Ejen</th>
+                                        <th>Nama EPS</th>
                                         <th>No. Permit</th>
                                         <th>Status EPS</th>
                                     </tr>
@@ -42,7 +42,7 @@
                                         <!-- <td>1</td> -->
                                         <td>900908070605</td>
                                         <td>Ali Baba</td>
-                                        <td>09872</td>
+                                        <td>09872 (WPKL)</td>
                                         <td><span class="badge badge-success">Aktif</span></td>
                                     </tr>
                                 </table>

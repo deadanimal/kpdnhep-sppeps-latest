@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <div class="input-group mb-4">
-                                    <input type="submit" class="btn bg-gradient-info btn-lg w-100">
+                                    <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize" value="Log Masuk">
                                 </div>
                             </div>
 
@@ -111,7 +111,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <div class="input-group mb-4">
-                                    <input type="submit" class="btn bg-gradient-info btn-lg w-100">
+                                    <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize" value="Log Masuk">
                                 </div>
                             </div>
 

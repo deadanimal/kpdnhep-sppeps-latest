@@ -40,7 +40,7 @@
                         <div class="col form-group mb-0 p-0" id="datatable_search">
                             <div class="row">
                                 <div class="col-sm-4 d-flex justify-content-end m-0">
-                                    <label class="pr-2 m-0 mt-2" for="search">Cari Rekod: </label>
+                                    <label class="pr-2 m-0 mt-2" for="search">Carian: </label>
                                 </div>
                                 <div class="col">
                                     <input class="form-control form-control-sm" type="text" name="search" placeholder="Carian" (keyup)="updateFilter($event)" />

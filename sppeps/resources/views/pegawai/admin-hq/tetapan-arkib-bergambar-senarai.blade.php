@@ -90,9 +90,9 @@
                                     <a href="#">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
-                                    <a>
+                                    <!-- <a>
                                         <i class="far fa-list-alt"></i>
-                                    </a>
+                                    </a> -->
                                 </td>
                             </tr>
                             <tr>
@@ -115,9 +115,9 @@
                                     <a href="#">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
-                                    <a>
+                                    <!-- <a>
                                         <i class="far fa-list-alt"></i>
-                                    </a>
+                                    </a> -->
 
                                 </td>
                             </tr>

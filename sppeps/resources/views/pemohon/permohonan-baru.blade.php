@@ -28,7 +28,7 @@
 
             <div class="row">
                 <div class="col-12 text-center">
-                    <!-- <h3 class="mt-5">Build Your Profile</h3> -->
+                    <h3 class="mt-5">Permohonan Baharu</h3>
                     <!-- <h5 class="text-secondary font-weight-normal">This information will let us know more about you.</h5> -->
                     <div class="multisteps-form mb-5">
                         <!--progress bar-->
@@ -36,13 +36,13 @@
                             <div class="col-12 col-lg-8 mx-auto my-5">
                                 <div class="multisteps-form__progress">
                                     <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
-                                        <span>Maklumat Permohonan</span>
+                                        <span>A. Maklumat Permohonan</span>
                                     </button>
                                     <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                        <span>Maklumat Tambahan</span>
+                                        <span>B. Maklumat Tambahan</span>
                                     </button>
                                     <button class="multisteps-form__progress-btn" type="button" title="Order Info">
-                                        <span>Pengesahan Permohonan</span>
+                                        <span>C. Pengesahan Permohonan</span>
                                     </button>
                                 </div>
                             </div>
@@ -55,15 +55,27 @@
                                     <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                                         <div class="row text-center">
                                             <div class="col-12 mx-auto">
-                                                <h5 class="font-weight-normal">A. Maklumat Permohonan</h5>
+                                                <h5 class="font-weight-normal"><strong>A. Maklumat Permohonan</strong></h5>
                                                 <!-- <p>Let us know your name and email address. Use an address you don't mind other users contacting you at</p> -->
                                             </div>
                                         </div>
                                         <div class="multisteps-form__content text-start">
                                             <div class="row mt-3 p-3">
-                                                <div class="row form-group p-3 d-flex justify-content-center">
-                                                    <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" alt="..." class="avatar avatar-xxl">
+                                                <div class="row ">
+                                                    <div class="col d-flex justify-content-center flex-wrap">
+                                                        <label>
+                                                            <div class="position-relative">
+                                                                <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80" class="border-radius-md" width="150" height="150" />
+                                                            </div>
+                                                        </label>
+                                                    </div>
                                                 </div>
+                                                <div class="row mt-2 d-flex justify-content-center flex-wrap">
+                                                    <div class="col-md-8 form-group text-center" style="outline: 1px dashed red;">
+                                                        <small class="text-xs mb-3">Gambar ini akan digunakan untuk dicetak atas kad permit. <br> Sekiranya ingin menukar, sila ke profil untuk mengubah gambar.</small>
+                                                    </div>
+                                                </div>
+
 
                                                 <div class="d-flex flex-wrap pb-2">
                                                     <div class="col-6 form-group p-0">
@@ -107,7 +119,7 @@
                                                             <strong> No. Telefon</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="number" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" [(ngModel)]=" this.notelefonori">
+                                                            <input type="text" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" [(ngModel)]=" this.notelefonori">
 
                                                         </div>
                                                     </div>
@@ -133,20 +145,17 @@
                                                                     <path d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
                                                                 </svg>
                                                                 <strong> Poskod</strong></label>
-                                                            <input type="number" class="form-control" id="poskod" aria-describedby="poskod" name="poskod" [(ngModel)]="poskodori">
+                                                            <input type="text" class="form-control" id="poskod" aria-describedby="poskod" name="poskod" [(ngModel)]="poskodori">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="state"><i class="fas fa-map"></i><strong> Negeri</strong></label>
-                                                            <select class="form-control" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
+                                                            <select class="form-control" aria-label="Default select example" name="negeri">
                                                                 <option selected>--Pilih Negeri--</option>
                                                                 <option value="Perlis">Perlis</option>
                                                                 <option value="Kedah">Kedah</option>
                                                                 <option value="Pulau Pinang">Pulau Pinang</option>
                                                                 <option value="Perak">Perak</option>
                                                                 <option value="Selangor">Selangor</option>
-                                                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                                                <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                                                <option value="WP Labuan">W. P. Labuan</option>
                                                                 <option value="Melaka">Melaka</option>
                                                                 <option value="Negeri Sembilan">Negeri Sembilan</option>
                                                                 <option value="Johor">Johor</option>
@@ -155,6 +164,9 @@
                                                                 <option value="Kelantan">Kelantan</option>
                                                                 <option value="Sabah">Sabah</option>
                                                                 <option value="Sarawak">Sarawak</option>
+                                                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                                                <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                                                <option value="WP Labuan">W. P. Labuan</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -171,9 +183,6 @@
                                                                 <option value="Pulau Pinang">Pulau Pinang</option>
                                                                 <option value="Perak">Perak</option>
                                                                 <option value="Selangor">Selangor</option>
-                                                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                                                <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                                                <option value="WP Labuan">W. P. Labuan</option>
                                                                 <option value="Melaka">Melaka</option>
                                                                 <option value="Negeri Sembilan">Negeri Sembilan</option>
                                                                 <option value="Johor">Johor</option>
@@ -182,6 +191,9 @@
                                                                 <option value="Kelantan">Kelantan</option>
                                                                 <option value="Sabah">Sabah</option>
                                                                 <option value="Sarawak">Sarawak</option>
+                                                                <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                                                <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                                                <option value="WP Labuan">W. P. Labuan</option>
                                                             </select>
                                                         </div>
 
@@ -190,7 +202,7 @@
                                                 </div>
                                             </div>
                                             <div class="button-row d-flex mt-4">
-                                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Seterusnya</button>
                                             </div>
                                         </div>
                                     </div>
@@ -198,7 +210,7 @@
                                     <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
                                         <div class="row text-center">
                                             <div class="col-12 mx-auto">
-                                                <h5 class="font-weight-normal">B. Maklumat Tambahan</h5>
+                                                <h5 class="font-weight-normal"><strong>B. Maklumat Tambahan</strong></h5>
                                                 <!-- <p>Give us more details about you. What do you enjoy doing in your spare time?</p> -->
                                             </div>
                                         </div>
@@ -292,21 +304,23 @@
 
 
                                                     <div class="row">
-                                                        <div class="col-3">
-                                                            <input type="radio" name="panelInfo" id="yes" class="form-check-input">
-                                                            <label class="pl-2" for="panelInfo">Ya</label>
+                                                        <div class="row m-2">
+                                                            <div class="col-3 form-check ">
+                                                                <input type="radio" name="panelInfo" id="yes" class="form-check-input ml-3">
+                                                                <label class="pl-2 form-check-label" for="panelInfo">Ya</label>
 
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <input type="radio" name="panelInfo" id="no" (click)="formDeactive()">
-                                                            <label class="pl-2" for="panelInfo">Tidak</label>
+                                                            </div>
+                                                            <div class="col-3 form-check">
+                                                                <input type="radio" name="panelInfo" id="no" class="form-check-input" (click)="formDeactive()">
+                                                                <label class="pl-2 form-check-label" for="panelInfo">Tidak</label>
+                                                            </div>
                                                         </div>
                                                         <br>
                                                         <!-- //if yes appear -->
                                                         <div class="row">
                                                             <div class="col-5 form-group">
                                                                 <div class="form-group">
-                                                                    <label for="bank" class="col-sm"><strong>Nama Institusi Kewangan: </strong></label>
+                                                                    <label for="bank" class="col-sm"><strong>Nama Institusi Kewangan </strong></label>
                                                                     <div class="col-sm-10">
                                                                         <input type="text" class="form-control form-control-sm" id="">
 
@@ -317,7 +331,7 @@
                                                             <div class="col-5 form-group">
                                                                 <div class="form-group">
                                                                     <label for="phoneNumber" class="col-sm">
-                                                                        <strong>No. Telefon Institusi Kewangan:</strong>
+                                                                        <strong>No. Telefon Institusi Kewangan</strong>
                                                                     </label>
                                                                     <div class="col-sm-8">
 
@@ -343,7 +357,7 @@
                                                             <div class="form-group row pl-4">
                                                                 <div class="col-md-3">
                                                                     <label for="panelName">
-                                                                        <strong> Nama Panel: </strong>
+                                                                        <strong> Nama Panel </strong>
                                                                     </label>
                                                                 </div>
                                                                 <div class="col">
@@ -354,7 +368,7 @@
                                                             <div class="form-group row pl-4">
                                                                 <div class="col-md-3">
                                                                     <label for="panelName">
-                                                                        <strong> No. Kad Pengenalan: </strong>
+                                                                        <strong> No. Kad Pengenalan </strong>
                                                                     </label>
                                                                 </div>
                                                                 <div class="col">
@@ -365,7 +379,7 @@
                                                             <div class="form-group row pl-4">
                                                                 <div class="col-md-3">
                                                                     <label for="permitNumber">
-                                                                        <strong> No. Permit: </strong>
+                                                                        <strong> No. Permit </strong>
                                                                     </label>
                                                                 </div>
                                                                 <div class="col">
@@ -376,7 +390,7 @@
                                                             <div class="form-group row pl-4">
                                                                 <div class="col-md-3">
                                                                     <label for="phoneNumber">
-                                                                        <strong> No. Telefon: </strong> </label>
+                                                                        <strong> No. Telefon </strong> </label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <input type="text" class="form-control form-control-sm" id="phoneNumber" name="no_telPanel">
@@ -411,7 +425,7 @@
                                                         </div>
 
                                                         <div class="col">
-                                                            <label>Prosedur dan Peraturan EPS:</label>
+                                                            <label>Prosedur dan Peraturan EPS</label>
                                                             <div class="form-group">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio" id="yes" name="procedure" [value]="1" [(ngModel)]="pp_eps">
@@ -483,8 +497,8 @@
                                                 </div>
                                             </div>
                                             <div class="button-row d-flex mt-4">
-                                                <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                                                <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Kembali</button>
+                                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Seterusnya</button>
                                             </div>
                                         </div>
                                     </div>
@@ -492,7 +506,7 @@
                                     <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
                                         <div class="row text-center">
                                             <div class="col-12 mx-auto">
-                                                <h5 class="font-weight-normal">C. Pengesahan Permohonan</h5>
+                                                <h5 class="font-weight-normal"><strong>C. Pengesahan Permohonan</strong></h5>
                                                 <!-- <p>One thing I love about the later sunsets is the chance to go for a walk through the neighborhood woods before dinner</p> -->
                                             </div>
                                         </div>
@@ -521,7 +535,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="button-row d-flex mt-4 col-12">
-                                                    <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
+                                                    <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Kembali</button>
                                                     <!-- <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button> -->
                                                 </div>
                                             </div>

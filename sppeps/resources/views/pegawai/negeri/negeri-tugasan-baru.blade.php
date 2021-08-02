@@ -431,7 +431,7 @@
                     <div class="row p-3 mb-0">
                         <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                             <label class="d-flex flex-nowrap mb-0">
-                                <span class="pl-0 pt-2 pr-2">Papar</span>
+                                <span class="pl-0 pt-2 pr-2">Papar </span>
                                 <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
                                     <option value="5">5</option>
                                     <option value="10">10</option>
@@ -442,7 +442,7 @@
                             </label>
                         </div>
                         <div class="col form-group mb-0 p-0" id="datatable_search">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-sm-4 d-flex justify-content-end m-0">
                                     <label class="pr-2 m-0 mt-2" for="search">Cari Rekod: </label>
                                 </div>
@@ -450,7 +450,7 @@
                                     <input class="form-control form-control-sm" type="text" name="search" placeholder="Carian" (keyup)="updateFilter($event)" />
                                 </div>
 
-                            </div>
+                            </div> -->
 
 
                         </div>
@@ -463,10 +463,11 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">TARIKH & masa PERMOHONAN</th>
+                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Tarikh Diterima</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">JENIS PERMOHONAN</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
+                                        <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">catatan</th> -->
                                         <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th>
                                         <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th>
                                     </tr>
@@ -488,6 +489,9 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-sm font-weight-bold">981209089989</span>
                                         </td>
+                                        <!-- <td class="align-middle text-center">
+                                            <span class="text-secondary text-sm font-weight-bold">catatan 1</span>
+                                        </td> -->
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-danger"> Belum Disemak</span>
                                         </td>
