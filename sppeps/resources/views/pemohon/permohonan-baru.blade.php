@@ -50,7 +50,8 @@
                         <!--form panels-->
                         <div class="row">
                             <div class="col-12 col-lg-8 m-auto">
-                                <form class="multisteps-form__form">
+                                <form class="multisteps-form__form" method="POST" action="/permohonan">
+                                    @csrf
                                     <!--single form panel-->
                                     <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                                         <div class="row text-center">
@@ -66,6 +67,9 @@
                                                         <label>
                                                             <div class="position-relative">
                                                                 <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80" class="border-radius-md" width="150" height="150" />
+
+                                                                <input type="hidden" name="gambar_profil" value="1">
+                                                                <input type="hidden" name="jenis_permohonan" value="Baharu">
                                                             </div>
                                                         </label>
                                                     </div>
@@ -83,21 +87,21 @@
                                                             <i class="fas fa-user"></i><strong> Nama</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" class="form-control col-9" id="name" aria-describedby="name" [value]="userdata.nama" disabled>
+                                                            <input type="text" name="nama" class="form-control col-9" id="name" aria-describedby="name" value="" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
-                                                        <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
+                                                        <input type="text" name="no_kp" class="form-control" id="ic" aria-describedby="ic" disabled>
                                                     </div>
                                                 </div>
 
                                                 <div class="d-flex flex-nowrap pb-2">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="gender"> <i class="fas fa-venus-mars"></i><strong> Jantina</strong></label>
-                                                        <!-- <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled> -->
-                                                        <select name="gender" id="gender" class="form-control">
+                                                        <!-- <input type="text" class="form-control" id="ic" aria-describedby="ic" value="userdata.no_kp" disabled> -->
+                                                        <select id="gender" class="form-control" name="jantina">
                                                             <option value="">--Sila Pilih--</option>
                                                             <option value="Lelaki">Lelaki</option>
                                                             <option value="Perempuan">Perempuan</option>
@@ -106,7 +110,7 @@
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="age"><i class="fas fa-calendar-alt"></i><strong> Umur</strong></label>
-                                                        <input type="text" class="form-control" id="age" aria-describedby="age" [value]="userdata.umur" disabled>
+                                                        <input type="text" class="form-control" id="age" aria-describedby="age" name="umur" disabled>
                                                     </div>
                                                 </div>
 
@@ -119,23 +123,23 @@
                                                             <strong> No. Telefon</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone" [(ngModel)]=" this.notelefonori">
+                                                            <input type="text" class="form-control col-2" id="phone1" name="no_telefon" aria-describedby="phone">
 
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
-                                                        <input type="email" name="emelori" class="form-control" id="email" aria-describedby="email" [(ngModel)]="this.emelori">
+                                                        <input type="email" name="emel" class="form-control" id="email" aria-describedby="email">
                                                     </div>
                                                 </div>
 
                                                 <div class="d-flex flex-nowrap pb-2">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
-                                                        <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address" [(ngModel)]="this.alamat1ori">
-                                                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
-                                                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
+                                                        <input type="text" class="col-9 form-control" name="alamat1" id="address1" aria-describedby="address" [(ngModel)]="this.alamat1ori">
+                                                        <input type="text" class="col-9 form-control" name="alamat2" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
+                                                        <input type="text" class="col-9 form-control" name="alamat3" id="address2" aria-describedby="address" [(ngModel)]="this.alamat2ori">
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col pr-0">
@@ -176,7 +180,7 @@
                                                     <div class="col-6 form-group p-0">
                                                         <div class="form-group">
                                                             <label for="state"><i class="fas fa-map"></i><strong> Negeri Kutipan Permit</strong></label>
-                                                            <select class="form-control" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
+                                                            <select class="form-control" aria-label="Default select example" name="negeri_kutipan_permit">
                                                                 <option selected>--Pilih Negeri--</option>
                                                                 <option value="Perlis">Perlis</option>
                                                                 <option value="Kedah">Kedah</option>
@@ -220,7 +224,7 @@
                                                     <div class="col-6 form-group p-0">
                                                         <label for="occupation"><i class="fas fa-briefcase"></i><strong> Pekerjaan
                                                                 Sekarang</strong></label>
-                                                        <input type="text" class="col-5 form-control" id="occupation" aria-describedby="occupation" name="pk_sek" [(ngModel)]="pk_sek">
+                                                        <input type="text" class="col-5 form-control" id="occupation" aria-describedby="occupation" name="pekerjaan_sekarang" [(ngModel)]="pk_sek">
                                                     </div>
                                                 </div>
 
@@ -232,31 +236,31 @@
                                                     <div class="row">
                                                         <div class="col-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" [(ngModel)]="tahap_pen" name="education" [value]="0">
+                                                                <input class="form-check-input" type="radio" name="tahap_pendidikan" value="Tiada">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Tiada</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" [(ngModel)]="tahap_pen" name="education" [value]="1">
+                                                                <input class="form-check-input" type="radio" name="tahap_pendidikan" value="Darjah 6">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Darjah 6</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" [(ngModel)]="tahap_pen" name="education" [value]="2">
+                                                                <input class="form-check-input" type="radio" name="tahap_pendidikan" value="PMR">
                                                                 <label class="form-check-label" for="inlineCheckbox1">PMR</label>
                                                             </div>
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" [(ngModel)]="tahap_pen" name="education" [value]="3">
+                                                                <input class="form-check-input" type="radio" name="tahap_pendidikan" value="SPM">
                                                                 <label class="form-check-label" for="inlineCheckbox1">SPM</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" [(ngModel)]="tahap_pen" name="education" [value]="4">
+                                                                <input class="form-check-input" type="radio" name="tahap_pendidikan" value="Diploma">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Diploma</label>
                                                             </div>
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" [(ngModel)]="tahap_pen" name="education" [value]="5">
+                                                                <input class="form-check-input" type="radio" name="tahap_pendidikan" value="Ijazah/Master">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Ijazah/Master</label>
                                                             </div>
                                                         </div>
@@ -271,27 +275,27 @@
                                                     <div class="row">
                                                         <div class="col-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" name="lesen" (click)="insertLesen('B1')" id="inlineCheckbox1" value="B1" [checked]="lesen.includes('B1')">
+                                                                <input class="form-check-input" type="checkbox" name="lesen_memandu" id="inlineCheckbox1" value="B1">
                                                                 <label class="form-check-label" for="inlineCheckbox1">B1</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" name="lesen" (click)="insertLesen('B2')" id="inlineCheckbox1" value="B2" [checked]="lesen.includes('B2')">
+                                                                <input class="form-check-input" type="checkbox" name="lesen_memandu" id="inlineCheckbox1" value="B2">
                                                                 <label class="form-check-label" for="inlineCheckbox1">B2</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="checkbox" name="lesen" (click)="insertLesen('D')" id="inlineCheckbox1" value="D" [checked]="lesen.includes('D')">
+                                                                <input class="form-check-input" type="checkbox" name="lesen_memandu" id="inlineCheckbox1" value="D">
                                                                 <label class="form-check-label" for="inlineCheckbox1">D</label>
                                                             </div>
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="checkbox" name="lesen" (click)="insertLesen('E')" id="inlineCheckbox1" value="E" [checked]="lesen.includes('E')">
+                                                                <input class="form-check-input" type="checkbox" name="lesen_memandu" id="inlineCheckbox1" value="E">
                                                                 <label class="form-check-label" for="inlineCheckbox1">E</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="checkbox" name="lesen" (click)="insertLesen('F')" id="inlineCheckbox1" value="F" [checked]="lesen.includes('F')">
+                                                                <input class="form-check-input" type="checkbox" name="lesen_memandu" id="inlineCheckbox1" value="F">
                                                                 <label class="form-check-label" for="inlineCheckbox1">F</label>
                                                             </div>
                                                         </div>
@@ -306,12 +310,12 @@
                                                     <div class="row">
                                                         <div class="row m-2">
                                                             <div class="col-3 form-check ">
-                                                                <input type="radio" name="panelInfo" id="yes" class="form-check-input ml-3">
+                                                                <input type="radio" name="berkerja_panel_atau_syarikat" id="yes" class="form-check-input ml-3" value="Ya">
                                                                 <label class="pl-2 form-check-label" for="panelInfo">Ya</label>
 
                                                             </div>
                                                             <div class="col-3 form-check">
-                                                                <input type="radio" name="panelInfo" id="no" class="form-check-input" (click)="formDeactive()">
+                                                                <input type="radio" name="berkerja_panel_atau_syarikat" id="no" class="form-check-input" value="Tidak">
                                                                 <label class="pl-2 form-check-label" for="panelInfo">Tidak</label>
                                                             </div>
                                                         </div>
@@ -322,7 +326,7 @@
                                                                 <div class="form-group">
                                                                     <label for="bank" class="col-sm"><strong>Nama Institusi Kewangan </strong></label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="text" class="form-control form-control-sm" id="">
+                                                                        <input type="text" class="form-control form-control-sm" name="nama_institusi_kewangan">
 
                                                                     </div>
                                                                 </div>
@@ -335,7 +339,7 @@
                                                                     </label>
                                                                     <div class="col-sm-8">
 
-                                                                        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control form-control-sm">
+                                                                        <input type="text" name="no_telefon_institusi_kewangan" id="phoneNumber" class="form-control form-control-sm">
 
                                                                     </div>
                                                                 </div>
@@ -361,7 +365,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <input type="text" name="namapanel" class="form-control col-10 form-control-sm" id="panelName">
+                                                                    <input type="text" name="nama_panel" class="form-control col-10 form-control-sm" id="panelName">
                                                                 </div>
                                                             </div>
 
@@ -372,7 +376,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <input type="text" id="icNumber" class="form-control form-control-sm" placeholder="" name="icNumber">
+                                                                    <input type="text" id="icNumber" class="form-control form-control-sm" placeholder="" name="no_kp_panel">
                                                                 </div>
                                                             </div>
 
@@ -383,7 +387,7 @@
                                                                     </label>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <input type="text" class="form-control form-control-sm" id="permitNumber" name="no_permit">
+                                                                    <input type="text" class="form-control form-control-sm" id="permitNumber" name="no_permit_panel">
                                                                 </div>
                                                             </div>
 
@@ -393,7 +397,7 @@
                                                                         <strong> No. Telefon </strong> </label>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <input type="text" class="form-control form-control-sm" id="phoneNumber" name="no_telPanel">
+                                                                    <input type="text" class="form-control form-control-sm" id="phoneNumber" name="no_telefon_panel">
                                                                 </div>
                                                             </div>
 
@@ -414,11 +418,11 @@
                                                             <label>Skop Tugas</label>
                                                             <div class="form-group">
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="jobScope" [value]="1" [(ngModel)]="skop_tugas">
+                                                                    <input class="form-check-input" type="radio" name="skop_tugas" value="Ya">
                                                                     <label class="form-check-label" for="inlineCheckbox1">Ya</label>
                                                                 </div>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="jobScope" [value]="0" [(ngModel)]="skop_tugas">
+                                                                    <input class="form-check-input" type="radio" name="skop_tugas" value="Tidak">
                                                                     <label class="form-check-label" for="jobScope">Tidak</label>
                                                                 </div>
                                                             </div>
@@ -428,11 +432,11 @@
                                                             <label>Prosedur dan Peraturan EPS</label>
                                                             <div class="form-group">
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" id="yes" name="procedure" [value]="1" [(ngModel)]="pp_eps">
+                                                                    <input class="form-check-input" type="radio" id="yes" name="prosedur_peraturan_eps" value="Ya">
                                                                     <label class="form-check-label" for="procedure">Ya</label>
                                                                 </div>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" id="no" name="procedure" [value]="0" [(ngModel)]="pp_eps">
+                                                                    <input class="form-check-input" type="radio" id="no" name="prosedur_peraturan_eps" value="Tidak">
                                                                     <label class="form-check-label" for="procedure">Tidak</label>
                                                                 </div>
                                                             </div>
@@ -454,7 +458,7 @@
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
-                                                                <input type="file" id="actual-btn" hidden />
+                                                                <input type="file" id="actual-btn" hidden name="salinan_kp_depan" />
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
                                                                 <!-- name of file chosen -->
@@ -469,7 +473,7 @@
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
-                                                                <input type="file" id="actual-btn2" hidden />
+                                                                <input type="file" id="actual-btn2" hidden name="salinan_kp_belakang" />
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
                                                                 <!-- name of file chosen -->
@@ -484,7 +488,7 @@
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
-                                                                <input type="file" id="actual-btn3" hidden />
+                                                                <input type="file" id="actual-btn3" hidden name="salinan_lesen_memandu" />
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
                                                                 <!-- name of file chosen -->

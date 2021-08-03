@@ -51,7 +51,8 @@
                         <!--form panels-->
                         <div class="row">
                             <div class="col-12 col-lg-8 m-auto">
-                                <form class="multisteps-form__form">
+                                <form class="multisteps-form__form" method="POST" action="/permohonan">
+                                    @csrf
                                     <!--single form panel-->
                                     <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                                         <div class="row text-center">
@@ -67,6 +68,9 @@
                                                         <label>
                                                             <div class="position-relative">
                                                                 <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80" class="border-radius-md" width="150" height="150" />
+
+                                                                <input type="hidden" name="gambar_profil" value="1">
+                                                                <input type="hidden" name="jenis_permohonan" value="Pendua">
                                                             </div>
                                                         </label>
                                                     </div>
@@ -83,14 +87,15 @@
                                                             <i class="fas fa-user"></i><strong> Nama</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" class="form-control col-9" id="name" aria-describedby="name" [value]="userdata.nama" disabled>
+                                                            <input type="text" class="form-control col-9" value="abu samad" disabled>
+                                                            <input type="hidden" name="nama" value="abu samad">
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
 
                                                     <div class="col form-group pr-0">
                                                         <label for="noPermit"><i class="fas fa-id-card"></i><strong> No. Permit</strong></label>
-                                                        <input type="text" class="form-control" value="10523" name="noPermit" disabled>
+                                                        <input type="text" class="form-control" value="10523" name="no_permit" disabled>
                                                     </div>
 
                                                 </div>
@@ -98,12 +103,12 @@
                                                 <div class="d-flex flex-nowrap pb-2 text-start">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="gender"> <i class="fas fa-venus-mars"></i><strong> Jantina</strong></label>
-                                                        <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
+                                                        <input type="text" class="form-control" id="ic" name="jantina" disabled>
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
-                                                        <input type="text" class="form-control" id="ic" aria-describedby="ic" [value]="userdata.no_kp" disabled>
+                                                        <input type="text" class="form-control" id="ic" name="no_kp" disabled>
                                                     </div>
 
                                                 </div>
@@ -117,23 +122,23 @@
                                                             <strong> No. Telefon</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" class="form-control col-2" id="phone1" name="notelefonori" aria-describedby="phone">
+                                                            <input type="text" class="form-control col-2" id="phone1" name="no_telefon" aria-describedby="phone">
 
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="age"><i class="fas fa-calendar-alt"></i><strong> Umur</strong></label>
-                                                        <input type="text" class="form-control" id="age" aria-describedby="age" [value]="userdata.umur" disabled>
+                                                        <input type="text" class="form-control" id="age" aria-describedby="age" name="umur" disabled>
                                                     </div>
                                                 </div>
 
                                                 <div class="d-flex flex-nowrap pb-2 text-start">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
-                                                        <input type="text" class="col-9 form-control" name="alamat1ori" id="address1" aria-describedby="address">
-                                                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address">
-                                                        <input type="text" class="col-9 form-control" name="alamat2ori" id="address2" aria-describedby="address">
+                                                        <input type="text" class="col-9 form-control" name="alamat1" id="address1">
+                                                        <input type="text" class="col-9 form-control" name="alamat2" id="address2">
+                                                        <input type="text" class="col-9 form-control" name="alamat3" id="address3">
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col pr-0">
@@ -173,7 +178,7 @@
                                                 <div class="d-flex flex-nowrap pb-2 text-start">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="state"><i class="fas fa-map"></i><strong> Negeri Kutipan Permit</strong></label>
-                                                        <select class="form-control" aria-label="Default select example" name="negeriKutipanPermit">
+                                                        <select class="form-control" aria-label="Default select example" name="negeri_kutipan_permit">
                                                             <option selected>--Pilih Negeri--</option>
                                                             <option value="Perlis">Perlis</option>
                                                             <option value="Kedah">Kedah</option>
@@ -222,25 +227,25 @@
                                                     <div class="row">
                                                         <div class="col-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="resonTolose" [value]="1" [(ngModel)]="alasan_kehilangan" (click)="otherReasonDeactive()">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="alasan_kehilangan" value="Kecurian">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Kecurian</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="resonTolose" [value]="2" [(ngModel)]="alasan_kehilangan" (click)="otherReasonDeactive()">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="alasan_kehilangan" value="Kebakaran">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Kebakaran</label>
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="resonTolose" [value]="3" [(ngModel)]="alasan_kehilangan" (click)="otherReasonDeactive()">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="alasan_kehilangan" value="Keciciran">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Keciciran</label>
                                                             </div>
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="resonTolose" [value]="4" [(ngModel)]="alasan_kehilangan" (click)="otherReasonActive()">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" name="alasan_kehilangan" value="Lain-lain">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Lain-lain Alasan</label>
                                                                 <br>
                                                                 <label for="other_reason">Sila Nyatakan </label>
-                                                                <input type="text" class="form-control col-6" name="other_reason" [(ngModel)]="lain_kehilangan" [disabled]="otherReason" />
+                                                                <input type="text" class="form-control col-6" name="alasan_lain" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -253,31 +258,31 @@
                                                     <div class="row">
                                                         <div class="col-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox2" name="coun" [value]="1" [(ngModel)]="no_penggantian">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox2" name="penggantian_kali_ke" value="1">
                                                                 <label class="form-check-label" for="inlineCheckbox1">1</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox3" name="coun" [value]="2" [(ngModel)]="no_penggantian">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox3" name="penggantian_kali_ke" value="2">
                                                                 <label class="form-check-label" for="inlineCheckbox1">2</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox4" name="coun" [value]="3" [(ngModel)]="no_penggantian">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox4" name="penggantian_kali_ke" value="3">
                                                                 <label class="form-check-label" for="inlineCheckbox1">3</label>
                                                             </div>
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox5" name="coun" [value]="4" [(ngModel)]="no_penggantian">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox5" name="penggantian_kali_ke" value="4">
                                                                 <label class="form-check-label" for="inlineCheckbox1">4</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox6" name="coun" [value]="5" [(ngModel)]="no_penggantian">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox6" name="penggantian_kali_ke" value="5">
                                                                 <label class="form-check-label" for="inlineCheckbox1">5</label>
                                                             </div>
                                                             <div class="form-check ">
-                                                                <input class="form-check-input" type="radio" id="inlineCheckbox7" name="coun" [value]="6" [(ngModel)]="no_penggantian">
+                                                                <input class="form-check-input" type="radio" id="inlineCheckbox7" name="penggantian_kali_ke" value="6">
                                                                 <label class="form-check-label" for="inlineCheckbox1">Lebih daripada 5</label>
                                                             </div>
                                                         </div>
@@ -287,7 +292,7 @@
                                                 <div class="form-group col-5 pb-2 text-start">
                                                     <label for="permitCollectionState"><strong> Negeri Laporan Polis Dibuat</strong></label>
 
-                                                    <select class="form-control col-md-5" aria-label="Default select example" name="negeri_laporan" [(ngModel)]="negeri_laporan">
+                                                    <select class="form-control col-md-5" aria-label="Default select example" name="negeri_laporan_polis" [(ngModel)]="negeri_laporan">
                                                         <option selected>--Pilih Negeri--</option>
                                                         <option value="Perlis">Perlis</option>
                                                         <option value="Kedah">Kedah</option>
@@ -310,7 +315,7 @@
 
                                                 <div class="form-group pb-2 text-start">
                                                     <label for="reportNumber"><strong> No. Repot Polis</strong></label>
-                                                    <input type="text" name="no_lpr_polis" class="form-control col-4" id="reportNumber" aria-describedby="reportNumber" placeholder="" [(ngModel)]="no_laporan">
+                                                    <input type="text" name="no_laporan_polis" class="form-control col-4" id="reportNumber" aria-describedby="reportNumber" placeholder="" [(ngModel)]="no_laporan">
                                                 </div>
 
                                                 <div class="form-group text-start">
@@ -325,7 +330,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn" hidden />
+                                                            <input type="file" id="actual-btn" hidden name="salinan_kp_depan" />
                                                             <!-- our custom upload button -->
                                                             <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->
@@ -340,7 +345,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn2" hidden />
+                                                            <input type="file" id="actual-btn2" hidden name="salinan_kp_belakang" />
                                                             <!-- our custom upload button -->
                                                             <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->
@@ -355,7 +360,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn" hidden />
+                                                            <input type="file" id="actual-btn" hidden name="salinan_laporan_polis" />
                                                             <!-- our custom upload button -->
                                                             <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->

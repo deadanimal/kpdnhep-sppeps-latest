@@ -126,8 +126,14 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/default.html" target="_blank">
-                <img src="../../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold">Soft UI Dashboard PRO</span>
+                <div class="row d-flex flex-nowrap">
+                    <div class="col">
+                        <img src="#" class="navbar-brand-img h-100" >
+                    </div>
+                    <div class="col">
+                        <span class="font-weight-bold">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</span>
+                    </div>
+                </div>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -419,7 +425,7 @@
                     </div>
                 </li>
 
-                
+
 
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#basicExamples3" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
@@ -570,7 +576,7 @@
         <footer class="footer pt-3  ">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
+                    <!-- <div class="col-lg-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
                             © <script>
                                 document.write(new Date().getFullYear())
@@ -595,7 +601,7 @@
                                 <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </footer>

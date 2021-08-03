@@ -2,13 +2,7 @@
 
 @section('content')
 
-<style type="text/css">
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-    }
-</style>
+
 
 
 <div id="container" class="container-fluid d-flex justify-content-center" style="height: initial;">
