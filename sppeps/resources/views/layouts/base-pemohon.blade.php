@@ -230,7 +230,7 @@
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="d-sm-inline d-none text-white">Selamat Datang Pemohon</span>
+                            <span class="d-sm-inline d-none text-white">Selamat Datang {{ Auth::user()->name }}</span>
                             <i class="fa fa-user me-sm-1 text-white p-2"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
@@ -249,11 +249,22 @@
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <span class="d-sm-inline d-none text-dark">Log Keluar</span>
-                                    </div>
-                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item border-radius-md" href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        <div class="d-flex py-1">
+
+
+                                            <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();"> -->
+                                            {{ __('Log Out') }}
+                                            <!-- </x-dropdown-link> -->
+
+                                            <!-- <span class="d-sm-inline d-none text-dark">Log Keluar</span> -->
+                                        </div>
+                                    </a>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -664,7 +675,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-    
+
 </body>
 
 </html>

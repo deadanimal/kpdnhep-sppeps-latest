@@ -29,7 +29,7 @@
                 <div class="form-group mt-3">
                     <div class="input-group mb-4">
                         <input type="submit" value="Semak" class="btn bg-gradient-info btn-lg w-100 text-capitalize">
-                        <a href="/register" class="btn bg-gradient-info btn-lg w-100 text-capitalize">Daftar</a>
+                        <a href="/register_" class="btn bg-gradient-info btn-lg w-100 text-capitalize">Daftar</a>
                     </div>
                 </div>
             </form>

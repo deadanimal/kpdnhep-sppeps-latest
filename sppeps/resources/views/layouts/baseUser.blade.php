@@ -125,7 +125,8 @@
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark z-index-3 py-3" data-scroll="true">
+    <nav class="navbar navbar-expand-lg z-index-3 py-3" data-scroll="true" style="background: rgb(42,55,125);
+        background: linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%);">
       <!-- id="navbarBlur" -->
       <div class="container-fluid py-1 px-3">
 
@@ -135,12 +136,12 @@
 
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 
-          <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center ">
+          <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
 
 
             <li class="nav-item dropdown dropdown-hover mx-2">
-              <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                Arkib
+              <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+                Arkib&ensp;<i class="fas fa-chevron-down"></i>
                 <img src="./assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 text-white">
               </a>
               <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs">
@@ -207,13 +208,13 @@
               </div>
             </li>
             <li class="nav-item mx-2">
-              <a role="button" href="/semakan-status-eps" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" aria-expanded="false">
+              <a role="button" href="/semakan-status-eps" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white" aria-expanded="false">
                 Semakan Status EPS
               </a>
             </li>
 
             <li class="nav-item mx-2">
-              <a role="button" href="/faq" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" aria-expanded="false">
+              <a role="button" href="/faq" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white" aria-expanded="false">
                 FAQ
               </a>
             </li>
@@ -229,7 +230,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center ">
-              <a href="/login" class="nav-link text-body font-weight-bold px-0" >
+              <a href="/login_" class="nav-link text-body font-weight-bold px-0" >
                 <i class="fa fa-user me-sm-1 text-white"></i>
                 <span class="d-sm-inline d-none text-white">Log Masuk</span>
               </a>

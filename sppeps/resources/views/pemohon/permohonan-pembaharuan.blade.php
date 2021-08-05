@@ -87,14 +87,14 @@
                                                             <i class="fas fa-user"></i><strong> Nama</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" class="form-control col-9" id="name" aria-describedby="name" name="nama" disabled>
+                                                            <input type="text" class="form-control col-9" value="fatimah" name="nama" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
 
                                                     <div class="col form-group pr-0 text-start">
                                                         <label for="noPermit"><i class="fas fa-id-card"></i><strong> No. Permit</strong></label>
-                                                        <input type="text" class="form-control" value="10523" name="no_permit" disabled>
+                                                        <input type="text" class="form-control" value="10523" name="no_permit" readonly>
                                                     </div>
 
                                                 </div>
@@ -102,13 +102,13 @@
                                                 <div class="d-flex flex-nowrap pb-2 text-start">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="gender"> <i class="fas fa-venus-mars"></i><strong> Jantina</strong></label>
-                                                        <input type="text" class="form-control" name="jantina" disabled>
+                                                        <input type="text" class="form-control" name="jantina" readonly>
 
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0 text-start">
                                                         <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
-                                                        <input type="text" class="form-control" id="ic" aria-describedby="ic" name="no_kp" disabled>
+                                                        <input type="text" class="form-control" id="ic" aria-describedby="ic" name="no_kp" readonly>
                                                     </div>
 
                                                 </div>

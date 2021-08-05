@@ -19,8 +19,24 @@
     }
 </style>
 
-<div class="docs ">
 
+<script type="text/javascript">
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.display = 'block';
+        } else document.getElementById('ifYes').style.display = 'none';
+
+    }
+</script>
+Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> 
+No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+<div id="ifYes" style="display:none">
+    If yes, explain: <input type='text' id='yes' name='yes'><br>
+    What can we do to accommodate you? <input type='text' id='acc' name='acc'>
+</div>
+
+
+<div class="docs ">
 
     <div class="ct-docs-main-container">
 
@@ -87,13 +103,13 @@
                                                             <i class="fas fa-user"></i><strong> Nama</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" name="nama" class="form-control col-9" id="name" aria-describedby="name" value="" disabled>
+                                                            <input type="text" name="nama" class="form-control col-9" id="name" aria-describedby="name" value="" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
-                                                        <input type="text" name="no_kp" class="form-control" id="ic" aria-describedby="ic" disabled>
+                                                        <input type="text" name="no_kp" class="form-control" id="ic" aria-describedby="ic" readonly>
                                                     </div>
                                                 </div>
 
@@ -110,7 +126,7 @@
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="age"><i class="fas fa-calendar-alt"></i><strong> Umur</strong></label>
-                                                        <input type="text" class="form-control" id="age" aria-describedby="age" name="umur" disabled>
+                                                        <input type="text" class="form-control" id="age" aria-describedby="age" name="umur" readonly>
                                                     </div>
                                                 </div>
 

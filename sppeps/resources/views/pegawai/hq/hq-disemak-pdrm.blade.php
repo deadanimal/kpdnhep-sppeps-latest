@@ -1,4 +1,5 @@
-@extends('layouts.base-pegawai-hq')
+<!-- @extends('layouts.base-pegawai-hq') -->
+@extends('layouts.base-admin-hq')
 
 @section('content')
 

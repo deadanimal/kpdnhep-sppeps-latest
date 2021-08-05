@@ -14,11 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\PermohonanController;
+use App\Http\Controllers\DashboardController;
+
+
+// Route::get('/dashboard', function () {
+//     return view('pemohon.dashboard');
+// })->middleware(['auth'])->name('dashboard');\
+
+
+require __DIR__.'/auth.php';
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::resource('/permohonan', PermohonanController::class);
 
+
 //auth
-Route::get('/login', function () {
+Route::get('/login_', function () {
     return view('auth.login_');
 });
 
@@ -26,7 +38,7 @@ Route::get('/lupa-kata-laluan', function () {
     return view('auth.forgot-password_');
 });
 
-Route::get('/register', function () {
+Route::get('/register_', function () {
     return view('auth.register_');
 });
 

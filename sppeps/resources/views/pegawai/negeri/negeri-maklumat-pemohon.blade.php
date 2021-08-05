@@ -1,4 +1,4 @@
-@extends('layouts.base-pagawai-negeri')
+@extends('layouts.base-admin-hq')
 
 @section('content')
 
@@ -35,170 +35,537 @@
                                             <strong>Nama</strong>
                                         </label>
                                         <div class="d-flex flex-nowrap align-items-center">
-                                            <input type="text" class="form-control col-9" id="name" aria-describedby="name" placeholder="" [value]="infos.name" disabled>
+                                            <input type="text" class="form-control col-9" value="{{$permohonan->nama}}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
                                         <label for="ic"><strong> No. Kad Pengenalan</strong></label>
-                                        <input type="text" class="form-control" id="ic" aria-describedby="ic" placeholder="" [value]="infos.no_kp" disabled>
+                                        <input type="text" class="form-control" value="" disabled>
                                     </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
                                         <label for="age"><strong> Umur</strong></label>
-                                        <input type="text" class="form-control col-9" id="age" aria-describedby="age" placeholder="" value="25 Tahun" [value]="infos.umur" disabled>
+                                        <input type="text" class="form-control col-9" disabled>
 
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
                                         <label for="gender"><strong> Jantina</strong></label>
-                                        <input type="text" class="form-control" id="age" aria-describedby="age" placeholder="" value="Perempuan" [value]="infos.jantina" disabled>
+                                        <input type="text" class="form-control" value="" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap pb-2">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="address"><strong> Alamat</strong></label>
+                                        <input type="text" class="col-9 form-control" value="{{$permohonan->alamat1}}" disabled>
+                                        <input type="text" class="col-9 form-control" value="{{$permohonan->alamat2}}" disabled>
+                                        <input type="text" class="col-9 form-control" value="{{$permohonan->alamat3}}" disabled>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col pr-0">
+                                        <div class="form-group">
+                                            <label for="">
+                                                <strong> Poskod</strong>
+                                            </label>
+                                            <input type="text" class="form-control" value="{{$permohonan->poskod}}" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="state">
+                                                <strong>Negeri</strong>
+                                            </label>
+                                            <input type="text" class="form-control" value="{{$permohonan->negeri}}" disabled>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-
-                                        <label for="address"><strong> Alamat</strong></label>
-                                        <input type="text" class="col-9 form-control" id="address1" aria-describedby="address" placeholder="" disabled [value]="info.alamat">
-                                        <input type="text" class="col-9 form-control" id="address2" aria-describedby="address" placeholder="" disabled [value]="infos.alamat2">
+                                        <label for="phoneNumber"><strong>No. Telefon</strong></label>
+                                        <input type="text" class="form-control" disabled value="{{$permohonan->no_telefon}}">
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
                                         <label for="email"><strong> E-mel</strong></label>
-                                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" disabled [value]="infos.emel">
+                                        <input type="email" class="form-control" disabled value="{{$permohonan->emel}}">
                                     </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="state"><strong>Negeri</strong></label>
-                                        <input type="text" class="form-control col-9" id="state" aria-describedby="state" placeholder="" value="Selangor" disabled [value]="infos.negeri">
+                                        <label for="state"><strong>Negeri Kutipan Permit</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->negeri_kutipan_permit}}">
 
                                     </div>
                                     <div class="col-1"></div>
+                                    @if ($permohonan->jenis_permohonan === 'Pembaharuan' || $permohonan->jenis_permohonan === 'Pendua' || $permohonan->jenis_permohonan === 'Rayuan')
                                     <div class="col form-group pr-0">
-                                        <label for="phoneNumber"><strong>No. Telefon</strong></label>
-                                        <input type="text" class="form-control" id="phoneNumber" aria-describedby="phoneNumber" placeholder="" value="01234567890" disabled [value]="infos.notelbimbit">
+                                        <label for="state"><strong>No. Permit</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_permit}}">
                                     </div>
+                                    @endif
                                 </div>
+                                @if ($permohonan->jenis_permohonan === 'Baharu')
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
                                         <label for="occupation"><strong>Pekerjaan Sekarang</strong></label>
-                                        <input type="text" class="form-control col-9" id="occupation" aria-describedby="occupation" placeholder="" value="Kontraktor" disabled [value]="infos.pekerjaan_skrg">
-
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->pekerjaan_sekarang}}">
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
-                                        <label for="licence"><strong>Lesen Memandu yang Sah</strong></label>
-                                        <input type="text" class="form-control" id="licence" aria-describedby="licence" placeholder="" value="B2, D" disabled [value]="infos.lesen_sah">
+
                                     </div>
                                 </div>
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
                                         <label for="education"><strong>Tahap Pendidikan Tertinggi</strong></label>
-                                        <input type="text" class="form-control col-9" id="education" aria-describedby="education" placeholder="" value="Ijazah" disabled [value]="infos.pendidikan_tinggi">
-
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->tahap_pendidikan}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="licence"><strong>Lesen Memandu yang Sah</strong></label>
+                                        <input type="text" class="form-control" disabled value="{{$permohonan->lesen_memandu}}">
                                     </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="question1"><strong>Adakah anda akan bekerja sebagai panel <br> bank/syarikat sewa
+                                        <label for="question1"><strong>Adakah anda akan bekerja sebagai panel <br>
+                                                bank/syarikat sewa
                                                 beli?</strong></label>
-                                        <input type="text" class="form-control col-9" id="question1" aria-describedby="question1" placeholder="" value="Ya" disabled [value]="infos.bank_or_sewa">
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->berkerja_panel_atau_syarikat}}">
 
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
-                                        <label for=""><strong>Adakah anda tahu tentang aktviti pemilikan semula barangan di bawah
-                                                Akta Sewa Beli 1967?</strong></label>
+
 
                                     </div>
                                 </div>
-
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
                                         <label for="panelBank"><strong>Nama Institusi Kewangan</strong></label>
-                                        <input type="text" class="form-control col-9" id="panelBank" aria-describedby="panelBank" placeholder="" value="Maybank Berhad" disabled [value]="infos.panel_bank">
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->nama_institusi_kewangan}}">
 
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
-                                        <label for="jobScope"><strong>Skop Tugas EPS</strong></label>
-                                        <input type="text" class="form-control" id="jobScope" aria-describedby="jobScope" placeholder="" value="Ya" disabled [value]="infos.akta_tugas">
+                                        <label for="bankPhoneNumber"><strong>No. Telefon Institusi
+                                                Kewangan</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_telefon_institusi_kewangan}}">
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <label>Panel yang Pemohon ikuti.</label>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="panelName"><strong>Nama Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->nama_panel}}">
+
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_kp_panel}}">
                                     </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <label for="bankPhoneNumber"><strong>No. Telefon Institusi Kewangan</strong></label>
-                                        <input type="text" class="form-control col-9" id="bankPhoneNumber" aria-describedby="bankPhoneNumber" placeholder="" disabled [value]="infos.notel_bank">
-
+                                        <label for="permitNumber"><strong>No. Permit</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_permit_panel}}">
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
-                                        <label for="procedure"><strong>Prosedur dan Peraturan EPS</strong></label>
-                                        <input type="text" class="form-control" id="procedure" aria-describedby="procedure" placeholder="" value="Tidak" disabled [value]="infos.akta_eps">
+                                        <label for="panelIcNumber"><strong>No. Telefon Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_telefon_panel}}">
                                     </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
+                                    <label>Adakah Pemohon tahu tentang aktiviti pemilikan semula barangan di bawah Akta
+                                        Sewa Beli 1967?</label>
+                                </div>
+                                <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
-                                        <div class="col form-group p-0">
-                                            <label for="panelName"><strong>Nama Panel</strong></label>
-                                            <input type="text" class="form-control col-9" id="panelName" aria-describedby="panelName" placeholder="" disabled [value]="infos.nama_panel">
-
-                                        </div>
-                                        <div class="col-1"></div>
-                                        <div class="col form-group p-0">
-                                            <label for="panelIcNumber"><strong>No. Kad Pengenalan</strong></label>
-                                            <input type="text" class="form-control col-9" id="panelIcNumber" aria-describedby="panelIcNumber" placeholder="" [value]="infos.ic_panel" disabled nric_panel>
-
-                                        </div>
-
-                                        <div class="col form-group p-0">
-                                            <label for="permitNumber"><strong>No. Permit</strong></label>
-                                            <input type="text" class="form-control col-9" id="permitNumber" aria-describedby="permitNumber" placeholder="" [value]="infos.no_permit" disabled noPermit>
-
-                                        </div>
-
+                                        <label for="permitNumber"><strong>Skop Tugas</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->skop_tugas}}">
                                     </div>
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
-                                        <span><strong>Lampiran Dokumen</strong></span>
+                                        <label for="panelIcNumber"><strong>Prosedur dan Peraturan EPS</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->prosedur_peraturan_eps}}">
+                                    </div>
+                                </div>
 
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col form-group pr-0">
+                                        <label><strong>Lampiran Dokumen</strong></label>
                                         <ol>
-                                            <div class="row p-2">
-                                                <div class="col">
-                                                    <li>Salinan Lesen Memandu</li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
                                                 </div>
                                                 <div class="col">
                                                     <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
                                                         Lampiran</button>
                                                 </div>
-                                                <div *ngIf="view == true">
-                                                    <img src="" />
-                                                </div>
                                             </div>
-                                            <div class="row p-2">
-                                                <div class="col">
-                                                    <li> Salinan Kad Pengenalan</li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
                                                 </div>
                                                 <div class="col">
                                                     <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
                                                         Lampiran</button>
                                                 </div>
-                                                <div *ngIf="view == true">
-                                                    <img src="" />
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Lesen Memandu</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
                                                 </div>
                                             </div>
+
                                         </ol>
                                     </div>
                                 </div>
+
+                                @elseif ($permohonan->jenis_permohonan === 'Pembaharuan')
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="panelName"><strong>Status Pekerjaan EPS</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->status_pekerjaan_eps}}">
+
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <!-- <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_kp_panel}}"> -->
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="panelName"><strong>Tahun Pekerjaan EPS</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->tahun_pekerjaan_eps}}">
+
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>Pekerjaan Tetap Pemohon</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->pekerjaan_tetap}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="education"><strong>Tahap Pendidikan Tertinggi</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->tahap_pendidikan}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="licence"><strong>Lesen Memandu yang Sah</strong></label>
+                                        <input type="text" class="form-control" disabled value="{{$permohonan->lesen_memandu}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="question1"><strong>Adakah anda akan bekerja sebagai panel <br>
+                                                bank/syarikat sewa
+                                                beli?</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->berkerja_panel_atau_syarikat}}">
+
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+
+
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="panelBank"><strong>Nama Institusi Kewangan</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->nama_institusi_kewangan}}">
+
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="bankPhoneNumber"><strong>No. Telefon Institusi
+                                                Kewangan</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_telefon_institusi_kewangan}}">
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <label>Panel yang Pemohon ikuti.</label>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="panelName"><strong>Nama Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->nama_panel}}">
+
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_kp_panel}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>No. Permit</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_permit_panel}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>No. Telefon Panel</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_telefon_panel}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>Adakah Pemohon pernah menghadiri kursus EPS yang dianjurkan oleh KPDNHEP?</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->kehadiran_kursus_eps}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>Tahun Dihadiri</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->tahun_dihadiri}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col form-group pr-0">
+                                        <label><strong>Lampiran Dokumen</strong></label>
+                                        <ol>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Lesen Memandu</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Surat Sokongan (Bank/Syarikat Sewa Beli)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+
+                                        </ol>
+                                    </div>
+                                </div>
+                                @elseif ($permohonan->jenis_permohonan === 'Pendua')
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>Alasan Kehilangan</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->alasan_kehilangan}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->alasan_lain}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>Penggantian Kali Ke</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->penggantian_kali_ke}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <!-- <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->alasan_lain}}"> -->
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>Negeri Laporan Polis Dibuat</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->negeri_laporan_polis}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>No. Repot Polis</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->no_laporan_polis}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col form-group pr-0">
+                                        <label><strong>Lampiran Dokumen</strong></label>
+                                        <ol>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Repot Polis</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+
+                                        </ol>
+                                    </div>
+                                </div>
+                                @elseif ($permohonan->jenis_permohonan === 'Rayuan')
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>Sebab Permohonan Ditolak</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->sebab_permohonan_ditolak}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="panelIcNumber"><strong>Sebab Lain</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->sebab_lain}}">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col-6 form-group p-0">
+                                        <label for="permitNumber"><strong>Rayuan Kali Ke</strong></label>
+                                        <input type="text" class="form-control col-9" disabled value="{{$permohonan->sebab_permohonan_ditolak}}">
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col form-group pr-0">
+                                        <label for="permitNumber"><strong>Alasan Rayuan Dikemukakan</strong></label>
+                                        <textarea cols="30" rows="3" class="form-control" readonly>{{$permohonan->alasan_rayuan}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col form-group pr-0">
+                                        <label><strong>Lampiran Dokumen</strong></label>
+                                        <ol>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Surat Tapisan Rekod Jenayah daripada PDRM Bukit Aman</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Surat Sokongan daripada Institusi Kewangan</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Dokumen Sokongan Lain 1</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Dokumen Sokongan Lain 2</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Dokumen Sokongan Lain 3</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
+                                            </div>
+
+                                        </ol>
+                                    </div>
+                                </div>
+
+
+                                @endif
                             </div>
 
                             <!-- <div class="p-3 d-flex justify-content-center" *ngIf="click == true">
@@ -221,7 +588,9 @@
                     <h6 class="text-uppercade ">Pengesahan Semakan Permohonan</h6>
                 </div>
                 <div class="card-body">
-                    <form class="d-flex justify-content-center font-black" style="width: 100%;" (ngSubmit)="onSubmit(submit)">
+                    <form method="POST" action="/permohonan/{{$permohonan->id}}" class="d-flex justify-content-center font-black" style="width: 100%;">
+                        @csrf
+                        @method('PUT')
                         <div class="d-flex justify-content-center flex-wrap" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 100%;">
 
                             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
@@ -230,11 +599,12 @@
                                     <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                         <label for="action" class="col-sm-3 ">Tindakan</label>
                                         <div class="col-sm-5">
-                                            <select id="action" class="form-control" name="tindakan" [(ngModel)]="this.tindakan">
+                                            <select id="action" class="form-control" name="tindakan">
                                                 <option selected>--Sila Pilih--</option>
                                                 <option value="Permohonan Lengkap">Permohonan Lengkap</option>
-                                                <option value="Permohonan Tidak Lengkap">Permohonan Tidak Lengkap</option>
-                                                
+                                                <option value="Permohonan Tidak Lengkap">Permohonan Tidak Lengkap
+                                                </option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -243,7 +613,7 @@
                                     <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                         <label for="catatan" class="col-sm-3 ">Catatan</label>
                                         <div class="col-sm-5">
-                                            <textarea class="form-control" id="catatan" name="catatan" [(ngModel)]="this.catatan"></textarea>
+                                            <textarea class="form-control" name="catatan_pegawai_negeri"></textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -65,7 +65,7 @@ class CreatePermohonansTable extends Migration
             $table->string('rayuan_kali_ke')->nullable();
             $table->string('alasan_rayuan')->nullable();
 
-            $table->string('gambar_profil')->nullable();
+            // $table->string('gambar_profil')->nullable();
             $table->string('salinan_kp_depan')->nullable();
             $table->string('salinan_kp_belakang')->nullable();
             $table->string('salinan_lesen_memandu')->nullable();
@@ -78,6 +78,8 @@ class CreatePermohonansTable extends Migration
             $table->string('salinan_dokumen_sokongan3')->nullable();
 
             // $table->text('sebab_kehilangan')->nullabe();
+            $table->string('catatan_pegawai_negeri')->nullable();
+            $table->string('catatan_pegawain_hq')->nullable();
         });
     }
 

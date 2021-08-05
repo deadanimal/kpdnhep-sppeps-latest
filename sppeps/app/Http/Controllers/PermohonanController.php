@@ -7,11 +7,38 @@ use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $permohonan = null;
+
+        $user = $request->user();
+        $user_role = $user->role;
+
+        if ($user_role == 'pegawai_negeri') {
+            $permohonan = Permohonan::whereIn('status_permohonan', ['hantar'])->get();
+            // $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'Permohonan Lengkap'])->get();
+
+            return view('pegawai.hq.hq-tugasan-baru', [
+                'permohonan' => $permohonan
+            ]);
+        }
+        else if ($user_role == 'pegawai_hq') {
+            $permohonan = Permohonan::where('status_permohonan', 'Permohonan Lengkap')->get();
+
+            return view('pegawai.negeri.negeri-tugasan-baru', [
+                'permohonan' => $permohonan
+            ]);
+        }
+        else if ($user_role == 'pegawai_pdrm') {
+            $permohonan = Permohonan::where('status_permohonan', 'disemak hq')->get();
+        }
+        else if ($user_role == 'pentadbir') {
+            $permohonan = Permohonan::where('status_permohonan', 'disemak')->get();
+        }
+
+        
+        // $permohonan = Permohonan::where('status_permohonan', 'hantar')->get();
         //
-        return view('pemohon.permohonan-baru', [
+        return view('pegawai.negeri.negeri-tugasan-baru', [
             'permohonan' => $permohonan
         ]);
     }
@@ -27,9 +54,10 @@ class PermohonanController extends Controller
         $permohonan = new Permohonan;
 
         $permohonan->jenis_permohonan = $request->jenis_permohonan;
-        $permohonan->status_permohonan = $request->status_permohonan;
+        // $permohonan->status_permohonan = $request->status_permohonan;
+        $permohonan->status_permohonan = 'hantar';
 
-        $permohonan->gambar_profil = $request->gambar_profil;
+        // $permohonan->gambar_profil = $request->gambar_profil;
         $permohonan->nama = $request->nama;
         $permohonan->no_kp = $request->no_kp;
         $permohonan->jantina = $request->jantina;
@@ -118,8 +146,6 @@ class PermohonanController extends Controller
             $permohonan->salinan_dokumen_sokongan2 = $request->salinan_dokumen_sokongan2;
             $permohonan->salinan_dokumen_sokongan3 = $request->salinan_dokumen_sokongan3;
 
-            
-
         }
 
 
@@ -128,19 +154,40 @@ class PermohonanController extends Controller
         return redirect('/dashboard-pemohon');
     }
 
-    public function show(Permohonan $permohonan)
+    public function show(Permohonan $permohonan, Request $request)
     {
-        //
+
+        $user = $request->user();
+        $user_role = $user->role;
+
+        if ($user_role == 'pegawai_negeri') {
+            return view('pegawai.negeri.negeri-maklumat-pemohon',[
+                'permohonan'=>$permohonan
+            ]);
+        }
+        if ($user_role == 'pegawai_hq') {
+            return view('pegawai.negeri.negeri-maklumat-pemohon',[
+                'permohonan'=>$permohonan
+            ]);
+        }
+        
     }
 
     public function edit(Permohonan $permohonan)
     {
-        //
+        //$catalog->nama = $request->nama;
+        
     }
 
     public function update(Request $request, Permohonan $permohonan)
     {
-        //
+        // dd($request);
+        $permohonan->status_permohonan = $request->tindakan;
+        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+        $permohonan->save();
+
+        return redirect('/permohonan');
     }
 
     public function destroy(Permohonan $permohonan)

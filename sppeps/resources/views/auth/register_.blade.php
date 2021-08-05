@@ -11,7 +11,7 @@
                 <h3>Daftar Akaun</h3>
             </div>
 
-            <form method="POST" action="">
+            <form method="POST" action="/register">
                 @csrf
 
 
@@ -23,18 +23,23 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="email">nama</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="temporary" >
+                    </div>
+
+                    <div class="form-group">
                         <label for="email">E-mel</label>
-                        <input type="email" class="form-control" id="email" placeholder="e.g abc123@gmail.com">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="e.g abc123@gmail.com">
                     </div>
 
                     <div class="form-group">
                         <label for="password">Kata Laluan</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan kata laluan">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan kata laluan">
                     </div>
 
                     <div class="form-group">
                         <label for="password2">Pengesahan Kata Laluan</label>
-                        <input type="password2" class="form-control" id="password2" name="password2" placeholder="Masukkan pengesahan kata laluan">
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Masukkan pengesahan kata laluan">
                     </div>
 
                     <div class="form-group mt-3">
