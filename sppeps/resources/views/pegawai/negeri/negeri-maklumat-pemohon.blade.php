@@ -497,7 +497,7 @@
                                         <label><strong>Lampiran Dokumen</strong></label>
                                         <ol>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -506,7 +506,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -515,7 +515,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Surat Tapisan Rekod Jenayah daripada PDRM Bukit Aman</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -524,7 +524,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Surat Sokongan daripada Institusi Kewangan</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -533,7 +533,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Dokumen Sokongan Lain 1</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -542,7 +542,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Dokumen Sokongan Lain 2</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -551,7 +551,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <li><label>Dokumen Sokongan Lain 3</label> </li>
                                                 </div>
                                                 <div class="col">
@@ -567,13 +567,6 @@
 
                                 @endif
                             </div>
-
-                            <!-- <div class="p-3 d-flex justify-content-center" *ngIf="click == true">
-                                <input type="button" class="btn text-uppercase" style="background-color: #1d1da1; border-radius:25px" value="Batal" (click)="back()">
-                                <input type="button" class="btn text-uppercase" style="background-color: #ec1a22; border-radius:25px" value="Semak" (click)="toggle()">
-
-                                
-                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -581,6 +574,7 @@
         </div>
 
         <div class="pt-4">
+            @if ($permohonan->status_permohonan === 'hantar')
 
             <div class="card card-frame">
 
@@ -619,7 +613,7 @@
                                 </div>
 
                                 <div class="p-3 d-flex justify-content-center">
-                                    <input type="button" class="btn btn-danger text-uppercase m-1" value="BATAL">
+                                    <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
 
                                     <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
                                 </div>
@@ -628,6 +622,74 @@
                     </form>
                 </div>
             </div>
+            @elseif ($permohonan->status_permohonan === 'hantar ke penyokong')
+
+            <div class="card card-frame">
+
+                <div class="card-header" style="background-color: #f5e7f2;">
+                    <h6 class="text-uppercade ">Sokongan Permohonan</h6>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/permohonan/{{$permohonan->id}}" class="d-flex justify-content-center font-black" style="width: 100%;" (ngSubmit)="onSubmit(submit)">
+                        @csrf
+                        @method('PUT')
+                        <div class="d-flex justify-content-center flex-wrap" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 100%;">
+
+                            <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                        <label for="" class="col-sm-3 ">Keputusan Tapisan PDRM</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" value="{{$permohonan->rekod_jenayah}}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                        <label for="action" class="col-sm-3 ">Tindakan</label>
+                                        <div class="col-sm-5">
+                                            <select id="action" class="form-control form-control-sm" name="tindakan">
+                                                <option>Sila Pilih</option>
+                                                <option value="Disokong">Disokong</option>
+                                                <option value="Tidak Disokong">Tidak Disokong</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                        <label for="action" class="col-sm-3 ">Tempoh Kelulusan</label>
+                                        <div class="col-sm-5">
+                                            <select id="action" class="form-control form-control-sm" name="tempoh_kelulusan">
+                                                <option>Sila Pilih</option>
+                                                <option value="1 tahun">1 Tahun</option>
+                                                <option value="2 tahun">2 Tahun</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                        <label for="comment" class="col-sm-3 ">Catatan</label>
+                                        <div class="col-sm-5">
+                                            <textarea class="form-control form-control-sm" id="catatan" name="catatan_penyokong"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 d-flex justify-content-center">
+                                    <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1" value="">BATAL</a>
+
+                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @endif
 
         </div>
 

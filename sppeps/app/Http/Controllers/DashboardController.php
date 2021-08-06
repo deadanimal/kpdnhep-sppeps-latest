@@ -14,7 +14,8 @@ class DashboardController extends Controller
         $role = $user->role;
         if ($role == 'pemohon') {
             return view ('dashboard.dashboard');
-        } else {
+        }
+        else {
             return view ('dashboard.dashboard-pegawai');
         }
     }

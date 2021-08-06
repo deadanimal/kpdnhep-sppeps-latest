@@ -140,7 +140,7 @@
         <div class="collapse navbar-collapse  w-auto h-auto max-height-vh-100 h-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>shop </title>
@@ -423,8 +423,9 @@
                 </li>
 
                 @elsecan('isPegawaiPdrm')
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="/pdrm-tugasan-baru">
+                    <a class="nav-link" href="/permohonan">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>spaceship</title>
@@ -464,10 +465,6 @@
                         <span class="nav-link-text ms-1">Tugasan Selesai</span>
                     </a>
                 </li>
-
-                <!-- @elsecan('isPegawaiPenyokong')
-
-                @elsecan('isPegawaiPelulus') -->
 
                 @endcan
 

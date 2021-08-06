@@ -1,4 +1,3 @@
-
 @extends('layouts.base-admin-hq')
 
 @section('content')
@@ -53,34 +52,6 @@
                 </div>
 
                 <div class="card-body p-3">
-                    <div class="row p-3 mb-0">
-                        <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                            <label class="d-flex flex-nowrap mb-0">
-                                <span class="pl-0 pt-2 pr-2">Papar </span>
-                                <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="-1">All</option>
-                                </select>
-                                <span class="p-2">rekod</span>
-                            </label>
-                        </div>
-                        <div class="col form-group mb-0 p-0" id="datatable_search">
-                            <!-- <div class="row">
-                                <div class="col-sm-4 d-flex justify-content-end m-0">
-                                    <label class="pr-2 m-0 mt-2" for="search">Cari Rekod: </label>
-                                </div>
-                                <div class="col">
-                                    <input class="form-control form-control-sm" type="text" name="search" placeholder="Carian" (keyup)="updateFilter($event)" />
-                                </div>
-
-                            </div> -->
-
-
-                        </div>
-                    </div>
-
 
                     <div class="card">
                         <div class="table-responsive">
@@ -118,7 +89,12 @@
                                         </td>
 
                                         <td class="align-middle text-center text-sm">
+                                            @if ($permohonan->status_permohonan === 'hantar')
                                             <span class="badge badge-danger"> Belum Disemak</span>
+                                            @elseif ($permohonan->status_permohonan === 'hantar ke penyokong')
+                                            <span class="badge badge-warning"> Belum Disyorkan</span>
+                                            @endif
+
                                         </td>
                                         <td class="align-middle text-center">
                                             <a href="{{ URL::to('permohonan/' . $permohonan->id) }}">

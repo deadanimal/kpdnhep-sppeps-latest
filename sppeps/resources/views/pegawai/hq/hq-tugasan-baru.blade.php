@@ -1,4 +1,4 @@
-@extends('layouts.base-pegawai-hq')
+@extends('layouts.base-admin-hq')
 
 @section('content')
 
@@ -215,7 +215,7 @@
                 </div>
 
                 <div class="card-body p-3">
-                    <div class="row p-3 mb-0">
+                    <!-- <div class="row p-3 mb-0">
                         <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                             <label class="d-flex flex-nowrap mb-0">
                                 <span class="pl-0 pt-2 pr-2">Papar </span>
@@ -229,19 +229,10 @@
                             </label>
                         </div>
                         <div class="col form-group mb-0 p-0" id="datatable_search">
-                            <!-- <div class="row">
-                                <div class="col-sm-4 d-flex justify-content-end m-0">
-                                    <label class="pr-2 m-0 mt-2" for="search">Cari Rekod: </label>
-                                </div>
-                                <div class="col">
-                                    <input class="form-control form-control-sm" type="text" name="search" placeholder="Carian" (keyup)="updateFilter($event)" />
-                                </div>
-
-                            </div> -->
 
 
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="card">
@@ -282,7 +273,11 @@
                                             <span class="text-secondary text-sm font-weight-bold">{{$permohonan->negeri}}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
+                                            @if ($permohonan->status_permohonan === 'Permohonan Lengkap')
                                             <span class="badge badge-danger"> Belum Disemak</span>
+                                            @elseif ($permohonan->status_permohonan === 'disemak pdrm')
+                                            <span class="badge badge-success"> Telah Disemak PDRM</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-center">
                                             <a href="{{ URL::to('permohonan/' . $permohonan->id) }}">
@@ -303,4 +298,12 @@
     </div>
 
 </div>
+
+<script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js" type="text/javascript"></script>
+<script type="text/javascript">
+    const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+        searchable: false,
+        fixedHeight: true
+    });
+</script>
 @stop

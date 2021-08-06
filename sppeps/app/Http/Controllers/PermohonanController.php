@@ -14,28 +14,30 @@ class PermohonanController extends Controller
         $user_role = $user->role;
 
         if ($user_role == 'pegawai_negeri') {
-            $permohonan = Permohonan::whereIn('status_permohonan', ['hantar'])->get();
+            $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'hantar ke penyokong'])->get();
             // $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'Permohonan Lengkap'])->get();
-
-            return view('pegawai.hq.hq-tugasan-baru', [
-                'permohonan' => $permohonan
-            ]);
-        }
-        else if ($user_role == 'pegawai_hq') {
-            $permohonan = Permohonan::where('status_permohonan', 'Permohonan Lengkap')->get();
 
             return view('pegawai.negeri.negeri-tugasan-baru', [
                 'permohonan' => $permohonan
             ]);
-        }
-        else if ($user_role == 'pegawai_pdrm') {
-            $permohonan = Permohonan::where('status_permohonan', 'disemak hq')->get();
-        }
-        else if ($user_role == 'pentadbir') {
+        } else if ($user_role == 'pegawai_hq') {
+            $permohonan = Permohonan::whereIn('status_permohonan', ['Permohonan Lengkap', 'disemak pdrm','Disokong'])->get();
+
+            return view('pegawai.hq.hq-tugasan-baru', [
+                'permohonan' => $permohonan
+            ]);
+        } else if ($user_role == 'pegawai_pdrm') {
+            $permohonan = Permohonan::whereIn('status_permohonan', ['hantar ke pdrm', 'Dalam Proses'])->get();
+            // $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'Permohonan Lengkap'])->get();
+
+            return view('pegawai.pdrm.pdrm-tugasan-baru', [
+                'permohonan' => $permohonan
+            ]);
+        } else if ($user_role == 'pentadbir') {
             $permohonan = Permohonan::where('status_permohonan', 'disemak')->get();
         }
 
-        
+
         // $permohonan = Permohonan::where('status_permohonan', 'hantar')->get();
         //
         return view('pegawai.negeri.negeri-tugasan-baru', [
@@ -89,8 +91,7 @@ class PermohonanController extends Controller
             $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
-        }
-        else if ($request->jenis_permohonan == 'Pembaharuan') {
+        } else if ($request->jenis_permohonan == 'Pembaharuan') {
 
             $permohonan->no_permit = $request->no_permit;
 
@@ -113,8 +114,7 @@ class PermohonanController extends Controller
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
             $permohonan->salinan_surat_sokongan = $request->salinan_surat_sokongan;
-        }
-        else if ($request->jenis_permohonan == 'Pendua') {
+        } else if ($request->jenis_permohonan == 'Pendua') {
 
             $permohonan->no_permit = $request->no_permit;
 
@@ -127,9 +127,7 @@ class PermohonanController extends Controller
             $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_laporan_polis = $request->salinan_laporan_polis;
-
-        }
-        else if ($request->jenis_permohonan == 'Rayuan') {
+        } else if ($request->jenis_permohonan == 'Rayuan') {
 
             $permohonan->no_permit = $request->no_permit;
 
@@ -145,7 +143,6 @@ class PermohonanController extends Controller
             $permohonan->salinan_dokumen_sokongan1 = $request->salinan_dokumen_sokongan1;
             $permohonan->salinan_dokumen_sokongan2 = $request->salinan_dokumen_sokongan2;
             $permohonan->salinan_dokumen_sokongan3 = $request->salinan_dokumen_sokongan3;
-
         }
 
 
@@ -161,29 +158,79 @@ class PermohonanController extends Controller
         $user_role = $user->role;
 
         if ($user_role == 'pegawai_negeri') {
-            return view('pegawai.negeri.negeri-maklumat-pemohon',[
-                'permohonan'=>$permohonan
+            return view('pegawai.negeri.negeri-maklumat-pemohon', [
+                'permohonan' => $permohonan
             ]);
         }
         if ($user_role == 'pegawai_hq') {
-            return view('pegawai.negeri.negeri-maklumat-pemohon',[
-                'permohonan'=>$permohonan
+            return view('pegawai.hq.hq-maklumat-pemohon', [
+                'permohonan' => $permohonan
             ]);
         }
-        
+        if ($user_role == 'pegawai_pdrm') {
+            return view('pegawai.pdrm.pdrm-maklumat-pemohon', [
+                'permohonan' => $permohonan
+            ]);
+        }
     }
 
     public function edit(Permohonan $permohonan)
     {
         //$catalog->nama = $request->nama;
-        
+
     }
 
     public function update(Request $request, Permohonan $permohonan)
     {
         // dd($request);
-        $permohonan->status_permohonan = $request->tindakan;
-        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+        $user = $request->user();
+        $user_role = $user->role;
+
+        if ($user_role == 'pegawai_negeri') {
+
+            if ($request->tindakan == "Permohonan Lengkap" || $request->tindakan == "Permohonan Tidak Lengkap") {
+                $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+            }
+            else {
+                $permohonan->sokongan = $request->tindakan;
+                $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->tempoh_kelulusan = $request->tempoh_kelulusan;
+                $permohonan->catatan_penyokong = $request->catatan_penyokong;
+            }
+        } 
+
+        else if ($user_role == 'pegawai_hq') {
+            if ($request->jenis_tindakan == "permohonan_baru_pembaharuan"){
+                if ($request->tindakan == "Hantar Permohonan kepada Badan Agensi (PDRM)") {
+                    $permohonan->status_permohonan = "hantar ke pdrm";
+                    $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
+                }
+
+            }
+            else if ($request->jenis_tindakan == "permohonan_pendua_rayuan"){
+                    $permohonan->status_permohonan = $request->tindakan;
+                    $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;      
+            }
+            else if ($request->jenis_tindakan == "hantar_ke_penyokong"){
+                    $permohonan->status_permohonan = $request->tindakan;              
+            }
+            else if ($request->jenis_tindakan == "kelulusan_permohonan"){
+                $permohonan->status_permohonan = $request->tindakan;  
+                $permohonan->catatan_pelulus = $request->catatan_pelulus;  
+            }            
+        } 
+        
+        else if ($user_role == 'pegawai_pdrm') {
+            if ($request->tindakan == "Dalam Proses") {
+                $permohonan->status_permohonan = $request->tindakan;
+            } else {
+                $permohonan->rekod_jenayah = $request->tindakan;
+                $permohonan->status_permohonan = 'disemak pdrm';
+            }
+            $permohonan->catatan_pdrm = $request->catatan_pdrm;
+        }
 
         $permohonan->save();
 

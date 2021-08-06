@@ -79,7 +79,19 @@ class CreatePermohonansTable extends Migration
 
             // $table->text('sebab_kehilangan')->nullabe();
             $table->string('catatan_pegawai_negeri')->nullable();
-            $table->string('catatan_pegawain_hq')->nullable();
+
+            $table->string('catatan_pegawai_hq')->nullable();
+
+            $table->string('rekod_jenayah')->nullable();
+            $table->string('catatan_pdrm')->nullable();
+
+            $table->string('sokongan')->nullable();
+            $table->string('tempoh_kelulusan')->nullable();
+            $table->string('catatan_penyokong')->nullable();
+
+            $table->string('catatan_pelulus')->nullable();
+            $table->string('catatan_senarai_hitam')->nullable();
+
         });
     }
 
