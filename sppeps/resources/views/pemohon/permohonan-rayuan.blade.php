@@ -20,8 +20,6 @@
 </style>
 
 <div class="docs ">
-
-
     <div class="ct-docs-main-container">
 
         <main class="ct-docs-content-col" role="main">
@@ -332,39 +330,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn" hidden name="salinan_tapisan_rekod_jenayah" />
-                                                            <!-- our custom upload button -->
-                                                            <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
-                                                            <!-- name of file chosen -->
-                                                            <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
-                                                            <br>
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <label class="col mt-1" for="image"> Surat Sokongan daripada Institusi Kewangan</label>
-                                                        </div>
-                                                        <div class="col">
-                                                            <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn2" hidden name="salinan_sokongan_institusi_kewangan" />
-                                                            <!-- our custom upload button -->
-                                                            <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
-                                                            <!-- name of file chosen -->
-                                                            <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
-                                                            <br>
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 1 (jika ada)</label>
-                                                        </div>
-                                                        <div class="col">
-                                                            <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn3" hidden name="salinan_dokumen_sokongan1" />
+                                                            <input type="file" id="actual-btn3" hidden name="salinan_tapisan_rekod_jenayah" />
                                                             <!-- our custom upload button -->
                                                             <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->
@@ -376,11 +342,11 @@
 
                                                     <div class="row">
                                                         <div class="col-3">
-                                                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 2 (jika ada)</label>
+                                                            <label class="col mt-1" for="image"> Surat Sokongan daripada Institusi Kewangan</label>
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn4" hidden name="salinan_dokumen_sokongan2" />
+                                                            <input type="file" id="actual-btn4" hidden name="salinan_sokongan_institusi_kewangan" />
                                                             <!-- our custom upload button -->
                                                             <label for="actual-btn4" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->
@@ -392,15 +358,47 @@
 
                                                     <div class="row">
                                                         <div class="col-3">
-                                                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 3 (jika ada)</label>
+                                                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 1 (jika ada)</label>
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn5" hidden name="salinan_dokumen_sokongan3" />
+                                                            <input type="file" id="actual-btn5" hidden name="salinan_dokumen_sokongan1" />
                                                             <!-- our custom upload button -->
                                                             <label for="actual-btn5" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->
                                                             <span id="file-chosen5" class="mt-1">Tiada Fail Dipilih</span>
+                                                            <br>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 2 (jika ada)</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <!-- actual upload which is hidden -->
+                                                            <input type="file" id="actual-btn6" hidden name="salinan_dokumen_sokongan2" />
+                                                            <!-- our custom upload button -->
+                                                            <label for="actual-btn6" class="upload-btn mt-0">Pilih Fail</label>
+                                                            <!-- name of file chosen -->
+                                                            <span id="file-chosen6" class="mt-1">Tiada Fail Dipilih</span>
+                                                            <br>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <label class="col mt-1" for="image">Dokumen Sokongan Lain 3 (jika ada)</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <!-- actual upload which is hidden -->
+                                                            <input type="file" id="actual-btn7" hidden name="salinan_dokumen_sokongan3" />
+                                                            <!-- our custom upload button -->
+                                                            <label for="actual-btn7" class="upload-btn mt-0">Pilih Fail</label>
+                                                            <!-- name of file chosen -->
+                                                            <span id="file-chosen7" class="mt-1">Tiada Fail Dipilih</span>
                                                             <br>
 
                                                         </div>
@@ -512,6 +510,24 @@
 
     actualBtn5.addEventListener('change', function() {
         fileChosen5.textContent = this.files[0].name
+    })
+</script>
+
+<script>
+    const actualBtn6 = document.getElementById('actual-btn6');
+    const fileChosen6 = document.getElementById('file-chosen6');
+
+    actualBtn6.addEventListener('change', function() {
+        fileChosen6.textContent = this.files[0].name
+    })
+</script>
+
+<script>
+    const actualBtn7 = document.getElementById('actual-btn7');
+    const fileChosen7 = document.getElementById('file-chosen7');
+
+    actualBtn7.addEventListener('change', function() {
+        fileChosen7.textContent = this.files[0].name
     })
 </script>
 

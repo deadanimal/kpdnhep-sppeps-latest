@@ -508,11 +508,11 @@
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
-                                                                <input type="file" id="actual-btn" hidden name="salinan_lesen_memandu" />
+                                                                <input type="file" id="actual-btn3" hidden name="salinan_lesen_memandu" />
                                                                 <!-- our custom upload button -->
-                                                                <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                                                                <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                                                                <span id="file-chosen3" class="mt-1">Tiada Fail Dipilih</span>
                                                                 <br>
                                                             </div>
                                                         </div>
@@ -523,11 +523,11 @@
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
-                                                                <input type="file" id="actual-btn2" hidden name="salinan_surat_sokongan" />
+                                                                <input type="file" id="actual-btn4" hidden name="salinan_surat_sokongan" />
                                                                 <!-- our custom upload button -->
-                                                                <label for="actual-btn2" class="upload-btn mt-0">Pilih Fail</label>
+                                                                <label for="actual-btn4" class="upload-btn mt-0">Pilih Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen2" class="mt-1">Tiada Fail Dipilih</span>
+                                                                <span id="file-chosen4" class="mt-1">Tiada Fail Dipilih</span>
                                                                 <br>
                                                             </div>
                                                         </div>
@@ -609,6 +609,24 @@
 
     actualBtn2.addEventListener('change', function() {
         fileChosen2.textContent = this.files[0].name
+    })
+</script>
+
+<script>
+    const actualBtn3 = document.getElementById('actual-btn3');
+    const fileChosen3 = document.getElementById('file-chosen3');
+
+    actualBtn3.addEventListener('change', function() {
+        fileChosen3.textContent = this.files[0].name
+    })
+</script>
+
+<script>
+    const actualBtn4 = document.getElementById('actual-btn4');
+    const fileChosen4 = document.getElementById('file-chosen4');
+
+    actualBtn4.addEventListener('change', function() {
+        fileChosen4.textContent = this.files[0].name
     })
 </script>
 

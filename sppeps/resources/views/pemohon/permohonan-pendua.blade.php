@@ -360,11 +360,11 @@
                                                         </div>
                                                         <div class="col">
                                                             <!-- actual upload which is hidden -->
-                                                            <input type="file" id="actual-btn" hidden name="salinan_laporan_polis" />
+                                                            <input type="file" id="actual-btn3" hidden name="salinan_laporan_polis" />
                                                             <!-- our custom upload button -->
-                                                            <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
+                                                            <label for="actual-btn3" class="upload-btn mt-0">Pilih Fail</label>
                                                             <!-- name of file chosen -->
-                                                            <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                                                            <span id="file-chosen3" class="mt-1">Tiada Fail Dipilih</span>
                                                             <br>
 
                                                         </div>
@@ -428,8 +428,6 @@
         </main>
     </div>
 
-
-
     <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/multistep-form.js" type="text/javascript"></script>
 
 </div>
@@ -449,6 +447,15 @@
 
     actualBtn2.addEventListener('change', function() {
         fileChosen2.textContent = this.files[0].name
+    })
+</script>
+
+<script>
+    const actualBtn3 = document.getElementById('actual-btn3');
+    const fileChosen3 = document.getElementById('file-chosen3');
+
+    actualBtn3.addEventListener('change', function() {
+        fileChosen3.textContent = this.files[0].name
     })
 </script>
 
