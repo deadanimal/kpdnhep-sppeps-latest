@@ -19,11 +19,11 @@
 
                 <div class="card-body p-3">
                     <div class="row p-3 mb-0">
-                        <form method="POST" action="">
+                        <form method="POST" action="/cari">
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <input class="form-control form-control-sm" type="text" name="search" placeholder="No Kad Pengenalan" />
+                                    <input class="form-control form-control-sm" type="text" name="no_kp" id="no_kp" placeholder="No Kad Pengenalan" />
                                 </div>
                                 <div class="col">
                                     <select class="form-control form-control-sm">
@@ -119,8 +119,10 @@
 <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js" type="text/javascript"></script>
 <script type="text/javascript">
     const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
-        searchable: false,
+        searchable: true,
         fixedHeight: true
     });
 </script>
+
+
 @stop

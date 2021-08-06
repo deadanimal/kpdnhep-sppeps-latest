@@ -15,7 +15,6 @@ class PermohonanController extends Controller
 
         if ($user_role == 'pegawai_negeri') {
             $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'hantar ke penyokong'])->get();
-            // $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'Permohonan Lengkap'])->get();
 
             return view('pegawai.negeri.negeri-tugasan-baru', [
                 'permohonan' => $permohonan
@@ -40,9 +39,9 @@ class PermohonanController extends Controller
 
         // $permohonan = Permohonan::where('status_permohonan', 'hantar')->get();
         //
-        return view('pegawai.negeri.negeri-tugasan-baru', [
-            'permohonan' => $permohonan
-        ]);
+        // return view('pegawai.negeri.negeri-tugasan-baru', [
+        //     'permohonan' => $permohonan
+        // ]);
     }
 
     public function create()
@@ -246,8 +245,21 @@ class PermohonanController extends Controller
     {
     }
 
-    public function cari()
+    public function cari(Request $request)
     {
+        // dd($request);
+        // $permohonan = Permohonan::all();
+        $permohonan = Permohonan::whereIn('status_permohonan', ['hantar'])->get();
+        
+        // $temp = $permohonan;
+        // for ($x = 0; $x <= count($temp); $x++){
+        //     if($temp[$x].jenis_permohonan == )
+        // }
+        // dd($permohonan);
+        return view('pegawai.negeri.negeri-tugasan-baru',[
+            'permohonan'=>$permohonan,
+        ]);
+
     }
 
     public function cetak()

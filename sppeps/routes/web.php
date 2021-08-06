@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\TugasanSelesaiController;
 
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
@@ -27,6 +27,10 @@ require __DIR__.'/auth.php';
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::resource('/permohonan', PermohonanController::class);
+
+Route::resource('/tugasan-selesai', TugasanSelesaiController::class);
+
+Route::post('/cari', [PermohonanController::class, 'cari']);
 
 
 //auth

@@ -1,4 +1,4 @@
-@extends('layouts.base-pegawai-hq')
+@extends('layouts.base-admin-hq')
 
 @section('content')
 
@@ -78,29 +78,10 @@
                         </div>
 
                         <div class="card-body p-3">
-                            <div class="row p-3 mb-0">
-                                <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                                    <label class="d-flex flex-nowrap mb-0">
-                                        <span class="pl-0 pt-2 pr-2">Papar </span>
-                                        <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
-                                            <option value="5">5</option>
-                                            <option value="10">10</option>
-                                            <option value="15">15</option>
-                                            <option value="-1">All</option>
-                                        </select>
-                                        <span class="p-2">rekod</span>
-                                    </label>
-                                </div>
-                                <!-- <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
-                                    <label class="col-form-label pr-2" for="search">Cari Rekod: </label>
-                                    <input class="col-6 form-control" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" />
-                                </div> -->
-                            </div>
-
 
                             <div class="card">
                                 <div class="table-responsive">
-                                    <table class="table align-items-center mb-0">
+                                    <table class="table align-items-center mb-0 table-flush" id="datatable-basic">
                                         <thead>
                                             <tr>
                                                 <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
@@ -115,34 +96,42 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- <tr>
+
+                                            @foreach ($permohonan as $permohonan)
+                                            <tr>
                                                 <td>
                                                     <span class="text-secondary text-sm font-weight-bold">1</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                                    <span class="text-secondary text-sm font-weight-bold">{{$permohonan->updated_at}}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
+                                                    <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->jenis_permohonan}}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                    <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->nama}}</span>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                    <span class="text-secondary text-sm font-weight-bold">{{$permohonan->no_kp}}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                                    <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->negeri}}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-success"> Telah Disemak</span>
+                                                    <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->catatan_pegawai_hq}}</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    @if ($permohonan->catatan_pegawai_hq)
+                                                    <span class="badge badge-success"> Telah Dihantar ke PDRM</span>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <a href="">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </td>
-                                            </tr> -->
+                                            </tr>
+                                            @endforeach
+
                                             <tr>
                                                 <td>
                                                     <span class="text-secondary text-sm font-weight-bold">1</span>
@@ -282,4 +271,12 @@
 
 
 </div>
+<script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js" type="text/javascript"></script>
+<script type="text/javascript">
+    const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+        searchable: false,
+        fixedHeight: true
+    });
+</script>
+
 @stop

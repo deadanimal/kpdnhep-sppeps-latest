@@ -38,7 +38,6 @@
                             <div class="form-group mt-3">
                                 <label for="ic">No. Kad Pengenalan</label>
                                 <div class="input-group mb-4">
-
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="ic">
                                 </div>
@@ -79,7 +78,7 @@
                 </div>
                 <div class="tab-pane text-center" id="code-tabs-simple">
 
-                    <form method="POST" action="">
+                    <form method="POST" action="/login">
                         @csrf
                         <div class="container mt-4">
                             <div class="form-group row">
@@ -91,6 +90,13 @@
 
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="ic">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="ic">E-mel</label>
+                                <div class="input-group mb-4">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input class="form-control" placeholder="email temp" type="email" name="email">
                                 </div>
                             </div>
                             <div class="form-group mt-3">
