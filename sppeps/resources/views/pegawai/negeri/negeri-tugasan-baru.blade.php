@@ -26,16 +26,17 @@
                                     <input class="form-control form-control-sm" type="text" name="no_kp" id="no_kp" placeholder="No Kad Pengenalan" />
                                 </div>
                                 <div class="col">
-                                    <select class="form-control form-control-sm">
-                                        <option>Pilih Jenis Permohonan</option>
-                                        <option>Permohonan Baharu</option>
-                                        <option>Permohonan Pembaharuan</option>
-                                        <option>Permohonan Pendua</option>
-                                        <option>Permohonan Rayuan</option>
+                                    <select class="form-control form-control-sm" name="jenis_permohonan">
+                                        <option value="null">Pilih Jenis Permohonan</option>
+                                        <option value="Baharu">Permohonan Baharu</option>
+                                        <option value="Pembaharuan">Permohonan Pembaharuan</option>
+                                        <option value="Pendua">Permohonan Pendua</option>
+                                        <option value="Rayuan">Permohonan Rayuan</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <button class="btn btn-sm btn-info text-uppercases text-white" type="submit" name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                    <a href="/permohonan" class="btn btn-sm btn-danger">Set Semula</a>
                                 </div>
                             </div>
                         </form>
@@ -106,20 +107,17 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js" type="text/javascript"></script>
 <script type="text/javascript">
     const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
-        searchable: true,
+        searchable: false,
         fixedHeight: true
     });
 </script>

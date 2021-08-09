@@ -613,10 +613,30 @@
 
                                 <input type="hidden" name="jenis_tindakan" value="permohonan_baru_pembaharuan">
 
+                                <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p>Pengesahan semakan permohonan anda akan dihantar.</p>
+                                                <p>Adakah anda pasti mahu menghantar?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">BATAL</button>
+                                                <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="p-3 d-flex justify-content-center">
                                     <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
-
-                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
+                                    <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
                                 </div>
                             </div>
                         </div>
@@ -661,10 +681,31 @@
 
                                 <input type="hidden" name="jenis_tindakan" value="permohonan_pendua_rayuan">
 
+                                <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p>Pengesahan semakan permohonan anda akan dihantar.</p>
+                                                <p>Adakah anda pasti mahu menghantar?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">BATAL</button>
+                                                <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="p-3 d-flex justify-content-center">
                                     <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
-
-                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
+                                    <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-2">HANTAR</button>
+                                    <!-- <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button> -->
                                 </div>
                             </div>
                         </div>
@@ -703,14 +744,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <input type="hidden" name="tindakan" value="hantar ke penyokong">
                                 <input type="hidden" name="jenis_tindakan" value="hantar_ke_penyokong">
 
+                                <div class="modal fade" id="modal-3" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p>Permohonan akan dihantar ke penyokong</p>
+                                                <p>Adakah anda pasti mahu menghantar?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">BATAL</button>
+                                                <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="p-3 d-flex justify-content-center">
                                     <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
-
-                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR ke penyokong</button>
+                                    <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-3">HANTAR ke penyokong</button>
+                                    <!-- <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR ke penyokong</button> -->
                                 </div>
                             </div>
                         </div>
@@ -718,7 +780,7 @@
                 </div>
             </div>
 
-            @elseif ($permohonan->status_permohonan === 'Disokong')
+            @elseif ($permohonan->status_permohonan === 'Disokong' || $permohonan->status_permohonan === 'Tidak Disokong')
 
             <div class="card card-frame">
 
@@ -763,7 +825,7 @@
                                         <div class="col-sm-5">
                                             <select id="action" class="form-control" name="tindakan">
                                                 <option selected>Sila Pilih</option>
-                                                <option value="Telah Diluluskan">Diluluskan</option>
+                                                <option value="Diluluskan">Diluluskan</option>
                                                 <option value="Tidak Diluluskan">Tidak Diluluskan</option>
                                             </select>
                                         </div>
@@ -781,11 +843,31 @@
                                     </div>
                                 </div>
 
+                                <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p>Pengesahan permohonan akan dihantar.</p>
+                                                <p>Adakah anda pasti mahu menghantar?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">BATAL</button>
+                                                <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="p-3 d-flex justify-content-center">
                                     <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
-
-                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
+                                    <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
+                                    <!-- <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button> -->
                                 </div>
                             </div>
                         </div>
@@ -803,5 +885,11 @@
 </div>
 
 
+<script>
+    function tekan() {
+        console.log('mael hensem');
+        soft.showSwal('basic');
+    }
+</script>
 
 @stop

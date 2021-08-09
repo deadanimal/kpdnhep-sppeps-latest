@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TugasanSelesaiController;
-
+use App\Http\Controllers\BorangPermohonan;
+use App\Http\Controllers\SenaraiHitamController;
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
 // })->middleware(['auth'])->name('dashboard');\
@@ -31,6 +32,17 @@ Route::resource('/permohonan', PermohonanController::class);
 Route::resource('/tugasan-selesai', TugasanSelesaiController::class);
 
 Route::post('/cari', [PermohonanController::class, 'cari']);
+
+Route::post('/cari-tugasan-selesai', [TugasanSelesaiController::class, 'cari']);
+
+Route::post('/borang', [BorangPermohonan::class, 'borang']);
+
+Route::resource('/senarai-hitam', SenaraiHitamController::class);
+
+Route::get('/tambah-senarai-hitam', [SenaraiHitamController::class, 'senaraiDiluluskan']);
+
+Route::get('/cari-pemohon', [SenaraiHitamController::class, 'cariSenaraiDiluluskan']);
+
 
 
 //auth

@@ -100,16 +100,16 @@
 
                 <div class="card-body p-3">
                     <div class="row p-3 mb-0">
-                        <form method="POST" action="">
+                        <form method="POST" action="/cari">
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <input class="form-control form-control-sm" type="text" name="search" placeholder="No Kad Pengenalan" />
+                                    <input class="form-control form-control-sm" type="text" name="no_kp" placeholder="No Kad Pengenalan" />
                                 </div>
 
                                 <div class="col">
-                                    <select class="form-control form-control-sm" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
-                                        <option selected>--Pilih Negeri--</option>
+                                    <select class="form-control form-control-sm" name="negeri">
+                                        <option value="null">--Pilih Negeri--</option>
                                         <option value="Perlis">Perlis</option>
                                         <option value="Kedah">Kedah</option>
                                         <option value="Pulau Pinang">Pulau Pinang</option>
@@ -129,7 +129,7 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-sm btn-info text-uppercases text-white" type="submit" name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                    <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
                                 </div>
                             </div>
                         </form>

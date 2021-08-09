@@ -588,13 +588,21 @@
                         <div class="d-flex justify-content-center flex-wrap" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 100%;">
 
                             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
-
+                                @if ($errors->any())
+                                <div class="alert alert-warning text-sm text-start">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                                 <div class="d-flex flex-nowrap">
                                     <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                         <label for="action" class="col-sm-3 ">Tindakan</label>
                                         <div class="col-sm-5">
-                                            <select id="action" class="form-control" name="tindakan">
-                                                <option selected>--Sila Pilih--</option>
+                                            <select id="action" class="form-control" name="tindakan" required>
+                                                <option >--Sila Pilih--</option>
                                                 <option value="Permohonan Lengkap">Permohonan Lengkap</option>
                                                 <option value="Permohonan Tidak Lengkap">Permohonan Tidak Lengkap
                                                 </option>
@@ -612,10 +620,30 @@
                                     </div>
                                 </div>
 
+                                <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p>Pengesahan permohonan akan dihantar.</p>
+                                                <p>Adakah anda pasti mahu menghantar?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="p-3 d-flex justify-content-center">
                                     <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
-
-                                    <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
+                                    <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
                                 </div>
                             </div>
                         </div>
@@ -678,11 +706,38 @@
                                     </div>
                                 </div>
 
+                                <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p>Permohonan akan dihantar ke penyokong</p>
+                                                <p>Adakah anda pasti mahu menghantar?</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">BATAL</button>
+                                                <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="p-3 d-flex justify-content-center">
+                                    <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
+                                    <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
+                                    <!-- <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button> -->
+                                </div>
+
+                                <!-- <div class="p-3 d-flex justify-content-center">
                                     <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1" value="">BATAL</a>
 
                                     <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </form>

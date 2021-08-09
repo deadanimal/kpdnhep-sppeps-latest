@@ -21,16 +21,16 @@
 
                         <div class="card-body p-3">
                             <div class="row p-3 mb-0">
-                                <form method="POST" action="">
+                                <form method="POST" action="/cari-tugasan-selesai">
                                     @csrf
                                     <div class="row">
                                         <div class="col">
-                                            <input class="form-control form-control-sm" type="text" name="search" placeholder="No Kad Pengenalan" />
+                                            <input class="form-control form-control-sm" type="text" name="no_kp" placeholder="No Kad Pengenalan" />
                                         </div>
 
                                         <div class="col">
-                                            <select class="form-control form-control-sm" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
-                                                <option selected>--Pilih Negeri--</option>
+                                            <select class="form-control form-control-sm" name="negeri">
+                                                <option value="null">--Pilih Negeri--</option>
                                                 <option value="Perlis">Perlis</option>
                                                 <option value="Kedah">Kedah</option>
                                                 <option value="Pulau Pinang">Pulau Pinang</option>
@@ -51,16 +51,17 @@
                                         </div>
 
                                         <div class="col">
-                                            <select class="form-control form-control-sm">
-                                                <option>Pilih Jenis Permohonan</option>
-                                                <option>Permohonan Baharu</option>
-                                                <option>Permohonan Pembaharuan</option>
-                                                <option>Permohonan Pendua</option>
-                                                <option>Permohonan Rayuan</option>
+                                            <select class="form-control form-control-sm" name="jenis_permohonan">
+                                                <option value="null">Pilih Jenis Permohonan</option>
+                                                <option value="Baharu">Permohonan Baharu</option>
+                                                <option value="Pembaharuan">Permohonan Pembaharuan</option>
+                                                <option value="Pendua">Permohonan Pendua</option>
+                                                <option value="Rayuan">Permohonan Rayuan</option>
                                             </select>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-sm btn-info text-uppercases text-white" type="submit" name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                            <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                            <a href="/tugasan-selesai" class="btn btn-sm btn-danger">Set Semula</a>
                                         </div>
                                     </div>
                                 </form>
@@ -90,9 +91,10 @@
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NAMA PEMOHON</th>
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th>
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NEGERI</th>
-                                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Catatan</th>
+                                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Catatan hq</th>
+                                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Catatan Kelulusan</th>
                                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">Status</th>
-                                                <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th>
+                                                <!-- <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -121,18 +123,28 @@
                                                     <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->catatan_pegawai_hq}}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    @if ($permohonan->catatan_pegawai_hq)
-                                                    <span class="badge badge-success"> Telah Dihantar ke PDRM</span>
+                                                    <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->catatan_pelulus}}</span>
                                                 </td>
-                                                <td class="align-middle text-center">
+                                                <td class="align-middle text-center text-sm">
+                                                    @if ($permohonan->status_permohonan === 'hantar ke pdrm')
+                                                    <span class="badge badge-success"> Telah Dihantar ke PDRM</span>
+                                                    @elseif ($permohonan->status_permohonan === 'Diluluskan')
+                                                    <span class="badge badge-success"> Diluluskan</span>
+                                                    @elseif ($permohonan->status_permohonan === 'Tidak Diluluskan')
+                                                    <span class="badge badge-danger">Tidak Diluluskan</span>
+                                                    @elseif ($permohonan->status_permohonan === 'hantar ke penyokong')
+                                                    <span class="badge badge-success">Telah Dihantar Ke Penyokong</span>
+                                                    @endif
+                                                </td>
+                                                <!-- <td class="align-middle text-center">
                                                     <a href="">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                </td>
+                                                </td> -->
                                             </tr>
                                             @endforeach
 
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>
                                                     <span class="text-secondary text-sm font-weight-bold">1</span>
                                                 </td>
@@ -162,8 +174,8 @@
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </td>
-                                            </tr>
-                                            <tr>
+                                            </tr> -->
+                                            <!-- <tr>
                                                 <td>
                                                     <span class="text-secondary text-sm font-weight-bold">1</span>
                                                 </td>
@@ -256,7 +268,7 @@
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>

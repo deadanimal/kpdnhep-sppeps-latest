@@ -130,7 +130,7 @@
       <!-- id="navbarBlur" -->
       <div class="container-fluid py-1 px-3">
 
-        <a href="#" class="text-white">
+        <a href="/dashboard" class="text-white">
           <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
         </a>
 

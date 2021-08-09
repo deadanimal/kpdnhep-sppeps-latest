@@ -402,7 +402,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/hq-senarai-hitam">
+                    <a class="nav-link" href="/senarai-hitam">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>credit-card</title>
@@ -446,7 +446,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/pdrm-tugasan-selesai">
+                    <a class="nav-link" href="/tugasan-selesai">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>credit-card</title>
@@ -1028,6 +1028,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+    <script src="../../assets/js/plugins/sweetalert.min.js"></script>
 </body>
 
 </html>

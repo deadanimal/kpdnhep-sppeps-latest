@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permohonan;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewPermohonan;
+use App\Mail\PermohonanTidakLengkap;
+use App\Mail\KelulusanPermohonan;
+use League\CommonMark\Node\Inline\Newline;
 
 class PermohonanController extends Controller
 {
@@ -12,6 +18,7 @@ class PermohonanController extends Controller
 
         $user = $request->user();
         $user_role = $user->role;
+        $user_id = $user->id;
 
         if ($user_role == 'pegawai_negeri') {
             $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'hantar ke penyokong'])->get();
@@ -20,7 +27,7 @@ class PermohonanController extends Controller
                 'permohonan' => $permohonan
             ]);
         } else if ($user_role == 'pegawai_hq') {
-            $permohonan = Permohonan::whereIn('status_permohonan', ['Permohonan Lengkap', 'disemak pdrm','Disokong'])->get();
+            $permohonan = Permohonan::whereIn('status_permohonan', ['Permohonan Lengkap', 'disemak pdrm', 'Disokong', 'Tidak Disokong'])->get();
 
             return view('pegawai.hq.hq-tugasan-baru', [
                 'permohonan' => $permohonan
@@ -34,14 +41,12 @@ class PermohonanController extends Controller
             ]);
         } else if ($user_role == 'pentadbir') {
             $permohonan = Permohonan::where('status_permohonan', 'disemak')->get();
+        } else if ($user_role == 'pemohon') {
+            $permohonan = Permohonan::where('user_id', $user_id)->get();
+            return view('pemohon.status-permohonan', [
+                'permohonan' => $permohonan
+            ]);
         }
-
-
-        // $permohonan = Permohonan::where('status_permohonan', 'hantar')->get();
-        //
-        // return view('pegawai.negeri.negeri-tugasan-baru', [
-        //     'permohonan' => $permohonan
-        // ]);
     }
 
     public function create()
@@ -51,14 +56,39 @@ class PermohonanController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->jantina);
+
+        // $p_negeri = User::where('role', 'pegawai_negeri')->get();
+
+        // dd($p_negeri);
+        // dd($request->input('lesen_memandu'));
+
+        if ($request->status == 'HANTAR') {
+            $validated = $request->validate([
+                'no_telefon' => 'required',
+                'emel' => 'required',
+                'alamat1' => 'required',
+                'alamat2' => 'required',
+                'alamat3' => 'required',
+                'poskod' => 'required',
+                'negeri' => 'required',
+                'negeri_kutipan_permit' => 'required',
+            ]);
+        }
+
+        $user = $request->user();
+        $user_id = $user->id;
+
         $permohonan = new Permohonan;
 
-        $permohonan->jenis_permohonan = $request->jenis_permohonan;
-        // $permohonan->status_permohonan = $request->status_permohonan;
-        $permohonan->status_permohonan = 'hantar';
+        $permohonan->user_id = $user_id;
 
-        // $permohonan->gambar_profil = $request->gambar_profil;
+        $permohonan->jenis_permohonan = $request->jenis_permohonan;
+        if ($request->status == 'SIMPAN') {
+            $permohonan->status_permohonan = 'simpan';
+        } elseif ($request->status == 'HANTAR') {
+            $permohonan->status_permohonan = 'hantar';
+        }
+
         $permohonan->nama = $request->nama;
         $permohonan->no_kp = $request->no_kp;
         $permohonan->jantina = $request->jantina;
@@ -74,16 +104,45 @@ class PermohonanController extends Controller
 
         if ($request->jenis_permohonan == 'Baharu') {
 
+            if ($request->status == 'HANTAR') {
+                $validated = $request->validate([
+                    'jantina' => 'required',
+                    'pekerjaan_sekarang' => 'required',
+                    'tahap_pendidikan' => 'required',
+                    'lesen_memandu' => 'required',
+                    'berkerja_panel_atau_syarikat' => 'required',
+                    'skop_tugas' => 'required',
+                    'prosedur_peraturan_eps' => 'required',
+                ]);
+
+                if ($request->berkerja_panel_atau_syarikat == 'Ya') {
+                    $validated = $request->validate([
+                        'nama_institusi_kewangan' => 'required',
+                        'no_telefon_institusi_kewangan' => 'required',
+                    ]);
+                } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
+                    $validated = $request->validate([
+                        'nama_panel' => 'required',
+                        'no_kp_panel' => 'required',
+                        'no_permit_panel' => 'required',
+                        'no_telefon_panel' => 'required',
+                    ]);
+                }
+            }
+
             $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-            $permohonan->lesen_memandu = $request->lesen_memandu;
+            $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
             $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
+
             $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
             $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
+
             $permohonan->nama_panel = $request->nama_panel;
             $permohonan->no_kp_panel = $request->no_kp_panel;
             $permohonan->no_permit_panel = $request->no_permit_panel;
             $permohonan->no_telefon_panel = $request->no_telefon_panel;
+
             $permohonan->skop_tugas = $request->skop_tugas;
             $permohonan->prosedur_peraturan_eps = $request->prosedur_peraturan_eps;
 
@@ -92,13 +151,53 @@ class PermohonanController extends Controller
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
         } else if ($request->jenis_permohonan == 'Pembaharuan') {
 
+            if ($request->status == 'HANTAR') {
+                $validated = $request->validate([
+                    'status_pekerjaan_eps' => 'required',
+                    'tahap_pendidikan' => 'required',
+                    'lesen_memandu' => 'required',
+                    'berkerja_panel_atau_syarikat' => 'required',
+                    'kehadiran_kursus_eps' => 'required',
+                ]);
+
+                if ($request->status_pekerjaan_eps == 'sepenuh masa') {
+                    $validated = $request->validate([
+                        'tahun_pekerjaan_eps' => 'required',
+                    ]);
+                } elseif ($request->status_pekerjaan_eps == 'pekerjaan sampingan') {
+                    $validated = $request->validate([
+                        'pekerjaan_tetap' => 'required',
+                    ]);
+                }
+
+                if ($request->berkerja_panel_atau_syarikat == 'Ya') {
+                    $validated = $request->validate([
+                        'nama_institusi_kewangan' => 'required',
+                        'no_telefon_institusi_kewangan' => 'required',
+                    ]);
+                } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
+                    $validated = $request->validate([
+                        'nama_panel' => 'required',
+                        'no_kp_panel' => 'required',
+                        'no_permit_panel' => 'required',
+                        'no_telefon_panel' => 'required',
+                    ]);
+                }
+
+                if ($request->kehadiran_kursus_eps == 'Ya') {
+                    $validated = $request->validate([
+                        'tahun_dihadiri' => 'required',
+                    ]);
+                }
+            }
+
             $permohonan->no_permit = $request->no_permit;
 
             $permohonan->status_pekerjaan_eps = $request->status_pekerjaan_eps;
             $permohonan->tahun_pekerjaan_eps = $request->tahun_pekerjaan_eps;
             $permohonan->pekerjaan_tetap = $request->pekerjaan_tetap;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-            $permohonan->lesen_memandu = $request->lesen_memandu;
+            $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
             $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
             $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
             $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
@@ -115,6 +214,20 @@ class PermohonanController extends Controller
             $permohonan->salinan_surat_sokongan = $request->salinan_surat_sokongan;
         } else if ($request->jenis_permohonan == 'Pendua') {
 
+            if ($request->status == 'HANTAR') {
+                $validated = $request->validate([
+                    'alasan_kehilangan' => 'required',
+                    'penggantian_kali_ke' => 'required',
+                    'negeri_laporan_polis' => 'required',
+                    'no_laporan_polis' => 'required',
+                ]);
+                if ($request->alasan_kehilangan == 'Lain-lain') {
+                    $validated = $request->validate([
+                        'alasan_lain' => 'required',
+                    ]);
+                }
+            }
+
             $permohonan->no_permit = $request->no_permit;
 
             $permohonan->alasan_kehilangan = $request->alasan_kehilangan;
@@ -127,6 +240,19 @@ class PermohonanController extends Controller
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_laporan_polis = $request->salinan_laporan_polis;
         } else if ($request->jenis_permohonan == 'Rayuan') {
+
+            if ($request->status == 'HANTAR') {
+                $validated = $request->validate([
+                    'sebab_permohonan_ditolak' => 'required',
+                    'rayuan_kali_ke' => 'required',
+                    'alasan_rayuan' => 'required',
+                ]);
+                if ($request->sebab_permohonan_ditolak == 'Sebab-sebab Lain') {
+                    $validated = $request->validate([
+                        'sebab_lain' => 'required',
+                    ]);
+                }
+            }
 
             $permohonan->no_permit = $request->no_permit;
 
@@ -144,10 +270,13 @@ class PermohonanController extends Controller
             $permohonan->salinan_dokumen_sokongan3 = $request->salinan_dokumen_sokongan3;
         }
 
-
         $permohonan->save();
+        $penerimas_emails = User::where('role', 'pegawai_negeri')->get();
+        foreach ($penerimas_emails as $recipient) {
+            Mail::to($recipient->email)->send(new NewPermohonan($permohonan));
+        }
 
-        return redirect('/dashboard-pemohon');
+        return redirect('/dashboard');
     }
 
     public function show(Permohonan $permohonan, Request $request)
@@ -171,57 +300,73 @@ class PermohonanController extends Controller
                 'permohonan' => $permohonan
             ]);
         }
+        if ($user_role == 'pemohon') {
+            if ($permohonan->jenis_permohonan == "Baharu") {
+                return view('pemohon.kemaskini-baru', [
+                    'permohonan' => $permohonan
+                ]);
+            }
+        }
     }
 
     public function edit(Permohonan $permohonan)
     {
-        //$catalog->nama = $request->nama;
-
+        //
     }
 
     public function update(Request $request, Permohonan $permohonan)
     {
-        // dd($request);
-
+        // dd($permohonan);
         $user = $request->user();
         $user_role = $user->role;
 
         if ($user_role == 'pegawai_negeri') {
-
             if ($request->tindakan == "Permohonan Lengkap" || $request->tindakan == "Permohonan Tidak Lengkap") {
                 $permohonan->status_permohonan = $request->tindakan;
                 $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
-            }
-            else {
+
+                if ($request->tindakan == "Permohonan Tidak Lengkap") {
+                    $penerimas_emails = User::where('id', $permohonan->user_id)->get();
+                    // dd($penerimas_emails);
+                    foreach ($penerimas_emails as $recipient) {
+                        Mail::to($recipient->email)->send(new PermohonanTidakLengkap($permohonan));
+                    }
+                }
+            } else {
                 $permohonan->sokongan = $request->tindakan;
                 $permohonan->status_permohonan = $request->tindakan;
                 $permohonan->tempoh_kelulusan = $request->tempoh_kelulusan;
                 $permohonan->catatan_penyokong = $request->catatan_penyokong;
             }
-        } 
-
-        else if ($user_role == 'pegawai_hq') {
-            if ($request->jenis_tindakan == "permohonan_baru_pembaharuan"){
+        } else if ($user_role == 'pegawai_hq') {
+            if ($request->jenis_tindakan == "permohonan_baru_pembaharuan") {
                 if ($request->tindakan == "Hantar Permohonan kepada Badan Agensi (PDRM)") {
                     $permohonan->status_permohonan = "hantar ke pdrm";
                     $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
                 }
+            } else if ($request->jenis_tindakan == "permohonan_pendua_rayuan") {
+                $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
 
+
+                $penerimas_emails = User::where('id', $permohonan->user_id)->get();
+                // dd($penerimas_emails);
+                foreach ($penerimas_emails as $recipient) {
+                    Mail::to($recipient->email)->send(new KelulusanPermohonan($permohonan));
+                }
+            } else if ($request->jenis_tindakan == "hantar_ke_penyokong") {
+                $permohonan->status_permohonan = $request->tindakan;
+            } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
+                $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->catatan_pelulus = $request->catatan_pelulus;
+
+                $penerimas_emails = User::where('id', $permohonan->user_id)->get();
+                // dd($penerimas_emails);
+                foreach ($penerimas_emails as $recipient) {
+                    Mail::to($recipient->email)->send(new KelulusanPermohonan($permohonan));
+                }
             }
-            else if ($request->jenis_tindakan == "permohonan_pendua_rayuan"){
-                    $permohonan->status_permohonan = $request->tindakan;
-                    $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;      
-            }
-            else if ($request->jenis_tindakan == "hantar_ke_penyokong"){
-                    $permohonan->status_permohonan = $request->tindakan;              
-            }
-            else if ($request->jenis_tindakan == "kelulusan_permohonan"){
-                $permohonan->status_permohonan = $request->tindakan;  
-                $permohonan->catatan_pelulus = $request->catatan_pelulus;  
-            }            
-        } 
-        
-        else if ($user_role == 'pegawai_pdrm') {
+        } else if ($user_role == 'pegawai_pdrm') {
             if ($request->tindakan == "Dalam Proses") {
                 $permohonan->status_permohonan = $request->tindakan;
             } else {
@@ -233,7 +378,7 @@ class PermohonanController extends Controller
 
         $permohonan->save();
 
-        return redirect('/permohonan');
+        return redirect('/tugasan-selesai');
     }
 
     public function destroy(Permohonan $permohonan)
@@ -248,18 +393,141 @@ class PermohonanController extends Controller
     public function cari(Request $request)
     {
         // dd($request);
-        // $permohonan = Permohonan::all();
-        $permohonan = Permohonan::whereIn('status_permohonan', ['hantar'])->get();
-        
-        // $temp = $permohonan;
-        // for ($x = 0; $x <= count($temp); $x++){
-        //     if($temp[$x].jenis_permohonan == )
-        // }
-        // dd($permohonan);
-        return view('pegawai.negeri.negeri-tugasan-baru',[
-            'permohonan'=>$permohonan,
-        ]);
+        $user = $request->user();
+        $user_role = $user->role;
 
+        if ($user_role == 'pegawai_negeri') {
+            if ($request->no_kp != null && $request->jenis_permohonan == "null") {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp],
+                    ['status_permohonan', '=', 'hantar']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp],
+                    ['status_permohonan', '=', 'hantar ke penyokong'],
+                ])->get();
+            } else if ($request->no_kp == null && $request->jenis_permohonan != "null") {
+                $permohonans = Permohonan::where([
+                    ['jenis_permohonan', '=', $request->jenis_permohonan],
+                    ['status_permohonan', '=', 'hantar']
+                ])->orWhere([
+                    ['jenis_permohonan', '=', $request->jenis_permohonan],
+                    ['status_permohonan', '=', 'hantar ke penyokong'],
+                ])->get();
+            } else {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp],
+                    ['jenis_permohonan', '=', $request->jenis_permohonan],
+                    ['status_permohonan', '=', 'hantar']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp],
+                    ['jenis_permohonan', '=', $request->jenis_permohonan],
+                    ['status_permohonan', '=', 'hantar ke penyokong'],
+                ])->get();
+            }
+            return view('pegawai.negeri.negeri-tugasan-baru', [
+                'permohonan' => $permohonans,
+            ]);
+        } else if ($user_role == 'pegawai_hq') {
+            if ($request->no_kp == null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+                $permohonans = Permohonan::where([
+                    ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+                $permohonans = Permohonan::where([
+                    ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan != "null") {
+                $permohonans = Permohonan::where([
+                    ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan == "null") {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            } else if ($request->no_kp != null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            } else {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Permohonan Lengkap']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Disokong'],
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'Tidak Disokong'],
+                ])->get();
+            }
+            return view('pegawai.hq.hq-tugasan-baru', [
+                'permohonan' => $permohonans,
+            ]);
+        } else if ($user_role == 'pegawai_pdrm') {
+            // dd($request);
+
+            if ($request->no_kp != null && $request->negeri == "null") {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'hantar ke pdrm']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'Dalam Proses'],
+                ])->get();
+            } else if ($request->no_kp == null && $request->negeri != "null") {
+                $permohonans = Permohonan::where([
+                    ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'hantar ke pdrm']
+                ])->orWhere([
+                    ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Dalam Proses'],
+                ])->get();
+            } else {
+                $permohonans = Permohonan::where([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'hantar ke pdrm']
+                ])->orWhere([
+                    ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Dalam Proses'],
+                ])->get();
+            }
+            return view('pegawai.hq.hq-tugasan-baru', [
+                'permohonan' => $permohonans,
+            ]);
+        }
     }
 
     public function cetak()
@@ -268,5 +536,11 @@ class PermohonanController extends Controller
 
     public function tetap_semula()
     {
+    }
+
+
+    public function borang(Request $request)
+    {
+        dd($request);
     }
 }

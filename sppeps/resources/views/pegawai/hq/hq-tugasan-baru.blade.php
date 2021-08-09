@@ -19,16 +19,16 @@
 
                 <div class="card-body p-3">
                     <div class="row p-3 mb-0">
-                        <form method="POST" action="">
+                        <form method="POST" action="/cari">
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <input class="form-control form-control-sm" type="text" name="search" placeholder="No Kad Pengenalan" />
+                                    <input class="form-control form-control-sm" type="text" name="no_kp" placeholder="No Kad Pengenalan" />
                                 </div>
 
                                 <div class="col">
-                                    <select class="form-control form-control-sm" aria-label="Default select example" name="negeri" [(ngModel)]="negeriori">
-                                        <option selected>--Pilih Negeri--</option>
+                                    <select class="form-control form-control-sm" name="negeri">
+                                        <option value="null">--Pilih Negeri--</option>
                                         <option value="Perlis">Perlis</option>
                                         <option value="Kedah">Kedah</option>
                                         <option value="Pulau Pinang">Pulau Pinang</option>
@@ -49,16 +49,17 @@
                                 </div>
 
                                 <div class="col">
-                                    <select class="form-control form-control-sm">
-                                        <option>Pilih Jenis Permohonan</option>
-                                        <option>Permohonan Baharu</option>
-                                        <option>Permohonan Pembaharuan</option>
-                                        <option>Permohonan Pendua</option>
-                                        <option>Permohonan Rayuan</option>
+                                    <select class="form-control form-control-sm" name="jenis_permohonan">
+                                        <option value="null">Pilih Jenis Permohonan</option>
+                                        <option value="Baharu">Permohonan Baharu</option>
+                                        <option value="Pembaharuan">Permohonan Pembaharuan</option>
+                                        <option value="Pendua">Permohonan Pendua</option>
+                                        <option value="Rayuan">Permohonan Rayuan</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-sm btn-info text-uppercases text-white" type="submit" name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                    <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                    <a href="/permohonan" class="btn btn-sm btn-danger">Set Semula</a>
                                 </div>
                             </div>
                         </form>
@@ -277,6 +278,8 @@
                                             <span class="badge badge-danger"> Belum Disemak</span>
                                             @elseif ($permohonan->status_permohonan === 'disemak pdrm')
                                             <span class="badge badge-success"> Telah Disemak PDRM</span>
+                                            @elseif ($permohonan->status_permohonan === 'Disokong' || $permohonan->status_permohonan === 'Tidak Disokong')
+                                            <span class="badge badge-warning"> Dalam Pertimbangan</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">

@@ -93,91 +93,91 @@
                                 </div>
 
                                 @if ($permohonan->jenis_permohonan === 'Baharu')
-                            <div class="d-flex flex-nowrap">
-                                <div class="col form-group pr-0">
-                                    <label><strong>Lampiran Dokumen</strong></label>
-                                    <ol>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col form-group pr-0">
+                                        <label><strong>Lampiran Dokumen</strong></label>
+                                        <ol>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Lesen Memandu</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Salinan Lesen Memandu</label> </li>
-                                            </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
-                                            </div>
-                                        </div>
 
-                                    </ol>
+                                        </ol>
+                                    </div>
                                 </div>
-                            </div>
 
-                            @elseif ($permohonan->jenis_permohonan === 'Pembaharuan')
+                                @elseif ($permohonan->jenis_permohonan === 'Pembaharuan')
 
-                            <div class="d-flex flex-nowrap">
-                                <div class="col form-group pr-0">
-                                    <label><strong>Lampiran Dokumen</strong></label>
-                                    <ol>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="col form-group pr-0">
+                                        <label><strong>Lampiran Dokumen</strong></label>
+                                        <ol>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Salinan Lesen Memandu</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <li><label>Surat Sokongan (Bank/Syarikat Sewa Beli)</label> </li>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
+                                                        Lampiran</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Salinan Lesen Memandu</label> </li>
-                                            </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <li><label>Surat Sokongan (Bank/Syarikat Sewa Beli)</label> </li>
-                                            </div>
-                                            <div class="col">
-                                                <button class="btn btn-sm text-white" style="background-color: #1d1da1;" (click)="display()"><i class="fas fa-file-alt"></i> Lihat
-                                                    Lampiran</button>
-                                            </div>
-                                        </div>
 
-                                    </ol>
+                                        </ol>
+                                    </div>
                                 </div>
+                                @endif
                             </div>
-                            @endif
-                            </div>
-                            
+
 
                             <!-- <div class="p-3 d-flex justify-content-center">
                                 <input type="button" class="btn text-uppercase" style="background-color: #1d1da1; border-radius:25px" value="Semak" (click)="toggle()">
@@ -226,11 +226,38 @@
                                 </div>
                             </div>
 
+                            <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <p>Pengesahan permohonan akan dihantar.</p>
+                                            <p>Adakah anda pasti mahu menghantar?</p>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">BATAL</button>
+                                            <button type="submit" class="btn btn-success text-uppercase ml-auto" value="HANTAR">HANTAR</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="p-3 d-flex justify-content-center">
-                                <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1" >BATAL</a>
+                                <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
+                                <button type="button" class="btn btn-success text-uppercase m-1" data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
+                                <!-- <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button> -->
+                            </div>
+
+                            <!-- <div class="p-3 d-flex justify-content-center">
+                                <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1">BATAL</a>
 
                                 <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
-                            </div>
+                            </div> -->
                         </div>
 
                     </form>

@@ -1,4 +1,4 @@
-@extends('layouts.base-pemohon')
+@extends('layouts.baseUser')
 
 @section('content')
 
@@ -27,34 +27,56 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($permohonan as $permohonan)
                         <tr>
                             <td>
                                 <span class="text-secondary text-sm font-weight-bold">1</span>
                             </td>
                             <td>
-                                <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                <span class="text-secondary text-sm font-weight-bold">{{$permohonan->created_at}}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
+                                <span class="text-secondary text-sm font-weight-bold">{{$permohonan->jenis_permohonan}}</span>
                             </td>
                             <td class="align-middle text-center">
-                                <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                <span class="text-secondary text-sm font-weight-bold">{{$permohonan->no_kp}}</span>
                             </td>
                             <td class="align-middle text-center">
+                                @if ($permohonan->status_permohonan === 'simpan')
+                                <span class="text-secondary text-sm font-weight-bold">
+                                    <span class="badge badge-warning">Draf</span>
+                                </span>
+                                @elseif ($permohonan->status_permohonan === 'Diluluskan')
+                                <span class="text-secondary text-sm font-weight-bold">
+                                    <span class="badge badge-success">Diluluskan</span>
+                                </span>
+                                @elseif ($permohonan->status_permohonan === 'Tidak Diluluskan')
+                                <span class="text-secondary text-sm font-weight-bold">
+                                    <span class="badge badge-danger">Dalam Proses</span>
+                                </span>
+                                @else
                                 <span class="text-secondary text-sm font-weight-bold">
                                     <span class="badge badge-secondary">Dalam Proses</span>
                                 </span>
+                                @endif
                             </td>
                             <td class="align-middle">
+                                @if ($permohonan->status_permohonan === 'simpan')
+                                <a href="permohonan/{{$permohonan->id}}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                    Kemaskini
+                                </a>
+                                @else
                                 <a href="javascript:;" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
                                     Lihat Maklumat Status
                                 </a>
+                                @endif
 
                                 <!-- <a href="javascript:;" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
                                     Bayar
                                 </a> -->
                             </td>
                         </tr>
+                        @endforeach
 
 
                     </tbody>
