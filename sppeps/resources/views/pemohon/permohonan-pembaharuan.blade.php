@@ -21,26 +21,26 @@
     </style>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $("#hide").click(function() {
-                        $("#1").hide();
-                        $("#2").show();
-                    });
-                    $("#show").click(function() {
-                        $("#1").show();
-                        $("#2").hide();
-                    });
+        <script>
+            $(document).ready(function() {
+                $("#hide").click(function() {
+                    $("#1").hide();
+                    $("#2").show();
                 });
-            </script> -->
+                $("#show").click(function() {
+                    $("#1").show();
+                    $("#2").hide();
+                });
+            });
+        </script> -->
 
     <!-- <body>
 
-                <p id="1" style="display: none;">Area 1</p>
-                <p id="2" style="display: none;">Second area</p>
+            <p id="1" style="display: none;">Area 1</p>
+            <p id="2" style="display: none;">Second area</p>
 
-                <button id="show">Area 1</button>
-                <button id="hide">Second Area</button> -->
+            <button id="show">Area 1</button>
+            <button id="hide">Second Area</button> -->
 
 
     <div class=" ">
@@ -130,7 +130,7 @@
                                                                 </label>
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-9"
-                                                                        value="{{ $pemohon->name }}" name="nama" readonly>
+                                                                        value="{{$pemohon->name}}" name="nama" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-1"></div>
@@ -138,9 +138,8 @@
                                                             <div class="col form-group pr-0 text-start">
                                                                 <label for="noPermit"><i class="fas fa-id-card"></i><strong>
                                                                         No. Permit</strong></label>
-                                                                <input type="text" class="form-control"
-                                                                    value="" name="no_permit"
-                                                                    readonly>
+                                                                <input type="text" class="form-control" value="{{$pemohon->no_permit}}"
+                                                                    name="no_permit" readonly>
                                                             </div>
 
                                                         </div>
@@ -150,8 +149,8 @@
                                                                 <label for="gender"> <i
                                                                         class="fas fa-venus-mars"></i><strong>
                                                                         Jantina</strong></label>
-                                                                <input type="text" class="form-control" name="jantina"
-                                                                    value="" readonly>
+                                                                <input type="text" class="form-control" name="jantina" value="{{$pemohon->jantina}}"
+                                                                    readonly>
 
                                                             </div>
                                                             <div class="col-1"></div>
@@ -159,8 +158,7 @@
                                                                 <label for="ic"><i class="fas fa-id-card"></i><strong> No
                                                                         Kad Pengenalan</strong></label>
                                                                 <input type="text" class="form-control" id="ic"
-                                                                    aria-describedby="ic" name="no_kp" readonly
-                                                                    value="">
+                                                                    aria-describedby="ic" name="no_kp" readonly value="{{$pemohon->no_kp}}">
                                                             </div>
 
                                                         </div>
@@ -279,8 +277,7 @@
                                                             <div class="col form-group pr-0">
                                                                 <label for="email"><i class="fas fa-envelope"></i><strong>
                                                                         E-mel</strong></label>
-                                                                <input type="email" name="emel" class="form-control"
-                                                                    value="{{ $pemohon->email }}">
+                                                                <input type="email" name="emel" class="form-control">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -856,16 +853,16 @@
 
 
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('input[type="radio"]').click(function() {
-                        var inputValue = $(this).attr("value");
-                        var targetBox = $("." + inputValue);
-                        $(".box").not(targetBox).hide();
-                        $(targetBox).show();
-                    });
+        <script>
+            $(document).ready(function() {
+                $('input[type="radio"]').click(function() {
+                    var inputValue = $(this).attr("value");
+                    var targetBox = $("." + inputValue);
+                    $(".box").not(targetBox).hide();
+                    $(targetBox).show();
                 });
-            </script> -->
+            });
+        </script> -->
 
 
     <script type="text/javascript">

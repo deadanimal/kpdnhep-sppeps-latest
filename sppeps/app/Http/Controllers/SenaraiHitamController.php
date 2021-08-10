@@ -41,4 +41,16 @@ class SenaraiHitamController extends Controller
             'permohonan' => $permohonans,
         ]);
     }
+
+    public function update(Request $request, Permohonan $permohonan){
+
+        $permohonan->status_permohonan = 'disenarai hitam';
+        $permohonan->catatan_senarai_hitam = $request->catatan_senarai_hitam;
+
+        $permohonan->save();
+
+        return redirect('/tugasan-selesai');
+    }
+
+    
 }
