@@ -104,7 +104,7 @@
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="ic"><i class="fas fa-id-card"></i><strong> No Kad Pengenalan</strong></label>
-                                                        <input type="text" name="no_kp" class="form-control" id="ic" value="{{$permohonan->no_kp}}" readonly>
+                                                        <input type="text" name="no_kp" class="form-control" id="ic" value="" readonly>
                                                     </div>
                                                 </div>
 
@@ -137,7 +137,7 @@
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="age"><i class="fas fa-calendar-alt"></i><strong> Umur</strong></label>
-                                                        <input type="text" class="form-control" id="age" value="{{$permohonan->umur}}" name="umur" readonly>
+                                                        <input type="text" class="form-control" id="age" value="" name="umur" readonly>
                                                     </div>
                                                 </div>
 
@@ -150,22 +150,23 @@
                                                             <strong> No. Telefon</strong>
                                                         </label>
                                                         <div class="d-flex flex-nowrap align-items-center">
-                                                            <input type="text" class="form-control col-2" id="phone1" name="no_telefon" value="{{$permohonan->no_telefon}}" aria-describedby="phone">
+                                                            <input type="text" class="form-control col-2" id="phone1" name="no_telefon" aria-describedby="phone">
+
                                                         </div>
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col form-group pr-0">
                                                         <label for="email"><i class="fas fa-envelope"></i><strong> E-mel</strong></label>
-                                                        <input type="email" name="emel" class="form-control" id="email" value="{{$permohonan->emel}}" aria-describedby="email">
+                                                        <input type="email" name="emel" class="form-control" id="email" aria-describedby="email">
                                                     </div>
                                                 </div>
 
                                                 <div class="d-flex flex-nowrap pb-2">
                                                     <div class="col-6 form-group p-0">
                                                         <label for="address"><i class="fas fa-map-marker-alt"></i><strong> Alamat</strong></label>
-                                                        <input type="text" class="col-9 form-control" name="alamat1" id="address1"  value="{{$permohonan->alamat1}}">
-                                                        <input type="text" class="col-9 form-control" name="alamat2" id="address2"  value="{{$permohonan->alamat2}}">
-                                                        <input type="text" class="col-9 form-control" name="alamat3" id="address2"  value="{{$permohonan->alamat3}}">
+                                                        <input type="text" class="col-9 form-control" name="alamat1" id="address1" aria-describedby="address" >
+                                                        <input type="text" class="col-9 form-control" name="alamat2" id="address2" aria-describedby="address" >
+                                                        <input type="text" class="col-9 form-control" name="alamat3" id="address2" aria-describedby="address" >
                                                     </div>
                                                     <div class="col-1"></div>
                                                     <div class="col pr-0">
@@ -175,7 +176,7 @@
                                                                     <path d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
                                                                 </svg>
                                                                 <strong> Poskod</strong></label>
-                                                            <input type="text" class="form-control" id="poskod" aria-describedby="poskod" name="poskod" value="{{$permohonan->poskod}}">
+                                                            <input type="text" class="form-control" id="poskod" aria-describedby="poskod" name="poskod" >
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="state"><i class="fas fa-map"></i><strong> Negeri</strong></label>
