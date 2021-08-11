@@ -20,16 +20,17 @@
                             </div>
 
                             <div class="card-body p-3">
-                                <form method="POST" action="">
+                                <form method="POST" action="/cari-tambah-senarai-hitam">
                                     @csrf
 
                                     <div class="row">
                                         <div class="col">
-                                            <input type="text" name="search" class="form-control"
+                                            <input type="text" name="no_kp" class="form-control"
                                                 placeholder="No Kad Pengenalan">
                                         </div>
                                         <div class="col">
-                                            <input type="submit" class="btn btn-info">
+                                            <input type="submit" class="btn btn-info" value="Cari">
+                                            <a href="/tambah-senarai-hitam" class="btn btn-danger">Set Semula</a>
                                         </div>
                                     </div>
 
@@ -103,8 +104,7 @@
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->no_kp }}
-                                                                {{ $permohonan->id }}</span>
+                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->no_kp }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
@@ -136,7 +136,7 @@
                                                                                 Pembatalan Permit</h3>
                                                                         </div>
                                                                         <div class="card-body">
-                                                                            <form method="POST" action="/senarai-hitam/"
+                                                                            <form method="POST" action="/permohonan/{{ $permohonan->id }}"
                                                                                 role="form text-left">
                                                                                 @csrf
                                                                                 @method('PUT')
@@ -148,10 +148,12 @@
                                                                                     <div class="input-group mb-3">
                                                                                         <textarea class="form-control"
                                                                                             id="catatan"
-                                                                                            name="catatan_senarai_hitam"> {{ $permohonan->id }}</textarea>
+                                                                                            name="catatan_senarai_hitam"></textarea>
                                                                                     </div>
 
                                                                                 </div>
+                                                                                {{-- <input type="hidden" name="id" value="{{ $permohonan->id }}"> --}}
+                                                                                <input type="hidden" name="jenis_tindakan" value="tambah_senarai_hitam">
 
                                                                                 <div class="d-flex justify-content-end">
                                                                                     <button type="button"

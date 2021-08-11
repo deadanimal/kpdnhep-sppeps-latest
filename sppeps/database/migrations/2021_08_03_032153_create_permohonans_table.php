@@ -92,6 +92,8 @@ class CreatePermohonansTable extends Migration
             $table->string('catatan_pelulus')->nullable();
             $table->string('catatan_senarai_hitam')->nullable();
 
+            $table->string('bayaran_fi')->nullable();
+
             $table->foreignId('user_id');
 
         });

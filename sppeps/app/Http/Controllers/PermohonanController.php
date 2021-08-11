@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\NewPermohonan;
 use App\Mail\PermohonanTidakLengkap;
 use App\Mail\KelulusanPermohonan;
+use App\Mail\SemakanPDRM;
 use League\CommonMark\Node\Inline\Newline;
 
 class PermohonanController extends Controller
@@ -348,6 +349,11 @@ class PermohonanController extends Controller
                 $permohonan->status_permohonan = $request->tindakan;
                 $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
 
+                if ($permohonan->jenis_permohonan == "Rayuan"){
+                    $permohonan->bayaran_fi = 10;
+                } else if ($permohonan->jenis_permohonan == "Pendua"){
+                    $permohonan->bayaran_fi = 20;
+                }
 
                 $penerimas_emails = User::where('id', $permohonan->user_id)->get();
                 // dd($penerimas_emails);
@@ -360,20 +366,52 @@ class PermohonanController extends Controller
                 $permohonan->status_permohonan = $request->tindakan;
                 $permohonan->catatan_pelulus = $request->catatan_pelulus;
 
+                if( $permohonan->tempoh_kelulusan == "1 tahun"){
+                    $permohonan->bayaran_fi = 10;
+                } else if( $permohonan->tempoh_kelulusan == "2 tahun"){
+                    $permohonan->bayaran_fi = 20;
+                }
+
                 $penerimas_emails = User::where('id', $permohonan->user_id)->get();
                 // dd($penerimas_emails);
                 foreach ($penerimas_emails as $recipient) {
                     Mail::to($recipient->email)->send(new KelulusanPermohonan($permohonan));
                 }
+            } else if ($request->jenis_tindakan == "tambah_senarai_hitam") {
+                // dd($request);
+                $permohonan->status_permohonan = 'disenarai hitam';
+                $permohonan->catatan_senarai_hitam = $request->catatan_senarai_hitam;
+                $permohonan->save();
+                return redirect('/senarai-hitam');
+            } else if ($request->jenis_tindakan == "kemaskini_senarai_hitam") {
+                // dd($request);
+                // $permohonan->status_permohonan = 'disenarai hitam';
+                $permohonan->catatan_senarai_hitam = $request->catatan_senarai_hitam;
+                $permohonan->save();
+                return redirect('/senarai-hitam');
             }
         } else if ($user_role == 'pegawai_pdrm') {
             if ($request->tindakan == "Dalam Proses") {
+
                 $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->catatan_pdrm = $request->catatan_pdrm;
+                $permohonan->save();
+
+                return redirect('/tugasan-selesai');
             } else {
                 $permohonan->rekod_jenayah = $request->tindakan;
                 $permohonan->status_permohonan = 'disemak pdrm';
+
+                $permohonan->catatan_pdrm = $request->catatan_pdrm;
+                $permohonan->save();
+
+                $penerimas_emails = User::where('role', 'pegawai_hq')->get();
+                foreach ($penerimas_emails as $recipient) {
+                    Mail::to($recipient->email)->send(new SemakanPDRM($permohonan));
+                }
+
+                return redirect('/tugasan-selesai');
             }
-            $permohonan->catatan_pdrm = $request->catatan_pdrm;
         }
 
         $permohonan->save();
