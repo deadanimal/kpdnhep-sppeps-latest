@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TugasanSelesaiController;
 use App\Http\Controllers\BorangPermohonan;
 use App\Http\Controllers\SenaraiHitamController;
+use App\Http\Controllers\ProfilController;
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
 // })->middleware(['auth'])->name('dashboard');\
@@ -45,6 +46,8 @@ Route::post('/cari-senarai-hitam', [SenaraiHitamController::class, 'carisenaraih
 
 Route::post('/cari-tambah-senarai-hitam', [SenaraiHitamController::class, 'caritambahsenaraihitam']);
 
+Route::resource('/profil', ProfilController::class);
+
 //auth
 Route::get('/login_', function () {
     return view('auth.login_');
@@ -62,9 +65,9 @@ Route::get('/semak-ic', function () {
     return view('auth.semakan-kad-pengenalan');
 });
 
-Route::get('/profil', function () {
-    return view('auth.profile_');
-});
+// Route::get('/profil', function () {
+//     return view('auth.profile_');
+// });
 
 Route::get('/profil-pegawai', function () {
     return view('auth.profil-pegawai');
@@ -119,6 +122,10 @@ Route::get('/dashboard-pemohon', function () {
 
 Route::get('/maklumat-status-pemohon', function () {
     return view('pemohon.maklumat-status');
+});
+
+Route::get('/permohonan-berjaya', function () {
+    return view('pemohon.permohonan-success');
 });
 
 // Route::get('/permohonan-baru', function () {

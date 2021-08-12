@@ -644,8 +644,8 @@
 
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                                (click)="toggleAg()" id="applicationStatement"
-                                                                name="applicationStatement" value="Agree" required>
+                                                             id="applicationStatement"
+                                                                name="applicationStatement" value="Agree" >
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -692,12 +692,22 @@
                                                         <a href="/dashboard" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
-                                                            value="SIMPAN">
+                                                            value="SIMPAN" id="simpan">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
                                                             data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
+
+                                                    <script> 
+                                                        $(document).ready(function(){
+                                                             $("#simpan").click(function(){
+                                                           $('#'applicationStatement).attr('required', true); 
+                                                           document.getElementById("GFG_down").innerHTML  
+                                                                      = "Required attribute enabled"; 
+                                                           });
+                                                        });
+                                                      </script> 
                                                 </div>
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">

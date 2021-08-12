@@ -9,12 +9,11 @@
 
     <div class="p-3">
 
-        <div>
+        <div class="row">
             <h5>Semakan Status Permohonan</h5>
         </div>
 
-    
-        <div class="container-fluid mt-4" style="padding: 0px !important;">
+        <div class="row container-fluid mt-4" style="padding: 0px !important;">
             <div class="card">
 
                 <div class="card-header" style="background-color: #f7e8ff;">

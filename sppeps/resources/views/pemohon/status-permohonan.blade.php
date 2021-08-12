@@ -3,18 +3,17 @@
 @section('content')
 
 
-    <div class="container-fluid d-flex justify-content-center flex-wrap">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
                 <h3 class="mt-5"><strong>Semakan Status Permohonan</strong></h3>
                 <!-- <h5 class="text-secondary font-weight-normal">This information will let us know more about you.</h5> -->
-
             </div>
         </div>
-        <div class="row mt-4" style="width: 80%;">
+        <div class="row mt-4 d-flex justify-content-center">
 
-            <div class="card">
-                <div class="table-responsive">
+            <div class="card" style="width: 80%">
+                <div class="table-responsive d-flex justify-content-center">
                     <table class="table align-items-center mb-0" id="datatable-basic">
                         <thead>
                             <tr>
@@ -34,7 +33,7 @@
                             @foreach ($permohonan as $permohonan)
                                 <tr>
                                     <td>
-                                        <span class="text-secondary text-sm font-weight-bold">1</span>
+                                        <span class="text-secondary text-sm font-weight-bold">{{$loop->index+1}}</span>
                                     </td>
                                     <td>
                                         <span
@@ -59,7 +58,11 @@
                                             </span>
                                         @elseif ($permohonan->status_permohonan === 'Tidak Diluluskan')
                                             <span class="text-secondary text-sm font-weight-bold">
-                                                <span class="badge badge-danger">Dalam Proses</span>
+                                                <span class="badge badge-danger">Tidak Diluluskan</span>
+                                            </span>
+                                        @elseif ($permohonan->status_permohonan === 'Permohonan Tidak Lengkap')
+                                            <span class="text-secondary text-sm font-weight-bold">
+                                                <span class="badge badge-danger">Tidak Lengkap</span>
                                             </span>
                                         @else
                                             <span class="text-secondary text-sm font-weight-bold">
@@ -68,7 +71,7 @@
                                         @endif
                                     </td>
                                     <td class="align-middle">
-                                        @if ($permohonan->status_permohonan === 'simpan')
+                                        @if ($permohonan->status_permohonan === 'simpan' || $permohonan->status_permohonan === 'Permohonan Tidak Lengkap')
                                             <a href="permohonan/{{ $permohonan->id }}" class="btn btn-sm btn-primary"
                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                 Kemaskini
@@ -81,8 +84,8 @@
                                         @endif
 
                                         <!-- <a href="javascript:;" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
-                                        Bayar
-                                    </a> -->
+                                            Bayar
+                                        </a> -->
                                     </td>
                                 </tr>
                             @endforeach

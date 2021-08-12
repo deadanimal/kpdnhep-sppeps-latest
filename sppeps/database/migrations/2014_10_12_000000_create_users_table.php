@@ -21,6 +21,19 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->string('no_kp')->nullable();
+            $table->integer('umur')->nullable();
+            $table->date('tarikh_lahir')->nullable();
+            $table->string('jantina')->nullable();
+            $table->string('alamat1')->nullable();
+            $table->string('alamat2')->nullable();
+            $table->string('alamat3')->nullable();
+            $table->string('poskod')->nullable();
+            $table->string('negeri')->nullable();
+            $table->string('no_telefon_bimbit')->nullable();
+            $table->string('no_telefon_rumah')->nullable();
+            $table->string('no_telefon_pejabat')->nullable();
         });
     }
 

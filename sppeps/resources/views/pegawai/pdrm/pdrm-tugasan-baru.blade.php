@@ -82,12 +82,12 @@
                             </div>
 
                             <!-- <p class="mt-3 mb-0 text-sm">
-                                    <span class="text-success mr-2">
-                                        <i class="fa fa-arrow-up"> </i> 3.48%
-                                    </span>
+                                        <span class="text-success mr-2">
+                                            <i class="fa fa-arrow-up"> </i> 3.48%
+                                        </span>
 
-                                    <span class="text-nowrap"> Since last month </span>
-                                </p> -->
+                                        <span class="text-nowrap"> Since last month </span>
+                                    </p> -->
                         </div>
                     </div>
                 </div>
@@ -152,22 +152,22 @@
 
                     <div class="card-body p-3">
                         <!-- <div class="row p-3 mb-0">
-                            <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                                <label class="d-flex flex-nowrap mb-0">
-                                    <span class="pl-0 pt-2 pr-2">Papar</span>
-                                    <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="15">15</option>
-                                        <option value="-1">All</option>
-                                    </select>
-                                    <span class="p-2">rekod</span>
-                                </label>
-                            </div>
-                            <div class="col form-group mb-0 p-0" id="datatable_search">
+                                <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
+                                    <label class="d-flex flex-nowrap mb-0">
+                                        <span class="pl-0 pt-2 pr-2">Papar</span>
+                                        <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
+                                            <option value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="-1">All</option>
+                                        </select>
+                                        <span class="p-2">rekod</span>
+                                    </label>
+                                </div>
+                                <div class="col form-group mb-0 p-0" id="datatable_search">
 
-                            </div>
-                        </div> -->
+                                </div>
+                            </div> -->
 
 
                         <div class="card">
@@ -194,6 +194,9 @@
                                                 NEGERI</th>
                                             <th
                                                 class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                Tindakan Pegawai</th>
+                                            <th
+                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                 Status</th>
                                             <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan
                                             </th>
@@ -203,7 +206,8 @@
                                         @foreach ($permohonan as $permohonan)
                                             <tr>
                                                 <td>
-                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                    <span
+                                                        class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                                 </td>
                                                 <td>
                                                     <span
@@ -226,6 +230,10 @@
                                                         {{ $permohonan->negeri }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold">
+                                                        {{ $permohonan->pegawai_pdrm }}</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
                                                     @if ($permohonan->status_permohonan === 'hantar ke pdrm')
                                                         <span class="badge badge-danger"> Belum Disemak</span>
                                                     @elseif ($permohonan->status_permohonan === 'Dalam Proses')
@@ -241,33 +249,33 @@
                                         @endforeach
 
                                         <!-- <tr>
-                                            <td>
-                                                <span class="text-secondary text-sm font-weight-bold">1</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu/pembaharuan</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-warning"> Dalam Proses</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/pdrm-maklumat-pemohon">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr> -->
+                                                <td>
+                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu/pembaharuan</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-warning"> Dalam Proses</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <a href="/pdrm-maklumat-pemohon">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr> -->
 
 
                                     </tbody>
