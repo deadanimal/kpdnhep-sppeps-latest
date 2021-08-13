@@ -185,10 +185,10 @@
                                                                     value="{{ $pemohon->alamat1 }}">
                                                                 <input type="text" class="col-9 form-control" name="alamat2"
                                                                     id="address2" aria-describedby="address"
-                                                                    value="{{ $pemohon->alamat1 }}">
+                                                                    value="{{ $pemohon->alamat2 }}">
                                                                 <input type="text" class="col-9 form-control" name="alamat3"
                                                                     id="address2" aria-describedby="address"
-                                                                    value="{{ $pemohon->alamat1 }}">
+                                                                    value="{{ $pemohon->alamat3 }}">
                                                             </div>
                                                             <div class="col-1"></div>
                                                             <div class="col pr-0">
@@ -670,7 +670,7 @@
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                 id="applicationStatement" name="applicationStatement"
-                                                                value="Agree">
+                                                                value="Agree" onchange="check_agree()">
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -720,19 +720,11 @@
                                                             value="SIMPAN" id="simpan">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
+                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
 
-                                                    <script>
-                                                        $(document).ready(function() {
-                                                            $("#simpan").click(function() {
-                                                                $('#'
-                                                                    applicationStatement).attr('required', true);
-                                                                document.getElementById("GFG_down").innerHTML = "Required attribute enabled";
-                                                            });
-                                                        });
-                                                    </script>
+                                                    
                                                 </div>
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
@@ -752,12 +744,20 @@
             </main>
         </div>
 
-
-
         <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/multistep-form.js"
                 type="text/javascript"></script>
 
     </div>
+
+    <script>
+        function check_agree() {
+            if ($('#applicationStatement').prop("checked") == true) {
+                $('#hantar').prop("disabled", false);
+            } else {
+                $('#hantar').prop("disabled", true);
+            }
+        }
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

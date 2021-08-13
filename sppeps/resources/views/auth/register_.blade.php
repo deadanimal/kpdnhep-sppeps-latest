@@ -23,8 +23,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">nama</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="temporary" >
+                        <label for="email">Nama</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nama Penuh" >
                     </div>
 
                     <div class="form-group">
