@@ -18,8 +18,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TugasanSelesaiController;
 use App\Http\Controllers\BorangPermohonan;
 use App\Http\Controllers\SenaraiHitamController;
+
+use App\Http\Controllers\KategorifaqController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SemakanStatusController;
+
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
 // })->middleware(['auth'])->name('dashboard');\
@@ -318,18 +323,13 @@ Route::get('/tetapan-arkib-dokumen-senarai', function () {
     return view('pegawai.admin-hq.tetapan-arkib-dokumen-senarai');
 });
 
-Route::get('/tetapan-pengumuman', function () {
-    return view('pegawai.admin-hq.tetapan-pengumuman');
-});
+Route::resource('/tetapan-pengumuman', PengumumanController::class);
 
 Route::get('/tetapan-banner', function () {
     return view('pegawai.admin-hq.tetapan-banner');
 });
 
-Route::get('/tetapan-faq', function () {
-    return view('pegawai.admin-hq.tetapan-faq');
-});
-
+Route::resource('/tetapan-faq', FaqController::class);
 
 Route::get('/log-pemohon', function () {
     return view('pegawai.admin-hq.at-log-pemohon');
