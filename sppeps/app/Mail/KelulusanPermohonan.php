@@ -36,7 +36,7 @@ class KelulusanPermohonan extends Mailable
             return $this->view('email.permohonan-diluluskan')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
                 'nama'=>$this->permohonan->nama,
-                'no_kp'=>123,
+                'no_kp'=>$this->permohonan->no_kp,
                 'tempoh_kelulusan'=> $this->permohonan->tempoh_kelulusan,
                 'bayaran_fi'=> $this->permohonan->bayaran_fi
             ]);

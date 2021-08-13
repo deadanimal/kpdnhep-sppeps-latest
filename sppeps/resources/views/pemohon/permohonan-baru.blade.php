@@ -118,7 +118,7 @@
                                                                 <label for="ic"><i class="fas fa-id-card"></i><strong> No
                                                                         Kad Pengenalan</strong></label>
                                                                 <input type="text" name="no_kp" class="form-control"
-                                                                    readonly>
+                                                                    readonly value="{{ $pemohon->no_kp }}">
                                                             </div>
                                                         </div>
 
@@ -130,8 +130,10 @@
                                                                 <!-- <input type="text" class="form-control" id="ic" aria-describedby="ic" value="userdata.no_kp" disabled> -->
                                                                 <select id="gender" class="form-control" name="jantina">
                                                                     <option value="">--Sila Pilih--</option>
-                                                                    <option value="Lelaki">Lelaki</option>
-                                                                    <option value="Perempuan">Perempuan</option>
+                                                                    <option value="Lelaki" @if ($pemohon->jantina == 'Lelaki') selected @endif>Lelaki
+                                                                    </option>
+                                                                    <option value="Perempuan" @if ($pemohon->jantina == 'Perempuan') selected @endif>Perempuan
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-1"></div>
@@ -139,7 +141,8 @@
                                                                 <label for="age"><i class="fas fa-calendar-alt"></i><strong>
                                                                         Umur</strong></label>
                                                                 <input type="text" class="form-control" id="age"
-                                                                    aria-describedby="age" name="umur" readonly>
+                                                                    aria-describedby="age" name="umur"
+                                                                    value="{{ $pemohon->umur }}" readonly>
                                                             </div>
                                                         </div>
 
@@ -157,7 +160,8 @@
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-2"
                                                                         id="phone1" name="no_telefon"
-                                                                        aria-describedby="phone">
+                                                                        aria-describedby="phone"
+                                                                        value="{{ $pemohon->no_telefon_bimbit }}">
 
                                                                 </div>
                                                             </div>
@@ -166,7 +170,8 @@
                                                                 <label for="email"><i class="fas fa-envelope"></i><strong>
                                                                         E-mel</strong></label>
                                                                 <input type="email" name="emel" class="form-control"
-                                                                    id="email" aria-describedby="email" value="{{ $pemohon->email }}">
+                                                                    id="email" aria-describedby="email"
+                                                                    value="{{ $pemohon->email }}">
                                                             </div>
                                                         </div>
 
@@ -176,11 +181,14 @@
                                                                         class="fas fa-map-marker-alt"></i><strong>
                                                                         Alamat</strong></label>
                                                                 <input type="text" class="col-9 form-control" name="alamat1"
-                                                                    id="address1" aria-describedby="address">
+                                                                    id="address1" aria-describedby="address"
+                                                                    value="{{ $pemohon->alamat1 }}">
                                                                 <input type="text" class="col-9 form-control" name="alamat2"
-                                                                    id="address2" aria-describedby="address">
+                                                                    id="address2" aria-describedby="address"
+                                                                    value="{{ $pemohon->alamat1 }}">
                                                                 <input type="text" class="col-9 form-control" name="alamat3"
-                                                                    id="address2" aria-describedby="address">
+                                                                    id="address2" aria-describedby="address"
+                                                                    value="{{ $pemohon->alamat1 }}">
                                                             </div>
                                                             <div class="col-1"></div>
                                                             <div class="col pr-0">
@@ -194,7 +202,8 @@
                                                                         </svg>
                                                                         <strong> Poskod</strong></label>
                                                                     <input type="text" class="form-control" id="poskod"
-                                                                        aria-describedby="poskod" name="poskod">
+                                                                        aria-describedby="poskod" name="poskod"
+                                                                        value="{{ $pemohon->poskod }}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="state"><i class="fas fa-map"></i><strong>
@@ -202,25 +211,41 @@
                                                                     <select class="form-control"
                                                                         aria-label="Default select example" name="negeri">
                                                                         <option value="">--Pilih Negeri--</option>
-                                                                        <option value="Perlis">Perlis</option>
-                                                                        <option value="Kedah">Kedah</option>
-                                                                        <option value="Pulau Pinang">Pulau Pinang</option>
-                                                                        <option value="Perak">Perak</option>
-                                                                        <option value="Selangor">Selangor</option>
-                                                                        <option value="Melaka">Melaka</option>
-                                                                        <option value="Negeri Sembilan">Negeri Sembilan
+                                                                        <option @if ($pemohon->negeri == 'Perlis') selected @endif
+                                                                            value="Perlis">Perlis</option>
+                                                                        <option @if ($pemohon->negeri == 'Kedah') selected @endif
+                                                                            value="Kedah">Kedah</option>
+                                                                        <option @if ($pemohon->negeri == 'Pulau Pinang') selected @endif
+                                                                            value="Pulau Pinang">Pulau Pinang</option>
+                                                                        <option @if ($pemohon->negeri == 'Perak') selected @endif
+                                                                            value="Perak">Perak</option>
+                                                                        <option @if ($pemohon->negeri == 'Selangor') selected @endif
+                                                                            value="Selangor">Selangor</option>
+                                                                        <option @if ($pemohon->negeri == 'Melaka') selected @endif
+                                                                            value="Melaka">Melaka</option>
+                                                                        <option @if ($pemohon->negeri == 'Negeri Sembilan') selected @endif
+                                                                            value="Negeri Sembilan">Negeri Sembilan
                                                                         </option>
-                                                                        <option value="Johor">Johor</option>
-                                                                        <option value="Pahang">Pahang</option>
-                                                                        <option value="Terengganu">Terengganu</option>
-                                                                        <option value="Kelantan">Kelantan</option>
-                                                                        <option value="Sabah">Sabah</option>
-                                                                        <option value="Sarawak">Sarawak</option>
-                                                                        <option value="WP Kuala Lumpur">W. P. Kuala Lumpur
+                                                                        <option @if ($pemohon->negeri == 'Johor') selected @endif
+                                                                            value="Johor">Johor</option>
+                                                                        <option @if ($pemohon->negeri == 'Pahang') selected @endif
+                                                                            value="Pahang">Pahang</option>
+                                                                        <option @if ($pemohon->negeri == 'Terengganu') selected @endif
+                                                                            value="Terengganu">Terengganu</option>
+                                                                        <option @if ($pemohon->negeri == 'Kelantan') selected @endif
+                                                                            value="Kelantan">Kelantan</option>
+                                                                        <option @if ($pemohon->negeri == 'Sabah') selected @endif
+                                                                            value="Sabah">Sabah</option>
+                                                                        <option @if ($pemohon->negeri == 'Sarawak') selected @endif
+                                                                            value="Sarawak">Sarawak</option>
+                                                                        <option @if ($pemohon->negeri == 'WP Kuala Lumpur') selected @endif
+                                                                            value="WP Kuala Lumpur">W. P. Kuala Lumpur
                                                                         </option>
-                                                                        <option value="WP Putrajaya">W. P. Putrajaya
+                                                                        <option @if ($pemohon->negeri == 'WP Putrajaya') selected @endif
+                                                                            value="WP Putrajaya">W. P. Putrajaya
                                                                         </option>
-                                                                        <option value="WP Labuan">W. P. Labuan</option>
+                                                                        <option @if ($pemohon->negeri == 'WP Labuan') selected @endif
+                                                                            value="WP Labuan">W. P. Labuan</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -387,7 +412,7 @@
                                                                 <div class="col-3 form-check ">
                                                                     <input type="radio" name="berkerja_panel_atau_syarikat"
                                                                         id="bekerja_panel" class="form-check-input ml-3"
-                                                                        value="Ya">
+                                                                        value="Ya" onclick="clearForm2()">
                                                                     <label class="pl-2 form-check-label"
                                                                         for="panelInfo">Ya</label>
 
@@ -395,7 +420,7 @@
                                                                 <div class="col-3 form-check">
                                                                     <input type="radio" name="berkerja_panel_atau_syarikat"
                                                                         id="tidak_bekerja_panel" class="form-check-input"
-                                                                        value="Tidak">
+                                                                        value="Tidak" onclick="clearForm()">
                                                                     <label class="pl-2 form-check-label"
                                                                         for="panelInfo">Tidak</label>
                                                                 </div>
@@ -410,7 +435,7 @@
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="nama_institusi_kewangan">
+                                                                                name="nama_institusi_kewangan" id="nama_institusi_kewangan">
 
                                                                         </div>
                                                                     </div>
@@ -426,7 +451,7 @@
                                                                             <input type="text"
                                                                                 name="no_telefon_institusi_kewangan"
                                                                                 id="phoneNumber"
-                                                                                class="form-control form-control-sm">
+                                                                                class="form-control form-control-sm" id="no_telefon_institusi_kewangan">
 
                                                                         </div>
                                                                     </div>
@@ -449,25 +474,25 @@
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="panelName">
+                                                                            <label for="nama_panel">
                                                                                 <strong> Nama Panel </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text" name="nama_panel"
                                                                                 class="form-control col-10 form-control-sm"
-                                                                                id="panelName">
+                                                                                id="nama_panel">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="panelName">
+                                                                            <label for="no_kp_panel">
                                                                                 <strong> No. Kad Pengenalan </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <input type="text" id="icNumber"
+                                                                            <input type="text" id="no_kp_panel"
                                                                                 class="form-control form-control-sm"
                                                                                 placeholder="" name="no_kp_panel">
                                                                         </div>
@@ -475,26 +500,26 @@
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="permitNumber">
+                                                                            <label for="no_permit_panel">
                                                                                 <strong> No. Permit </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="permitNumber" name="no_permit_panel">
+                                                                                id="no_permit_panel" name="no_permit_panel">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="phoneNumber">
+                                                                            <label for="no_telefon_panel">
                                                                                 <strong> No. Telefon </strong> </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="phoneNumber" name="no_telefon_panel">
+                                                                                id="no_telefon_panel" name="no_telefon_panel">
                                                                         </div>
                                                                     </div>
 
@@ -644,8 +669,8 @@
 
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                             id="applicationStatement"
-                                                                name="applicationStatement" value="Agree" >
+                                                                id="applicationStatement" name="applicationStatement"
+                                                                value="Agree">
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -699,15 +724,15 @@
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
 
-                                                    <script> 
-                                                        $(document).ready(function(){
-                                                             $("#simpan").click(function(){
-                                                           $('#'applicationStatement).attr('required', true); 
-                                                           document.getElementById("GFG_down").innerHTML  
-                                                                      = "Required attribute enabled"; 
-                                                           });
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            $("#simpan").click(function() {
+                                                                $('#'
+                                                                    applicationStatement).attr('required', true);
+                                                                document.getElementById("GFG_down").innerHTML = "Required attribute enabled";
+                                                            });
                                                         });
-                                                      </script> 
+                                                    </script>
                                                 </div>
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
@@ -777,16 +802,18 @@
     </script>
 
 
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-                <script>
-                    $(document).ready(function() {
-                        $('input[type="radio"]').click(function() {
-                            var inputValue = $(this).attr("value");
-                            var targetBox = $("." + inputValue);
-                            $(".box").not(targetBox).hide();
-                            $(targetBox).show();
-                        });
-                    });
-                </script> -->
+<script>
+    function clearForm(){
+        document.getElementById('nama_institusi_kewangan').value = '';
+        document.getElementById('no_telefon_institusi_kewangan').value = '';
+    }
+
+    function clearForm2(){
+        document.getElementById('nama_panel').value = '';
+        document.getElementById('no_kp_panel').value = '';
+        document.getElementById('no_permit_panel').value = '';
+        document.getElementById('no_telefon_panel').value = '';
+    }
+</script>
 
 @stop

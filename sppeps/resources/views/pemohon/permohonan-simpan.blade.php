@@ -7,10 +7,10 @@
         
         <div class="col-6">
             <div class="card bg-cover text-center" style="bg-success">
-                <div class="card-body z-index-2 bg-success py-7">
+                <div class="card-body z-index-2 bg-secondary py-7">
                     <h2 class="text-white"><i class="far fa-check-circle fa-4x"></i></h2>
                     <p class="text-white">
-                        Permohonan anda berjaya dihantar.
+                        Permohonan anda berjaya disimpan.
                     </p>
                 </div>
                 <a href="/permohonan" class="btn btn-icon bg-gradient-info mt-3 mb-0">

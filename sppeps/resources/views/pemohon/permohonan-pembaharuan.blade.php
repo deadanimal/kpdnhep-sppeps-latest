@@ -21,26 +21,26 @@
     </style>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#hide").click(function() {
-                    $("#1").hide();
-                    $("#2").show();
-                });
-                $("#show").click(function() {
-                    $("#1").show();
-                    $("#2").hide();
-                });
-            });
-        </script> -->
+                <script>
+                    $(document).ready(function() {
+                        $("#hide").click(function() {
+                            $("#1").hide();
+                            $("#2").show();
+                        });
+                        $("#show").click(function() {
+                            $("#1").show();
+                            $("#2").hide();
+                        });
+                    });
+                </script> -->
 
     <!-- <body>
 
-            <p id="1" style="display: none;">Area 1</p>
-            <p id="2" style="display: none;">Second area</p>
+                    <p id="1" style="display: none;">Area 1</p>
+                    <p id="2" style="display: none;">Second area</p>
 
-            <button id="show">Area 1</button>
-            <button id="hide">Second Area</button> -->
+                    <button id="show">Area 1</button>
+                    <button id="hide">Second Area</button> -->
 
 
     <div class=" ">
@@ -130,7 +130,7 @@
                                                                 </label>
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-9"
-                                                                        value="{{$pemohon->name}}" name="nama" readonly>
+                                                                        value="{{ $pemohon->name }}" name="nama" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-1"></div>
@@ -138,7 +138,7 @@
                                                             <div class="col form-group pr-0 text-start">
                                                                 <label for="noPermit"><i class="fas fa-id-card"></i><strong>
                                                                         No. Permit</strong></label>
-                                                                <input type="text" class="form-control" value="{{$pemohon->no_permit}}"
+                                                                <input type="text" class="form-control" value=""
                                                                     name="no_permit" readonly>
                                                             </div>
 
@@ -149,8 +149,8 @@
                                                                 <label for="gender"> <i
                                                                         class="fas fa-venus-mars"></i><strong>
                                                                         Jantina</strong></label>
-                                                                <input type="text" class="form-control" name="jantina" value="{{$pemohon->jantina}}"
-                                                                    readonly>
+                                                                <input type="text" class="form-control" name="jantina"
+                                                                    value="{{ $pemohon->jantina }}" readonly>
 
                                                             </div>
                                                             <div class="col-1"></div>
@@ -158,7 +158,8 @@
                                                                 <label for="ic"><i class="fas fa-id-card"></i><strong> No
                                                                         Kad Pengenalan</strong></label>
                                                                 <input type="text" class="form-control" id="ic"
-                                                                    aria-describedby="ic" name="no_kp" readonly value="{{$pemohon->no_kp}}">
+                                                                    aria-describedby="ic" name="no_kp" readonly
+                                                                    value="{{ $pemohon->no_kp }}">
                                                             </div>
 
                                                         </div>
@@ -177,7 +178,8 @@
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-2"
                                                                         id="phone1" aria-describedby="phone"
-                                                                        name="no_telefon">
+                                                                        name="no_telefon"
+                                                                        value="{{ $pemohon->no_telefon_bimbit }}">
 
                                                                 </div>
                                                             </div>
@@ -186,7 +188,8 @@
                                                                 <label for="age"><i class="fas fa-calendar-alt"></i><strong>
                                                                         Umur</strong></label>
                                                                 <input type="text" class="form-control" id="age"
-                                                                    aria-describedby="age" name="umur" disabled>
+                                                                    aria-describedby="age" name="umur"
+                                                                    value="{{ $pemohon->umur }}" readonly>
                                                             </div>
                                                         </div>
 
@@ -196,11 +199,14 @@
                                                                         class="fas fa-map-marker-alt"></i><strong>
                                                                         Alamat</strong></label>
                                                                 <input type="text" class="col-9 form-control" name="alamat1"
-                                                                    aria-describedby="address">
+                                                                    aria-describedby="address"
+                                                                    value="{{ $pemohon->alamat1 }}">
                                                                 <input type="text" class="col-9 form-control" name="alamat2"
-                                                                    aria-describedby="address">
+                                                                    aria-describedby="address"
+                                                                    value="{{ $pemohon->alamat2 }}">
                                                                 <input type="text" class="col-9 form-control" name="alamat3"
-                                                                    aria-describedby="address">
+                                                                    aria-describedby="address"
+                                                                    value="{{ $pemohon->alamat3 }}">
                                                             </div>
                                                             <div class="col-1"></div>
                                                             <div class="col pr-0">
@@ -214,33 +220,50 @@
                                                                         </svg>
                                                                         <strong> Poskod</strong></label>
                                                                     <input type="text" class="form-control" id="poskod"
-                                                                        aria-describedby="poskod" name="poskod">
+                                                                        aria-describedby="poskod" name="poskod"
+                                                                        value="{{ $pemohon->poskod }}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="state"><i class="fas fa-map"></i><strong>
                                                                             Negeri</strong></label>
                                                                     <select class="form-control"
                                                                         aria-label="Default select example" name="negeri">
-                                                                        <option selected>--Pilih Negeri--</option>
-                                                                        <option value="Perlis">Perlis</option>
-                                                                        <option value="Kedah">Kedah</option>
-                                                                        <option value="Pulau Pinang">Pulau Pinang</option>
-                                                                        <option value="Perak">Perak</option>
-                                                                        <option value="Selangor">Selangor</option>
-                                                                        <option value="Melaka">Melaka</option>
-                                                                        <option value="Negeri Sembilan">Negeri Sembilan
+                                                                        <option value="">--Pilih Negeri--</option>
+                                                                        <option @if ($pemohon->negeri == 'Perlis') selected @endif
+                                                                            value="Perlis">Perlis</option>
+                                                                        <option @if ($pemohon->negeri == 'Kedah') selected @endif
+                                                                            value="Kedah">Kedah</option>
+                                                                        <option @if ($pemohon->negeri == 'Pulau Pinang') selected @endif
+                                                                            value="Pulau Pinang">Pulau Pinang</option>
+                                                                        <option @if ($pemohon->negeri == 'Perak') selected @endif
+                                                                            value="Perak">Perak</option>
+                                                                        <option @if ($pemohon->negeri == 'Selangor') selected @endif
+                                                                            value="Selangor">Selangor</option>
+                                                                        <option @if ($pemohon->negeri == 'Melaka') selected @endif
+                                                                            value="Melaka">Melaka</option>
+                                                                        <option @if ($pemohon->negeri == 'Negeri Sembilan') selected @endif
+                                                                            value="Negeri Sembilan">Negeri Sembilan
                                                                         </option>
-                                                                        <option value="Johor">Johor</option>
-                                                                        <option value="Pahang">Pahang</option>
-                                                                        <option value="Terengganu">Terengganu</option>
-                                                                        <option value="Kelantan">Kelantan</option>
-                                                                        <option value="Sabah">Sabah</option>
-                                                                        <option value="Sarawak">Sarawak</option>
-                                                                        <option value="WP Kuala Lumpur">W. P. Kuala Lumpur
+                                                                        <option @if ($pemohon->negeri == 'Johor') selected @endif
+                                                                            value="Johor">Johor</option>
+                                                                        <option @if ($pemohon->negeri == 'Pahang') selected @endif
+                                                                            value="Pahang">Pahang</option>
+                                                                        <option @if ($pemohon->negeri == 'Terengganu') selected @endif
+                                                                            value="Terengganu">Terengganu</option>
+                                                                        <option @if ($pemohon->negeri == 'Kelantan') selected @endif
+                                                                            value="Kelantan">Kelantan</option>
+                                                                        <option @if ($pemohon->negeri == 'Sabah') selected @endif
+                                                                            value="Sabah">Sabah</option>
+                                                                        <option @if ($pemohon->negeri == 'Sarawak') selected @endif
+                                                                            value="Sarawak">Sarawak</option>
+                                                                        <option @if ($pemohon->negeri == 'WP Kuala Lumpur') selected @endif
+                                                                            value="WP Kuala Lumpur">W. P. Kuala Lumpur
                                                                         </option>
-                                                                        <option value="WP Putrajaya">W. P. Putrajaya
+                                                                        <option @if ($pemohon->negeri == 'WP Putrajaya') selected @endif
+                                                                            value="WP Putrajaya">W. P. Putrajaya
                                                                         </option>
-                                                                        <option value="WP Labuan">W. P. Labuan</option>
+                                                                        <option @if ($pemohon->negeri == 'WP Labuan') selected @endif
+                                                                            value="WP Labuan">W. P. Labuan</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -277,7 +300,8 @@
                                                             <div class="col form-group pr-0">
                                                                 <label for="email"><i class="fas fa-envelope"></i><strong>
                                                                         E-mel</strong></label>
-                                                                <input type="email" name="emel" class="form-control">
+                                                                <input type="email" name="emel" class="form-control"
+                                                                    value="{{ $pemohon->email }}">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -476,7 +500,7 @@
                                                                 <div class="col-3 form-check ">
                                                                     <input type="radio" name="berkerja_panel_atau_syarikat"
                                                                         id="bekerja_panel" class="form-check-input ml-3"
-                                                                        value="Ya">
+                                                                        value="Ya" onclick="clearForm()">
                                                                     <label class="pl-2 form-check-label"
                                                                         for="panelInfo">Ya</label>
 
@@ -484,7 +508,7 @@
                                                                 <div class="col-3 form-check">
                                                                     <input type="radio" name="berkerja_panel_atau_syarikat"
                                                                         id="tidak_bekerja_panel" class="form-check-input"
-                                                                        value="Tidak">
+                                                                        value="Tidak" onclick="clearForm2()">
                                                                     <label class="pl-2 form-check-label"
                                                                         for="panelInfo">Tidak</label>
                                                                 </div>
@@ -494,12 +518,12 @@
                                                             <div class="row" id="institusi_kewangan" style="display: none;">
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
-                                                                        <label for="bank" class="col-sm"><strong>Nama
+                                                                        <label for="nama_institusi_kewangan" class="col-sm"><strong>Nama
                                                                                 Institusi Kewangan </strong></label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="nama_institusi_kewangan">
+                                                                                name="nama_institusi_kewangan" id="nama_institusi_kewangan">
 
                                                                         </div>
                                                                     </div>
@@ -507,14 +531,14 @@
                                                                 <!-- <div class="col-1"></div> -->
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
-                                                                        <label for="phoneNumber" class="col-sm">
+                                                                        <label for="no_telefon_institusi_kewangan" class="col-sm">
                                                                             <strong>No. Telefon Institusi Kewangan</strong>
                                                                         </label>
                                                                         <div class="col-sm-8">
 
                                                                             <input type="text"
                                                                                 name="no_telefon_institusi_kewangan"
-                                                                                id="phoneNumber"
+                                                                                id="no_telefon_institusi_kewangan"
                                                                                 class="form-control form-control-sm">
 
                                                                         </div>
@@ -539,14 +563,14 @@
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="panelName">
+                                                                            <label for="nama_panel">
                                                                                 <strong> Nama Panel </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text" name="nama_panel"
                                                                                 class="form-control col-10 form-control-sm"
-                                                                                id="panelName">
+                                                                                id="nama_panel">
                                                                         </div>
                                                                     </div>
 
@@ -565,26 +589,26 @@
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="permitNumber">
+                                                                            <label for="no_permit_panel">
                                                                                 <strong> No. Permit </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="permitNumber" name="no_permit_panel">
+                                                                             name="no_permit_panel" id="no_permit_panel">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="phoneNumber">
+                                                                            <label for="no_telefon_panel">
                                                                                 <strong> No. Telefon </strong> </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="phoneNumber" name="no_telefon_panel">
+                                                                                id="no_telefon_panel" name="no_telefon_panel">
                                                                         </div>
                                                                     </div>
 
@@ -782,7 +806,7 @@
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard-pemohon" type="button"
+                                                        <a href="dashboard" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
                                                             value="SIMPAN">
@@ -851,20 +875,6 @@
         })
     </script>
 
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('input[type="radio"]').click(function() {
-                    var inputValue = $(this).attr("value");
-                    var targetBox = $("." + inputValue);
-                    $(".box").not(targetBox).hide();
-                    $(targetBox).show();
-                });
-            });
-        </script> -->
-
-
     <script type="text/javascript">
         function EnableDisableTextBox() {
             var sepenuh_masa_eps = document.getElementById("sepenuh_masa_eps");
@@ -876,9 +886,13 @@
             pekerjaan_tetap.disabled = pekerjaan_sampingan.checked ? false : true;
             if (!tahun_pekerjaan_eps.disabled) {
                 tahun_pekerjaan_eps.focus();
-            } else if (!pekerjaan_tetap.disabled) {
+                document.getElementById('pekerjaan_tetap').value = '';
+            } 
+            else if (!pekerjaan_tetap.disabled) {
                 pekerjaan_tetap.focus();
+                document.getElementById('tahun_pekerjaan_eps').value = '';
             }
+
         }
 
         function EnableDisableTextBox2() {
@@ -891,10 +905,10 @@
             // pekerjaan_tetap.disabled = pekerjaan_sampingan.checked ? false : true;
             if (!tahun_dihadiri.disabled) {
                 tahun_dihadiri.focus();
+            }else{
+                document.getElementById('tahun_dihadiri').value = '';
             }
-            // else if(!pekerjaan_tetap.disabled) {
-            //     pekerjaan_tetap.focus();
-            // }
+           
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -909,6 +923,22 @@
                 $("#panel").hide();
             });
         });
+    </script>
+
+    <script>
+        function clearForm() {
+            document.getElementById('nama_institusi_kewangan').value = '';
+            document.getElementById('no_telefon_institusi_kewangan').value = '';
+        }
+
+        function clearForm2() {
+            document.getElementById('nama_panel').value = '';
+            document.getElementById('no_kp_panel').value = '';
+            document.getElementById('no_permit_panel').value = '';
+            document.getElementById('no_telefon_panel').value = '';
+        }
+
+        
     </script>
 
 

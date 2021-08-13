@@ -113,9 +113,8 @@
                                                             <div class="col form-group pr-0 text-start">
                                                                 <label for="noPermit"><i class="fas fa-id-card"></i><strong>
                                                                         No. Permit</strong></label>
-                                                                <input type="text" class="form-control"
-                                                                    value="{{ $pemohon->no_permit }}" name="no_permit"
-                                                                    readonly>
+                                                                <input type="text" class="form-control" value=""
+                                                                    name="no_permit" readonly>
                                                             </div>
 
                                                         </div>
@@ -154,7 +153,8 @@
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-2"
                                                                         id="phone1" aria-describedby="phone"
-                                                                        name="no_telefon">
+                                                                        name="no_telefon"
+                                                                        value="{{ $pemohon->no_telefon_bimbit }}">
 
                                                                 </div>
                                                             </div>
@@ -163,7 +163,8 @@
                                                                 <label for="age"><i class="fas fa-calendar-alt"></i><strong>
                                                                         Umur</strong></label>
                                                                 <input type="text" class="form-control" id="age"
-                                                                    aria-describedby="age" name="umur" disabled>
+                                                                    aria-describedby="age" name="umur" readonly
+                                                                    value="{{ $pemohon->umur }}">
                                                             </div>
                                                         </div>
 
@@ -173,10 +174,13 @@
                                                                         class="fas fa-map-marker-alt"></i><strong>
                                                                         Alamat</strong></label>
                                                                 <input type="text" class="col-9 form-control" name="alamat1"
+                                                                    value="{{ $pemohon->alamat1 }}"
                                                                     aria-describedby="address">
                                                                 <input type="text" class="col-9 form-control" name="alamat2"
+                                                                    value="{{ $pemohon->alamat2 }}"
                                                                     aria-describedby="address">
                                                                 <input type="text" class="col-9 form-control" name="alamat3"
+                                                                    value="{{ $pemohon->alamat3 }}"
                                                                     aria-describedby="address">
                                                             </div>
                                                             <div class="col-1"></div>
@@ -191,33 +195,50 @@
                                                                         </svg>
                                                                         <strong> Poskod</strong></label>
                                                                     <input type="text" class="form-control" id="poskod"
-                                                                        aria-describedby="poskod" name="poskod">
+                                                                        aria-describedby="poskod" name="poskod"
+                                                                        value="{{ $pemohon->poskod }}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="state"><i class="fas fa-map"></i><strong>
                                                                             Negeri</strong></label>
                                                                     <select class="form-control"
                                                                         aria-label="Default select example" name="negeri">
-                                                                        <option selected>--Pilih Negeri--</option>
-                                                                        <option value="Perlis">Perlis</option>
-                                                                        <option value="Kedah">Kedah</option>
-                                                                        <option value="Pulau Pinang">Pulau Pinang</option>
-                                                                        <option value="Perak">Perak</option>
-                                                                        <option value="Selangor">Selangor</option>
-                                                                        <option value="Melaka">Melaka</option>
-                                                                        <option value="Negeri Sembilan">Negeri Sembilan
+                                                                        <option value="">--Pilih Negeri--</option>
+                                                                        <option @if ($pemohon->negeri == 'Perlis') selected @endif
+                                                                            value="Perlis">Perlis</option>
+                                                                        <option @if ($pemohon->negeri == 'Kedah') selected @endif
+                                                                            value="Kedah">Kedah</option>
+                                                                        <option @if ($pemohon->negeri == 'Pulau Pinang') selected @endif
+                                                                            value="Pulau Pinang">Pulau Pinang</option>
+                                                                        <option @if ($pemohon->negeri == 'Perak') selected @endif
+                                                                            value="Perak">Perak</option>
+                                                                        <option @if ($pemohon->negeri == 'Selangor') selected @endif
+                                                                            value="Selangor">Selangor</option>
+                                                                        <option @if ($pemohon->negeri == 'Melaka') selected @endif
+                                                                            value="Melaka">Melaka</option>
+                                                                        <option @if ($pemohon->negeri == 'Negeri Sembilan') selected @endif
+                                                                            value="Negeri Sembilan">Negeri Sembilan
                                                                         </option>
-                                                                        <option value="Johor">Johor</option>
-                                                                        <option value="Pahang">Pahang</option>
-                                                                        <option value="Terengganu">Terengganu</option>
-                                                                        <option value="Kelantan">Kelantan</option>
-                                                                        <option value="Sabah">Sabah</option>
-                                                                        <option value="Sarawak">Sarawak</option>
-                                                                        <option value="WP Kuala Lumpur">W. P. Kuala Lumpur
+                                                                        <option @if ($pemohon->negeri == 'Johor') selected @endif
+                                                                            value="Johor">Johor</option>
+                                                                        <option @if ($pemohon->negeri == 'Pahang') selected @endif
+                                                                            value="Pahang">Pahang</option>
+                                                                        <option @if ($pemohon->negeri == 'Terengganu') selected @endif
+                                                                            value="Terengganu">Terengganu</option>
+                                                                        <option @if ($pemohon->negeri == 'Kelantan') selected @endif
+                                                                            value="Kelantan">Kelantan</option>
+                                                                        <option @if ($pemohon->negeri == 'Sabah') selected @endif
+                                                                            value="Sabah">Sabah</option>
+                                                                        <option @if ($pemohon->negeri == 'Sarawak') selected @endif
+                                                                            value="Sarawak">Sarawak</option>
+                                                                        <option @if ($pemohon->negeri == 'WP Kuala Lumpur') selected @endif
+                                                                            value="WP Kuala Lumpur">W. P. Kuala Lumpur
                                                                         </option>
-                                                                        <option value="WP Putrajaya">W. P. Putrajaya
+                                                                        <option @if ($pemohon->negeri == 'WP Putrajaya') selected @endif
+                                                                            value="WP Putrajaya">W. P. Putrajaya
                                                                         </option>
-                                                                        <option value="WP Labuan">W. P. Labuan</option>
+                                                                        <option @if ($pemohon->negeri == 'WP Labuan') selected @endif
+                                                                            value="WP Labuan">W. P. Labuan</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -310,10 +331,10 @@
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Sebab-sebab Lain</label>
                                                                     <br>
-                                                                    <div id="sebab_lain" style="display: none;">
+                                                                    <div id="sebab_lain_box" style="display: none;">
                                                                         <label for="other_reason">Sila Nyatakan </label>
                                                                         <input type="text" class="form-control col-6"
-                                                                            name="sebab_lain" />
+                                                                            name="sebab_lain" id="sebab_lain"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -323,13 +344,15 @@
                                                     <script>
                                                         $(document).ready(function() {
                                                             $("#lain_lain").click(function() {
-                                                                $("#sebab_lain").show();
+                                                                $("#sebab_lain_box").show();
                                                             });
                                                             $("#tiada_surat_sokongan").click(function() {
-                                                                $("#sebab_lain").hide();
+                                                                $("#sebab_lain_box").hide();
+                                                                document.getElementById('sebab_lain').value = '';
                                                             });
                                                             $("#gagal_tapisan").click(function() {
-                                                                $("#sebab_lain").hide();
+                                                                $("#sebab_lain_box").hide();
+                                                                document.getElementById('sebab_lain').value = '';
                                                             });
                                                         });
                                                     </script>
@@ -612,7 +635,7 @@
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard-pemohon" type="button"
+                                                        <a href="dashboard" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
                                                             value="SIMPAN">

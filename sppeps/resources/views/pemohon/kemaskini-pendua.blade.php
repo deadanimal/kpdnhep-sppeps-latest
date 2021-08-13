@@ -387,10 +387,10 @@
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Lain-lain Alasan</label>
                                                                     <br>
-                                                                    <div id="alasan_lain" @if ($permohonan->alasan_kehilangan != 'Lain-lain') style="display: none;" @endif>
+                                                                    <div id="alasan_lain_box" @if ($permohonan->alasan_kehilangan != 'Lain-lain') style="display: none;" @endif>
                                                                         <label for="other_reason">Sila Nyatakan </label>
                                                                         <input type="text" class="form-control col-6"
-                                                                            name="alasan_lain" />
+                                                                            name="alasan_lain" id="alasan_lain"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -656,7 +656,7 @@
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard-pemohon" type="button"
+                                                        <a href="/permohonan" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
                                                             value="SIMPAN">
@@ -720,16 +720,19 @@
     <script>
         $(document).ready(function() {
             $("#lain_lain").click(function() {
-                $("#alasan_lain").show();
+                $("#alasan_lain_box").show();
             });
             $("#keciciran").click(function() {
-                $("#alasan_lain").hide();
+                $("#alasan_lain_box").hide();
+                document.getElementById('alasan_lain').value = '';
             });
             $("#kebakaran").click(function() {
-                $("#alasan_lain").hide();
+                $("#alasan_lain_box").hide();
+                document.getElementById('alasan_lain').value = '';
             });
             $("#kecurian").click(function() {
-                $("#alasan_lain").hide();
+                $("#alasan_lain_box").hide();
+                document.getElementById('alasan_lain').value = '';
             });
         });
     </script>

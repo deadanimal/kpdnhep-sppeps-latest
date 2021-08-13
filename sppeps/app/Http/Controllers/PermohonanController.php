@@ -10,6 +10,7 @@ use App\Mail\NewPermohonan;
 use App\Mail\PermohonanTidakLengkap;
 use App\Mail\KelulusanPermohonan;
 use App\Mail\SemakanPDRM;
+use App\Mail\PermohonanPemohon;
 use League\CommonMark\Node\Inline\Newline;
 
 class PermohonanController extends Controller
@@ -81,7 +82,6 @@ class PermohonanController extends Controller
                 'negeri' => 'required',
                 'negeri_kutipan_permit' => 'required',
             ]);
-
         }
 
         $permohonan->jenis_permohonan = $request->jenis_permohonan;
@@ -135,11 +135,10 @@ class PermohonanController extends Controller
             $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
 
-            if ($request->status == 'HANTAR') {
+            if ($request->status == 'HANTAR')
                 $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-            } else {
-                $permohonan->lesen_memandu = $request->lesen_memandu;
-            }
+            else
+                $permohonan->lesen_memandu =  $request->lesen_memandu;
 
             $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
 
@@ -205,7 +204,10 @@ class PermohonanController extends Controller
             $permohonan->tahun_pekerjaan_eps = $request->tahun_pekerjaan_eps;
             $permohonan->pekerjaan_tetap = $request->pekerjaan_tetap;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-            $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+            if ($request->status == 'HANTAR')
+                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+            else
+                $permohonan->lesen_memandu =  $request->lesen_memandu;
             $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
             $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
             $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
@@ -280,19 +282,21 @@ class PermohonanController extends Controller
 
         $permohonan->save();
 
-        
 
-        if ($request->status == 'HANTAR'){
+
+        if ($request->status == 'HANTAR') {
             $penerimas_emails = User::where('role', 'pegawai_negeri')->get();
             foreach ($penerimas_emails as $recipient) {
                 Mail::to($recipient->email)->send(new NewPermohonan($permohonan));
             }
+
+            Mail::to($request->emel)->send(new PermohonanPemohon($permohonan));
         }
 
-        if ($request->status == 'HANTAR'){
+        if ($request->status == 'HANTAR') {
             return redirect('/permohonan-berjaya');
         } else {
-            return redirect('/dashboard');
+            return redirect('/permohonan-disimpan');
         }
     }
 
@@ -415,7 +419,6 @@ class PermohonanController extends Controller
                     $permohonan->bayaran_fi = 10;
                     $permohonan->tarikh_dilluluskan = date("Y-m-d");
                     $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
-
                 } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
                     $permohonan->bayaran_fi = 20;
                     $permohonan->tarikh_dilluluskan = date("Y-m-d");
@@ -529,11 +532,11 @@ class PermohonanController extends Controller
                 $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
                 $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
 
-                if ($request->status == 'HANTAR') {
+                if ($request->status == 'HANTAR')
                     $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-                } else {
-                    $permohonan->lesen_memandu = $request->lesen_memandu;
-                }
+                else
+                    $permohonan->lesen_memandu =  $request->lesen_memandu;
+
 
                 $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
 
@@ -599,7 +602,10 @@ class PermohonanController extends Controller
                 $permohonan->tahun_pekerjaan_eps = $request->tahun_pekerjaan_eps;
                 $permohonan->pekerjaan_tetap = $request->pekerjaan_tetap;
                 $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+                if ($request->status == 'HANTAR')
+                    $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+                else
+                    $permohonan->lesen_memandu =  $request->lesen_memandu;
                 $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
                 $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
                 $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
@@ -674,13 +680,13 @@ class PermohonanController extends Controller
 
             $permohonan->save();
 
-            if ($request->status == 'HANTAR'){
+            if ($request->status == 'HANTAR') {
                 $penerimas_emails = User::where('role', 'pegawai_negeri')->get();
                 foreach ($penerimas_emails as $recipient) {
                     Mail::to($recipient->email)->send(new NewPermohonan($permohonan));
                 }
             }
-    
+
             return redirect('/dashboard');
         }
 

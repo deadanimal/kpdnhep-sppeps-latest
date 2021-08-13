@@ -21,26 +21,26 @@
     </style>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                                                    <script>
-                                                        $(document).ready(function() {
-                                                            $("#hide").click(function() {
-                                                                $("#1").hide();
-                                                                $("#2").show();
-                                                            });
-                                                            $("#show").click(function() {
-                                                                $("#1").show();
-                                                                $("#2").hide();
-                                                            });
-                                                        });
-                                                    </script> -->
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    $("#hide").click(function() {
+                                                                        $("#1").hide();
+                                                                        $("#2").show();
+                                                                    });
+                                                                    $("#show").click(function() {
+                                                                        $("#1").show();
+                                                                        $("#2").hide();
+                                                                    });
+                                                                });
+                                                            </script> -->
 
     <!-- <body>
 
-                                                        <p id="1" style="display: none;">Area 1</p>
-                                                        <p id="2" style="display: none;">Second area</p>
+                                                                <p id="1" style="display: none;">Area 1</p>
+                                                                <p id="2" style="display: none;">Second area</p>
 
-                                                        <button id="show">Area 1</button>
-                                                        <button id="hide">Second Area</button> -->
+                                                                <button id="show">Area 1</button>
+                                                                <button id="hide">Second Area</button> -->
 
 
     <div class=" ">
@@ -75,7 +75,8 @@
                             <!--form panels-->
                             <div class="row">
                                 <div class="col-12 col-lg-8 m-auto">
-                                    <form class="multisteps-form__form" method="POST" action="/permohonan/{{ $permohonan->id }}">
+                                    <form class="multisteps-form__form" method="POST"
+                                        action="/permohonan/{{ $permohonan->id }}">
                                         @csrf
                                         @method('PUT')
                                         <!--single form panel-->
@@ -501,10 +502,7 @@
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         name="lesen_memandu[]" id="inlineCheckbox1"
-                                                                        value="B1" 
-                                                                        @foreach ($lesen_memandu1 as $lesen_memandu) 
-                                                                            {{ $lesen_memandu == 'B1' ? 'checked' : '' }} 
-                                                                        @endforeach>
+                                                                        value="B1" @foreach ($lesen_memandu1 as $lesen_memandu) {{ $lesen_memandu == 'B1' ? 'checked' : '' }} @endforeach>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">B1</label>
                                                                 </div>
@@ -512,10 +510,7 @@
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         name="lesen_memandu[]" id="inlineCheckbox1"
-                                                                        value="B2"
-                                                                        @foreach ($lesen_memandu2 as $lesen_memandu) 
-                                                                            {{ $lesen_memandu == 'B2' ? 'checked' : '' }} 
-                                                                        @endforeach>
+                                                                        value="B2" @foreach ($lesen_memandu2 as $lesen_memandu) {{ $lesen_memandu == 'B2' ? 'checked' : '' }} @endforeach>
                                                                     <label class="form-check-label" for="inlineCheckbox1">B2
                                                                     </label>
                                                                 </div>
@@ -524,22 +519,15 @@
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         name="lesen_memandu[]" id="inlineCheckbox1"
-                                                                        value="D"
-                                                                        @foreach ($lesen_memandu3 as $lesen_memandu) 
-                                                                            {{ $lesen_memandu == 'D' ? 'checked' : '' }} 
-                                                                        @endforeach>
-                                                                        
+                                                                        value="D" @foreach ($lesen_memandu3 as $lesen_memandu) {{ $lesen_memandu == 'D' ? 'checked' : '' }} @endforeach>
+
                                                                     <label class="form-check-label" for="inlineCheckbox1">D
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         name="lesen_memandu[]" id="inlineCheckbox1"
-                                                                        value="E"
-                                                                        @foreach ($lesen_memandu4 as $lesen_memandu) 
-                                                                            {{ $lesen_memandu == 'E' ? 'checked' : '' }} 
-                                                                        @endforeach
-                                                                        >
+                                                                        value="E" @foreach ($lesen_memandu4 as $lesen_memandu) {{ $lesen_memandu == 'E' ? 'checked' : '' }} @endforeach>
                                                                     <label class="form-check-label" for="inlineCheckbox1">E
                                                                     </label>
                                                                 </div>
@@ -548,11 +536,7 @@
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         name="lesen_memandu[]" id="inlineCheckbox1"
-                                                                        value="F"
-                                                                        @foreach ($lesen_memandu4 as $lesen_memandu) 
-                                                                            {{ $lesen_memandu == 'F' ? 'checked' : '' }} 
-                                                                        @endforeach
-                                                                        >
+                                                                        value="F" @foreach ($lesen_memandu4 as $lesen_memandu) {{ $lesen_memandu == 'F' ? 'checked' : '' }} @endforeach>
                                                                     <label class="form-check-label" for="inlineCheckbox1">F
                                                                     </label>
                                                                 </div>
@@ -573,7 +557,7 @@
                                                                 <div class="col-3 form-check ">
                                                                     <input type="radio" name="berkerja_panel_atau_syarikat"
                                                                         id="bekerja_panel" class="form-check-input ml-3"
-                                                                        value="Ya"
+                                                                        value="Ya" onclick="clearForm()"
                                                                         {{ $permohonan->berkerja_panel_atau_syarikat == 'Ya' ? 'checked' : '' }}>
                                                                     <label class="pl-2 form-check-label"
                                                                         for="panelInfo">Ya</label>
@@ -582,7 +566,7 @@
                                                                 <div class="col-3 form-check">
                                                                     <input type="radio" name="berkerja_panel_atau_syarikat"
                                                                         id="tidak_bekerja_panel" class="form-check-input"
-                                                                        value="Tidak"
+                                                                        value="Tidak" onclick="clearForm2()"
                                                                         {{ $permohonan->berkerja_panel_atau_syarikat == 'Tidak' ? 'checked' : '' }}>
                                                                     <label class="pl-2 form-check-label"
                                                                         for="panelInfo">Tidak</label>
@@ -598,7 +582,7 @@
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="nama_institusi_kewangan"
+                                                                                name="nama_institusi_kewangan" id="nama_institusi_kewangan"
                                                                                 value="{{ $permohonan->nama_institusi_kewangan }}">
                                                                         </div>
                                                                     </div>
@@ -606,14 +590,14 @@
                                                                 <!-- <div class="col-1"></div> -->
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
-                                                                        <label for="phoneNumber" class="col-sm">
+                                                                        <label for="no_telefon_institusi_kewangan" class="col-sm">
                                                                             <strong>No. Telefon Institusi Kewangan</strong>
                                                                         </label>
                                                                         <div class="col-sm-8">
 
                                                                             <input type="text"
                                                                                 name="no_telefon_institusi_kewangan"
-                                                                                id="phoneNumber"
+                                                                                id="no_telefon_institusi_kewangan" 
                                                                                 class="form-control form-control-sm"
                                                                                 value="{{ $permohonan->no_telefon_institusi_kewangan }}">
 
@@ -639,26 +623,26 @@
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="panelName">
+                                                                            <label for="nama_panel">
                                                                                 <strong> Nama Panel </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text" name="nama_panel"
                                                                                 class="form-control col-10 form-control-sm"
-                                                                                id="panelName"
+                                                                                id="nama_panel"
                                                                                 value="{{ $permohonan->nama_panel }}">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="panelName">
+                                                                            <label for="no_kp_panel">
                                                                                 <strong> No. Kad Pengenalan </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <input type="text" id="icNumber"
+                                                                            <input type="text" id="no_kp_panel"
                                                                                 class="form-control form-control-sm"
                                                                                 placeholder="" name="no_kp_panel"
                                                                                 value="{{ $permohonan->no_kp_panel }}">
@@ -667,27 +651,27 @@
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="permitNumber">
+                                                                            <label for="no_permit_panel">
                                                                                 <strong> No. Permit </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="permitNumber" name="no_permit_panel"
+                                                                                id="no_permit_panel" name="no_permit_panel"
                                                                                 value="{{ $permohonan->no_permit_panel }}">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
-                                                                            <label for="phoneNumber">
+                                                                            <label for="no_telefon_panel">
                                                                                 <strong> No. Telefon </strong> </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="phoneNumber" name="no_telefon_panel"
+                                                                                id="no_telefon_panel" name="no_telefon_panel"
                                                                                 value="{{ $permohonan->no_telefon_panel }}">
                                                                         </div>
                                                                     </div>
@@ -708,7 +692,8 @@
                                                                 KPDNHEP?</strong></label>
                                                         <div>
                                                             <input type="radio" id="hadir" name="kehadiran_kursus_eps"
-                                                                value="Ya" onclick="EnableDisableTextBox2()" {{ $permohonan->kehadiran_kursus_eps == 'Ya' ? 'checked' : '' }}>
+                                                                value="Ya" onclick="EnableDisableTextBox2()"
+                                                                {{ $permohonan->kehadiran_kursus_eps == 'Ya' ? 'checked' : '' }}>
                                                             <label class="pl-2" for="panelInfo">Ya</label>
                                                             <div class="row ml-5">
                                                                 <div class="col-5">
@@ -726,7 +711,8 @@
                                                             </div>
 
                                                             <input type="radio" id="tidak_hadir" name="kehadiran_kursus_eps"
-                                                                value="Tidak" onclick="EnableDisableTextBox2()" {{ $permohonan->kehadiran_kursus_eps == 'Tidak' ? 'checked' : '' }}>
+                                                                value="Tidak" onclick="EnableDisableTextBox2()"
+                                                                {{ $permohonan->kehadiran_kursus_eps == 'Tidak' ? 'checked' : '' }}>
                                                             <label class="pl-2" for="panelInfo">Tidak</label>
                                                             <!-- <input type="hidden" id="tidak_hidden" disabled="disabled"> -->
                                                         </div>
@@ -886,7 +872,7 @@
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard-pemohon" type="button"
+                                                        <a href="/permohonan" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
                                                             value="SIMPAN">
@@ -954,21 +940,6 @@
             fileChosen4.textContent = this.files[0].name
         })
     </script>
-
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-                                                    <script>
-                                                        $(document).ready(function() {
-                                                            $('input[type="radio"]').click(function() {
-                                                                var inputValue = $(this).attr("value");
-                                                                var targetBox = $("." + inputValue);
-                                                                $(".box").not(targetBox).hide();
-                                                                $(targetBox).show();
-                                                            });
-                                                        });
-                                                    </script> -->
-
-
     <script type="text/javascript">
         function EnableDisableTextBox() {
             var sepenuh_masa_eps = document.getElementById("sepenuh_masa_eps");
@@ -980,8 +951,10 @@
             pekerjaan_tetap.disabled = pekerjaan_sampingan.checked ? false : true;
             if (!tahun_pekerjaan_eps.disabled) {
                 tahun_pekerjaan_eps.focus();
+                document.getElementById('pekerjaan_tetap').value = '';
             } else if (!pekerjaan_tetap.disabled) {
                 pekerjaan_tetap.focus();
+                document.getElementById('tahun_pekerjaan_eps').value = '';
             }
         }
 
@@ -995,10 +968,10 @@
             // pekerjaan_tetap.disabled = pekerjaan_sampingan.checked ? false : true;
             if (!tahun_dihadiri.disabled) {
                 tahun_dihadiri.focus();
+            }else{
+                document.getElementById('tahun_dihadiri').value = '';
             }
-            // else if(!pekerjaan_tetap.disabled) {
-            //     pekerjaan_tetap.focus();
-            // }
+           
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -1013,6 +986,20 @@
                 $("#panel").hide();
             });
         });
+    </script>
+
+    <script>
+        function clearForm() {
+            document.getElementById('nama_institusi_kewangan').value = '';
+            document.getElementById('no_telefon_institusi_kewangan').value = '';
+        }
+
+        function clearForm2() {
+            document.getElementById('nama_panel').value = '';
+            document.getElementById('no_kp_panel').value = '';
+            document.getElementById('no_permit_panel').value = '';
+            document.getElementById('no_telefon_panel').value = '';
+        }
     </script>
 
 

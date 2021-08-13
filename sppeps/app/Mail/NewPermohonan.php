@@ -30,22 +30,22 @@ class NewPermohonan extends Mailable
         if($this->permohonan->jenis_permohonan == "Baharu"){
             return $this->view('email.permohonan-baharu')->with([
                 'nama'=>$this->permohonan->nama,
-                'no_kp'=>123
+                'no_kp'=>$this->permohonan->no_kp,
             ]);
         } else if($this->permohonan->jenis_permohonan == "Pembaharuan"){
             return $this->view('email.permohonan_pembaharuan')->with([
                 'nama'=>$this->permohonan->nama,
-                'no_kp'=>123
+                'no_kp'=>$this->permohonan->no_kp,
             ]);
         } else if($this->permohonan->jenis_permohonan == "Pendua"){
             return $this->view('email.permohonan_pendua')->with([
                 'nama'=>$this->permohonan->nama,
-                'no_kp'=>123
+                'no_kp'=>$this->permohonan->no_kp,
             ]);
         } else if($this->permohonan->jenis_permohonan == "Rayuan"){
             return $this->view('email.permohonan_rayuan')->with([
                 'nama'=>$this->permohonan->nama,
-                'no_kp'=>123
+                'no_kp'=>$this->permohonan->no_kp,
             ]);
         }
     }

@@ -1,4 +1,4 @@
-@extends('layouts.base-pemohon')
+@extends('layouts.baseUser')
 
 @section('content')
 
@@ -360,12 +360,12 @@
                                                     <div class="row">
                                                         <div class="row m-2">
                                                             <div class="col-3 form-check ">
-                                                                <input type="radio" name="berkerja_panel_atau_syarikat" id="bekerja_panel" class="form-check-input ml-3" value="Ya" {{ ($permohonan->berkerja_panel_atau_syarikat == 'Ya' ? "checked":"") }}>
-                                                                <label class="pl-2 form-check-label" for="panelInfo">Ya</label>
+                                                                <input type="radio" name="berkerja_panel_atau_syarikat" onclick="clearForm()" id="bekerja_panel" class="form-check-input ml-3" value="Ya" {{ ($permohonan->berkerja_panel_atau_syarikat == 'Ya' ? "checked":"") }}>
+                                                                <label class="pl-2 form-check-label" for="panelInfo" >Ya</label>
 
                                                             </div>
                                                             <div class="col-3 form-check">
-                                                                <input type="radio" name="berkerja_panel_atau_syarikat" id="tidak_bekerja_panel" class="form-check-input" value="Tidak" {{ ($permohonan->berkerja_panel_atau_syarikat == 'Tidak' ? "checked":"") }}>
+                                                                <input type="radio" name="berkerja_panel_atau_syarikat" onclick="clearForm2()" id="tidak_bekerja_panel" class="form-check-input" value="Tidak" {{ ($permohonan->berkerja_panel_atau_syarikat == 'Tidak' ? "checked":"") }}>
                                                                 <label class="pl-2 form-check-label" for="panelInfo">Tidak</label>
                                                             </div>
                                                         </div>
@@ -376,7 +376,7 @@
                                                                 <div class="form-group">
                                                                     <label for="bank" class="col-sm"><strong>Nama Institusi Kewangan </strong></label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="text" class="form-control form-control-sm" name="nama_institusi_kewangan" value="{{$permohonan->nama_institusi_kewangan}}">
+                                                                        <input type="text" class="form-control form-control-sm" id="nama_institusi_kewangan" name="nama_institusi_kewangan" value="{{$permohonan->nama_institusi_kewangan}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -388,7 +388,7 @@
                                                                     </label>
                                                                     <div class="col-sm-8">
 
-                                                                        <input type="text" name="no_telefon_institusi_kewangan" id="phoneNumber" class="form-control form-control-sm" value="{{$permohonan->no_telefon_institusi_kewangan}}">
+                                                                        <input type="text" name="no_telefon_institusi_kewangan" id="no_telefon_institusi_kewangan" class="form-control form-control-sm" value="{{$permohonan->no_telefon_institusi_kewangan}}">
 
                                                                     </div>
                                                                 </div>
@@ -415,7 +415,7 @@
                                                                         </label>
                                                                     </div>
                                                                     <div class="col">
-                                                                        <input type="text" name="nama_panel" class="form-control col-10 form-control-sm" id="panelName" value="{{$permohonan->nama_panel}}">
+                                                                        <input type="text" name="nama_panel" class="form-control col-10 form-control-sm" id="nama_panel" value="{{$permohonan->nama_panel}}">
                                                                     </div>
                                                                 </div>
 
@@ -426,7 +426,7 @@
                                                                         </label>
                                                                     </div>
                                                                     <div class="col">
-                                                                        <input type="text" id="icNumber" class="form-control form-control-sm" placeholder="" name="no_kp_panel" value="{{$permohonan->no_kp_panel}}">
+                                                                        <input type="text" id="no_kp_panel" class="form-control form-control-sm" placeholder="" name="no_kp_panel" value="{{$permohonan->no_kp_panel}}">
                                                                     </div>
                                                                 </div>
 
@@ -437,7 +437,7 @@
                                                                         </label>
                                                                     </div>
                                                                     <div class="col">
-                                                                        <input type="text" class="form-control form-control-sm" id="permitNumber" name="no_permit_panel" value="{{$permohonan->no_permit_panel}}">
+                                                                        <input type="text" class="form-control form-control-sm" id="no_permit_panel" name="no_permit_panel" value="{{$permohonan->no_permit_panel}}">
                                                                     </div>
                                                                 </div>
 
@@ -447,7 +447,7 @@
                                                                             <strong> No. Telefon </strong> </label>
                                                                     </div>
                                                                     <div class="col">
-                                                                        <input type="text" class="form-control form-control-sm" id="phoneNumber" name="no_telefon_panel" value="{{$permohonan->no_telefon_panel}}">
+                                                                        <input type="text" class="form-control form-control-sm" id="no_telefon_panel" name="no_telefon_panel" value="{{$permohonan->no_telefon_panel}}">
                                                                     </div>
                                                                 </div>
 
@@ -607,7 +607,7 @@
                                                 </div>
 
                                                 <div class="p-3 d-flex justify-content-center">
-                                                <a href="dashboard-pemohon" type="button" class=" btn btn btn-danger btn-lg m-2">BATAL</a>
+                                                <a href="/permohonan" type="button" class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                     <input type="submit" class=" btn btn-info btn-lg m-2" name="status" value="SIMPAN">
                                                     <button type="button" class="btn btn-success btn-lg text-uppercase m-2" data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
                                                     <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
@@ -679,16 +679,18 @@
 </script>
 
 
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('input[type="radio"]').click(function() {
-            var inputValue = $(this).attr("value");
-            var targetBox = $("." + inputValue);
-            $(".box").not(targetBox).hide();
-            $(targetBox).show();
-        });
-    });
-</script> -->
+    function clearForm(){
+        document.getElementById('nama_institusi_kewangan').value = '';
+        document.getElementById('no_telefon_institusi_kewangan').value = '';
+    }
+
+    function clearForm2(){
+        document.getElementById('nama_panel').value = '';
+        document.getElementById('no_kp_panel').value = '';
+        document.getElementById('no_permit_panel').value = '';
+        document.getElementById('no_telefon_panel').value = '';
+    }
+</script>
 
 @stop

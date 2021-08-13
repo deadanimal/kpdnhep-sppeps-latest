@@ -351,16 +351,18 @@
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
                                                                         id="gagal_tapisan" name="sebab_permohonan_ditolak"
-                                                                        value="Gagal tapisan" {{ $permohonan->sebab_permohonan_ditolak == 'Gagal tapisan' ? 'checked' : '' }}>
+                                                                        value="Gagal tapisan"
+                                                                        {{ $permohonan->sebab_permohonan_ditolak == 'Gagal tapisan' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
-                                                                        for="inlineCheckbox1" >Gagal tapisan
+                                                                        for="inlineCheckbox1">Gagal tapisan
                                                                         keselamatan</label>
                                                                 </div>
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
                                                                         id="tiada_surat_sokongan"
                                                                         name="sebab_permohonan_ditolak"
-                                                                        value="Tiada surat sokongan" {{ $permohonan->sebab_permohonan_ditolak == 'Tiada surat sokongan' ? 'checked' : '' }}>
+                                                                        value="Tiada surat sokongan"
+                                                                        {{ $permohonan->sebab_permohonan_ditolak == 'Tiada surat sokongan' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Tiada surat sokongan</label>
                                                                 </div>
@@ -369,15 +371,16 @@
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
                                                                         id="lain_lain" name="sebab_permohonan_ditolak"
-                                                                        value="Sebab-sebab Lain" {{ $permohonan->sebab_permohonan_ditolak == 'Sebab-sebab Lain' ? 'checked' : '' }}>
+                                                                        value="Sebab-sebab Lain"
+                                                                        {{ $permohonan->sebab_permohonan_ditolak == 'Sebab-sebab Lain' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Sebab-sebab Lain</label>
                                                                     <br>
-                                                                    <div id="sebab_lain" @if ($permohonan->sebab_permohonan_ditolak != 'Sebab-sebab Lain') style="display: none;" @endif>
+                                                                    <div id="sebab_lain_box" @if ($permohonan->sebab_permohonan_ditolak != 'Sebab-sebab Lain') style="display: none;" @endif>
                                                                         <label for="other_reason">Sila Nyatakan </label>
                                                                         <input type="text" class="form-control col-6"
-                                                                            name="sebab_lain" value="{{ $permohonan->sebab_lain }}" 
-                                                                            />
+                                                                            name="sebab_lain" id="sebab_lain"
+                                                                            value="{{ $permohonan->sebab_lain }}" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -387,13 +390,15 @@
                                                     <script>
                                                         $(document).ready(function() {
                                                             $("#lain_lain").click(function() {
-                                                                $("#sebab_lain").show();
+                                                                $("#sebab_lain_box").show();
                                                             });
                                                             $("#tiada_surat_sokongan").click(function() {
-                                                                $("#sebab_lain").hide();
+                                                                $("#sebab_lain_box").hide();
+                                                                document.getElementById('sebab_lain').value = '';
                                                             });
                                                             $("#gagal_tapisan").click(function() {
-                                                                $("#sebab_lain").hide();
+                                                                $("#sebab_lain_box").hide();
+                                                                document.getElementById('sebab_lain').value = '';
                                                             });
                                                         });
                                                     </script>
@@ -407,15 +412,15 @@
                                                             <div class="col-3">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox2" name="rayuan_kali_ke"
-                                                                        value="1" {{ $permohonan->rayuan_kali_ke == '1' ? 'checked' : '' }}>
+                                                                        id="inlineCheckbox2" name="rayuan_kali_ke" value="1"
+                                                                        {{ $permohonan->rayuan_kali_ke == '1' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">1</label>
                                                                 </div>
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox3" name="rayuan_kali_ke"
-                                                                        value="2" {{ $permohonan->rayuan_kali_ke == '2' ? 'checked' : '' }}>
+                                                                        id="inlineCheckbox3" name="rayuan_kali_ke" value="2"
+                                                                        {{ $permohonan->rayuan_kali_ke == '2' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">2</label>
                                                                 </div>
@@ -423,15 +428,15 @@
                                                             <div class="col-3">
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox4" name="rayuan_kali_ke"
-                                                                        value="3" {{ $permohonan->rayuan_kali_ke == '3' ? 'checked' : '' }}>
+                                                                        id="inlineCheckbox4" name="rayuan_kali_ke" value="3"
+                                                                        {{ $permohonan->rayuan_kali_ke == '3' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">3</label>
                                                                 </div>
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox5" name="rayuan_kali_ke"
-                                                                        value="4" {{ $permohonan->rayuan_kali_ke == '4' ? 'checked' : '' }}>
+                                                                        id="inlineCheckbox5" name="rayuan_kali_ke" value="4"
+                                                                        {{ $permohonan->rayuan_kali_ke == '4' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">4</label>
                                                                 </div>
@@ -439,15 +444,15 @@
                                                             <div class="col-3">
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox6" name="rayuan_kali_ke"
-                                                                        value="5" {{ $permohonan->rayuan_kali_ke == '5' ? 'checked' : '' }}>
+                                                                        id="inlineCheckbox6" name="rayuan_kali_ke" value="5"
+                                                                        {{ $permohonan->rayuan_kali_ke == '5' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">5</label>
                                                                 </div>
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox7" name="rayuan_kali_ke"
-                                                                        value="6" {{ $permohonan->rayuan_kali_ke == '6' ? 'checked' : '' }}>
+                                                                        id="inlineCheckbox7" name="rayuan_kali_ke" value="6"
+                                                                        {{ $permohonan->rayuan_kali_ke == '6' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Lebih daripada 5</label>
                                                                 </div>
@@ -460,7 +465,7 @@
                                                                 Dikemukakan</strong></label>
                                                         <textarea class="form-control col-7" id="alasanRayuan"
                                                             aria-describedby="alasanRayuan" name="alasan_rayuan"
-                                                            rows="3" >{{ $permohonan->alasan_rayuan }}</textarea>
+                                                            rows="3">{{ $permohonan->alasan_rayuan }}</textarea>
                                                     </div>
 
                                                     <div class="form-group text-start">
@@ -676,7 +681,7 @@
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard-pemohon" type="button"
+                                                        <a href="/permohonan" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
                                                             value="SIMPAN">
