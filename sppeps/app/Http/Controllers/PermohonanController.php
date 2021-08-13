@@ -417,11 +417,12 @@ class PermohonanController extends Controller
 
                 if ($permohonan->tempoh_kelulusan == "1 tahun") {
                     $permohonan->bayaran_fi = 10;
-                    $permohonan->tarikh_dilluluskan = date("Y-m-d");
+                    $permohonan->tarikh_diluluskan = date("Y-m-d");
                     $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
+
                 } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
                     $permohonan->bayaran_fi = 20;
-                    $permohonan->tarikh_dilluluskan = date("Y-m-d");
+                    $permohonan->tarikh_diluluskan = date("Y-m-d");
                     $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
                 }
 
