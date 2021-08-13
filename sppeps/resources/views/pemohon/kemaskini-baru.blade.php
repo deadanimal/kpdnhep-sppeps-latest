@@ -572,7 +572,7 @@
                                                 <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" (click)="toggleAg()" id="applicationStatement" name="applicationStatement" value="Agree" required>
+                                                        <input class="form-check-input" type="checkbox" id="applicationStatement" name="applicationStatement" value="Agree" onchange="check_agree()">
                                                         <label class="form-check-label" for="applicationStatement">Dengan ini saya mengaku dan
                                                             mengesahkan bahawa semua maklumat dan butir-butir yang dicatatkan dalam
                                                             borang permohonan adalah benar.
@@ -609,7 +609,7 @@
                                                 <div class="p-3 d-flex justify-content-center">
                                                 <a href="/permohonan" type="button" class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                     <input type="submit" class=" btn btn-info btn-lg m-2" name="status" value="SIMPAN">
-                                                    <button type="button" class="btn btn-success btn-lg text-uppercase m-2" data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
+                                                    <button type="button" class="btn btn-success btn-lg text-uppercase m-2" data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
                                                     <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                 </div>
                                             </div>
@@ -635,6 +635,16 @@
     <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/multistep-form.js" type="text/javascript"></script>
 
 </div>
+
+<script>
+    function check_agree() {
+        if ($('#applicationStatement').prop("checked") == true) {
+            $('#hantar').prop("disabled", false);
+        } else {
+            $('#hantar').prop("disabled", true);
+        }
+    }
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

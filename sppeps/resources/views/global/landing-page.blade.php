@@ -1,13 +1,13 @@
 @extends('layouts.baseUser')
 
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid py-4" style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
     <div class="row">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item">
-                    <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80');">
-                        <span class="mask bg-gradient-dark"></span>
+                    <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('/assets/img/banner/7c698081-d2eb-43e3-96fe-f5d4349c893b.jpg');">
+                        {{-- <span class="mask bg-gradient-dark"></span>
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 my-auto">
@@ -16,12 +16,12 @@
                                     <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">Wealth creation is an evolutionarily recent positive-sum game. Status is an old zero-sum game. Those attacking wealth creation are often just seeking status.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80');">
-                        <span class="mask bg-gradient-dark"></span>
+                <div class="carousel-item active">
+                    <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('/assets/img/banner/bf43e325-729b-4e25-81b2-739fdf1e0e52.jpg');">
+                        {{-- <span class="mask bg-gradient-dark"></span>
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 my-auto">
@@ -30,10 +30,10 @@
                                     <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">Free people make free choices. Free choices mean you get unequal outcomes. You can have freedom, or you can have equal outcomes. You can’t have both.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
-                <div class="carousel-item active">
+                {{-- <div class="carousel-item active">
                     <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1552793494-111afe03d0ca?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80');">
                         <span class="mask bg-gradient-dark"></span>
                         <div class="container">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="min-vh-75 position-absolute w-100 top-0">
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -84,11 +84,11 @@
                         </div>
                         <div class="description ps-5">
                             <h5>Pengumuman</h5>
-                            <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                            <a href="javascript:;" class="text-dark icon-move-right">
+                            <p>Sistem percubaan</p>
+                            {{-- <a href="javascript:;" class="text-dark icon-move-right">
                                 More about us
                                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
@@ -111,11 +111,11 @@
                             </svg>
                         </div>
                         <div class="description ps-5">
-                            <h5 class="text-white">Keterangan Sistem</h5>
+                            {{-- <h5 class="text-white">Keterangan Sistem</h5> --}}
                             <p class="text-white">Sistem Permohonan Percetakan Permit Ejen Pemilikan Semula (SPPEPS) ialah suatu sistem yang memudahkan Ejen Pemilikan Kereta Semula untuk membuat permohonan dari segi Permohonan baru, Pembaharuan Permit, Permohonan Cetakan Semula dan Permohonan Rayuan.</p>
-                            <a href="javascript:;" class="text-white icon-move-right">
-                                More about us
-                                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                            <a href="javascript:;" class="btn btn-primary">
+                                Mohon Sekarang
+                                
                             </a>
                         </div>
                     </div>

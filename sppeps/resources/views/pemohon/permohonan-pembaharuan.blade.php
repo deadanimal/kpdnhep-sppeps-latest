@@ -21,26 +21,26 @@
     </style>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function() {
-                        $("#hide").click(function() {
-                            $("#1").hide();
-                            $("#2").show();
+                    <script>
+                        $(document).ready(function() {
+                            $("#hide").click(function() {
+                                $("#1").hide();
+                                $("#2").show();
+                            });
+                            $("#show").click(function() {
+                                $("#1").show();
+                                $("#2").hide();
+                            });
                         });
-                        $("#show").click(function() {
-                            $("#1").show();
-                            $("#2").hide();
-                        });
-                    });
-                </script> -->
+                    </script> -->
 
     <!-- <body>
 
-                    <p id="1" style="display: none;">Area 1</p>
-                    <p id="2" style="display: none;">Second area</p>
+                        <p id="1" style="display: none;">Area 1</p>
+                        <p id="2" style="display: none;">Second area</p>
 
-                    <button id="show">Area 1</button>
-                    <button id="hide">Second Area</button> -->
+                        <button id="show">Area 1</button>
+                        <button id="hide">Second Area</button> -->
 
 
     <div class=" ">
@@ -518,12 +518,14 @@
                                                             <div class="row" id="institusi_kewangan" style="display: none;">
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
-                                                                        <label for="nama_institusi_kewangan" class="col-sm"><strong>Nama
+                                                                        <label for="nama_institusi_kewangan"
+                                                                            class="col-sm"><strong>Nama
                                                                                 Institusi Kewangan </strong></label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="nama_institusi_kewangan" id="nama_institusi_kewangan">
+                                                                                name="nama_institusi_kewangan"
+                                                                                id="nama_institusi_kewangan">
 
                                                                         </div>
                                                                     </div>
@@ -531,7 +533,8 @@
                                                                 <!-- <div class="col-1"></div> -->
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
-                                                                        <label for="no_telefon_institusi_kewangan" class="col-sm">
+                                                                        <label for="no_telefon_institusi_kewangan"
+                                                                            class="col-sm">
                                                                             <strong>No. Telefon Institusi Kewangan</strong>
                                                                         </label>
                                                                         <div class="col-sm-8">
@@ -596,7 +599,7 @@
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                             name="no_permit_panel" id="no_permit_panel">
+                                                                                name="no_permit_panel" id="no_permit_panel">
                                                                         </div>
                                                                     </div>
 
@@ -608,7 +611,8 @@
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="no_telefon_panel" name="no_telefon_panel">
+                                                                                id="no_telefon_panel"
+                                                                                name="no_telefon_panel">
                                                                         </div>
                                                                     </div>
 
@@ -762,8 +766,8 @@
 
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                                (click)="toggleAg()" id="applicationStatement"
-                                                                name="applicationStatement" value="Agree" required>
+                                                                id="applicationStatement"
+                                                                name="applicationStatement" value="Agree" onchange="check_agree()">
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -812,7 +816,7 @@
                                                             value="SIMPAN">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
+                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
                                                 </div>
@@ -838,6 +842,16 @@
                 type="text/javascript"></script>
 
     </div>
+
+    <script>
+        function check_agree() {
+            if ($('#applicationStatement').prop("checked") == true) {
+                $('#hantar').prop("disabled", false);
+            } else {
+                $('#hantar').prop("disabled", true);
+            }
+        }
+    </script>
 
     <script>
         const actualBtn = document.getElementById('actual-btn');
@@ -887,8 +901,7 @@
             if (!tahun_pekerjaan_eps.disabled) {
                 tahun_pekerjaan_eps.focus();
                 document.getElementById('pekerjaan_tetap').value = '';
-            } 
-            else if (!pekerjaan_tetap.disabled) {
+            } else if (!pekerjaan_tetap.disabled) {
                 pekerjaan_tetap.focus();
                 document.getElementById('tahun_pekerjaan_eps').value = '';
             }
@@ -905,10 +918,10 @@
             // pekerjaan_tetap.disabled = pekerjaan_sampingan.checked ? false : true;
             if (!tahun_dihadiri.disabled) {
                 tahun_dihadiri.focus();
-            }else{
+            } else {
                 document.getElementById('tahun_dihadiri').value = '';
             }
-           
+
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -937,8 +950,6 @@
             document.getElementById('no_permit_panel').value = '';
             document.getElementById('no_telefon_panel').value = '';
         }
-
-        
     </script>
 
 

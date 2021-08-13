@@ -13,6 +13,12 @@ use App\Mail\SemakanPDRM;
 use App\Mail\PermohonanPemohon;
 use League\CommonMark\Node\Inline\Newline;
 
+
+# import Validator
+use Illuminate\Support\Facades\Validator;
+
+
+
 class PermohonanController extends Controller
 {
     public function index(Request $request)
@@ -59,11 +65,6 @@ class PermohonanController extends Controller
     public function store(Request $request)
     {
 
-        // $p_negeri = User::where('role', 'pegawai_negeri')->get();
-
-        // dd($p_negeri);
-        // dd($request->input('lesen_memandu'));
-
         $user = $request->user();
         $user_id = $user->id;
 
@@ -72,7 +73,9 @@ class PermohonanController extends Controller
         $permohonan->user_id = $user_id;
 
         if ($request->status == 'HANTAR') {
-            $validated = $request->validate([
+
+            # Write Manual Validation
+            $validated = Validator::make($request->all(), [
                 'no_telefon' => 'required',
                 'emel' => 'required',
                 'alamat1' => 'required',
@@ -82,6 +85,35 @@ class PermohonanController extends Controller
                 'negeri' => 'required',
                 'negeri_kutipan_permit' => 'required',
             ]);
+
+            # Write Manual Redirect if Validation Fail
+            if ($validated->fails()) {
+                if ($request->jenis_permohonan == "Baharu") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-baru', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                } else if ($request->jenis_permohonan == "Pembaharuan") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pembaharuan', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                } else if ($request->jenis_permohonan == "Pendua") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pendua', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                } else if ($request->jenis_permohonan == "Rayuan") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-rayuan', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                }
+            };
         }
 
         $permohonan->jenis_permohonan = $request->jenis_permohonan;
@@ -107,7 +139,9 @@ class PermohonanController extends Controller
         if ($request->jenis_permohonan == 'Baharu') {
 
             if ($request->status == 'HANTAR') {
-                $validated = $request->validate([
+
+                # Write Manual Validation
+                $validated = Validator::make($request->all(), [
                     'jantina' => 'required',
                     'pekerjaan_sekarang' => 'required',
                     'tahap_pendidikan' => 'required',
@@ -118,18 +152,27 @@ class PermohonanController extends Controller
                 ]);
 
                 if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'nama_institusi_kewangan' => 'required',
                         'no_telefon_institusi_kewangan' => 'required',
                     ]);
                 } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'nama_panel' => 'required',
                         'no_kp_panel' => 'required',
                         'no_permit_panel' => 'required',
                         'no_telefon_panel' => 'required',
                     ]);
                 }
+
+                # Write Manual Redirect if Validation Fail
+                if ($validated->fails()) {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-baru', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                };
             }
 
             $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
@@ -159,7 +202,9 @@ class PermohonanController extends Controller
         } else if ($request->jenis_permohonan == 'Pembaharuan') {
 
             if ($request->status == 'HANTAR') {
-                $validated = $request->validate([
+
+                # Write Manual Validation
+                $validated = Validator::make($request->all(), [
                     'status_pekerjaan_eps' => 'required',
                     'tahap_pendidikan' => 'required',
                     'lesen_memandu' => 'required',
@@ -168,7 +213,7 @@ class PermohonanController extends Controller
                 ]);
 
                 if ($request->status_pekerjaan_eps == 'sepenuh masa') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'tahun_pekerjaan_eps' => 'required',
                     ]);
                 } elseif ($request->status_pekerjaan_eps == 'pekerjaan sampingan') {
@@ -178,12 +223,12 @@ class PermohonanController extends Controller
                 }
 
                 if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'nama_institusi_kewangan' => 'required',
                         'no_telefon_institusi_kewangan' => 'required',
                     ]);
                 } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'nama_panel' => 'required',
                         'no_kp_panel' => 'required',
                         'no_permit_panel' => 'required',
@@ -192,10 +237,19 @@ class PermohonanController extends Controller
                 }
 
                 if ($request->kehadiran_kursus_eps == 'Ya') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'tahun_dihadiri' => 'required',
                     ]);
                 }
+
+                # Write Manual Redirect if Validation Fail
+                if ($validated->fails()) {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pembaharuan', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                };
             }
 
             $permohonan->no_permit = $request->no_permit;
@@ -225,17 +279,29 @@ class PermohonanController extends Controller
         } else if ($request->jenis_permohonan == 'Pendua') {
 
             if ($request->status == 'HANTAR') {
-                $validated = $request->validate([
+
+                # Write Manual Validation
+                $validated = Validator::make($request->all(), [
                     'alasan_kehilangan' => 'required',
                     'penggantian_kali_ke' => 'required',
                     'negeri_laporan_polis' => 'required',
                     'no_laporan_polis' => 'required',
                 ]);
+
                 if ($request->alasan_kehilangan == 'Lain-lain') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'alasan_lain' => 'required',
                     ]);
                 }
+
+                # Write Manual Redirect if Validation Fail
+                if ($validated->fails()) {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pendua', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                };
             }
 
             $permohonan->no_permit = $request->no_permit;
@@ -252,16 +318,28 @@ class PermohonanController extends Controller
         } else if ($request->jenis_permohonan == 'Rayuan') {
 
             if ($request->status == 'HANTAR') {
-                $validated = $request->validate([
+
+                # Write Manual Validation
+                $validated = Validator::make($request->all(), [
                     'sebab_permohonan_ditolak' => 'required',
                     'rayuan_kali_ke' => 'required',
                     'alasan_rayuan' => 'required',
                 ]);
+
                 if ($request->sebab_permohonan_ditolak == 'Sebab-sebab Lain') {
-                    $validated = $request->validate([
+                    $validated = Validator::make($request->all(), [
                         'sebab_lain' => 'required',
                     ]);
                 }
+
+                # Write Manual Redirect if Validation Fail
+                if ($validated->fails()) {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pendua', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                };
             }
 
             $permohonan->no_permit = $request->no_permit;
@@ -419,7 +497,6 @@ class PermohonanController extends Controller
                     $permohonan->bayaran_fi = 10;
                     $permohonan->tarikh_diluluskan = date("Y-m-d");
                     $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
-
                 } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
                     $permohonan->bayaran_fi = 20;
                     $permohonan->tarikh_diluluskan = date("Y-m-d");

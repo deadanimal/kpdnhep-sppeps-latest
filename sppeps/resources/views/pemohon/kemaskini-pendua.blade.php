@@ -199,7 +199,7 @@
                                                                     </svg>
                                                                     <strong> Poskod</strong></label>
                                                                 <input type="text" class="form-control" id="poskod"
-                                                                    aria-describedby="poskod" name="poskod" value="poskod">
+                                                                    aria-describedby="poskod" name="poskod" value="{{ $permohonan->poskod }}">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="state"><i class="fas fa-map"></i><strong>
@@ -612,8 +612,8 @@
 
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                                (click)="toggleAg()" id="applicationStatement"
-                                                                name="applicationStatement" value="Agree" required>
+                                                                id="applicationStatement"
+                                                                name="applicationStatement" value="Agree" onchange="check_agree()">
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -662,7 +662,7 @@
                                                             value="SIMPAN">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
+                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
                                                 </div>
@@ -688,6 +688,16 @@
                 type="text/javascript"></script>
 
     </div>
+
+    <script>
+        function check_agree() {
+            if ($('#applicationStatement').prop("checked") == true) {
+                $('#hantar').prop("disabled", false);
+            } else {
+                $('#hantar').prop("disabled", true);
+            }
+        }
+    </script>
 
     <script>
         const actualBtn = document.getElementById('actual-btn');

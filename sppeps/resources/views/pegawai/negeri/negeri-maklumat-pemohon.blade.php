@@ -68,12 +68,12 @@
                                     <div class="d-flex flex-nowrap pb-2">
                                         <div class="col-6 form-group p-0">
                                             <label for="address"><strong> Alamat</strong></label>
-                                            <input type="text" class="col-9 form-control" value="{{ $permohonan->alamat1 }}"
-                                                disabled>
-                                            <input type="text" class="col-9 form-control" value="{{ $permohonan->alamat2 }}"
-                                                disabled>
-                                            <input type="text" class="col-9 form-control" value="{{ $permohonan->alamat3 }}"
-                                                disabled>
+                                            <input type="text" class="col-9 form-control"
+                                                value="{{ $permohonan->alamat1 }}" disabled>
+                                            <input type="text" class="col-9 form-control"
+                                                value="{{ $permohonan->alamat2 }}" disabled>
+                                            <input type="text" class="col-9 form-control"
+                                                value="{{ $permohonan->alamat3 }}" disabled>
                                         </div>
                                         <div class="col-1"></div>
                                         <div class="col pr-0">
@@ -298,23 +298,34 @@
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
                                                 <!-- <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
-                                            <input type="text" class="form-control col-9" disabled value="{{ $permohonan->no_kp_panel }}"> -->
+                                                            <input type="text" class="form-control col-9" disabled value="{{ $permohonan->no_kp_panel }}"> -->
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-nowrap">
-                                            <div class="col-6 form-group p-0">
-                                                <label for="panelName"><strong>Tahun Pekerjaan EPS</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->tahun_pekerjaan_eps }}">
 
-                                            </div>
-                                            <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="panelIcNumber"><strong>Pekerjaan Tetap Pemohon</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->pekerjaan_tetap }}">
-                                            </div>
+                                            @if ($permohonan->status_pekerjaan_eps === 'sepenuh masa')
+
+                                                <div class="col-6 form-group p-0">
+                                                    <label for="panelName"><strong>Tahun Pekerjaan EPS</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->tahun_pekerjaan_eps }}">
+
+                                                </div>
+                                                <div class="col-1"></div>
+
+                                            @elseif ( $permohonan->status_pekerjaan_eps === 'pekerjaan sampingan')
+
+                                                <div class="col-6 form-group pr-0">
+                                                    <label for="panelIcNumber"><strong>Pekerjaan Tetap
+                                                            Pemohon</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->pekerjaan_tetap }}">
+                                                </div>
+
+                                            @endif
+
+
                                         </div>
 
                                         <div class="d-flex flex-nowrap">
@@ -342,59 +353,65 @@
                                             </div>
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
-
-
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-nowrap">
-                                            <div class="col-6 form-group p-0">
-                                                <label for="panelBank"><strong>Nama Institusi Kewangan</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->nama_institusi_kewangan }}">
-
-                                            </div>
-                                            <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="bankPhoneNumber"><strong>No. Telefon Institusi
-                                                        Kewangan</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->no_telefon_institusi_kewangan }}">
-
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-nowrap">
-                                            <label>Panel yang Pemohon ikuti.</label>
-                                        </div>
+                                        @if ($permohonan->berkerja_panel_atau_syarikat === 'Ya')
 
-                                        <div class="d-flex flex-nowrap">
-                                            <div class="col-6 form-group p-0">
-                                                <label for="panelName"><strong>Nama Panel</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->nama_panel }}">
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="col-6 form-group p-0">
+                                                    <label for="panelBank"><strong>Nama Institusi Kewangan</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->nama_institusi_kewangan }}">
 
-                                            </div>
-                                            <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->no_kp_panel }}">
-                                            </div>
-                                        </div>
+                                                </div>
+                                                <div class="col-1"></div>
+                                                <div class="col form-group pr-0">
+                                                    <label for="bankPhoneNumber"><strong>No. Telefon Institusi
+                                                            Kewangan</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->no_telefon_institusi_kewangan }}">
 
-                                        <div class="d-flex flex-nowrap">
-                                            <div class="col-6 form-group p-0">
-                                                <label for="permitNumber"><strong>No. Permit</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->no_permit_panel }}">
+                                                </div>
                                             </div>
-                                            <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="panelIcNumber"><strong>No. Telefon Panel</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->no_telefon_panel }}">
+
+                                        @elseif ( $permohonan->berkerja_panel_atau_syarikat === "Tidak")
+
+                                            <div class="d-flex flex-nowrap">
+                                                <label>Panel yang Pemohon ikuti.</label>
                                             </div>
-                                        </div>
+
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="col-6 form-group p-0">
+                                                    <label for="panelName"><strong>Nama Panel</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->nama_panel }}">
+
+                                                </div>
+                                                <div class="col-1"></div>
+                                                <div class="col form-group pr-0">
+                                                    <label for="panelIcNumber"><strong>No. Kad Pengenalan
+                                                            Panel</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->no_kp_panel }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="col-6 form-group p-0">
+                                                    <label for="permitNumber"><strong>No. Permit</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->no_permit_panel }}">
+                                                </div>
+                                                <div class="col-1"></div>
+                                                <div class="col form-group pr-0">
+                                                    <label for="panelIcNumber"><strong>No. Telefon Panel</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->no_telefon_panel }}">
+                                                </div>
+                                            </div>
+
+                                        @endif
 
                                         <div class="d-flex flex-nowrap">
                                             <div class="col-6 form-group p-0">
@@ -404,11 +421,15 @@
                                                     value="{{ $permohonan->kehadiran_kursus_eps }}">
                                             </div>
                                             <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="panelIcNumber"><strong>Tahun Dihadiri</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->tahun_dihadiri }}">
-                                            </div>
+
+                                            @if ($permohonan->kehadiran_kursus_eps === 'Ya')
+                                                <div class="col form-group pr-0">
+                                                    <label for="panelIcNumber"><strong>Tahun Dihadiri</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->tahun_dihadiri }}">
+                                                </div>
+                                            @endif
+
                                         </div>
 
                                         <div class="d-flex flex-nowrap">
@@ -473,11 +494,14 @@
                                                     value="{{ $permohonan->alasan_kehilangan }}">
                                             </div>
                                             <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->alasan_lain }}">
-                                            </div>
+                                            @if ($permohonan->alasan_kehilangan === 'Lain-lain')
+                                                <div class="col form-group pr-0">
+                                                    <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->alasan_lain }}">
+                                                </div>
+                                            @endif
+
                                         </div>
 
                                         <div class="d-flex flex-nowrap">
@@ -489,7 +513,7 @@
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
                                                 <!-- <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
-                                            <input type="text" class="form-control col-9" disabled value="{{ $permohonan->alasan_lain }}"> -->
+                                                            <input type="text" class="form-control col-9" disabled value="{{ $permohonan->alasan_lain }}"> -->
                                             </div>
                                         </div>
 
@@ -557,11 +581,15 @@
                                                     value="{{ $permohonan->sebab_permohonan_ditolak }}">
                                             </div>
                                             <div class="col-1"></div>
-                                            <div class="col form-group pr-0">
-                                                <label for="panelIcNumber"><strong>Sebab Lain</strong></label>
-                                                <input type="text" class="form-control col-9" disabled
-                                                    value="{{ $permohonan->sebab_lain }}">
-                                            </div>
+
+                                            @if ($permohonan->sebab_permohonan_ditolak === 'Sebab-sebab Lain')
+                                                <div class="col form-group pr-0">
+                                                    <label for="panelIcNumber"><strong>Sebab Lain</strong></label>
+                                                    <input type="text" class="form-control col-9" disabled
+                                                        value="{{ $permohonan->sebab_lain }}">
+                                                </div>
+                                            @endif
+
                                         </div>
 
                                         <div class="d-flex flex-nowrap">
@@ -858,10 +886,10 @@
                                         </div>
 
                                         <!-- <div class="p-3 d-flex justify-content-center">
-                                        <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1" value="">BATAL</a>
+                                                        <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1" value="">BATAL</a>
 
-                                        <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
-                                    </div> -->
+                                                        <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
+                                                    </div> -->
                                     </div>
                                 </div>
                             </form>
