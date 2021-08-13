@@ -20,18 +20,18 @@
                             </div>
 
                             <div class="card-body p-3">
-                                <form method="POST" action="">
+                                <form method="POST" action="/cari-senarai-hitam">
                                     @csrf
 
                                     <div class="row">
                                         <div class="col">
-                                            <input type="text" name="search" class="form-control form-control-sm"
+                                            <input type="text" name="no_kp" class="form-control form-control-sm"
                                                 placeholder="No Kad Pengenalan">
                                         </div>
                                         <div class="col">
                                             <select class="form-control form-control-sm" aria-label="Default select example"
                                                 name="negeri">
-                                                <option selected>--Pilih Negeri--</option>
+                                                <option value="null">--Pilih Negeri--</option>
                                                 <option value="Perlis">Perlis</option>
                                                 <option value="Kedah">Kedah</option>
                                                 <option value="Pulau Pinang">Pulau Pinang</option>
@@ -52,16 +52,17 @@
                                         </div>
 
                                         <div class="col">
-                                            <select class="form-control form-control-sm">
-                                                <option>Pilih Jenis Permohonan</option>
-                                                <option>Permohonan Baharu</option>
-                                                <option>Permohonan Pembaharuan</option>
-                                                <option>Permohonan Pendua</option>
-                                                <option>Permohonan Rayuan</option>
+                                            <select class="form-control form-control-sm" name="jenis_permohonan">
+                                                <option value="null">Pilih Jenis Permohonan</option>
+                                                <option value="Baharu">Permohonan Baharu</option>
+                                                <option value="Pembaharuan">Permohonan Pembaharuan</option>
+                                                <option value="Pendua">Permohonan Pendua</option>
+                                                <option value="Rayuan">Permohonan Rayuan</option>
                                             </select>
                                         </div>
                                         <div class="col">
                                             <input type="submit" class="btn btn-sm bg-gradient-info" value="Cari">
+                                            <a href="/senarai-hitam" class="btn btn-sm btn-danger">Set Semula</a>
                                         </div>
                                     </div>
 
@@ -94,7 +95,7 @@
                                     </div>
                                     <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
                                         <!-- <label class="col-form-label pr-2" for="search">Cari Rekod: </label>
-                                            <input class="col-6 form-control" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" /> -->
+                                                <input class="col-6 form-control" type="text" name="search" placeholder="" (keyup)="updateFilter($event)" /> -->
                                         <a class="btn btn-sm bg-gradient-primary" href="/tambah-senarai-hitam">Tambah
                                             Senarai Hitam</a>
                                     </div>
@@ -172,11 +173,61 @@
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             <button class="btn btn-sm bg-gradient-info"
-                                                                data-bs-toggle="modal" data-bs-target="#modal-form2">
+                                                                data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $permohonan->id }}">
                                                                 Kemaskini
                                                             </button>
                                                         </td>
                                                     </tr>
+
+                                                    <div class="modal fade" id="modal-form2-{{ $permohonan->id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-md"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body p-0">
+                                                                    <div class="card card-plain">
+                                                                        <div class="card-header pb-0 text-left">
+                                                                            <h3
+                                                                                class="h4 font-weight-bolder text-info text-gradient">
+                                                                                Pembatalan Permit</h3>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <form method="POST"
+                                                                                action="/permohonan/{{ $permohonan->id }}"
+                                                                                role="form text-left">
+                                                                                @csrf
+                                                                                @method('PUT')
+
+                                                                                <div class="row">
+
+                                                                                    <label>Catatan </label>
+
+                                                                                    <div class="input-group mb-3">
+                                                                                        <textarea class="form-control"
+                                                                                            id="catatan"
+                                                                                            name="catatan_senarai_hitam">{{ $permohonan->catatan_senarai_hitam }}</textarea>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                {{-- <input type="hidden" name="id" value="{{ $permohonan->id }}"> --}}
+                                                                                <input type="hidden" name="jenis_tindakan"
+                                                                                    value="kemaskini_senarai_hitam">
+
+                                                                                <div class="d-flex justify-content-end">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-round bg-gradient-danger text-capitalize"
+                                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                                    <button type="Submit"
+                                                                                        class="btn btn-round bg-gradient-success text-capitalize">Simpan</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 @endforeach
                                                 {{-- <tr>
                                                     <td>

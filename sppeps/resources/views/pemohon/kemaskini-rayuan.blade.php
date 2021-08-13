@@ -96,190 +96,232 @@
                                                         </div>
                                                     </div>
 
-                                                    @foreach ($pemohon as $pemohon)
 
-                                                        <div class="d-flex flex-nowrap pb-2">
-                                                            <div class="col-6 form-group p-0 text-start">
-                                                                <label for="name">
-                                                                    <i class="fas fa-user"></i><strong> Nama</strong>
-                                                                </label>
-                                                                <div class="d-flex flex-nowrap align-items-center">
-                                                                    <input type="text" class="form-control col-9"
-                                                                        value="{{ $pemohon->name }}" name="nama" readonly>
-                                                                </div>
+
+                                                    <div class="d-flex flex-nowrap pb-2">
+                                                        <div class="col-6 form-group p-0 text-start">
+                                                            <label for="name">
+                                                                <i class="fas fa-user"></i><strong> Nama</strong>
+                                                            </label>
+                                                            <div class="d-flex flex-nowrap align-items-center">
+                                                                <input type="text" class="form-control col-9"
+                                                                    value="{{ $permohonan->nama }}" name="nama" readonly>
                                                             </div>
-                                                            <div class="col-1"></div>
+                                                        </div>
+                                                        <div class="col-1"></div>
 
-                                                            <div class="col form-group pr-0 text-start">
-                                                                <label for="noPermit"><i class="fas fa-id-card"></i><strong>
-                                                                        No. Permit</strong></label>
-                                                                <input type="text" class="form-control" value=""
-                                                                    name="no_permit" readonly>
-                                                            </div>
-
+                                                        <div class="col form-group pr-0 text-start">
+                                                            <label for="noPermit"><i class="fas fa-id-card"></i><strong>
+                                                                    No. Permit</strong></label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $permohonan->no_permit }}" name="no_permit"
+                                                                readonly>
                                                         </div>
 
-                                                        <div class="d-flex flex-nowrap pb-2 text-start">
-                                                            <div class="col-6 form-group p-0">
-                                                                <label for="gender"> <i
-                                                                        class="fas fa-venus-mars"></i><strong>
-                                                                        Jantina</strong></label>
-                                                                <input type="text" class="form-control" name="jantina"
-                                                                    value="{{ $pemohon->jantina }}" readonly>
+                                                    </div>
 
-                                                            </div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col form-group pr-0 text-start">
-                                                                <label for="ic"><i class="fas fa-id-card"></i><strong> No
-                                                                        Kad Pengenalan</strong></label>
-                                                                <input type="text" class="form-control" id="ic"
-                                                                    aria-describedby="ic" name="no_kp" readonly
-                                                                    value="{{ $pemohon->no_kp }}">
-                                                            </div>
+                                                    <div class="d-flex flex-nowrap pb-2 text-start">
+                                                        <div class="col-6 form-group p-0">
+                                                            <label for="gender"> <i class="fas fa-venus-mars"></i><strong>
+                                                                    Jantina</strong></label>
+                                                            <input type="text" class="form-control" name="jantina"
+                                                                value="{{ $permohonan->jantina }}" readonly>
 
                                                         </div>
+                                                        <div class="col-1"></div>
+                                                        <div class="col form-group pr-0 text-start">
+                                                            <label for="ic"><i class="fas fa-id-card"></i><strong> No
+                                                                    Kad Pengenalan</strong></label>
+                                                            <input type="text" class="form-control" id="ic"
+                                                                aria-describedby="ic" name="no_kp" readonly
+                                                                value="{{ $permohonan->no_kp }}">
+                                                        </div>
 
-                                                        <div class="d-flex flex-nowrap pb-2 text-start">
-                                                            <div class="col-6 form-group p-0">
-                                                                <label for="phone">
+                                                    </div>
+
+                                                    <div class="d-flex flex-nowrap pb-2 text-start">
+                                                        <div class="col-6 form-group p-0">
+                                                            <label for="phone">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                                                </svg>
+                                                                <strong> No. Telefon</strong>
+                                                            </label>
+                                                            <div class="d-flex flex-nowrap align-items-center">
+                                                                <input type="text" class="form-control col-2" id="phone1"
+                                                                    aria-describedby="phone" name="no_telefon"
+                                                                    value="{{ $permohonan->no_telefon }}">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1"></div>
+                                                        <div class="col form-group pr-0">
+                                                            <label for="age"><i class="fas fa-calendar-alt"></i><strong>
+                                                                    Umur</strong></label>
+                                                            <input type="text" class="form-control" id="age"
+                                                                aria-describedby="age" name="umur"
+                                                                value="{{ $permohonan->umur }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-flex flex-nowrap pb-2 text-start">
+                                                        <div class="col-6 form-group p-0">
+                                                            <label for="address"><i
+                                                                    class="fas fa-map-marker-alt"></i><strong>
+                                                                    Alamat</strong></label>
+                                                            <input type="text" class="col-9 form-control" name="alamat1"
+                                                                aria-describedby="address"
+                                                                value="{{ $permohonan->alamat1 }}">
+                                                            <input type="text" class="col-9 form-control" name="alamat2"
+                                                                aria-describedby="address"
+                                                                value="{{ $permohonan->alamat2 }}">
+                                                            <input type="text" class="col-9 form-control" name="alamat3"
+                                                                aria-describedby="address"
+                                                                value="{{ $permohonan->alamat3 }}">
+                                                        </div>
+                                                        <div class="col-1"></div>
+                                                        <div class="col pr-0">
+                                                            <div class="form-group">
+                                                                <label for="email">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="currentColor"
-                                                                        class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                                                        class="bi bi-signpost-fill" viewBox="0 0 16 16">
+                                                                        <path
+                                                                            d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
                                                                     </svg>
-                                                                    <strong> No. Telefon</strong>
-                                                                </label>
-                                                                <div class="d-flex flex-nowrap align-items-center">
-                                                                    <input type="text" class="form-control col-2"
-                                                                        id="phone1" aria-describedby="phone"
-                                                                        name="no_telefon"
-                                                                        value="{{ $pemohon->no_telefon_bimbit }}">
-
-                                                                </div>
+                                                                    <strong> Poskod</strong></label>
+                                                                <input type="text" class="form-control" id="poskod"
+                                                                    aria-describedby="poskod" name="poskod"
+                                                                    value="{{ $permohonan->poskod }}">
                                                             </div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col form-group pr-0">
-                                                                <label for="age"><i class="fas fa-calendar-alt"></i><strong>
-                                                                        Umur</strong></label>
-                                                                <input type="text" class="form-control" id="age"
-                                                                    aria-describedby="age" name="umur" readonly
-                                                                    value="{{ $pemohon->umur }}">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex flex-nowrap pb-2 text-start">
-                                                            <div class="col-6 form-group p-0">
-                                                                <label for="address"><i
-                                                                        class="fas fa-map-marker-alt"></i><strong>
-                                                                        Alamat</strong></label>
-                                                                <input type="text" class="col-9 form-control" name="alamat1"
-                                                                    value="{{ $pemohon->alamat1 }}"
-                                                                    aria-describedby="address">
-                                                                <input type="text" class="col-9 form-control" name="alamat2"
-                                                                    value="{{ $pemohon->alamat2 }}"
-                                                                    aria-describedby="address">
-                                                                <input type="text" class="col-9 form-control" name="alamat3"
-                                                                    value="{{ $pemohon->alamat3 }}"
-                                                                    aria-describedby="address">
-                                                            </div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col pr-0">
-                                                                <div class="form-group">
-                                                                    <label for="email">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                            height="16" fill="currentColor"
-                                                                            class="bi bi-signpost-fill" viewBox="0 0 16 16">
-                                                                            <path
-                                                                                d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
-                                                                        </svg>
-                                                                        <strong> Poskod</strong></label>
-                                                                    <input type="text" class="form-control" id="poskod"
-                                                                        aria-describedby="poskod" name="poskod"
-                                                                        value="{{ $pemohon->poskod }}">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="state"><i class="fas fa-map"></i><strong>
-                                                                            Negeri</strong></label>
-                                                                    <select class="form-control"
-                                                                        aria-label="Default select example" name="negeri">
-                                                                        <option value="">--Pilih Negeri--</option>
-                                                                        <option @if ($pemohon->negeri == 'Perlis') selected @endif
-                                                                            value="Perlis">Perlis</option>
-                                                                        <option @if ($pemohon->negeri == 'Kedah') selected @endif
-                                                                            value="Kedah">Kedah</option>
-                                                                        <option @if ($pemohon->negeri == 'Pulau Pinang') selected @endif
-                                                                            value="Pulau Pinang">Pulau Pinang</option>
-                                                                        <option @if ($pemohon->negeri == 'Perak') selected @endif
-                                                                            value="Perak">Perak</option>
-                                                                        <option @if ($pemohon->negeri == 'Selangor') selected @endif
-                                                                            value="Selangor">Selangor</option>
-                                                                        <option @if ($pemohon->negeri == 'Melaka') selected @endif
-                                                                            value="Melaka">Melaka</option>
-                                                                        <option @if ($pemohon->negeri == 'Negeri Sembilan') selected @endif
-                                                                            value="Negeri Sembilan">Negeri Sembilan
-                                                                        </option>
-                                                                        <option @if ($pemohon->negeri == 'Johor') selected @endif
-                                                                            value="Johor">Johor</option>
-                                                                        <option @if ($pemohon->negeri == 'Pahang') selected @endif
-                                                                            value="Pahang">Pahang</option>
-                                                                        <option @if ($pemohon->negeri == 'Terengganu') selected @endif
-                                                                            value="Terengganu">Terengganu</option>
-                                                                        <option @if ($pemohon->negeri == 'Kelantan') selected @endif
-                                                                            value="Kelantan">Kelantan</option>
-                                                                        <option @if ($pemohon->negeri == 'Sabah') selected @endif
-                                                                            value="Sabah">Sabah</option>
-                                                                        <option @if ($pemohon->negeri == 'Sarawak') selected @endif
-                                                                            value="Sarawak">Sarawak</option>
-                                                                        <option @if ($pemohon->negeri == 'WP Kuala Lumpur') selected @endif
-                                                                            value="WP Kuala Lumpur">W. P. Kuala Lumpur
-                                                                        </option>
-                                                                        <option @if ($pemohon->negeri == 'WP Putrajaya') selected @endif
-                                                                            value="WP Putrajaya">W. P. Putrajaya
-                                                                        </option>
-                                                                        <option @if ($pemohon->negeri == 'WP Labuan') selected @endif
-                                                                            value="WP Labuan">W. P. Labuan</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex flex-nowrap pb-2 text-start">
-                                                            <div class="col-6 form-group p-0">
-                                                                <label for="state"><i class="fas fa-map"></i><strong> Negeri
-                                                                        Kutipan Permit</strong></label>
+                                                            <div class="form-group">
+                                                                <label for="state"><i class="fas fa-map"></i><strong>
+                                                                        Negeri</strong></label>
                                                                 <select class="form-control"
-                                                                    aria-label="Default select example"
-                                                                    name="negeri_kutipan_permit">
-                                                                    <option selected>--Pilih Negeri--</option>
-                                                                    <option value="Perlis">Perlis</option>
-                                                                    <option value="Kedah">Kedah</option>
-                                                                    <option value="Pulau Pinang">Pulau Pinang</option>
-                                                                    <option value="Perak">Perak</option>
-                                                                    <option value="Selangor">Selangor</option>
-                                                                    <option value="Melaka">Melaka</option>
-                                                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                                                    <option value="Johor">Johor</option>
-                                                                    <option value="Pahang">Pahang</option>
-                                                                    <option value="Terengganu">Terengganu</option>
-                                                                    <option value="Kelantan">Kelantan</option>
-                                                                    <option value="Sabah">Sabah</option>
-                                                                    <option value="Sarawak">Sarawak</option>
-                                                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur
-                                                                    </option>
-                                                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                                                    <option value="WP Labuan">W. P. Labuan</option>
+                                                                    aria-label="Default select example" name="negeri">
+                                                                    <option disabled value="">--Pilih Negeri--</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Perlis' ? 'selected' : '' }}
+                                                                        value="Perlis">Perlis</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Kedah' ? 'selected' : '' }}
+                                                                        value="Kedah">Kedah</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Pulau Pinang' ? 'selected' : '' }}
+                                                                        value="Pulau Pinang">Pulau Pinang</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Perak' ? 'selected' : '' }}
+                                                                        value="Perak">Perak</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Selangor' ? 'selected' : '' }}
+                                                                        value="Selangor">Selangor</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Melaka' ? 'selected' : '' }}
+                                                                        value="Melaka">Melaka</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Negeri Sembilan' ? 'selected' : '' }}
+                                                                        value="Negeri Sembilan">Negeri Sembilan</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Johor' ? 'selected' : '' }}
+                                                                        value="Johor">Johor</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Pahang' ? 'selected' : '' }}
+                                                                        value="Pahang">Pahang</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Terengganu' ? 'selected' : '' }}
+                                                                        value="Terengganu">Terengganu</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Kelantan' ? 'selected' : '' }}
+                                                                        value="Kelantan">Kelantan</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Sabah' ? 'selected' : '' }}
+                                                                        value="Sabah">Sabah</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'Sarawak' ? 'selected' : '' }}
+                                                                        value="Sarawak">Sarawak</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'WP Kuala Lumpur' ? 'selected' : '' }}
+                                                                        value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'WP Putrajaya' ? 'selected' : '' }}
+                                                                        value="WP Putrajaya">W. P. Putrajaya</option>
+                                                                    <option
+                                                                        {{ $permohonan->negeri == 'WP Labuan' ? 'selected' : '' }}
+                                                                        value="WP Labuan">W. P. Labuan</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col form-group pr-0">
-                                                                <label for="email"><i class="fas fa-envelope"></i><strong>
-                                                                        E-mel</strong></label>
-                                                                <input type="email" name="emel" class="form-control"
-                                                                    value="{{ $pemohon->email }}">
-                                                            </div>
                                                         </div>
-                                                    @endforeach
+                                                    </div>
+
+                                                    <div class="d-flex flex-nowrap pb-2 text-start">
+                                                        <div class="col-6 form-group p-0">
+                                                            <label for="state"><i class="fas fa-map"></i><strong> Negeri
+                                                                    Kutipan Permit</strong></label>
+                                                            <select class="form-control" aria-label="Default select example"
+                                                                name="negeri_kutipan_permit">
+                                                                <option disabled value="">--Pilih Negeri--</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Perlis' ? 'selected' : '' }}
+                                                                    value="Perlis">Perlis</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Kedah' ? 'selected' : '' }}
+                                                                    value="Kedah">Kedah</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Pulau Pinang' ? 'selected' : '' }}
+                                                                    value="Pulau Pinang">Pulau Pinang</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Perak' ? 'selected' : '' }}
+                                                                    value="Perak">Perak</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Selangor' ? 'selected' : '' }}
+                                                                    value="Selangor">Selangor</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Melaka' ? 'selected' : '' }}
+                                                                    value="Melaka">Melaka</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Negeri Sembilan' ? 'selected' : '' }}
+                                                                    value="Negeri Sembilan">Negeri Sembilan</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Johor' ? 'selected' : '' }}
+                                                                    value="Johor">Johor</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Pahang' ? 'selected' : '' }}
+                                                                    value="Pahang">Pahang</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Terengganu' ? 'selected' : '' }}
+                                                                    value="Terengganu">Terengganu</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Kelantan' ? 'selected' : '' }}
+                                                                    value="Kelantan">Kelantan</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Sabah' ? 'selected' : '' }}
+                                                                    value="Sabah">Sabah</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'Sarawak' ? 'selected' : '' }}
+                                                                    value="Sarawak">Sarawak</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'WP Kuala Lumpur' ? 'selected' : '' }}
+                                                                    value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'WP Putrajaya' ? 'selected' : '' }}
+                                                                    value="WP Putrajaya">W. P. Putrajaya</option>
+                                                                <option
+                                                                    {{ $permohonan->negeri_kutipan_permit == 'WP Labuan' ? 'selected' : '' }}
+                                                                    value="WP Labuan">W. P. Labuan</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-1"></div>
+                                                        <div class="col form-group pr-0">
+                                                            <label for="email"><i class="fas fa-envelope"></i><strong>
+                                                                    E-mel</strong></label>
+                                                            <input type="email" name="emel" class="form-control"
+                                                                value="{{ $permohonan->emel }}">
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                                 <div class="button-row d-flex mt-4">
                                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
@@ -309,7 +351,8 @@
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
                                                                         id="gagal_tapisan" name="sebab_permohonan_ditolak"
-                                                                        value="Gagal tapisan">
+                                                                        value="Gagal tapisan"
+                                                                        {{ $permohonan->sebab_permohonan_ditolak == 'Gagal tapisan' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Gagal tapisan
                                                                         keselamatan</label>
@@ -318,7 +361,8 @@
                                                                     <input class="form-check-input" type="radio"
                                                                         id="tiada_surat_sokongan"
                                                                         name="sebab_permohonan_ditolak"
-                                                                        value="Tiada surat sokongan">
+                                                                        value="Tiada surat sokongan"
+                                                                        {{ $permohonan->sebab_permohonan_ditolak == 'Tiada surat sokongan' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Tiada surat sokongan</label>
                                                                 </div>
@@ -327,14 +371,16 @@
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
                                                                         id="lain_lain" name="sebab_permohonan_ditolak"
-                                                                        value="Sebab-sebab Lain">
+                                                                        value="Sebab-sebab Lain"
+                                                                        {{ $permohonan->sebab_permohonan_ditolak == 'Sebab-sebab Lain' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Sebab-sebab Lain</label>
                                                                     <br>
-                                                                    <div id="sebab_lain_box" style="display: none;">
+                                                                    <div id="sebab_lain_box" @if ($permohonan->sebab_permohonan_ditolak != 'Sebab-sebab Lain') style="display: none;" @endif>
                                                                         <label for="other_reason">Sila Nyatakan </label>
                                                                         <input type="text" class="form-control col-6"
-                                                                            name="sebab_lain" id="sebab_lain"/>
+                                                                            name="sebab_lain" id="sebab_lain"
+                                                                            value="{{ $permohonan->sebab_lain }}" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -366,15 +412,15 @@
                                                             <div class="col-3">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox2" name="rayuan_kali_ke"
-                                                                        value="1">
+                                                                        id="inlineCheckbox2" name="rayuan_kali_ke" value="1"
+                                                                        {{ $permohonan->rayuan_kali_ke == '1' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">1</label>
                                                                 </div>
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox3" name="rayuan_kali_ke"
-                                                                        value="2">
+                                                                        id="inlineCheckbox3" name="rayuan_kali_ke" value="2"
+                                                                        {{ $permohonan->rayuan_kali_ke == '2' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">2</label>
                                                                 </div>
@@ -382,15 +428,15 @@
                                                             <div class="col-3">
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox4" name="rayuan_kali_ke"
-                                                                        value="3">
+                                                                        id="inlineCheckbox4" name="rayuan_kali_ke" value="3"
+                                                                        {{ $permohonan->rayuan_kali_ke == '3' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">3</label>
                                                                 </div>
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox5" name="rayuan_kali_ke"
-                                                                        value="4">
+                                                                        id="inlineCheckbox5" name="rayuan_kali_ke" value="4"
+                                                                        {{ $permohonan->rayuan_kali_ke == '4' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">4</label>
                                                                 </div>
@@ -398,15 +444,15 @@
                                                             <div class="col-3">
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox6" name="rayuan_kali_ke"
-                                                                        value="5">
+                                                                        id="inlineCheckbox6" name="rayuan_kali_ke" value="5"
+                                                                        {{ $permohonan->rayuan_kali_ke == '5' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">5</label>
                                                                 </div>
                                                                 <div class="form-check ">
                                                                     <input class="form-check-input" type="radio"
-                                                                        id="inlineCheckbox7" name="rayuan_kali_ke"
-                                                                        value="6">
+                                                                        id="inlineCheckbox7" name="rayuan_kali_ke" value="6"
+                                                                        {{ $permohonan->rayuan_kali_ke == '6' ? 'checked' : '' }}>
                                                                     <label class="form-check-label"
                                                                         for="inlineCheckbox1">Lebih daripada 5</label>
                                                                 </div>
@@ -419,7 +465,7 @@
                                                                 Dikemukakan</strong></label>
                                                         <textarea class="form-control col-7" id="alasanRayuan"
                                                             aria-describedby="alasanRayuan" name="alasan_rayuan"
-                                                            rows="3"></textarea>
+                                                            rows="3">{{ $permohonan->alasan_rayuan }}</textarea>
                                                     </div>
 
                                                     <div class="form-group text-start">
@@ -635,7 +681,7 @@
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard" type="button"
+                                                        <a href="/permohonan" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">BATAL</a>
                                                         <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
                                                             value="SIMPAN">

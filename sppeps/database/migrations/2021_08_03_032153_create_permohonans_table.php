@@ -84,6 +84,7 @@ class CreatePermohonansTable extends Migration
 
             $table->string('rekod_jenayah')->nullable();
             $table->string('catatan_pdrm')->nullable();
+            $table->string('pegawai_pdrm')->nullable();
 
             $table->string('sokongan')->nullable();
             $table->string('tempoh_kelulusan')->nullable();
@@ -91,6 +92,10 @@ class CreatePermohonansTable extends Migration
 
             $table->string('catatan_pelulus')->nullable();
             $table->string('catatan_senarai_hitam')->nullable();
+
+            $table->date('tarikh_diluluskan')->nullable();
+            $table->date('tarikh_tamat_permit')->nullable();
+            $table->string('bayaran_fi')->nullable();
 
             $table->foreignId('user_id');
 

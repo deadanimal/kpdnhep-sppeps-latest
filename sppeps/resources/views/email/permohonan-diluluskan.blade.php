@@ -42,7 +42,7 @@
     </tr>
     <tr>
         <td>BAYARAN FI</td>
-        <td>{{ $bayaran_fi }}</td>
+        <td>RM {{ $bayaran_fi }}</td>
     </tr>
 </table>
 <br>
