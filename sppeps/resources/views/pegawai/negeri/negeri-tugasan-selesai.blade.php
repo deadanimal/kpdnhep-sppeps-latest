@@ -93,7 +93,7 @@
                                                 @foreach ($permohonan as $permohonan)
                                                     <tr>
                                                         <td>
-                                                            <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                            <span class="text-secondary text-sm font-weight-bold">{{$loop->index+1}}</span>
                                                         </td>
                                                         <td>
                                                             <span
@@ -116,51 +116,32 @@
                                                                 class="text-secondary text-sm font-weight-bold">{{ $permohonan->catatan_pegawai_negeri }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            @if ($permohonan->status_permohonan === 'Disokong')
-                                                                <span class="badge badge-success">Telah Disyorkan</span>
-                                                            @elseif($permohonan->status_permohonan === 'Tidak Disokong')
-                                                                <span class="badge badge-danger">Tidak Disyorkan</span>
-                                                            @elseif($permohonan->status_permohonan !== 'hantar')
-                                                                <span class="badge badge-success"> Telah Disemak</span>
+
+                                                            @if($permohonan->status_permohonan !== 'hantar')
+                                                                <span class="badge badge-success"> Telah
+                                                                    Disemak</span>
                                                             @endif
+
+
+
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             @if ($permohonan->status_permohonan !== 'hantar' && $permohonan->status_permohonan !== 'Permohonan Tidak Lengkap')
-                                                                <a href="">
-                                                                    <i class="fas fa-print"></i>
-                                                                </a>
+                                                                <form method="POST" action="/cetak_borang">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id" id="id" value="{{ $permohonan->id }}">
+                                                                    <input type="submit" name="submit" id="btn1" hidden>
+                                                                    <label for="btn1">
+                                                                        <i class="fas fa-print"></i>
+                                                                    </label>
+                                                                </form>
+                                                                    
+                                                                
                                                             @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                                <!-- <tr>
-                                                    <td>
-                                                        <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-secondary text-sm font-weight-bold">22-11-2021 10:39:12</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="text-secondary text-sm font-weight-bold">Catatan 1</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="badge badge-success"> Telah Disemak</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <a href="">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr> -->
+                                               
                                             </tbody>
                                         </table>
                                     </div>

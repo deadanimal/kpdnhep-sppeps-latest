@@ -13,6 +13,8 @@ use App\Mail\SemakanPDRM;
 use App\Mail\PermohonanPemohon;
 use League\CommonMark\Node\Inline\Newline;
 
+use PDF;
+
 
 # import Validator
 use Illuminate\Support\Facades\Validator;
@@ -23,26 +25,15 @@ class PermohonanController extends Controller
 {
     public function index(Request $request)
     {
-
         $user = $request->user();
         $user_role = $user->role;
         $user_id = $user->id;
-
-        if ($user_role == 'pegawai_negeri') {
-            $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'hantar ke penyokong'])->get();
-
-            return view('pegawai.negeri.negeri-tugasan-baru', [
-                'permohonan' => $permohonan
-            ]);
-        } else if ($user_role == 'pegawai_hq') {
-            $permohonan = Permohonan::whereIn('status_permohonan', ['Permohonan Lengkap', 'disemak pdrm', 'Disokong', 'Tidak Disokong'])->get();
-
-            return view('pegawai.hq.hq-tugasan-baru', [
-                'permohonan' => $permohonan
-            ]);
-        } else if ($user_role == 'pegawai_pdrm') {
+        $user_roles = $user->roles;
+        $user_negeri = $user->negeri;
+        // var_dump($user_roles);
+        // dd($user_roles[0]->name);
+        if ($user_role == 'pegawai_pdrm') {
             $permohonan = Permohonan::whereIn('status_permohonan', ['hantar ke pdrm', 'Dalam Proses'])->get();
-            // $permohonan = Permohonan::whereIn('status_permohonan', ['hantar', 'Permohonan Lengkap'])->get();
 
             return view('pegawai.pdrm.pdrm-tugasan-baru', [
                 'permohonan' => $permohonan
@@ -443,35 +434,189 @@ class PermohonanController extends Controller
 
     public function update(Request $request, Permohonan $permohonan)
     {
-        // dd($permohonan);
+        // dd($request);
         $user = $request->user();
         $user_role = $user->role;
+        $user_negeri = $user->negeri;
 
         if ($user_role == 'pegawai_negeri') {
-            if ($request->tindakan == "Permohonan Lengkap" || $request->tindakan == "Permohonan Tidak Lengkap") {
-                $permohonan->status_permohonan = $request->tindakan;
-                $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
-                if ($request->tindakan == "Permohonan Tidak Lengkap") {
-                    $penerimas_emails = User::where('id', $permohonan->user_id)->get();
-                    // dd($penerimas_emails);
-                    foreach ($penerimas_emails as $recipient) {
-                        Mail::to($recipient->email)->send(new PermohonanTidakLengkap($permohonan));
+            if ($request->jenis_tindakan == "semakan_permohonan") {
+                if ($permohonan->jenis_permohonan == "Baharu" || $permohonan->jenis_permohonan == "Pembaharuan" || $permohonan->jenis_permohonan == "Rayuan") {
+                    if ($request->tindakan == "Permohonan Lengkap") {
+                        $permohonan->status_permohonan = "hantar_ke_pemproses_hq";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+                    } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+                        $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $penerimas_emails = $permohonan->emel;
+                        Mail::to($penerimas_emails)->send(new PermohonanTidakLengkap($permohonan));
+                    }
+                } else if ($permohonan->jenis_permohonan == "Pendua") {
+                    if ($request->tindakan == "Permohonan Lengkap") {
+                        $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+                    } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+                        $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $penerimas_emails = $permohonan->emel;
+                        Mail::to($penerimas_emails)->send(new PermohonanTidakLengkap($permohonan));
                     }
                 }
-            } else {
-                $permohonan->sokongan = $request->tindakan;
-                $permohonan->status_permohonan = $request->tindakan;
-                $permohonan->tempoh_kelulusan = $request->tempoh_kelulusan;
-                $permohonan->catatan_penyokong = $request->catatan_penyokong;
-            }
-        } else if ($user_role == 'pegawai_hq') {
-            if ($request->jenis_tindakan == "permohonan_baru_pembaharuan") {
-                if ($request->tindakan == "Hantar Permohonan kepada Badan Agensi (PDRM)") {
-                    $permohonan->status_permohonan = "hantar ke pdrm";
-                    $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
+                $permohonan->save();
+
+
+                $permohonans = Permohonan::where([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disemak pdrm']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar ke pdrm']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Dalam Proses']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_hq']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_negeri']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+                ])->get();
+
+                return view('pegawai.negeri.negeri-tugasan-selesai', [
+                    'permohonan' => $permohonans
+                ]);
+            } else if ($request->jenis_tindakan == "sokongan_permohonan") {
+                if ($request->tindakan == "Disokong") {
+                    $permohonan->status_permohonan = "disokong_negeri";
+                    $permohonan->sokongan = $request->tindakan;
+                    $permohonan->tempoh_kelulusan =  $request->tempoh_kelulusan;
+                    $permohonan->catatan_penyokong = $request->catatan_penyokong;
+                } else if ($request->tindakan == "Tidak Disokong") {
+                    $permohonan->status_permohonan = "tidak_disokong_negeri";
+                    $permohonan->sokongan = $request->tindakan;
+                    $permohonan->catatan_penyokong = $request->catatan_penyokong;
                 }
-            } else if ($request->jenis_tindakan == "permohonan_pendua_rayuan") {
+                $permohonan->save();
+
+                $permohonans = Permohonan::where([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
+                ])->orWhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'tidak_disokong_negeri']
+                ])->get();
+
+                return view('pegawai.negeri.negeri-tugasan-selesai', [
+                    'permohonan' => $permohonans
+                ]);
+            } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
+
+                $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->catatan_pelulus = $request->catatan_pelulus;
+
+                if ($permohonan->jenis_permohonan == "Baharu" || $permohonan->jenis_permohonan == "Pembaharuan") {
+                    if ($permohonan->tempoh_kelulusan == "1 tahun") {
+                        $permohonan->bayaran_fi = 10;
+                        $permohonan->tarikh_diluluskan = date("Y-m-d");
+                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
+                    } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
+                        $permohonan->bayaran_fi = 20;
+                        $permohonan->tarikh_diluluskan = date("Y-m-d");
+                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
+                    }
+                } else if ($permohonan->jenis_permohonan == "Pendua") {
+                    $permohonan->bayaran_fi = 20;
+                    $permohonan->tarikh_diluluskan = date("Y-m-d");
+                    $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
+                }
+
+                $penerimas_emails = User::where('id', $permohonan->user_id)->get();
+                // dd($penerimas_emails);
+                foreach ($penerimas_emails as $recipient) {
+                    Mail::to($recipient->email)->send(new KelulusanPermohonan($permohonan));
+                }
+                $permohonan->save();
+
+                $permohonans = Permohonan::where([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
+                ])->orwhere([
+                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+                ])->get();
+
+                return view('pegawai.negeri.negeri-tugasan-baru', [
+                    'permohonan' => $permohonans
+                ]);
+            }
+
+            $permohonan->save();
+
+            return redirect('/tugasan-selesai');
+        } else if ($user_role == 'pegawai_hq') {
+
+            if ($request->jenis_tindakan == "hantar_ke_pdrm") {
+                $permohonan->status_permohonan = "hantar ke pdrm";
+                $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
+
+                $permohonan->save();
+                return redirect('/tugasan-selesai');
+            } else if ($request->jenis_tindakan == "hantar_ke_penyokong") {
+                if ($permohonan->jenis_permohonan == "Baharu") {
+                    $permohonan->status_permohonan = "hantar_ke_penyokong_hq";
+                    // dd($permohonan->status_permohonan);
+                } else if ($permohonan->jenis_permohonan == "Pembaharuan") {
+                    // dd($request);
+                    $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
+                }
+                $permohonan->save();
+                return redirect('/tugasan-selesai');
+            } else if ($request->jenis_tindakan == "sokongan_permohonan") {
+                if ($request->tindakan == "Disokong") {
+                    $permohonan->status_permohonan = "disokong_hq";
+                    $permohonan->sokongan = $request->tindakan;
+                    $permohonan->tempoh_kelulusan =  $request->tempoh_kelulusan;
+                    $permohonan->catatan_penyokong = $request->catatan_penyokong;;
+                } else if ($request->tindakan == "Tidak Disokong") {
+                    $permohonan->status_permohonan = "tidak_disokong_hq";
+                    $permohonan->sokongan = $request->tindakan;
+                    $permohonan->catatan_penyokong = $request->catatan_penyokong;;
+                }
+                $permohonan->save();
+                return redirect('/tugasan-selesai');
+            } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
+
+                $permohonan->status_permohonan = $request->tindakan;
+                $permohonan->catatan_pelulus = $request->catatan_pelulus;
+                if ($permohonan->jenis_permohonan == "Baharu" || $permohonan->jenis_permohonan == "Pembaharuan") {
+                    if ($permohonan->tempoh_kelulusan == "1 tahun") {
+                        $permohonan->bayaran_fi = 10;
+                        $permohonan->tarikh_diluluskan = date("Y-m-d");
+                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
+                    } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
+                        $permohonan->bayaran_fi = 20;
+                        $permohonan->tarikh_diluluskan = date("Y-m-d");
+                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
+                    }
+                } else if ($permohonan->jenis_permohonan == "Rayuan") {
+                    $permohonan->bayaran_fi = 10;
+                    $permohonan->tarikh_diluluskan = date("Y-m-d");
+                    $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
+                }
+
+
+                $penerimas_emails = User::where('id', $permohonan->user_id)->get();
+                // dd($penerimas_emails);
+                foreach ($penerimas_emails as $recipient) {
+                    Mail::to($recipient->email)->send(new KelulusanPermohonan($permohonan));
+                }
+            }
+
+            if ($request->jenis_tindakan == "permohonan_pendua_rayuan") {
                 $permohonan->status_permohonan = $request->tindakan;
                 $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
 
@@ -488,26 +633,6 @@ class PermohonanController extends Controller
                 }
             } else if ($request->jenis_tindakan == "hantar_ke_penyokong") {
                 $permohonan->status_permohonan = $request->tindakan;
-            } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
-
-                $permohonan->status_permohonan = $request->tindakan;
-                $permohonan->catatan_pelulus = $request->catatan_pelulus;
-
-                if ($permohonan->tempoh_kelulusan == "1 tahun") {
-                    $permohonan->bayaran_fi = 10;
-                    $permohonan->tarikh_diluluskan = date("Y-m-d");
-                    $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
-                } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
-                    $permohonan->bayaran_fi = 20;
-                    $permohonan->tarikh_diluluskan = date("Y-m-d");
-                    $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
-                }
-
-                $penerimas_emails = User::where('id', $permohonan->user_id)->get();
-                // dd($penerimas_emails);
-                foreach ($penerimas_emails as $recipient) {
-                    Mail::to($recipient->email)->send(new KelulusanPermohonan($permohonan));
-                }
             } else if ($request->jenis_tindakan == "tambah_senarai_hitam") {
                 // dd($request);
                 $permohonan->status_permohonan = 'disenarai hitam';
@@ -778,8 +903,14 @@ class PermohonanController extends Controller
         //
     }
 
-    public function semak()
+    public function maklumatPermohonan(Permohonan $permohonan, Request $request)
     {
+        // dd($request);
+        $permohonan = Permohonan::where('id', $request->id)->get();
+
+        return view('pemohon.maklumat-status', [
+            'permohonan' => $permohonan,
+        ]);
     }
 
     public function cari(Request $request)
@@ -922,16 +1053,26 @@ class PermohonanController extends Controller
         }
     }
 
-    public function cetak()
+    public function cetak(Request $request)
     {
+        $permohonans = Permohonan::where([
+            ['id', '=', $request->id]
+        ])->get();
+
+        // dd($permohonans);
+
+        $data = '';
+        
+        $pdf = PDF::loadView('pdf.borang_permohonan', [
+            'masa'=>time(),
+            'permohonan' => $permohonans
+        ]);
+        $nama_lesen = time().'-permohonan_baharu';
+        return $pdf->download($nama_lesen.'.pdf');
+
     }
 
     public function tetap_semula()
     {
-    }
-
-    public function borang(Request $request)
-    {
-        dd($request);
     }
 }
