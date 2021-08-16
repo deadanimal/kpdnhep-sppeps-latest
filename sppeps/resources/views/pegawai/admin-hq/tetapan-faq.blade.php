@@ -62,7 +62,7 @@
                                         <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $kategorifaq->id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="/tetapan-faq/{{ $kategorifaq->id  }}/delete">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
@@ -193,7 +193,7 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form4-{{ $faq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#">
+                                            <a href="/tetapan-faq/{{ $faq->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -342,13 +342,6 @@
                                         <button type="Submit"
                                             class="btn btn-round btn-success text-capitalize">Simpan</button>
                                     </div>
-
-                                    {{-- <select name="nama_kategori_bm">
-                                        @foreach ($kategorifaqs as $kategorifaq)
-                                            <option value="{{$kategorifaqs->nama_kategori_bm}}">{{$kategorifaqs->nama_kategori_bm}}</option>
-                                        @endforeach
-                                    </select> --}}
-
                                 </form>
                             </div>
 
