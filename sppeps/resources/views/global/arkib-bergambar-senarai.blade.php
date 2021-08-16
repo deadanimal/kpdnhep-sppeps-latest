@@ -57,7 +57,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-3 p-2">
+        {{-- <div class="col-md-3 p-2">
             <a href="javascript:;">
                 <div class="card card-background move-on-hover">
                     <div class="full-background" style="background-image: url('https://images.unsplash.com/photo-1521620112244-f1d36327c766?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1300&amp;q=80')"></div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div> --}}
     </div>
 
 </div>

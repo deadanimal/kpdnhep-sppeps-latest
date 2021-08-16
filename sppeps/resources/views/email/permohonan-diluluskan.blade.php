@@ -19,7 +19,7 @@
 <br>
 <p>Sukacita dimaklumkan bahawa permohonan anda telah diluluskan.</p>
 <p>
-    Tuan/Puan perlu membuat bayaran berdasarkan amoun yang dinyatakan dibawah dalam tempoh 30 hari dari tarikh e-mel ini
+    Tuan/Puan perlu membuat bayaran berdasarkan amoun yang dinyatakan dibawah dalam tempoh 6 bulan dari tarikh e-mel ini
     dihantar bagi membolehkan permit tuan/puan dicetak. Kegagalan menjelaskan bayaran dalam tempoh yang ditetapkan akan
     menyebabkan permohonan tuan/puan dibatalkan dan perlu membuat permohonan semula.
 </p>
@@ -42,7 +42,7 @@
     </tr>
     <tr>
         <td>BAYARAN FI</td>
-        <td>{{ $bayaran_fi }}</td>
+        <td>RM {{ $bayaran_fi }}</td>
     </tr>
 </table>
 <br>

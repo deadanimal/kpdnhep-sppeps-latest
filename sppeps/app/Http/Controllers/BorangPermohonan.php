@@ -10,19 +10,7 @@ class BorangPermohonan extends Controller
 {
     public function index(Request $request)
     {
-        dd($request);
-
-        $user = $request->user();
-        $user_role = $user->role;
-        $user_id = $user->id;
-
-        // $pemohons = User::where('id', $user_id)->get();
-        // if ($request->borang == "baharu"){
-        //     return view('pemohon.permohonan-baru', [
-        //         'pemohon' => $pemohons
-        //     ]);
-        // }
-
+       //
     }
 
     public function borang(Request $request)

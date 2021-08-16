@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TugasanSelesaiController;
 use App\Http\Controllers\BorangPermohonan;
 use App\Http\Controllers\SenaraiHitamController;
+
 use App\Http\Controllers\KategorifaqController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PengumumanController;
@@ -26,6 +27,8 @@ use App\Http\Controllers\ArkibdokumenController;
 use App\Http\Controllers\ArkibgambarController;
 use App\Http\Controllers\LaporanstatistikController;
 use App\Http\Controllers\SenaraigambarController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SemakanStatusController;
 
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
@@ -50,7 +53,15 @@ Route::resource('/senarai-hitam', SenaraiHitamController::class);
 
 Route::get('/tambah-senarai-hitam', [SenaraiHitamController::class, 'senaraiDiluluskan']);
 
-Route::get('/cari-pemohon', [SenaraiHitamController::class, 'cariSenaraiDiluluskan']);
+Route::post('/cari-senarai-hitam', [SenaraiHitamController::class, 'carisenaraihitam']);
+
+Route::post('/cari-tambah-senarai-hitam', [SenaraiHitamController::class, 'caritambahsenaraihitam']);
+
+Route::resource('/profil', ProfilController::class);
+
+Route::post('/cari-eps', [SemakanStatusController::class, 'caripermohonan']);
+
+
 
 
 
@@ -71,9 +82,9 @@ Route::get('/semak-ic', function () {
     return view('auth.semakan-kad-pengenalan');
 });
 
-Route::get('/profil', function () {
-    return view('auth.profile_');
-});
+// Route::get('/profil', function () {
+//     return view('auth.profile_');
+// });
 
 Route::get('/profil-pegawai', function () {
     return view('auth.profil-pegawai');
@@ -126,53 +137,66 @@ Route::get('/dashboard-pemohon', function () {
     return view('pemohon.dashboard');
 });
 
-Route::get('/permohonan-baru', function () {
-    return view('pemohon.permohonan-baru');
+Route::get('/maklumat-status-pemohon', function () {
+    return view('pemohon.maklumat-status');
 });
 
-Route::get('/permohonan-pembaharuan', function () {
-    return view('pemohon.permohonan-pembaharuan');
+Route::get('/permohonan-berjaya', function () {
+    return view('pemohon.permohonan-success');
 });
 
-Route::get('/permohonan-pendua', function () {
-    return view('pemohon.permohonan-pendua');
+Route::get('/permohonan-disimpan', function () {
+    return view('pemohon.permohonan-simpan');
 });
 
-Route::get('/permohonan-rayuan', function () {
-    return view('pemohon.permohonan-rayuan');
-});
 
-Route::get('/status-permohonan', function () {
-    return view('pemohon.status-permohonan');
-});
+// Route::get('/permohonan-baru', function () {
+//     return view('pemohon.permohonan-baru');
+// });
+
+// Route::get('/permohonan-pembaharuan', function () {
+//     return view('pemohon.permohonan-pembaharuan');
+// });
+
+// Route::get('/permohonan-pendua', function () {
+//     return view('pemohon.permohonan-pendua');
+// });
+
+// Route::get('/permohonan-rayuan', function () {
+//     return view('pemohon.permohonan-rayuan');
+// });
+
+// Route::get('/status-permohonan', function () {
+//     return view('pemohon.status-permohonan');
+// });
 
 
 //pdrm
-Route::get('/pdrm-tugasan-baru', function () {
-    return view('pegawai.pdrm.pdrm-tugasan-baru');
-});
+// Route::get('/pdrm-tugasan-baru', function () {
+//     return view('pegawai.pdrm.pdrm-tugasan-baru');
+// });
 
-Route::get('/pdrm-maklumat-pemohon', function () {
-    return view('pegawai.pdrm.pdrm-maklumat-pemohon');
-});
+// Route::get('/pdrm-maklumat-pemohon', function () {
+//     return view('pegawai.pdrm.pdrm-maklumat-pemohon');
+// });
 
-Route::get('/pdrm-tugasan-selesai', function () {
-    return view('pegawai.pdrm.pdrm-tugasan-selesai');
-});
+// Route::get('/pdrm-tugasan-selesai', function () {
+//     return view('pegawai.pdrm.pdrm-tugasan-selesai');
+// });
 
 
 //pegawai negeri
-Route::get('/negeri-tugasan-baru', function () {
-    return view('pegawai.negeri.negeri-tugasan-baru');
-});
+// Route::get('/negeri-tugasan-baru', function () {
+//     return view('pegawai.negeri.negeri-tugasan-baru');
+// });
 
-Route::get('/negeri-maklumat-pemohon', function () {
-    return view('pegawai.negeri.negeri-maklumat-pemohon');
-});
+// Route::get('/negeri-maklumat-pemohon', function () {
+//     return view('pegawai.negeri.negeri-maklumat-pemohon');
+// });
 
-Route::get('/negeri-tugasan-selesai', function () {
-    return view('pegawai.negeri.negeri-tugasan-selesai');
-});
+// Route::get('/negeri-tugasan-selesai', function () {
+//     return view('pegawai.negeri.negeri-tugasan-selesai');
+// });
 
 Route::get('/negeri-bayaran-permohonan', function () {
     return view('pegawai.negeri.negeri-bayaran-permohonan');

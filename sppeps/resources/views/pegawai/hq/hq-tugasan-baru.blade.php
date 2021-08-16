@@ -283,7 +283,7 @@
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ URL::to('permohonan/' . $permohonan->id) }}">
+                                            <a href="permohonan/{{ $permohonan->id }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </td>

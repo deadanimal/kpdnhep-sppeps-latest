@@ -1,4 +1,4 @@
-@extends('layouts.base-pdrm')
+@extends('layouts.base-admin-hq')
 
 @section('content')
 

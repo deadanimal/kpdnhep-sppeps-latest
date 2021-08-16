@@ -735,9 +735,9 @@
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <form method="POST" action="{{ route('logout') }}">
+                                    <form method="POST" action="/logout">
                                         @csrf
-                                        <a class="dropdown-item border-radius-md" href="route('logout')" onclick="event.preventDefault();
+                                        <a class="dropdown-item border-radius-md" href="#" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                             <div class="d-flex py-1">
 
