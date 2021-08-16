@@ -33,7 +33,7 @@
                             @foreach ($permohonan as $permohonan)
                                 <tr>
                                     <td>
-                                        <span class="text-secondary text-sm font-weight-bold">{{$loop->index+1}}</span>
+                                        <span class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                     </td>
                                     <td>
                                         <span
@@ -77,15 +77,19 @@
                                                 Kemaskini
                                             </a>
                                         @else
-                                            <a href="/maklumat-status-pemohon" class="btn btn-sm btn-primary"
-                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                Lihat Maklumat Status
-                                            </a>
+                                            <form method="POST" action="/maklumat_permohonan">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $permohonan->id }}">
+                                                <input type="submit" id="actual-btn1" hidden />
+                                                <label for="actual-btn1" class="upload-btn">
+                                                    <button class="btn btn-primary btn-sm">Lihat Maklumat Status</button>
+                                                </label>
+                                            </form>
                                         @endif
 
                                         <!-- <a href="javascript:;" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
-                                            Bayar
-                                        </a> -->
+                                                Bayar
+                                            </a> -->
                                     </td>
                                 </tr>
                             @endforeach
@@ -101,8 +105,6 @@
 
                 </div>
             </div>
-
-
 
         </div>
 

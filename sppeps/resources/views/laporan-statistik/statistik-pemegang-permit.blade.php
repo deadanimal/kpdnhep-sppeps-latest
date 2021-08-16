@@ -4,6 +4,11 @@
 
 <div class="container-fluid py-4">
 
+    {{auth()->user()->role}}
+    {{-- {{Auth::user()->roles}} --}}
+    @foreach (auth()->user()->roles as $role)
+        {{$role->name}}    
+    @endforeach
     <div class="p-3">
 
         <div>
