@@ -21,6 +21,12 @@ use App\Http\Controllers\SenaraiHitamController;
 use App\Http\Controllers\KategorifaqController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ArkibdokumenController;
+use App\Http\Controllers\ArkibgambarController;
+use App\Http\Controllers\LaporanstatistikController;
+use App\Http\Controllers\SenaraigambarController;
+
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
 // })->middleware(['auth'])->name('dashboard');\
@@ -235,29 +241,37 @@ Route::get('/pelulus-tugasan-selesai', function () {
 
 // laporan Statistik
 
-Route::get('/peratusan-kelulusan-permit', function () {
-    return view('laporan-statistik.peratusan-kelulusan-permit');
-});
+Route::get('/laporan-statistik/peratusan-kelulusan-permit', [LaporanstatistikController::class, 'kelulusanpermit']);
 
-Route::get('/peratusan-permit-ditolak', function () {
-    return view('laporan-statistik.peratusan-permit-ditolak');
-});
+Route::get('/laporan-statistik/peratusan-permit-ditolak', [LaporanstatistikController::class, 'permitditolak']);
 
-Route::get('/laporan-sejarah-permohonan', function () {
-    return view('laporan-statistik.laporan-sejarah-permohonan');
-});
+// Route::get('/peratusan-permit-ditolak', function () {
+//     return view('laporan-statistik.peratusan-permit-ditolak');
+// });
 
-Route::get('/laporan-senarai-hitam', function () {
-    return view('laporan-statistik.laporan-senarai-hitam');
-});
+Route::get('/laporan-statistik/laporan-sejarah-permohonan', [LaporanstatistikController::class, 'sejarahpermohonan']);
 
-Route::get('/statistik-pemegang-permit', function () {
-    return view('laporan-statistik.statistik-pemegang-permit');
-});
+// Route::get('/laporan-sejarah-permohonan', function () {
+//     return view('laporan-statistik.laporan-sejarah-permohonan');
+// });
 
-Route::get('/statistik-kutipan-fi', function () {
-    return view('laporan-statistik.statistik-kutipan-fi');
-});
+Route::get('/laporan-statistik/laporan-senarai-hitam', [LaporanstatistikController::class, 'senaraihitam']);
+
+// Route::get('/laporan-senarai-hitam', function () {
+//     return view('laporan-statistik.laporan-senarai-hitam');
+// });
+
+Route::get('/laporan-statistik/statistik-pemegang-permit', [LaporanstatistikController::class, 'pegangpermit']);
+
+// Route::get('/statistik-pemegang-permit', function () {
+//     return view('laporan-statistik.statistik-pemegang-permit');
+// });
+
+Route::get('/laporan-statistik/statistik-kutipan-fi', [LaporanstatistikController::class, 'kutipanfi']);
+
+// Route::get('/statistik-kutipan-fi', function () {
+//     return view('laporan-statistik.statistik-kutipan-fi');
+// });
 
 
 //admin hq
@@ -282,29 +296,29 @@ Route::get('/tambah-peranan-pegawai-2', function () {
     return view('pegawai.admin-hq.tambah-peranan-pegawai-2');
 });
 
-Route::get('/tetapan-arkib-bergambar', function () {
-    return view('pegawai.admin-hq.tetapan-arkib-bergambar');
-});
+Route::resource('/tetapan-arkib-bergambar', ArkibgambarController::class);
+Route::get('/tetapan-arkib-bergambar/{arkibgambar}/delete', [ArkibgambarController::class, 'destroy']);
 
-Route::get('/tetapan-arkib-bergambar-senarai', function () {
-    return view('pegawai.admin-hq.tetapan-arkib-bergambar-senarai');
-});
+Route::resource('/tetapan-arkib-bergambar-senarai', SenaraigambarController::class);
+Route::get('/tetapan-arkib-bergambar-senarai/{senaraigambar}/delete', [SenaraigambarController::class, 'destroy']);
 
-Route::get('/tetapan-arkib-dokumen', function () {
-    return view('pegawai.admin-hq.tetapan-arkib-dokumen');
-});
+Route::resource('/tetapan-arkib-dokumen', ArkibdokumenController::class);
+Route::get('/tetapan-arkib-dokumen/{arkibdokumen}/delete', [ArkibdokumenController::class, 'destroy']);
 
 Route::get('/tetapan-arkib-dokumen-senarai', function () {
     return view('pegawai.admin-hq.tetapan-arkib-dokumen-senarai');
 });
 
 Route::resource('/tetapan-pengumuman', PengumumanController::class);
+Route::get('/tetapan-pengumuman/{pengumuman}/delete', [PengumumanController::class, 'destroy']);
 
-Route::get('/tetapan-banner', function () {
-    return view('pegawai.admin-hq.tetapan-banner');
-});
+Route::resource('/tetapan-banner', BannerController::class);
+Route::get('/tetapan-banner/{banner}/delete', [BannerController::class, 'destroy']);
 
 Route::resource('/tetapan-faq', FaqController::class);
+Route::get('/tetapan-faq/{faq}/delete', [FaqController::class, 'destroy']);
+Route::get('/tetapan-faq/{kategorifaq}/delete', [FaqController::class, 'destroy']);
+
 
 Route::get('/log-pemohon', function () {
     return view('pegawai.admin-hq.at-log-pemohon');
