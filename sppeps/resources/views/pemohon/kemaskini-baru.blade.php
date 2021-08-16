@@ -630,8 +630,6 @@
         </main>
     </div>
 
-
-
     <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/multistep-form.js" type="text/javascript"></script>
 
 </div>

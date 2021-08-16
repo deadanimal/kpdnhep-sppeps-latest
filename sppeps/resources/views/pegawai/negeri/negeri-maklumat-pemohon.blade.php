@@ -298,7 +298,7 @@
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
                                                 <!-- <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
-                                                            <input type="text" class="form-control col-9" disabled value="{{ $permohonan->no_kp_panel }}"> -->
+                                                                                    <input type="text" class="form-control col-9" disabled value="{{ $permohonan->no_kp_panel }}"> -->
                                             </div>
                                         </div>
 
@@ -513,7 +513,7 @@
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
                                                 <!-- <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
-                                                            <input type="text" class="form-control col-9" disabled value="{{ $permohonan->alasan_lain }}"> -->
+                                                                                    <input type="text" class="form-control col-9" disabled value="{{ $permohonan->alasan_lain }}"> -->
                                             </div>
                                         </div>
 
@@ -752,6 +752,8 @@
                                             </div>
                                         </div>
 
+                                        <input type="hidden" name="jenis_tindakan" value="semakan_permohonan">
+
                                         <div class="modal fade" id="modal-1" tabindex="-1" role="dialog"
                                             aria-labelledby="modal-default" aria-hidden="true">
                                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
@@ -788,7 +790,7 @@
                             </form>
                         </div>
                     </div>
-                @elseif ($permohonan->status_permohonan === 'hantar ke penyokong')
+                @elseif ($permohonan->status_permohonan === 'hantar_ke_penyokong_negeri')
 
                     <div class="card card-frame">
 
@@ -806,21 +808,22 @@
 
                                     <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch"
                                         style="width: 90%;">
-
-                                        <div class="d-flex flex-nowrap">
-                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
-                                                <label for="" class="col-sm-3 ">Keputusan Tapisan PDRM</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        value="{{ $permohonan->rekod_jenayah }}" disabled>
+                                        @if ($permohonan->jenis_permohonan == 'Pembaharuan')
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                    <label for="" class="col-sm-3 ">Keputusan Tapisan PDRM</label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            value="{{ $permohonan->rekod_jenayah }}" disabled>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                         <div class="d-flex flex-nowrap">
                                             <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                                 <label for="action" class="col-sm-3 ">Tindakan</label>
                                                 <div class="col-sm-5">
-                                                    <select id="action" class="form-control form-control-sm"
+                                                    <select id="sokongan" class="form-control form-control-sm"
                                                         name="tindakan">
                                                         <option>Sila Pilih</option>
                                                         <option value="Disokong">Disokong</option>
@@ -829,19 +832,36 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-nowrap">
-                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
-                                                <label for="action" class="col-sm-3 ">Tempoh Kelulusan</label>
-                                                <div class="col-sm-5">
-                                                    <select id="action" class="form-control form-control-sm"
-                                                        name="tempoh_kelulusan">
-                                                        <option>Sila Pilih</option>
-                                                        <option value="1 tahun">1 Tahun</option>
-                                                        <option value="2 tahun">2 Tahun</option>
-                                                    </select>
+
+                                        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                                        <script type="text/javascript">
+                                            $(function() {
+                                                $("#sokongan").change(function() {
+                                                    if ($(this).val() == "Disokong") {
+                                                        $("#dvPassport").show();
+                                                    } else {
+                                                        $("#dvPassport").hide();
+                                                    }
+                                                });
+                                            });
+                                        </script>
+
+                                        <div id="dvPassport" style="display: none">
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                    <label for="action" class="col-sm-3 ">Tempoh Kelulusan</label>
+                                                    <div class="col-sm-5">
+                                                        <select id="action" class="form-control form-control-sm"
+                                                            name="tempoh_kelulusan">
+                                                            <option>Sila Pilih</option>
+                                                            <option value="1 tahun">1 Tahun</option>
+                                                            <option value="2 tahun">2 Tahun</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="d-flex flex-nowrap">
                                             <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                                 <label for="comment" class="col-sm-3 ">Catatan</label>
@@ -851,6 +871,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <input type="hidden" name="jenis_tindakan" value="sokongan_permohonan">
 
                                         <div class="modal fade" id="modal-4" tabindex="-1" role="dialog"
                                             aria-labelledby="modal-default" aria-hidden="true">
@@ -877,6 +899,119 @@
                                             </div>
                                         </div>
 
+
+
+                                        <div class="p-3 d-flex justify-content-center">
+                                            <a href="/permohonan" type="button"
+                                                class="btn btn-danger text-uppercase m-1">BATAL</a>
+                                            <button type="button" class="btn btn-success text-uppercase m-1"
+                                                data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                @elseif ($permohonan->status_permohonan === 'disokong_negeri' || $permohonan->status_permohonan ===
+                    'tidak_disokong_negeri')
+
+                    <div class="card card-frame">
+
+                        <div class="card-header" style="background-color: #f5e7f2;">
+                            <h6 class="text-uppercade ">Kelulusan Permohonan</h6>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="/permohonan/{{ $permohonan->id }}"
+                                class="d-flex justify-content-center font-black" style="width: 100%;">
+                                @csrf
+                                @method('PUT')
+                                <div class="d-flex justify-content-center flex-wrap" fxLayout="column"
+                                    fxLayoutAlign="space-evenly stretch" style="width: 100%;">
+
+                                    <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch"
+                                        style="width: 90%;">
+
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                <label for="" class="col-sm-3 ">Keputusan Tapisan PDRM</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $permohonan->rekod_jenayah }}" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                <label for="" class="col-sm-3 ">Syor</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $permohonan->sokongan }}" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                <label for="" class="col-sm-3 ">Tempoh Kelulusan</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $permohonan->tempoh_kelulusan }}" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                <label for="action" class="col-sm-3 ">Tindakan</label>
+                                                <div class="col-sm-5">
+                                                    <select id="action" class="form-control" name="tindakan">
+                                                        <option selected>Sila Pilih</option>
+                                                        <option value="Diluluskan">Diluluskan</option>
+                                                        <option value="Tidak Diluluskan">Tidak Diluluskan</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="jenis_tindakan" value="kelulusan_permohonan">
+
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                <label for="comment" class="col-sm-3 ">Catatan</label>
+                                                <div class="col-sm-5">
+                                                    <textarea class="form-control" id="comment" rows="3"
+                                                        name="catatan_pelulus"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="modal-4" tabindex="-1" role="dialog"
+                                            aria-labelledby="modal-default" aria-hidden="true">
+                                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h6 class="modal-title" id="modal-title-default">Notifikasi</h6>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <p>Pengesahan permohonan akan dihantar.</p>
+                                                        <p>Adakah anda pasti mahu menghantar?</p>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center">
+                                                        <button type="button" class="btn btn-danger  ml-auto"
+                                                            data-bs-dismiss="modal">BATAL</button>
+                                                        <button type="submit" class="btn btn-success text-uppercase ml-auto"
+                                                            value="HANTAR">HANTAR</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="p-3 d-flex justify-content-center">
                                             <a href="/permohonan" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
@@ -884,12 +1019,6 @@
                                                 data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
                                             <!-- <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button> -->
                                         </div>
-
-                                        <!-- <div class="p-3 d-flex justify-content-center">
-                                                        <a href="/permohonan" type="button" class="btn btn-danger text-uppercase m-1" value="">BATAL</a>
-
-                                                        <button type="submit" class="btn btn-success text-uppercase m-1" value="HANTAR">HANTAR</button>
-                                                    </div> -->
                                     </div>
                                 </div>
                             </form>
