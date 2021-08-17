@@ -81,7 +81,7 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $pengumuman->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="#">
+                                            <a href="/tetapan-pengumuman/{{ $pengumuman->id  }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>

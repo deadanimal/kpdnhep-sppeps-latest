@@ -115,12 +115,6 @@ class FaqController extends Controller
 
         $faq->save();
 
-        // $kategorifaq->nama_kategori_bm = $request->tajuk_bm;
-        // $kategorifaq->nama_kategori_en = $request->tajuk_en;
-        // $kategorifaq->status = $request->status;
-
-        // $kategorifaq->save();
-
         return redirect('/tetapan-faq');
     }
 
@@ -130,19 +124,16 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq)
+    public function destroy(Faq $faq, Kategorifaq $kategorifaq)
     {
-        //
-    }
-
-    public function updatekatfaq(Request $request, Faq $faq, Kategorifaq $kategorifaq)
-    {
-        $kategorifaq->nama_kategori_bm = $request->tajuk_bm;
-        $kategorifaq->nama_kategori_en = $request->tajuk_en;
-        $kategorifaq->status = $request->status;
-
-        $kategorifaq->save();
-
-        return redirect('/tetapan-faq');
+        {
+            if ($kategorifaq){
+                $kategorifaq->delete();
+            }
+            else{
+                $faq->delete();
+            }
+            return redirect('/tetapan-faq');
+        }
     }
 }

@@ -58,6 +58,9 @@
     <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.min.css?v=1.0.3" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
     <!-- Anti-flicker snippet (recommended)  -->
     <style>
         .async-hide {
@@ -153,8 +156,10 @@
         <div class="collapse navbar-collapse  w-auto h-auto max-height-vh-100 h-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link active"
-                        aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+
+                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link" aria-controls="dashboardsExamples"
+                        role="button" aria-expanded="false">
+
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -375,6 +380,7 @@
                                         <span class="sidenav-normal"> Log Pemohon</span>
                                     </a>
                                 </li>
+
 
                             </ul>
                         </div>
@@ -641,12 +647,11 @@
                             </div>
                             <span class="nav-link-text ms-1">Tugasan Selesai</span>
                         </a>
-                    </li> --}}
+
+                    </li>  --}}
 
                 @elsecan('isPegawaiHq')
 
-                    {{-- {{ auth()->user()->role }} --}}
-                    {{-- {{Auth::user()->roles}} --}}
 
                     @foreach (auth()->user()->roles as $role)
                         @if ($role->name == 'pemproses_hq')
@@ -923,6 +928,8 @@
                         @endif
                     @endforeach
                     {{-- <li class="nav-item">
+
+                    <li class="nav-item">
                         <a class="nav-link" href="/permohonan">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
@@ -1103,38 +1110,38 @@
                     <div class="collapse " id="basicExamples2">
                         <ul class="nav ms-4 ps-3">
                             <li class="nav-item ">
-                                <a class="nav-link" href="/peratusan-kelulusan-permit">
+                                <a class="nav-link" href="/laporan-statistik/peratusan-kelulusan-permit">
                                     <span class="sidenav-mini-icon"> AB </span>
                                     <span class="sidenav-normal"> Peratusan Kelulusan Permit</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/peratusan-permit-ditolak">
+                                <a class="nav-link" href="/laporan-statistik/peratusan-permit-ditolak">
                                     <span class="sidenav-mini-icon"> AD </span>
                                     <span class="sidenav-normal"> Peratusan Permit Ditolak</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/laporan-sejarah-permohonan">
+                                <a class="nav-link" href="/laporan-statistik/laporan-sejarah-permohonan">
                                     <span class="sidenav-mini-icon"> B </span>
                                     <span class="sidenav-normal"> Laporan Sejarah Permohonan
                                     </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/laporan-senarai-hitam">
+                                <a class="nav-link" href="/laporan-statistik/laporan-senarai-hitam">
                                     <span class="sidenav-mini-icon"> F </span>
                                     <span class="sidenav-normal"> Laporan Permohonan Disenarai Hitam</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/statistik-pemegang-permit">
+                                <a class="nav-link" href="/laporan-statistik/statistik-pemegang-permit">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Statistik Pemegang Permit</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/statistik-kutipan-fi">
+                                <a class="nav-link" href="/laporan-statistik/statistik-kutipan-fi">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Statistik Kutipan FI</span>
                                 </a>
@@ -1638,7 +1645,9 @@
                     window
                     window.fetch(
                             "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-dashboard-pro/assets/js/points.json"
-                        )
+
+                            )
+
                         .then(response => response.json())
                         .then(data => {
                             makeMagic(data.points);
