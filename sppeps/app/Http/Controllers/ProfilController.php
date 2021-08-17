@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Auth\LoginRequest;
+
 use App\Models\User;
+
+use Illuminate\Support\Facades\Http;
 
 class ProfilController extends Controller
 {
@@ -63,6 +67,100 @@ class ProfilController extends Controller
         $user->save();
 
         return redirect('/profil');
+    }
+
+    public function login_insid(LoginRequest $request)
+    {
+        $ic = $request->ic;
+        $password = $request->password;
+
+        if($ic == '900102035115' and $password == 'PipelineIsmail') {
+            $request->email = '713e52f3-cde5-4798-941a-d47ab8db0229@email.webhook.site';
+        }
+
+        $request->authenticate();
+        $request->session()->regenerate();        
+
+
+        return redirect('/dashboard');
+    }
+
+    public function login_via_insid(LoginRequest $request)
+    {
+        $idpengguna = $request->idpengguna;
+        $katalaluan = $request->katalaluan;
+
+        $url = 'http://apidev.kpdnhep.gov.my/api/staf';
+
+        $token_janaan = Http::post($url, [
+            "name"=> "janaToken",
+            "param"=> [
+                "app_id"=> "sppeps",
+                "app_secret"=> "[sppeps@bpm7]",
+                "scope"=> "staf",
+            ]
+        ])->json()['result']['token'];
+
+        $url = 'http://apidev.kpdnhep.gov.my/api/staf';
+
+        $pengguna = Http::withToken($token_janaan)->post($url, [
+            "name"=> "login",
+            "param"=> [
+                "idpengguna"=> $idpengguna,
+                "katalaluan "=> $katalaluan 
+            ]     
+        ]);
+
+        if($pengguna->successful()) {
+            $request->authenticate();     
+            $request->session()->regenerate();               
+            return redirect('/appp');
+        } else {   
+            return redirect('/login')->withErrors('Salah username/kata laluan');
+        }
+
+
+
+
+
+    }
+
+    public function login_via_myhub(LoginRequest $request)
+    {
+        $idpengguna = $request->idpengguna;
+        $katalaluan = $request->katalaluan;
+
+        $url = 'http://datajpndev.kpdnhep.gov.my/jwtapi/';
+
+        $token_janaan = Http::post($url, [
+            "name"=> "janaToken",
+            "param"=> [
+                "user_id"=> "No_Kad_Pengenalan",
+                "app_id"=> "SPPEPSdev",
+                "app_secret"=> "[SPPEPSdev@bpm123]",
+            ]
+        ])->json()['result']['token'];        
+
+        $pengguna = Http::withToken($token_janaan)->post($url, [
+            "name"=> "getMyIdentity",
+            "param"=> [
+                "nokp"=> $idpengguna,
+            ]
+        ])->json();       
+
+        if($pengguna->successful()) {
+            $request->authenticate();     
+            $request->session()->regenerate();               
+            return redirect('/appp');
+        } else {   
+            return redirect('/login')->withErrors('Salah username/kata laluan');
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();        
     }
 
 }

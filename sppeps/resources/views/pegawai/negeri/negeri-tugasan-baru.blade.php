@@ -5,6 +5,11 @@
     <div class="container-fluid py-4">
 
         <div class="p-3">
+            {{-- {{ auth()->user()->role }} --}}
+            {{-- {{Auth::user()->roles}} --}}
+            {{-- @foreach (auth()->user()->roles as $role)
+                {{ $role->name }}
+            @endforeach --}}
 
             <div>
                 <h5>Semakan Permohonan</h5>
@@ -110,10 +115,14 @@
                                                 <td class="align-middle text-center text-sm">
                                                     @if ($permohonan->status_permohonan === 'hantar')
                                                         <span class="badge badge-danger"> Belum Disemak</span>
-                                                    @elseif ($permohonan->status_permohonan === 'hantar ke penyokong')
+                                                    @elseif ($permohonan->status_permohonan ===
+                                                        'hantar_ke_penyokong_negeri')
                                                         <span class="badge badge-warning"> Belum Disyorkan</span>
+                                                    @elseif ($permohonan->status_permohonan ===
+                                                        'disokong_negeri' || $permohonan->status_permohonan ===
+                                                        'tidak_disokong_negeri')
+                                                        <span class="badge badge-warning"> Dalam Pertimbangan</span>
                                                     @endif
-
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <a href="permohonan/{{ $permohonan->id }}">

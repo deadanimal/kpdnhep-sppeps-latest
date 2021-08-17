@@ -134,19 +134,28 @@
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg z-index-3 py-3" data-scroll="true" style="background: rgb(42,55,125);
+        <nav class="navbar navbar-expand-lg py-3" data-scroll="true" style="background: rgb(42,55,125);
         background: linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%);">
             <!-- id="navbarBlur" -->
-            <div class="container-fluid py-1 px-3">
 
-                @can('isPemohon')
+            @can('isPemohon')
                 <a href="/dashboard" class="text-white">
-                  <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
-              </a>
+                    <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
+                </a>
 
-                @else
-                    <a href="/" class="text-white">
-                        <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
+            @else
+                <a href="/" class="text-white">
+                    <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
+                </a>
+            @endcan
+
+            <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                    <a role="button"
+                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
+                        id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+                        Arkib&ensp;
+                        <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
                     </a>
                 @endcan
 
@@ -292,60 +301,122 @@
                                     <a class="dropdown-item border-radius-md" href="/profil">
                                         <div class="d-flex py-1">
                                             <span class="d-sm-inline d-none text-dark">Profil</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="/change-password">
-                                        <div class="d-flex py-1">
-                                            <span class="d-sm-inline d-none text-dark">Tukar Kata Laluan</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <form method="POST" action="/logout">
-                                        @csrf
-                                        <a class="dropdown-item border-radius-md" href="#" onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                            <div class="d-flex py-1">
-
-
-                                                <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                    this.closest('form').submit();"> -->
-                                                {{ __('Log Out') }}
-                                                <!-- </x-dropdown-link> -->
-
-                                                <!-- <span class="d-sm-inline d-none text-dark">Log Keluar</span> -->
+                    <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg">
+                        <div class="d-none d-lg-block">
+                            <ul class="list-group">
+                                <li class="nav-item list-group-item border-0 p-0">
+                                    <a class="dropdown-item py-2 border-radius-md" href="/arkib-bergambar">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h6
+                                                    class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                    <i class="fas fa-rocket mr-2 text-secondary"></i> &nbsp; Arkib
+                                                    Bergambar
+                                                </h6>
+                                                <!-- <span class="text-sm">All about overview, quick start, license and contents</span> -->
                                             </div>
-                                        </a>
-                                    </form>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item list-group-item border-0 p-0">
+                                    <a class="dropdown-item py-2 border-radius-md" href="/arkib-dokumen">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h6
+                                                    class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                    <i class="fas fa-book text-secondary"></i> &nbsp; Arkib Dokumen
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item mx-2">
+                    <a role="button" href="/semakan-status-eps"
+                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
+                        aria-expanded="false">
+                        Semakan Status EPS
+                    </a>
+                </li>
 
-                @else
-
-                    <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-flex align-items-center ">
-                            <a href="/login_" class="nav-link text-body font-weight-bold px-0">
-                                <i class="fa fa-user me-sm-1 text-white"></i>
-                                <span class="d-sm-inline d-none text-white">Log Masuk</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex align-items-center ps-3 d-flex">
-                            <a href="/semak-ic" class="nav-link text-body font-weight-bold px-0">
-                                <i class="fa fa-user me-sm-1 text-white"></i>
-                                <span class="d-sm-inline d-none text-white">Daftar Akaun</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                @endcan
+                <li class="nav-item mx-2">
+                    <a role="button" href="/faq"
+                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
+                        aria-expanded="false">
+                        FAQ
+                    </a>
+                </li>
+            </ul>
 
 
-                <!-- </div> -->
-            </div>
+            @can('isPemohon')
+                <ul class="navbar-nav  justify-content-end">
+                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="d-sm-inline d-none text-white">Selamat Datang {{ Auth::user()->name }}</span>
+                            <i class="fa fa-user me-sm-1 text-white p-2"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="/profil">
+                                    <div class="d-flex py-1">
+                                        <span class="d-sm-inline d-none text-dark">Profil</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="/change-password">
+                                    <div class="d-flex py-1">
+                                        <span class="d-sm-inline d-none text-dark">Tukar Kata Laluan</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <a class="dropdown-item border-radius-md" href="#" onclick="event.preventDefault();
+                                                                                    this.closest('form').submit();">
+                                        <div class="d-flex py-1">
+
+
+                                            <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                                                    this.closest('form').submit();"> -->
+                                            {{ __('Log Out') }}
+                                            <!-- </x-dropdown-link> -->
+
+                                            <!-- <span class="d-sm-inline d-none text-dark">Log Keluar</span> -->
+                                        </div>
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            @else
+
+                <ul class="navbar-nav  justify-content-end">
+                    <li class="nav-item d-flex align-items-center ">
+                        <a href="/login_" class="nav-link text-body font-weight-bold px-0">
+                            <i class="fa fa-user me-sm-1 text-white"></i>
+                            <span class="d-sm-inline d-none text-white">Log Masuk</span>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center ps-3 d-flex">
+                        <a href="/semak-ic" class="nav-link text-body font-weight-bold px-0">
+                            <i class="fa fa-user me-sm-1 text-white"></i>
+                            <span class="d-sm-inline d-none text-white">Daftar Akaun</span>
+                        </a>
+                    </li>
+                </ul>
+
+            @endcan
+
+
         </nav>
         <!-- End Navbar -->
 
@@ -716,7 +787,7 @@
                     window
                     window.fetch(
                             "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-dashboard-pro/assets/js/points.json"
-                            )
+                        )
                         .then(response => response.json())
                         .then(data => {
                             makeMagic(data.points);

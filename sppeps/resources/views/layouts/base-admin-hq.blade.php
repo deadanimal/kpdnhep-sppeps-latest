@@ -156,8 +156,10 @@
         <div class="collapse navbar-collapse  w-auto h-auto max-height-vh-100 h-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
+
                     <a href="/dashboard" href="#dashboardsExamples" class="nav-link" aria-controls="dashboardsExamples"
                         role="button" aria-expanded="false">
+
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -379,6 +381,7 @@
                                     </a>
                                 </li>
 
+
                             </ul>
                         </div>
                     </li>
@@ -386,6 +389,7 @@
                 @elsecan('isPegawaiNegeri')
 
                     <li class="nav-item">
+
                         <a class="nav-link" href="/permohonan">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
@@ -438,9 +442,11 @@
                             </div>
                             <span class="nav-link-text ms-1">Tugasan Selesai</span>
                         </a>
+
                     </li>
 
                 @elsecan('isPegawaiHq')
+
                     <li class="nav-item">
                         <a class="nav-link" href="/permohonan">
                             <div
@@ -1157,7 +1163,9 @@
                     window
                     window.fetch(
                             "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-dashboard-pro/assets/js/points.json"
+
                             )
+
                         .then(response => response.json())
                         .then(data => {
                             makeMagic(data.points);
