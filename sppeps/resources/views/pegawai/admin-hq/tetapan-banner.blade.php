@@ -114,10 +114,8 @@
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                                            style="display: none;" name="image">
+                                                                            style="display: none;" name="gambar">
                                                                     </label>
-                            
-                                                                    <div id="fileList">Tiada Gambar Dipilih</div>
                                                                 </div>
 
                                                                 <div class="form-group">

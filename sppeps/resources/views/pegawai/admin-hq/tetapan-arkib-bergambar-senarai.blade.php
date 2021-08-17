@@ -70,8 +70,7 @@
                                             @endif
                                         </td>
                                         <td class="text-sm font-weight-normal">
-                                            <a data-bs-toggle="modal"
-                                                data-bs-target="#modal-form2-{{ $gambaq->id }}">
+                                            <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $gambaq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="/tetapan-arkib-bergambar-senarai/{{ $gambaq->id }}/delete">
@@ -80,8 +79,8 @@
                                         </td>
                                     </tr>
 
-                                    <div class="modal fade" id="modal-form2-{{ $gambaq->id }}" tabindex="-1"
-                                        role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                    <div class="modal fade" id="modal-form2-{{ $gambaq->id }}" tabindex="-1" role="dialog"
+                                        aria-labelledby="modal-form" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-body p-0">
@@ -95,20 +94,17 @@
                                                                 action="/tetapan-arkib-bergambar/{{ $gambaq->id }}">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="id"
-                                                                    value="{{ $gambaq->id }}">
+                                                                <input type="hidden" name="id" value="{{ $gambaq->id }}">
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (MS)</label>
                                                                     <input type="text" class="form-control" name="nama_ms"
-                                                                        value="{{ $gambaq->tajuk_ms }}"
-                                                                        placeholder="">
+                                                                        value="{{ $gambaq->tajuk_ms }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (EN)</label>
                                                                     <input type="text" class="form-control" name="nama_en"
-                                                                        value="{{ $gambaq->tajuk_en }}"
-                                                                        placeholder="">
+                                                                        value="{{ $gambaq->tajuk_en }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -137,13 +133,15 @@
                                                                             <label for="title">Tarikh Mula</label>
                                                                             <input type="date"
                                                                                 class="form-control form-control-sm"
-                                                                                name="tarikh_mula" value="{{ $gambaq->tarikh_mula }}">
+                                                                                name="tarikh_mula"
+                                                                                value="{{ $gambaq->tarikh_mula }}">
                                                                         </div>
                                                                         <div class="col">
                                                                             <label for="title">Tarikh Akhir</label>
                                                                             <input type="date"
                                                                                 class="form-control form-control-sm"
-                                                                                name="tarikh_akhir" value="{{ $gambaq->tarikh_akhir }}">
+                                                                                name="tarikh_akhir"
+                                                                                value="{{ $gambaq->tarikh_akhir }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -154,7 +152,7 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="jalan1">
+                                                                            name="gambar1">
                                                                     </label>
                                                                 </div>
 
@@ -164,7 +162,7 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="jalan2">
+                                                                            name="gambar">
                                                                     </label>
                                                                 </div>
 
@@ -174,7 +172,7 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="jalan3">
+                                                                            name="gambar">
                                                                     </label>
                                                                 </div>
 
@@ -184,7 +182,7 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="jalan4">
+                                                                            name="gambar">
                                                                     </label>
                                                                 </div>
 
@@ -194,7 +192,7 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="jalan5">
+                                                                            name="gambar">
                                                                     </label>
                                                                 </div>
 
@@ -240,12 +238,10 @@
 
         </div>
 
-
     </div>
 
 
     <div class="col-md-4">
-        <!-- <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal" data-bs-target="#modal-form">Form</button> -->
         <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
@@ -253,13 +249,13 @@
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-info text-gradient">Tambah</h3>
-                                <!-- <p class="mb-0">Enter your email and password to sign in</p> -->
                             </div>
                             <div class="card-body">
                                 <form role="form text-left" method="POST" action="/tetapan-arkib-bergambar-senarai"
                                     enctype="multipart/form-data">
                                     @csrf
 
+                                    <input type="hidden" name="id_arkibgambar" value="{{ $arkibgambarid }}">
                                     <div class="form-group">
                                         <label for="title">Tajuk MS</label>
                                         <input type="text" class="form-control form-control-sm" name="tajuk_ms"
@@ -306,47 +302,47 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Gambar</label>
+                                        <label for="image">Gambar 1</label>
                                         <br>
                                         <label class="btn bg-gradient-info form-control col-6">
                                             <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="jalan1">
+                                                style="display: none;" name="gambar1">
                                         </label>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Gambar</label>
+                                        <label for="image">Gambar 2</label>
                                         <br>
                                         <label class="btn bg-gradient-info form-control col-6">
                                             <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="jalan2">
+                                                style="display: none;" name="gambar2">
                                         </label>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Gambar</label>
+                                        <label for="image">Gambar 3</label>
                                         <br>
                                         <label class="btn bg-gradient-info form-control col-6">
                                             <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="jalan3">
+                                                style="display: none;" name="gambar3">
                                         </label>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Gambar</label>
+                                        <label for="image">Gambar 4</label>
                                         <br>
                                         <label class="btn bg-gradient-info form-control col-6">
                                             <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="jalan4">
+                                                style="display: none;" name="gambar4">
                                         </label>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Gambar</label>
+                                        <label for="image">Gambar 5</label>
                                         <br>
                                         <label class="btn bg-gradient-info form-control col-6">
                                             <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="jalan5">
+                                                style="display: none;" name="gambar5">
                                         </label>
                                     </div>
 

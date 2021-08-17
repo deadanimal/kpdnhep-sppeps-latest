@@ -14,7 +14,11 @@ class SenaraidokumenController extends Controller
      */
     public function index()
     {
-        //
+        $senaraidokumen = Senaraidokumen::all();
+
+        return view('pegawai.admin-hq.tetapan-arkib-dokumen-senarai', [
+            'senaraidokumens' => $senaraidokumen,
+        ]);
     }
 
     /**
@@ -35,7 +39,25 @@ class SenaraidokumenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jalan1 = $request->file('gambar')->store('banner');
+
+        $senaraidokumen = new Senaraidokumen();
+
+        $senaraidokumen->tajuk_ms = $request->tajuk_ms;
+        $senaraidokumen->tajuk_en = $request->tajuk_en;
+        $senaraidokumen->kandungan_ms = $request->kandungan_ms;
+        $senaraidokumen->kandungan_en = $request->kandungan_en;
+        $senaraidokumen->status = $request->status;
+        $senaraidokumen->jalan1 = $jalan1;
+        
+        $senaraidokumen->id_arkibdokumen = $request->id_arkibdokumen;
+        // dd($senaraidokumen);
+        $senaraidokumen->save();
+
+        
+        $senaraidokumens = Senaraidokumen::where('id_arkibdokumen', $request->id_arkibdokumen)->get();
+
+        return redirect('/tetapan-arkib-dokumen/' . $request->id_arkibdokumen);
     }
 
     /**
@@ -80,6 +102,7 @@ class SenaraidokumenController extends Controller
      */
     public function destroy(Senaraidokumen $senaraidokumen)
     {
-        //
+        $senaraidokumen->delete();
+        return redirect('/tetapan-arkib-dokumen/' . $senaraidokumen->id_arkibdokumen);
     }
 }

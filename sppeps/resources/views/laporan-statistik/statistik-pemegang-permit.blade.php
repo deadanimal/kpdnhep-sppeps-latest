@@ -57,13 +57,6 @@
                             <div class="col">
                                 <h5>Pemegang Permit yang Sah dan Aktif mengikut Jantina</h5>
                             </div>
-                            <div class="col d-flex justify-content-end">
-                                <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
-                                    <option disabled selected hidden><b>Cetak</b></option>
-                                    <option class="dropdown-item" value="PDF">Pdf</option>
-                                    <option class="dropdown-item" value="XLSX">Excel</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
 
@@ -83,13 +76,6 @@
                         <div class="row mb-0">
                             <div class="col">
                                 <h5>Pemegang Permit yang Sah dan Aktif mengikut Negeri</h5>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
-                                    <option disabled selected hidden><b>Cetak</b></option>
-                                    <option class="dropdown-item" value="PDF">Pdf</option>
-                                    <option class="dropdown-item" value="XLSX">Excel</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -116,7 +102,7 @@
 
                     <div class="card-body p-3">
 
-                        <div class="row p-3 mb-0">
+                        {{-- <div class="row p-3 mb-0">
                             <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                                 <label class="d-flex flex-nowrap mb-0">
                                     <span class="p-2">Negeri</span>
@@ -142,7 +128,7 @@
                                     </select>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="card">
@@ -236,168 +222,13 @@
     <script>
         am4core.ready(function() {
 
-            // Themes begin
             am4core.useTheme(am4themes_animated);
-            // Themes end
 
-            // Create chart instance
-            var chart = am4core.create("chartdiv", am4charts.XYChart);
-
-            //
-
-            // Increase contrast by taking evey second color
-            chart.colors.step = 2;
-
-            // Add data
-            chart.data = generateChartData();
-
-            // Create axes
-            var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-            dateAxis.renderer.minGridDistance = 50;
-
-            // Create series
-            function createAxisAndSeries(field, name, opposite, bullet) {
-                var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-                if (chart.yAxes.indexOf(valueAxis) != 0) {
-                    valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
-                }
-
-                var series = chart.series.push(new am4charts.LineSeries());
-                series.dataFields.valueY = field;
-                series.dataFields.dateX = "date";
-                series.strokeWidth = 2;
-                series.yAxis = valueAxis;
-                series.name = name;
-                series.tooltipText = "{name}: [bold]{valueY}[/]";
-                series.tensionX = 0.8;
-                series.showOnInit = true;
-
-                var interfaceColors = new am4core.InterfaceColorSet();
-
-                switch (bullet) {
-                    case "triangle":
-                        var bullet = series.bullets.push(new am4charts.Bullet());
-                        bullet.width = 12;
-                        bullet.height = 12;
-                        bullet.horizontalCenter = "middle";
-                        bullet.verticalCenter = "middle";
-
-                        var triangle = bullet.createChild(am4core.Triangle);
-                        triangle.stroke = interfaceColors.getFor("background");
-                        triangle.strokeWidth = 2;
-                        triangle.direction = "top";
-                        triangle.width = 12;
-                        triangle.height = 12;
-                        break;
-                    case "rectangle":
-                        var bullet = series.bullets.push(new am4charts.Bullet());
-                        bullet.width = 10;
-                        bullet.height = 10;
-                        bullet.horizontalCenter = "middle";
-                        bullet.verticalCenter = "middle";
-
-                        var rectangle = bullet.createChild(am4core.Rectangle);
-                        rectangle.stroke = interfaceColors.getFor("background");
-                        rectangle.strokeWidth = 2;
-                        rectangle.width = 10;
-                        rectangle.height = 10;
-                        break;
-                    default:
-                        var bullet = series.bullets.push(new am4charts.CircleBullet());
-                        bullet.circle.stroke = interfaceColors.getFor("background");
-                        bullet.circle.strokeWidth = 2;
-                        break;
-                }
-
-                valueAxis.renderer.line.strokeOpacity = 1;
-                valueAxis.renderer.line.strokeWidth = 2;
-                valueAxis.renderer.line.stroke = series.stroke;
-                valueAxis.renderer.labels.template.fill = series.stroke;
-                valueAxis.renderer.opposite = opposite;
-            }
-
-            createAxisAndSeries("visits", "Visits", false, "circle");
-            createAxisAndSeries("views", "Views", true, "triangle");
-            createAxisAndSeries("hits", "Hits", true, "rectangle");
-
-            // Add legend
-            chart.legend = new am4charts.Legend();
-
-            // Add cursor
-            chart.cursor = new am4charts.XYCursor();
-
-            // generate some random data, quite different range
-            function generateChartData() {
-                var chartData = [];
-                var firstDate = new Date();
-                firstDate.setDate(firstDate.getDate() - 100);
-                firstDate.setHours(0, 0, 0, 0);
-
-                var visits = 1600;
-                var hits = 2900;
-                var views = 8700;
-
-                for (var i = 0; i < 15; i++) {
-                    // we create date objects here. In your data, you can have date strings
-                    // and then set format of your dates using chart.dataDateFormat property,
-                    // however when possible, use date objects, as this will speed up chart rendering.
-                    var newDate = new Date(firstDate);
-                    newDate.setDate(newDate.getDate() + i);
-
-                    visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-                    hits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-                    views += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-
-                    chartData.push({
-                        date: newDate,
-                        visits: visits,
-                        hits: hits,
-                        views: views
-                    });
-                }
-                return chartData;
-            }
-
-        }); // end am4core.ready()
-
-        am4core.ready(function() {
-
-            // Themes begin
-            am4core.useTheme(am4themes_animated);
-            // Themes end
-
-            // Create chart instance
             var chart = am4core.create("chartdiv2", am4charts.XYChart);
 
+            var data = {!! json_encode($pegangpermit) !!};
+            chart.data = data;
 
-            // Add data
-            chart.data = [{
-                "year": "2016",
-                "europe": 2.5,
-                "namerica": 2.5,
-                "asia": 2.1,
-                "lamerica": 0.3,
-                "meast": 0.2,
-                "africa": 0.1
-            }, {
-                "year": "2017",
-                "europe": 2.6,
-                "namerica": 2.7,
-                "asia": 2.2,
-                "lamerica": 0.3,
-                "meast": 0.3,
-                "africa": 0.1
-            }, {
-                "year": "2018",
-                "europe": 2.8,
-                "namerica": 2.9,
-                "asia": 2.4,
-                "lamerica": 0.3,
-                "meast": 0.3,
-                "africa": 0.1
-            }];
-
-            // Create axes
             var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
             categoryAxis.dataFields.category = "year";
             categoryAxis.renderer.grid.template.location = 0;
@@ -408,24 +239,20 @@
             valueAxis.renderer.labels.template.disabled = true;
             valueAxis.min = 0;
 
-            // Create series
             function createSeries(field, name) {
 
-                // Set up series
                 var series = chart.series.push(new am4charts.ColumnSeries());
                 series.name = name;
                 series.dataFields.valueY = field;
                 series.dataFields.categoryX = "year";
                 series.sequencedInterpolation = true;
 
-                // Make it stacked
                 series.stacked = true;
 
-                // Configure columns
                 series.columns.template.width = am4core.percent(60);
-                series.columns.template.tooltipText = "[bold]{name}[/]\n[font-size:14px]{categoryX}: {valueY}";
+                series.columns.template.tooltipText =
+                    "[bold]{name}[/]\n[font-size:14px]{categoryX}: {valueY}";
 
-                // Add label
                 var labelBullet = series.bullets.push(new am4charts.LabelBullet());
                 labelBullet.label.text = "{valueY}";
                 labelBullet.locationY = 0.5;
@@ -434,17 +261,85 @@
                 return series;
             }
 
-            createSeries("europe", "Europe");
-            createSeries("namerica", "North America");
-            createSeries("asia", "Asia-Pacific");
-            createSeries("lamerica", "Latin America");
-            createSeries("meast", "Middle-East");
-            createSeries("africa", "Africa");
+            createSeries("Kedah", "Kedah");
+            createSeries("Selangor", "Selangor");
+            createSeries("Pulau Pinang", "Pulau Pinang");
+            createSeries("Perak", "Perak");
+            createSeries("Melaka", "Melaka");
+            createSeries("Negeri Sembilan", "Negeri Sembilan");
+            createSeries("Johor", "Johor");
+            createSeries("Pahang", "Pahang");
+            createSeries("Terengganu", "Terengganu");
+            createSeries("Kelantan", "Kelantan");
+            createSeries("selangor", "Selangor");
+            createSeries("Sabah", "Sabah");
+            createSeries("Sarawak", "Sarawak");
+            createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
+            createSeries("WP Putrajaya", "W. P. Putrajaya");
+            createSeries("WP Labuan", "W. P. Labuan");
 
             // Legend
             chart.legend = new am4charts.Legend();
 
-        }); // end am4core.ready()
+            // Enable export
+            chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.align = "right";
+            chart.exporting.menu.verticalAlign = "top";
+            chart.exporting.filePrefix = "Pemegang Permit yang Sah dan Aktif mengikut Negeri";
+        });
+        am4core.ready(function() {
+
+            am4core.useTheme(am4themes_animated);
+
+            var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+            var data = {!! json_encode($pegpermit) !!};
+            chart.data = data;
+
+            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.dataFields.category = "month";
+            categoryAxis.renderer.grid.template.location = 0;
+
+
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.renderer.inside = true;
+            valueAxis.renderer.labels.template.disabled = true;
+            valueAxis.min = 0;
+
+            function createSeries(field, name) {
+
+                var series = chart.series.push(new am4charts.ColumnSeries());
+                series.name = name;
+                series.dataFields.valueY = field;
+                series.dataFields.categoryX = "month";
+                series.sequencedInterpolation = true;
+
+                series.stacked = true;
+
+                series.columns.template.width = am4core.percent(60);
+                series.columns.template.tooltipText =
+                    "[bold]{name}[/]\n[font-size:14px]{categoryX}: {valueY}";
+
+                var labelBullet = series.bullets.push(new am4charts.LabelBullet());
+                labelBullet.label.text = "{valueY}";
+                labelBullet.locationY = 0.5;
+                labelBullet.label.hideOversized = true;
+
+                return series;
+            }
+
+            createSeries("lelaki", "Lelaki");
+            createSeries("perempuan", "Perempuan");
+
+            // Legend
+            chart.legend = new am4charts.Legend();
+
+            // Enable export
+            chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.align = "right";
+            chart.exporting.menu.verticalAlign = "top";
+            chart.exporting.filePrefix = "Pemegang Permit yang Sah dan Aktif mengikut Jantina";
+        });
     </script>
 
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -477,8 +372,18 @@
         $(document).ready(function() {
             $('#tablepegangpermit').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'excel', 'pdf', 'print'
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Senarai Pemegang Permit yang Sah dan Aktif'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Senarai Pemegang Permit yang Sah dan Aktif'
+                    },
+                    // {
+                    //     extend: 'printHtml5',
+                    //     title: 'Data export'
+                    // }
                 ],
 
                 // initComplete: function() {

@@ -161,8 +161,8 @@
                                 class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
                                 id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
                                 Arkib&ensp;<i class="fas fa-chevron-down"></i>
-                                <img src="./assets/img/down-arrow-dark.svg" alt="down-arrow"
-                                    class="arrow ms-1 text-white">
+                                {{-- <img src="./assets/img/down-arrow-dark.svg" alt="down-arrow"
+                                    class="arrow ms-1 text-white"> --}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg"
                                 aria-labelledby="dropdownMenuDocs">

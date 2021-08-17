@@ -7,7 +7,7 @@
             <h5 class="h3 text-dark pt-4 text-center"><strong> Arkib Bergambar</strong></h5>
         </div>
         <div class="p-2 text-capitalize">
-            <h6 class="text- capitalize text-bold text-center">Arkib Bergambar 1</h6>
+            <h6 class="text- capitalize text-bold text-center">Arkib Bergambar </h6>
         </div>
     </div>
     <div class="row d-flex justify-content-center text-center m-4">

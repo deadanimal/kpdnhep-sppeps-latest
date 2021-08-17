@@ -19,6 +19,7 @@ use App\Http\Controllers\TugasanSelesaiController;
 use App\Http\Controllers\BorangPermohonan;
 use App\Http\Controllers\SenaraiHitamController;
 
+//cms
 use App\Http\Controllers\KategorifaqController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PengumumanController;
@@ -29,6 +30,13 @@ use App\Http\Controllers\LaporanstatistikController;
 use App\Http\Controllers\SenaraigambarController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SemakanStatusController;
+use App\Http\Controllers\SenaraidokumenController;
+
+//landing
+use App\Http\Controllers\FaqlandingController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ArkibgambarlandingController;
+use App\Http\Controllers\ArkibdokumenlandingController;
 
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
@@ -98,34 +106,21 @@ Route::get('/change-password', function () {
     return view('auth.change-password');
 });
 
+//landing
+Route::get('/', [LandingController::class, 'landing']);
 
-Route::get('/', function () {
-    return view('global.landing-page');
-});
+Route::get('/arkib-bergambar', [ArkibgambarlandingController::class, 'arkibgambarland']);
+Route::get('/arkib-bergambar/{gambar}', [ArkibgambarlandingController::class, 'arkibgambarlandshow']);
+Route::get('/arkib-bergambar-info/{gambar}', [ArkibgambarlandingController::class, 'arkibgambarlaninfolandshow']);
 
-Route::get('/arkib-bergambar', function () {
-    return view('global.arkib-bergambar');
-});
+Route::resource('/arkib-dokumen', ArkibdokumenlandingController::class );
+Route::get('/arkib-dokumen/{dokumen}', [ArkibdokumenlandingController::class, 'dokumenshow']);
+// Route::get('/arkib-dokumen-senarai', function () {
+//     return view('global.arkib-dokumen-senarai');
+// });
 
-Route::get('/arkib-bergambar-senarai', function () {
-    return view('global.arkib-bergambar-senarai');
-});
+Route::get('/faq', [FaqlandingController::class, 'faqlanding']);
 
-Route::get('/arkib-bergambar-info', function () {
-    return view('global.arkib-bergambar-info');
-});
-
-Route::get('/arkib-dokumen', function () {
-    return view('global.arkib-dokumen');
-});
-
-Route::get('/arkib-dokumen-senarai', function () {
-    return view('global.arkib-dokumen-senarai');
-});
-
-Route::get('/faq', function () {
-    return view('global.faq');
-});
 
 Route::get('/semakan-status-eps', function () {
     return view('global.semakan-status-eps');
@@ -269,33 +264,13 @@ Route::get('/laporan-statistik/peratusan-kelulusan-permit', [LaporanstatistikCon
 
 Route::get('/laporan-statistik/peratusan-permit-ditolak', [LaporanstatistikController::class, 'permitditolak']);
 
-// Route::get('/peratusan-permit-ditolak', function () {
-//     return view('laporan-statistik.peratusan-permit-ditolak');
-// });
-
 Route::get('/laporan-statistik/laporan-sejarah-permohonan', [LaporanstatistikController::class, 'sejarahpermohonan']);
-
-// Route::get('/laporan-sejarah-permohonan', function () {
-//     return view('laporan-statistik.laporan-sejarah-permohonan');
-// });
 
 Route::get('/laporan-statistik/laporan-senarai-hitam', [LaporanstatistikController::class, 'senaraihitam']);
 
-// Route::get('/laporan-senarai-hitam', function () {
-//     return view('laporan-statistik.laporan-senarai-hitam');
-// });
-
 Route::get('/laporan-statistik/statistik-pemegang-permit', [LaporanstatistikController::class, 'pegangpermit']);
 
-// Route::get('/statistik-pemegang-permit', function () {
-//     return view('laporan-statistik.statistik-pemegang-permit');
-// });
-
 Route::get('/laporan-statistik/statistik-kutipan-fi', [LaporanstatistikController::class, 'kutipanfi']);
-
-// Route::get('/statistik-kutipan-fi', function () {
-//     return view('laporan-statistik.statistik-kutipan-fi');
-// });
 
 
 //admin hq
@@ -329,9 +304,8 @@ Route::get('/tetapan-arkib-bergambar-senarai/{senaraigambar}/delete', [Senaraiga
 Route::resource('/tetapan-arkib-dokumen', ArkibdokumenController::class);
 Route::get('/tetapan-arkib-dokumen/{arkibdokumen}/delete', [ArkibdokumenController::class, 'destroy']);
 
-Route::get('/tetapan-arkib-dokumen-senarai', function () {
-    return view('pegawai.admin-hq.tetapan-arkib-dokumen-senarai');
-});
+Route::resource('/tetapan-arkib-dokumen-senarai', SenaraidokumenController::class);
+Route::get('/tetapan-arkib-dokumen-senarai/{senaraidokumen}/delete', [SenaraidokumenController::class, 'destroy']);
 
 Route::resource('/tetapan-pengumuman', PengumumanController::class);
 Route::get('/tetapan-pengumuman/{pengumuman}/delete', [PengumumanController::class, 'destroy']);

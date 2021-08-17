@@ -79,7 +79,7 @@
                                             <a href="/tetapan-arkib-dokumen/{{ $arkibdokumen->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
-                                            <a href="/tetapan-arkib-dokumen-senarai">
+                                            <a href="/tetapan-arkib-dokumen/{{ $arkibdokumen->id  }}">
                                                 <i class="far fa-list-alt"></i>
                                             </a>
 
