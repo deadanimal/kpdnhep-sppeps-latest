@@ -381,7 +381,6 @@
                     </li>
 
                 @elsecan('isPegawaiNegeri')
-
                     @foreach (auth()->user()->roles as $role)
                         @if ($role->name == 'pemproses_negeri')
                             <li class="nav-item">
@@ -588,6 +587,7 @@
                         @endif
                     @endforeach
 
+
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="/permohonan">
                             <div
@@ -684,7 +684,7 @@
                                     <span class="nav-link-text ms-1">Pemproses Negeri</span>
                                 </a>
                                 <div class="collapse " id="basicExamples10">
-                                    
+
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
                                             <form method="POST" action="/pemproses_hq_tugasan_baru" class="nav-link">
@@ -922,7 +922,7 @@
                             </li>
                         @endif
                     @endforeach
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="/permohonan">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
@@ -975,7 +975,7 @@
                             </div>
                             <span class="nav-link-text ms-1">Tugasan Selesai</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a class="nav-link" href="/senarai-hitam">
