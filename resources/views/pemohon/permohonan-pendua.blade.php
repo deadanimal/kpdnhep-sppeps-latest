@@ -53,7 +53,7 @@
                             <!--form panels-->
                             <div class="row">
                                 <div class="col-12 col-lg-8 m-auto">
-                                    <form class="multisteps-form__form" method="POST" action="/permohonan">
+                                    <form class="multisteps-form__form" method="POST" action="/permohonan" enctype="multipart/form-data">
                                         @csrf
                                         <!--single form panel-->
                                         <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"

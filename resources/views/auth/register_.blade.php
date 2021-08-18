@@ -11,7 +11,7 @@
                 <h3>Daftar Akaun</h3>
             </div>
 
-            <form method="POST" action="/register_user">
+            <form method="POST" action="/register">
                 @csrf
 
 

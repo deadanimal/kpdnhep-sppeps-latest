@@ -170,10 +170,9 @@ class PermohonanController extends Controller
             $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
 
-            if ($request->status == 'HANTAR')
-                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-            else
-                $permohonan->lesen_memandu =  $request->lesen_memandu;
+
+            $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+
 
             $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
 
@@ -188,9 +187,14 @@ class PermohonanController extends Controller
             $permohonan->skop_tugas = $request->skop_tugas;
             $permohonan->prosedur_peraturan_eps = $request->prosedur_peraturan_eps;
 
-            $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
-            $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
-            $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
+
+            $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
+            $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
+            $salinan_lesen_memandu = $request->file('salinan_lesen_memandu')->store('dokumen');
+
+            $permohonan->salinan_kp_depan = $salinan_kp_depan;
+            $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
+            $permohonan->salinan_lesen_memandu = $salinan_lesen_memandu;
         } else if ($request->jenis_permohonan == 'Pembaharuan') {
 
             if ($request->status == 'HANTAR') {
@@ -250,10 +254,9 @@ class PermohonanController extends Controller
             $permohonan->tahun_pekerjaan_eps = $request->tahun_pekerjaan_eps;
             $permohonan->pekerjaan_tetap = $request->pekerjaan_tetap;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-            if ($request->status == 'HANTAR')
-                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-            else
-                $permohonan->lesen_memandu =  $request->lesen_memandu;
+
+            $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+
             $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
             $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
             $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
@@ -264,10 +267,15 @@ class PermohonanController extends Controller
             $permohonan->kehadiran_kursus_eps = $request->kehadiran_kursus_eps;
             $permohonan->tahun_dihadiri = $request->tahun_dihadiri;
 
-            $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
-            $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
-            $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
-            $permohonan->salinan_surat_sokongan = $request->salinan_surat_sokongan;
+            $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
+            $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
+            $salinan_lesen_memandu = $request->file('salinan_lesen_memandu')->store('dokumen');
+            $salinan_surat_sokongan = $request->file('salinan_surat_sokongan')->store('dokumen');
+
+            $permohonan->salinan_kp_depan = $salinan_kp_depan;
+            $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
+            $permohonan->salinan_lesen_memandu = $salinan_lesen_memandu;
+            $permohonan->salinan_surat_sokongan = $salinan_surat_sokongan;
         } else if ($request->jenis_permohonan == 'Pendua') {
 
             if ($request->status == 'HANTAR') {
@@ -304,9 +312,15 @@ class PermohonanController extends Controller
             $permohonan->negeri_laporan_polis = $request->negeri_laporan_polis;
             $permohonan->no_laporan_polis = $request->no_laporan_polis;
 
-            $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
-            $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
-            $permohonan->salinan_laporan_polis = $request->salinan_laporan_polis;
+
+            $salinan_kp_depan = $request->file('salinan_kp_depan')->store('dokumen');
+            $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
+            $salinan_laporan_polis = $request->file('salinan_laporan_polis')->store('dokumen');
+
+
+            $permohonan->salinan_kp_depan = $salinan_kp_depan;
+            $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
+            $permohonan->salinan_laporan_polis = $salinan_laporan_polis;
         } else if ($request->jenis_permohonan == 'Rayuan') {
 
             if ($request->status == 'HANTAR') {
@@ -341,13 +355,31 @@ class PermohonanController extends Controller
             $permohonan->rayuan_kali_ke = $request->rayuan_kali_ke;
             $permohonan->alasan_rayuan = $request->alasan_rayuan;
 
-            $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
-            $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
-            $permohonan->salinan_tapisan_rekod_jenayah = $request->salinan_tapisan_rekod_jenayah;
-            $permohonan->salinan_sokongan_institusi_kewangan = $request->salinan_sokongan_institusi_kewangan;
-            $permohonan->salinan_dokumen_sokongan1 = $request->salinan_dokumen_sokongan1;
-            $permohonan->salinan_dokumen_sokongan2 = $request->salinan_dokumen_sokongan2;
-            $permohonan->salinan_dokumen_sokongan3 = $request->salinan_dokumen_sokongan3;
+
+            // dd($request);
+            // $salinan_kp_depan = "";
+            if ($request->file('salinan_kp_depan') != null)
+                $salinan_kp_depan = $request->file('salinan_kp_depan')->store('dokumen');
+            if ($request->file('salinan_kp_belakang') != null)
+                $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
+            if ($request->file('salinan_tapisan_rekod_jenayah') != null)
+                $salinan_tapisan_rekod_jenayah = $request->file('salinan_tapisan_rekod_jenayah')->store('dokumen');
+            if ($request->file('salinan_sokongan_institusi_kewangan') != null)
+                $salinan_sokongan_institusi_kewangan = $request->file('salinan_sokongan_institusi_kewangan')->store('dokumen');
+            if ($request->file('salinan_dokumen_sokongan1') != null)
+                $salinan_dokumen_sokongan1 = $request->file('salinan_dokumen_sokongan1')->store('dokumen');
+            if ($request->file('salinan_dokumen_sokongan2') != null)
+                $salinan_dokumen_sokongan2 = $request->file('salinan_dokumen_sokongan2')->store('dokumen');
+            if ($request->file('salinan_dokumen_sokongan3') != null)
+                $salinan_dokumen_sokongan3 = $request->file('salinan_dokumen_sokongan3')->store('dokumen');
+            // dd($salinan_kp_depan);
+            $permohonan->salinan_kp_depan = $salinan_kp_depan;
+            $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
+            $permohonan->salinan_tapisan_rekod_jenayah = $salinan_tapisan_rekod_jenayah;
+            $permohonan->salinan_sokongan_institusi_kewangan = $salinan_sokongan_institusi_kewangan;
+            $permohonan->salinan_dokumen_sokongan1 = $salinan_dokumen_sokongan1;
+            $permohonan->salinan_dokumen_sokongan2 = $salinan_dokumen_sokongan2;
+            $permohonan->salinan_dokumen_sokongan3 = $salinan_dokumen_sokongan3;
         }
 
         $permohonan->save();

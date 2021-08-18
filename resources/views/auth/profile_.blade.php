@@ -71,11 +71,7 @@
                                     <input type="text" class="form-control"  value="{{ $pemohon->jantina }}"
                                         placeholder="" disabled>
 
-                                    <!-- <select name="jantina" id="jantina" class="form-control form-control-sm">
-                                    <option value="">Sila Pilih</option>
-                                    <option value="">Lelaki</option>
-                                    <option value="">Perempuan</option>
-                                </select> -->
+                                   
                                 </div>
 
                                 <div class="form-group">
@@ -98,25 +94,7 @@
                                     <label>Negeri</label>
                                     <input type="text" class="form-control form-control-sm" value="{{ $pemohon->negeri }}"
                                          placeholder="" disabled>
-                                    <!-- <select class="form-control form-control-sm" aria-label="Default select example" name="negeri">
-                                    <option selected>--Pilih Negeri--</option>
-                                    <option value="Perlis">Perlis</option>
-                                    <option value="Kedah">Kedah</option>
-                                    <option value="Pulau Pinang">Pulau Pinang</option>
-                                    <option value="Perak">Perak</option>
-                                    <option value="Selangor">Selangor</option>
-                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                    <option value="WP Labuan">W. P. Labuan</option>
-                                    <option value="Melaka">Melaka</option>
-                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                    <option value="Johor">Johor</option>
-                                    <option value="Pahang">Pahang</option>
-                                    <option value="Terengganu">Terengganu</option>
-                                    <option value="Kelantan">Kelantan</option>
-                                    <option value="Sabah">Sabah</option>
-                                    <option value="Sarawak">Sarawak</option>
-                                </select> -->
+                                   
                                 </div>
 
                                 <div class="form-group">

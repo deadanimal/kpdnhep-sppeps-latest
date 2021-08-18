@@ -328,9 +328,7 @@ Route::get('/lihat-log-pengguna', function () {
     return view('pegawai.admin-hq.at-lihat-log-pengguna');
 });
 
-Route::get('/peranan-pdrm', function () {
-    return view('pegawai.admin-hq.peranan-pdrm');
-});
+
 
 
 //

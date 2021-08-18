@@ -515,7 +515,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn" class="upload-btn mt-0">Pilih Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1">Tiada Fail Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a href="/storage/{{ $permohonan->salinan_kp_depan }}" target="_blank">Gambar</a></span>
 
                                                             </div>
                                                         </div>
