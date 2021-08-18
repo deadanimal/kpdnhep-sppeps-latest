@@ -157,7 +157,6 @@
                         Arkib&ensp;
                         <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
                     </a>
-                @endcan
 
 
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
