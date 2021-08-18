@@ -1,0 +1,456 @@
+@extends('layouts.base-admin-hq')
+
+@section('content')
+
+    <div class="container-fluid py-4">
+
+        <div class="p-3">
+            <div>
+                <h4>Soalan Lazim (FAQ)</h4>
+            </div>
+
+            <div class="card card-frame mt-4">
+
+                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
+                    <div class="row d-flex flex-nowrap">
+                        <div class="col">
+                            <h5>Senarai Kategori</h5>
+                        </div>
+
+                        <div class="col">
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#modal-form">
+                                    <i class="fas fa-plus-circle"></i> Tambah</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+
+                    <table class="table table-flush" id="datatable-basic-kategori">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                    Kategori MS</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                    Kategori EN</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tindakan
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($kategorifaqs as $kategorifaq)
+                                <tr>
+                                    <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
+                                    <td class="text-sm font-weight-normal">{{ $kategorifaq->nama_kategori_bm }}</td>
+                                    <td class="text-sm font-weight-normal">{{ $kategorifaq->nama_kategori_en }}</td>
+                                    <td class="text-sm font-weight-normal">
+                                        @if ($kategorifaq->status === 'aktif')
+                                            <span class="text-secondary text-sm font-weight-bold">
+                                                <span class="badge badge-success">Aktif</span>
+                                            </span>
+                                        @elseif ($kategorifaq->status === 'tidak_aktif')
+                                            <span class="text-secondary text-sm font-weight-bold">
+                                                <span class="badge badge-danger">Tidak Aktif</span>
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $kategorifaq->id }}">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="/tetapan-faq/{{ $kategorifaq->id  }}/delete">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="modal-form2-{{ $kategorifaq->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-0">
+                                                <div class="card card-plain">
+                                                    <div class="card-header pb-0 text-left">
+                                                        <h3 class="font-weight-bolder text-info text-gradient">Kemaskini
+                                                        </h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <form role="form text-left" method="POST"
+                                                            action="/tetapan-faq/{{ $kategorifaq->id }}">
+                                                            @method('PUT')
+                                                            <input type="hidden" name="id" value="{{ $kategorifaq->id }}">
+                                                            <div class="form-group">
+                                                                <label for="title">Nama Kategori MS</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="{{ $kategorifaq->nama_kategori_bm }} "
+                                                                    placeholder="">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title">Nama Kategori EN</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="{{ $kategorifaq->nama_kategori_en }}"
+                                                                    placeholder="">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="content">Status</label>
+                                                                <br>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="status" value="aktif" @if ($kategorifaq->status == 'aktif') checked @endif>
+                                                                    <label class="form-check-label"
+                                                                        for="active">Aktif</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="status" value="tidak_aktif" @if ($kategorifaq->status == 'tidak_aktif') checked @endif>
+                                                                    <label class="form-check-label" for="notActive">Tidak
+                                                                        Aktif</label>
+                                                                </div>˝
+
+                                                            </div>
+
+                                                            <div class="text-center d-flex justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-round bg-gradient-danger text-capitalize"
+                                                                    data-bs-dismiss="modal">Batal</button>
+                                                                <button type="Submit"
+                                                                    class="btn btn-round btn-success text-capitalize">Simpan</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card card-frame mt-4">
+
+                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
+                    <div class="row d-flex flex-nowrap">
+                        <div class="col">
+                            <h5>Senarai FAQ</h5>
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#modal-form3"> <i
+                                    class="fas fa-plus-circle"></i> Tambah</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-flush" id="datatable-basic-senarai">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk
+                                        (BM)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk
+                                        (BI)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Kandungan (BM)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Kandungan (BI)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Turutan
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tindakan
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($faqs as $faq)
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->tajuk_bm }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->tajuk_en }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->kandungan_bm }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->kandungan_en }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->turutan }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->kategori }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->status }}</td>
+                                        <td class="text-sm font-weight-normal">
+                                            <a data-bs-toggle="modal" data-bs-target="#modal-form4-{{ $faq->id }}">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <a href="/tetapan-faq/{{ $faq->id }}/delete">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <div class="modal fade" id="modal-form4-{{ $faq->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-0">
+                                                    <div class="card card-plain">
+                                                        <div class="card-header pb-0 text-left">
+                                                            <h3 class="font-weight-bolder text-info text-gradient">Kemaskini
+                                                            </h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <form role="form text-left" method="POST"
+                                                                action="/tetapan-faq/{{ $faq->id }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="id" value="{{ $faq->id }}">
+                                                                <div class="form-group">
+                                                                    <label for="title">Tajuk MS</label>
+                                                                    <input type="text" class="form-control" name="tajuk_bm"
+                                                                        value="{{ $faq->tajuk_bm }}" placeholder="">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="title">Tajuk EN</label>
+                                                                    <input type="text" class="form-control" name="tajuk_en" value="{{ $faq->tajuk_en }}"
+                                                                        placeholder="">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="title">Kandungan MS</label>
+                                                                    <input type="text" class="form-control" value="{{ $faq->kandungan_bm }}"
+                                                                        name="kandungan_bm" placeholder="">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="title">Kandungan EN</label>
+                                                                    <input type="text" class="form-control" value="{{ $faq->kandungan_en }}"
+                                                                        name="kandungan_en" placeholder="">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="title">Turutan</label>
+                                                                    <select name="turutan" class="form-control">
+                                                                        <option hidden selected>Sila Pilih</option>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="title">Kategori</label>
+                                                                    <select name="kategori" class="form-control">
+                                                                        <option hidden selected>--Sila Pilih--</option>
+                                                                        <option value="umum">Umum</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="content">Status</label>
+                                                                    <br>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="status" value="aktif" @if ($faq->status == 'aktif') checked @endif>
+                                                                        <label class="form-check-label"
+                                                                            for="active">Aktif</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="status" value="tidak_aktif" @if ($faq->status == 'tidak_aktif') checked @endif>
+                                                                        <label class="form-check-label"
+                                                                            for="notActive">Tidak Aktif</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-center d-flex justify-content-end">
+                                                                    <button type="button"
+                                                                        class="btn btn-round bg-gradient-danger text-capitalize"
+                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                    <button type="Submit"
+                                                                        class="btn btn-round btn-success text-capitalize">Simpan</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                                <h3 class="font-weight-bolder text-info text-gradient">Tambah</h3>
+                            </div>
+                            <div class="card-body">
+                                <form role="form text-left" method="POST" action="/tetapan-faq">
+                                    @csrf
+                                    <input type="hidden" name="jenis" value="category">
+                                    <div class="form-group">
+                                        <label for="title">Nama Kategori MS</label>
+                                        <input type="text" class="form-control" name="nama_kategori_bm" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">Nama Kategori EN</label>
+                                        <input type="text" class="form-control" name="nama_kategori_en" placeholder="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="content">Status</label>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" value="aktif">
+                                            <label class="form-check-label" for="active">Aktif</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" value="tidak_aktif">
+                                            <label class="form-check-label" for="notActive">Tidak Aktif</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="text-center d-flex justify-content-end">
+                                        <button type="button" class="btn btn-round bg-gradient-danger text-capitalize"
+                                            data-bs-dismiss="modal">Batal</button>
+                                        <button type="Submit"
+                                            class="btn btn-round btn-success text-capitalize">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                                <h3 class="font-weight-bolder text-info text-gradient">Tambah</h3>
+                            </div>
+                            <div class="card-body">
+                                <form role="form text-left" method="POST" action="/tetapan-faq">
+                                    @csrf
+                                    <input type="hidden" name="jenis" value="senarai">
+                                    <div class="form-group">
+                                        <label for="title">Tajuk MS</label>
+                                        <input type="text" class="form-control" name="tajuk_bm" placeholder="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Tajuk EN</label>
+                                        <input type="text" class="form-control" name="tajuk_en" placeholder="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Kandungan MS</label>
+                                        <input type="text" class="form-control" name="kandungan_bm" placeholder="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Kandungan EN</label>
+                                        <input type="text" class="form-control" name="kandungan_en" placeholder="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Turutan</label>
+                                        <select name="turutan" class="form-control">
+                                            <option hidden selected>Sila Pilih</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title">Kategori</label>
+                                        <select name="kategori" class="form-control">
+                                            <option hidden selected>Sila Pilih</option>
+                                            @foreach ($kategorifaqs as $kategorifaq)
+                                                <option value="{{ $kategorifaq->nama_kategori_bm }}">
+                                                    {{ $kategorifaq->nama_kategori_bm }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="content">Status</label>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" value="aktif">
+                                            <label class="form-check-label" for="active">Aktif</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" value="tidak_aktif">
+                                            <label class="form-check-label" for="notActive">Tidak Aktif</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="text-center d-flex justify-content-end">
+                                        <button type="button" class="btn btn-round bg-gradient-danger text-capitalize"
+                                            data-bs-dismiss="modal">Batal</button>
+                                        <button type="Submit"
+                                            class="btn btn-round btn-success text-capitalize">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        const dataTableBasickategori = new simpleDatatables.DataTable("#datatable-basic-kategori", {
+            searchable: true,
+            fixedHeight: true
+        });
+    </script>
+    <script type="text/javascript">
+        const dataTableBasicSenarai = new simpleDatatables.DataTable("#datatable-basic-senarai", {
+            searchable: true,
+            fixedHeight: true
+        });
+    </script>
+@stop
