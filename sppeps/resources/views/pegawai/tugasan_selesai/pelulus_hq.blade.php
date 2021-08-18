@@ -107,7 +107,7 @@
                                                         NEGERI</th>
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                        Catatan hq</th>
+                                                        Catatan</th>
 
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
@@ -144,23 +144,16 @@
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
-                                                                {{ $permohonan->catatan_pegawai_hq }}</span>
+                                                                {{ $permohonan->catatan_pelulus }}</span>
                                                         </td>
-
+                                                        </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            @if ($permohonan->status_permohonan === 'hantar ke pdrm' || $permohonan->status_permohonan === 'Dalam Proses')
-                                                                <span class="badge badge-success"> Telah Dihantar ke
-                                                                    PDRM</span>
-                                                            @elseif ($permohonan->status_permohonan === 'Diluluskan')
+                                                            @if ($permohonan->status_permohonan === 'Diluluskan')
                                                                 <span class="badge badge-success"> Diluluskan</span>
-                                                            @elseif ($permohonan->status_permohonan === 'Tidak
-                                                                Diluluskan')
-                                                                <span class="badge badge-danger">Tidak Diluluskan</span>
                                                             @elseif ($permohonan->status_permohonan ===
-                                                                'hantar_ke_penyokong_negeri' ||
-                                                                $permohonan->status_permohonan === 'hantar_ke_penyokong_hq')
-                                                                <span class="badge badge-success">Telah Dihantar Ke
-                                                                    Penyokong</span>
+                                                                'Tidak Diluluskan')
+                                                                <span class="badge badge-danger"> Tidak Diluluskan</span>
+                                                            
                                                             @endif
                                                         </td>
                                                     </tr>

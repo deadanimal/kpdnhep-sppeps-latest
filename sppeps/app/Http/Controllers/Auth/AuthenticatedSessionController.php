@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Audit;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -31,6 +33,15 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $user = $request->user();
+        if ($user->role != 'pemohon') {
+            $audit = new Audit;
+            $audit->user_id = $user->id;
+            $audit->description = $user->name. ' loggedin.';
+            
+            $audit->save();   
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

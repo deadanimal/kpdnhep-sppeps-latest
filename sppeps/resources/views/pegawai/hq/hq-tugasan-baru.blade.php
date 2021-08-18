@@ -5,11 +5,11 @@
 <div class="container-fluid py-4">
 
     <div class="p-3">
-        {{ auth()->user()->role }}
+        {{-- {{ auth()->user()->role }} --}}
             {{-- {{Auth::user()->roles}} --}}
-            @foreach (auth()->user()->roles as $role)
+            {{-- @foreach (auth()->user()->roles as $role)
                 {{ $role->name }}
-            @endforeach
+            @endforeach --}}
 
         <div>
             <h5>Semakan Permohonan</h5>

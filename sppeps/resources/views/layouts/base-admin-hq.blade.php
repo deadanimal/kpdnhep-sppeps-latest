@@ -140,11 +140,11 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0"
-                href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/default.html"
-                target="_blank">
+                href="/dashboard"
+                >
                 <div class="row d-flex flex-nowrap">
                     <div class="col">
-                        <img src="#" class="navbar-brand-img h-100">
+                        <img src="/assets/img/logos/logo-kementerian.png" class="navbar-brand-img h-100">
                     </div>
                     <div class="col">
                         <span class="font-weight-bold">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</span>
@@ -507,7 +507,13 @@
                                             </form>
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="/penyokong_negeri_tugasan_selesai" class="nav-link">
+                                            <a class="nav-link" href="/penyokong_negeri_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/penyokong_negeri_tugasan_selesai" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="penyokong_negeri">
                                                 <input type="submit" id="actual-btn11" hidden />
@@ -517,7 +523,7 @@
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -575,7 +581,14 @@
                                             </form>
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pelulus_negeri_tugasan_selesai" class="nav-link">
+
+                                            <a class="nav-link" href="/pelulus_negeri_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/pelulus_negeri_tugasan_selesai" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pelulus_negeri">
                                                 <input type="submit" id="actual-btn21" hidden />
@@ -585,7 +598,7 @@
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -593,36 +606,8 @@
                         @endif
                     @endforeach
 
-
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="/permohonan">
-                            <div
-                                class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
-                                <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <title>spaceship</title>
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
-                                            fill-rule="nonzero">
-                                            <g transform="translate(1716.000000, 291.000000)">
-                                                <g transform="translate(453.000000, 454.000000)">
-                                                    <path class="color-background"
-                                                        d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
-                                                        opacity="0.593633743"></path>
-                                                    <path class="color-background"
-                                                        d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
-                                                    </path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                            <span class="nav-link-text ms-1">Tugasan Baru</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tugasan-selesai">
+                        <a class="nav-link" href="/cetakan_permit">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -645,13 +630,11 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">Tugasan Selesai</span>
+                            <span class="nav-link-text ms-1">Cetakan Permit</span>
                         </a>
-
-                    </li>  --}}
+                    </li>
 
                 @elsecan('isPegawaiHq')
-
 
                     @foreach (auth()->user()->roles as $role)
                         @if ($role->name == 'pemproses_hq')
@@ -708,8 +691,8 @@
                                             <form method="POST" action="" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn1" hidden />
-                                                <label for="actual-btn1" class="upload-btn mt-0">
+                                                <input type="submit" id="actual-btn26" hidden />
+                                                <label for="actual-btn26" class="upload-btn mt-0">
                                                     <span class="sidenav-mini-icon"> TS </span>
                                                     <span class="sidenav-normal">
                                                         Tugasan Selesai
@@ -773,17 +756,23 @@
                                             </form>
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="" class="nav-link">
+                                            <a class="nav-link" href="/pemproses_hq_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/pemproses_hq_tugasan_selesai" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn1" hidden />
-                                                <label for="actual-btn1" class="upload-btn mt-0">
+                                                <input type="submit" id="actual-btn21" hidden />
+                                                <label for="actual-btn21" class="upload-btn mt-0">
                                                     <span class="sidenav-mini-icon"> TS </span>
                                                     <span class="sidenav-normal">
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -842,17 +831,23 @@
                                             </form>
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="#" class="nav-link">
+                                            <a class="nav-link" href="/penyokong_hq_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/penyokong_hq_tugasan_selesai" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn1" hidden />
-                                                <label for="actual-btn1" class="upload-btn mt-0">
+                                                <input type="submit" id="actual-btn23" hidden />
+                                                <label for="actual-btn23" class="upload-btn mt-0">
                                                     <span class="sidenav-mini-icon"> TS </span>
                                                     <span class="sidenav-normal">
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -910,17 +905,23 @@
                                             </form>
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="/jenis_tugasan" class="nav-link">
+                                            <a class="nav-link" href="/pelulus_hq_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/pelulus_hq_tugasan_selesai" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn1" hidden />
-                                                <label for="actual-btn1" class="upload-btn mt-0">
+                                                <input type="submit" id="actual-btn25" hidden />
+                                                <label for="actual-btn25" class="upload-btn mt-0">
                                                     <span class="sidenav-mini-icon"> TS </span>
                                                     <span class="sidenav-normal">
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -1071,6 +1072,34 @@
                     </li>
 
                 @endcan
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/semakan_permohonan">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
+                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>credit-card</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
+                                        fill-rule="nonzero">
+                                        <g transform="translate(1716.000000, 291.000000)">
+                                            <g transform="translate(453.000000, 454.000000)">
+                                                <path class="color-background"
+                                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                                    opacity="0.593633743"></path>
+                                                <path class="color-background"
+                                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="nav-link-text ms-1">Semakan Status Permohonan</span>
+                    </a>
+                </li>
 
 
 
@@ -1646,7 +1675,7 @@
                     window.fetch(
                             "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-dashboard-pro/assets/js/points.json"
 
-                            )
+                        )
 
                         .then(response => response.json())
                         .then(data => {

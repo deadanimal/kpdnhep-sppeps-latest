@@ -39,16 +39,16 @@
                                 <label for="ic">No. Kad Pengenalan</label>
                                 <div class="input-group mb-4">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="ic">
+                                    <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="no_kp">
                                 </div>
                             </div>
-                            <div class="form-group mt-3">
+                            {{-- <div class="form-group mt-3">
                                 <label for="ic">E-mel</label>
                                 <div class="input-group mb-4">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     <input class="form-control" placeholder="sppeps@gmail.com" type="email" name="email">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group mt-3">
                                 <label for="password">Kata Laluan</label>
                                 <div class="input-group mb-4">
@@ -89,16 +89,16 @@
                                 <div class="input-group mb-4">
 
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="ic">
+                                    <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="no_kp">
                                 </div>
                             </div>
-                            <div class="form-group mt-3">
+                            {{-- <div class="form-group mt-3">
                                 <label for="ic">E-mel</label>
                                 <div class="input-group mb-4">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     <input class="form-control" placeholder="sppeps@gmail.com" type="email" name="email">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group mt-3">
                                 <label for="password">Kata Laluan</label>
                                 <div class="input-group mb-4">

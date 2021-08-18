@@ -116,7 +116,7 @@ class JenisTugasanControiller extends Controller
                 return view('pegawai.hq.hq-tugasan-baru', [
                     'permohonan' => $permohonan
                 ]);
-            } 
+            }
         }
     }
 
@@ -129,19 +129,14 @@ class JenisTugasanControiller extends Controller
         $user_id = $user->id;
         $user_roles = $user->roles;
         $user_negeri = $user->negeri;
-        if ($user_role == 'pegawai_hq') {
-            if ($request->jenis_tindakan == "penyokong_hq") {
-                // dd($request);
 
-                $permohonan = Permohonan::where([
-                    ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
-                ])->get();
+        $permohonan = Permohonan::where([
+            ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+        ])->get();
 
-                return view('pegawai.hq.hq-tugasan-baru', [
-                    'permohonan' => $permohonan
-                ]);
-            } 
-        }
+        return view('pegawai.hq.hq-tugasan-baru', [
+            'permohonan' => $permohonan
+        ]);
     }
 
     public function tugasan_baru_pelulus_hq(Request $request)

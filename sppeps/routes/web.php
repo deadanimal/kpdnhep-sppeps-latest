@@ -35,6 +35,8 @@ use App\Http\Controllers\PengurusanDataController;
 use App\Http\Controllers\JenisTugasanControiller;
 
 use App\Http\Controllers\PerananPegawaiController;
+use App\Http\Controllers\CetakanPermitController;
+use App\Http\Controllers\SemakanPermohonanPegawaiController;
 // Route::get('/dashboard', function () {
 //     return view('pemohon.dashboard');
 // })->middleware(['auth'])->name('dashboard');\
@@ -67,6 +69,7 @@ Route::post('/cari-senarai-hitam', [SenaraiHitamController::class, 'carisenaraih
 
 Route::post('/cari-tambah-senarai-hitam', [SenaraiHitamController::class, 'caritambahsenaraihitam']);
 
+Route::post('/register_user', [ProfilController::class, 'register']); //dummy
 Route::post('/profil/login-insid', [ProfilController::class, 'login_insid']);
 Route::post('/profil/login-myhub', [ProfilController::class, 'login_myhub']);
 Route::resource('/profil', ProfilController::class);
@@ -83,14 +86,19 @@ Route::post('/penyokong_hq_tugasan_baru', [JenisTugasanControiller::class, 'tuga
 Route::post('/pelulus_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pelulus_hq']);
 
 Route::post('/pemproses_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_negeri']);
-Route::post('/penyokong_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_negeri']);
-Route::post('/pelulus_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_negeri']);
-Route::post('/pemproses_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_hq']);
-Route::post('/penyokong_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_hq']);
-Route::post('/pelulus_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_hq']);
+Route::get('/penyokong_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_negeri']);
+Route::get('/pelulus_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_negeri']);
+Route::get('/pemproses_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_hq']);
+Route::get('/penyokong_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_hq']);
+Route::get('/pelulus_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_hq']);
 
 Route::resource('/peranan_pdrm', PerananPegawaiController::class);
 Route::post('/cari_pdrm', [PerananPegawaiController::class, 'cari']);
+
+Route::resource('/cetakan_permit', CetakanPermitController::class);
+Route::get('/cetak_permit/{id}', [CetakanPermitController::class, 'cetakpermit']);
+Route::post('/carian_pemohon', [CetakanPermitController::class, 'cari']);
+Route::resource('/semakan_permohonan', SemakanPermohonanPegawaiController::class);
 
 //auth
 Route::get('/login_', function () {
@@ -163,13 +171,6 @@ Route::get('/permohonan-berjaya', function () {
 
 Route::get('/permohonan-disimpan', function () {
     return view('pemohon.permohonan-simpan');
-});
-
-
-
-
-Route::get('/negeri-bayaran-permohonan', function () {
-    return view('pegawai.negeri.negeri-bayaran-permohonan');
 });
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Http;
 
@@ -24,7 +25,6 @@ class ProfilController extends Controller
         return view('auth.profile_', [
             'pemohon' => $pemohon
         ]);
-
     }
 
     public function show(User $user, Request $request)
@@ -39,8 +39,6 @@ class ProfilController extends Controller
         return view('auth.profile-update_', [
             'pemohon' => $user
         ]);
-
-        
     }
 
     public function update(Request $request, User $user)
@@ -74,12 +72,12 @@ class ProfilController extends Controller
         $ic = $request->ic;
         $password = $request->password;
 
-        if($ic == '900102035115' and $password == 'PipelineIsmail') {
+        if ($ic == '900102035115' and $password == 'PipelineIsmail') {
             $request->email = '713e52f3-cde5-4798-941a-d47ab8db0229@email.webhook.site';
         }
 
         $request->authenticate();
-        $request->session()->regenerate();        
+        $request->session()->regenerate();
 
 
         return redirect('/dashboard');
@@ -93,36 +91,31 @@ class ProfilController extends Controller
         $url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
         $token_janaan = Http::post($url, [
-            "name"=> "janaToken",
-            "param"=> [
-                "app_id"=> "sppeps",
-                "app_secret"=> "[sppeps@bpm7]",
-                "scope"=> "staf",
+            "name" => "janaToken",
+            "param" => [
+                "app_id" => "sppeps",
+                "app_secret" => "[sppeps@bpm7]",
+                "scope" => "staf",
             ]
         ])->json()['result']['token'];
 
         $url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
         $pengguna = Http::withToken($token_janaan)->post($url, [
-            "name"=> "login",
-            "param"=> [
-                "idpengguna"=> $idpengguna,
-                "katalaluan "=> $katalaluan 
-            ]     
+            "name" => "login",
+            "param" => [
+                "idpengguna" => $idpengguna,
+                "katalaluan " => $katalaluan
+            ]
         ]);
 
-        if($pengguna->successful()) {
-            $request->authenticate();     
-            $request->session()->regenerate();               
+        if ($pengguna->successful()) {
+            $request->authenticate();
+            $request->session()->regenerate();
             return redirect('/appp');
-        } else {   
+        } else {
             return redirect('/login')->withErrors('Salah username/kata laluan');
         }
-
-
-
-
-
     }
 
     public function login_via_myhub(LoginRequest $request)
@@ -133,26 +126,26 @@ class ProfilController extends Controller
         $url = 'http://datajpndev.kpdnhep.gov.my/jwtapi/';
 
         $token_janaan = Http::post($url, [
-            "name"=> "janaToken",
-            "param"=> [
-                "user_id"=> "No_Kad_Pengenalan",
-                "app_id"=> "SPPEPSdev",
-                "app_secret"=> "[SPPEPSdev@bpm123]",
+            "name" => "janaToken",
+            "param" => [
+                "user_id" => "No_Kad_Pengenalan",
+                "app_id" => "SPPEPSdev",
+                "app_secret" => "[SPPEPSdev@bpm123]",
             ]
-        ])->json()['result']['token'];        
+        ])->json()['result']['token'];
 
         $pengguna = Http::withToken($token_janaan)->post($url, [
-            "name"=> "getMyIdentity",
-            "param"=> [
-                "nokp"=> $idpengguna,
+            "name" => "getMyIdentity",
+            "param" => [
+                "nokp" => $idpengguna,
             ]
-        ])->json();       
+        ])->json();
 
-        if($pengguna->successful()) {
-            $request->authenticate();     
-            $request->session()->regenerate();               
+        if ($pengguna->successful()) {
+            $request->authenticate();
+            $request->session()->regenerate();
             return redirect('/appp');
-        } else {   
+        } else {
             return redirect('/login')->withErrors('Salah username/kata laluan');
         }
     }
@@ -160,7 +153,23 @@ class ProfilController extends Controller
     public function logout(Request $request)
     {
         $request->session()->invalidate();
-        $request->session()->regenerateToken();        
+        $request->session()->regenerateToken();
     }
 
+
+    public function register(Request $request)
+    {
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->no_kp = $request->no_kp;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        
+        // dd($request);
+
+        $user->save();
+
+        return redirect("/login_");
+    }
 }
