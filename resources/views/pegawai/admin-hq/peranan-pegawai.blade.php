@@ -12,6 +12,7 @@
             <div class="container-fluid mt-4" style="padding: 0px !important;">
                 <div class="card">
 
+                    
                     <div class="card-header" style="background-color: #f7e8ff;">
                         <h6> Carian Pegawai </h6>
                     </div>
@@ -135,7 +136,23 @@
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold">
                                                         @foreach ($pegawai->roles as $role)
-                                                            {{ $role->name }} <br>
+
+                                                            @if ($role->name === 'pemproses_negeri')
+                                                                Pemproses Negeri
+                                                            @elseif ($role->name === "penyokong_negeri")
+                                                                Penyokong Negeri
+                                                            @elseif ($role->name === "pelulus_negeri")
+                                                                Pelulus Negeri
+                                                            @elseif ($role->name === "pemproses_hq")
+                                                                Pemproses HQ
+                                                            @elseif ($role->name === "penyokong_hq")
+                                                                Penyokong HQ
+                                                            @elseif ($role->name === "pelulus_hq")
+                                                                Pelulus HQ
+                                                            @else
+                                                                {{ $role->name }}
+                                                            @endif
+                                                            <br>
                                                         @endforeach
                                                     </span>
                                                 </td>
@@ -180,9 +197,4 @@
 @stop
 
 
-{{-- @foreach ($pegawais as $pegawai)
-    Name: {{$pegawai->name}}    
-    @foreach ($pegawai->roles as $role)
-        {{$role}}    
-    @endforeach
-@endforeach --}}
+
