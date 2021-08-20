@@ -106,7 +106,7 @@
                                                         class="btn btn-sm bg-gradient-info">
                                                         Kemaskini
                                                     </a>
-                                                   
+
                                                 </td>
                                             </tr>
                                         @endforeach

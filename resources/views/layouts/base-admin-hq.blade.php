@@ -142,17 +142,20 @@
             <a class="navbar-brand m-0"
                 href="/dashboard"
                 >
-                <div class="row d-flex flex-nowrap">
-                    <div class="col">
-                        <img src="/assets/img/logos/logo-kementerian.png" class="navbar-brand-img h-100">
+                <div class="row d-flex flex-wrap">
+                    <div class="row d-flex justify-content-center align-tems-center pr-0">
+                        <img src="/assets/img/logos/sppeps.png" class="navbar-brand-img h-100 pr-0" alt="" >
+                        {{-- <img src="/assets/img/logos/logo-kementerian.png" class="navbar-brand-img h-100"> --}}
                     </div>
-                    <div class="col">
+                    <br>
+                    {{-- <div class="row d-flex justify-content-center mt-2">
                         <span class="font-weight-bold">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</span>
-                    </div>
+                    </div> --}}
                 </div>
             </a>
         </div>
-        <hr class="horizontal dark mt-0">
+
+        <hr class="horizontal dark mt-2">
         <div class="collapse navbar-collapse  w-auto h-auto max-height-vh-100 h-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
