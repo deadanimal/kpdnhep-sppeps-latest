@@ -17,6 +17,19 @@ class UserSeeder extends Seeder
         //
 
         User::create([
+            'name'=> 'pentadbir',
+            'email'=> 'iszmael97@gmail.com',
+            'no_kp'=> '123456789012',
+            'password'=> Hash::make('password'),
+            'no_telefon_pejabat'=>'0123456789',
+            'no_telefon_bimbit'=>'0123456789',
+            'alamat1'=>'sunway',
+            'alamat2'=>'lagoon',
+            'role'=> 'pentadbir'
+            
+        ]);
+
+        User::create([
             'name'=> 'Mohd Norhadi bin Mohd Said',
             'email'=> 'mnorhadi@kpdnhep.gov.my',
             'no_kp'=> '810419015207',
