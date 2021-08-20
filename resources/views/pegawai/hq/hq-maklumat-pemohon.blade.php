@@ -18,6 +18,8 @@
                     </div>
 
 
+                  
+                    @endforeach
                     <div class="card-body">
 
                         <form class="d-flex justify-content-center font-black" style="width: 100%;">
@@ -25,12 +27,16 @@
                                 fxLayoutAlign="space-evenly stretch" style="width: 100%;">
 
                                 <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
-                                    <div class="row form-group p-3 d-flex justify-content-center">
-
-                                        <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg"
-                                            alt="..." class="avatar avatar-xxl">
+                                    <div class="row ">
+                                        <div class="col d-flex justify-content-center flex-wrap">
+                                            <label>
+                                                <div class="position-relative">
+                                                    <img src="/storage/{{ $permohonan->gambar_pemohon }}"
+                                                        class="border-radius-md" width="150" height="150" />
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
-
                                     <div class="d-flex flex-nowrap">
                                         <div class="col-6 form-group p-0">
                                             <label for="name">
@@ -253,10 +259,12 @@
                                                             <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_depan }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
+
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -264,10 +272,11 @@
                                                             <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_belakang }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -275,10 +284,11 @@
                                                             <li><label>Salinan Lesen Memandu</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_lesen_memandu }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
 
@@ -297,7 +307,7 @@
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
                                                 <!-- <label for="panelIcNumber"><strong>No. Kad Pengenalan Panel</strong></label>
-                                                                                <input type="text" class="form-control col-9" disabled value="{{ $permohonan->no_kp_panel }}"> -->
+                                                                                                                        <input type="text" class="form-control col-9" disabled value="{{ $permohonan->no_kp_panel }}"> -->
                                             </div>
                                         </div>
 
@@ -440,21 +450,24 @@
                                                             <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_depan }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
+
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-4">
                                                             <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_belakang }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -462,10 +475,11 @@
                                                             <li><label>Salinan Lesen Memandu</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_lesen_memandu }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -474,10 +488,11 @@
                                                             </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_surat_sokongan }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
 
@@ -512,7 +527,7 @@
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">
                                                 <!-- <label for="panelIcNumber"><strong>Alasan Lain</strong></label>
-                                                                                <input type="text" class="form-control col-9" disabled value="{{ $permohonan->alasan_lain }}"> -->
+                                                                                                                        <input type="text" class="form-control col-9" disabled value="{{ $permohonan->alasan_lain }}"> -->
                                             </div>
                                         </div>
 
@@ -540,10 +555,11 @@
                                                             <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_depan }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -551,10 +567,11 @@
                                                             <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_belakang }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -562,10 +579,11 @@
                                                             <li><label>Salinan Repot Polis</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_laporan_polis }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
 
@@ -613,10 +631,11 @@
                                                             <li><label>Salinan Kad Pengenalan (Depan)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_depan }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -624,10 +643,11 @@
                                                             <li><label>Salinan Kad Pengenalan (Belakang)</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_kp_belakang }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -636,10 +656,11 @@
                                                                     Aman</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_tapisan_rekod_jenayah }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -648,10 +669,11 @@
                                                             </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_sokongan_institusi_kewangan }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -659,10 +681,11 @@
                                                             <li><label>Dokumen Sokongan Lain 1</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_dokumen_sokongan1 }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -670,10 +693,11 @@
                                                             <li><label>Dokumen Sokongan Lain 2</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_dokumen_sokongan2 }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -681,12 +705,14 @@
                                                             <li><label>Dokumen Sokongan Lain 3</label> </li>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-sm text-white"
-                                                                style="background-color: #1d1da1;" (click)="display()"><i
-                                                                    class="fas fa-file-alt"></i> Lihat
-                                                                Lampiran</button>
+                                                            <a href="/storage/{{ $permohonan->salinan_dokumen_sokongan3 }}"
+                                                                target="_blank" class="btn btn-sm text-white"
+                                                                style="background-color: #1d1da1;">
+                                                                <i class="fas fa-file-alt"></i> Lihat Lampiran
+                                                            </a>
                                                         </div>
                                                     </div>
+
                                                 </ol>
                                             </div>
                                         </div>
@@ -793,7 +819,7 @@
 
                                     <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch"
                                         style="width: 90%;">
-                                        
+
                                         <div class="d-flex flex-nowrap">
                                             <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                                 <label for="action" class="col-sm-3 ">Tindakan</label>

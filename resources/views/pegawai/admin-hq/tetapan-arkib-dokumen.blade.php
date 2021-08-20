@@ -40,7 +40,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama EN
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paparan
-                                        Dokumen</th>
+                                        Gambar</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh
                                         Kemaskini</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
@@ -56,8 +56,8 @@
                                         <td class="text-sm font-weight-normal">{{ $arkibdokumen->nama_ms }}</td>
                                         <td class="text-sm font-weight-normal">{{ $arkibdokumen->nama_en }}</td>
                                         <td class="text-sm font-weight-normal">
-                                            <i class="fas fa-file-alt me-sm-1 text-dark"></i> <a
-                                                href="/storage/{{ $arkibdokumen->jalan }}" target="_blank">Fail</a>
+                                            <i class="fa fa-file-alt me-sm-1 text-dark"></i> <a
+                                                href="/storage/{{ $arkibdokumen->jalan }}" target="_blank">{{ $arkibdokumen->jalan }}</a>
                                         </td>
                                         <td class="text-sm font-weight-normal">{{ $arkibdokumen->updated_at }}</td>
                                         <td>
@@ -79,7 +79,7 @@
                                             <a href="/tetapan-arkib-dokumen/{{ $arkibdokumen->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
-                                            <a href="/tetapan-arkib-dokumen-senarai">
+                                            <a href="/tetapan-arkib-dokumen/{{ $arkibdokumen->id }}">
                                                 <i class="far fa-list-alt"></i>
                                             </a>
 
@@ -123,10 +123,10 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="gambar">
+                                                                            id="arkibgambar-btn2" name="gambar">
                                                                     </label>
-
-                                                                    <div id="fileList">Tiada Gambar Dipilih</div>
+                                                                    <span id="arkibgambar-chosen2"
+                                                                        class="mt-1">{{ $arkibdokumen->jalan }}</span>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -197,10 +197,14 @@
                                     <div class="form-group">
                                         <label for="image">Gambar Paparan</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Dokumen<input type="file"
-                                                style="display: none;" class="form-control" name="gambar">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar <input type="file"
+                                                    style="display: none;" class="form-control" id="arkibdokumen-btn1"
+                                                    hidden name="gambar">
+                                            </label>
+                                            <span id="arkibdokumen-chosen1" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -239,5 +243,22 @@
             searchable: true,
             fixedHeight: true
         });
+    </script>
+    <script>
+        const arkibdokumenBtn1 = document.getElementById('arkibdokumen-btn1');
+
+        const arkibdokumenChosen1 = document.getElementById('arkibdokumen-chosen1');
+
+        arkibdokumenBtn1.addEventListener('change', function() {
+            arkibdokumenChosen1.textContent = this.files[0].name
+        })
+
+        const arkibdokumenBtn2 = document.getElementById('arkibdokumen-btn2');
+
+        const arkibdokumenChosen2 = document.getElementById('arkibdokumen-chosen2');
+
+        arkibdokumenBtn2.addEventListener('change', function() {
+            arkibdokumenChosen2.textContent = this.files[0].name
+        })
     </script>
 @stop

@@ -20,29 +20,6 @@
 
     </style>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                                                            <script>
-                                                                $(document).ready(function() {
-                                                                    $("#hide").click(function() {
-                                                                        $("#1").hide();
-                                                                        $("#2").show();
-                                                                    });
-                                                                    $("#show").click(function() {
-                                                                        $("#1").show();
-                                                                        $("#2").hide();
-                                                                    });
-                                                                });
-                                                            </script> -->
-
-    <!-- <body>
-
-                                                                <p id="1" style="display: none;">Area 1</p>
-                                                                <p id="2" style="display: none;">Second area</p>
-
-                                                                <button id="show">Area 1</button>
-                                                                <button id="hide">Second Area</button> -->
-
-
     <div class=" ">
 
 
@@ -56,20 +33,18 @@
                         <!-- <h5 class="text-secondary font-weight-normal">This information will let us know more about you.</h5> -->
                         <div class="multisteps-form mb-5">
                             <!--progress bar-->
-                            <div class="row">
-                                <div class="col-12 col-lg-8 mx-auto my-5">
-                                    <div class="multisteps-form__progress">
-                                        <button class="multisteps-form__progress-btn js-active" type="button"
-                                            title="User Info">
-                                            <span>A. Maklumat Permohonan</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>B. Maklumat Tambahan</span>
-                                        </button>
-                                        <button class="multisteps-form__progress-btn" type="button" title="Order Info">
-                                            <span>C. Pengesahan Permohonan</span>
-                                        </button>
-                                    </div>
+                            <div class="row ">
+                                <div class="col d-flex justify-content-center flex-wrap">
+                                    <label>
+                                        <div class="position-relative">
+                                            <img src="/storage/{{ $permohonan->gambar_pemohon}}"
+                                                class="border-radius-md" width="150"
+                                                height="150" />
+                                            {{-- <input type="hidden" name="gambar_pemohon" value="{{ $pemohon->gambar_profil}}"> --}}
+                                            <input type="hidden" name="jenis_permohonan"
+                                                value="Baharu">
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
                             <!--form panels-->
@@ -582,7 +557,8 @@
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="nama_institusi_kewangan" id="nama_institusi_kewangan"
+                                                                                name="nama_institusi_kewangan"
+                                                                                id="nama_institusi_kewangan"
                                                                                 value="{{ $permohonan->nama_institusi_kewangan }}">
                                                                         </div>
                                                                     </div>
@@ -590,14 +566,15 @@
                                                                 <!-- <div class="col-1"></div> -->
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
-                                                                        <label for="no_telefon_institusi_kewangan" class="col-sm">
+                                                                        <label for="no_telefon_institusi_kewangan"
+                                                                            class="col-sm">
                                                                             <strong>No. Telefon Institusi Kewangan</strong>
                                                                         </label>
                                                                         <div class="col-sm-8">
 
                                                                             <input type="text"
                                                                                 name="no_telefon_institusi_kewangan"
-                                                                                id="no_telefon_institusi_kewangan" 
+                                                                                id="no_telefon_institusi_kewangan"
                                                                                 class="form-control form-control-sm"
                                                                                 value="{{ $permohonan->no_telefon_institusi_kewangan }}">
 
@@ -671,7 +648,8 @@
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="no_telefon_panel" name="no_telefon_panel"
+                                                                                id="no_telefon_panel"
+                                                                                name="no_telefon_panel"
                                                                                 value="{{ $permohonan->no_telefon_panel }}">
                                                                         </div>
                                                                     </div>
@@ -738,8 +716,9 @@
                                                                     <label for="actual-btn" class="upload-btn mt-0">Pilih
                                                                         Fail</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen" class="mt-1"><a
+                                                                            href="/storage/{{ $permohonan->salinan_kp_depan }}"
+                                                                            target="_blank">{{ $permohonan->salinan_kp_depan }}</a></span>
 
                                                                 </div>
                                                             </div>
@@ -757,9 +736,9 @@
                                                                     <label for="actual-btn2" class="upload-btn mt-0">Pilih
                                                                         Fail</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen2" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
-
+                                                                    <span id="file-chosen" class="mt-1"><a
+                                                                            href="/storage/{{ $permohonan->salinan_kp_belakang }}"
+                                                                            target="_blank">{{ $permohonan->salinan_kp_belakang }}</a></span>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -774,8 +753,9 @@
                                                                     <label for="actual-btn3" class="upload-btn mt-0">Pilih
                                                                         Fail</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen3" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen" class="mt-1"><a
+                                                                            href="/storage/{{ $permohonan->salinan_lesen_memandu }}"
+                                                                            target="_blank">{{ $permohonan->salinan_lesen_memandu }}</a></span>
                                                                     <br>
                                                                 </div>
                                                             </div>
@@ -793,8 +773,9 @@
                                                                     <label for="actual-btn4" class="upload-btn mt-0">Pilih
                                                                         Fail</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen4" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen" class="mt-1"><a
+                                                                            href="/storage/{{ $permohonan->salinan_surat_sokongan }}"
+                                                                            target="_blank">{{ $permohonan->salinan_surat_sokongan }}</a></span>
                                                                     <br>
                                                                 </div>
                                                             </div>
@@ -829,7 +810,8 @@
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                 (click)="toggleAg()" id="applicationStatement"
-                                                                name="applicationStatement" value="Agree" onchange="check_agree()">
+                                                                name="applicationStatement" value="Agree"
+                                                                onchange="check_agree()">
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -878,7 +860,8 @@
                                                             value="SIMPAN">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
+                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar"
+                                                            disabled>HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
                                                 </div>
@@ -978,10 +961,10 @@
             // pekerjaan_tetap.disabled = pekerjaan_sampingan.checked ? false : true;
             if (!tahun_dihadiri.disabled) {
                 tahun_dihadiri.focus();
-            }else{
+            } else {
                 document.getElementById('tahun_dihadiri').value = '';
             }
-           
+
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

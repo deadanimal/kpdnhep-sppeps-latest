@@ -78,12 +78,12 @@
                                                         <div class="col d-flex justify-content-center flex-wrap">
                                                             <label>
                                                                 <div class="position-relative">
-                                                                    <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
-                                                                        class="border-radius-md" width="150" height="150" />
-
-                                                                    <input type="hidden" name="gambar_profil" value="1">
+                                                                    <img src="/storage/{{ $permohonan->gambar_pemohon}}"
+                                                                        class="border-radius-md" width="150"
+                                                                        height="150" />
+                                                                    {{-- <input type="hidden" name="gambar_pemohon" value="{{ $pemohon->gambar_profil}}"> --}}
                                                                     <input type="hidden" name="jenis_permohonan"
-                                                                        value="Rayuan">
+                                                                        value="Baharu">
                                                                 </div>
                                                             </label>
                                                         </div>
@@ -487,8 +487,9 @@
                                                                 <label for="actual-btn" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_kp_depan }}"
+                                                                    target="_blank">{{ $permohonan->salinan_kp_depan }}</a></span>
 
                                                             </div>
                                                         </div>
@@ -506,8 +507,9 @@
                                                                 <label for="actual-btn2" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen2" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_kp_belakang }}"
+                                                                    target="_blank">{{ $permohonan->salinan_kp_belakang }}</a></span>
 
                                                             </div>
                                                         </div>
@@ -525,8 +527,9 @@
                                                                 <label for="actual-btn3" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen3" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_tapisan_rekod_jenayah }}"
+                                                                    target="_blank">{{ $permohonan->salinan_tapisan_rekod_jenayah }}</a></span>
                                                                 <br>
 
                                                             </div>
@@ -545,8 +548,9 @@
                                                                 <label for="actual-btn4" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen4" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_sokongan_institusi_kewangan }}"
+                                                                    target="_blank">{{ $permohonan->salinan_sokongan_institusi_kewangan }}</a></span>
                                                                 <br>
 
                                                             </div>
@@ -565,8 +569,9 @@
                                                                 <label for="actual-btn5" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen5" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_dokumen_sokongan1 }}"
+                                                                    target="_blank">{{ $permohonan->salinan_dokumen_sokongan1 }}</a></span>
                                                                 <br>
 
                                                             </div>
@@ -585,8 +590,9 @@
                                                                 <label for="actual-btn6" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen6" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_dokumen_sokongan2 }}"
+                                                                    target="_blank">{{ $permohonan->salinan_dokumen_sokongan2 }}</a></span>
                                                                 <br>
 
                                                             </div>
@@ -605,8 +611,9 @@
                                                                 <label for="actual-btn7" class="upload-btn mt-0">Pilih
                                                                     Fail</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen7" class="mt-1">Tiada Fail
-                                                                    Dipilih</span>
+                                                                <span id="file-chosen" class="mt-1"><a
+                                                                    href="/storage/{{ $permohonan->salinan_dokumen_sokongan3 }}"
+                                                                    target="_blank">{{ $permohonan->salinan_dokumen_sokongan3 }}</a></span>
                                                                 <br>
 
                                                             </div>

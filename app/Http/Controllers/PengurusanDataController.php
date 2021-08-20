@@ -244,4 +244,15 @@ class PengurusanDataController extends Controller
     {
         //
     }
+
+
+    public function cari(Request $request){
+        // dd($request);
+
+        $permohonans = Permohonan::where('no_kp', $request->no_kp)->get();
+        // dd($permohonans);
+        return view('pegawai.admin-hq.pengurusan-data', [
+            'permohonans' => $permohonans,
+        ]);
+    }
 }

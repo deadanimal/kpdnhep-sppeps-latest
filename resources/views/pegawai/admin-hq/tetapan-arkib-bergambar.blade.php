@@ -39,7 +39,8 @@
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama EN
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paparan Gambar</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paparan
+                                        Gambar</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh
                                         Kemaskini</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
@@ -55,7 +56,8 @@
                                         <td class="text-sm font-weight-normal">{{ $arkibgambar->nama_ms }}</td>
                                         <td class="text-sm font-weight-normal">{{ $arkibgambar->nama_en }}</td>
                                         <td class="text-sm font-weight-normal">
-                                            <i class="fa fa-user me-sm-1 text-dark"></i> <a href="/storage/{{ $arkibgambar->jalan }}" target="_blank">Gambar</a>
+                                            <i class="fas fa-file-image me-sm-1 text-dark"></i> <a
+                                                href="/storage/{{ $arkibgambar->jalan }}" target="_blank">{{ $arkibgambar->jalan }}</a>
                                         </td>
                                         <td class="text-sm font-weight-normal">{{ $arkibgambar->updated_at }}</td>
                                         <td>
@@ -74,10 +76,10 @@
                                                 data-bs-target="#modal-form2-{{ $arkibgambar->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id  }}/delete">
+                                            <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
-                                            <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id  }}">
+                                            <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id }}">
                                                 <i class="far fa-list-alt"></i>
                                             </a>
 
@@ -120,9 +122,11 @@
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
-                                                                            type="file" style="display: none;" name="gambar">
+                                                                            type="file" style="display: none;"
+                                                                            id="arkibgambar-btn2" name="gambar">
                                                                     </label>
-
+                                                                    <span id="arkibgambar-chosen2"
+                                                                        class="mt-1">{{ $arkibgambar->jalan }}</span>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -152,7 +156,6 @@
                                                                 </div>
                                                             </form>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,14 +167,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
-
-
     </div>
 
 
@@ -185,7 +181,8 @@
                                 <h3 class="font-weight-bolder text-info text-gradient">Tambah</h3>
                             </div>
                             <div class="card-body">
-                                <form role="form text-left" method="POST" action="/tetapan-arkib-bergambar" enctype="multipart/form-data">
+                                <form role="form text-left" method="POST" action="/tetapan-arkib-bergambar"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">Nama MS</label>
@@ -200,10 +197,14 @@
                                     <div class="form-group">
                                         <label for="image">Gambar Paparan</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" class="form-control" name="gambar">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="arkibgambar-btn1" hidden
+                                                    name="gambar">
+                                            </label>
+                                            <span id="arkibgambar-chosen1" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -242,5 +243,22 @@
             searchable: true,
             fixedHeight: true
         });
+    </script>
+    <script>
+        const arkibgambarBtn1 = document.getElementById('arkibgambar-btn1');
+
+        const arkibgambarChosen1 = document.getElementById('arkibgambar-chosen1');
+
+        arkibgambarBtn1.addEventListener('change', function() {
+            arkibgambarChosen1.textContent = this.files[0].name
+        })
+
+        const arkibgambarBtn2 = document.getElementById('arkibgambar-btn2');
+
+        const arkibgambarChosen2 = document.getElementById('arkibgambar-chosen2');
+
+        arkibgambarBtn2.addEventListener('change', function() {
+            arkibgambarChosen2.textContent = this.files[0].name
+        })
     </script>
 @stop

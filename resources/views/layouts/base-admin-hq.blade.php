@@ -251,7 +251,7 @@
                         <div class="collapse " id="basicExamples4">
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="/peranan-pegawai">
+                                    <a class="nav-link" href="/peranan_pegawai">
                                         <span class="sidenav-mini-icon"> PPe </span>
                                         <span class="sidenav-normal"> Peranan Pegawai</span>
                                     </a>

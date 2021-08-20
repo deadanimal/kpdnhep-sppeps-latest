@@ -57,13 +57,6 @@
                             <div class="col">
                                 <h5> Kelulusan Permit Mengikut Jantina</h5>
                             </div>
-                            <div class="col d-flex justify-content-end">
-                                <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
-                                    <option disabled selected hidden><b>Cetak</b></option>
-                                    <option class="dropdown-item" value="PDF">Pdf</option>
-                                    <option class="dropdown-item" value="XLSX">Excel</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
 
@@ -83,13 +76,6 @@
                         <div class="row mb-0">
                             <div class="col">
                                 <h5> Kelulusan Permit Mengikut Negeri</h5>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
-                                    <option disabled selected hidden><b>Cetak</b></option>
-                                    <option class="dropdown-item" value="PDF">Pdf</option>
-                                    <option class="dropdown-item" value="XLSX">Excel</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -116,7 +102,7 @@
 
                     <div class="card-body p-3">
 
-                        <div class="row p-3 mb-0">
+                        {{-- <div class="row p-3 mb-0">
                             <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                                 <label class="d-flex flex-nowrap mb-0">
                                     <span class="p-2">Negeri</span>
@@ -142,7 +128,7 @@
                                     </select>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="card">
@@ -279,12 +265,31 @@
                 return series;
             }
 
-            createSeries("kedah", "Kedah");
+            createSeries("Kedah", "Kedah");
+            createSeries("Selangor", "Selangor");
+            createSeries("Pulau Pinang", "Pulau Pinang");
+            createSeries("Perak", "Perak");
+            createSeries("Melaka", "Melaka");
+            createSeries("Negeri Sembilan", "Negeri Sembilan");
+            createSeries("Johor", "Johor");
+            createSeries("Pahang", "Pahang");
+            createSeries("Terengganu", "Terengganu");
+            createSeries("Kelantan", "Kelantan");
             createSeries("selangor", "Selangor");
-            createSeries("penang", "Penang");
+            createSeries("Sabah", "Sabah");
+            createSeries("Sarawak", "Sarawak");
+            createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
+            createSeries("WP Putrajaya", "W. P. Putrajaya");
+            createSeries("WP Labuan", "W. P. Labuan");
 
             // Legend
             chart.legend = new am4charts.Legend();
+
+             // Enable export
+             chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.align = "right";
+            chart.exporting.menu.verticalAlign = "top";
+            chart.exporting.filePrefix = "Kelulusan Permit mengikut Jantina";
         });
         am4core.ready(function() {
 
@@ -333,6 +338,11 @@
             // Legend
             chart.legend = new am4charts.Legend();
 
+             // Enable export
+             chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.align = "right";
+            chart.exporting.menu.verticalAlign = "top";
+            chart.exporting.filePrefix = "Kelulusan Permit mengikut Jantina";
         });
     </script>
 
@@ -367,8 +377,18 @@
         $(document).ready(function() {
             $('#tablekelulusanpermit').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'excel', 'pdf', 'print'
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Senarai Permit Lulus'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Senarai Permit Lulus'
+                    },
+                    // {
+                    //     extend: 'printHtml5',
+                    //     title: 'Data export'
+                    // }
                 ],
 
                 // initComplete: function() {

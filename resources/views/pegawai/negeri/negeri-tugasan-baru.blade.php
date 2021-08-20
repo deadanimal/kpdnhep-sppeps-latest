@@ -15,6 +15,10 @@
                 <h5>Semakan Permohonan</h5>
             </div>
 
+            {{-- {{ auth()->user()->role }} --}}
+            {{-- {{ Auth::user()->role }} --}}
+
+
             <div class="container-fluid mt-4" style="padding: 0px !important;">
                 <div class="card">
 
@@ -24,6 +28,12 @@
 
                     <div class="card-body p-3">
                         <div class="row p-3 mb-0">
+
+                            {{-- @foreach (auth()->user()->roles as $role)
+                                @if($role->name ) 
+
+                                @endif
+                            @endforeach --}}
                             <form method="POST" action="/cari">
                                 @csrf
                                 <div class="row">
@@ -43,7 +53,7 @@
                                     <div class="col">
                                         <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"
                                             name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                        <a href="/permohonan" class="btn btn-sm btn-danger">Set Semula</a>
+                                        <a href="/pemproses_negeri_tugasan_baru" class="btn btn-sm btn-danger">Set Semula</a>
                                     </div>
                                 </div>
                             </form>

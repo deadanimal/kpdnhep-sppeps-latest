@@ -63,6 +63,7 @@ class PermohonanController extends Controller
         $permohonan = new Permohonan;
 
         $permohonan->user_id = $user_id;
+        $permohonan->gambar_pemohon = $request->gambar_pemohon;
 
         if ($request->status == 'HANTAR') {
 
@@ -341,7 +342,7 @@ class PermohonanController extends Controller
                 # Write Manual Redirect if Validation Fail
                 if ($validated->fails()) {
                     $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pendua', [
+                    return view('pemohon.permohonan-rayuan', [
                         'pemohon' => $pemohons,
                         'errors' => $validated->errors()
                     ]);
@@ -355,24 +356,14 @@ class PermohonanController extends Controller
             $permohonan->rayuan_kali_ke = $request->rayuan_kali_ke;
             $permohonan->alasan_rayuan = $request->alasan_rayuan;
 
-
-            // dd($request);
-            // $salinan_kp_depan = "";
-            if ($request->file('salinan_kp_depan') != null)
-                $salinan_kp_depan = $request->file('salinan_kp_depan')->store('dokumen');
-            if ($request->file('salinan_kp_belakang') != null)
-                $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
-            if ($request->file('salinan_tapisan_rekod_jenayah') != null)
-                $salinan_tapisan_rekod_jenayah = $request->file('salinan_tapisan_rekod_jenayah')->store('dokumen');
-            if ($request->file('salinan_sokongan_institusi_kewangan') != null)
-                $salinan_sokongan_institusi_kewangan = $request->file('salinan_sokongan_institusi_kewangan')->store('dokumen');
-            if ($request->file('salinan_dokumen_sokongan1') != null)
-                $salinan_dokumen_sokongan1 = $request->file('salinan_dokumen_sokongan1')->store('dokumen');
-            if ($request->file('salinan_dokumen_sokongan2') != null)
-                $salinan_dokumen_sokongan2 = $request->file('salinan_dokumen_sokongan2')->store('dokumen');
-            if ($request->file('salinan_dokumen_sokongan3') != null)
-                $salinan_dokumen_sokongan3 = $request->file('salinan_dokumen_sokongan3')->store('dokumen');
-            // dd($salinan_kp_depan);
+            $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
+            $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
+            $salinan_tapisan_rekod_jenayah = $request->file('salinan_tapisan_rekod_jenayah')->store('dokumen');
+            $salinan_sokongan_institusi_kewangan = $request->file('salinan_sokongan_institusi_kewangan')->store('dokumen');
+            $salinan_dokumen_sokongan1 = $request->file('salinan_dokumen_sokongan1')->store('dokumen');
+            $salinan_dokumen_sokongan2 = $request->file('salinan_dokumen_sokongan2')->store('dokumen');
+            $salinan_dokumen_sokongan3 = $request->file('salinan_dokumen_sokongan3')->store('dokumen');
+            
             $permohonan->salinan_kp_depan = $salinan_kp_depan;
             $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
             $permohonan->salinan_tapisan_rekod_jenayah = $salinan_tapisan_rekod_jenayah;
