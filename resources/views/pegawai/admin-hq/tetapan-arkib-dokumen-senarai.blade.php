@@ -92,20 +92,20 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-arkib-dokumen/{{ $dokumeq->id }}">
+                                                                action="/tetapan-arkib-dokumen-senarai/{{ $dokumeq->id }}">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $dokumeq->id }}">
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (MS)</label>
-                                                                    <input type="text" class="form-control" name="nama_ms"
+                                                                    <input type="text" class="form-control" name="tajuk_ms"
                                                                         value="{{ $dokumeq->tajuk_ms }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (EN)</label>
-                                                                    <input type="text" class="form-control" name="nama_en"
+                                                                    <input type="text" class="form-control" name="tajuk_en"
                                                                         value="{{ $dokumeq->tajuk_en }}" placeholder="">
                                                                 </div>
 
@@ -127,8 +127,28 @@
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Dokumen<input
                                                                             type="file" style="display: none;"
-                                                                            name="dokumen">
+                                                                            id="senaraiarkibdokumen-btn2" name="gambar">
                                                                     </label>
+                                                                    <span id="senaraiarkibdokumen-chosen2"
+                                                                        class="mt-1">{{ $dokumeq->jalan1 }}</span>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="content">Status</label>
+                                                                    <br>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="status" value="aktif" @if ($dokumeq->status == 'aktif') checked @endif>
+                                                                        <label class="form-check-label"
+                                                                            for="active">Aktif</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="status" value="tidak_aktif" @if ($dokumeq->status == 'tidak_aktif') checked @endif>
+                                                                        <label class="form-check-label"
+                                                                            for="notActive">Tidak Aktif</label>
+                                                                    </div>
+
                                                                 </div>
 
                                                                 <div class="text-center d-flex justify-content-end">
@@ -195,10 +215,14 @@
                                     <div class="form-group">
                                         <label for="image">Dokumen 1</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Dokumen<input type="file"
-                                                style="display: none;" name="gambar">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Dokumen <input type="file"
+                                                    style="display: none;" class="form-control"
+                                                    id="senaraiarkibdokumen-btn1" hidden name="gambar">
+                                            </label>
+                                            <span id="senaraiarkibdokumen-chosen1" class="mt-1">Tiada Dokumen Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -238,4 +262,21 @@
         });
     </script>
     <script src="/assets/js/plugins/flatpickr.min.js"></script>
+    <script>
+        const senaraiarkibdokumenBtn1 = document.getElementById('senaraiarkibdokumen-btn1');
+
+        const senaraiarkibdokumenChosen1 = document.getElementById('senaraiarkibdokumen-chosen1');
+
+        senaraiarkibdokumenBtn1.addEventListener('change', function() {
+            senaraiarkibdokumenChosen1.textContent = this.files[0].name
+        })
+
+        const senaraiarkibdokumenBtn2 = document.getElementById('senaraiarkibdokumen-btn2');
+
+        const senaraiarkibdokumenChosen2 = document.getElementById('senaraiarkibdokumen-chosen2');
+
+        senaraiarkibdokumenBtn2.addEventListener('change', function() {
+            senaraiarkibdokumenChosen2.textContent = this.files[0].name
+        })
+    </script>
 @stop

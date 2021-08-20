@@ -53,7 +53,8 @@
                             <!--form panels-->
                             <div class="row">
                                 <div class="col-12 col-lg-8 m-auto">
-                                    <form class="multisteps-form__form" method="POST" action="/permohonan">
+                                    <form class="multisteps-form__form" method="POST" action="/permohonan"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <!--single form panel-->
                                         <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
@@ -76,31 +77,34 @@
                                                     </div>
                                                 @endif
                                                 <div class="row mt-3">
-
-                                                    <div class="row ">
-                                                        <div class="col d-flex justify-content-center flex-wrap">
-                                                            <label>
-                                                                <div class="position-relative">
-                                                                    <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
-                                                                        class="border-radius-md" width="150" height="150" />
-
-                                                                    <input type="hidden" name="gambar_profil" value="1">
-                                                                    <input type="hidden" name="jenis_permohonan"
-                                                                        value="Pendua">
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-2 d-flex justify-content-center flex-wrap">
-                                                        <div class="col-md-8 form-group text-center"
-                                                            style="outline: 1px dashed red;">
-                                                            <small class="text-xs mb-3">Gambar ini akan digunakan untuk
-                                                                dicetak atas kad permit. <br> Sekiranya ingin menukar, sila
-                                                                ke profil untuk mengubah gambar.</small>
-                                                        </div>
-                                                    </div>
-
                                                     @foreach ($pemohon as $pemohon)
+
+                                                        <div class="row ">
+                                                            <div class="col d-flex justify-content-center flex-wrap">
+                                                                <label>
+                                                                    <div class="position-relative">
+                                                                        <img src="storage/{{ $pemohon->gambar_profil }}"
+                                                                            class="border-radius-md" width="150"
+                                                                            height="150" />
+                                                                        <input type="hidden" name="gambar_pemohon"
+                                                                            value="{{ $pemohon->gambar_profil }}">
+                                                                        <input type="hidden" name="jenis_permohonan"
+                                                                            value="Pendua">
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2 d-flex justify-content-center flex-wrap">
+                                                            <div class="col-md-8 form-group text-center"
+                                                                style="outline: 1px dashed red;">
+                                                                <small class="text-xs mb-3">Gambar ini akan digunakan untuk
+                                                                    dicetak atas kad permit. <br> Sekiranya ingin menukar,
+                                                                    sila
+                                                                    ke profil untuk mengubah gambar.</small>
+                                                            </div>
+                                                        </div>
+
+
 
                                                         <div class="d-flex flex-nowrap pb-2">
                                                             <div class="col-6 form-group p-0 text-start">
@@ -438,8 +442,7 @@
                                                         <label for="reportNumber"><strong> No. Repot Polis</strong></label>
                                                         <input type="text" name="no_laporan_polis"
                                                             class="form-control col-4" id="reportNumber"
-                                                            aria-describedby="reportNumber" placeholder=""
-                                                            >
+                                                            aria-describedby="reportNumber" placeholder="">
                                                     </div>
 
                                                     <div class="form-group text-start">
@@ -534,8 +537,8 @@
 
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                                 id="applicationStatement"
-                                                                name="applicationStatement" value="Agree" onchange="check_agree()">
+                                                                id="applicationStatement" name="applicationStatement"
+                                                                value="Agree" onchange="check_agree()">
                                                             <label class="form-check-label"
                                                                 for="applicationStatement">Dengan ini saya mengaku dan
                                                                 mengesahkan bahawa semua maklumat dan butir-butir yang
@@ -584,7 +587,8 @@
                                                             value="SIMPAN">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
+                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar"
+                                                            disabled>HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
                                                 </div>

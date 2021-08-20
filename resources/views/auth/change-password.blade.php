@@ -26,21 +26,21 @@
                         <label>Kata Laluan Sekarang</label>
                         <div class="input-group mb-4">
                             <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
-                            <input class="form-control text-center" placeholder="Masukkan kata laluan sekarang" type="text">
+                            <input class="form-control text-center" placeholder="Masukkan kata laluan sekarang" type="password">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label>Kata Laluan Baru</label>
                         <div class="input-group mb-4">
                             <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
-                            <input class="form-control text-center" placeholder="Masukkan kata laluan baru" type="email">
+                            <input class="form-control text-center" placeholder="Masukkan kata laluan baru" type="password">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label>Pengesahan Kata Laluan Baru</label>
                         <div class="input-group mb-4">
                             <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
-                            <input class="form-control text-center" placeholder="Masukkan pengasahan kata laluan baru" type="email">
+                            <input class="form-control text-center" placeholder="Masukkan pengasahan kata laluan baru" type="password">
                         </div>
                     </div>
                     <!-- <div class="form-group mt-3">

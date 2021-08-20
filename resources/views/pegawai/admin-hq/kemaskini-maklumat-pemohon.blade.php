@@ -251,7 +251,7 @@
                                                     </div>
                                                     <div class="col">
                                                         <button class="btn btn-sm text-white"
-                                                            style="background-color: #1d1da1;" (click)="display()"><i
+                                                            style="background-color: #1d1da1;" ><i
                                                                 class="fas fa-file-alt"></i> Lihat
                                                             Lampiran</button>
                                                     </div>
@@ -262,7 +262,7 @@
                                                     </div>
                                                     <div class="col">
                                                         <button class="btn btn-sm text-white"
-                                                            style="background-color: #1d1da1;" (click)="display()"><i
+                                                            style="background-color: #1d1da1;" ><i
                                                                 class="fas fa-file-alt"></i> Lihat
                                                             Lampiran</button>
                                                     </div>
@@ -273,7 +273,7 @@
                                                     </div>
                                                     <div class="col">
                                                         <button class="btn btn-sm text-white"
-                                                            style="background-color: #1d1da1;" (click)="display()"><i
+                                                            style="background-color: #1d1da1;" ><i
                                                                 class="fas fa-file-alt"></i> Lihat
                                                             Lampiran</button>
                                                     </div>

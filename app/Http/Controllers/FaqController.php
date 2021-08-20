@@ -78,7 +78,7 @@ class FaqController extends Controller
      */
     public function show(Faq $faq, Kategorifaq $kategorifaq)
     {
-        return view('global.faq', [
+        return view('pegawai.admin-hq.tetapan-faq', [
             'faqs' => $faq,
             'kategorifaqs' => $kategorifaq,
         ]);

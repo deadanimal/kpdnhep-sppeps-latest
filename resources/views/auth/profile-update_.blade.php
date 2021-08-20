@@ -13,28 +13,24 @@
 
                 <div class="card card-plain">
                     <div class="card-body">
-                        <form role="form text-left" method="POST" action="/profil/{{ $pemohon->id }}">
+                        <form role="form text-left" method="POST" action="/profil/{{ $pemohon->id }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <!-- <div class="form-group">
-                                <div class="row ">
-                                    <div class="col d-flex justify-content-center">
 
-                                        <label class="">
-                                            <img class="rounded-circle move-on-hover" src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80" alt="profil" width="150" height="150">
-                                            <input type="file" style="display: none;" name="image">
-
-                                        </label>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="form-group">
                                 <div class="row ">
                                     <div class="col d-flex justify-content-center">
                                         <label>
                                             <div class="position-relative">
-                                                <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
-                                                    class="border-radius-md" width="150" height="150" />
+                                                @if ($pemohon->gambar_profil === '/assets/img/icons/default_profile.png')
+                                                    <img src="{{ $pemohon->gambar_profil }}" class="border-radius-md"
+                                                        width="150" height="150" />
+                                                @else
+                                                    <img src="/storage/{{ $pemohon->gambar_profil }}"
+                                                        class="border-radius-md" width="150" height="150" />
+                                                @endif
+                                                
                                                 <a
                                                     class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
                                                     <i class="fa fa-pen top-0" data-bs-toggle="tooltip"
@@ -43,7 +39,7 @@
                                                         aria-label="Edit Image"></i><span class="sr-only">Edit Image</span>
                                                 </a>
                                             </div>
-                                            <input type="file" style="display: none;" name="image">
+                                            <input type="file" style="display: none;" name="gambar_profil">
                                         </label>
                                     </div>
                                 </div>
@@ -55,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="title">Nama</label>
                                 <input type="text" class="form-control form-control-sm" name="name" placeholder=""
@@ -64,28 +60,27 @@
 
                             <div class="form-group">
                                 <label for="title">No. Kad Pengenalan</label>
-                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                   name="no_kp" value="{{ $pemohon->no_kp }}" >
+                                <input type="text" class="form-control form-control-sm" placeholder="" name="no_kp"
+                                    value="{{ $pemohon->no_kp }}" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="title">Umur</label>
-                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                    name="umur" value="{{ $pemohon->umur }}" readonly>
+                                <input type="text" class="form-control form-control-sm" placeholder="" name="umur"
+                                    value="{{ $pemohon->umur }}" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="title">Tarikh Lahir</label>
-                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                    name="tarikh_lahir" value="{{ $pemohon->tarikh_lahir }}" readonly>
+                                <input type="text" class="form-control form-control-sm" placeholder="" name="tarikh_lahir"
+                                    value="{{ $pemohon->tarikh_lahir }}" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="title">E-mel</label>
-                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                    name="email" value="{{ $pemohon->email }}" >
+                                <input type="text" class="form-control form-control-sm" placeholder="" name="email"
+                                    value="{{ $pemohon->email }}" readonly>
                             </div>
-
 
 
                             <div class="form-group">
@@ -103,18 +98,18 @@
 
                             <div class="form-group">
                                 <label for="title">Alamat</label>
-                                <input type="text" class="form-control form-control-sm" name="alamat1" value="{{ $pemohon->alamat1 }}"
-                                    placeholder="Alamat baris 1">
-                                <input type="text" class="form-control form-control-sm" name="alamat2" value="{{ $pemohon->alamat2 }}"
-                                    placeholder="Alamat baris 2">
-                                <input type="text" class="form-control form-control-sm" name="alamat3" value="{{ $pemohon->alamat3 }}"
-                                    placeholder="Alamat baris 3">
+                                <input type="text" class="form-control form-control-sm" name="alamat1"
+                                    value="{{ $pemohon->alamat1 }}" placeholder="Alamat baris 1">
+                                <input type="text" class="form-control form-control-sm" name="alamat2"
+                                    value="{{ $pemohon->alamat2 }}" placeholder="Alamat baris 2">
+                                <input type="text" class="form-control form-control-sm" name="alamat3"
+                                    value="{{ $pemohon->alamat3 }}" placeholder="Alamat baris 3">
                             </div>
 
                             <div class="form-group">
                                 <label for="title">Poskod</label>
-                                <input type="text" class="form-control form-control-sm" name="poskod" value="{{ $pemohon->poskod }}"
-                                    placeholder=" e.g 62623">
+                                <input type="text" class="form-control form-control-sm" name="poskod"
+                                    value="{{ $pemohon->poskod }}" placeholder=" e.g 62623">
                             </div>
 
                             <div class="form-group">
@@ -140,8 +135,8 @@
                                     </option>
                                     <option {{ $pemohon->negeri == 'Pahang' ? 'selected' : '' }} value="Pahang">Pahang
                                     </option>
-                                    <option {{ $pemohon->negeri == 'Terengganu' ? 'selected' : '' }}
-                                        value="Terengganu">Terengganu</option>
+                                    <option {{ $pemohon->negeri == 'Terengganu' ? 'selected' : '' }} value="Terengganu">
+                                        Terengganu</option>
                                     <option {{ $pemohon->negeri == 'Kelantan' ? 'selected' : '' }} value="Kelantan">
                                         Kelantan</option>
                                     <option {{ $pemohon->negeri == 'Sabah' ? 'selected' : '' }} value="Sabah">Sabah
@@ -160,17 +155,20 @@
 
                             <div class="form-group">
                                 <label for="title">No. Telefon Bimbit</label>
-                                <input type="text" class="form-control form-control-sm" name="no_telefon_bimbit" value="{{ $pemohon->no_telefon_bimbit }}" placeholder="e.g 1234567890">
+                                <input type="text" class="form-control form-control-sm" name="no_telefon_bimbit"
+                                    value="{{ $pemohon->no_telefon_bimbit }}" placeholder="e.g 1234567890">
                             </div>
 
                             <div class="form-group">
                                 <label for="title">No. Telefon Rumah</label>
-                                <input type="text" class="form-control form-control-sm" name="no_telefon_rumah" value="{{ $pemohon->no_telefon_rumah }}" placeholder="e.g 1234567890">
+                                <input type="text" class="form-control form-control-sm" name="no_telefon_rumah"
+                                    value="{{ $pemohon->no_telefon_rumah }}" placeholder="e.g 1234567890">
                             </div>
 
                             <div class="form-group">
                                 <label for="title">No. Telefon Pejabat</label>
-                                <input type="text" class="form-control form-control-sm" name="no_telefon_pejabat" value="{{ $pemohon->no_telefon_pejabat }}" placeholder="e.g 1234567890">
+                                <input type="text" class="form-control form-control-sm" name="no_telefon_pejabat"
+                                    value="{{ $pemohon->no_telefon_pejabat }}" placeholder="e.g 1234567890">
                             </div>
                             <div class="text-center d-flex justify-content-end">
                                 <a href="/profil" type="button" class="btn btn-round bg-gradient-danger text-capitalize"

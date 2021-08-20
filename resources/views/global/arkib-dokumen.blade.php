@@ -12,13 +12,13 @@
             @foreach ($arkibdokumens as $senaraidokumen)
                 <div class="card col-3 move-on-hover">
                     <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                        <a href="/arkib-dokumen/{{ $senaraidokumen->id }}" class="d-block">
+                        <a href="/arkib-dokumen-senarai/{{ $senaraidokumen->id }}" class="d-block">
                             <img src="/storage/{{ $senaraidokumen->jalan }}" class="img-fluid border-radius-lg" style="max-height: 200px">
                         </a>
                     </div>
 
                     <div class="card-body pt-2">
-                        <a href="/arkib-dokumen/{{ $senaraidokumen->id }}" class="card-title h5 d-block text-darker">
+                        <a href="/arkib-dokumen-senarai/{{ $senaraidokumen->id }}" class="card-title h5 d-block text-darker">
                             {{ $senaraidokumen->nama_ms }}
                         </a>
                     </div>

@@ -22,6 +22,7 @@ class ProfilController extends Controller
 
         $pemohon = User::where('id', $user_id)->get();
 
+        // dd($pemohon);
         return view('auth.profile_', [
             'pemohon' => $pemohon
         ]);
@@ -33,8 +34,6 @@ class ProfilController extends Controller
         $user = $request->user();
         $user_role = $user->role;
         $user_id = $user->id;
-
-        // $pemohon = User::where('id', $user_id)->get();
 
         return view('auth.profile-update_', [
             'pemohon' => $user
@@ -61,6 +60,9 @@ class ProfilController extends Controller
         $user->no_telefon_bimbit =  $request->no_telefon_bimbit;
         $user->no_telefon_rumah =  $request->no_telefon_rumah;
         $user->no_telefon_pejabat =  $request->no_telefon_pejabat;
+
+        $gambar_profil = $request->file('gambar_profil')->store('profil');
+        $user->gambar_profil = $gambar_profil;
 
         $user->save();
 
@@ -165,7 +167,7 @@ class ProfilController extends Controller
         $user->no_kp = $request->no_kp;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        
+
         // dd($request);
 
         $user->save();

@@ -52,7 +52,8 @@
                             <!--form panels-->
                             <div class="row">
                                 <div class="col-12 col-lg-8 m-auto">
-                                    <form id="form-mael" class="multisteps-form__form" method="POST" action="/permohonan">
+                                    <form id="form-mael" class="multisteps-form__form" method="POST" action="/permohonan"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <!--single form panel-->
                                         <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
@@ -77,30 +78,32 @@
                                                     </div>
                                                 @endif
                                                 <div class="row mt-3 p-3">
-                                                    <div class="row ">
-                                                        <div class="col d-flex justify-content-center flex-wrap">
-                                                            <label>
-                                                                <div class="position-relative">
-                                                                    <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
-                                                                        class="border-radius-md" width="150" height="150" />
-
-                                                                    <input type="hidden" name="gambar_profil" value="1">
-                                                                    <input type="hidden" name="jenis_permohonan"
-                                                                        value="Baharu">
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-2 d-flex justify-content-center flex-wrap">
-                                                        <div class="col-md-8 form-group text-center"
-                                                            style="outline: 1px dashed red;">
-                                                            <small class="text-xs mb-3">Gambar ini akan digunakan untuk
-                                                                dicetak atas kad permit. <br> Sekiranya ingin menukar, sila
-                                                                ke profil untuk mengubah gambar.</small>
-                                                        </div>
-                                                    </div>
-
                                                     @foreach ($pemohon as $pemohon)
+                                                        <div class="row ">
+                                                            <div class="col d-flex justify-content-center flex-wrap">
+                                                                <label>
+                                                                    <div class="position-relative">
+                                                                        <img src="storage/{{ $pemohon->gambar_profil}}"
+                                                                            class="border-radius-md" width="150"
+                                                                            height="150" />
+                                                                        <input type="hidden" name="gambar_pemohon" value="{{ $pemohon->gambar_profil}}">
+                                                                        <input type="hidden" name="jenis_permohonan"
+                                                                            value="Baharu">
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2 d-flex justify-content-center flex-wrap">
+                                                            <div class="col-md-8 form-group text-center"
+                                                                style="outline: 1px dashed red;">
+                                                                <small class="text-xs mb-3">Gambar ini akan digunakan untuk
+                                                                    dicetak atas kad permit. <br> Sekiranya ingin menukar,
+                                                                    sila
+                                                                    ke profil untuk mengubah gambar.</small>
+                                                            </div>
+                                                        </div>
+
+
 
                                                         <div class="d-flex flex-wrap pb-2">
                                                             <div class="col-6 form-group p-0">
@@ -435,7 +438,8 @@
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                name="nama_institusi_kewangan" id="nama_institusi_kewangan">
+                                                                                name="nama_institusi_kewangan"
+                                                                                id="nama_institusi_kewangan">
 
                                                                         </div>
                                                                     </div>
@@ -451,7 +455,8 @@
                                                                             <input type="text"
                                                                                 name="no_telefon_institusi_kewangan"
                                                                                 id="phoneNumber"
-                                                                                class="form-control form-control-sm" id="no_telefon_institusi_kewangan">
+                                                                                class="form-control form-control-sm"
+                                                                                id="no_telefon_institusi_kewangan">
 
                                                                         </div>
                                                                     </div>
@@ -519,7 +524,8 @@
                                                                         <div class="col">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
-                                                                                id="no_telefon_panel" name="no_telefon_panel">
+                                                                                id="no_telefon_panel"
+                                                                                name="no_telefon_panel">
                                                                         </div>
                                                                     </div>
 
@@ -593,7 +599,7 @@
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn" hidden
-                                                                        name="salinan_kp_depan" />
+                                                                        name="kp_depan" />
                                                                     <!-- our custom upload button -->
                                                                     <label for="actual-btn" class="upload-btn mt-0">Pilih
                                                                         Fail</label>
@@ -720,11 +726,12 @@
                                                             value="SIMPAN" id="simpan">
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar" disabled>HANTAR</button>
+                                                            data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar"
+                                                            disabled>HANTAR</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
 
-                                                    
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
@@ -802,18 +809,18 @@
     </script>
 
 
-<script>
-    function clearForm(){
-        document.getElementById('nama_institusi_kewangan').value = '';
-        document.getElementById('no_telefon_institusi_kewangan').value = '';
-    }
+    <script>
+        function clearForm() {
+            document.getElementById('nama_institusi_kewangan').value = '';
+            document.getElementById('no_telefon_institusi_kewangan').value = '';
+        }
 
-    function clearForm2(){
-        document.getElementById('nama_panel').value = '';
-        document.getElementById('no_kp_panel').value = '';
-        document.getElementById('no_permit_panel').value = '';
-        document.getElementById('no_telefon_panel').value = '';
-    }
-</script>
+        function clearForm2() {
+            document.getElementById('nama_panel').value = '';
+            document.getElementById('no_kp_panel').value = '';
+            document.getElementById('no_permit_panel').value = '';
+            document.getElementById('no_telefon_panel').value = '';
+        }
+    </script>
 
 @stop

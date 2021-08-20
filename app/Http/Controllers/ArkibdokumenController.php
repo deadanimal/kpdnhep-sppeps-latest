@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Arkibdokumen;
-use App\Models\Senaraidokumen;
 use Illuminate\Http\Request;
 
 class ArkibdokumenController extends Controller
@@ -59,14 +58,9 @@ class ArkibdokumenController extends Controller
      * @param  \App\Models\Arkibdokumen  $arkibdokumen
      * @return \Illuminate\Http\Response
      */
-    public function show($arkibdokumen)
+    public function show(Arkibdokumen $arkibdokumen)
     {
-        $senaraidokumen = Senaraidokumen::where('id_arkibdokumen',$arkibdokumen)->get();
-
-        return view('pegawai.admin-hq.tetapan-arkib-dokumen-senarai', [
-            'senaraidokumens' => $senaraidokumen,
-            'arkibdokumenid' => $arkibdokumen
-        ]);
+        //
     }
 
     /**

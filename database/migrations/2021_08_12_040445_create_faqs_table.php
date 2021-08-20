@@ -23,7 +23,7 @@ class CreateFaqsTable extends Migration
             $table->string('kategori', 255);
             // $table->date('tarikh_kemaskini');
             $table->string('status', 255);
-            // $table->foreignId('kategori_id');
+            $table->foreignId('kategori_id');
             $table->timestamps();
         });
     }

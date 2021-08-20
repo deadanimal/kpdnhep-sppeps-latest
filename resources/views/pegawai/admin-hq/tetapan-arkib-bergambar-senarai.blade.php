@@ -98,13 +98,13 @@
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (MS)</label>
                                                                     <input type="text" class="form-control" name="nama_ms"
-                                                                        value="{{ $gambaq->tajuk_ms }}" placeholder="">
+                                                                        value="{{ $gambaq->tajuk_ms }}">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (EN)</label>
                                                                     <input type="text" class="form-control" name="nama_en"
-                                                                        value="{{ $gambaq->tajuk_en }}" placeholder="">
+                                                                        value="{{ $gambaq->tajuk_en }}">
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -147,53 +147,68 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="image">Gambar</label>
+                                                                    <label for="image">Gambar 1</label>
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="gambar1">
+                                                                            id="senaraiarkibgambar-btn6" name="gambar1">
                                                                     </label>
+                                                                    <span id="senaraiarkibgambar-chosen6" class="mt-1"><a
+                                                                            href="/storage/{{ $gambaq->jalan1 }}"
+                                                                            target="_blank">{{ $gambaq->jalan1 }}</a></span>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="image">Gambar</label>
+                                                                    <label for="image">Gambar 2</label>
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="gambar">
+                                                                            id="senaraiarkibgambar-btn7" name="gambar2">
                                                                     </label>
+                                                                    <span id="senaraiarkibgambar-chosen7" class="mt-1"><a
+                                                                            href="/storage/{{ $gambaq->jalan2 }}"
+                                                                            target="_blank">{{ $gambaq->jalan2 }}</a></span>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="image">Gambar</label>
+                                                                    <label for="image">Gambar 3</label>
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="gambar">
+                                                                            id="senaraiarkibgambar-btn8" name="gambar3">
                                                                     </label>
+                                                                    <span id="senaraiarkibgambar-chosen8" class="mt-1"><a
+                                                                            href="/storage/{{ $gambaq->jalan3 }}"
+                                                                            target="_blank">{{ $gambaq->jalan3 }}</a></span>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="image">Gambar</label>
+                                                                    <label for="image">Gambar 4</label>
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="gambar">
+                                                                            id="senaraiarkibgambar-btn9" name="gambar4">
                                                                     </label>
+                                                                    <span id="senaraiarkibgambar-chosen9" class="mt-1"><a
+                                                                            href="/storage/{{ $gambaq->jalan4 }}"
+                                                                            target="_blank">{{ $gambaq->jalan4 }}</a></span>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="image">Gambar</label>
+                                                                    <label for="image">Gambar 5</label>
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
                                                                         <i class="fa fa-image"></i> Pilih Gambar<input
                                                                             type="file" style="display: none;"
-                                                                            name="gambar">
+                                                                            id="senaraiarkibgambar-btn10" name="gambar5">
                                                                     </label>
+                                                                    <span id="senaraiarkibgambar-chosen710" class="mt-1"><a
+                                                                            href="/storage/{{ $gambaq->jalan5 }}"
+                                                                            target="_blank">{{ $gambaq->jalan5 }}</a></span>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -304,46 +319,66 @@
                                     <div class="form-group">
                                         <label for="image">Gambar 1</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="gambar1">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="senaraiarkibgambar-btn1"
+                                                    hidden name="gambar1">
+                                            </label>
+                                            <span id="senaraiarkibgambar-chosen1" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Gambar 2</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="gambar2">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="senaraiarkibgambar-btn2"
+                                                    hidden name="gambar2">
+                                            </label>
+                                            <span id="senaraiarkibgambar-chosen2" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Gambar 3</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="gambar3">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="senaraiarkibgambar-btn3"
+                                                    hidden name="gambar3">
+                                            </label>
+                                            <span id="senaraiarkibgambar-chosen3" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Gambar 4</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="gambar4">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="senaraiarkibgambar-btn4"
+                                                    hidden name="gambar4">
+                                            </label>
+                                            <span id="senaraiarkibgambar-chosen4" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Gambar 5</label>
                                         <br>
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" name="gambar5">
-                                        </label>
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="senaraiarkibgambar-btn5"
+                                                    hidden name="gambar5">
+                                            </label>
+                                            <span id="senaraiarkibgambar-chosen5" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -383,4 +418,82 @@
         });
     </script>
     <script src="/assets/js/plugins/flatpickr.min.js"></script>
+    <script>
+        const senaraiarkibgambarBtn1 = document.getElementById('senaraiarkibgambar-btn1');
+
+        const senaraiarkibgambarChosen1 = document.getElementById('senaraiarkibgambar-chosen1');
+
+        senaraiarkibgambarBtn1.addEventListener('change', function() {
+            senaraiarkibgambarChosen1.textContent = this.files[0].name
+        })
+
+        const senaraiarkibgambarBtn2 = document.getElementById('senaraiarkibgambar-btn2');
+
+        const senaraiarkibgambarChosen2 = document.getElementById('senaraiarkibgambar-chosen2');
+
+        senaraiarkibgambarBtn2.addEventListener('change', function() {
+            senaraiarkibgambarChosen2.textContent = this.files[0].name
+        })
+        const senaraiarkibgambarBtn3 = document.getElementById('senaraiarkibgambar-btn3');
+
+        const senaraiarkibgambarChosen3 = document.getElementById('senaraiarkibgambar-chosen3');
+
+        senaraiarkibgambarBtn3.addEventListener('change', function() {
+            senaraiarkibgambarChosen3.textContent = this.files[0].name
+        })
+
+        const senaraiarkibgambarBtn4 = document.getElementById('senaraiarkibgambar-btn4');
+
+        const senaraiarkibgambarChosen4 = document.getElementById('senaraiarkibgambar-chosen4');
+
+        senaraiarkibgambarBtn4.addEventListener('change', function() {
+            senaraiarkibgambarChosen4.textContent = this.files[0].name
+        })
+        const senaraiarkibgambarBtn5 = document.getElementById('senaraiarkibgambar-btn5');
+
+        const senaraiarkibgambarChosen5 = document.getElementById('senaraiarkibgambar-chosen5');
+
+        senaraiarkibgambarBtn5.addEventListener('change', function() {
+            senaraiarkibgambarChosen5.textContent = this.files[0].name
+        })
+
+        const senaraiarkibgambarBtn6 = document.getElementById('senaraiarkibgambar-btn6');
+
+        const senaraiarkibgambarChosen6 = document.getElementById('senaraiarkibgambar-chosen6');
+
+        senaraiarkibgambarBtn6.addEventListener('change', function() {
+            senaraiarkibgambarChosen6.textContent = this.files[0].name
+        })
+
+        const senaraiarkibgambarBtn7 = document.getElementById('senaraiarkibgambar-btn7');
+
+        const senaraiarkibgambarChosen7 = document.getElementById('senaraiarkibgambar-chosen7');
+
+        senaraiarkibgambarBtn2.addEventListener('change', function() {
+            senaraiarkibgambarChosen2.textContent = this.files[0].name
+        })
+        const senaraiarkibgambarBtn8 = document.getElementById('senaraiarkibgambar-btn8');
+
+        const senaraiarkibgambarChosen8 = document.getElementById('senaraiarkibgambar-chosen8');
+
+        senaraiarkibgambarBtn8.addEventListener('change', function() {
+            senaraiarkibgambarChosen8.textContent = this.files[0].name
+        })
+
+        const senaraiarkibgambarBtn9 = document.getElementById('senaraiarkibgambar-btn9');
+
+        const senaraiarkibgambarChosen9 = document.getElementById('senaraiarkibgambar-chosen9');
+
+        senaraiarkibgambarBtn9.addEventListener('change', function() {
+            senaraiarkibgambarChosen9.textContent = this.files[0].name
+        })
+        const senaraiarkibgambarBtn10 = document.getElementById('senaraiarkibgambar-btn10');
+
+        const senaraiarkibgambarChosen10 = document.getElementById('senaraiarkibgambar-chosen10');
+
+        senaraiarkibgambarBtn10.addEventListener('change', function() {
+            senaraiarkibgambarChosen10.textContent = this.files[0].name
+        })
+    </script>
+
 @stop

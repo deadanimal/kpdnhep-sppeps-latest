@@ -256,35 +256,32 @@ class TugasanSelesaiController extends Controller
         $user_roles = $user->roles;
         $user_negeri = $user->negeri;
 
-        if ($user_role == 'pegawai_negeri') {
-            if ($request->jenis_tindakan == "pemproses_negeri") {
-                $permohonan = Permohonan::where([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disemak pdrm']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar ke pdrm']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Dalam Proses']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_hq']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_negeri']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
-                ])->orWhere([
-                    ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
-                ])->get();
 
-                return view('pegawai.negeri.negeri-tugasan-selesai', [
-                    'permohonan' => $permohonan
-                ]);
-            }
-        }
+        $permohonan = Permohonan::where([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disemak pdrm']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar ke pdrm']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Dalam Proses']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_hq']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_negeri']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+        ])->get();
+
+        return view('pegawai.negeri.negeri-tugasan-selesai', [
+            'permohonan' => $permohonan
+        ]);
     }
 
     public function tugasan_selesai_penyokong_negeri(Request $request)

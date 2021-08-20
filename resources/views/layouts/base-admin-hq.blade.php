@@ -251,13 +251,13 @@
                         <div class="collapse " id="basicExamples4">
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="/peranan-pegawai">
+                                    <a class="nav-link" href="/peranan_pegawai">
                                         <span class="sidenav-mini-icon"> PPe </span>
                                         <span class="sidenav-normal"> Peranan Pegawai</span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="/peranan-pdrm">
+                                    <a class="nav-link" href="/peranan_pdrm">
                                         <span class="sidenav-mini-icon"> PPD </span>
                                         <span class="sidenav-normal"> Peranan PDRM</span>
                                     </a>
@@ -425,20 +425,22 @@
                                 <div class="collapse " id="basicExamples4">
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pemproses_negeri_tugasan_baru" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pemproses_negeri">
-                                                <input type="submit" id="actual-btn7" hidden />
-                                                <label for="actual-btn7" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TB </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Baru
-                                                    </span>
-                                                </label>
-                                            </form>
+                                            <a class="nav-link" href="/pemproses_negeri_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pemproses_negeri_tugasan_selesai" class="nav-link">
+                                            <a class="nav-link" href="/pemproses_negeri_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/pemproses_negeri_tugasan_selesai" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_negeri">
                                                 <input type="submit" id="actual-btn10" hidden />
@@ -448,7 +450,7 @@
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -494,7 +496,13 @@
                                 <div class="collapse " id="basicExamples3">
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/penyokong_negeri_tugasan_baru" class="nav-link">
+                                            <a class="nav-link" href="/penyokong_negeri_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/penyokong_negeri_tugasan_baru" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="penyokong_negeri">
                                                 <input type="submit" id="actual-btn8" hidden />
@@ -504,7 +512,7 @@
                                                         Tugasan Baru
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="/penyokong_negeri_tugasan_selesai">
@@ -513,17 +521,7 @@
                                                     Tugasan Selesai
                                                 </span>
                                             </a>
-                                            {{-- <form method="POST" action="/penyokong_negeri_tugasan_selesai" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="penyokong_negeri">
-                                                <input type="submit" id="actual-btn11" hidden />
-                                                <label for="actual-btn11" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TS </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Selesai
-                                                    </span>
-                                                </label>
-                                            </form> --}}
+                                            
                                         </li>
                                     </ul>
                                 </div>
@@ -568,17 +566,13 @@
                                 <div class="collapse " id="basicExamples5">
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pelulus_negeri_tugasan_baru" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pelulus_negeri">
-                                                <input type="submit" id="actual-btn20" hidden />
-                                                <label for="actual-btn20" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TB </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Baru
-                                                    </span>
-                                                </label>
-                                            </form>
+                                            <a class="nav-link" href="/pelulus_negeri_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            
                                         </li>
                                         <li class="nav-item ">
 
@@ -588,17 +582,7 @@
                                                     Tugasan Selesai
                                                 </span>
                                             </a>
-                                            {{-- <form method="POST" action="/pelulus_negeri_tugasan_selesai" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pelulus_negeri">
-                                                <input type="submit" id="actual-btn21" hidden />
-                                                <label for="actual-btn21" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TS </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Selesai
-                                                    </span>
-                                                </label>
-                                            </form> --}}
+                                            
                                         </li>
                                     </ul>
                                 </div>
@@ -675,7 +659,13 @@
 
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pemproses_hq_tugasan_baru" class="nav-link">
+                                            <a class="nav-link" href="/pemproses_negeri_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/pemproses_hq_tugasan_baru" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
                                                 <input type="submit" id="actual-btn17" hidden />
@@ -685,10 +675,16 @@
                                                         Tugasan Baru
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                         <li class="nav-item ">
-                                            <form method="POST" action="" class="nav-link">
+                                            <a class="nav-link" href="/pemproses_negeri_tugasan_selesai">
+                                                <span class="sidenav-mini-icon"> TS </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Selesai
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
                                                 <input type="submit" id="actual-btn26" hidden />
@@ -698,7 +694,7 @@
                                                         Tugasan Selesai
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -743,17 +739,13 @@
                                 <div class="collapse " id="basicExamples5">
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pemproses_hq_tugasan_baru" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn1" hidden />
-                                                <label for="actual-btn1" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TB </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Baru
-                                                    </span>
-                                                </label>
-                                            </form>
+                                            <a class="nav-link" href="/pemproses_hq_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="/pemproses_hq_tugasan_selesai">
@@ -762,17 +754,7 @@
                                                     Tugasan Selesai
                                                 </span>
                                             </a>
-                                            {{-- <form method="POST" action="/pemproses_hq_tugasan_selesai" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn21" hidden />
-                                                <label for="actual-btn21" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TS </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Selesai
-                                                    </span>
-                                                </label>
-                                            </form> --}}
+                                            
                                         </li>
                                     </ul>
                                 </div>
@@ -818,7 +800,13 @@
                                 <div class="collapse " id="basicExamples6">
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/penyokong_hq_tugasan_baru" class="nav-link">
+                                            <a class="nav-link" href="/penyokong_hq_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/penyokong_hq_tugasan_baru" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="penyokong_hq">
                                                 <input type="submit" id="actual-btn2" hidden />
@@ -828,7 +816,7 @@
                                                         Tugasan Baru
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="/penyokong_hq_tugasan_selesai">
@@ -892,7 +880,13 @@
                                 <div class="collapse " id="basicExamples7">
                                     <ul class="nav ms-4 ps-3">
                                         <li class="nav-item ">
-                                            <form method="POST" action="/pelulus_hq_tugasan_baru" class="nav-link">
+                                            <a class="nav-link" href="/pelulus_hq_tugasan_baru">
+                                                <span class="sidenav-mini-icon"> TB </span>
+                                                <span class="sidenav-normal">
+                                                    Tugasan Baru
+                                                </span>
+                                            </a>
+                                            {{-- <form method="POST" action="/pelulus_hq_tugasan_baru" class="nav-link">
                                                 @csrf
                                                 <input type="hidden" name="jenis_tindakan" value="pelulus_hq">
                                                 <input type="submit" id="actual-btn3" hidden />
@@ -902,7 +896,7 @@
                                                         Tugasan Baru
                                                     </span>
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="/pelulus_hq_tugasan_selesai">
@@ -911,17 +905,6 @@
                                                     Tugasan Selesai
                                                 </span>
                                             </a>
-                                            {{-- <form method="POST" action="/pelulus_hq_tugasan_selesai" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pemproses_hq">
-                                                <input type="submit" id="actual-btn25" hidden />
-                                                <label for="actual-btn25" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TS </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Selesai
-                                                    </span>
-                                                </label>
-                                            </form> --}}
                                         </li>
                                     </ul>
                                 </div>

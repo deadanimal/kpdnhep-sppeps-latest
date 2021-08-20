@@ -62,7 +62,7 @@
                                         <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $kategorifaq->id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a href="/tetapan-faq/{{ $kategorifaq->id  }}/delete">
+                                        <a href="/tetapan-kategorifaq/{{ $kategorifaq->id }}/delete">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
@@ -81,20 +81,22 @@
                                                     <div class="card-body">
                                                         <form role="form text-left" method="POST"
                                                             action="/tetapan-faq/{{ $kategorifaq->id }}">
+                                                            @csrf
                                                             @method('PUT')
+                                                            <input type="hidden" name="jenis" value="category">
                                                             <input type="hidden" name="id" value="{{ $kategorifaq->id }}">
                                                             <div class="form-group">
                                                                 <label for="title">Nama Kategori MS</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="{{ $kategorifaq->nama_kategori_bm }} "
-                                                                    placeholder="">
+                                                                    value="{{ $kategorifaq->nama_kategori_bm }} "
+                                                                    name="nama_kategori_bm">
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="title">Nama Kategori EN</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="{{ $kategorifaq->nama_kategori_en }}"
-                                                                    placeholder="">
+                                                                    value="{{ $kategorifaq->nama_kategori_en }}"
+                                                                    name="nama_kategori_en">
                                                             </div>
 
                                                             <div class="form-group">
@@ -188,7 +190,17 @@
                                         <td class="text-sm font-weight-normal">{{ $faq->kandungan_en }}</td>
                                         <td class="text-sm font-weight-normal">{{ $faq->turutan }}</td>
                                         <td class="text-sm font-weight-normal">{{ $faq->kategori }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $faq->status }}</td>
+                                        <td class="text-sm font-weight-normal">
+                                            @if ($faq->status === 'aktif')
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    <span class="badge badge-success">Aktif</span>
+                                                </span>
+                                            @elseif ($faq->status === 'tidak_aktif')
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    <span class="badge badge-danger">Tidak Aktif</span>
+                                                </span>
+                                            @endif
+                                        </td>
                                         <td class="text-sm font-weight-normal">
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form4-{{ $faq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
@@ -214,6 +226,7 @@
                                                                 action="/tetapan-faq/{{ $faq->id }}">
                                                                 @csrf
                                                                 @method('PUT')
+                                                                <input type="hidden" name="jenis" value="senarai">
                                                                 <input type="hidden" name="id" value="{{ $faq->id }}">
                                                                 <div class="form-group">
                                                                     <label for="title">Tajuk MS</label>
@@ -223,40 +236,73 @@
 
                                                                 <div class="form-group">
                                                                     <label for="title">Tajuk EN</label>
-                                                                    <input type="text" class="form-control" name="tajuk_en" value="{{ $faq->tajuk_en }}"
-                                                                        placeholder="">
+                                                                    <input type="text" class="form-control" name="tajuk_en"
+                                                                        value="{{ $faq->tajuk_en }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Kandungan MS</label>
-                                                                    <input type="text" class="form-control" value="{{ $faq->kandungan_bm }}"
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ $faq->kandungan_bm }}"
                                                                         name="kandungan_bm" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Kandungan EN</label>
-                                                                    <input type="text" class="form-control" value="{{ $faq->kandungan_en }}"
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ $faq->kandungan_en }}"
                                                                         name="kandungan_en" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Turutan</label>
                                                                     <select name="turutan" class="form-control">
-                                                                        <option hidden selected>Sila Pilih</option>
+                                                                        <option hidden selected>{{ $faq->turutan }}
+                                                                        </option>
                                                                         <option value="1">1</option>
                                                                         <option value="2">2</option>
                                                                         <option value="3">3</option>
                                                                         <option value="4">4</option>
                                                                         <option value="5">5</option>
                                                                         <option value="6">6</option>
+                                                                        <option value="7">7</option>
+                                                                        <option value="8">8</option>
+                                                                        <option value="9">9</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="11">11</option>
+                                                                        <option value="12">12</option>
+                                                                        <option value="13">13</option>
+                                                                        <option value="14">14</option>
+                                                                        <option value="15">15</option>
+                                                                        <option value="16">16</option>
+                                                                        <option value="17">17</option>
+                                                                        <option value="18">18</option>
+                                                                        <option value="19">19</option>
+                                                                        <option value="20">20</option>
+                                                                        <option value="21">21</option>
+                                                                        <option value="22">22</option>
+                                                                        <option value="23">23</option>
+                                                                        <option value="24">24</option>
+                                                                        <option value="25">25</option>
+                                                                        <option value="26">26</option>
+                                                                        <option value="27">27</option>
+                                                                        <option value="28">28</option>
+                                                                        <option value="29">29</option>
+                                                                        <option value="30">30</option>
                                                                     </select>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Kategori</label>
                                                                     <select name="kategori" class="form-control">
-                                                                        <option hidden selected>--Sila Pilih--</option>
-                                                                        <option value="umum">Umum</option>
+                                                                        <option hidden selected>{{ $faq->kategori }}
+                                                                        </option>
+                                                                        @foreach ($kategorifaqs as $kategorifaq)
+                                                                            <option
+                                                                                value="{{ $kategorifaq->nama_kategori_bm }}">
+                                                                                {{ $kategorifaq->nama_kategori_bm }}
+                                                                            </option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
 
@@ -396,6 +442,30 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                             <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
                                         </select>
                                     </div>
 

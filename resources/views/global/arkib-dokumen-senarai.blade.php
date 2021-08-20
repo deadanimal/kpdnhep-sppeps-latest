@@ -17,8 +17,10 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tajuk
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    No.</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Tajuk
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Keterangan</th>
@@ -31,13 +33,14 @@
                         <tbody>
                             @foreach ($infodokumens as $infodokumen)
                                 <tr>
-                                    <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
-                                    <td class="text-sm font-weight-normal">{{ $infodokumen->tajuk_ms }}</td>
-                                    <td class="text-sm font-weight-normal">{{ $infodokumen->kandungan_ms }}</td>
-                                    <td class="text-sm font-weight-normal">{{ $infodokumen->updated_at }}</td>
-                                    <td class="text-sm font-weight-normal">
+                                    <td class="text-center text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
+                                    <td class="text-center text-sm font-weight-normal">{{ $infodokumen->tajuk_ms }}</td>
+                                    <td class="text-center text-sm font-weight-normal">{{ $infodokumen->kandungan_ms }}
+                                    </td>
+                                    <td class="text-center text-sm font-weight-normal">{{ $infodokumen->updated_at }}</td>
+                                    <td class="text-center text-sm font-weight-normal">
                                         <a href="/storage/{{ $infodokumen->jalan1 }}" target="_blank"
-                                            class="btn btn-sm bg-gradient-info" data-original-title="Edit user">
+                                            class="btn btn-sm bg-gradient-info">
                                             Lihat
                                         </a>
                                     </td>

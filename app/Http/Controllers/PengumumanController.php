@@ -61,7 +61,7 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        return view('global.landing-page', [
+        return view('pegawai.admin-hq.tetapan-pengumuman', [
             'pengumumans' => $pengumuman,
         ]);
     }

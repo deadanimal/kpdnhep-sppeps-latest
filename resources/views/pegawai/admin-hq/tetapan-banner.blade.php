@@ -56,7 +56,8 @@
                                         <td class="text-sm font-weight-normal">{{ $banner->tajuk }}</td>
                                         <td class="text-sm font-weight-normal">{{ $banner->keterangan }}</td>
                                         <td class="text-sm font-weight-normal">
-                                            <i class="fa fa-user me-sm-1 text-dark"></i> <a href="/storage/{{ $banner->jalan }}" target="_blank">Gambar</a>
+                                            <i class="fas fa-file-image me-sm-1 text-dark"></i> <a
+                                                href="/storage/{{ $banner->jalan }}" target="_blank">{{ $banner->jalan }}</a>
                                         </td>
                                         <td class="text-sm font-weight-normal">{{ $banner->updated_at }}</td>
                                         <td>
@@ -74,7 +75,7 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $banner->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-banner/{{ $banner->id  }}/delete">
+                                            <a href="/tetapan-banner/{{ $banner->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -113,9 +114,12 @@
                                                                     <label for="image">Gambar Banner</label>
                                                                     <br>
                                                                     <label class="btn bg-gradient-info form-control col-6">
-                                                                        <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                                            style="display: none;" name="gambar">
+                                                                        <i class="fa fa-image"></i> Pilih Gambar<input
+                                                                            type="file" style="display: none;"
+                                                                            id="banner-btn2" name="gambar">
                                                                     </label>
+                                                                    <span id="banner-chosen2"
+                                                                        class="mt-1">{{ $banner->jalan }}</span>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -171,7 +175,8 @@
                                 <h3 class="font-weight-bolder text-info text-gradient">Tambah</h3>
                             </div>
                             <div class="card-body">
-                                <form role="form text-left" method="POST" action="/tetapan-banner" enctype="multipart/form-data">
+                                <form role="form text-left" method="POST" action="/tetapan-banner"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">Tajuk</label>
@@ -183,29 +188,28 @@
                                         <textarea class="form-control" name="keterangan" rows="2"></textarea>
                                     </div>
 
-
                                     <div class="form-group">
                                         <label for="image">Gambar Banner</label>
                                         <br>
-                                        {{-- <button class="form-control bg-gradient-info" name="gambar" type="file"><i class="fa fa-image"></i> Pilih Gambar</button> --}}
-                                        <label class="btn bg-gradient-info form-control col-6">
-                                            <i class="fa fa-image"></i> Pilih Gambar<input type="file"
-                                                style="display: none;" class="form-control" name="gambar">
-                                        </label>
-
+                                        <div class="col">
+                                            <label class="btn bg-gradient-info form-control col-6">
+                                                <i class="fa fa-image"></i> Pilih Gambar<input type="file"
+                                                    style="display: none;" class="form-control" id="banner-btn1" hidden
+                                                    name="gambar">
+                                            </label>
+                                            <span id="banner-chosen1" class="mt-1">Tiada Gambar Dipilih</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="content">Status</label>
                                         <br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="status"
-                                            value="aktif">
+                                            <input class="form-check-input" type="radio" name="status" value="aktif">
                                             <label class="form-check-label">Aktif</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="status"
-                                            value="tidak_aktif">
+                                            <input class="form-check-input" type="radio" name="status" value="tidak_aktif">
                                             <label class="form-check-label">Tidak Aktif</label>
                                         </div>
 
@@ -233,5 +237,23 @@
             searchable: true,
             fixedHeight: true
         });
+    </script>
+
+    <script>
+        const bannerBtn1 = document.getElementById('banner-btn1');
+
+        const bannerChosen1 = document.getElementById('banner-chosen1');
+
+        bannerBtn1.addEventListener('change', function() {
+            bannerChosen1.textContent = this.files[0].name
+        })
+
+        const bannerBtn2 = document.getElementById('banner-btn2');
+
+        const bannerChosen2 = document.getElementById('banner-chosen2');
+
+        bannerBtn2.addEventListener('change', function() {
+            bannerChosen2.textContent = this.files[0].name
+        })
     </script>
 @stop

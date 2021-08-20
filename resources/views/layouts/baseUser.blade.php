@@ -155,7 +155,7 @@
                         class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
                         id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
                         Arkib&ensp;
-                        <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
+                        <i class="fas fa-angle-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg">
                         <div class="d-none d-lg-block">
