@@ -24,7 +24,8 @@ class UserSeeder extends Seeder
             'no_telefon_bimbit'=>'0123456789',
             'alamat1'=>'sunway',
             'alamat2'=>'lagoon',
-            'role'=> 'pentadbir'
+            'role'=> 'pentadbir',
+            'negeri'=>'Selangor'
             
         ]);
 
@@ -37,7 +38,8 @@ class UserSeeder extends Seeder
             'no_telefon_bimbit'=>'054010471',
             'alamat1'=>'No. 15',
             'alamat2'=>'PERSIARAN DESA JAYA 2, TAMAN DESA JAYA',
-            'role'=> 'pentadbir'
+            'role'=> 'pegawai_hq',
+            'negeri'=>'WP Putrajaya'
             
         ]);
 
@@ -50,7 +52,22 @@ class UserSeeder extends Seeder
             'no_telefon_bimbit'=>'0192637396',
             'alamat1'=>'No. 2, Jalan SP 6/3, ',
             'alamat2'=>'Taman Saujana Puchong',
+            'role'=> 'pegawai_negeri',
+            'negeri'=>'Selangor'
             
+        ]);
+
+        User::create([
+            'name'=> 'Noorhaslizawati Binti Zukilfi',
+            'email'=> 'haslizawati@kpdnhep.gov.my',
+            'no_kp'=> '860516295736',
+            'password'=> Hash::make('password'),
+            'no_telefon_pejabat'=>'0388826993',
+            'no_telefon_bimbit'=>'0192637396',
+            'alamat1'=>'No. 2, Jalan SP 6/3, ',
+            'alamat2'=>'Taman Saujana Puchong',
+            'role'=> 'pegawai_negeri',
+            'negeri'=>'Kedah'
         ]);
 
     }

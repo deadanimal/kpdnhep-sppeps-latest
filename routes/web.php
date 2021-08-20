@@ -81,25 +81,24 @@ Route::post('/profil/login-insid', [ProfilController::class, 'login_insid']);
 Route::post('/profil/login-myhub', [ProfilController::class, 'login_myhub']);
 Route::resource('/profil', ProfilController::class);
 
-
 Route::post('/cari-eps', [SemakanStatusController::class, 'caripermohonan']);
 
 Route::resource('/pengurusan-data', PengurusanDataController::class);
 Route::post('/cari_pengurusan_data', [PengurusanDataController::class, 'cari']);
 
-Route::post('/pemproses_negeri_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pemproses_negeri']);
-Route::post('/penyokong_negeri_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_penyokong_negeri']);
-Route::post('/pelulus_negeri_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pelulus_negeri']);
-Route::post('/pemproses_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pemproses_hq']);
-Route::post('/penyokong_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_penyokong_hq']);
-Route::post('/pelulus_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pelulus_hq']);
+Route::get('/pemproses_negeri_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pemproses_negeri']);
+Route::get('/penyokong_negeri_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_penyokong_negeri']);
+Route::get('/pelulus_negeri_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pelulus_negeri']);
+Route::get('/pemproses_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pemproses_hq']);
+Route::get('/penyokong_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_penyokong_hq']);
+Route::get('/pelulus_hq_tugasan_baru', [JenisTugasanControiller::class, 'tugasan_baru_pelulus_hq']);
 
-Route::post('/pemproses_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_negeri']);
-Route::post('/penyokong_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_negeri']);
-Route::post('/pelulus_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_negeri']);
-Route::post('/pemproses_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_hq']);
-Route::post('/penyokong_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_hq']);
-Route::post('/pelulus_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_hq']);
+Route::get('/pemproses_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_negeri']);
+Route::get('/penyokong_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_negeri']);
+Route::get('/pelulus_negeri_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_negeri']);
+Route::get('/pemproses_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pemproses_hq']);
+Route::get('/penyokong_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_penyokong_hq']);
+Route::get('/pelulus_hq_tugasan_selesai', [TugasanSelesaiController::class, 'tugasan_selesai_pelulus_hq']);
 
 Route::resource('/peranan_pdrm', PerananPegawaiController::class);
 Route::post('/cari_pdrm', [PerananPegawaiController::class, 'cari']);

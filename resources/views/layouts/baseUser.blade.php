@@ -106,7 +106,7 @@
     </script>
     <!-- end Analytics-Optimize Snippet -->
     <!-- Google Tag Manager -->
-    <script>
+    {{-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -121,7 +121,7 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
-    </script>
+    </script> --}}
     <!-- End Google Tag Manager -->
 </head>
 
@@ -137,15 +137,25 @@
         <nav class="navbar navbar-expand-lg py-3" data-scroll="true" style="background: rgb(42,55,125);
         background: linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%);">
             <!-- id="navbarBlur" -->
+            {{-- <ul class="navbar-nav mx-auto d-flex align-items-center">
+                <li class="nav-item mx-2"> --}}
+                    {{-- <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150"> --}}
+                {{-- </li>
+            </ul> --}}
+            {{-- <br> --}}
 
             @can('isPemohon')
                 <a href="/dashboard" class="text-white">
-                    <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
+                    <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
+                    <br>
+                    <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
                 </a>
 
             @else
-                <a href="/" class="text-white">
-                    <h5 class="text-white">Sistem Percetakan Permit <br> Ejen Pemilikan Semula</h5>
+                <a href="/" class="text-white  pl-3">
+                    <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
+                    <br>
+                    <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
                 </a>
             @endcan
 
