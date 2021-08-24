@@ -372,13 +372,13 @@
                         <div class="collapse " id="basicExamples3">
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="/log-pengguna">
+                                    <a class="nav-link" href="/log_pengguna">
                                         <span class="sidenav-mini-icon"> LP </span>
                                         <span class="sidenav-normal"> Log Pengguna</span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="/log-pemohon">
+                                    <a class="nav-link" href="/log_pemohon">
                                         <span class="sidenav-mini-icon"> LP </span>
                                         <span class="sidenav-normal"> Log Pemohon</span>
                                     </a>

@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
         $user = $request->user();
         if ($user->role != 'pemohon') {
             $audit = new Audit;
-            $audit->user_id = $user->id;
+            $audit->id_pegawai = $user->id;
             $audit->description = $user->name. ' loggedin.';
             
             $audit->save();   

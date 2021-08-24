@@ -197,4 +197,9 @@
 @stop
 
 
-
+{{-- @foreach ($pegawais as $pegawai)
+    Name: {{$pegawai->name}}    
+    @foreach ($pegawai->roles as $role)
+        {{$role}}    
+    @endforeach
+@endforeach --}}

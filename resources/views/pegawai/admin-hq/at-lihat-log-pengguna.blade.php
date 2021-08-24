@@ -2,132 +2,161 @@
 
 @section('content')
 
-<div class="container-fluid py-4">
-    <div class="p-3">
+    <div class="container-fluid py-4">
+        <div class="p-3">
 
-        <div>
-            <h5>Audit Trails</h5>
-        </div>
+            <div>
+                <h5>Audit Trails</h5>
+            </div>
 
-        <div class="container-fluid mt-4" style="padding: 0px !important;">
-            <div class="card">
+            <div class="container-fluid mt-4" style="padding: 0px !important;">
+                <div class="card">
 
-                <div class="card-header" style="background-color: #f7e8ff;">
-                    <h6>Log Pengguna</h6>
-                </div>
+                    <div class="card-header" style="background-color: #f7e8ff;">
+                        <div class="row">
+                            <div class="col">
 
-                <div class="card-body p-3">
-                    <div class="row">
-                        <p>ID Pengguna: </p>
-                        <p>Nama Pengguna : Yuzrita binti Md. Yusoff</p>
-                        <p>Status : Aktif</p>
-                        <p>Log Masuk Terakhir : 13/08/2021 10:23</p>
-                        <p>Peranan : Pelulus</p>
-
-                    </div>
-                    <div class="row p-3 mb-0">
-                        <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                            <label class="d-flex flex-nowrap mb-0">
-                                <span class="pl-0 pt-2 pr-2">Papar</span>
-                                <select name="datatable_length" aria-controls="datatable" class="col form-control form-control-sm" (change)="entriesChange($event)">
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="-1">All</option>
-                                </select>
-                                <span class="p-2">rekod</span>
-                            </label>
-                        </div>
-                        <div class="col form-group mb-0 p-0" id="datatable_search">
-                            <div class="row">
-                                <div class="col-sm-4 d-flex justify-content-end m-0">
-                                    <label class="pr-2 m-0 mt-2" for="search">Carian: </label>
-                                </div>
-                                <div class="col">
-                                    <input class="form-control form-control-sm" type="text" name="search" placeholder="Carian" (keyup)="updateFilter($event)" />
-                                </div>
+                                <h6>Log Pengguna</h6>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+    
+                                <a href="/log_pengguna" class="btn btn-info btn-sm">
+                                    Kembali
+                                </a>
                             </div>
                         </div>
+                        
                     </div>
 
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col">
+                                @foreach ($pegawais as $pegawai)
+                                    <p>ID Pengguna: {{ $pegawai->id }}</p>
+                                    <p>Nama Pengguna : {{ $pegawai->name }}</p>
+                                    <p>Status : {{ $pegawai->status }}</p>
+                                    {{-- <p>Log Masuk Terakhir : 13/08/2021 10:23</p> --}}
+                                    <p>Peranan : <br>
+                                        @foreach ($pegawai->roles as $role)
 
-                    <div class="card">
-                        <div class="table-responsive">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No.</th>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">tarikh</th>
-                                        <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tindakan</th> -->
-                                        <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">deskripsi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <span class="text-secondary text-sm font-weight-bold">1</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                15/01/2021 10:23
-                                            </span>
-                                        </td>
+                                            @if ($role->name === 'pemproses_negeri')
+                                                Pemproses Negeri
+                                            @elseif ($role->name === "penyokong_negeri")
+                                                Penyokong Negeri
+                                            @elseif ($role->name === "pelulus_negeri")
+                                                Pelulus Negeri
+                                            @elseif ($role->name === "pemproses_hq")
+                                                Pemproses HQ
+                                            @elseif ($role->name === "penyokong_hq")
+                                                Penyokong HQ
+                                            @elseif ($role->name === "pelulus_hq")
+                                                Pelulus HQ
+                                            @else
+                                                {{ $role->name }}
+                                            @endif
+                                            <br>
+                                        @endforeach
+                                    </p>
+                                @endforeach
+                            </div>
 
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                Semakan Permohonan
-                                            </span>
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <span class="text-secondary text-sm font-weight-bold">1</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                15/01/2021 10:23
-                                            </span>
-                                        </td>
-
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                Semakan Permohonan
-                                            </span>
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <span class="text-secondary text-sm font-weight-bold">1</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                15/01/2021 10:23
-                                            </span>
-                                        </td>
-
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                Semakan Permohonan
-                                            </span>
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-                            </table>
                         </div>
+
+
+                        <div class="card">
+                            <div class="table-responsive">
+                                <table class="table align-items-center mb-0" id="datatable-basic">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                No.</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                                tarikh</th>
+                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">tindakan</th> -->
+                                            <th
+                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                deskripsi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($audits as $audit)
+                                            <tr>
+                                                <td>
+                                                    <span
+                                                        class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-secondary text-sm font-weight-bold">
+                                                        {{ $audit->created_at }}
+                                                    </span>
+                                                </td>
+
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-secondary text-sm font-weight-bold">
+                                                        {{ $audit->description }}
+                                                    </span>
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+
+                                        {{-- <tr>
+                                            <td>
+                                                <span class="text-secondary text-sm font-weight-bold">1</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    15/01/2021 10:23
+                                                </span>
+                                            </td>
+
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    Semakan Permohonan
+                                                </span>
+                                            </td>
+
+                                        </tr> --}}
+
+                                        {{-- <tr>
+                                            <td>
+                                                <span class="text-secondary text-sm font-weight-bold">1</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    15/01/2021 10:23
+                                                </span>
+                                            </td>
+
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-sm font-weight-bold">
+                                                    Semakan Permohonan
+                                                </span>
+                                            </td>
+
+                                        </tr> --}}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
                     </div>
-
-
                 </div>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
+
+    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+            searchable: true,
+            fixedHeight: true
+        });
+    </script>
 @stop

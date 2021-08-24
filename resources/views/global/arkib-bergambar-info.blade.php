@@ -6,13 +6,13 @@
             <div class="p-2 text-capitalize">
                 <h5 class="h3 text-dark pt-4 text-center"><strong> Arkib Bergambar</strong></h5>
             </div>
-            <div class="p-2 text-capitalize">
-                <h6 class="text- capitalize text-bold text-center">Arkib Bergambar 1 - Gambar 1</h6>
-            </div>
         </div>
 
         <div class="row m-4">
             @foreach ($infogambars as $infogambar)
+                <div class="p-2 text-capitalize">
+                    <h6 class="text-capitalize text-bold text-center">{{ $infogambar->tajuk_ms }}</h6>
+                </div>
                 <div class="col-md-6">
 
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">

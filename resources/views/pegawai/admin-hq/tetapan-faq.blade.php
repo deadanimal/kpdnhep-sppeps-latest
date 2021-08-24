@@ -189,7 +189,7 @@
                                         <td class="text-sm font-weight-normal">{{ $faq->kandungan_bm }}</td>
                                         <td class="text-sm font-weight-normal">{{ $faq->kandungan_en }}</td>
                                         <td class="text-sm font-weight-normal">{{ $faq->turutan }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $faq->kategori }}</td>
+                                        <td class="text-sm font-weight-normal">{{ $faq->nama_kategori_bm }}</td>
                                         <td class="text-sm font-weight-normal">
                                             @if ($faq->status === 'aktif')
                                                 <span class="text-secondary text-sm font-weight-bold">
@@ -241,17 +241,15 @@
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Kandungan MS</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ $faq->kandungan_bm }}"
-                                                                        name="kandungan_bm" placeholder="">
+                                                                    <label for="title">Keterangan MS</label>
+                                                                    <textarea class="form-control" rows="3"
+                                                                        name="kandungan_bm">{{ $faq->kandungan_bm }}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Kandungan EN</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ $faq->kandungan_en }}"
-                                                                        name="kandungan_en" placeholder="">
+                                                                    <label for="title">Keterangan EN</label>
+                                                                    <textarea class="form-control" rows="3"
+                                                                        name="kandungan_en">{{ $faq->kandungan_en }}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -294,12 +292,12 @@
 
                                                                 <div class="form-group">
                                                                     <label for="title">Kategori</label>
-                                                                    <select name="kategori" class="form-control">
-                                                                        <option hidden selected>{{ $faq->kategori }}
+                                                                    <select name="kategori_id" class="form-control">
+                                                                        <option hidden selected>{{ $faq->nama_kategori_bm }}
                                                                         </option>
                                                                         @foreach ($kategorifaqs as $kategorifaq)
                                                                             <option
-                                                                                value="{{ $kategorifaq->nama_kategori_bm }}">
+                                                                                value="{{ $kategorifaq->id }}">
                                                                                 {{ $kategorifaq->nama_kategori_bm }}
                                                                             </option>
                                                                         @endforeach
@@ -412,6 +410,7 @@
                                 <form role="form text-left" method="POST" action="/tetapan-faq">
                                     @csrf
                                     <input type="hidden" name="jenis" value="senarai">
+
                                     <div class="form-group">
                                         <label for="title">Tajuk MS</label>
                                         <input type="text" class="form-control" name="tajuk_bm" placeholder="">
@@ -423,13 +422,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Kandungan MS</label>
-                                        <input type="text" class="form-control" name="kandungan_bm" placeholder="">
+                                        <label for="title">Keterangan MS</label>
+                                        <textarea class="form-control" rows="3" name="kandungan_bm"></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Kandungan EN</label>
-                                        <input type="text" class="form-control" name="kandungan_en" placeholder="">
+                                        <label for="title">Keterangan EN</label>
+                                        <textarea class="form-control" rows="3" name="kandungan_en"></textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -470,14 +469,16 @@
                                     </div>
 
                                     <div class="form-group">
+                                        {{-- <input type="hidden" name="kategori_id" value="{{ $kategorifaq->id }}"> --}}
                                         <label for="title">Kategori</label>
-                                        <select name="kategori" class="form-control">
+                                        <select name="kategori_id" class="form-control">
                                             <option hidden selected>Sila Pilih</option>
                                             @foreach ($kategorifaqs as $kategorifaq)
-                                                <option value="{{ $kategorifaq->nama_kategori_bm }}">
+                                                <option value="{{ $kategorifaq->id }}">
                                                     {{ $kategorifaq->nama_kategori_bm }}</option>
                                             @endforeach
                                         </select>
+
                                     </div>
 
                                     <div class="form-group">

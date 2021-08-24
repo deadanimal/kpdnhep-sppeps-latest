@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Faq;
 use App\Models\Kategorifaq;
@@ -15,9 +16,13 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faq = Faq::all();
         $kategorifaq = Kategorifaq::all();
-        // dd($kategorifaq);
+        $faq = DB::table('kategorifaqs')
+                ->rightJoin('faqs', 'kategorifaqs.id', '=', 'faqs.kategori_id')
+                ->select('kategorifaqs.id', 'kategorifaqs.nama_kategori_bm', 'kategorifaqs.nama_kategori_en', 'faqs.*' )
+                ->get();
+                
+        // dd($faq);
         return view('pegawai.admin-hq.tetapan-faq', [
             'faqs' => $faq,
             'kategorifaqs' => $kategorifaq,
@@ -42,29 +47,30 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
         if ($request->jenis == 'category') {
 
-            $kategorifaqs = new Kategorifaq();
+            $kategorifaq = new Kategorifaq();
 
-            $kategorifaqs->nama_kategori_bm = $request->nama_kategori_bm;
-            $kategorifaqs->nama_kategori_en = $request->nama_kategori_en;
-            $kategorifaqs->status = $request->status;
+            $kategorifaq->nama_kategori_bm = $request->nama_kategori_bm;
+            $kategorifaq->nama_kategori_en = $request->nama_kategori_en;
+            $kategorifaq->status = $request->status;
 
-            $kategorifaqs->save();
+            $kategorifaq->save();
         } else {
-            $faq = new Faq;
+            $faq = new Faq();
 
             $faq->tajuk_bm = $request->tajuk_bm;
             $faq->tajuk_en = $request->tajuk_en;
             $faq->kandungan_bm = $request->kandungan_bm;
             $faq->kandungan_en = $request->kandungan_en;
             $faq->turutan = $request->turutan;
-            $faq->kategori = $request->kategori;
+            // $faq->kategori = $request->kategori;
             $faq->status = $request->status;
-
+            $faq->kategori_id = $request->kategori_id;
+            // dd($faq);
             $faq->save();
+
+            // $faq = Faq::where('kategori_id', $request->kategori_id)->get();
         }
 
         return redirect('/tetapan-faq');
@@ -78,7 +84,7 @@ class FaqController extends Controller
      */
     public function show(Faq $faq, Kategorifaq $kategorifaq)
     {
-        return view('pegawai.admin-hq.tetapan-faq', [
+        return view('global.faq', [
             'faqs' => $faq,
             'kategorifaqs' => $kategorifaq,
         ]);
@@ -102,18 +108,34 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq, Kategorifaq $kategorifaq)
+    public function update(Request $request, $id_)
     {
-        $faq = Faq::find($request->id);
-        $faq->tajuk_bm = $request->tajuk_bm;
-        $faq->tajuk_en = $request->tajuk_en;
-        $faq->kandungan_bm = $request->kandungan_bm;
-        $faq->kandungan_en = $request->kandungan_en;
-        $faq->turutan = $request->turutan;
-        $faq->kategori = $request->kategori;
-        $faq->status = $request->status;
 
-        $faq->save();
+        if ($request->jenis == 'category') {
+
+            $kategorifaq = Kategorifaq::find($id_);
+
+            $kategorifaq->nama_kategori_bm = $request->nama_kategori_bm;
+            $kategorifaq->nama_kategori_en = $request->nama_kategori_en;
+            $kategorifaq->status = $request->status;
+
+            $kategorifaq->save();
+        } 
+        else {
+
+            $faq = Faq::find($id_);
+
+            $faq->tajuk_bm = $request->tajuk_bm;
+            $faq->tajuk_en = $request->tajuk_en;
+            $faq->kandungan_bm = $request->kandungan_bm;
+            $faq->kandungan_en = $request->kandungan_en;
+            $faq->turutan = $request->turutan;
+            // $faq->kategori = $request->kategori;
+            $faq->status = $request->status;
+            $faq->kategori_id = $request->kategori_id;
+
+            $faq->save();
+        }
 
         return redirect('/tetapan-faq');
     }
@@ -126,14 +148,7 @@ class FaqController extends Controller
      */
     public function destroy(Faq $faq, Kategorifaq $kategorifaq)
     {
-        {
-            if ($kategorifaq){
-                $kategorifaq->delete();
-            }
-            else{
-                $faq->delete();
-            }
-            return redirect('/tetapan-faq');
-        }
+        $faq->delete();
+        return redirect('/tetapan-faq');
     }
 }

@@ -15,6 +15,8 @@ class Add09 extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('gambar_profil')->nullable()->change();
+            
+            $table->string('no_permit')->nullable();
         });
     }
 

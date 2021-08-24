@@ -26,6 +26,36 @@ class JenisTugasanControiller extends Controller
         ]);
     }
 
+    public function cari_tugasan_baru_pemproses_negeri(Request $request)
+    {
+        $user = $request->user();
+        $user_negeri = $user->negeri;
+
+        if ($request->no_kp != null && $request->jenis_permohonan == "null") {
+            $permohonans = Permohonan::where([
+                ['negeri_kutipan_permit', '=', $user_negeri],
+                ['no_kp', '=', $request->no_kp],
+                ['status_permohonan', '=', 'hantar']
+            ])->get();
+        } else if ($request->no_kp == null && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['negeri_kutipan_permit', '=', $user_negeri],
+                ['jenis_permohonan', '=', $request->jenis_permohonan],
+                ['status_permohonan', '=', 'hantar']
+            ])->get();
+        } else {
+            $permohonans = Permohonan::where([
+                ['negeri_kutipan_permit', '=', $user_negeri],
+                ['no_kp', '=', $request->no_kp],
+                ['jenis_permohonan', '=', $request->jenis_permohonan],
+                ['status_permohonan', '=', 'hantar']
+            ])->get();
+        }
+        return view('pegawai.negeri.negeri-tugasan-baru', [
+            'permohonan' => $permohonans,
+        ]);
+    }
+
     public function tugasan_baru_penyokong_negeri(Request $request)
     {
         $user = $request->user();
@@ -64,26 +94,7 @@ class JenisTugasanControiller extends Controller
         ]);
     }
 
-    // public function tugasan_baru_pemproses_negeri_hq(Request $request)
-    // {
-    //     $user = $request->user();
-    //     $user_role = $user->role;
-    //     $user_id = $user->id;
-    //     $user_roles = $user->roles;
-    //     $user_negeri = $user->negeri;
-
-    //     if ($user_role == 'pegawai_hq') {
-    //         if ($request->jenis_tindakan == "pemproses_negeri") {
-    //             $permohonan = Permohonan::where([
-    //                 ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'hantar']
-    //             ])->get();
-
-    //             return view('pegawai.negeri.negeri-tugasan-baru', [
-    //                 'permohonan' => $permohonan
-    //             ]);
-    //         }
-    //     }
-    // }
+    
 
     public function tugasan_baru_pemproses_hq(Request $request)
     {

@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Mews\Captcha\CaptchaServiceProvider::class,
+
     ],
 
     /*
@@ -233,7 +235,7 @@ return [
 
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
-
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];

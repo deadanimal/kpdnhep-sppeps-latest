@@ -1,200 +1,77 @@
-@extends('layouts.base-admin-hq')
+<?php
 
-@section('content')
+namespace App\Http\Controllers;
 
-    <div class="container-fluid py-4">
-        <div class="p-3">
+use Illuminate\Http\Request;
+use App\Models\Permohonan;
+use App\Models\User;
 
-            <div>
-                <h5>Peranan Pegawai</h5>
-            </div>
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
 
-            <div class="container-fluid mt-4" style="padding: 0px !important;">
-                <div class="card">
+class PerananPegawaiController extends Controller
+{
+    public function index(Request $request)
+    {
+        $user = User::where('role', 'pegawai_pdrm')->get();
+        // dd($user);
 
-                    
-                    <div class="card-header" style="background-color: #f7e8ff;">
-                        <h6> Carian Pegawai </h6>
-                    </div>
+        return view('pegawai.admin-hq.peranan-pdrm', [
+            'pdrms' => $user
+        ]);
+    }
 
-                    <div class="card-body p-3">
-                        <div class="row p-3 mb-0">
-                            <form method="POST" action="">
-                                @csrf
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="form-control form-control-sm" type="text" name="search"
-                                            placeholder="No Kad Pengenalan" />
-                                    </div>
+    public function store(Request $request)
+    {
 
-                                    <div class="col">
-                                        <select class="form-control form-control-sm" aria-label="Default select example"
-                                            name="negeri">
-                                            <option selected>--Pilih Negeri--</option>
-                                            <option value="Perlis">Perlis</option>
-                                            <option value="Kedah">Kedah</option>
-                                            <option value="Pulau Pinang">Pulau Pinang</option>
-                                            <option value="Perak">Perak</option>
-                                            <option value="Selangor">Selangor</option>
-                                            <option value="Melaka">Melaka</option>
-                                            <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                            <option value="Johor">Johor</option>
-                                            <option value="Pahang">Pahang</option>
-                                            <option value="Terengganu">Terengganu</option>
-                                            <option value="Kelantan">Kelantan</option>
-                                            <option value="Sabah">Sabah</option>
-                                            <option value="Sarawak">Sarawak</option>
-                                            <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                            <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                            <option value="WP Labuan">W. P. Labuan</option>
-                                        </select>
-                                    </div>
+        $user = new User();
 
-                                    <div class="col">
-                                        <button class="btn btn-sm bg-gradient-info text-uppercases" type="submit"
-                                            name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        $user->name = $request->name;
+        $user->no_kp = $request->nric;
+        $user->password = Hash::make($request->password);
+        $user->jawatan = $request->jawatan;
+        $user->agensi = $request->agensi;
+        $user->email = $request->email;
+        $user->no_telefon_bimbit = $request->no_telefon;
+        $user->status = $request->status;
+        $user->role = $request->peranan;
 
-            <div class="container-fluid mt-4" style="padding: 0px !important;">
-                <div class="card">
+        // dd($request);
 
-                    <div class="card-header" style="background-color: #f7e8ff;">
-                        <h6> Senarai Peranan Pegawai </h6>
-                    </div>
+        $user->save();
 
-                    <div class="card-body p-3">
-                        <div class="row p-3 mb-0">
-                            <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
-                                <a class="btn btn-sm bg-gradient-info" href="/senarai_pegawai"><i
-                                        class="fas fa-plus-circle"></i> Tambah</a>
-                            </div>
-                        </div>
+        return redirect("/peranan_pdrm");
+    }
 
+    public function update(Request $request, User $user)
+    {
+        $user = User::find($request->id);
+        // dd($user);
+        $user->name = $request->name;
+        $user->no_kp = $request->nric;
+        // $user->password = Hash::make($request->password);
+        $user->jawatan = $request->jawatan;
+        $user->agensi = $request->agensi;
+        $user->email = $request->email;
+        $user->no_telefon_bimbit = $request->no_telefon_bimbit;
+        $user->status = $request->status;
+        $user->role = $request->peranan;
 
-                        <div class="card">
-                            <div class="table-responsive">
-                                <table class="table align-items-center mb-0 table-flush" id="datatable-basic">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-                                                No.</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                                NO KAD PENGENALAN</th>
-                                            <th
-                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                NAMA Pegawai</th>
-                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">No. Permit</th> -->
-                                            <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">NO KAD PENGENALAN</th> -->
-                                            <th
-                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                NEGERI</th>
-                                            <th
-                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                Jawatan</th>
-                                            <th
-                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                Peranan</th>
-                                            <th
-                                                class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                Status</th>
-                                            <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($pegawais as $pegawai)
+        $user->save();
 
-                                            <tr class="text-center">
-                                                <td>
-                                                    <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $pegawai->no_kp }}</span>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold">
-                                                        {{ $pegawai->name }}</span>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold">
-                                                        {{ $pegawai->negeri }}</span>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold">
-                                                        {{ $pegawai->jawatan }}</span>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold">
-                                                        @foreach ($pegawai->roles as $role)
+        return redirect("/peranan_pdrm");
+    }
 
-                                                            @if ($role->name === 'pemproses_negeri')
-                                                                Pemproses Negeri
-                                                            @elseif ($role->name === "penyokong_negeri")
-                                                                Penyokong Negeri
-                                                            @elseif ($role->name === "pelulus_negeri")
-                                                                Pelulus Negeri
-                                                            @elseif ($role->name === "pemproses_hq")
-                                                                Pemproses HQ
-                                                            @elseif ($role->name === "penyokong_hq")
-                                                                Penyokong HQ
-                                                            @elseif ($role->name === "pelulus_hq")
-                                                                Pelulus HQ
-                                                            @else
-                                                                {{ $role->name }}
-                                                            @endif
-                                                            <br>
-                                                        @endforeach
-                                                    </span>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    @if ($pegawai->status === 'Aktif')
-                                                        <span class="badge badge-success"> {{ $pegawai->status }}</span>
-                                                    @else
-                                                        <span class="badge badge-danger"> {{ $pegawai->status }}</span>
-                                                    @endif
+    public function cari(Request $request)
+    {
+        // dd($request);
+        $user = User::where([
+            ['role', 'pegawai_pdrm'],
+            ['no_kp', $request->no_kp],
+        ])->get();
 
-                                                </td>
-                                                <td class="align-middle text-center">
-                                                    <a href="/peranan_pegawai/{{ $pegawai->id }}">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
-        type="text/javascript"></script>
-    <script type="text/javascript">
-        const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
-            searchable: false,
-            fixedHeight: true
-        });
-    </script>
-@stop
-
-
-
+        return view('pegawai.admin-hq.peranan-pdrm', [
+            'pdrms' => $user
+        ]);
+    }
+}

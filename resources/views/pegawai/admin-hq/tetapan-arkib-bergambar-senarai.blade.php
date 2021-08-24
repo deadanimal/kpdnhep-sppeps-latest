@@ -206,7 +206,7 @@
                                                                             type="file" style="display: none;"
                                                                             id="senaraiarkibgambar-btn10" name="gambar5">
                                                                     </label>
-                                                                    <span id="senaraiarkibgambar-chosen710" class="mt-1"><a
+                                                                    <span id="senaraiarkibgambar-chosen10" class="mt-1"><a
                                                                             href="/storage/{{ $gambaq->jalan5 }}"
                                                                             target="_blank">{{ $gambaq->jalan5 }}</a></span>
                                                                 </div>
@@ -469,8 +469,8 @@
 
         const senaraiarkibgambarChosen7 = document.getElementById('senaraiarkibgambar-chosen7');
 
-        senaraiarkibgambarBtn2.addEventListener('change', function() {
-            senaraiarkibgambarChosen2.textContent = this.files[0].name
+        senaraiarkibgambarBtn7.addEventListener('change', function() {
+            senaraiarkibgambarChosen7.textContent = this.files[0].name
         })
         const senaraiarkibgambarBtn8 = document.getElementById('senaraiarkibgambar-btn8');
 

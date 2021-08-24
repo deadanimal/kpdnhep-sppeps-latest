@@ -11,10 +11,10 @@
 
             @foreach ($senaraigamlands as $gambaq)
                 <div class="col-md-3 p-2">
-                    <a href="/arkib-bergambar-info/{{$gambaq->id}}">
+                    <a href="/arkib-bergambar-info/{{ $gambaq->id }}">
                         <div class="card card-background move-on-hover">
                             <div class="full-background">
-                                <img src="/storage/{{$gambaq->jalan1}}" class="d-block w-100" alt="Tiada Gambar" style="max-height: 200px">
+                                <img src="/storage/{{ $gambaq->jalan1 }}" class="d-block w-100" alt="Tiada Gambar" style="max-height: 200px">
                             </div>
                             <div class="card-body pt-12">
                                 <h4 class="text-white">{{ $gambaq->tajuk_ms }}</h4>

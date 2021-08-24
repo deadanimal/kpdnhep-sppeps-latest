@@ -11,6 +11,6 @@ class Kategorifaq extends Model
     use HasFactory;
 
     public function faqs(){
-        return $this->hasMany(Faq::class, 'faq_id');
+        return $this->hasMany(Faq::class);
     }
 }

@@ -15,9 +15,11 @@ class CreateAuditsTable extends Migration
     {
         Schema::create('audits', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->string('id_pegawai');
+            $table->string('nama_pegawai')->nullable();
             $table->string('model_name')->nullable();
             $table->string('model_id')->nullable();
+            $table->string('id_pemohon')->nullable();
             $table->string('description');
             $table->timestamps();
         });

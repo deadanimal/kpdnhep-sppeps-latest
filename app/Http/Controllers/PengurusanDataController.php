@@ -112,7 +112,6 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
         } else if ($request->jenis_permohonan == 'Pembaharuan') {
 
-
             $validated = $request->validate([
                 'status_pekerjaan_eps' => 'required',
                 'tahap_pendidikan' => 'required',
@@ -238,13 +237,10 @@ class PengurusanDataController extends Controller
         return redirect('/pengurusan-data');
     }
 
-
-
     public function destroy(Permohonan $permohonan)
     {
         //
     }
-
 
     public function cari(Request $request){
         // dd($request);

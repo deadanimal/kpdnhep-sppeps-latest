@@ -163,6 +163,8 @@ class ProfilController extends Controller
     {
         $user = new User();
 
+        $user->umur = $request->age;
+        $user->tarikh_lahir = $request->tarikh_lahir;
         $user->name = $request->name;
         $user->no_kp = $request->no_kp;
         $user->email = $request->email;
@@ -173,5 +175,24 @@ class ProfilController extends Controller
         $user->save();
 
         return redirect("/login_");
+    }
+
+    public function tukar_kata_laluan(Request $request){
+        
+        $user = $request->user();
+        $password = $user->password;
+
+        $current_pass = Hash::make($request->cur_pass);
+        $new_pass = Hash::make($request->new_pass);
+        $confirm_new_pass = Hash::make($request->confirm_new_pass);
+
+        // dd($current_pass );
+
+        if($current_pass == $password){
+
+        }
+        else {
+            return back()->with('error', 'Harap Maaf! Sila masukkan kata laluan asal anda');
+        }
     }
 }

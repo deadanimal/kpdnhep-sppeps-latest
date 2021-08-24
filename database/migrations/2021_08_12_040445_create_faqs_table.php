@@ -20,7 +20,7 @@ class CreateFaqsTable extends Migration
             $table->text('kandungan_bm');
             $table->text('kandungan_en');
             $table->integer('turutan');
-            $table->string('kategori', 255);
+            // $table->string('kategori', 255);
             // $table->date('tarikh_kemaskini');
             $table->string('status', 255);
             $table->foreignId('kategori_id');

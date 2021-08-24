@@ -363,7 +363,7 @@ class PermohonanController extends Controller
             $salinan_dokumen_sokongan1 = $request->file('salinan_dokumen_sokongan1')->store('dokumen');
             $salinan_dokumen_sokongan2 = $request->file('salinan_dokumen_sokongan2')->store('dokumen');
             $salinan_dokumen_sokongan3 = $request->file('salinan_dokumen_sokongan3')->store('dokumen');
-            
+
             $permohonan->salinan_kp_depan = $salinan_kp_depan;
             $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
             $permohonan->salinan_tapisan_rekod_jenayah = $salinan_tapisan_rekod_jenayah;
@@ -472,9 +472,11 @@ class PermohonanController extends Controller
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
                         $audit = new Audit;
-                        $audit->user_id = $user->id;
+                        $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses HQ';
                         $audit->save();
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
@@ -485,9 +487,11 @@ class PermohonanController extends Controller
                         Mail::to($penerimas_emails)->send(new PermohonanTidakLengkap($permohonan));
 
                         $audit = new Audit;
-                        $audit->user_id = $user->id;
+                        $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
                         // $audit->description = $user->name. ' loggedin.';
                         $audit->save();
@@ -498,9 +502,11 @@ class PermohonanController extends Controller
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
                         $audit = new Audit;
-                        $audit->user_id = $user->id;
+                        $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses negeri';
                         $audit->save();
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
@@ -511,9 +517,11 @@ class PermohonanController extends Controller
                         Mail::to($penerimas_emails)->send(new PermohonanTidakLengkap($permohonan));
 
                         $audit = new Audit;
-                        $audit->user_id = $user->id;
+                        $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
                         $audit->save();
                     }
@@ -529,9 +537,11 @@ class PermohonanController extends Controller
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Menyokong permohonan ' . $permohonan->id;
                     $audit->save();
                 } else if ($request->tindakan == "Tidak Disokong") {
@@ -540,9 +550,11 @@ class PermohonanController extends Controller
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Tidak menyokong permohonan ' . $permohonan->id;
                     $audit->save();
                 }
@@ -576,9 +588,11 @@ class PermohonanController extends Controller
                     }
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Meluluskan permohonan ' . $permohonan->id;
                     $audit->save();
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
@@ -587,9 +601,11 @@ class PermohonanController extends Controller
                     $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Tidak meluluskan permohonan ' . $permohonan->id;
                     $audit->save();
                 }
@@ -616,9 +632,11 @@ class PermohonanController extends Controller
                 $permohonan->save();
 
                 $audit = new Audit;
-                $audit->user_id = $user->id;
+                $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
+                $audit->id_pemohon = $permohonan->user_id;
                 $audit->description = 'Hantar permohonan ' . $permohonan->id . ' ke PDRM';
                 $audit->save();
 
@@ -631,9 +649,11 @@ class PermohonanController extends Controller
                     $permohonan->save();
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Hantar Permohonan ke penyokong HQ';
                     $audit->save();
 
@@ -645,9 +665,11 @@ class PermohonanController extends Controller
                     $permohonan->save();
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Hantar Permohonan ke penyokong negeri';
                     $audit->save();
 
@@ -663,9 +685,11 @@ class PermohonanController extends Controller
                     $permohonan->save();
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Menyokong permohonan' . $permohonan->id;
                     $audit->save();
 
@@ -678,9 +702,11 @@ class PermohonanController extends Controller
                     $permohonan->save();
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Tidak menyokong permohonan' . $permohonan->id;
                     $audit->save();
 
@@ -703,16 +729,20 @@ class PermohonanController extends Controller
                     }
 
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = "Meluluskan permohonan " . $permohonan->id;
                     $audit->save();
                 } else if ($request->tindakan == "Tidak Diluluskan") {
                     $audit = new Audit;
-                    $audit->user_id = $user->id;
+                    $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
+                    $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = "Tidak meluluskan permohonan " . $permohonan->id;
                     $audit->save();
                 }
@@ -731,9 +761,11 @@ class PermohonanController extends Controller
                 $permohonan->save();
 
                 $audit = new Audit;
-                $audit->user_id = $user->id;
+                $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
+                $audit->id_pemohon = $permohonan->user_id;
                 $audit->description = "Menyenarai hitam permohonan " . $permohonan->id;
                 $audit->save();
 
@@ -755,9 +787,11 @@ class PermohonanController extends Controller
                 $permohonan->save();
 
                 $audit = new Audit;
-                $audit->user_id = $user->id;
+                $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
+                $audit->id_pemohon = $permohonan->user_id;
                 $audit->description = "Semak rekod jenayah " . $permohonan->id;
                 $audit->save();
 
@@ -775,9 +809,11 @@ class PermohonanController extends Controller
                 }
 
                 $audit = new Audit;
-                $audit->user_id = $user->id;
+                $audit->id_pegawai = $user->id;
+                        $audit->name_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
+                $audit->id_pemohon = $permohonan->user_id;
                 $audit->description = "Semak rekod jenayah " . $request->tindakan;
                 $audit->save();
 
