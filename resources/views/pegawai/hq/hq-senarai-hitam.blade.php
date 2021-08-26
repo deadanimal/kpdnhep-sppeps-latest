@@ -9,7 +9,7 @@
                 <div class="p-3">
 
                     <div>
-                        <h5>Senarai Hitam Permohonan</h5>
+                        <h5>Senarai Hitam Pemohon</h5>
                     </div>
 
                     <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -76,7 +76,7 @@
                         <div class="card">
 
                             <div class="card-header" style="background-color: #f5e7f2;">
-                                <h6> Senarai Hitam Permohonan</h6>
+                                <h6> Senarai Hitam Permohon</h6>
                             </div>
 
                             <div class="card-body">

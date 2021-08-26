@@ -473,7 +473,7 @@ class PermohonanController extends Controller
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
@@ -488,7 +488,7 @@ class PermohonanController extends Controller
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
@@ -503,7 +503,7 @@ class PermohonanController extends Controller
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
@@ -518,7 +518,7 @@ class PermohonanController extends Controller
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                         $audit->model_name = 'Permohonan';
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
@@ -538,7 +538,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -551,7 +551,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                    $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -589,7 +589,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -602,7 +602,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -633,7 +633,7 @@ class PermohonanController extends Controller
 
                 $audit = new Audit;
                 $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                $audit->nama_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
@@ -650,7 +650,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -666,7 +666,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -686,7 +686,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -703,7 +703,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -730,7 +730,7 @@ class PermohonanController extends Controller
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -739,7 +739,7 @@ class PermohonanController extends Controller
                 } else if ($request->tindakan == "Tidak Diluluskan") {
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
@@ -762,7 +762,7 @@ class PermohonanController extends Controller
 
                 $audit = new Audit;
                 $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
@@ -788,7 +788,7 @@ class PermohonanController extends Controller
 
                 $audit = new Audit;
                 $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
@@ -810,7 +810,7 @@ class PermohonanController extends Controller
 
                 $audit = new Audit;
                 $audit->id_pegawai = $user->id;
-                        $audit->name_pegawai = $user->name;
+                        $audit->nama_pegawai = $user->name;
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;

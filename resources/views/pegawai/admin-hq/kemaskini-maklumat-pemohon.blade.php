@@ -99,7 +99,7 @@
                                     <div class="col-1"></div>
                                     <div class="col form-group pr-0">
                                         <label for="email"><strong> E-mel</strong></label>
-                                        <input type="email" class="form-control" readonly
+                                        <input type="email" class="form-control" 
                                             value="{{ $permohonan->emel }}" name="emel">
                                     </div>
                                 </div>

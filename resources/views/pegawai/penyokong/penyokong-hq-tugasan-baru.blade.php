@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col">
                                     <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                    <a href="/pemproses_hq_tugasan_baru" class="btn btn-sm btn-danger">Set Semula</a>
+                                    <a href="/penyokong_hq_tugasan_baru" class="btn btn-sm btn-danger">Set Semula</a>
                                 </div>
                             </div>
                         </form>

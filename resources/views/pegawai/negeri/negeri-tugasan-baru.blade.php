@@ -34,7 +34,7 @@
 
                                 @endif
                             @endforeach --}}
-                            <form method="POST" action="/cari">
+                            <form method="POST" action="/cari_pemproses_negeri_tugasan_baru">
                                 @csrf
                                 <div class="row">
                                     <div class="col">

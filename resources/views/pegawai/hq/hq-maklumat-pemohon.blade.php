@@ -18,8 +18,6 @@
                     </div>
 
 
-                  
-                    @endforeach
                     <div class="card-body">
 
                         <form class="d-flex justify-content-center font-black" style="width: 100%;">

@@ -19,7 +19,7 @@ class Add08 extends Migration
 
         Schema::table('permohonans', function (Blueprint $table) {
             $table->string('gambar_pemohon')->nullable();
-            $table->integer('cetak_status')->default(1);
+            $table->integer('cetak_status')->default(0);
         });
 
     }

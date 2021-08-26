@@ -17,6 +17,8 @@ class Add09 extends Migration
             $table->string('gambar_profil')->nullable()->change();
             
             $table->string('no_permit')->nullable();
+            $table->string('profil_update')->default(0);
+            $table->string('status_permohonan')->nullable();
         });
     }
 

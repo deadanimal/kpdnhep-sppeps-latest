@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->string('no_kp')->nullable();
+            $table->string('no_kp')->unique();
             $table->integer('umur')->nullable();
             $table->date('tarikh_lahir')->nullable();
             $table->string('jantina')->nullable();

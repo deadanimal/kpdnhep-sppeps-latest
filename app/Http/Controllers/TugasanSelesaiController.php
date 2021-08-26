@@ -382,7 +382,6 @@ class TugasanSelesaiController extends Controller
     public function tugasan_selesai_pelulus_hq()
     {
 
-
         $permohonan = Permohonan::where([
             ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']
         ])->orWhere([

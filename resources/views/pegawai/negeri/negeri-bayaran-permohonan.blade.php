@@ -137,9 +137,14 @@
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#modal-form-kemaskini-lain-{{ $permohonan->id }}">Kemaskini</button>
                                                     @endif
+                                                    @if ($permohonan->cetak_status == 1)
+                                                        <button class="btn btn-sm btn-primary" disabled>Cetak Permit</button>
+                                                    @else
+                                                        {{-- <a href="/cetak_permit/{{ $permohonan->id }}" onclick="maelHensem($permohonan->id)" --}}
+                                                        <a onclick="maelHensem({!! $permohonan->id !!})"
+                                                            class="btn btn-sm btn-primary">Cetak Permit</a>
+                                                    @endif
 
-                                                    <a href="/cetak_permit/{{ $permohonan->id }}"
-                                                        class="btn btn-sm btn-primary">Cetak Permit</a>
                                                 </td>
                                             </tr>
 
@@ -161,10 +166,12 @@
                                                                             sign in</p> --}}
                                                                     </div>
                                                                     <div class="card-body">
-                                                                        <form role="form text-left" method="POST" action="/cetakan_permit/{{ $permohonan->id }}">
+                                                                        <form role="form text-left" method="POST"
+                                                                            action="/cetakan_permit/{{ $permohonan->id }}">
                                                                             @csrf
                                                                             @method('PUT')
-                                                                            <input type="hidden" name="id" value="{{ $permohonan->id }}">
+                                                                            <input type="hidden" name="id"
+                                                                                value="{{ $permohonan->id }}">
                                                                             <label>Nama</label>
                                                                             <div class="input-group mb-3">
                                                                                 <input type="text"
@@ -228,10 +235,12 @@
                                                                             sign in</p> --}}
                                                                     </div>
                                                                     <div class="card-body">
-                                                                        <form role="form text-left" method="POST" action="/cetakan_permit/{{ $permohonan->id }}">
+                                                                        <form role="form text-left" method="POST"
+                                                                            action="/cetakan_permit/{{ $permohonan->id }}">
                                                                             @csrf
                                                                             @method('PUT')
-                                                                            <input type="hidden" name="id" value="{{ $permohonan->id }}">
+                                                                            <input type="hidden" name="id"
+                                                                                value="{{ $permohonan->id }}">
                                                                             <label>Nama</label>
                                                                             <div class="input-group mb-3">
                                                                                 <input type="text"
@@ -253,7 +262,8 @@
                                                                                 <input type="text"
                                                                                     class="form-control form-control-sm"
                                                                                     name="no_permit"
-                                                                                    value="{{ $permohonan->no_permit }}" readonly>
+                                                                                    value="{{ $permohonan->no_permit }}"
+                                                                                    readonly>
                                                                             </div>
 
                                                                             <label>No. Siri</label>
@@ -503,8 +513,8 @@
                                     </div>
 
                                     <!-- <div class="text-center">
-                                                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Sign in</button>
-                                                                            </div> -->
+                                                                                        <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Sign in</button>
+                                                                                    </div> -->
 
                                     <div>
                                         <input type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0"
@@ -683,8 +693,8 @@
                                     </div>
 
                                     <!-- <div class="text-center">
-                                                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Sign in</button>
-                                                                            </div> -->
+                                                                                        <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Sign in</button>
+                                                                                    </div> -->
 
                                     <div>
                                         <input type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0"
@@ -699,6 +709,14 @@
         </div>
     </div>
 
+    <script>
+            function maelHensem(id) {     
+                window.location.href = '/cetak_permit/' + id;
+                setTimeout(() => { window.location.reload(true);  }, 1000);
+                
+            }        
+    </script>
+
     <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
         type="text/javascript"></script>
     <script type="text/javascript">
@@ -706,5 +724,7 @@
             searchable: false,
             fixedHeight: true
         });
+
     </script>
+
 @stop

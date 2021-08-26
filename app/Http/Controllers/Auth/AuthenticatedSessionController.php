@@ -54,6 +54,16 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        $user = $request->user();
+        if ($user->role != 'pemohon') {
+            $audit = new Audit;
+            $audit->id_pegawai = $user->id;
+            $audit->description = $user->name. ' logged out.';
+            
+            $audit->save();   
+        }
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

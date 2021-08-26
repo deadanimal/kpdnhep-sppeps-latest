@@ -12,7 +12,7 @@
             @endforeach --}}
 
         <div>
-            <h5>Semakan Permohonan</h5>
+            <h5>Kelulusan Permohonan</h5>
         </div>
 
         <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col">
                                     <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                    <a href="/pemproses_hq_tugasan_baru" class="btn btn-sm btn-danger">Set Semula</a>
+                                    <a href="/pelulus_hq_tugasan_baru" class="btn btn-sm btn-danger">Set Semula</a>
                                 </div>
                             </div>
                         </form>

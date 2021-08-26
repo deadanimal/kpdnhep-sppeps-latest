@@ -107,8 +107,48 @@
                                                         Kemaskini
                                                     </a>
 
+                                                    <button type="button" class="btn bg-gradient-danger btn-sm"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal-{{ $permohonan->id }}">
+                                                        Set Semula
+                                                    </button>
+
+
                                                 </td>
                                             </tr>
+
+                                            <!-- Button trigger modal -->
+                                            {{-- <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Launch demo modal
+                                            </button> --}}
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal-{{ $permohonan->id }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Notifikasi</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Adakah anda pasti mahu set semula cetakan permit?
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button type="button" class="btn bg-gradient-danger"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <a href="/set_semula/{{ $permohonan->id }}"
+                                                                class="btn bg-gradient-success">
+                                                                Ya
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                 </table>

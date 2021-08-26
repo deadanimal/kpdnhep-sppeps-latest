@@ -218,7 +218,7 @@
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="/change-password">
+                                <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan">
                                     <div class="d-flex py-1">
                                         <span class="d-sm-inline d-none text-dark">Tukar Kata Laluan</span>
                                     </div>

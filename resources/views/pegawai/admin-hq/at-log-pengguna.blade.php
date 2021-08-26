@@ -58,7 +58,7 @@
 
                         <div class="card">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0" id="datatable-basic">
+                                <table class="table align-items-center mb-0" id="example">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
@@ -131,7 +131,8 @@
                                                     {{ $pegawai->role }}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <a href="/log_pengguna/{{ $pegawai->id }}" class="btn btn-sm bg-gradient-info">
+                                                    <a href="/log_pengguna/{{ $pegawai->id }}"
+                                                        class="btn btn-sm bg-gradient-info">
                                                         Lihat Log
                                                     </a>
                                                 </td>
@@ -149,12 +150,41 @@
         </div>
 
     </div>
-    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
-        type="text/javascript"></script>
-    <script type="text/javascript">
-        const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
-            searchable: false,
-            fixedHeight: true
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Senarai Pengguna'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Senarai Pengguna',
+                        orientation: 'landscape',
+                        // pageSize: 'LEGAL'
+                    },
+
+                ],
+            });
         });
     </script>
 @stop

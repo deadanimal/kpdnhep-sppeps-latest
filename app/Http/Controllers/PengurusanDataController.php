@@ -62,7 +62,9 @@ class PengurusanDataController extends Controller
         $permohonan->negeri = $request->negeri;
         $permohonan->negeri_kutipan_permit = $request->negeri_kutipan_permit;
 
-        if ($request->jenis_permohonan == 'Baharu') {
+        if ($permohonan->jenis_permohonan == 'Baharu') {
+
+            // dd($request);
 
 
             $validated = $request->validate([
@@ -110,7 +112,7 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
-        } else if ($request->jenis_permohonan == 'Pembaharuan') {
+        } else if ($permohonan->jenis_permohonan == 'Pembaharuan') {
 
             $validated = $request->validate([
                 'status_pekerjaan_eps' => 'required',
@@ -175,7 +177,7 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
             $permohonan->salinan_surat_sokongan = $request->salinan_surat_sokongan;
-        } else if ($request->jenis_permohonan == 'Pendua') {
+        } else if ($permohonan->jenis_permohonan == 'Pendua') {
 
 
             $validated = $request->validate([
@@ -202,7 +204,7 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_kp_depan = $request->salinan_kp_depan;
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_laporan_polis = $request->salinan_laporan_polis;
-        } else if ($request->jenis_permohonan == 'Rayuan') {
+        } else if ($permohonan->jenis_permohonan == 'Rayuan') {
 
 
             $validated = $request->validate([
@@ -250,5 +252,15 @@ class PengurusanDataController extends Controller
         return view('pegawai.admin-hq.pengurusan-data', [
             'permohonans' => $permohonans,
         ]);
+    }
+
+    public function reset_cetak($id){
+        // dd($id);
+        $permohonan = Permohonan::find($id);
+        // dd($permohonans);
+        $permohonan->cetak_status = 0;
+        $permohonan->save();
+
+        return redirect('/pengurusan-data');
     }
 }

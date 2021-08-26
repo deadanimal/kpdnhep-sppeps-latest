@@ -27,10 +27,10 @@
                         </ul>
                     </div><br />
                 @endif
-
-                <form method="POST" action="/tukar_kata_laluan">
+                
+                <form method="POST" action="/tukar_kata_laluan/{{$user = Auth::user()->id}}">
                     @csrf
-                    {{-- @method('PUT') --}}
+                    @method('PUT')
                     <div class="container">
 
 
@@ -39,7 +39,7 @@
                             <div class="input-group mb-4">
                                 <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
                                 <input class="form-control text-center" placeholder="Masukkan kata laluan sekarang"
-                                    type="password" name="cur_pass">
+                                    type="password" name="current_password">
                             </div>
                         </div>
                         <div class="form-group mt-3">
@@ -47,7 +47,7 @@
                             <div class="input-group mb-4">
                                 <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
                                 <input class="form-control text-center" placeholder="Masukkan kata laluan baru"
-                                    type="password" name="new_pass">
+                                    type="password" name="new_password">
                             </div>
                         </div>
                         <div class="form-group mt-3">
@@ -55,7 +55,7 @@
                             <div class="input-group mb-4">
                                 <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
                                 <input class="form-control text-center" placeholder="Masukkan pengasahan kata laluan baru"
-                                    type="password" name="confirm_new_pass">
+                                    type="password" name="new_confirm_password">
                             </div>
                         </div>
                         <!-- <div class="form-group mt-3">

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permohonan;
+use App\Models\User;
 
 class SenaraiHitamController extends Controller
 {
     public function index(Request $request)
     {
-        $permohonan = Permohonan::where('status_permohonan', 'disenarai hitam')->get();
+        $permohonan = User::where('status_permohonan', 'disenarai hitam')->get();
 
         return view('pegawai.hq.hq-senarai-hitam', [
             'permohonan' => $permohonan
