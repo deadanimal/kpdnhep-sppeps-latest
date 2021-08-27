@@ -138,8 +138,9 @@
                         @foreach ($permohonan as $permohonan)
 
                             @if ($permohonan->jenis_permohonan == 'Baharu' || $permohonan->jenis_permohonan == 'Pembaharuan')
+                            
                                 @if ($permohonan->status_permohonan == 'hantar')
-
+                                
                                     <!---------------Platform Tour----------------->
                                     <div class="platform-tour-wrapper py-3 ">
                                         <!-- Nav tabs -->
@@ -182,7 +183,7 @@
                                         </ul>
                                     </div>
 
-                                @elseif ($permohonan->status_permohonan == 'Permohonan Lengkap')
+                                @elseif ($permohonan->status_permohonan == 'hantar_ke_pemproses_hq')
 
                                     <div class="platform-tour-wrapper py-3 ">
                                         <!-- Nav tabs -->
@@ -226,7 +227,6 @@
                                     </div>
 
                                 @elseif ($permohonan->status_permohonan == 'disemak pdrm')
-
                                     <div class="platform-tour-wrapper py-3 ">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">

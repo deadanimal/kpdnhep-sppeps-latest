@@ -30,7 +30,7 @@
                                                     <img src="/storage/{{ $pemohon->gambar_profil }}"
                                                         class="border-radius-md" width="150" height="150" />
                                                 @endif
-                                                
+
                                                 <a
                                                     class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
                                                     <i class="fa fa-pen top-0" data-bs-toggle="tooltip"
@@ -171,8 +171,11 @@
                                     value="{{ $pemohon->no_telefon_pejabat }}" placeholder="e.g 1234567890">
                             </div>
                             <div class="text-center d-flex justify-content-end">
-                                <a href="/profil" type="button" class="btn btn-round bg-gradient-danger text-capitalize"
-                                    data-bs-dismiss="modal">Batal</a>
+                                @if ($pemohon->profil_update != 0)
+                                    <a href="/profil" type="button" class="btn btn-round bg-gradient-danger text-capitalize"
+                                        data-bs-dismiss="modal">Batal</a>
+                                @endif
+
                                 <button type="Submit"
                                     class="btn btn-round bg-gradient-success text-capitalize">Simpan</button>
                             </div>

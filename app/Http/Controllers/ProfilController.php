@@ -49,6 +49,8 @@ class ProfilController extends Controller
 
         $user = User::find($user_id);
         // dd($user);
+        $profil_update = $user->profil_update;
+
         $user->no_kp =  $request->no_kp;
         $user->email =  $request->email;
         $user->jantina =  $request->jantina;
@@ -60,13 +62,20 @@ class ProfilController extends Controller
         $user->no_telefon_bimbit =  $request->no_telefon_bimbit;
         $user->no_telefon_rumah =  $request->no_telefon_rumah;
         $user->no_telefon_pejabat =  $request->no_telefon_pejabat;
+        $user->profil_update =  1;
 
         $gambar_profil = $request->file('gambar_profil')->store('profil');
         $user->gambar_profil = $gambar_profil;
 
         $user->save();
 
-        return redirect('/profil');
+        if($profil_update == 0){
+            return redirect("/dashboard");
+        }else{
+            return redirect('/profil');
+        }
+
+        
     }
 
     public function login_insid(LoginRequest $request)

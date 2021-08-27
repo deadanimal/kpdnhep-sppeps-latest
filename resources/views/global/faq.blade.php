@@ -32,6 +32,7 @@
                                             style="">
                                             <div class="accordion-body text-sm opacity-8">
                                                 @foreach ($faqls as $index => $faql)
+                                                    @if($faql->kategori_id == $katefaql->id)
                                                     <div class="accordion" id="accordionFaqLand">
                                                         <div class="accordion-item mb-3">
                                                             <h5 class="accordion-header" id="{{ $faql->id }}">
@@ -55,7 +56,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>                                                    
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>

@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "mews/captcha": "^3.2"
+        "mews/captcha": "^3.2",
+        "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

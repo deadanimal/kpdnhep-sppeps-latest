@@ -81,9 +81,14 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $pengumuman->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-pengumuman/{{ $pengumuman->id  }}/delete">
+                                            <a href="/tetapan-pengumuman/{{ $pengumuman->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
+                                            {{-- <form method="POST" action="{{ route('pengumumen.delete', $pengumuman->id) }}">
+                                                @csrf
+                                                <input name="_method" type="hidden" value="DELETE">
+                                                <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                                            </form> --}}
                                         </td>
                                     </tr>
 
@@ -284,6 +289,7 @@
             fixedHeight: true
         });
     </script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
 
 @stop

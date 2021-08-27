@@ -17,14 +17,7 @@
                                     PERMOHONAN
                                 </h5>
 
-                                <span class="h5 font-weight-bold mb-0"> 3982 </span>
-                            </div>
-
-                            <div class="col-auto" (click)="onShowApplicationLog()">
-                                <div class="">
-                                    <!-- <i class="ni ni-active-40"> </i> -->
-                                    <i class="fas fa-ellipsis-h" [@rotatedState]='rotateApp'></i>
-                                </div>
+                                <span class="h5 font-weight-bold mb-0"> {{ $bilpermohonan }} </span>
                             </div>
                         </div>
                         <div class="row pt-3" *ngSwitchDefault>
@@ -43,7 +36,7 @@
                                         <strong>Baharu</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $permohonanbaharus }} </span>
                                 </p>
                             </div>
                         </div>
@@ -63,7 +56,7 @@
                                         <strong>Pembaharuan</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $permohonanpembaharuans }}</span>
                                 </p>
                             </div>
                         </div>
@@ -83,7 +76,7 @@
                                         <strong>Pendua</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $permohonanpenduas }}</span>
                                 </p>
                             </div>
                         </div>
@@ -103,7 +96,7 @@
                                         <strong>Rayuan</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $permohonanrayuans }}</span>
                                 </p>
                             </div>
                         </div>
@@ -120,14 +113,7 @@
                                     DALAM PROSES
                                 </h5>
 
-                                <span class="h5 font-weight-bold mb-0"> 3982 </span>
-                            </div>
-
-                            <div class="col-auto" (click)="onShowInProcess()">
-                                <div class="">
-                                    <!-- <i class="ni ni-active-40"> </i> -->
-                                    <i class="fas fa-ellipsis-h" [@rotatedState]='rotateInProg'></i>
-                                </div>
+                                <span class="h5 font-weight-bold mb-0"> {{ $bildalamproses }} </span>
                             </div>
                         </div>
                         <div class="row pt-3" *ngSwitchDefault>
@@ -146,7 +132,7 @@
                                         <strong>Baharu</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $prosesbaharus }}</span>
                                 </p>
                             </div>
                         </div>
@@ -166,7 +152,7 @@
                                         <strong>Pembaharuan</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $prosespembaharuans }}</span>
                                 </p>
                             </div>
                         </div>
@@ -186,7 +172,7 @@
                                         <strong>Pendua</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $prosespenduas }}</span>
                                 </p>
                             </div>
                         </div>
@@ -206,7 +192,7 @@
                                         <strong>Rayuan</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $prosesrayuans }}</span>
                                 </p>
                             </div>
                         </div>
@@ -223,14 +209,7 @@
                                     SELESAI
                                 </h5>
 
-                                <span class="h5 font-weight-bold mb-0"> 3982 </span>
-                            </div>
-
-                            <div class="col-auto" (click)="onShowFinishied()">
-                                <div class="">
-                                    <!-- <i class="ni ni-active-40"> </i> -->
-                                    <i class="fas fa-ellipsis-h" [@rotatedState]='rotatefinished'></i>
-                                </div>
+                                <span class="h5 font-weight-bold mb-0"> {{ $bilselesai }} </span>
                             </div>
                         </div>
                         <div class="row pt-3" *ngSwitchDefault>
@@ -249,12 +228,12 @@
                                         <strong>Baharu</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $bilbaharu }}</span>
                                     <br>
                                     <span>
                                         <small>
                                             <i class="far fa-check-circle" style="color: rgb(123, 223, 84);"></i>
-                                            632 permohonan
+                                            {{ $baharululus }} permohonan
                                             lulus
                                         </small>
                                     </span>
@@ -262,7 +241,7 @@
                                     <span>
                                         <small>
                                             <i class="far fa-times-circle" style="color: rgb(250, 82, 82);"></i>
-                                            1000 permohonan
+                                            {{ $baharutaklulus }} permohonan
                                             gagal
                                         </small>
                                     </span>
@@ -285,12 +264,12 @@
                                         <strong>Pembaharuan</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $bilpembaharuan }}</span>
                                     <br>
                                     <span>
                                         <small>
                                             <i class="far fa-check-circle" style="color: rgb(123, 223, 84);"></i>
-                                            632 permohonan
+                                            {{ $pembaharuanlulus }} permohonan
                                             lulus
                                         </small>
                                     </span>
@@ -298,7 +277,7 @@
                                     <span>
                                         <small>
                                             <i class="far fa-times-circle" style="color: rgb(250, 82, 82);"></i>
-                                            1000 permohonan
+                                            {{ $pembaharuantaklulus }} permohonan
                                             gagal
                                         </small>
                                     </span>
@@ -321,12 +300,12 @@
                                         <strong>Pendua</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $bilpendua }}</span>
                                     <br>
                                     <span>
                                         <small>
                                             <i class="far fa-check-circle" style="color: rgb(123, 223, 84);"></i>
-                                            632 permohonan
+                                            {{ $pendualulus }} permohonan
                                             lulus
                                         </small>
                                     </span>
@@ -334,7 +313,7 @@
                                     <span>
                                         <small>
                                             <i class="far fa-times-circle" style="color: rgb(250, 82, 82);"></i>
-                                            1000 permohonan
+                                            {{ $penduataklulus }} permohonan
                                             gagal
                                         </small>
                                     </span>
@@ -357,12 +336,12 @@
                                         <strong>Rayuan</strong>
                                     </span>
                                     <br>
-                                    <span class="text-nowrap"> 2902</span>
+                                    <span class="text-nowrap"> {{ $bilrayuan }}</span>
                                     <br>
                                     <span>
                                         <small>
                                             <i class="far fa-check-circle" style="color: rgb(123, 223, 84);"></i>
-                                            632 permohonan
+                                            {{ $rayuanlulus }} permohonan
                                             lulus
                                         </small>
                                     </span>
@@ -370,7 +349,7 @@
                                     <span>
                                         <small>
                                             <i class="far fa-times-circle" style="color: rgb(250, 82, 82);"></i>
-                                            1000 permohonan
+                                            {{ $rayuantaklulus }} permohonan
                                             gagal
                                         </small>
                                     </span>

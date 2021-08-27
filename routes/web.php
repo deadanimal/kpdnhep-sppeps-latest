@@ -311,7 +311,8 @@ Route::resource('/tetapan-arkib-dokumen-senarai', SenaraidokumenController::clas
 Route::get('/tetapan-arkib-dokumen-senarai/{senaraidokumen}/delete', [SenaraidokumenController::class, 'destroy']);
 
 Route::resource('/tetapan-pengumuman', PengumumanController::class);
-Route::get('/tetapan-pengumuman/{pengumuman}/delete', [PengumumanController::class, 'destroy']);
+// Route::get('/tetapan-pengumuman/{pengumuman}/delete', [PengumumanController::class, 'destroy']);
+Route::delete('tetapan-pengumuman/{id}', [PengumumanController::class, 'delete'])->name('pengumumen.delete');
 
 Route::resource('/tetapan-banner', BannerController::class);
 Route::get('/tetapan-banner/{banner}/delete', [BannerController::class, 'destroy']);

@@ -50,7 +50,7 @@ class BannerController extends Controller
 
         $banner->save();
 
-        return redirect('/tetapan-banner');
+        return redirect('/tetapan-banner')->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -98,7 +98,7 @@ class BannerController extends Controller
     
         $banner->save();
         
-        return redirect('/tetapan-banner');
+        return redirect('/tetapan-banner')->with('success', 'Berjaya disimpan!');
     }
 
     /**

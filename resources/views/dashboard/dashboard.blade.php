@@ -5,7 +5,7 @@
     <div class="container-fluid py-4"
         style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
         <!-- <button type="button" class="btn btn-block btn-default mb-3" data-bs-toggle="modal" data-bs-target="#modal-form">Borang Profile</button>
-                                <a href="/kemaskini-profil">Kemaskini Profil</a> -->
+                                    <a href="/kemaskini-profil">Kemaskini Profil</a> -->
 
         <div class="container-fluid d-flex justify-content-center" style="height:700px">
             <div id="portalcontent">
@@ -16,7 +16,7 @@
                         <input type="hidden" name="jenis" value="baharu">
                         <div class="col">
                             <!-- actual upload which is hidden -->
-                            <input type="submit" id="actual-btn3" hidden />
+                            <input @if ($user->status_permohonan != null) disabled @endif type="submit" id="actual-btn3" hidden />
                             <!-- our custom upload button -->
                             <label for="actual-btn3" class="upload-btn mt-0">
                                 <div class="col p-3 d-flex align-items-start">
@@ -45,7 +45,7 @@
                         @csrf
                         <input type="hidden" name="jenis" value="pembaharuan">
 
-                        <input type="submit" id="actual-btn4" hidden />
+                        <input @if ($user->status_permohonan != "diluluskan") disabled @endif type="submit" id="actual-btn4" hidden />
                         <!-- our custom upload button -->
                         <label for="actual-btn4" class="upload-btn mt-0">
                             <div class="col p-3 d-flex align-items-start">
@@ -68,7 +68,7 @@
                         @csrf
                         <input type="hidden" name="jenis" value="pendua">
 
-                        <input type="submit" id="actual-btn5" hidden />
+                        <input type="submit" @if ($user->status_permohonan != "diluluskan") disabled @endif id="actual-btn5" hidden />
                         <!-- our custom upload button -->
                         <label for="actual-btn5" class="upload-btn mt-0">
                             <div class="col p-3 d-flex align-items-start">
@@ -90,7 +90,7 @@
                         @csrf
                         <input type="hidden" name="jenis" value="rayuan">
 
-                        <input type="submit" id="actual-btn6" hidden />
+                        <input @if ($user->status_permohonan != "tidak_diluluskan") disabled @endif type="submit" id="actual-btn6" hidden />
                         <!-- our custom upload button -->
                         <label for="actual-btn6" class="upload-btn mt-0">
                             <div class="col p-3 d-flex align-items-start">

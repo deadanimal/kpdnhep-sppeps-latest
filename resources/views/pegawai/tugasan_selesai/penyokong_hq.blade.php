@@ -9,7 +9,7 @@
                 <div class="p-3">
 
                     <div>
-                        <h5>Semakan Permohonan</h5>
+                        <h5>Sokongan Permohonan</h5>
                     </div>
 
                     <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -26,8 +26,31 @@
                                         <div class="row">
                                             <div class="col">
                                                 <input class="form-control form-control-sm" type="text" name="no_kp"
-                                                    id="no_kp" placeholder="No Kad Pengenalan" />
+                                                    placeholder="No Kad Pengenalan" />
                                             </div>
+
+                                            <div class="col">
+                                                <select class="form-control form-control-sm" name="negeri">
+                                                    <option value="null">--Pilih Negeri--</option>
+                                                    <option value="Perlis">Perlis</option>
+                                                    <option value="Kedah">Kedah</option>
+                                                    <option value="Pulau Pinang">Pulau Pinang</option>
+                                                    <option value="Perak">Perak</option>
+                                                    <option value="Selangor">Selangor</option>
+                                                    <option value="Melaka">Melaka</option>
+                                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                                    <option value="Johor">Johor</option>
+                                                    <option value="Pahang">Pahang</option>
+                                                    <option value="Terengganu">Terengganu</option>
+                                                    <option value="Kelantan">Kelantan</option>
+                                                    <option value="Sabah">Sabah</option>
+                                                    <option value="Sarawak">Sarawak</option>
+                                                    <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
+                                                    <option value="WP Putrajaya">W. P. Putrajaya</option>
+                                                    <option value="WP Labuan">W. P. Labuan</option>
+                                                </select>
+                                            </div>
+
                                             <div class="col">
                                                 <select class="form-control form-control-sm" name="jenis_permohonan">
                                                     <option value="null">Pilih Jenis Permohonan</option>
@@ -38,8 +61,8 @@
                                                 </select>
                                             </div>
                                             <div class="col">
-                                                <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"
-                                                    name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                                <button class="btn btn-sm btn-info text-uppercases text-white"
+                                                    type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
                                                 <a href="/tugasan-selesai" class="btn btn-sm btn-danger">Set Semula</a>
                                             </div>
                                         </div>
@@ -69,7 +92,7 @@
                                                         No.</th>
                                                     <th
                                                         class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                                        Tarikh Disemak</th>
+                                                        TARIKH Disemak</th>
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                         JENIS PERMOHONAN</th>
@@ -81,15 +104,19 @@
                                                         NO KAD PENGENALAN</th>
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                        Catatan </th>
+                                                        NEGERI</th>
+                                                    <th
+                                                        class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                        Catatan hq</th>
+
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                         Status</th>
-                                                    <th class="text-uppercase text-center text-secondary text-xs opacity-7">
-                                                        Tindakan</th>
+                                                    <!-- <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
+
                                                 @foreach ($permohonan as $permohonan)
                                                     <tr>
                                                         <td>
@@ -112,32 +139,27 @@
                                                                 class="text-secondary text-sm font-weight-bold">{{ $permohonan->no_kp }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->catatan_pelulus }}</span>
+                                                            <span class="text-secondary text-sm font-weight-bold">
+                                                                {{ $permohonan->negeri }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-
-                                                            @if ($permohonan->status_permohonan === 'Diluluskan')
-                                                                <span class="badge badge-success">
-                                                                    Diluluskan
-                                                                </span>
-                                                            @elseif($permohonan->status_permohonan === 'Tidak Diluluskan')
-                                                                <span class="badge badge-danger">Tidak
-                                                                    Diluluskan
-                                                                </span>
-                                                            @endif
-
+                                                            <span class="text-secondary text-sm font-weight-bold">
+                                                                {{ $permohonan->catatan_pegawai_hq }}</span>
                                                         </td>
-                                                        <td class="align-middle text-center">
-                                                            @if ($permohonan->status_permohonan !== 'hantar' && $permohonan->status_permohonan !== 'Permohonan Tidak Lengkap')
-                                                                <a href="">
-                                                                    <i class="fas fa-print"></i>
-                                                                </a>
+
+                                                        <td class="align-middle text-center text-sm">
+                                                            @if ($permohonan->status_permohonan === 'tidak_disokong_hq')
+                                                                <span class="badge badge-danger"> Tidak Disokong</span>
+                                                            @elseif ($permohonan->status_permohonan === "disokong_hq")
+                                                                <span class="badge badge-success"> Telah Disokong</span>
+                                                            @else
+                                                                <span class="badge badge-success"> Telah Disokong</span>
                                                             @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                        
+
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -149,8 +171,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
+
+    </div>
     <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
         type="text/javascript"></script>
     <script type="text/javascript">
@@ -159,4 +182,5 @@
             fixedHeight: true
         });
     </script>
+
 @stop

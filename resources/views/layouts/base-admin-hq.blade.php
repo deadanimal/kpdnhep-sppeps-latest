@@ -190,7 +190,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pemproses_negeri')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples4" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples1" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -222,7 +222,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Pemproses Negeri</span>
                             </a>
-                            <div class="collapse " id="basicExamples4">
+                            <div class="collapse " id="basicExamples1">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/pemproses_negeri_tugasan_baru">
@@ -240,17 +240,6 @@
                                                 Tugasan Selesai
                                             </span>
                                         </a>
-                                        {{-- <form method="POST" action="/pemproses_negeri_tugasan_selesai" class="nav-link">
-                                                @csrf
-                                                <input type="hidden" name="jenis_tindakan" value="pemproses_negeri">
-                                                <input type="submit" id="actual-btn10" hidden />
-                                                <label for="actual-btn10" class="upload-btn mt-0">
-                                                    <span class="sidenav-mini-icon"> TB </span>
-                                                    <span class="sidenav-normal">
-                                                        Tugasan Selesai
-                                                    </span>
-                                                </label>
-                                            </form> --}}
                                     </li>
                                 </ul>
                             </div>
@@ -261,7 +250,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'penyokong_negeri')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples3" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples2" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -293,7 +282,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Penyokong Negeri</span>
                             </a>
-                            <div class="collapse " id="basicExamples3">
+                            <div class="collapse " id="basicExamples2">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/penyokong_negeri_tugasan_baru">
@@ -331,7 +320,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pelulus_negeri')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples5" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples3" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -363,7 +352,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Pelulus Negeri</span>
                             </a>
-                            <div class="collapse " id="basicExamples5">
+                            <div class="collapse " id="basicExamples3">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/pelulus_negeri_tugasan_baru">
@@ -393,7 +382,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pemproses_hq')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples5" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples4" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -425,7 +414,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Pemproses HQ</span>
                             </a>
-                            <div class="collapse " id="basicExamples5">
+                            <div class="collapse " id="basicExamples4">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/pemproses_hq_tugasan_baru">
@@ -453,7 +442,7 @@
                 @foreach (auth()->user()->roles as $role2)
                     @if ($role2->name == 'penyokong_hq')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples6" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples5" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -485,7 +474,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Penyokong HQ</span>
                             </a>
-                            <div class="collapse " id="basicExamples6">
+                            <div class="collapse " id="basicExamples5">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/penyokong_hq_tugasan_baru">
@@ -533,7 +522,7 @@
                 @foreach (auth()->user()->roles as $role2)
                     @if ($role2->name == 'pelulus_hq')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples7" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples6" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -565,7 +554,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Pelulus HQ</span>
                             </a>
-                            <div class="collapse " id="basicExamples7">
+                            <div class="collapse " id="basicExamples6">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/pelulus_hq_tugasan_baru">
@@ -698,7 +687,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pentadbir_sistem')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples4" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples7" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -730,7 +719,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Pentadbiran Pegawai</span>
                             </a>
-                            <div class="collapse " id="basicExamples4">
+                            <div class="collapse " id="basicExamples7">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/peranan_pegawai">
@@ -753,7 +742,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pentadbir_sistem' || $role->name == 'pentadbir_pengurusan_maklumat')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples8" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -785,7 +774,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Pentadbiran CMS</span>
                             </a>
-                            <div class="collapse " id="basicExamples">
+                            <div class="collapse " id="basicExamples8">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/tetapan-arkib-bergambar">
@@ -827,7 +816,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pentadbir_pengurusan_maklumat')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples3" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples9" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -859,7 +848,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Audit Trails</span>
                             </a>
-                            <div class="collapse " id="basicExamples3">
+                            <div class="collapse " id="basicExamples9">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/log_pengguna">
@@ -885,7 +874,7 @@
                 @foreach (auth()->user()->roles as $role)
                     @if ($role->name == 'pentadbir_sistem')
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#basicExamples2" class="nav-link "
+                            <a data-bs-toggle="collapse" href="#basicExamples10" class="nav-link "
                                 aria-controls="basicExamples" role="button" aria-expanded="false">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -917,7 +906,7 @@
                                 </div>
                                 <span class="nav-link-text ms-1">Laporan dan Statistik</span>
                             </a>
-                            <div class="collapse " id="basicExamples2">
+                            <div class="collapse " id="basicExamples10">
                                 <ul class="nav ms-4 ps-3">
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/laporan-statistik/peratusan-kelulusan-permit">

@@ -50,7 +50,7 @@ class ArkibdokumenController extends Controller
 
         $arkibdokumen->save();
 
-        return redirect('/tetapan-arkib-dokumen');
+        return redirect('/tetapan-arkib-dokumen')->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -102,7 +102,7 @@ class ArkibdokumenController extends Controller
 
         $arkibdokumen->save();
 
-        return redirect('/tetapan-arkib-dokumen');
+        return redirect('/tetapan-arkib-dokumen')->with('success', 'Berjaya disimpan!');
     }
 
     /**

@@ -383,7 +383,9 @@
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Senarai Permit Lulus'
+                        title: 'Senarai Permit Lulus',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     // {
                     //     extend: 'printHtml5',

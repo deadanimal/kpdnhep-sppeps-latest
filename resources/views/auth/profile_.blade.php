@@ -121,6 +121,9 @@
                                 </div>
                                 <div class="text-center d-flex justify-content-end">
                                     <!-- <button type="button" class="btn btn-round bg-gradient-danger text-capitalize" data-bs-dismiss="modal">Batal</button> -->
+
+                                    <a href="/dashboard"
+                                        class="btn btn-round bg-gradient-info text-capitalize">Kembali Ke Menu Utama</a>
                                     <a href="/profil/{{ $pemohon->id }}"
                                         class="btn btn-round bg-gradient-info text-capitalize">Kemaskini Profil</a>
                                 </div>

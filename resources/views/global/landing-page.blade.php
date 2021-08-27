@@ -4,18 +4,94 @@
     <div class="container-fluid py-4"
         style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
         <div class="row">
-            <div id="myCarousel" class="carousel slide py-4" data-ride="carousel">
+
+
+
+
+
+
+            <div class="row">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        @foreach ($banlands as $banland)                        
+                            @if($loop->iteration == 1)
+                                <div class="carousel-item active">
+                            @else
+                                <div class="carousel-item">                                 
+                            @endif
+                                    <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('/storage/{{$banland->jalan}}');">
+
+                                    </div>
+                                </div>
+                            
+                        @endforeach
+                        {{-- <div class="carousel-item active">
+                            <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('/assets/img/banner/bf43e325-729b-4e25-81b2-739fdf1e0e52.jpg');">
+                                <span class="mask bg-gradient-dark"></span>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 my-auto">
+                                            <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Banner 2</h4>
+                                            <h1 class="text-white fadeIn2 fadeInBottom">Work with the best</h1>
+                                            <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">Free people make free choices. Free choices mean you get unequal outcomes. You can have freedom, or you can have equal outcomes. You can’t have both.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                        {{-- <div class="carousel-item active">
+                            <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1552793494-111afe03d0ca?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80');">
+                                <span class="mask bg-gradient-dark"></span>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 my-auto">
+                                            <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Banner 3</h4>
+                                            <h1 class="text-white fadeIn2 fadeInBottom">Work from home</h1>
+                                            <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">You’re spending time to save money when you should be spending money to save time.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="min-vh-75 position-absolute w-100 top-0">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon position-absolute bottom-50" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon position-absolute bottom-50" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
+                </div>
+        
+            </div>
+
+
+
+            {{-- <div id="myCarousel" class="carousel slide py-4" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 </ol>
                 <div class="carousel-inner">
-                    @foreach ($banlands as $key=>$banland)
-                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                            <div class="page-header min-vh-50 m-3 border-radius-xl">
-                                <img src="/storage/{{ $banland->jalan }}" class="d-block w-100" alt="..."
-                                    style="max-height: 400px">
-                            </div>
+
+                    <div class="carousel-item active">
+                        <div class="page-header min-vh-50 m-3 border-radius-xl">
+                            <img src="https://cdn.pixabay.com/photo/2021/08/19/16/31/flowers-6558487_1280.jpg" class="d-block w-100" alt="..."
+                                style="max-height: 400px">
                         </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="page-header min-vh-50 m-3 border-radius-xl">
+                            <img src="https://cdn.pixabay.com/photo/2021/08/17/21/03/sheep-6554180_1280.jpg" class="d-block w-100" alt="..."
+                                style="max-height: 400px">
+                        </div>
+                    </div>                    
+                    @foreach ($banlands as $key=>$banland)
+
                     @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -26,7 +102,7 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="container-fluid px-3">
@@ -117,3 +193,4 @@
 
         </div>
     @stop
+

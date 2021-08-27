@@ -293,11 +293,11 @@
                                                                 <div class="form-group">
                                                                     <label for="title">Kategori</label>
                                                                     <select name="kategori_id" class="form-control">
-                                                                        <option hidden selected>{{ $faq->nama_kategori_bm }}
+                                                                        <option hidden selected>
+                                                                            {{ $faq->nama_kategori_bm }}
                                                                         </option>
                                                                         @foreach ($kategorifaqs as $kategorifaq)
-                                                                            <option
-                                                                                value="{{ $kategorifaq->id }}">
+                                                                            <option value="{{ $kategorifaq->id }}">
                                                                                 {{ $kategorifaq->nama_kategori_bm }}
                                                                             </option>
                                                                         @endforeach
@@ -524,4 +524,7 @@
             fixedHeight: true
         });
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
+
 @stop

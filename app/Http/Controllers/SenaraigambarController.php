@@ -102,7 +102,7 @@ class SenaraigambarController extends Controller
 
         $senaraigambars = Senaraigambar::where('id_arkibgambar', $request->id_arkibgambar)->get();
 
-        return redirect('/tetapan-arkib-bergambar/'. $request->id_arkibgambar);
+        return redirect('/tetapan-arkib-bergambar/'. $request->id_arkibgambar)->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -194,7 +194,7 @@ class SenaraigambarController extends Controller
         $senaraigambars = Senaraigambar::where('id_arkibgambar', $request->id_arkibgambar)->get();
 
        
-        return redirect('/tetapan-arkib-bergambar/'.$request->id_arkibgambar);
+        return redirect('/tetapan-arkib-bergambar/'.$request->id_arkibgambar)->with('success', 'Berjaya disimpan!');
     }
 
     /**

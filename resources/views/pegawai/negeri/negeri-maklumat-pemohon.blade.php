@@ -802,7 +802,7 @@
                                         </div>
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/pemproses_negeri_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
@@ -924,7 +924,7 @@
 
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/penyokong_negeri_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
@@ -1037,7 +1037,7 @@
                                         </div>
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/pelulus_negeri_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>

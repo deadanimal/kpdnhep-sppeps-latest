@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -50,7 +51,7 @@ class PengumumanController extends Controller
 
         $pengumuman->save();
 
-        return redirect('/tetapan-pengumuman');
+        return redirect('/tetapan-pengumuman')->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -86,7 +87,7 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, Pengumuman $pengumuman)
     {
-        $pengumuman= Pengumuman::find($request->id);
+        $pengumuman = Pengumuman::find($request->id);
         // dd($pengumuman);
         $pengumuman->tajuk_bm = $request->tajuk_bm;
         $pengumuman->tajuk_en = $request->tajuk_en;
@@ -98,7 +99,7 @@ class PengumumanController extends Controller
 
         $pengumuman->save();
 
-        return redirect('tetapan-pengumuman');
+        return redirect('tetapan-pengumuman')->with('success', 'Berjaya disimpan!');
     }
 
     /**

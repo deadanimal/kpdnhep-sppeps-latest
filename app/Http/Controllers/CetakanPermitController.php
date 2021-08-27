@@ -86,6 +86,11 @@ class CetakanPermitController extends Controller
         $permohonan->cetak_status = 1;
         $permohonan->save();
 
+        $user = User::find($permohonan->user_id);
+        $user->status_permohonan = "diluluskan";
+        $user->save();
+        // dd($user);
+
         $pdf = PDF::loadView('pdf.cetak_permit', [
             'masa' => time(),
             'permohonan' => $permohonan

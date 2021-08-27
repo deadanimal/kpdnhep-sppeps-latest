@@ -11,7 +11,6 @@
             </div>
 
             <div class="pt-4">
-
                 <div class="card card-frame">
                     <div class="card-header" style="background-color: #f5e7f2;">
                         <h6 class="text-capitalize ">maklumat permohonan</h6>
@@ -789,7 +788,7 @@
                                         </div>
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/pemproses_hq_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-1">HANTAR</button>
@@ -869,7 +868,7 @@
                                         </div>
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/pemproses_hq_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>
@@ -951,7 +950,7 @@
                                         </div>
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/pemproses_hq_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-3">HANTAR ke
@@ -1180,7 +1179,7 @@
                                         </div>
 
                                         <div class="p-3 d-flex justify-content-center">
-                                            <a href="/permohonan" type="button"
+                                            <a href="/pelulus_hq_tugasan_baru" type="button"
                                                 class="btn btn-danger text-uppercase m-1">BATAL</a>
                                             <button type="button" class="btn btn-success text-uppercase m-1"
                                                 data-bs-toggle="modal" data-bs-target="#modal-4">HANTAR</button>

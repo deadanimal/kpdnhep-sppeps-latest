@@ -261,4 +261,7 @@
             arkibdokumenChosen2.textContent = this.files[0].name
         })
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
+    
 @stop

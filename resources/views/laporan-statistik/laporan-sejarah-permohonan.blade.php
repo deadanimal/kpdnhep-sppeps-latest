@@ -152,7 +152,7 @@
                                                     Negeri</th>
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Jenis Permohonan</th>
+                                                    Status Permohonan</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                                                     Tarikh Hantar Permohonan</th>
@@ -172,7 +172,7 @@
                                                     <td class="text-sm font-weight-normal">{{ $sejarah->negeri }}
                                                     </td>
                                                     <td class="text-sm font-weight-normal">
-                                                        {{ $sejarah->jenis_permohonan }}
+                                                        {{ $sejarah->status_permohonan }}
                                                     </td>
                                                     <td class="text-sm font-weight-normal">{{ $sejarah->updated_at }}
                                                     </td>

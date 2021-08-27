@@ -10,10 +10,15 @@ class LandingController extends Controller
 {
     public function landing(){
 
-        $pengland = Pengumuman::where('status', 'aktif')->get();
+        $now = date('Y-m-d');
+        $pengland = Pengumuman::where('status', 'aktif')
+        ->whereDate('tarikh_mula', '<', $now)
+        ->whereDate('tarikh_akhir', '>', $now)
+        ->get();
+
         $bannerland = Banner::where('status', 'aktif')->get();
 
-        // dd($bannerland);
+        // dd($pengland);
         return view('global.landing-page',[
             'penglands' => $pengland,
             'banlands' => $bannerland

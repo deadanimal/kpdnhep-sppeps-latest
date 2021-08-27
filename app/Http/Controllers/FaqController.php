@@ -73,7 +73,7 @@ class FaqController extends Controller
             // $faq = Faq::where('kategori_id', $request->kategori_id)->get();
         }
 
-        return redirect('/tetapan-faq');
+        return redirect('/tetapan-faq')->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -137,7 +137,7 @@ class FaqController extends Controller
             $faq->save();
         }
 
-        return redirect('/tetapan-faq');
+        return redirect('/tetapan-faq')->with('success', 'Berjaya disimpan!');
     }
 
     /**

@@ -5,8 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
-class User1Seeder extends Seeder
+class RoleUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +16,9 @@ class User1Seeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            
+        DB::table('role_user')->insert([
+            'user_id' => 1,
+            'role_id' => 7
         ]);
     }
 }

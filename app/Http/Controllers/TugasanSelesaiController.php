@@ -338,6 +338,12 @@ class TugasanSelesaiController extends Controller
         ])->orwhere([
             ['status_permohonan', '=', 'tidak_disokong_hq']
         ])->orwhere([
+            ['status_permohonan', '=', 'hantar_ke_penyokong_negeri']
+        ])->orwhere([
+            ['status_permohonan', '=', 'disokong_negeri']
+        ])->orwhere([
+            ['status_permohonan', '=', 'tidak_disokong_negeri']
+        ])->orwhere([
             ['status_permohonan', '=', 'Diluluskan']
         ])->orwhere([
             ['status_permohonan', '=', 'Tidak Diluluskan']
@@ -357,11 +363,6 @@ class TugasanSelesaiController extends Controller
     {
         // dd($request);
         $user = $request->user();
-        $user_role = $user->role;
-        $user_id = $user->id;
-        $user_roles = $user->roles;
-        $user_negeri = $user->negeri;
-
         // dd($request);
 
         $permohonan = Permohonan::where([

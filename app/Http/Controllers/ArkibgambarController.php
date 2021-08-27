@@ -50,7 +50,7 @@ class ArkibgambarController extends Controller
 
         $arkibgambar->save();
 
-        return redirect('/tetapan-arkib-bergambar');
+        return redirect('/tetapan-arkib-bergambar')->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -102,7 +102,7 @@ class ArkibgambarController extends Controller
 
         $arkibgambar->save();
 
-        return redirect('/tetapan-arkib-bergambar');
+        return redirect('/tetapan-arkib-bergambar')->with('success', 'Berjaya disimpan!');
     }
 
     /**
