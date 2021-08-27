@@ -186,12 +186,12 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">Nama MS</label>
-                                        <input type="text" class="form-control" name="nama_ms" placeholder="">
+                                        <input type="text" class="form-control" name="nama_ms">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="title">Nama EN</label>
-                                        <input type="text" class="form-control" name="nama_en" placeholder="">
+                                        <input type="text" class="form-control" name="nama_en">
                                     </div>
 
                                     <div class="form-group">
