@@ -121,7 +121,7 @@
                                                             <div class="col form-group pr-0 text-start">
                                                                 <label for="noPermit"><i class="fas fa-id-card"></i><strong>
                                                                         No. Permit</strong></label>
-                                                                <input type="text" class="form-control" value=""
+                                                                <input type="text" class="form-control" value="{{ $pemohon->no_permit }}"
                                                                     name="no_permit" readonly>
                                                             </div>
 

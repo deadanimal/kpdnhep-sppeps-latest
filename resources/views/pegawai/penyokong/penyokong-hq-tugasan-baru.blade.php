@@ -12,7 +12,7 @@
             @endforeach --}}
 
         <div>
-            <h5>Semakan Permohonan</h5>
+            <h5>Sokongan Permohonan</h5>
         </div>
 
         <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -24,7 +24,7 @@
 
                 <div class="card-body p-3">
                     <div class="row p-3 mb-0">
-                        <form method="POST" action="/cari">
+                        <form method="POST" action="/cari_penyokong_hq_tugasan_baru">
                             @csrf
                             <div class="row">
                                 <div class="col">

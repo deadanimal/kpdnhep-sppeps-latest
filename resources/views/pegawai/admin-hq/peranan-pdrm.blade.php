@@ -48,20 +48,7 @@
                     </div>
 
                     <div class="card-body p-3">
-                        <div class="row p-3 mb-0">
-                            <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                                <label class="d-flex flex-nowrap mb-0">
-                                    <span class="pl-0 p-2">Papar</span>
-                                    <select name="datatable_length" aria-controls="datatable"
-                                        class="col form-control form-control-sm" (change)="entriesChange($event)">
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="15">15</option>
-                                        <option value="-1">All</option>
-                                    </select>
-                                    <span class="p-2">rekod</span>
-                                </label>
-                            </div>
+                        <div class="row p-3 pb-0 mb-0">
                             <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
                                 <a class="btn btn-sm bg-gradient-info" data-bs-toggle="modal"
                                     data-bs-target="#modal-form"><i class="fas fa-plus-circle"></i> Tambah</a>
@@ -71,7 +58,7 @@
 
                         <div class="card">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center mb-0" id="datatable-basic">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
@@ -332,6 +319,13 @@
         </div>
     </div>
 
-
+    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+            searchable: false,
+            fixedHeight: true
+        });
+    </script>
 
 @stop

@@ -28,4 +28,8 @@ class ChangePasswordController extends Controller
 
         return redirect('/dashboard');
     }
+
+    public function tukar_password_pegawai(){
+        return view('auth.change-password-pegawai');
+    }
 }

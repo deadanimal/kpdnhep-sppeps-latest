@@ -122,8 +122,8 @@
                                 <div class="text-center d-flex justify-content-end">
                                     <!-- <button type="button" class="btn btn-round bg-gradient-danger text-capitalize" data-bs-dismiss="modal">Batal</button> -->
 
-                                    <a href="/dashboard"
-                                        class="btn btn-round bg-gradient-info text-capitalize">Kembali Ke Menu Utama</a>
+                                    <a href="/dashboard" class="btn btn-round bg-gradient-info text-capitalize">Kembali Ke
+                                        Menu Utama</a>
                                     <a href="/profil/{{ $pemohon->id }}"
                                         class="btn btn-round bg-gradient-info text-capitalize">Kemaskini Profil</a>
                                 </div>
@@ -138,61 +138,62 @@
 
 
             <!-- <div class="card-body">
-                                        <div class="container mt-4">
-                                            <h3>Daftar Akaun 2</h3>
-                                        </div>
-
-                                        <form method="POST" action="">
-                                            @csrf
-
-
                                             <div class="container mt-4">
-
-                                            <div class="form-group mt-3">
-                                                    <label for="nric">Nama</label>
-                                                    <input type="text" class="form-control" name="nric" placeholder="" disabled>
-                                                </div>
-
-                                                <div class="form-group mt-3">
-                                                    <label for="nric">No. Kad Penganalan</label>
-                                                    <input type="text" class="form-control" name="nric" placeholder="" disabled>
-                                                </div>
-
-                                                <div class="form-group mt-3">
-                                                    <label for="nric">Umur</label>
-                                                    <input type="text" class="form-control" name="nric" placeholder="" disabled>
-                                                </div>
-
-                                                <div class="form-group mt-3">
-                                                    <label for="nric">Tarikh Lahir</label>
-                                                    <input type="text" class="form-control" name="nric" placeholder="" disabled>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="email">E-mel</label>
-                                                    <input type="email" class="form-control" id="email" placeholder="abc123@gmail.com" disabled>
-                                                </div>
-
-                                                <div class="form-group mt-3">
-                                                    <label for="nric">Jantina</label>
-                                                    <input type="text" class="form-control" name="nric" placeholder="">
-                                                </div>
-                                               
-                                                <div class="form-group mt-3">
-                                                    <div class="input-group mb-4">
-                                                        <input type="submit" class="btn bg-gradient-info btn-lg w-100">
-                                                    </div>
-                                                </div>
-
+                                                <h3>Daftar Akaun 2</h3>
                                             </div>
-                                        </form>
 
-                                    </div> -->
+                                            <form method="POST" action="">
+                                                @csrf
+
+
+                                                <div class="container mt-4">
+
+                                                <div class="form-group mt-3">
+                                                        <label for="nric">Nama</label>
+                                                        <input type="text" class="form-control" name="nric" placeholder="" disabled>
+                                                    </div>
+
+                                                    <div class="form-group mt-3">
+                                                        <label for="nric">No. Kad Penganalan</label>
+                                                        <input type="text" class="form-control" name="nric" placeholder="" disabled>
+                                                    </div>
+
+                                                    <div class="form-group mt-3">
+                                                        <label for="nric">Umur</label>
+                                                        <input type="text" class="form-control" name="nric" placeholder="" disabled>
+                                                    </div>
+
+                                                    <div class="form-group mt-3">
+                                                        <label for="nric">Tarikh Lahir</label>
+                                                        <input type="text" class="form-control" name="nric" placeholder="" disabled>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="email">E-mel</label>
+                                                        <input type="email" class="form-control" id="email" placeholder="abc123@gmail.com" disabled>
+                                                    </div>
+
+                                                    <div class="form-group mt-3">
+                                                        <label for="nric">Jantina</label>
+                                                        <input type="text" class="form-control" name="nric" placeholder="">
+                                                    </div>
+                                                   
+                                                    <div class="form-group mt-3">
+                                                        <div class="input-group mb-4">
+                                                            <input type="submit" class="btn bg-gradient-info btn-lg w-100">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+
+                                        </div> -->
         </div>
 
     </div>
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
 
 
 @stop

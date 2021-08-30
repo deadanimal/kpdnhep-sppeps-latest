@@ -9,7 +9,7 @@
                 <div class="p-3">
 
                     <div>
-                        <h5>Semakan Permohonan</h5>
+                        <h5>Sokongan Permohonan</h5>
                     </div>
 
                     <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -21,7 +21,7 @@
 
                             <div class="card-body p-3">
                                 <div class="row p-3 mb-0">
-                                    <form method="POST" action="/cari-tugasan-selesai">
+                                    <form method="POST" action="/cari_penyokong_negeri_tugasan_selesai">
                                         @csrf
                                         <div class="row">
                                             <div class="col">
@@ -40,7 +40,7 @@
                                             <div class="col">
                                                 <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"
                                                     name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                                <a href="/tugasan-selesai" class="btn btn-sm btn-danger">Set Semula</a>
+                                                <a href="/penyokong_negeri_tugasan_selesai" class="btn btn-sm btn-danger">Set Semula</a>
                                             </div>
                                         </div>
                                     </form>

@@ -16,21 +16,20 @@ class DashboardController extends Controller
     {
         $user = $request->user();
         $role = $user->role;
-        
+
         if ($role == 'pemohon') {
             $user = User::find($user->id);
             // dd($user);
-            if($user->profil_update == 0){
-                return redirect("/profil/".$user->id);
-            } else{
+            if ($user->profil_update == 0) {
+                return redirect("/profil/" . $user->id);
+            } else {
 
                 $user = User::find($user->id);
                 // dd($user);
-                return view('dashboard.dashboard',[
+                return view('dashboard.dashboard', [
                     'user' => $user
                 ]);
             }
-            
         } else {
 
             $permohonan = Permohonan::all();
@@ -60,10 +59,11 @@ class DashboardController extends Controller
                 ->count();
 
             $dalamprosesbaharu = DB::table('permohonans')
-                ->where('status_permohonan', '!=', 'Diluluskan')
-                ->orWhere('status_permohonan', '!=', 'Tidak Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Baharu')
-                ->count();
+                ->where([
+                    ['status_permohonan', '!=', 'Diluluskan'], ['jenis_permohonan', '=', 'Baharu']
+                ])->orWhere([
+                    ['status_permohonan', '!=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Baharu']
+                ])->count();
 
             $dalamprosespembaharuan = DB::table('permohonans')
                 ->where('status_permohonan', '!=', 'Diluluskan')

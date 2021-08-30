@@ -20,28 +20,6 @@
 
     </style>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                $("#hide").click(function() {
-                                    $("#1").hide();
-                                    $("#2").show();
-                                });
-                                $("#show").click(function() {
-                                    $("#1").show();
-                                    $("#2").hide();
-                                });
-                            });
-                        </script> -->
-
-    <!-- <body>
-
-                            <p id="1" style="display: none;">Area 1</p>
-                            <p id="2" style="display: none;">Second area</p>
-
-                            <button id="show">Area 1</button>
-                            <button id="hide">Second Area</button> -->
-
 
     <div class=" ">
 
@@ -142,7 +120,7 @@
                                                             <div class="col form-group pr-0 text-start">
                                                                 <label for="noPermit"><i class="fas fa-id-card"></i><strong>
                                                                         No. Permit</strong></label>
-                                                                <input type="text" class="form-control" value=""
+                                                                <input type="text" class="form-control" value="{{ $pemohon->no_permit }}"
                                                                     name="no_permit" readonly>
                                                             </div>
 

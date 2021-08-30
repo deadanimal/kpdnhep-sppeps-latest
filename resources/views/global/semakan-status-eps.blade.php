@@ -1,7 +1,7 @@
 @extends('layouts.baseUser')
 
 @section('content')
-<div class="container-fluid py-4 d-flex justify-content-center flex-wrap">
+<div class="container-fluid py-4 d-flex justify-content-center flex-wrap" style="height: 100vh; max-height:600px">
     <div class="row">
         <div class="p-2 text-capitalize">
             <h5 class="h3 text-dark pt-4 text-center"><strong>Semakan Status EPS</strong></h5>

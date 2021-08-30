@@ -60,12 +60,6 @@
                                                         class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                                         No.</th>
                                                     <th
-                                                        class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                                        TARIKH PERMOHONAN</th>
-                                                    <th
-                                                        class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                        JENIS PERMOHONAN</th>
-                                                    <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                         NAMA PEMOHON</th>
                                                     <th
@@ -74,8 +68,6 @@
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                         NEGERI</th>
-                                                    <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">catatan</th> -->
-                                                    <!-- <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">TINDAKAN PEGAWAI</th> -->
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                         Status</th>
@@ -84,45 +76,45 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($permohonan as $permohonan)
+                                                @foreach ($pemohon as $pemohon)
                                                     <tr>
                                                         <td>
-                                                            <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                        </td>
-                                                        <td>
                                                             <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->created_at }}</span>
+                                                                class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                                         </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span class="text-secondary text-sm font-weight-bold">
-                                                                {{ $permohonan->jenis_permohonan }}
-                                                            </span>
-                                                        </td>
+
                                                         <td class="align-middle text-center text-sm">
                                                             <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->nama }}</span>
+                                                                class="text-secondary text-sm font-weight-bold">{{ $pemohon->name }}</span>
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->no_kp }}</span>
+                                                                class="text-secondary text-sm font-weight-bold">{{ $pemohon->no_kp }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
-                                                                {{ $permohonan->negeri }}</span>
+                                                                {{ $pemohon->negeri }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-success"> Diluluskan</span>
+                                                            @if ($pemohon->negeri === 'diluluskan')
+                                                                <span class="badge badge-success"> Diluluskan</span>
+                                                            @elseif ($pemohon->negeri === 'tidak_diluluskan')
+                                                                <span class="badge badge-danger">Tidak Diluluskan</span>
+                                                            @else
+                                                                <span class="badge badge-secondary">Dalam Proses</span>
+                                                            @endif
+
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             <button class="btn btn-sm btn-danger btn-sm"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#modal-form2-{{ $permohonan->id }}">
-                                                                Batal Permit
+                                                                data-bs-target="#modal-form2-{{ $pemohon->id }}">
+                                                                Senarai Hitam
                                                             </button>
                                                         </td>
                                                     </tr>
 
-                                                    <div class="modal fade" id="modal-form2-{{ $permohonan->id }}"
+                                                    <div class="modal fade" id="modal-form2-{{ $pemohon->id }}"
                                                         tabindex="-1" role="dialog" aria-labelledby="modal-form"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-md"
@@ -133,10 +125,11 @@
                                                                         <div class="card-header pb-0 text-left">
                                                                             <h3
                                                                                 class="h4 font-weight-bolder text-info text-gradient">
-                                                                                Pembatalan Permit</h3>
+                                                                                Senarai Hitam</h3>
                                                                         </div>
                                                                         <div class="card-body">
-                                                                            <form method="POST" action="/permohonan/{{ $permohonan->id }}"
+                                                                            <form method="POST"
+                                                                                action="/senarai-hitam/{{ $pemohon->id }}"
                                                                                 role="form text-left">
                                                                                 @csrf
                                                                                 @method('PUT')
@@ -153,7 +146,8 @@
 
                                                                                 </div>
                                                                                 {{-- <input type="hidden" name="id" value="{{ $permohonan->id }}"> --}}
-                                                                                <input type="hidden" name="jenis_tindakan" value="tambah_senarai_hitam">
+                                                                                <input type="hidden" name="jenis_tindakan"
+                                                                                    value="tambah_senarai_hitam">
 
                                                                                 <div class="d-flex justify-content-end">
                                                                                     <button type="button"

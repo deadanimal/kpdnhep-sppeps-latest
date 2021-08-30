@@ -1,7 +1,7 @@
 @extends('layouts.baseUser')
 
 @section('content')
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4" style="height: 100vh;">
         <div class="row">
             <div class="p-2 text-capitalize">
                 <h5 class="h3 text-dark pt-4 text-center"><strong> Arkib Bergambar</strong></h5>

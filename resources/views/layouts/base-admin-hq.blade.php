@@ -1101,14 +1101,14 @@
                             <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
                                 aria-labelledby="dropdownMenuButton">
                                 <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <a class="dropdown-item border-radius-md" href="/profil_pegawai">
                                         <div class="d-flex py-1">
                                             <span class="d-sm-inline d-none text-dark">Profil</span>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan_pegawai">
                                         <div class="d-flex py-1">
                                             <span class="d-sm-inline d-none text-dark">Tukar Kata Laluan</span>
                                         </div>

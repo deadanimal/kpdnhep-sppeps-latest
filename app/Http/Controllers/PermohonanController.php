@@ -479,6 +479,8 @@ class PermohonanController extends Controller
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses HQ';
                         $audit->save();
+
+                        
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
                         $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
@@ -493,7 +495,6 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
-                        // $audit->description = $user->name. ' loggedin.';
                         $audit->save();
                     }
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
@@ -751,7 +752,6 @@ class PermohonanController extends Controller
 
                     $user->status_permohonan = "tidak_diluluskan";
                     $user->save();
-
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
@@ -1089,7 +1089,6 @@ class PermohonanController extends Controller
 
     public function cari(Request $request)
     {
-        // dd($request);
         $user = $request->user();
         $user_role = $user->role;
 
@@ -1221,7 +1220,7 @@ class PermohonanController extends Controller
                     ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'Dalam Proses'],
                 ])->get();
             }
-            return view('pegawai.hq.hq-tugasan-baru', [
+            return view('pegawai.pdrm.pdrm-tugasan-baru', [
                 'permohonan' => $permohonans,
             ]);
         }

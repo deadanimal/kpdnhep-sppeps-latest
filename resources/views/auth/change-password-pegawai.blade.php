@@ -1,6 +1,6 @@
 
 
-@extends('layouts.baseUser')
+@extends('layouts.base-admin-hq')
 
 @section('content')
 

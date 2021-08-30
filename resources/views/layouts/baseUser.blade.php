@@ -64,6 +64,10 @@
             opacity: 0 !important
         }
 
+        /* body{
+            height: 100vh;
+        } */
+        
     </style>
     <script>
         (function(a, s, y, n, c, h, i, d, e) {
@@ -105,7 +109,7 @@
         ga('linker:autoLink', ["2checkout.com", "avangate.com"]);
     </script>
     <!-- end Analytics-Optimize Snippet -->
-   
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -122,25 +126,25 @@
             <!-- id="navbarBlur" -->
             {{-- <ul class="navbar-nav mx-auto d-flex align-items-center">
                 <li class="nav-item mx-2"> --}}
-                    {{-- <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150"> --}}
-                {{-- </li>
+            {{-- <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150"> --}}
+            {{-- </li>
             </ul> --}}
             {{-- <br> --}}
 
-            @can('isPemohon')
+            {{-- @can('isPemohon')
                 <a href="/dashboard" class="text-white">
                     <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
                     <br>
                     <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
                 </a>
 
-            @else
-                <a href="/" class="text-white  pl-3">
-                    <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
-                    <br>
-                    <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
-                </a>
-            @endcan
+            @else --}}
+            <a href="/" class="text-white  pl-3">
+                <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
+                <br>
+                <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
+            </a>
+            {{-- @endcan --}}
 
             <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
                 <li class="nav-item dropdown dropdown-hover mx-2">
@@ -227,13 +231,14 @@
                             <li class="mb-2">
                                 <form method="POST" action="/logout">
                                     @csrf
-                                    <a class="dropdown-item border-radius-md" href="#" onclick="event.preventDefault();
-                                                                                    this.closest('form').submit();">
+                                    <a class="dropdown-item border-radius-md" href="#"
+                                        onclick="event.preventDefault();
+                                                                                            this.closest('form').submit();">
                                         <div class="d-flex py-1">
 
 
                                             <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                                    this.closest('form').submit();"> -->
+                                                                                            this.closest('form').submit();"> -->
                                             {{ __('Log Out') }}
                                             <!-- </x-dropdown-link> -->
 

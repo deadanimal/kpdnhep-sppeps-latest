@@ -70,13 +70,25 @@ class ProfilController extends Controller
         $user->save();
 
         if($profil_update == 0){
-            return redirect("/dashboard");
+            return redirect("/dashboard")->with('success', 'Profil berjaya disimpan!');
         }else{
-            return redirect('/profil');
+            return redirect('/profil')->with('success', 'Profil berjaya disimpan!');
         }
-
-        
     }
+
+    public function profil_pegawai(User $user, Request $request)
+    {
+        $user = $request->user();
+        $user_id = $user->id;
+
+        $user = User::find($user_id);
+        // dd($user);
+
+        return view('auth.profil-pegawai', [
+            'user' => $user
+        ]);
+    }
+
 
     public function login_insid(LoginRequest $request)
     {
@@ -188,22 +200,4 @@ class ProfilController extends Controller
         return redirect("/login_");
     }
 
-    public function tukar_kata_laluan(Request $request){
-        
-        $user = $request->user();
-        $password = $user->password;
-
-        $current_pass = Hash::make($request->cur_pass);
-        $new_pass = Hash::make($request->new_pass);
-        $confirm_new_pass = Hash::make($request->confirm_new_pass);
-
-        // dd($current_pass );
-
-        if($current_pass == $password){
-
-        }
-        else {
-            return back()->with('error', 'Harap Maaf! Sila masukkan kata laluan asal anda');
-        }
-    }
 }

@@ -163,8 +163,6 @@ class JenisTugasanControiller extends Controller
         ]);
     }
 
-    
-
     public function tugasan_baru_pemproses_hq(Request $request)
     {
         $permohonan = Permohonan::where([
@@ -180,7 +178,52 @@ class JenisTugasanControiller extends Controller
 
     public function cari_tugasan_baru_pemproses_hq(Request $request)
     {
-        
+        if ($request->no_kp == null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+            $permohonans = Permohonan::where([
+                ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan == "null") {
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        } else {
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_pemproses_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disemak pdrm'],
+            ])->get();
+        }
+        return view('pegawai.hq.hq-tugasan-baru', [
+            'permohonan' => $permohonans,
+        ]);
     }
 
 
@@ -188,17 +231,52 @@ class JenisTugasanControiller extends Controller
     {
         // dd($request);
         $user = $request->user();
-        $user_role = $user->role;
-        $user_id = $user->id;
-        $user_roles = $user->roles;
-        $user_negeri = $user->negeri;
 
         $permohonan = Permohonan::where([
             ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
         ])->get();
 
-        return view('pegawai.hq.hq-tugasan-baru', [
+        return view('pegawai.penyokong.penyokong-hq-tugasan-baru', [
             'permohonan' => $permohonan
+        ]);
+    }
+
+    public function cari_tugasan_baru_penyokong_hq(Request $request)
+    {
+        if ($request->no_kp == null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+            $permohonans = Permohonan::where([
+                ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan == "null") {
+
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        } else {
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+            ])->get();
+        }
+        return view('pegawai.penyokong.penyokong-hq-tugasan-baru', [
+            'permohonan' => $permohonans,
         ]);
     }
 
@@ -215,8 +293,62 @@ class JenisTugasanControiller extends Controller
         ])->orWhere([
             ['status_permohonan', '=', 'tidak_disokong_hq']
         ])->get();
-        return view('pegawai.hq.hq-tugasan-baru', [
+        return view('pegawai.pelulus.pelulus-hq-tugasan-baru', [
             'permohonan' => $permohonan
+        ]);
+    }
+
+    public function cari_tugasan_baru_pelulus_hq(Request $request)
+    {
+        if ($request->no_kp == null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+
+        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+            $permohonans = Permohonan::where([
+                ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan != "null") {
+            $permohonans = Permohonan::where([
+                ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan == "null") {
+
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
+
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+        } else if ($request->no_kp != null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
+
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+        } else {
+            $permohonans = Permohonan::where([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disokong_hq']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'tidak_disokong_hq']
+            ])->get();
+        }
+        return view('pegawai.pelulus.pelulus-hq-tugasan-baru', [
+            'permohonan' => $permohonans,
         ]);
     }
 }

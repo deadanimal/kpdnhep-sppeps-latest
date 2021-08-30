@@ -21,7 +21,7 @@
 
                             <div class="card-body p-3">
                                 <div class="row p-3 mb-0">
-                                    <form method="POST" action="/cari-tugasan-selesai">
+                                    <form method="POST" action="/cari_penyokong_hq_tugasan_selesai">
                                         @csrf
                                         <div class="row">
                                             <div class="col">
@@ -63,7 +63,7 @@
                                             <div class="col">
                                                 <button class="btn btn-sm btn-info text-uppercases text-white"
                                                     type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                                <a href="/tugasan-selesai" class="btn btn-sm btn-danger">Set Semula</a>
+                                                <a href="/penyokong_hq_tugasan_selesai" class="btn btn-sm btn-danger">Set Semula</a>
                                             </div>
                                         </div>
                                     </form>

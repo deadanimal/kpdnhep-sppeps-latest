@@ -10,80 +10,85 @@ class SenaraiHitamController extends Controller
 {
     public function index(Request $request)
     {
-        $permohonan = User::where('status_permohonan', 'disenarai hitam')->get();
+        $pemohon = User::where([
+            ['status_permohonan', 'disenarai_hitam'],
+            ['role', 'pemohon'],
+        ])->get();
 
         return view('pegawai.hq.hq-senarai-hitam', [
-            'permohonan' => $permohonan
+            'pemohon' => $pemohon
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pemohon = User::find($id);
+
+        if ($request->jenis_tindakan == "tambah_senarai_hitam") {
+
+            $pemohon->status_permohonan = "disenarai_hitam";
+            $pemohon->catatan_senarai_hitam = $request->catatan_senarai_hitam;
+            $pemohon->save();
+
+            return redirect('/senarai-hitam')->with('success', 'Berjaya senarai hitam!');
+
+        } else {
+            $pemohon->catatan_senarai_hitam = $request->catatan_senarai_hitam;
+            $pemohon->save();
+
+            return redirect('/senarai-hitam')->with('success', 'Catatan berjaya disimpan!');
+        }
+    }
+
+    public function carisenaraihitam(Request $request)
+    {
+        $negeri = $request->negeri;
+        $no_kp = $request->no_kp;
+
+        if ($no_kp != null && $negeri == "null") {
+            $pemohon = User::where([
+                ['no_kp', '=', $no_kp], ['role', '=', 'pemohon'], ['status_permohonan', '=', 'disenarai_hitam']
+            ])->get();
+        } else if ($no_kp == null && $negeri != "null") {
+            $pemohon = User::where([
+                ['negeri', '=', $negeri], ['role', '=', 'pemohon'], ['status_permohonan', '=', 'disenarai_hitam']
+            ])->get();
+        } else {
+            $pemohon = User::where([
+                ['negeri', '=', $negeri], ['no_kp', '=', $no_kp], ['status_permohonan', '=', 'disenarai_hitam']
+            ])->get();
+        }
+
+        return view('pegawai.hq.hq-senarai-hitam', [
+            'pemohon' => $pemohon,
         ]);
     }
 
     public function senaraiDiluluskan(Request $request)
     {
-        $permohonan = Permohonan::where('status_permohonan', 'Diluluskan')->get();
-        // dd($permohonan);
+        $pemohon = User::where([
+            ['status_permohonan', '!=' , 'disenarai_hitam'],
+            ['role', 'pemohon'],
+        ])->orWhere([
+            ['status_permohonan', '=' , null],
+            ['role', 'pemohon'],
+        ])->get();
+
+        // dd($pemohon);
+
         return view('pegawai.hq.hq-tambah-senarai-hitam', [
-            'permohonan' => $permohonan
+            'pemohon' => $pemohon
         ]);
     }
 
-
-    public function carisenaraihitam(Request $request)
+    public function caritambahsenaraihitam(Request $request)
     {
-        // dd($request->no_kp);
-        if ($request->no_kp == null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
-            $permohonans = Permohonan::where([
-                ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
-            $permohonans = Permohonan::where([
-                ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        } else if ($request->no_kp == null && $request->negeri != "null" && $request->jenis_permohonan != "null") {
-            $permohonans = Permohonan::where([
-                ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan == "null") {
-            $permohonans = Permohonan::where([
-                ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        } else if ($request->no_kp != null && $request->negeri == "null" && $request->jenis_permohonan != "null") {
-            $permohonans = Permohonan::where([
-                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        } else if ($request->no_kp != null && $request->negeri != "null" && $request->jenis_permohonan == "null") {
-            $permohonans = Permohonan::where([
-                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        } else {
-            $permohonans = Permohonan::where([
-                ['no_kp', '=', $request->no_kp], ['negeri', '=', $request->negeri], ['jenis_permohonan', '=', $request->jenis_permohonan], ['status_permohonan', '=', 'disenarai hitam']
-            ])->get();
-        }
-        return view('pegawai.hq.hq-senarai-hitam', [
-            'permohonan' => $permohonans,
-        ]);
-    }
-
-    public function caritambahsenaraihitam(Request $request){
-        $permohonans = Permohonan::where([
-            ['no_kp', '=', $request->no_kp], ['status_permohonan', '=', 'Diluluskan']
+        $pemohon = User::where([
+            ['no_kp', '=', $request->no_kp]
         ])->get();
 
         return view('pegawai.hq.hq-tambah-senarai-hitam', [
-            'permohonan' => $permohonans,
+            'pemohon' => $pemohon,
         ]);
     }
-
-    // public function cariSenaraiDiluluskan(Request $request)
-    // {
-
-    //     $permohonans = Permohonan::where([
-    //         ['no_kp', '=', $request->no_kp],
-    //         ['status_permohonan', '=', 'disenarai hitam']
-    //     ])->get();
-
-    //     return view('pegawai.hq.hq-tambah-senarai-hitam', [
-    //         'permohonan' => $permohonans,
-    //     ]);
-    // }
 }

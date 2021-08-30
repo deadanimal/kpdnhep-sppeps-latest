@@ -18,18 +18,19 @@
 
                     <div class="card-body p-3">
                         <div class="row p-3 mb-0">
-                            <form method="POST" action="">
+                            <form method="POST" action="cari_log_pemohon">
                                 @csrf
                                 <div class="row">
                                     <div class="col">
                                         <label for="ic">No. Kad Pengenalan</label>
-                                        <input class="form-control form-control-sm" type="text" name="ic" />
+                                        <input class="form-control form-control-sm" type="text" name="no_kp" />
                                     </div>
 
                                     <div class="col">
                                         <br>
                                         <button class="btn btn-sm bg-gradient-info text-capitalize" type="submit"
                                             name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
+                                        <a href="/log_pemohon" class="btn btn-sm btn-danger">Set Semula</a>
                                     </div>
                                 </div>
                             </form>
@@ -50,7 +51,7 @@
 
                         <div class="card">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0" id="datatable-basic">
+                                <table class="table align-items-center mb-0" id="example">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
@@ -109,12 +110,49 @@
         </div>
 
     </div>
-    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
+    {{-- <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
         type="text/javascript"></script>
     <script type="text/javascript">
         const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
             searchable: false,
             fixedHeight: true
+        });
+    </script> --}}
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Senarai Pemohon'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Senarai Pemohon',
+                        orientation: 'landscape',
+                        // pageSize: 'LEGAL'
+                    },
+
+                ],
+            });
         });
     </script>
 @stop

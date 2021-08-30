@@ -84,11 +84,9 @@
                                             <a href="/tetapan-pengumuman/{{ $pengumuman->id }}/delete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
-                                            {{-- <form method="POST" action="{{ route('pengumumen.delete', $pengumuman->id) }}">
-                                                @csrf
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
-                                            </form> --}}
+                                            {{-- <button class="btn btn-danger btn-sm" data-target="#delete" data-title="Delete"
+                                                data-toggle="modal"><span class="fas fa-trash-alt"></span>
+                                            </button> --}}
                                         </td>
                                     </tr>
 
@@ -291,5 +289,33 @@
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
+
+    {{-- <script>
+        $(document).ready(function() {
+            var table = $('#datatable-basic-pengumuman').DataTable();
+
+            $('#datatable-basic-pengumuman tbody').on('click', 'button[data-target="#delete"]', function() {
+                var btn = this;
+
+                swal({
+                    title: "Adakah anda pasti?",
+                    text: "Tindakan ini tidak dapat dikembalikan lagi",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Ya saya pasti!",
+                    cancelButtonText: "Batal",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        swal("Dipadam! ", " Berjaya dipadam", "success");
+                        table.row($(btn).parents('tr')).remove().draw(false);
+                    } else {
+                        swal("Dibatalkan ", " Data belum dipadam", "error");
+                    }
+                });
+            });
+        });
+    </script> --}}
 
 @stop

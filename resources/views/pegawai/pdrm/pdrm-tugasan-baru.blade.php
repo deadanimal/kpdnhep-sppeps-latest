@@ -12,7 +12,7 @@
                 <h5>Semakan Rekod Jenayah</h5>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col col-md-4">
                     <div class="card card-stats p-3">
                         <div class="card-body">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
 
             <div class="container-fluid mt-4" style="padding: 0px !important;">
                 <div class="card">
@@ -135,6 +135,7 @@
                                     <div class="col">
                                         <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"><i
                                                 class="fas fa-search fa-2x"></i> Cari</button>
+                                                <a href="/permohonan" class="btn btn-sm btn-danger">Set Semula</a>
                                     </div>
                                 </div>
                             </form>
