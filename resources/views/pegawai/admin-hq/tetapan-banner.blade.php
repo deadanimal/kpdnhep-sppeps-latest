@@ -75,10 +75,31 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $banner->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-banner/{{ $banner->id }}/delete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
+
+                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
+                                                        <br>
+                                                        Anda pasti mahu padam?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Tutup</button>
+                                                        <a href="/tetapan-banner/{{ $banner->id }}/delete"
+                                                            class="btn btn-success">
+                                                            Padam
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
 
                                     <div class="modal fade" id="modal-form2-{{ $banner->id }}" tabindex="-1" role="dialog"
@@ -258,5 +279,5 @@
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
-    
+
 @stop

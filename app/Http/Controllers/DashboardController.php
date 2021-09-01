@@ -53,6 +53,7 @@ class DashboardController extends Controller
                 ->where('jenis_permohonan', '=', 'Rayuan')
                 ->count();
 
+
             $dalamproses = DB::table('permohonans')
                 ->where('status_permohonan', '!=', 'Diluluskan')
                 ->orWhere('status_permohonan', '!=', 'Tidak Diluluskan')
@@ -66,22 +67,26 @@ class DashboardController extends Controller
                 ])->count();
 
             $dalamprosespembaharuan = DB::table('permohonans')
-                ->where('status_permohonan', '!=', 'Diluluskan')
-                ->orWhere('status_permohonan', '!=', 'Tidak Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Pembaharuan')
-                ->count();
+                ->where([
+                    ['status_permohonan', '!=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])->orWhere([
+                    ['status_permohonan', '!=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])->count();
 
             $dalamprosespendua = DB::table('permohonans')
-                ->where('status_permohonan', '!=', 'Diluluskan')
-                ->orWhere('status_permohonan', '!=', 'Tidak Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Pendua')
-                ->count();
+                ->where([
+                    ['status_permohonan', '!=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])->orWhere([
+                    ['status_permohonan', '!=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Pendua']
+                ])->count();
 
             $dalamprosesrayuan = DB::table('permohonans')
-                ->where('status_permohonan', '!=', 'Diluluskan')
-                ->orWhere('status_permohonan', '!=', 'Tidak Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Rayuan')
-                ->count();
+                ->where([
+                    ['status_permohonan', '!=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])->orWhere([
+                    ['status_permohonan', '!=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Rayuan']
+                ])->count();
+
 
             $selesai = DB::table('permohonans')
                 ->where('status_permohonan', '=', 'Diluluskan')
@@ -89,67 +94,79 @@ class DashboardController extends Controller
                 ->count();
 
             $selesaibaharu = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Baharu')
-                ->count();
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Baharu']
+                ])->orWhere([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Baharu']
+                ])->count();
 
             $selesaibaharululus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Baharu')
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Baharu']
+                ])
                 ->count();
 
             $selesaibaharutaklulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Baharu')
+                ->where([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Baharu']
+                ])
                 ->count();
 
             $selesaipembaharuan = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Pembaharuan')
-                ->count();
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])->orWhere([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])->count();
 
             $selesaipembaharuanlulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Pembaharuan')
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])
                 ->count();
 
             $selesaipembaharuantaklulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Pembaharuan')
+                ->where([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Pembaharuan']
+                ])
                 ->count();
 
             $selesaipendua = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Pendua')
-                ->count();
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pendua']
+                ])->orWhere([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Pendua']
+                ])->count();
 
             $selesaipendualulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Pendua')
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Pendua']
+                ])
                 ->count();
 
             $selesaipenduataklulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Pendua')
+                ->where([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Pendua']
+                ])
                 ->count();
 
             $selesairayuan = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Rayuan')
-                ->count();
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Rayuan']
+                ])->orWhere([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Rayuan']
+                ])->count();
 
             $selesairayuanlulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Rayuan')
+                ->where([
+                    ['status_permohonan', '=', 'Diluluskan'], ['jenis_permohonan', '=', 'Rayuan']
+                ])
                 ->count();
 
             $selesairayuantaklulus = DB::table('permohonans')
-                ->where('status_permohonan', '=', 'Tidak Diluluskan')
-                ->orWhere('jenis_permohonan', '=', 'Rayuan')
+                ->where([
+                    ['status_permohonan', '=', 'Tidak Diluluskan'], ['jenis_permohonan', '=', 'Rayuan']
+                ])
                 ->count();
 
             // dd($permohonanbaharu);

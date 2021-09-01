@@ -51,19 +51,28 @@ use App\Http\Controllers\SemakanPermohonanPegawaiController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\CetakanPermitController;
 use App\Http\Controllers\ChangePasswordController;
-
-// Route::get('/dashboard', function () {
-//     return view('pemohon.dashboard');
-// })->middleware(['auth'])->name('dashboard');\
-
+use App\Http\Controllers\LocalizationController;
 
 require __DIR__ . '/auth.php';
 
 Route::get('/lol', [LolController::class, 'asd']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/en', [LocalizationController::class, 'change_en']);
+Route::get('/ms', [LocalizationController::class, 'change_ms']);
 
+// theme color
+Route::get('/default', [LocalizationController::class, 'color_default']);
+Route::get('/blue', [LocalizationController::class, 'color_blue']);
+Route::get('/black', [LocalizationController::class, 'color_black']);
+Route::get('/brown', [LocalizationController::class, 'color_brown']);
 
+//font color
+Route::get('/font_default', [LocalizationController::class, 'color_font_default']);
+Route::get('/font_blue', [LocalizationController::class, 'color_font_blue']);
+Route::get('/font_brown', [LocalizationController::class, 'color_font_brown']);
+Route::get('/font_green', [LocalizationController::class, 'color_font_green']);
+//localization
 
 Route::resource('/tugasan-selesai', TugasanSelesaiController::class);
 
@@ -174,7 +183,7 @@ Route::get('/change-password', function () {
 });
 
 //landing
-Route::get('/', [LandingController::class, 'landing']);
+Route::get('/', [LandingController::class, 'landing'] );
 
 Route::get('/arkib-bergambar', [ArkibgambarlandingController::class, 'arkibgambarland']);
 Route::get('/arkib-bergambar/{gambar}', [ArkibgambarlandingController::class, 'arkibgambarlandshow']);

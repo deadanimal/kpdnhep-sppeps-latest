@@ -56,7 +56,7 @@ class PermohonanController extends Controller
 
     public function store(Request $request)
     {
-
+        // dd($request);
         $user = $request->user();
         $user_id = $user->id;
 

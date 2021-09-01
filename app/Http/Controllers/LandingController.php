@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
+use App;
 
 class LandingController extends Controller
 {

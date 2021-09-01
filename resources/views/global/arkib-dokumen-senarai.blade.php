@@ -34,6 +34,7 @@
                             @foreach ($infodokumens as $infodokumen)
                                 <tr>
                                     <td class="text-center text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
+                                    {{-- @if({!! Session::get('font_color') !!}) --}}
                                     <td class="text-center text-sm font-weight-normal">{{ $infodokumen->tajuk_ms }}</td>
                                     <td class="text-center text-sm font-weight-normal">{{ $infodokumen->kandungan_ms }}
                                     </td>

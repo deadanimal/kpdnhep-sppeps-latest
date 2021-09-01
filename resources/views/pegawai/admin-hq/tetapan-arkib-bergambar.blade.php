@@ -57,7 +57,8 @@
                                         <td class="text-sm font-weight-normal">{{ $arkibgambar->nama_en }}</td>
                                         <td class="text-sm font-weight-normal">
                                             <i class="fas fa-file-image me-sm-1 text-dark"></i> <a
-                                                href="/storage/{{ $arkibgambar->jalan }}" target="_blank">{{ $arkibgambar->jalan }}</a>
+                                                href="/storage/{{ $arkibgambar->jalan }}"
+                                                target="_blank">{{ $arkibgambar->jalan }}</a>
                                         </td>
                                         <td class="text-sm font-weight-normal">{{ $arkibgambar->updated_at }}</td>
                                         <td>
@@ -76,14 +77,34 @@
                                                 data-bs-target="#modal-form2-{{ $arkibgambar->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id }}/delete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                             <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id }}">
                                                 <i class="far fa-list-alt"></i>
                                             </a>
-
                                         </td>
+
+                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
+                                                        <br>
+                                                        Anda pasti mahu padam?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Tutup</button>
+                                                        <a href="/tetapan-arkib-bergambar/{{ $arkibgambar->id }}/delete"
+                                                            class="btn btn-success">
+                                                            Padam
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
 
                                     <div class="modal fade" id="modal-form2-{{ $arkibgambar->id }}" tabindex="-1"
@@ -263,5 +284,5 @@
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
-    
+
 @stop

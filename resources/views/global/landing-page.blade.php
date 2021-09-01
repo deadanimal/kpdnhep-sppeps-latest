@@ -1,9 +1,9 @@
 @extends('layouts.baseUser')
 
 @section('content')
-    <div class="container-fluid py-4"
-        style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat; height: 100vh;">
-        <div class="row">
+    <div class="container-fluid p-0"
+        style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
+        <div class="row p-3">
 
             <div class="row">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -39,7 +39,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row pb-3">
             <div class="container-fluid px-3">
                 <div class="row">
                     <div class="col-lg-6">

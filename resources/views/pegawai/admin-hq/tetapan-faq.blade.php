@@ -62,10 +62,31 @@
                                         <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $kategorifaq->id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a href="/tetapan-kategorifaq/{{ $kategorifaq->id }}/delete">
+                                        <a data-bs-toggle="modal" data-bs-target="#modaldeleteKategori">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
+
+                                    <div class="modal fade" id="modaldeleteKategori" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-center">
+                                                    <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
+                                                    <br>
+                                                    Anda pasti mahu padam?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn bg-gradient-secondary"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                    <a href="/tetapan-kategorifaq/{{ $kategorifaq->id }}/delete"
+                                                        class="btn btn-success">
+                                                        Padam
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </tr>
 
                                 <div class="modal fade" id="modal-form2-{{ $kategorifaq->id }}" tabindex="-1"
@@ -205,10 +226,31 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form4-{{ $faq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-faq/{{ $faq->id }}/delete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldeleteFaq">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
+
+                                        <div class="modal fade" id="modaldeleteFaq" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
+                                                        <br>
+                                                        Anda pasti mahu padam?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Tutup</button>
+                                                        <a href="/tetapan-faq/{{ $faq->id }}/delete"
+                                                            class="btn btn-success">
+                                                            Padam
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
 
                                     <div class="modal fade" id="modal-form4-{{ $faq->id }}" tabindex="-1"

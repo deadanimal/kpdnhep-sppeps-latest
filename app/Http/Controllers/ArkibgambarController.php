@@ -114,6 +114,6 @@ class ArkibgambarController extends Controller
     public function destroy(Arkibgambar $arkibgambar)
     {
         $arkibgambar->delete();
-        return redirect('/tetapan-arkib-bergambar');
+        return redirect('/tetapan-arkib-bergambar')->with('success', 'Berjaya dipadam');
     }
 }

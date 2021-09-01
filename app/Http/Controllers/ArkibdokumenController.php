@@ -114,6 +114,6 @@ class ArkibdokumenController extends Controller
     public function destroy(Arkibdokumen $arkibdokumen)
     {
         $arkibdokumen->delete();
-        return redirect('/tetapan-arkib-dokumen');
+        return redirect('/tetapan-arkib-dokumen')->with('success', 'Berjaya dipadam');
     }
 }

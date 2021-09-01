@@ -119,6 +119,6 @@ class SenaraidokumenController extends Controller
     public function destroy(Senaraidokumen $senaraidokumen)
     {
         $senaraidokumen->delete();
-        return redirect('/tetapan-arkib-dokumen/' . $senaraidokumen->id_arkibdokumen);
+        return redirect('/tetapan-arkib-dokumen/' . $senaraidokumen->id_arkibdokumen)->with('success', 'Berjaya dipadam');
     }
 }

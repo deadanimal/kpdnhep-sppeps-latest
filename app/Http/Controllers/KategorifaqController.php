@@ -97,6 +97,7 @@ class KategorifaqController extends Controller
      */
     public function destroy(Kategorifaq $kategorifaq)
     {
-        //
+        $kategorifaq->delete();
+        return redirect('/tetapan-faq')->with('success', 'Berjaya dipadam');
     }
 }

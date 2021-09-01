@@ -81,13 +81,31 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $pengumuman->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a href="/tetapan-pengumuman/{{ $pengumuman->id }}/delete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
-                                            {{-- <button class="btn btn-danger btn-sm" data-target="#delete" data-title="Delete"
-                                                data-toggle="modal"><span class="fas fa-trash-alt"></span>
-                                            </button> --}}
                                         </td>
+
+                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
+                                                        <br>
+                                                        Anda pasti mahu padam?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Tutup</button>
+                                                        <a href="/tetapan-pengumuman/{{ $pengumuman->id }}/delete"
+                                                            class="btn btn-success">
+                                                            Padam
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
 
                                     <div class="modal fade" id="modal-form2-{{ $pengumuman->id }}" tabindex="-1"
@@ -287,35 +305,43 @@
             fixedHeight: true
         });
     </script>
+    {{-- <script>
+        function buang(id) {
+            swal({
+                title: 'Padam?',
+                text: "Anda pasti!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Padam',
+                cancelButtonText: 'Tutup',
+
+            }).then(result => {
+                console.log("result", result);
+                if (result.value == true) {
+                    console.log("id", id);
+                    $.ajax({
+                        url: "/tetapan-pengumuman/" + id,
+                        type: "POST",
+                        data: {
+                            "id": id,
+                            "_token": "{{ csrf_token() }}",
+                            "_method": 'delete'
+                        },
+                        success: function(data) {
+                            location.reload();
+                        },
+                    });
+
+                } else if (result.dismiss == "cancel") {
+                    console.log("dismiss");
+                }
+            })
+        }
+    </script> --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
 
-    {{-- <script>
-        $(document).ready(function() {
-            var table = $('#datatable-basic-pengumuman').DataTable();
-
-            $('#datatable-basic-pengumuman tbody').on('click', 'button[data-target="#delete"]', function() {
-                var btn = this;
-
-                swal({
-                    title: "Adakah anda pasti?",
-                    text: "Tindakan ini tidak dapat dikembalikan lagi",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Ya saya pasti!",
-                    cancelButtonText: "Batal",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                }, function(isConfirm) {
-                    if (isConfirm) {
-                        swal("Dipadam! ", " Berjaya dipadam", "success");
-                        table.row($(btn).parents('tr')).remove().draw(false);
-                    } else {
-                        swal("Dibatalkan ", " Data belum dipadam", "error");
-                    }
-                });
-            });
-        });
-    </script> --}}
 
 @stop

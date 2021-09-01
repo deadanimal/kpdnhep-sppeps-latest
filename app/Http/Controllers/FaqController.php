@@ -146,9 +146,9 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq, Kategorifaq $kategorifaq)
+    public function destroy(Faq $faq)
     {
         $faq->delete();
-        return redirect('/tetapan-faq');
+        return redirect('/tetapan-faq')->with('success', 'Berjaya dipadam');
     }
 }

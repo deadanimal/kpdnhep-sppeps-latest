@@ -59,6 +59,8 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.min.css?v=1.0.3" rel="stylesheet" />
     <!-- Anti-flicker snippet (recommended)  -->
+
+
     <style>
         .async-hide {
             opacity: 0 !important
@@ -67,7 +69,7 @@
         /* body{
             height: 100vh;
         } */
-        
+
     </style>
     <script>
         (function(a, s, y, n, c, h, i, d, e) {
@@ -121,37 +123,20 @@
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg py-3" data-scroll="true" style="background: rgb(42,55,125);
-        background: linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%);">
-            <!-- id="navbarBlur" -->
-            {{-- <ul class="navbar-nav mx-auto d-flex align-items-center">
-                <li class="nav-item mx-2"> --}}
-            {{-- <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150"> --}}
-            {{-- </li>
-            </ul> --}}
-            {{-- <br> --}}
+        <nav class="navbar navbar-expand-lg py-3" data-scroll="true" id="navbar">
 
-            {{-- @can('isPemohon')
-                <a href="/dashboard" class="text-white">
-                    <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
-                    <br>
-                    <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
-                </a>
-
-            @else --}}
             <a href="/" class="text-white  pl-3">
                 <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
                 <br>
                 <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
             </a>
-            {{-- @endcan --}}
 
             <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
                 <li class="nav-item dropdown dropdown-hover mx-2">
                     <a role="button"
-                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
+                        class="nav-link font_color ps-2 d-flex justify-content-between cursor-pointer align-items-center"
                         id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                        Arkib&ensp;
+                        {{ __('landing.arkib') }}&ensp;
                         <i class="fas fa-angle-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg">
@@ -189,19 +174,20 @@
                 </li>
                 <li class="nav-item mx-2">
                     <a role="button" href="/semakan-status-eps"
-                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
+                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
                         aria-expanded="false">
-                        Semakan Status EPS
+                        {{ __('landing.semakan_status_eps') }}
                     </a>
                 </li>
 
                 <li class="nav-item mx-2">
                     <a role="button" href="/faq"
-                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white"
+                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
                         aria-expanded="false">
-                        FAQ
+                        {{ __('landing.faq') }}
                     </a>
                 </li>
+
             </ul>
 
 
@@ -233,12 +219,12 @@
                                     @csrf
                                     <a class="dropdown-item border-radius-md" href="#"
                                         onclick="event.preventDefault();
-                                                                                            this.closest('form').submit();">
+                                                                                                                                                                                                            this.closest('form').submit();">
                                         <div class="d-flex py-1">
 
 
                                             <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                                            this.closest('form').submit();"> -->
+                                                                                                                                                                                                            this.closest('form').submit();"> -->
                                             {{ __('Log Out') }}
                                             <!-- </x-dropdown-link> -->
 
@@ -256,14 +242,20 @@
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center ">
                         <a href="/login_" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1 text-white"></i>
-                            <span class="d-sm-inline d-none text-white">Log Masuk</span>
+                            <i class="fa fa-user me-sm-1 font_color"></i>
+                            <span class="d-sm-inline d-none font_color">
+                                {{-- Log Masuk --}}
+                                {{ __('landing.log_masuk') }}
+                            </span>
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center ps-3 d-flex">
                         <a href="/semak-ic" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1 text-white"></i>
-                            <span class="d-sm-inline d-none text-white">Daftar Akaun</span>
+                            <i class="fa fa-user me-sm-1 font_color"></i>
+                            <span class="d-sm-inline d-none font_color">
+                                {{-- Daftar Akaun --}}
+                                {{ __('landing.daftar_akaun') }}
+                            </span>
                         </a>
                     </li>
                 </ul>
@@ -276,22 +268,20 @@
 
         @yield('content')
 
-        <footer class="footer pt-3 " style="background-color: #1d1da1">
+        <footer class="footer pt-3" id="footer">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
-                            {{-- © <script>
-                document.write(new Date().getFullYear())
-              </script>, --}}
-                            <p class="text-white">
+
+                            <p class="font_color">
                                 Kementerian Perdagangan Dalam Negeri Hal Ehwal Pengguna
                             </p>
 
                         </div>
                     </div>
                     <div class="col-lg-6 d-flex justify-content-end">
-                        <p class="text-white">@all rights reserved</p>
+                        <p class="font_color">@all rights reserved</p>
                     </div>
                 </div>
             </div>
@@ -299,7 +289,72 @@
 
     </main>
 
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-light position-fixed px-3 py-2" style="background-color: #cb0c9f">
+            <i class="fab fa-accessible-icon"></i>
+        </a>
+        <div class="card shadow-lg blur">
+            <div class="card-header pb-0 pt-3  bg-transparent ">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Tetapan</h5>
+                    {{-- <p>See our dashboard options.</p> --}}
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0">
+                <!-- Sidebar Backgrounds -->
+
+                <!-- Navbar Fixed -->
+                <div class="mt-3">
+                    <h6 class="mb-0">Tukar Bahasa</h6>
+                </div>
+                <div class="form-check form-switch ps-0">
+                    <a href="/ms">Melayu</a>
+                    <a href="/en">English</a>
+                </div>
+
+                <hr class="horizontal dark mb-1">
+                <div>
+                    <h6 class="mb-0">Warna Tema</h6>
+                </div>
+                <div class="badge-colors my-2 text-start">
+                    <a href="/default" class="badge filter " style="background: rgb(42,55,125);
+                    background: linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%);"></a>
+                    <a href="/blue" class="badge filter " style="background-color: #1d1da1"></a>
+                    <a href="/black" class="badge filter " style="background-color: black"></a>
+                    <a href="/brown" class="badge filter " style="background-color: #c9612f"></a>
+                </div>
+
+                <hr class="horizontal dark mb-1">
+                <div>
+                    <h6 class="mb-0">Warna Tulisan</h6>
+                </div>
+                <div class="badge-colors my-2 text-start">
+                    <a href="/font_default" class="badge filter " style="background: rgb(42,55,125);
+                    background: linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%);"></a>
+                    <a href="/font_blue" class="badge filter " style="background-color: #1d1da1"></a>
+                    <a href="/font_brown" class="badge filter " style="background-color: #c9612f"></a>
+                    <a href="/font_green" class="badge filter " style="background-color: #20ca20"></a>
+                </div>
+
+                {{-- <hr class="horizontal dark mb-1">
+                <div class="mt-2">
+                    <h6 class="mb-0">Sidenav Mini</h6>
+                </div>
+                <div class="form-check form-switch ps-0">
+                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarMinimize"
+                        onclick="navbarMinimize(this)">
+                </div> --}}
+            </div>
+        </div>
     </div>
+
     <!--   Core JS Files   -->
     <script src="../../assets/js/core/popper.min.js"></script>
     <script src="../../assets/js/core/bootstrap.min.js"></script>
@@ -325,6 +380,69 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var butaKe = '{!! Session::get('color') !!}';
+            console.log(butaKe);
+            if (butaKe === 'blue') {
+                console.log('blue');
+                $('#navbar').css('background-color', '#1d1da1');
+                $('#footer').css('background-color', '#1d1da1');
+
+                // $('#navbar').css('color', 'white');
+            } else if (butaKe === 'black') {
+                console.log('black');
+                $('#navbar').css('background-color', 'black');
+                $('#footer').css('background-color', 'black');
+            } else if (butaKe === 'brown') {
+                console.log('brown');
+                $('#navbar').css('background-color', '#c9612f');
+                $('#footer').css('background-color', '#c9612f');
+            } else {
+                console.log('default');
+                $('#navbar').css('background', 'rgb(42,55,125);');
+                $('#navbar').css('background',
+                    'linear-gradient(90deg, rgba(42,55,125,1) 41%, rgba(108,40,183,1) 68%)');
+
+                $('#footer').css('background-color', '#1d1da1');
+            }
+        });
+
+        $(function() {
+            var font_color = '{!! Session::get('font_color') !!}';
+            console.log('font color', font_color);
+
+            // elements = document.getElementsByClassName('font_color');
+            // console.log('font color 2')
+            if (font_color == 'blue') {
+
+                console.log('blue');
+                // $('#dropdownMenuDocs').css('color', '#1d1da1');
+                $('font_color').css('color', '#1d1da1');
+
+            } else if (font_color == 'brown') {
+
+                console.log('brown');
+                // $('#dropdownMenuDocs').css('color', '#c9612f');
+                $('.font_color').css('color', '#c9612f');
+                // $('#footer').css('color', 'black');
+
+            } else if (font_color == 'green') {
+
+                console.log('green');
+                // $('#dropdownMenuDocs').css('color', '#20ca20');
+                $('.font_color').css('color', '#20ca20');
+
+            } else {
+                console.log('normal');
+                // $('#dropdownMenuDocs').css('color', 'white');
+                $('.font_color').css('color', 'white');
+            }
+        });
+    </script>
+
 </body>
 
 </html>

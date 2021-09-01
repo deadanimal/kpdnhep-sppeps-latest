@@ -39,9 +39,23 @@ class SemakanIcController extends Controller
         $birth_date = date("Y-m-d H:i:s", strtotime("$year_int-$month_int-$day_int"));
         // $mohon_mula_kerja = date("Y-m-d H:i:s", strtotime($request->mohon_mula_kerja));
         // dd($birth_date);
-        if ($age >= 21) {
-            if ($month_int <= $current_month) {
+        if ($age > 21) {
+            return view('auth.register_', [
+                'no_kp' => $request->no_kp,
+                'age' => $age,
+                'tarikh_lahir' => $birth_date,
+            ]);
+        } else if ($age == 21) {
+
+            if ($month_int < $current_month) {
+                return view('auth.register_', [
+                    'no_kp' => $request->no_kp,
+                    'age' => $age,
+                    'tarikh_lahir' => $birth_date,
+                ]);
+            } else if ($month_int == $current_month) {
                 if ($day_int <= $current_day) {
+                    // dd('test');
                     return view('auth.register_', [
                         'no_kp' => $request->no_kp,
                         'age' => $age,
@@ -60,6 +74,6 @@ class SemakanIcController extends Controller
 
     public function reloadCaptcha()
     {
-        return response()->json(['captcha'=> captcha_img()]);
+        return response()->json(['captcha' => captcha_img()]);
     }
 }

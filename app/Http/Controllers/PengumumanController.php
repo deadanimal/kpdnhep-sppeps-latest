@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengumuman;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert;
 
 class PengumumanController extends Controller
 {
@@ -111,6 +112,7 @@ class PengumumanController extends Controller
     public function destroy(Pengumuman $pengumuman)
     {
         $pengumuman->delete();
-        return redirect('/tetapan-pengumuman');
+
+        return redirect('/tetapan-pengumuman')->with('success', 'Berjaya dipadam');
     }
 }

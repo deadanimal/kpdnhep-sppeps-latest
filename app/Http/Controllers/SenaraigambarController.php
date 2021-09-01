@@ -206,6 +206,6 @@ class SenaraigambarController extends Controller
     public function destroy(Senaraigambar $senaraigambar)
     {
         $senaraigambar->delete();
-        return redirect('/tetapan-arkib-bergambar/' . $senaraigambar->id_arkibgambar);
+        return redirect('/tetapan-arkib-bergambar/' . $senaraigambar->id_arkibgambar)->with('success', 'Berjaya dipadam');
     }
 }
