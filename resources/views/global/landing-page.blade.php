@@ -68,8 +68,14 @@
                             <div class="description ps-5">
                                 <h4 class="mb-4"><b>Pengumuman</b></h4>
                                 @foreach ($penglands as $pengu)
-                                    <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_bm }}</h5>
-                                    <p class="mb-4">{{ $pengu->kandungan_bm }}</p>
+                                    @if (Session::get('locale') == 'ms')
+                                        <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_bm }}</h5>
+                                        <p class="mb-4">{{ $pengu->kandungan_bm }}</p>
+                                    @else
+                                        <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_en }}</h5>
+                                        <p class="mb-4">{{ $pengu->kandungan_en }}</p>
+                                    @endif
+
                                 @endforeach
 
                                 {{-- <a href="javascript:;" class="text-dark icon-move-right">
@@ -107,7 +113,7 @@
                             </div>
                             <div class="description ps-5">
                                 {{-- <h5 class="text-white">Keterangan Sistem</h5> --}}
-                                <p class="text-white">Sistem Permohonan Percetakan Permit Ejen Pemilikan Semula (SPPEPS)
+                                <p class="font_color">Sistem Permohonan Percetakan Permit Ejen Pemilikan Semula (SPPEPS)
                                     ialah suatu sistem yang memudahkan Ejen Pemilikan Kereta Semula untuk membuat
                                     permohonan
                                     dari segi Permohonan baru, Pembaharuan Permit, Permohonan Cetakan Semula dan

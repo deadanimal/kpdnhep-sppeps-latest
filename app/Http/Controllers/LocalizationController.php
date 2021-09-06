@@ -66,4 +66,69 @@ class LocalizationController extends Controller
         session()->put('font_color','green');
         return redirect()->back();
     }
+
+
+    //grayscale
+    public function set_grayscale(){
+        session()->put('grayscale','true');
+        return redirect()->back();
+    }
+
+    public function remove_grayscale(){
+        session()->put('grayscale','false');
+        return redirect()->back();
+    }
+
+    //negative color
+    public function set_negative(){
+        session()->put('negative','true');
+        return redirect()->back();
+    }
+
+    public function remove_negative(){
+        session()->put('negative','false');
+        return redirect()->back();
+    }
+
+
+    //font size
+    public function font_size_normal(){
+        session()->put('size','normal');
+        return redirect()->back();
+    }
+
+    public function font_size_0_9(){
+        session()->put('size','0.9');
+        return redirect()->back();
+    }
+
+    public function font_size_1(){
+        session()->put('size','1');
+        return redirect()->back();
+    }
+
+    public function font_size_1_1(){
+        session()->put('size','1.1');
+        return redirect()->back();
+    }
+
+    public function font_size_1_2(){
+        session()->put('size','1.2');
+        return redirect()->back();
+    }
+
+    public function font_size_1_3(){
+        session()->put('size','1.3');
+        return redirect()->back();
+    }
+
+    public function set_readable(){
+        session()->put('readable',true);
+        return redirect()->back();
+    }
+
+    public function remove_readable(){
+        session()->put('readable',false);
+        return redirect()->back();
+    }
 }

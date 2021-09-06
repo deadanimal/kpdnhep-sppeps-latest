@@ -7,7 +7,8 @@
 * Licensed under MIT (https://www.creative-tim.com/license)
 * Coded by Creative Tim
 =========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+* The above copyr
+ight notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -65,10 +66,6 @@
         .async-hide {
             opacity: 0 !important
         }
-
-        /* body{
-            height: 100vh;
-        } */
 
     </style>
     <script>
@@ -219,12 +216,12 @@
                                     @csrf
                                     <a class="dropdown-item border-radius-md" href="#"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                            this.closest('form').submit();">
+                                                                                                                                                                                                                                                                                this.closest('form').submit();">
                                         <div class="d-flex py-1">
 
 
                                             <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                                                                                                                                                            this.closest('form').submit();"> -->
+                                                                                                                                                                                                                                                                                this.closest('form').submit();"> -->
                                             {{ __('Log Out') }}
                                             <!-- </x-dropdown-link> -->
 
@@ -320,6 +317,21 @@
                 </div>
 
                 <hr class="horizontal dark mb-1">
+
+                <div>
+                    <h6 class="mb-0">Saiz Tulisan</h6>
+                </div>
+                <div class="my-2 text-start">
+                    <a href="/font_size_normal" class="btn btn-sm">normal</a>
+                    <a href="/font_size_0_9" class="btn btn-sm">0.9</a>
+                    <a href="/font_size_1" class="btn btn-sm">1</a>
+                    <a href="/font_size_1_1" class="btn btn-sm">1.1</a>
+                    <a href="/font_size_1_2" class="btn btn-sm">1.2</a>
+                    <a href="/font_size_1_3" class="btn btn-sm">1.3</a>
+                </div>
+
+
+                <hr class="horizontal dark mb-1">
                 <div>
                     <h6 class="mb-0">Warna Tema</h6>
                 </div>
@@ -343,14 +355,39 @@
                     <a href="/font_green" class="badge filter " style="background-color: #20ca20"></a>
                 </div>
 
-                {{-- <hr class="horizontal dark mb-1">
-                <div class="mt-2">
-                    <h6 class="mb-0">Sidenav Mini</h6>
+                <hr class="horizontal dark mb-1">
+
+                <div class="badge-colors my-2 text-start">
+
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="readable" @if (Session::get('readable') == 'true') checked @endif>
+                        <label class="form-check-label" for="readable">Font yang boleh dibaca</label>
+                    </div>
+
                 </div>
-                <div class="form-check form-switch ps-0">
-                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarMinimize"
-                        onclick="navbarMinimize(this)">
-                </div> --}}
+
+                <hr class="horizontal dark mb-1">
+
+                <div class="badge-colors my-2 text-start">
+
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="grayscale" @if (Session::get('grayscale') == 'true') checked @endif>
+                        <label class="form-check-label" for="grayscale">Gambar Skala Kelabu</label>
+                    </div>
+
+                </div>
+
+                <hr class="horizontal dark mb-1">
+
+                <div class="badge-colors my-2 text-start">
+
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="negative" @if (Session::get('negative') == 'true') checked @endif>
+                        <label class="form-check-label" for="negative">Warna Terbalik</label>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -380,6 +417,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -419,8 +457,10 @@
             if (font_color == 'blue') {
 
                 console.log('blue');
-                // $('#dropdownMenuDocs').css('color', '#1d1da1');
-                $('font_color').css('color', '#1d1da1');
+                // $('font_color').css('color', '#1d1da1');
+                $('p').css('color', '#1d1da1');
+                $('span').css('color', '#1d1da1');
+                $('a').css('color', '#1d1da1');
 
             } else if (font_color == 'brown') {
 
@@ -428,12 +468,18 @@
                 // $('#dropdownMenuDocs').css('color', '#c9612f');
                 $('.font_color').css('color', '#c9612f');
                 // $('#footer').css('color', 'black');
+                $('p').css('color', '#c9612f');
+                $('span').css('color', '#c9612f');
+                $('a').css('color', '#c9612f');
 
             } else if (font_color == 'green') {
 
                 console.log('green');
                 // $('#dropdownMenuDocs').css('color', '#20ca20');
                 $('.font_color').css('color', '#20ca20');
+                $('p').css('color', '#20ca20');
+                $('span').css('color', '#20ca20');
+                $('a').css('color', '#20ca20');
 
             } else {
                 console.log('normal');
@@ -441,7 +487,101 @@
                 $('.font_color').css('color', 'white');
             }
         });
+
+        $(function() {
+            var grayscale = '{!! Session::get('grayscale') !!}';
+            console.log('grayscale', grayscale);
+
+            if (grayscale == 'true') {
+
+                console.log('gray');
+                // $('#dropdownMenuDocs').css('color', '#1d1da1');
+                $('body').css('filter', 'grayscale(100%)');
+
+            }
+        });
+
+        $(function() {
+            var negative = '{!! Session::get('negative') !!}';
+            console.log('negative', negative);
+
+            if (negative == 'true') {
+
+                console.log('negative');
+                // $('#dropdownMenuDocs').css('color', '#1d1da1');
+                $('body').css('filter', 'invert(100%)');
+
+            }
+        });
+
+        $(document).ready(function() {
+            $("#grayscale").click(function() {
+                if ($("#grayscale").is(":checked"))
+                    window.location.href = '/set_grayscale';
+                else
+                    window.location.href = '/remove_grayscale';
+            });
+        });
+
+        $(document).ready(function() {
+            $("#negative").click(function() {
+                if ($("#negative").is(":checked"))
+                    window.location.href = '/set_negative';
+                else
+                    window.location.href = '/remove_negative';
+            });
+        });
+
+
+        $(function() {
+            var size = '{!! Session::get('size') !!}';
+            console.log('size', size);
+
+            if (size == '0.9') {
+                $('p').css('font-size', '0.9rem');
+                $('span').css('font-size', '0.9rem');
+                $('a').css('font-size', '0.9rem');
+            } else if (size == '1') {
+                $('p').css('font-size', '1rem');
+                $('span').css('font-size', '1rem');
+                $('a').css('font-size', '1rem');
+            } else if (size == '1.1') {
+                $('p').css('font-size', '1.1rem');
+                $('span').css('font-size', '1.1rem');
+                $('a').css('font-size', '1.1rem');
+            } else if (size == '1.2') {
+                $('p').css('font-size', '1.2rem');
+                $('span').css('font-size', '1.2rem');
+                $('a').css('font-size', '1.2rem');
+            } else if (size == '1.3') {
+                $('p').css('font-size', '1.3rem');
+                $('span').css('font-size', '1.3rem');
+                $('a').css('font-size', '1.3rem');
+            }
+        });
+
+        $(document).ready(function() {
+            $("#readable").click(function() {
+                if ($("#readable").is(":checked"))
+                    window.location.href = '/set_readable';
+                else
+                    window.location.href = '/remove_readable';
+            });
+        });
+
+        $(function() {
+            var readable = '{!! Session::get('readable') !!}';
+            console.log('readable', readable);
+
+            if (readable == true) {
+                // console.log('boleh baca');
+                $('p').css('font-family', 'Helvetica');
+                $('span').css('font-family', 'Helvetica');
+                $('a').css('font-family', 'Helvetica');
+            }
+        });
     </script>
+
 
 </body>
 

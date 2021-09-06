@@ -227,6 +227,7 @@
         am4core.ready(function() {
 
             am4core.useTheme(am4themes_animated);
+            am4core.addLicense('ch-custom-attribution');
 
             var chart = am4core.create("chartdiv2", am4charts.XYChart);
 
@@ -285,65 +286,54 @@
             // Legend
             chart.legend = new am4charts.Legend();
 
-             // Enable export
-             chart.exporting.menu = new am4core.ExportMenu();
+            // Enable export
+            chart.exporting.menu = new am4core.ExportMenu();
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
             chart.exporting.filePrefix = "Kelulusan Permit mengikut Jantina";
         });
+
         am4core.ready(function() {
 
+            // Themes begin
             am4core.useTheme(am4themes_animated);
+            // Themes end
 
-            var chart = am4core.create("chartdiv", am4charts.XYChart);
+            // Create chart instance
+            var chart = am4core.create("chartdiv", am4charts.PieChart);
 
-            var data = {!! json_encode($klulusass) !!};
+            var data = {!! json_encode($klels) !!};
             chart.data = data;
+            // Add data
+            // chart.data = [{
+            //     "country": "Lithuania",
+            //     "litres": 501.9
+            // }, {
+            //     "country": "Czechia",
+            //     "litres": 301.9
+            // }, ];
 
-            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.dataFields.category = "month";
-            categoryAxis.renderer.grid.template.location = 0;
+            // Add and configure Series
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.value = "total";
+            pieSeries.dataFields.category = "jantina";
+            pieSeries.slices.template.stroke = am4core.color("#fff");
+            pieSeries.slices.template.strokeOpacity = 1;
 
+            // This creates initial animation
+            pieSeries.hiddenState.properties.opacity = 1;
+            pieSeries.hiddenState.properties.endAngle = -90;
+            pieSeries.hiddenState.properties.startAngle = -90;
 
-            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis.renderer.inside = true;
-            valueAxis.renderer.labels.template.disabled = true;
-            valueAxis.min = 0;
+            chart.hiddenState.properties.radius = am4core.percent(0);
 
-            function createSeries(field, name) {
-
-                var series = chart.series.push(new am4charts.ColumnSeries());
-                series.name = name;
-                series.dataFields.valueY = field;
-                series.dataFields.categoryX = "month";
-                series.sequencedInterpolation = true;
-
-                series.stacked = true;
-
-                series.columns.template.width = am4core.percent(60);
-                series.columns.template.tooltipText =
-                    "[bold]{name}[/]\n[font-size:14px]{categoryX}: {valueY}";
-
-                var labelBullet = series.bullets.push(new am4charts.LabelBullet());
-                labelBullet.label.text = "{valueY}";
-                labelBullet.locationY = 0.5;
-                labelBullet.label.hideOversized = true;
-
-                return series;
-            }
-
-            createSeries("lelaki", "Lelaki");
-            createSeries("perempuan", "Perempuan");
-
-            // Legend
-            chart.legend = new am4charts.Legend();
-
-             // Enable export
-             chart.exporting.menu = new am4core.ExportMenu();
+            // Enable export
+            chart.exporting.menu = new am4core.ExportMenu();
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
             chart.exporting.filePrefix = "Kelulusan Permit mengikut Jantina";
-        });
+
+        }); // end am4core.ready()
     </script>
 
 

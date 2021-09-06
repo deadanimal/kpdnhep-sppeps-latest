@@ -335,7 +335,7 @@
                                                                 <div class="form-group">
                                                                     <label for="title">Kategori</label>
                                                                     <select name="kategori_id" class="form-control">
-                                                                        <option hidden selected>
+                                                                        <option hidden selected value="{{ $faq->kategori_id }}">
                                                                             {{ $faq->nama_kategori_bm }}
                                                                         </option>
                                                                         @foreach ($kategorifaqs as $kategorifaq)

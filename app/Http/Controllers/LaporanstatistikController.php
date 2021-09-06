@@ -5,21 +5,51 @@ namespace App\Http\Controllers;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class LaporanstatistikController extends Controller
 {
-    public function kelulusanpermit()
+    public function kelulusanpermit(Request $request)
     {
         $kelulusan = Permohonan::where('status_permohonan', 'Diluluskan')->get();
 
-        // $mohons = DB::table('Permohonans')
-        $mohons = Permohonan::where('status_permohonan', 'Diluluskan')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
+        // if ($request) {
+        $start = Carbon::parse($request->startdate)->format('Y-m-d');
+        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        // }
 
-        $years = ['2021', '2020'];
+        $year_start = Carbon::parse($request->startdate)->format('Y');
+        $year_end = Carbon::parse($request->enddate)->format('Y');
+
+        $years = [];
+        if ($year_start == $year_end) {
+            array_push($years, $year_start);
+        } else {
+            $int_start = (int)$year_start;
+            $int_end = (int)$year_end;
+            $range = $int_end - $int_start;
+            for ($i = 0; $i <= $range; $i++) {
+                array_push($years, $int_start);
+                $int_start++;
+            }
+        }
+
+        if (($request->startdate && $request->enddate) != null) {
+            $mohons = Permohonan::where('status_permohonan', 'Diluluskan')
+                ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        }
+        else{
+            $mohons = Permohonan::where('status_permohonan', 'Diluluskan')
+                // ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        }
 
         foreach ($years as $year) {
             $arr1 = [];
@@ -32,43 +62,58 @@ class LaporanstatistikController extends Controller
         }
 
         $kel = Permohonan::where('status_permohonan', 'Diluluskan')
-            ->select('jantina', DB::raw('YEAR(created_at) year, MONTH(created_at) month'), DB::raw('count(*) as total'))
-            ->groupBy('jantina', DB::raw('MONTH(created_at), YEAR(created_at)'))
-            ->get();
-
-        $years = ['2021'];
-        $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-
-        // if ($year == '2021') {
-        foreach ($months as $mon) {
-            $arr2 = [];
-            $arr2['month'] = $mon;
-            foreach ($kel as $k) {
-                if ($mon == $k->month)
-                    $arr2[$k->jantina] = $k->total;
-            }
-            $arrays2[] = $arr2;
-        }
-        // }
+            // ->whereBetween('created_at', [$start, $end])
+            // ->select('jantina', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            // ->groupBy('jantina', DB::raw('YEAR(created_at)'))
+            ->select('jantina',  DB::raw('count(*) as total'))
+            ->groupBy('jantina')
+            ->get()->toArray();
 
         return view('laporan-statistik.peratusan-kelulusan-permit', [
             'kelulusans' => $kelulusan,
             'kelulus' => $arrays1,
-            'klulusass' => $arrays2,
+            'klels' => $kel,
         ]);
     }
 
-    public function permitditolak()
+    public function permitditolak(Request $request)
     {
         $penolakan = Permohonan::where('status_permohonan', 'Tidak Diluluskan')->get();
 
-        $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+        $start = Carbon::parse($request->startdate)->format('Y-m-d');
+        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+
+        $year_start = Carbon::parse($request->startdate)->format('Y');
+        $year_end = Carbon::parse($request->enddate)->format('Y');
+
+        $years = [];
+        if ($year_start == $year_end) {
+            array_push($years, $year_start);
+        } else {
+            $int_start = (int)$year_start;
+            $int_end = (int)$year_end;
+            $range = $int_end - $int_start;
+            for ($i = 0; $i <= $range; $i++) {
+                array_push($years, $int_start);
+                $int_start++;
+            }
+        }
+
+        if (($request->startdate && $request->enddate) != null) {
+            $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+            ->whereBetween('created_at', [$start, $end])
             ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
             ->groupBy('negeri', DB::raw('YEAR(created_at)'))
             ->orderBy('year', 'desc')
             ->get();
-
-        $years = ['2021', '2020'];
+        }
+        else{
+            $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+            ->orderBy('year', 'desc')
+            ->get();
+        }
 
         foreach ($years as $year) {
             $arr1 = [];
@@ -81,44 +126,55 @@ class LaporanstatistikController extends Controller
         }
 
         $tol = Permohonan::where('status_permohonan', 'Diluluskan')
-            ->select('jantina', DB::raw('YEAR(created_at) year, MONTH(created_at) month'), DB::raw('count(*) as total'))
-            ->groupBy('jantina', DB::raw('MONTH(created_at), YEAR(created_at)'))
-            ->get();
+            ->select('jantina',  DB::raw('count(*) as total'))
+            ->groupBy('jantina')
+            ->get()->toArray();
 
-        $years = ['2021'];
-        $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-
-        // if ($year == '2021') {
-        foreach ($months as $mon) {
-            $arr2 = [];
-            $arr2['month'] = $mon;
-            foreach ($tol as $k) {
-                if ($mon == $k->month)
-                    $arr2[$k->jantina] = $k->total;
-            }
-            $arrays2[] = $arr2;
-        }
-        // }
-
-        // dd($penolakan);
         return view('laporan-statistik.peratusan-permit-ditolak', [
             'penolakans' => $penolakan,
             'penolaks' => $arrays1,
-            'penollaks' => $arrays2,
+            'penollaks' => $tol,
         ]);
     }
 
-    public function sejarahpermohonan()
+    public function sejarahpermohonan(Request $request)
     {
         $sejarah = Permohonan::all();
 
-        $sejar = DB::table('Permohonans')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), 'status_permohonan', DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'), 'status_permohonan')
+        $start = Carbon::parse($request->startdate)->format('Y-m-d');
+        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+
+        $year_start = Carbon::parse($request->startdate)->format('Y');
+        $year_end = Carbon::parse($request->enddate)->format('Y');
+
+        $years = [];
+        if ($year_start == $year_end) {
+            array_push($years, $year_start);
+        } else {
+            $int_start = (int)$year_start;
+            $int_end = (int)$year_end;
+            $range = $int_end - $int_start;
+            for ($i = 0; $i <= $range; $i++) {
+                array_push($years, $int_start);
+                $int_start++;
+            }
+        }
+
+        if (($request->startdate && $request->enddate) != null) {
+            $sejar = DB::table('Permohonans')
+            ->whereBetween('created_at', [$start, $end])
+            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
             ->orderBy('year', 'desc')
             ->get();
-
-        $years = ['2021', '2020'];
+        }
+        else{
+            $sejar = DB::table('Permohonans')
+            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+            ->orderBy('year', 'desc')
+            ->get();
+        }
 
         foreach ($years as $year) {
             $arr1 = [];
@@ -131,43 +187,56 @@ class LaporanstatistikController extends Controller
         }
 
         $sej = DB::table('Permohonans')
-            ->select('jantina', DB::raw('YEAR(created_at) year, MONTH(created_at) month'), DB::raw('count(*) as total'))
-            ->groupBy('jantina', DB::raw('MONTH(created_at), YEAR(created_at)'))
-            ->get();
+            ->select('jantina',  DB::raw('count(*) as total'))
+            ->groupBy('jantina')
+            ->get()->toArray();
 
-        $years = ['2021'];
-        $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-
-        // if ($year == '2021') {
-        foreach ($months as $mon) {
-            $arr2 = [];
-            $arr2['month'] = $mon;
-            foreach ($sej as $k) {
-                if ($mon == $k->month)
-                    $arr2[$k->jantina] = $k->total;
-            }
-            $arrays2[] = $arr2;
-        }
-        // }
         return view('laporan-statistik.laporan-sejarah-permohonan', [
             'sejarahs' => $sejarah,
             'sejahs' => $arrays1,
-            'sejs' => $arrays2,
+            'sejs' => $sej,
         ]);
     }
 
-    public function senaraihitam()
+    public function senaraihitam(Request $request)
     {
 
         $senaraihitam = Permohonan::all();
 
-        $senaraihits = Permohonan::where('status_permohonan', 'disenarai hitam')
+        $start = Carbon::parse($request->startdate)->format('Y-m-d');
+        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+
+        $year_start = Carbon::parse($request->startdate)->format('Y');
+        $year_end = Carbon::parse($request->enddate)->format('Y');
+
+        $years = [];
+        if ($year_start == $year_end) {
+            array_push($years, $year_start);
+        } else {
+            $int_start = (int)$year_start;
+            $int_end = (int)$year_end;
+            $range = $int_end - $int_start;
+            for ($i = 0; $i <= $range; $i++) {
+                array_push($years, $int_start);
+                $int_start++;
+            }
+        }
+
+        if (($request->startdate && $request->enddate) != null) {
+            $senaraihits = Permohonan::where('status_permohonan', 'disenarai hitam')
+            ->whereBetween('created_at', [$start, $end])
             ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
             ->groupBy('negeri', DB::raw('YEAR(created_at)'))
             ->orderBy('year', 'desc')
             ->get();
-
-        $years = ['2021', '2020'];
+        }
+        else{
+            $senaraihits = Permohonan::where('status_permohonan', 'disenarai hitam')
+            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+            ->orderBy('year', 'desc')
+            ->get();
+        }
 
         foreach ($years as $year) {
             $arr1 = [];
@@ -180,99 +249,123 @@ class LaporanstatistikController extends Controller
         }
 
         $senhit = Permohonan::where('status_permohonan', 'disenarai hitam')
-            ->select('jantina', DB::raw('YEAR(created_at) year, MONTH(created_at) month'), DB::raw('count(*) as total'))
-            ->groupBy('jantina', DB::raw('MONTH(created_at), YEAR(created_at)'))
-            ->get();
-
-        $years = ['2021'];
-        $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-
-        // if ($year == '2021') {
-        foreach ($months as $mon) {
-            $arr2 = [];
-            $arr2['month'] = $mon;
-            foreach ($senhit as $k) {
-                if ($mon == $k->month)
-                    $arr2[$k->jantina] = $k->total;
-            }
-            $arrays2[] = $arr2;
-        }
-        // }
+            ->select('jantina',  DB::raw('count(*) as total'))
+            ->groupBy('jantina')
+            ->get()->toArray();
 
         return view('laporan-statistik.laporan-senarai-hitam', [
             'senaraihitams' => $senaraihitam,
             'senarhits' => $arrays1,
-            'sentam' => $arrays2,
+            'sentam' => $senhit,
         ]);
     }
 
-    public function pegangpermit()
+    public function pegangpermit(Request $request)
     {
 
         $pegangpermit = Permohonan::all();
 
-        $pegangpermit = DB::table('Permohonans')
+        $start = Carbon::parse($request->startdate)->format('Y-m-d');
+        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+
+        $year_start = Carbon::parse($request->startdate)->format('Y');
+        $year_end = Carbon::parse($request->enddate)->format('Y');
+
+        $years = [];
+        if ($year_start == $year_end) {
+            array_push($years, $year_start);
+        } else {
+            $int_start = (int)$year_start;
+            $int_end = (int)$year_end;
+            $range = $int_end - $int_start;
+            for ($i = 0; $i <= $range; $i++) {
+                array_push($years, $int_start);
+                $int_start++;
+            }
+        }
+
+        if (($request->startdate && $request->enddate) != null) {
+            $peggpermit = DB::table('Permohonans')
+            ->whereBetween('created_at', [$start, $end])
             ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
             ->groupBy('negeri', DB::raw('YEAR(created_at)'))
             ->orderBy('year', 'desc')
             ->get();
-
-        $years = ['2021', '2020'];
+        }
+        else{
+            $peggpermit = DB::table('Permohonans')
+            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+            ->orderBy('year', 'desc')
+            ->get();
+        }
 
         foreach ($years as $year) {
             $arr1 = [];
             $arr1['year'] = $year;
-            foreach ($pegangpermit as $m) {
+            foreach ($peggpermit as $m) {
                 if ($year == $m->year)
                     $arr1[$m->negeri] = $m->total;
             }
             $arrays1[] = $arr1;
         }
 
-        $pegpermit = DB::table('Permohonans')
-            ->select('jantina', DB::raw('YEAR(created_at) year, MONTH(created_at) month'), DB::raw('count(*) as total'))
-            ->groupBy('jantina', DB::raw('MONTH(created_at), YEAR(created_at)'))
-            ->get();
-
-        $years = ['2021'];
-        $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-
-        // if ($year == '2021') {
-        foreach ($months as $mon) {
-            $arr2 = [];
-            $arr2['month'] = $mon;
-            foreach ($pegpermit as $k) {
-                if ($mon == $k->month)
-                    $arr2[$k->jantina] = $k->total;
-            }
-            $arrays2[] = $arr2;
-        }
-        // }
+        $pegpermits = DB::table('Permohonans')
+            ->select('jantina',  DB::raw('count(*) as total'))
+            ->groupBy('jantina')
+            ->get()->toArray();
 
         return view('laporan-statistik.statistik-pemegang-permit', [
             'pegangpermits' => $pegangpermit,
             'pegangpermit' => $arrays1,
-            'pegpermit' => $arrays2,
+            'pegpermit' => $pegpermits,
         ]);
     }
 
-    public function kutipanfi()
+    public function kutipanfi(Request $request)
     {
 
         $kutipanfi = Permohonan::all();
 
-        $kutipanfi = DB::table('Permohonans')
+        $start = Carbon::parse($request->startdate)->format('Y-m-d');
+        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+
+        $year_start = Carbon::parse($request->startdate)->format('Y');
+        $year_end = Carbon::parse($request->enddate)->format('Y');
+
+        $years = [];
+        if ($year_start == $year_end) {
+            array_push($years, $year_start);
+        } else {
+            $int_start = (int)$year_start;
+            $int_end = (int)$year_end;
+            $range = $int_end - $int_start;
+            for ($i = 0; $i <= $range; $i++) {
+                array_push($years, $int_start);
+                $int_start++;
+            }
+        }
+
+        if (($request->startdate && $request->enddate) != null) {
+            $kutipan = DB::table('Permohonans')
+            ->whereBetween('created_at', [$start, $end])
             ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
             ->groupBy('negeri', DB::raw('YEAR(created_at)'))
             ->orderBy('year', 'desc')
             ->get();
-
-        $years = ['2021', '2020'];
+        }
+        else{
+            $kutipan = DB::table('Permohonans')
+            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+            ->orderBy('year', 'desc')
+            ->get();
+        }
 
         foreach ($years as $year) {
             $arr1 = [];
             $arr1['year'] = $year;
-            foreach ($kutipanfi as $m) {
+            foreach ($kutipan as $m) {
                 if ($year == $m->year)
                     $arr1[$m->negeri] = $m->total;
             }
@@ -280,29 +373,14 @@ class LaporanstatistikController extends Controller
         }
 
         $kutipfis = DB::table('Permohonans')
-            ->select('jantina', DB::raw('YEAR(created_at) year, MONTH(created_at) month'), DB::raw('count(*) as total'))
-            ->groupBy('jantina', DB::raw('MONTH(created_at), YEAR(created_at)'))
-            ->get();
-
-        $years = ['2021'];
-        $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-
-        // if ($year == '2021') {
-        foreach ($months as $mon) {
-            $arr2 = [];
-            $arr2['month'] = $mon;
-            foreach ($kutipfis as $k) {
-                if ($mon == $k->month)
-                    $arr2[$k->jantina] = $k->total;
-            }
-            $arrays2[] = $arr2;
-        }
-        // }
+            ->select('jantina',  DB::raw('count(*) as total'))
+            ->groupBy('jantina')
+            ->get()->toArray();
 
         return view('laporan-statistik.statistik-kutipan-fi', [
             'kutipanfis' => $kutipanfi,
             'kutipfis' => $arrays1,
-            'kutips' => $arrays2,
+            'kutips' => $kutipfis,
         ]);
     }
 }

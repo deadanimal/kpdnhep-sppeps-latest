@@ -72,7 +72,26 @@ Route::get('/font_default', [LocalizationController::class, 'color_font_default'
 Route::get('/font_blue', [LocalizationController::class, 'color_font_blue']);
 Route::get('/font_brown', [LocalizationController::class, 'color_font_brown']);
 Route::get('/font_green', [LocalizationController::class, 'color_font_green']);
-//localization
+
+// font size
+Route::get('/font_size_normal', [LocalizationController::class, 'font_size_normal']);
+Route::get('/font_size_0_9', [LocalizationController::class, 'font_size_0_9']);
+Route::get('/font_size_1', [LocalizationController::class, 'font_size_1']);
+Route::get('/font_size_1_1', [LocalizationController::class, 'font_size_1_1']);
+Route::get('/font_size_1_2', [LocalizationController::class, 'font_size_1_2']);
+Route::get('/font_size_1_3', [LocalizationController::class, 'font_size_1_3']);
+
+//readable
+Route::get('/set_readable', [LocalizationController::class, 'set_readable']);
+Route::get('/remove_readable', [LocalizationController::class, 'remove_readable']);
+
+//grayscale
+Route::get('/set_grayscale', [LocalizationController::class, 'set_grayscale']);
+Route::get('/remove_grayscale', [LocalizationController::class, 'remove_grayscale']);
+
+//negative color
+Route::get('/set_negative', [LocalizationController::class, 'set_negative']);
+Route::get('/remove_negative', [LocalizationController::class, 'remove_negative']);
 
 Route::resource('/tugasan-selesai', TugasanSelesaiController::class);
 

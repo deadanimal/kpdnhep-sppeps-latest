@@ -1,7 +1,7 @@
 @extends('layouts.baseUser')
 
 @section('content')
-    <div class="container-fluid py-4 d-flex justify-content-center flex-wrap">
+    <div class="container-fluid py-4 d-flex justify-content-center flex-wrap"  style="height: 100vh;">
         <div class="row">
             <div class="p-2 text-capitalize">
                 <h5 class="h3 text-dark pt-4 text-center"><strong>Semakan Status EPS</strong></h5>
@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="container p-2 m-0 d-flex justify-content-center flex-wrap"
                         style="height: 100%; width: 100%;">
-                        <div class="card-body p-3 text-capitalize mt-5" *ngIf="show">
+                        <div class="card-body p-3 text-capitalize mt-5">
                             <div style="overflow-x:auto;" class="pb-5">
 
                                 <div class="table-responsive">

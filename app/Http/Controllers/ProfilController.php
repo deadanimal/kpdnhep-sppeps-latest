@@ -64,14 +64,16 @@ class ProfilController extends Controller
         $user->no_telefon_pejabat =  $request->no_telefon_pejabat;
         $user->profil_update =  1;
 
-        $gambar_profil = $request->file('gambar_profil')->store('profil');
-        $user->gambar_profil = $gambar_profil;
+        if ($request->hasFile('gambar_profil')) {
+            $gambar_profil = $request->file('gambar_profil')->store('profil');
+            $user->gambar_profil = $gambar_profil;
+        }
 
         $user->save();
 
-        if($profil_update == 0){
+        if ($profil_update == 0) {
             return redirect("/dashboard")->with('success', 'Profil berjaya disimpan!');
-        }else{
+        } else {
             return redirect('/profil')->with('success', 'Profil berjaya disimpan!');
         }
     }
@@ -122,7 +124,7 @@ class ProfilController extends Controller
             ]
         ])->json()['result']['token'];
 
-        
+
 
         $url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
@@ -199,5 +201,4 @@ class ProfilController extends Controller
 
         return redirect("/login_");
     }
-
 }

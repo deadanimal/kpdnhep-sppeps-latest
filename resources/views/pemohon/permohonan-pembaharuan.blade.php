@@ -312,7 +312,6 @@
                                                                 class="fas fa-briefcase"></i><strong> Status Pekerjaan
                                                                 EPS</strong></label>
 
-
                                                         <div class="row">
                                                             <div class="col">
                                                                 <input type="radio" name="status_pekerjaan_eps"
