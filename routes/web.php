@@ -103,6 +103,10 @@ Route::post('/cetak_borang', [PermohonanController::class, 'cetak']);
 Route::post('/cari-tugasan-selesai', [TugasanSelesaiController::class, 'cari']);
 
 Route::post('/borang', [BorangPermohonan::class, 'borang']);
+Route::get('/permohonan_baharu', [BorangPermohonan::class, 'permohonan_baharu']);
+Route::get('/permohonan_pembaharuan', [BorangPermohonan::class, 'permohonan_pembaharuan']);
+Route::get('/permohonan_pendua', [BorangPermohonan::class, 'permohonan_pendua']);
+Route::get('/permohonan_rayuan', [BorangPermohonan::class, 'permohonan_rayuan']);
 
 Route::resource('/senarai-hitam', SenaraiHitamController::class);
 
@@ -119,6 +123,8 @@ Route::resource('/profil', ProfilController::class);
 Route::get('/profil_pegawai', [ProfilController::class, 'profil_pegawai']);
 
 Route::post('/cari-eps', [SemakanStatusController::class, 'caripermohonan']);
+Route::GET('/keputusan_qr', [SemakanStatusController::class, 'keputusan_qr']);
+Route::GET('/keputusan_qr_penguatkuasa', [SemakanStatusController::class, 'keputusan_qr_penguatkuasa']);
 
 Route::resource('/pengurusan-data', PengurusanDataController::class);
 Route::post('/cari_pengurusan_data', [PengurusanDataController::class, 'cari']);
@@ -156,8 +162,13 @@ Route::post('/cari_pelulus_hq_tugasan_selesai', [TugasanSelesaiController::class
 Route::resource('/peranan_pdrm', PerananPegawaiController::class);
 Route::post('/cari_pdrm', [PerananPegawaiController::class, 'cari']);
 
+//peranan pegawai
 Route::resource('/peranan_pegawai', TetapanPerananController::class);
+Route::post('/cari_pegawai', [TetapanPerananController::class, 'cari_pegawai']); 
 Route::get('/senarai_pegawai', [TetapanPerananController::class, 'senarai_pegawai']);
+Route::post('/cari_pegawai_insid', [TetapanPerananController::class, 'cari_pegawai_insid']);
+Route::post('/show_pegawai_insid', [TetapanPerananController::class, 'show_pegawai_insid']);
+
 
 Route::post('/semakan_no_kp', [SemakanIcController::class, 'semakanIc']);
 Route::get('/reload-captcha', [SemakanIcController::class, 'reloadCaptcha']);
@@ -210,20 +221,14 @@ Route::get('/arkib-bergambar-info/{gambar}', [ArkibgambarlandingController::clas
 
 Route::get('/arkib-dokumen', [ArkibdokumenlandingController::class, 'dokumenland']);
 Route::get('/arkib-dokumen-senarai/{dokumen}', [ArkibdokumenlandingController::class, 'dokumenshow']);
-// Route::get('/arkib-dokumen-senarai', function () {
-//     return view('global.arkib-dokumen-senarai');
-// });
 
 Route::get('/faq', [FaqlandingController::class, 'faqlanding']);
-
 
 Route::get('/semakan-status-eps', function () {
     return view('global.semakan-status-eps');
 });
 
-
 //pemohon
-
 Route::get('/permohonan-berjaya', function () {
     return view('pemohon.permohonan-success');
 });
@@ -232,72 +237,6 @@ Route::get('/permohonan-disimpan', function () {
     return view('pemohon.permohonan-simpan');
 });
 
-
-
-
-Route::get('/negeri-bayaran-permohonan', function () {
-    return view('pegawai.negeri.negeri-bayaran-permohonan');
-});
-
-
-//pegawai hq
-
-Route::get('/hq-tugasan-baru', function () {
-    return view('pegawai.hq.hq-tugasan-baru');
-});
-
-Route::get('/hq-maklumat-pemohon', function () {
-    return view('pegawai.hq.hq-maklumat-pemohon');
-});
-
-Route::get('/hq-maklumat-pemohon-rayuan-pendua', function () {
-    return view('pegawai.hq.hq-maklumat-pemohon-rayuan-pendua');
-});
-
-Route::get('/hq-disemak-pdrm', function () {
-    return view('pegawai.hq.hq-disemak-pdrm');
-});
-
-Route::get('/hq-tugasan-selesai', function () {
-    return view('pegawai.hq.hq-tugasan-selesai');
-});
-
-Route::get('/hq-senarai-hitam', function () {
-    return view('pegawai.hq.hq-senarai-hitam');
-});
-
-Route::get('/hq-tambah-senarai-hitam', function () {
-    return view('pegawai.hq.hq-tambah-senarai-hitam');
-});
-
-
-//pegawai penyokong
-
-Route::get('/penyokong-tugasan-baru', function () {
-    return view('pegawai.penyokong.penyokong-tugasan-baru');
-});
-
-Route::get('/penyokong-maklumat-pemohon', function () {
-    return view('pegawai.penyokong.penyokong-maklumat-pemohon');
-});
-
-Route::get('/penyokong-tugasan-selesai', function () {
-    return view('pegawai.penyokong.penyokong-tugasan-selesai');
-});
-
-//pegawai pelulus
-
-Route::get('/pelulus-tugasan-baru', function () {
-    return view('pegawai.pelulus.pelulus-tugasan-baru');
-});
-
-Route::get('/pelulus-maklumat-pemohon', function () {
-    return view('pegawai.pelulus.pelulus-maklumat-pemohon');
-});
-
-Route::get('/pelulus-tugasan-selesai', function () {
-    return view('pegawai.pelulus.pelulus-tugasan-selesai');
-});
 
 
 // laporan Statistik
@@ -315,23 +254,6 @@ Route::get('/laporan-statistik/statistik-pemegang-permit', [LaporanstatistikCont
 Route::get('/laporan-statistik/statistik-kutipan-fi', [LaporanstatistikController::class, 'kutipanfi']);
 
 
-//admin hq
-
-
-
-
-
-Route::get('/peranan-pegawai', function () {
-    return view('pegawai.admin-hq.peranan-pegawai');
-});
-
-Route::get('/tambah-peranan-pegawai', function () {
-    return view('pegawai.admin-hq.tambah-peranan-pegawai');
-});
-
-Route::get('/tambah-peranan-pegawai-2', function () {
-    return view('pegawai.admin-hq.tambah-peranan-pegawai-2');
-});
 
 Route::resource('/tetapan-arkib-bergambar', ArkibgambarController::class);
 Route::get('/tetapan-arkib-bergambar/{arkibgambar}/delete', [ArkibgambarController::class, 'destroy']);
@@ -356,10 +278,11 @@ Route::get('/tetapan-faq/{faq}/delete', [FaqController::class, 'destroy']);
 Route::get('/tetapan-kategorifaq/{kategorifaq}/delete', [KategorifaqController::class, 'destroy']);
 
 
-
-Route::get('/peranan-pdrm', function () {
-    return view('pegawai.admin-hq.peranan-pdrm');
+//qr code scanner
+Route::get('/qr_code_scanner', function () {
+    return view('pegawai.qr-code-scanner');
 });
+
 
 //
 Route::get('/semakan-status-permohonan', function () {

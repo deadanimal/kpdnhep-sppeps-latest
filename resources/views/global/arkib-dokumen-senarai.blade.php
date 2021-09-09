@@ -4,11 +4,13 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="p-2 text-capitalize">
-                <h5 class="h3 text-dark pt-4 text-center"><strong>Arkib Dokumen</strong></h5>
+                <h5 class="h3 text-dark pt-4 text-center"><strong>{{ __('landing.arkib_dokumen') }}</strong></h5>
             </div>
+
             <div class="p-2 text-capitalize">
-                <h6 class="text- capitalize text-bold text-center">Arkib Dokumen 1</h6>
+                <h6 class="text- capitalize text-bold text-center">{{ __('landing.arkib_dokumen') }} </h6>
             </div>
+
         </div>
         <div class="row d-flex justify-content-center m-4">
 
@@ -20,29 +22,39 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     No.</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Tajuk
+                                    {{ __('landing.tajuk') }}
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Keterangan</th>
+                                    {{ __('landing.keterangan') }}</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Tarikh Kemaskini</th>
+                                    {{ __('landing.tarikh_kemaskini') }}</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Tindakan</th>
+                                    {{ __('landing.tindakan') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($infodokumens as $infodokumen)
                                 <tr>
                                     <td class="text-center text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
-                                    {{-- @if({!! Session::get('font_color') !!}) --}}
-                                    <td class="text-center text-sm font-weight-normal">{{ $infodokumen->tajuk_ms }}</td>
-                                    <td class="text-center text-sm font-weight-normal">{{ $infodokumen->kandungan_ms }}
+                                    <td class="text-center text-sm font-weight-normal">
+                                        @if (Session::get('locale') == 'en')
+                                            {{ $infodokumen->tajuk_en }}
+                                        @else
+                                            {{ $infodokumen->tajuk_ms }}
+                                        @endif
+                                    </td>
+                                    <td class="text-center text-sm font-weight-normal">
+                                        @if (Session::get('locale') == 'en')
+                                            {{ $infodokumen->kandungan_en }}
+                                        @else
+                                            {{ $infodokumen->kandungan_ms }}
+                                        @endif
                                     </td>
                                     <td class="text-center text-sm font-weight-normal">{{ $infodokumen->updated_at }}</td>
                                     <td class="text-center text-sm font-weight-normal">
                                         <a href="/storage/{{ $infodokumen->jalan1 }}" target="_blank"
                                             class="btn btn-sm bg-gradient-info">
-                                            Lihat
+                                            {{ __('landing.lihat_dokumen') }}
                                         </a>
                                     </td>
                                 </tr>

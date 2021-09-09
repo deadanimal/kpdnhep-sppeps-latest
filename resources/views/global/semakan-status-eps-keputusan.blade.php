@@ -1,10 +1,10 @@
 @extends('layouts.baseUser')
 
 @section('content')
-    <div class="container-fluid py-4 d-flex justify-content-center flex-wrap"  style="height: 100vh;">
+    <div class="container-fluid py-4 d-flex justify-content-center flex-wrap" style="height: 100vh;">
         <div class="row">
             <div class="p-2 text-capitalize">
-                <h5 class="h3 text-dark pt-4 text-center"><strong>Semakan Status EPS</strong></h5>
+                <h5 class="h3 text-dark pt-4 text-center"><strong>{{ __('landing.semakan_status_eps') }}</strong></h5>
             </div>
         </div>
 
@@ -22,14 +22,32 @@
 
                                         <tr>
                                             <!-- <th>No.</th> -->
-                                            <th>No. Kad Pengenalan</th>
-                                            <th>Nama EPS</th>
-                                            <th>No. Permit</th>
-                                            <th>Status EPS</th>
+                                            <th>{{ __('landing.no_kp') }}</th>
+                                            <th>{{ __('landing.nama_ejen') }}</th>
+                                            <th>{{ __('landing.no_permit') }}No. Permit</th>
+                                            <th>{{ __('landing.status_ejen') }}Status EPS</th>
                                         </tr>
 
-                                        @foreach ($keputusans as $keputusan)
+                                        @if ($carian == 'kp')
+                                            @foreach ($keputusan as $keputusan)
 
+                                                <tr>
+                                                    <!-- <td>1</td> -->
+                                                    <td>{{ $keputusan->no_kp }}</td>
+                                                    <td>{{ $keputusan->nama }}</td>
+                                                    <td>{{ $keputusan->no_permit }}</td>
+                                                    <td>
+                                                        @if ($keputusan->tarikh_diluluskan <= $currentDate && $keputusan->tarikh_tamat_permit >= $currentDate)
+                                                            <span class="badge badge-success">{{ __('landing.aktif') }}</span>
+                                                        @else
+                                                            <span class="badge badge-danger">{{ __('landing.tidak_aktif') }} </span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+
+                                            @endforeach
+
+                                        @elseif ($carian == 'qr')
                                             <tr>
                                                 <!-- <td>1</td> -->
                                                 <td>{{ $keputusan->no_kp }}</td>
@@ -37,25 +55,28 @@
                                                 <td>{{ $keputusan->no_permit }}</td>
                                                 <td>
                                                     @if ($keputusan->tarikh_diluluskan <= $currentDate && $keputusan->tarikh_tamat_permit >= $currentDate)
-                                                        <span class="badge badge-success">Aktif</span>
+                                                        <span class="badge badge-success">{{ __('landing.aktif') }}</span>
                                                     @else
-                                                        <span class="badge badge-danger">Tidak Aktif</span>
+                                                        <span class="badge badge-danger">{{ __('landing.tidak_aktif') }}</span>
                                                     @endif
                                                 </td>
                                             </tr>
 
-                                        @endforeach
+
+                                        @endif
+
+
                                     </table>
                                 </div>
                                 <!-- <ng-template #null>
-                                            <p>Your data does not exist. Please check your entered number or contact administrator for help.</p>
-                                        </ng-template> -->
+                                                    <p>Your data does not exist. Please check your entered number or contact administrator for help.</p>
+                                                </ng-template> -->
                             </div>
                             <!-- add padding top -->
                             <div class="p-3 d-flex justify-content-center">
                                 <a href="/semakan-status-eps" type="button" class="btn btn-md text-capitalize"
                                     style="background-color: #1d1da1; color:#fff">
-                                    Kembali</a>
+                                    {{ __('landing.kembali') }}</a>
                             </div>
                         </div>
                     </div>

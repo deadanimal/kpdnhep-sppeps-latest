@@ -158,7 +158,7 @@
                                                     Tarikh Hantar Permohonan</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                                    Status</th>
+                                                    Status Pekerjaan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -265,7 +265,6 @@
             createSeries("Pahang", "Pahang");
             createSeries("Terengganu", "Terengganu");
             createSeries("Kelantan", "Kelantan");
-            createSeries("selangor", "Selangor");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");

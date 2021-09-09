@@ -37,9 +37,9 @@
 
                                         <button class="btn  bg-gradient-info text-uppercases m-2 " type="submit"
                                             name="search"><i class="fas fa-search"></i> cari</button>
-                                        <button class="btn  bg-gradient-danger text-uppercases m-2" type="reset"
-                                            name="search" (click)="reset()">set
-                                            semula</button>
+                                        <a href="/laporan-statistik/peratusan-kelulusan-permit"
+                                            class="btn  bg-gradient-danger text-uppercases m-2" (click)="reset()">set
+                                            semula</a>
                                     </div>
                                 </div>
                             </form>
@@ -276,7 +276,6 @@
             createSeries("Pahang", "Pahang");
             createSeries("Terengganu", "Terengganu");
             createSeries("Kelantan", "Kelantan");
-            createSeries("selangor", "Selangor");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");

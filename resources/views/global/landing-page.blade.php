@@ -66,7 +66,7 @@
                                 </svg>
                             </div>
                             <div class="description ps-5">
-                                <h4 class="mb-4"><b>Pengumuman</b></h4>
+                                <h4 class="mb-4"><b>{{ __('landing.Pengumuman') }}</b></h4>
                                 @foreach ($penglands as $pengu)
                                     @if (Session::get('locale') == 'ms')
                                         <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_bm }}</h5>
@@ -113,20 +113,15 @@
                             </div>
                             <div class="description ps-5">
                                 {{-- <h5 class="text-white">Keterangan Sistem</h5> --}}
-                                <p class="font_color">Sistem Permohonan Percetakan Permit Ejen Pemilikan Semula (SPPEPS)
-                                    ialah suatu sistem yang memudahkan Ejen Pemilikan Kereta Semula untuk membuat
-                                    permohonan
-                                    dari segi Permohonan baru, Pembaharuan Permit, Permohonan Cetakan Semula dan
-                                    Permohonan
-                                    Rayuan.</p>
+                                <p class="font_color">{{ __('landing.sistempercetakanpermit___') }}</p>
 
                                 @can('isPemohon')
                                     <a href="/dashboard" class="btn btn-primary">
-                                        Mohon Sekarang
+                                        {{ __('landing.mohon_sekarang') }}
                                     </a>
                                 @else
                                     <a href="/login_" class="btn btn-primary">
-                                        Mohon Sekarang
+                                        {{ __('landing.mohon_sekarang') }}
                                     </a>
                                 @endcan
 

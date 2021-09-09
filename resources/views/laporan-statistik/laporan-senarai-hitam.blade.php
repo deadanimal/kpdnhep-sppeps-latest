@@ -150,9 +150,9 @@
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                     Negeri</th>
-                                                <th
+                                                {{-- <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Jenis Permohonan</th>
+                                                    Jenis Permohonan</th> --}}
                                                 <th
                                                     class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                                                     Tarikh Disenarai Hitam</th>
@@ -164,15 +164,15 @@
                                                     <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
                                                     <td class="text-sm font-weight-normal">{{ $senaraihitam->no_permit }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->nama }}
+                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->name }}
                                                     </td>
                                                     <td class="text-sm font-weight-normal">{{ $senaraihitam->no_kp }}
                                                     </td>
                                                     <td class="text-sm font-weight-normal">{{ $senaraihitam->negeri }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">
+                                                    {{-- <td class="text-sm font-weight-normal">
                                                         {{ $senaraihitam->jenis_permohonan }}
-                                                    </td>
+                                                    </td> --}}
                                                     <td class="text-sm font-weight-normal">{{ $senaraihitam->updated_at }}
                                                     </td>
                                                 </tr>
@@ -261,7 +261,6 @@
             createSeries("Pahang", "Pahang");
             createSeries("Terengganu", "Terengganu");
             createSeries("Kelantan", "Kelantan");
-            createSeries("selangor", "Selangor");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");

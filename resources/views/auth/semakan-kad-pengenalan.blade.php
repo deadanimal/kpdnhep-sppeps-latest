@@ -36,7 +36,7 @@
                     @endif
 
                     <div class="form-group mt-3">
-                        <label for="nric">No. Kad Pengenalan</label>
+                        <label for="nric">{{ __('landing.no_kp') }}</label>
                         <input type="text" class="form-control" name="no_kp" placeholder="e.g XXXXXXXXXXXX">
                     </div>
 
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <div class="input-group mb-4">
-                            <input type="submit" value="Semak" class="btn bg-gradient-info btn-lg w-100 text-capitalize">
+                            <input type="submit" value="{{ __('landing.semak') }}" class="btn bg-gradient-info btn-lg w-100 text-capitalize">
                             {{-- <a href="/register_" class="btn bg-gradient-info btn-lg w-100 text-capitalize">Daftar</a> --}}
                         </div>
                     </div>

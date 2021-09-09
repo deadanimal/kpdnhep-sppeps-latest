@@ -30,7 +30,7 @@
 
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h3 class="mt-5">Permohonan Pembaharuan</h3>
+                        <h3 class="mt-5">{{ __('landing.permohonan_pembaharuan') }}</h3>
                         <!-- <h5 class="text-secondary font-weight-normal">This information will let us know more about you.</h5> -->
                         <div class="multisteps-form mb-5">
                             <!--progress bar-->
@@ -39,13 +39,13 @@
                                     <div class="multisteps-form__progress">
                                         <button class="multisteps-form__progress-btn js-active" type="button"
                                             title="User Info">
-                                            <span>A. Maklumat Permohonan</span>
+                                            <span>A. {{ __('landing.maklumat_permohonan') }}</span>
                                         </button>
                                         <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                            <span>B. Maklumat Tambahan</span>
+                                            <span>B. {{ __('landing.maklumat_tambahan') }}</span>
                                         </button>
                                         <button class="multisteps-form__progress-btn" type="button" title="Order Info">
-                                            <span>C. Pengesahan Permohonan</span>
+                                            <span>C. {{ __('landing.pengesahan_permohonan') }}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                             data-animation="FadeIn">
                                             <div class="row text-center">
                                                 <div class="col-12 mx-auto">
-                                                    <h5 class="font-weight-normal"><strong>A. Maklumat Permohonan</strong>
+                                                    <h5 class="font-weight-normal"><strong>A. {{ __('landing.maklumat_permohonan') }}</strong>
                                                     </h5>
                                                     <!-- <p>Let us know your name and email address. Use an address you don't mind other users contacting you at</p> -->
                                                 </div>
@@ -97,10 +97,7 @@
                                                         <div class="row mt-2 d-flex justify-content-center flex-wrap">
                                                             <div class="col-md-8 form-group text-center"
                                                                 style="outline: 1px dashed red;">
-                                                                <small class="text-xs mb-3">Gambar ini akan digunakan untuk
-                                                                    dicetak atas kad permit. <br> Sekiranya ingin menukar,
-                                                                    sila
-                                                                    ke profil untuk mengubah gambar.</small>
+                                                                <small class="text-xs mb-3">{{ __('landing.gamabr_ini_akan___') }} <br> {{ __('landing.sekiranya_ingin_menukar___') }}</small>
                                                             </div>
                                                         </div>
 
@@ -108,7 +105,7 @@
                                                         <div class="d-flex flex-nowrap pb-2">
                                                             <div class="col-6 form-group p-0 text-start">
                                                                 <label for="name">
-                                                                    <i class="fas fa-user"></i><strong> Nama</strong>
+                                                                    <i class="fas fa-user"></i><strong> {{ __('landing.nama') }}</strong>
                                                                 </label>
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-9"
@@ -119,7 +116,7 @@
 
                                                             <div class="col form-group pr-0 text-start">
                                                                 <label for="noPermit"><i class="fas fa-id-card"></i><strong>
-                                                                        No. Permit</strong></label>
+                                                                    {{ __('landing.no_permit') }}</strong></label>
                                                                 <input type="text" class="form-control" value="{{ $pemohon->no_permit }}"
                                                                     name="no_permit" readonly>
                                                             </div>
@@ -130,15 +127,14 @@
                                                             <div class="col-6 form-group p-0">
                                                                 <label for="gender"> <i
                                                                         class="fas fa-venus-mars"></i><strong>
-                                                                        Jantina</strong></label>
+                                                                            {{ __('landing.jantina') }}</strong></label>
                                                                 <input type="text" class="form-control" name="jantina"
                                                                     value="{{ $pemohon->jantina }}" readonly>
 
                                                             </div>
                                                             <div class="col-1"></div>
                                                             <div class="col form-group pr-0 text-start">
-                                                                <label for="ic"><i class="fas fa-id-card"></i><strong> No
-                                                                        Kad Pengenalan</strong></label>
+                                                                <label for="ic"><i class="fas fa-id-card"></i><strong> {{ __('landing.no_kp') }}</strong></label>
                                                                 <input type="text" class="form-control" id="ic"
                                                                     aria-describedby="ic" name="no_kp" readonly
                                                                     value="{{ $pemohon->no_kp }}">
@@ -155,7 +151,7 @@
                                                                         <path fill-rule="evenodd"
                                                                             d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
                                                                     </svg>
-                                                                    <strong> No. Telefon</strong>
+                                                                    <strong> {{ __('landing.no_telafon') }}</strong>
                                                                 </label>
                                                                 <div class="d-flex flex-nowrap align-items-center">
                                                                     <input type="text" class="form-control col-2"
@@ -168,7 +164,7 @@
                                                             <div class="col-1"></div>
                                                             <div class="col form-group pr-0">
                                                                 <label for="age"><i class="fas fa-calendar-alt"></i><strong>
-                                                                        Umur</strong></label>
+                                                                    {{ __('landing.umur') }}</strong></label>
                                                                 <input type="text" class="form-control" id="age"
                                                                     aria-describedby="age" name="umur"
                                                                     value="{{ $pemohon->umur }}" readonly>
@@ -179,7 +175,7 @@
                                                             <div class="col-6 form-group p-0">
                                                                 <label for="address"><i
                                                                         class="fas fa-map-marker-alt"></i><strong>
-                                                                        Alamat</strong></label>
+                                                                            {{ __('landing.alamat') }}</strong></label>
                                                                 <input type="text" class="col-9 form-control" name="alamat1"
                                                                     aria-describedby="address"
                                                                     value="{{ $pemohon->alamat1 }}">
@@ -200,17 +196,17 @@
                                                                             <path
                                                                                 d="M7.293.707A1 1 0 0 0 7 1.414V4H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h5v6h2v-6h3.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H9V1.414A1 1 0 0 0 7.293.707z" />
                                                                         </svg>
-                                                                        <strong> Poskod</strong></label>
+                                                                        <strong> {{ __('landing.poskod') }}</strong></label>
                                                                     <input type="text" class="form-control" id="poskod"
                                                                         aria-describedby="poskod" name="poskod"
                                                                         value="{{ $pemohon->poskod }}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="state"><i class="fas fa-map"></i><strong>
-                                                                            Negeri</strong></label>
+                                                                        {{ __('landing.negeri') }}</strong></label>
                                                                     <select class="form-control"
                                                                         aria-label="Default select example" name="negeri">
-                                                                        <option value="">--Pilih Negeri--</option>
+                                                                        <option value="">--{{ __('landing.pilih_negeri') }}--</option>
                                                                         <option @if ($pemohon->negeri == 'Perlis') selected @endif
                                                                             value="Perlis">Perlis</option>
                                                                         <option @if ($pemohon->negeri == 'Kedah') selected @endif
@@ -253,12 +249,11 @@
 
                                                         <div class="d-flex flex-nowrap pb-2 text-start">
                                                             <div class="col-6 form-group p-0">
-                                                                <label for="state"><i class="fas fa-map"></i><strong> Negeri
-                                                                        Kutipan Permit</strong></label>
+                                                                <label for="state"><i class="fas fa-map"></i><strong> {{ __('landing.negeri_kutipan_permit') }}</strong></label>
                                                                 <select class="form-control"
                                                                     aria-label="Default select example"
                                                                     name="negeri_kutipan_permit">
-                                                                    <option selected>--Pilih Negeri--</option>
+                                                                    <option selected>--{{ __('landing.pilih_negeri') }}--</option>
                                                                     <option value="Perlis">Perlis</option>
                                                                     <option value="Kedah">Kedah</option>
                                                                     <option value="Pulau Pinang">Pulau Pinang</option>
@@ -281,7 +276,7 @@
                                                             <div class="col-1"></div>
                                                             <div class="col form-group pr-0">
                                                                 <label for="email"><i class="fas fa-envelope"></i><strong>
-                                                                        E-mel</strong></label>
+                                                                    {{ __('landing.emel') }}</strong></label>
                                                                 <input type="email" name="emel" class="form-control"
                                                                     value="{{ $pemohon->email }}">
                                                             </div>
@@ -291,7 +286,7 @@
                                                 </div>
                                                 <div class="button-row d-flex mt-4">
                                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
-                                                        type="button" title="Next">Seterusnya</button>
+                                                        type="button" title="Next">{{ __('landing.seterusnya') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -300,7 +295,7 @@
                                             data-animation="FadeIn">
                                             <div class="row text-center">
                                                 <div class="col-12 mx-auto">
-                                                    <h5 class="font-weight-normal"><strong>B. Maklumat Tambahan</strong>
+                                                    <h5 class="font-weight-normal"><strong>B. {{ __('landing.maklumat_tambahan') }}</strong>
                                                     </h5>
 
                                                 </div>
@@ -309,21 +304,20 @@
                                                 <div class="row mt-4">
                                                     <div class="form-group pb-2 text-start">
                                                         <label for="status_pekerjaan_eps"><i
-                                                                class="fas fa-briefcase"></i><strong> Status Pekerjaan
-                                                                EPS</strong></label>
+                                                                class="fas fa-briefcase"></i><strong> {{ __('landing.status_pekerjaan_eps') }}</strong></label>
 
                                                         <div class="row">
                                                             <div class="col">
                                                                 <input type="radio" name="status_pekerjaan_eps"
                                                                     id="sepenuh_masa_eps" value="sepenuh masa"
                                                                     onclick="EnableDisableTextBox()">
-                                                                <label class="pl-2" for="EPSworkStatus">Sepenuh masa sebagai
-                                                                    EPS</label>
+                                                                <label class="pl-2" for="EPSworkStatus">{{ __('landing.sepenuh_masa') }}
+                                                                    </label>
                                                                 <br>
                                                                 <div class="row pl-4">
                                                                     <div class="col">
                                                                         <div class="form-group row">
-                                                                            <label for="date">Dari Tahun </label>
+                                                                            <label for="date">{{ __('landing.dari_tahun') }} </label>
                                                                             <div class="col-sm-10">
                                                                                 <!-- patut dlm select senarai tahun-->
                                                                                 <input type="text"
@@ -342,13 +336,11 @@
                                                                 <input type="radio" name="status_pekerjaan_eps"
                                                                     id="pekerjaan_sampingan" value="pekerjaan sampingan"
                                                                     onclick="EnableDisableTextBox()">
-                                                                <label class="pl-2" for="EPSworkStatus">Pekerjaan
-                                                                    Sampingan</label>
+                                                                <label class="pl-2" for="EPSworkStatus">{{ __('landing.pekerjaan_sampingan') }}</label>
                                                                 <div class="row pl-4">
                                                                     <div class="col">
                                                                         <div class="form-group row">
-                                                                            <label for="occupation">Sila nyatakan pekerjaan
-                                                                                tetap anda </label>
+                                                                            <label for="occupation">{{ __('landing.sila_nyatakan_pekerjaan___') }}</label>
                                                                             <div class="col-sm-10">
                                                                                 <input type="text"
                                                                                     class="form-control col-5"
@@ -368,8 +360,7 @@
                                                     </div>
                                                     <div class="form-group pb-2 text-start">
                                                         <label for="education"><i class="fas fa-graduation-cap"></i><strong>
-                                                                Tahap Pendidikan
-                                                                Tertinggi</strong></label>
+                                                            {{ __('landing.tahap_pendidikan_tertinggi') }}</strong></label>
 
                                                         <br>
                                                         <div class="row">
@@ -378,13 +369,13 @@
                                                                     <input class="form-check-input" type="radio"
                                                                         name="tahap_pendidikan" value="Tiada">
                                                                     <label class="form-check-label"
-                                                                        for="inlineCheckbox1">Tiada</label>
+                                                                        for="inlineCheckbox1">{{ __('landing.tiada') }}</label>
                                                                 </div>
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
                                                                         name="tahap_pendidikan" value="Darjah 6">
                                                                     <label class="form-check-label"
-                                                                        for="inlineCheckbox1">Darjah 6</label>
+                                                                        for="inlineCheckbox1">{{ __('landing.darjah_6') }}</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-3">
@@ -412,16 +403,14 @@
                                                                     <input class="form-check-input" type="radio"
                                                                         name="tahap_pendidikan" value="Ijazah/Master">
                                                                     <label class="form-check-label"
-                                                                        for="inlineCheckbox1">Ijazah/Master</label>
+                                                                        for="inlineCheckbox1">{{ __('landing.ijazah_master') }}</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group pb-2 text-start">
-                                                        <label for="education"><i class="fas fa-car"></i><strong> Lesen
-                                                                Memandu Yang
-                                                                Sah</strong></label>
+                                                        <label for="education"><i class="fas fa-car"></i><strong> {{ __('landing.lesen_memandu') }}</strong></label>
                                                         <!-- <input type="text" class="form-control" id="education" aria-describedby="education" placeholder=""> -->
                                                         <br>
                                                         <div class="row">
@@ -471,8 +460,7 @@
 
 
                                                     <div class="form-group text-start">
-                                                        <label for=""><strong>Adakah anda bekerja sebagai panel
-                                                                bank/syarikat sewa beli?</strong></label>
+                                                        <label for=""><strong>{{ __('landing.pernah_bekarja_sebagai_panel_bank') }}</strong></label>
                                                         <!-- <input type="text" class="form-control" id="state" aria-describedby="state" placeholder=""> -->
 
 
@@ -483,7 +471,7 @@
                                                                         id="bekerja_panel" class="form-check-input ml-3"
                                                                         value="Ya" onclick="clearForm()">
                                                                     <label class="pl-2 form-check-label"
-                                                                        for="panelInfo">Ya</label>
+                                                                        for="panelInfo">{{ __('landing.ya') }}</label>
 
                                                                 </div>
                                                                 <div class="col-3 form-check">
@@ -491,7 +479,7 @@
                                                                         id="tidak_bekerja_panel" class="form-check-input"
                                                                         value="Tidak" onclick="clearForm2()">
                                                                     <label class="pl-2 form-check-label"
-                                                                        for="panelInfo">Tidak</label>
+                                                                        for="panelInfo"> {{ __('landing.tidak') }}</label>
                                                                 </div>
                                                             </div>
                                                             <br>
@@ -500,8 +488,7 @@
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
                                                                         <label for="nama_institusi_kewangan"
-                                                                            class="col-sm"><strong>Nama
-                                                                                Institusi Kewangan </strong></label>
+                                                                            class="col-sm"><strong>{{ __('landing.nama_institusi_kewangan') }}</strong></label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -516,7 +503,7 @@
                                                                     <div class="form-group">
                                                                         <label for="no_telefon_institusi_kewangan"
                                                                             class="col-sm">
-                                                                            <strong>No. Telefon Institusi Kewangan</strong>
+                                                                            <strong>{{ __('landing.no_telefon_institusi_kewangan') }}</strong>
                                                                         </label>
                                                                         <div class="col-sm-8">
 
@@ -535,10 +522,7 @@
 
                                                                 <div>
                                                                     <label class="pl-4">
-                                                                        <strong>Sila nyatakan panel yang anda ikuti dan isi
-                                                                            maklumat panel
-                                                                            seperti
-                                                                            berikut.
+                                                                        <strong>{{ __('landing.sila_nyatakan_panel___') }}
                                                                         </strong>
                                                                     </label>
                                                                 </div>
@@ -548,7 +532,7 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="nama_panel">
-                                                                                <strong> Nama Panel </strong>
+                                                                                <strong> {{ __('landing.panel_name') }} </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
@@ -561,7 +545,7 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="panelName">
-                                                                                <strong> No. Kad Pengenalan </strong>
+                                                                                <strong> {{ __('landing.no_kp') }} </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
@@ -574,7 +558,7 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="no_permit_panel">
-                                                                                <strong> No. Permit </strong>
+                                                                                <strong> {{ __('landing.no_permit') }} </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
@@ -587,7 +571,7 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="no_telefon_panel">
-                                                                                <strong> No. Telefon </strong> </label>
+                                                                                <strong> {{ __('landing.no_telafon') }} </strong> </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
@@ -608,17 +592,15 @@
 
 
                                                     <div class="form-group pb-2 text-start">
-                                                        <label for=""><strong> Adakah anda pernah menghadiri kursus EPS yang
-                                                                dianjurkan oleh
-                                                                KPDNHEP?</strong></label>
+                                                        <label for=""><strong>{{ __('landing.pernah_hadiri_kursus_eps') }} </strong></label>
                                                         <div>
                                                             <input type="radio" id="hadir" name="kehadiran_kursus_eps"
                                                                 value="Ya" onclick="EnableDisableTextBox2()">
-                                                            <label class="pl-2" for="panelInfo">Ya</label>
+                                                            <label class="pl-2" for="panelInfo">{{ __('landing.ya') }}</label>
                                                             <div class="row ml-5">
                                                                 <div class="col-5">
                                                                     <div class="form-group row">
-                                                                        <label for="yearAttend">Tahun Dihadiri </label>
+                                                                        <label for="yearAttend">{{ __('landing.tahun_dihadiri') }} </label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -632,7 +614,7 @@
 
                                                             <input type="radio" id="tidak_hadir" name="kehadiran_kursus_eps"
                                                                 value="Tidak" onclick="EnableDisableTextBox2()">
-                                                            <label class="pl-2" for="panelInfo">Tidak</label>
+                                                            <label class="pl-2" for="panelInfo">{{ __('landing.tidak') }}</label>
                                                             <!-- <input type="hidden" id="tidak_hidden" disabled="disabled"> -->
                                                         </div>
                                                     </div>
@@ -640,80 +622,70 @@
                                                     <div class="form-group text-start">
 
                                                         <div class="row form-group">
-                                                            <label class="pb-2"><strong> Muat Naik Dokumen</strong></label>
+                                                            <label class="pb-2"><strong> {{ __('landing.muat_naik_dokumen') }}</strong></label>
                                                         </div>
 
                                                         <div class="form-group">
 
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1">Kad Pengenalan (Depan)</label>
+                                                                    <label class="mt-1">{{ __('landing.ic_depan') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn" hidden
                                                                         name="kp_depan" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn" class="upload-btn mt-0">Pilih
-                                                                        Fail</label>
+                                                                    <label for="actual-btn" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
 
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1" for="image">Kad Pengenalan
-                                                                        (Belakang)</label>
+                                                                    <label class="mt-1" for="image">{{ __('landing.ic_belakang') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn2" hidden
                                                                         name="salinan_kp_belakang" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn2" class="upload-btn mt-0">Pilih
-                                                                        Fail</label>
+                                                                    <label for="actual-btn2" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen2" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen2" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
 
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1" for="image">Lesen Memandu</label>
+                                                                    <label class="mt-1" for="image">{{ __('landing.lesen_memandu_s') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn3" hidden
                                                                         name="salinan_lesen_memandu" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn3" class="upload-btn mt-0">Pilih
-                                                                        Fail</label>
+                                                                    <label for="actual-btn3" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen3" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen3" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
                                                                     <br>
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1" for="image">Surat Sokongan
-                                                                        (Bank/Syarikat Sewa Beli)</label>
+                                                                    <label class="mt-1" for="image">{{ __('landing.surat_sokongan_syarikat_sewa_beli') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn4" hidden
                                                                         name="salinan_surat_sokongan" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn4" class="upload-btn mt-0">Pilih
-                                                                        Fail</label>
+                                                                    <label for="actual-btn4" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen4" class="mt-1">Tiada Fail
-                                                                        Dipilih</span>
+                                                                    <span id="file-chosen4" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
                                                                     <br>
                                                                 </div>
                                                             </div>
@@ -724,9 +696,9 @@
                                                 </div>
                                                 <div class="button-row d-flex mt-4">
                                                     <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
-                                                        title="Prev">Kembali</button>
+                                                        title="Prev">{{ __('landing.kembali') }}</button>
                                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
-                                                        type="button" title="Next">Seterusnya</button>
+                                                        type="button" title="Next">{{ __('landing.seterusnya') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -735,7 +707,7 @@
                                             data-animation="FadeIn">
                                             <div class="row text-center">
                                                 <div class="col-12 mx-auto">
-                                                    <h5 class="font-weight-normal"><strong>C. Pengesahan Permohonan</strong>
+                                                    <h5 class="font-weight-normal"><strong>C. {{ __('landing.pengesahan_permohonan') }}</strong>
                                                     </h5>
                                                     <!-- <p>One thing I love about the later sunsets is the chance to go for a walk through the neighborhood woods before dinner</p> -->
                                                 </div>
@@ -750,15 +722,7 @@
                                                                 id="applicationStatement" name="applicationStatement"
                                                                 value="Agree" onchange="check_agree()">
                                                             <label class="form-check-label"
-                                                                for="applicationStatement">Dengan ini saya mengaku dan
-                                                                mengesahkan bahawa semua maklumat dan butir-butir yang
-                                                                dicatatkan dalam
-                                                                borang permohonan adalah benar.
-                                                                Saya juga faham bahawa, jika mana-mana maklumat yang
-                                                                berkaitan permohonan ini didapati tidak
-                                                                benar
-                                                                akan menyebabkan permohonan ini
-                                                                ditolak.
+                                                                for="applicationStatement">{{ __('landing.dengan_ini_saya_mengaku___') }}
                                                             </label>
                                                         </div>
                                                     </div>
@@ -770,42 +734,42 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h6 class="modal-title" id="modal-title-default">
-                                                                        Notifikasi</h6>
+                                                                        {{ __('landing.notifukasi') }}</h6>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">×</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body text-center">
-                                                                    <p>Permohonan pembaharuan anda akan dihantar</p>
-                                                                    <p>Adakah anda pasti mahu menghantar?</p>
+                                                                    <p>{{ __('landing.permohonan_pembaharuan_akan_dihantar') }}</p>
+                                                                    <p>{{ __('landing.adakah_anda_pasti') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer d-flex justify-content-center">
                                                                     <button type="button" class="btn btn-danger  ml-auto"
-                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                        data-bs-dismiss="modal">{{ __('landing.batal') }}</button>
                                                                     <button type="submit" class="btn btn-success ml-auto"
-                                                                        name="status" value="HANTAR">Ya</button>
+                                                                        name="status" value="HANTAR">{{ __('landing.ya') }}</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="p-3 d-flex justify-content-center">
-                                                        <a href="dashboard" type="button"
-                                                            class=" btn btn btn-danger btn-lg m-2">BATAL</a>
-                                                        <input type="submit" class=" btn btn-info btn-lg m-2" name="status"
-                                                            value="SIMPAN">
+                                                        <a href="/dashboard" type="button"
+                                                            class=" btn btn btn-danger btn-lg m-2 text-uppercase">{{ __('landing.batal') }}</a>
+                                                        <button type="submit" class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
+                                                            value="SIMPAN">{{ __('landing.simpan') }}</button>
                                                         <button type="button"
-                                                            class="btn btn-success btn-lg text-uppercase m-2"
+                                                            class="btn btn-success btn-lg text-uppercase m-2 text-uppercase"
                                                             data-bs-toggle="modal" data-bs-target="#modal-1" id="hantar"
-                                                            disabled>HANTAR</button>
+                                                            disabled>{{ __('landing.hantar') }}</button>
                                                         <!-- <input type="submit" class=" btn btn-success btn-lg m-2" name="status" value="HANTAR"> -->
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
                                                         <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
-                                                            title="Prev">Kembali</button>
+                                                            title="Prev">{{ __('landing.kembali') }}</button>
                                                         <!-- <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button> -->
                                                     </div>
                                                 </div>

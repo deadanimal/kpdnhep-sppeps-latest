@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permohonan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -41,8 +42,7 @@ class LaporanstatistikController extends Controller
                 ->groupBy('negeri', DB::raw('YEAR(created_at)'))
                 ->orderBy('year', 'desc')
                 ->get();
-        }
-        else{
+        } else {
             $mohons = Permohonan::where('status_permohonan', 'Diluluskan')
                 // ->whereBetween('created_at', [$start, $end])
                 ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
@@ -101,18 +101,17 @@ class LaporanstatistikController extends Controller
 
         if (($request->startdate && $request->enddate) != null) {
             $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
-            ->whereBetween('created_at', [$start, $end])
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
-        }
-        else{
+                ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        } else {
             $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
         }
 
         foreach ($years as $year) {
@@ -162,18 +161,17 @@ class LaporanstatistikController extends Controller
 
         if (($request->startdate && $request->enddate) != null) {
             $sejar = DB::table('Permohonans')
-            ->whereBetween('created_at', [$start, $end])
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
-        }
-        else{
+                ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        } else {
             $sejar = DB::table('Permohonans')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
         }
 
         foreach ($years as $year) {
@@ -201,7 +199,10 @@ class LaporanstatistikController extends Controller
     public function senaraihitam(Request $request)
     {
 
-        $senaraihitam = Permohonan::all();
+        $senaraihitam = User::where([
+            ['status_permohonan', '=', 'disenarai_hitam'],
+            ['role', '=', 'pemohon']
+        ])->get();
 
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
@@ -223,19 +224,21 @@ class LaporanstatistikController extends Controller
         }
 
         if (($request->startdate && $request->enddate) != null) {
-            $senaraihits = Permohonan::where('status_permohonan', 'disenarai hitam')
-            ->whereBetween('created_at', [$start, $end])
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
-        }
-        else{
-            $senaraihits = Permohonan::where('status_permohonan', 'disenarai hitam')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
+            $senaraihits = User::where([
+                ['status_permohonan', '=', 'disenarai_hitam'],
+                ['role', '=', 'pemohon']
+            ])
+                ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        } else {
+            $senaraihits = User::where('status_permohonan', 'disenarai_hitam')
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
         }
 
         foreach ($years as $year) {
@@ -248,7 +251,7 @@ class LaporanstatistikController extends Controller
             $arrays1[] = $arr1;
         }
 
-        $senhit = Permohonan::where('status_permohonan', 'disenarai hitam')
+        $senhit = User::where('status_permohonan', 'disenarai_hitam')
             ->select('jantina',  DB::raw('count(*) as total'))
             ->groupBy('jantina')
             ->get()->toArray();
@@ -286,18 +289,19 @@ class LaporanstatistikController extends Controller
 
         if (($request->startdate && $request->enddate) != null) {
             $peggpermit = DB::table('Permohonans')
-            ->whereBetween('created_at', [$start, $end])
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
-        }
-        else{
+                ->where('cetak_status', '=', 1)
+                ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        } else {
             $peggpermit = DB::table('Permohonans')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
+                ->where('cetak_status', '=', '1')
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
         }
 
         foreach ($years as $year) {
@@ -317,7 +321,7 @@ class LaporanstatistikController extends Controller
 
         return view('laporan-statistik.statistik-pemegang-permit', [
             'pegangpermits' => $pegangpermit,
-            'pegangpermit' => $arrays1,
+            'pegapermit' => $arrays1,
             'pegpermit' => $pegpermits,
         ]);
     }
@@ -348,18 +352,17 @@ class LaporanstatistikController extends Controller
 
         if (($request->startdate && $request->enddate) != null) {
             $kutipan = DB::table('Permohonans')
-            ->whereBetween('created_at', [$start, $end])
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
-        }
-        else{
+                ->whereBetween('created_at', [$start, $end])
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('sum(bayaran_fi) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
+        } else {
             $kutipan = DB::table('Permohonans')
-            ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-            ->orderBy('year', 'desc')
-            ->get();
+                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('sum(bayaran_fi) as total'))
+                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
+                ->orderBy('year', 'desc')
+                ->get();
         }
 
         foreach ($years as $year) {

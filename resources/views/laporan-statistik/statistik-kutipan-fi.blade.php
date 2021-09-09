@@ -57,13 +57,6 @@
                             <div class="col">
                                 <h5> Kutipan FI mengikut Jantina</h5>
                             </div>
-                            <div class="col d-flex justify-content-end">
-                                <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
-                                    <option disabled selected hidden><b>Cetak</b></option>
-                                    <option class="dropdown-item" value="PDF">Pdf</option>
-                                    <option class="dropdown-item" value="XLSX">Excel</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
 
@@ -83,13 +76,6 @@
                         <div class="row mb-0">
                             <div class="col">
                                 <h5> Kutipan FI mengikut Negeri</h5>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <select class="btn btn-sm btn-primary dropdown-toggle" id="selectid">
-                                    <option disabled selected hidden><b>Cetak</b></option>
-                                    <option class="dropdown-item" value="PDF">Pdf</option>
-                                    <option class="dropdown-item" value="XLSX">Excel</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -116,7 +102,7 @@
 
                     <div class="card-body p-3">
 
-                        <div class="row p-3 mb-0">
+                        {{-- <div class="row p-3 mb-0">
                             <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
                                 <label class="d-flex flex-nowrap mb-0">
                                     <span class="p-2">Negeri</span>
@@ -142,7 +128,7 @@
                                     </select>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="card">
@@ -286,7 +272,6 @@
             createSeries("Pahang", "Pahang");
             createSeries("Terengganu", "Terengganu");
             createSeries("Kelantan", "Kelantan");
-            createSeries("selangor", "Selangor");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");

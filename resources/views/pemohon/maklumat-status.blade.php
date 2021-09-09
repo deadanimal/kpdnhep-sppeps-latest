@@ -63,13 +63,6 @@
             position: relative;
         }
 
-        /* .horizontal-tabs-steps .nav-link:hover {
-                                                                                    background: #22437c;
-                                                                                    border: 2px solid #22437c;
-                                                                                    color: #fff !important;
-                                                                                    transition: 0.3s all;
-                                                                                } */
-
         .horizontal-tabs-steps .horizontal-tabs-steps .nav-link span {
             color: #fff !important;
         }
@@ -272,7 +265,7 @@
                                     $permohonan->status_permohonan
                                     == 'disokong_negeri')
 
-                                    <div class="platform-tour-wrapper py-3 ">
+                                    <div class="platform-tour-wrapper py-3">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
                                             <li class="nav-item">
@@ -466,9 +459,9 @@
                             @elseif ($permohonan->jenis_permohonan == 'Rayuan')
 
                                 @if ($permohonan->status_permohonan == 'hantar')
-                                    <div class="platform-tour-wrapper py-3 ">
+                                    <div class="platform-tour-wrapper py-3 " style="width: 500px;">
                                         <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
+                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps" style="width:500px">
                                             <li class="nav-item">
                                                 <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
                                                 </a>
@@ -492,7 +485,7 @@
                                         </ul>
                                     </div>
 
-                                @elseif ($permohonan->status_permohonan == 'hantar_ke_hq')
+                                @elseif ($permohonan->status_permohonan == 'hantar_ke_pemproses_hq')
                                     <div class="platform-tour-wrapper py-3 ">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">

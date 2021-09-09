@@ -240,7 +240,7 @@
 
                 var chart = am4core.create("chartdiv2", am4charts.XYChart);
 
-                var data = {!! json_encode($pegangpermit) !!};
+                var data = {!! json_encode($pegapermit) !!};
                 chart.data = data;
 
                 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -285,7 +285,6 @@
                 createSeries("Pahang", "Pahang");
                 createSeries("Terengganu", "Terengganu");
                 createSeries("Kelantan", "Kelantan");
-                createSeries("selangor", "Selangor");
                 createSeries("Sabah", "Sabah");
                 createSeries("Sarawak", "Sarawak");
                 createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");

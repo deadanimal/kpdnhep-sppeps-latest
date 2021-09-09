@@ -10,11 +10,11 @@
                 <div class="card-body z-index-2 bg-secondary py-7">
                     <h2 class="text-white"><i class="far fa-check-circle fa-4x"></i></h2>
                     <p class="text-white">
-                        Permohonan anda berjaya disimpan.
+                        {{ __('landing.berjaya_simpan') }}
                     </p>
                 </div>
                 <a href="/permohonan" class="btn btn-icon bg-gradient-info mt-3 mb-0">
-                    Semak Status Permohonan
+                    {{ __('landing.semak_status_permohonan') }}
                     <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
                 </a>
             </div>

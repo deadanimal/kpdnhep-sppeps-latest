@@ -13,13 +13,13 @@
                         <li class="nav-item">
                             <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#preview-tabs-simple"
                                 role="tab" aria-selected="true">
-                                Pemohon
+                                {{ __('landing.pemohon') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#code-tabs-simple" role="tab"
                                 aria-selected="false">
-                                Pegawai & Admin
+                                {{ __('landing.pegawai_admin') }}
                             </a>
                         </li>
                     </ul>
@@ -36,15 +36,16 @@
                                     <i class="fas fa-user-circle fa-8x text-dark"></i>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="ic">No. Kad Pengenalan</label>
+                                    <label for="ic">{{ __('landing.no_kp') }}</label>
                                     <div class="input-group mb-4">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="no_kp">
+                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text"
+                                            name="no_kp">
                                     </div>
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <label for="password">Kata Laluan</label>
+                                    <label for="password">{{ __('landing.kata_laluan') }}</label>
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -56,7 +57,7 @@
                                     <div class="input-group mb-4 d-flex justify-content-end">
                                         <a href="/lupa-kata-laluan">
                                             <small>
-                                                Lupa Kata Laluan?
+                                                {{ __('landing.lupa_kata_laluan') }}
                                             </small>
                                         </a>
                                     </div>
@@ -64,7 +65,7 @@
                                 <div class="form-group mt-3">
                                     <div class="input-group mb-4">
                                         <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize"
-                                            value="Log Masuk">
+                                            value="{{ __('landing.log_masuk') }}">
                                     </div>
                                 </div>
 
@@ -81,11 +82,12 @@
                                     <i class="fas fa-users fa-8x text-dark"></i>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="ic">No. Kad Pengenalan</label>
+                                    <label for="ic"> {{ __('landing.no_kp') }}</label>
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="no_kp">
+                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text"
+                                            name="no_kp">
                                     </div>
                                 </div>
                                 {{-- <div class="form-group mt-3">
@@ -96,7 +98,7 @@
                                 </div>
                             </div> --}}
                                 <div class="form-group mt-3">
-                                    <label for="password">Kata Laluan</label>
+                                    <label for="password">{{ __('landing.kata_laluan') }}</label>
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -108,7 +110,7 @@
                                     <div class="input-group mb-4 d-flex justify-content-end">
                                         <a href="/lupa-kata-laluan">
                                             <small>
-                                                Lupa Kata Laluan?
+                                                {{ __('landing.lupa_kata_laluan') }}
                                             </small>
                                         </a>
                                     </div>
@@ -116,7 +118,7 @@
                                 <div class="form-group mt-3">
                                     <div class="input-group mb-4">
                                         <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize"
-                                            value="Log Masuk">
+                                            value="{{ __('landing.log_masuk') }}">
                                     </div>
                                 </div>
 

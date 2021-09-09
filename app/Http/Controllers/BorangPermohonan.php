@@ -10,7 +10,7 @@ class BorangPermohonan extends Controller
 {
     public function index(Request $request)
     {
-       //
+        //
     }
 
     public function borang(Request $request)
@@ -40,5 +40,57 @@ class BorangPermohonan extends Controller
                 'pemohon' => $pemohons
             ]);
         }
+    }
+
+    public function permohonan_baharu(Request $request)
+    {
+        // dd($request);
+        $user = $request->user();
+        $user_id = $user->id;
+
+        $pemohons = User::where('id', $user_id)->get();
+
+        return view('pemohon.permohonan-baru', [
+            'pemohon' => $pemohons
+        ]);
+    }
+
+    public function permohonan_pembaharuan(Request $request)
+    {
+        // dd($request);
+        $user = $request->user();
+        $user_id = $user->id;
+
+        $pemohons = User::where('id', $user_id)->get();
+
+        return view('pemohon.permohonan-pembaharuan', [
+            'pemohon' => $pemohons
+        ]);
+    }
+
+    public function permohonan_pendua(Request $request)
+    {
+        // dd($request);
+        $user = $request->user();
+        $user_id = $user->id;
+
+        $pemohons = User::where('id', $user_id)->get();
+
+        return view('pemohon.permohonan-pendua', [
+            'pemohon' => $pemohons
+        ]);
+    }
+
+    public function permohonan_rayuan(Request $request)
+    {
+        // dd($request);
+        $user = $request->user();
+        $user_id = $user->id;
+
+        $pemohons = User::where('id', $user_id)->get();
+
+        return view('pemohon.permohonan-rayuan', [
+            'pemohon' => $pemohons
+        ]);
     }
 }

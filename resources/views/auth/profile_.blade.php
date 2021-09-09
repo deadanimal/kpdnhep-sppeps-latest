@@ -8,7 +8,7 @@
         <div class="card card-frame" style="width: 45%;">
             <div class="card-body">
                 <div class="container mt-4">
-                    <h3>Profil</h3>
+                    <h3>{{ __('landing.profil') }}</h3>
                 </div>
 
                 <div class="card card-plain">
@@ -40,31 +40,31 @@
 
 
                                 <div class="form-group">
-                                    <label for="title">Nama</label>
+                                    <label for="title">{{ __('landing.nama') }}</label>
                                     <input type="text" class="form-control form-control-sm" value="{{ $pemohon->name }}"
                                         placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">No. Kad Pengenalan</label>
+                                    <label for="title">{{ __('landing.no_kp') }}</label>
                                     <input type="text" class="form-control form-control-sm" value="{{ $pemohon->no_kp }}"
                                         placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Umur</label>
+                                    <label for="title"> {{ __('landing.umur') }}</label>
                                     <input type="text" class="form-control form-control-sm" value="{{ $pemohon->umur }}"
                                         placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Tarikh Lahir</label>
+                                    <label for="title"> {{ __('landing.tarikh_lahir') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->tarikh_lahir }}" placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">E-mel</label>
+                                    <label for="title"> {{ __('landing.emel') }}</label>
                                     <input type="text" class="form-control form-control-sm" value="{{ $pemohon->email }}"
                                         placeholder="" disabled>
                                 </div>
@@ -72,7 +72,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="title">Jantina</label>
+                                    <label for="title"> {{ __('landing.jantina') }}</label>
                                     <input type="text" class="form-control" value="{{ $pemohon->jantina }}" placeholder=""
                                         disabled>
 
@@ -80,7 +80,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Alamat</label>
+                                    <label for="title"> {{ __('landing.alamat') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->alamat1 }}" placeholder="Alamat baris 1" disabled>
                                     <input type="text" class="form-control form-control-sm"
@@ -90,42 +90,41 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Poskod</label>
+                                    <label for="title"> {{ __('landing.poskod') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->poskod }}" placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Negeri</label>
+                                    <label> {{ __('landing.negeri') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->negeri }}" placeholder="" disabled>
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">No. Telefon Bimbit</label>
+                                    <label for="title"> {{ __('landing.no_telefon_bimbit') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->no_telefon_bimbit }}" placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">No. Telefon Rumah</label>
+                                    <label for="title"> {{ __('landing.no_telefon_rumah') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->no_telefon_rumah }}" placeholder="" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">No. Telefon Pejabat</label>
+                                    <label for="title"> {{ __('landing.no_telefon_pejabat') }}</label>
                                     <input type="text" class="form-control form-control-sm"
                                         value="{{ $pemohon->no_telefon_pejabat }}" placeholder="" disabled>
                                 </div>
                                 <div class="text-center d-flex justify-content-end">
                                     <!-- <button type="button" class="btn btn-round bg-gradient-danger text-capitalize" data-bs-dismiss="modal">Batal</button> -->
 
-                                    <a href="/dashboard" class="btn btn-round bg-gradient-info text-capitalize">Kembali Ke
-                                        Menu Utama</a>
+                                    <a href="/dashboard" class="btn btn-round bg-gradient-info text-capitalize"> {{ __('landing.menu_utama') }}</a>
                                     <a href="/profil/{{ $pemohon->id }}"
-                                        class="btn btn-round bg-gradient-info text-capitalize">Kemaskini Profil</a>
+                                        class="btn btn-round bg-gradient-info text-capitalize">{{ __('landing.kemaskini_profil') }}</a>
                                 </div>
 
                             @endforeach

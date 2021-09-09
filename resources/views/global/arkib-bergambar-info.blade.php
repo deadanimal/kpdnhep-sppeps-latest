@@ -4,14 +4,20 @@
     <div class="container-fluid py-4" style="height: 100vh;">
         <div class="row">
             <div class="p-2 text-capitalize">
-                <h5 class="h3 text-dark pt-4 text-center"><strong> Arkib Bergambar</strong></h5>
+
+                <h5 class="h3 text-dark pt-4 text-center"><strong> {{ __('landing.arkib_bergambar') }}</strong></h5>
+
             </div>
         </div>
 
         <div class="row m-4">
             @foreach ($infogambars as $infogambar)
                 <div class="p-2 text-capitalize">
-                    <h6 class="text-capitalize text-bold text-center">{{ $infogambar->tajuk_ms }}</h6>
+                    @if (Session::get('locale') == 'en')
+                        <h6 class="text-capitalize text-bold text-center">{{ $infogambar->tajuk_en }}</h6>
+                    @else
+                        <h6 class="text-capitalize text-bold text-center">{{ $infogambar->tajuk_ms }}</h6>
+                    @endif
                 </div>
                 <div class="col-md-6">
 
@@ -80,11 +86,24 @@
                 </div>
 
                 <div class="col-md-6">
-                    <p>nama program: {{ $infogambar->tajuk_ms }}</p>
-                    <p>tempat: {{ $infogambar->lokasi }}</p>
-                    <p>tarikh : {{ $infogambar->tarikh_mula }}</p>
-                    <p>keterangan</p>
-                    <p>{{ $infogambar->kandungan_ms }}</p>
+
+                    <p>{{ __('landing.nama_program') }}: 
+                    @if (Session::get('locale') == 'en')
+                            {{ $infogambar->tajuk_en }}
+                        @else
+                            {{ $infogambar->tajuk_ms }}
+                        @endif
+                    </p>
+                    <p>{{ __('landing.tempat') }}: {{ $infogambar->lokasi }}</p>
+                    <p>{{ __('landing.tarikh') }} : {{ $infogambar->tarikh_mula }}</p>
+                    <p>{{ __('landing.keterangan') }}</p>
+                    <p> @if (Session::get('locale') == 'en')
+                            {{ $infogambar->kandungan_en }}
+                        @else
+                            {{ $infogambar->kandungan_ms }}
+                        @endif
+                    </p>
+
 
                 </div>
             @endforeach

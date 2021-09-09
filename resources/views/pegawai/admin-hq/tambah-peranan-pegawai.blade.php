@@ -13,20 +13,20 @@
                 <div class="card">
 
                     <div class="card-header" style="background-color: #f7e8ff;">
-                        <h6> Carian Pegawai </h6>
+                        <h6> Carian Pegawai</h6>
                     </div>
 
                     <div class="card-body p-3">
                         <div class="row p-3 mb-0">
-                            <form method="POST" action="">
+                            <form method="POST" action="/cari_pegawai_insid">
                                 @csrf
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-sm" type="text" name="search"
+                                        <input class="form-control form-control-sm" type="text" name="no_kp"
                                             placeholder="No Kad Pengenalan" />
                                     </div>
 
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <select class="form-control form-control-sm" aria-label="Default select example"
                                             name="negeri">
                                             <option selected>--Pilih Negeri--</option>
@@ -47,7 +47,7 @@
                                             <option value="WP Putrajaya">W. P. Putrajaya</option>
                                             <option value="WP Labuan">W. P. Labuan</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col">
                                         <button class="btn btn-sm bg-gradient-info text-uppercases" type="submit"
@@ -68,29 +68,10 @@
                     </div>
 
                     <div class="card-body p-3">
-                        <div class="row p-3 mb-0">
-                            <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                                <label class="d-flex flex-nowrap mb-0">
-                                    <span class="pl-0 pt-2 pr-2">Papar</span>
-                                    <select name="datatable_length" aria-controls="datatable"
-                                        class="col form-control form-control-sm" (change)="entriesChange($event)">
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="15">15</option>
-                                        <option value="-1">All</option>
-                                    </select>
-                                    <span class="p-2">rekod</span>
-                                </label>
-                            </div>
-                            <div class="col form-group d-flex justify-content-end mb-0 p-0" id="datatable_search">
-                                <!-- <button class="btn btn-sm bg-gradient-info"><i class="fas fa-plus-circle"></i> Tambah</button> -->
-                            </div>
-                        </div>
-
-
+                        
                         <div class="card">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center mb-0" id="datatable-basic">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">

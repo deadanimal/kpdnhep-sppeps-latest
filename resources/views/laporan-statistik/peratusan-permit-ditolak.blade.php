@@ -257,7 +257,6 @@
             createSeries("Pahang", "Pahang");
             createSeries("Terengganu", "Terengganu");
             createSeries("Kelantan", "Kelantan");
-            createSeries("selangor", "Selangor");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");

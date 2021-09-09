@@ -1,64 +1,128 @@
 @extends('layouts.baseUser')
 
 @section('content')
-<div class="container-fluid py-4 d-flex justify-content-center flex-wrap" style="height: 100vh; max-height:600px">
-    <div class="row">
-        <div class="p-2 text-capitalize">
-            <h5 class="h3 text-dark pt-4 text-center"><strong>Semakan Status EPS</strong></h5>
+    <div class="container-fluid py-4 d-flex justify-content-center flex-wrap" style="height: 100vh;">
+        <div class="row">
+            <div class="p-2 text-capitalize">
+                <h5 class="h3 text-dark pt-4 text-center"><strong>{{ __('landing.semakan_status_eps') }}</strong></h5>
+            </div>
         </div>
-    </div>
 
-    <div class="row m-4" style="width: 80%;">
-        <div class="card card-frame">
-            <div class="card-body">
-                <div class="container p-2 m-0 d-flex justify-content-center flex-wrap" style="height: 100%; width: 100%;">
-                    <div class="row p-2 m-0" style="width: 100%; justify-content:center" *ngIf="search">
-                        <form method="POST" action="/cari-eps" class="p-2" style="width: 70%;" >
-                            @csrf
-                            <div class="form-group text-capitalize d-flex justify-content-center flex-wrap">
-                                <label class="pb-3 pt-3" for="nric"><strong>no kad pengenalan atau no. permit</strong> </label>
-                                <input type="text" class="form-control text-center" id="nric" name="no_kp_or_permit" placeholder="Sila masukkan no. kad pengenalan tanpa '-'">
-                            </div>
-                            <div class="form-group text-uppercase d-flex justify-content-center pt-5">
-                                <input type="submit" class="btn text-white text-capitalize" style="background-color: #1d1da1;" value="Semak">
-                            </div>
-                        </form>
-                    </div>
-
-                    {{-- <div class="card-body p-3 text-capitalize mt-5" *ngIf="show">
-                        <div style="overflow-x:auto;" class="pb-5">
-
-                            <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
-                                   
-                                    <tr>
-                                        
-                                        <th>No. Kad Pengenalan</th>
-                                        <th>Nama EPS</th>
-                                        <th>No. Permit</th>
-                                        <th>Status EPS</th>
-                                    </tr>
-
-                                    <tr>
-                                        <td>900908070605</td>
-                                        <td>Ali Baba</td>
-                                        <td>09872 (WPKL)</td>
-                                        <td><span class="badge badge-success">Aktif</span></td>
-                                    </tr>
-                                </table>
-                            </div>
+        <div class="row m-4" style="width: 80%;">
+            <div class="card card-frame">
+                <div class="card-body">
+                    <div class="container p-2 m-0 d-flex justify-content-center flex-wrap"
+                        style=" width: 100%;">
+                        <div class="row p-2 m-0" style="width: 100%; justify-content:center">
+                            <form method="POST" action="/cari-eps" class="p-2" style="width: 70%;">
+                                @csrf
+                                <div class="form-group text-capitalize d-flex justify-content-center flex-wrap">
+                                    <label class="pb-3 pt-3" for="nric"><strong>{{ __('landing.no_kp') }}</strong> </label>
+                                    <input type="text" class="form-control text-center" id="nric" name="no_kp_or_permit"
+                                        placeholder="Sila masukkan no. kad pengenalan tanpa '-'">
+                                </div>
+                                <div class="form-group d-flex justify-content-center pt-5">
+                                    <button type="button" class="btn m-1 text-white text-capitalize"
+                                        style="background-color: #1d1da1;" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        {{ __('landing.imbas_kod_qr') }}
+                                    </button>
+                                    <h1 id="maelhensem"></h1>
+                                    <input type="submit" class="btn text-white text-capitalize m-1"
+                                        style="background-color: #1d1da1;" value="{{ __('landing.semak') }}">
+                                </div>
+                            </form>
                             
                         </div>
-                        
-                        <div class="p-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-md text-capitalize" style="background-color: #1d1da1; color:#fff" (click)="toggle()">
-                                Kembali</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{ __('landing.imbas_kod_qr') }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div id="qr-reader" style="width:500px"></div>
+                                            <div id="qr-reader-results"></div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-gradient-secondary"
+                                            data-bs-dismiss="modal">{{ __('landing.batal') }}</button>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div> --}}
+
+
+
+                        <script type="text/javascript" src="{{ URL::asset('js/html5-qrcode.min.js') }}"></script>
+                        <script>
+                            var resultContainer = document.getElementById('qr-reader-results');
+                            console.log('resultContainer', resultContainer)
+                            var lastResult, countResults = 0;
+
+                            function ismaelPegawai(url) {
+                                window.location.assign(url);
+                            }
+
+
+                            function onScanSuccess(decodedText, decodedResult) {
+                                console.log('onScanSuccess')
+                                //console.log(`Scan result ${decodedText}`, decodedResult);
+                                // var url = 'http://127.0.0.1:8000/keputusan_qr?qr=' + id_saja;
+                                // var maelhensem = document.getElementById('maelhensem');
+                                // maelhensem.innerHTML = decodedText;
+                                //ismaelPegawai(url);
+                                // location.replace('https://google.com');
+                                // document.location.href = 'https://google.com',true;
+                                // return false;
+                                // var id_saja = 1;'/keputusan_qr?qr=' + id_saja
+                                // fetch()
+                                //     .then((response)=> {
+                                //         console.log(response)
+                                    // })
+                                // $.ajax({
+                                //     url: '/keputusan_qr?qr=1',                                    
+                                // }, success: function (result) {
+                                //     console.log(result)
+                                // })
+                                if (decodedText !== lastResult) {
+                                    ++countResults;
+                                    lastResult = decodedText;
+                                    // Handle on success condition with the decoded message.
+                                    // document.getElementById('maelhensem').innerText = 'lollll';
+                                    console.log(`Scan result ${decodedText}`, decodedResult);
+                                    // document.getElementById('maelhensem').innerText = 'lollll';
+                                    //document.getElementById('maelhensem').innerText = 'lollll';
+                                    id = `${decodedText}`;
+                                    // console.log('id', id)
+
+                                    var url = '/keputusan_qr?qr=' + id;
+                                    // maelhensem.innerHTML = decodedText;
+                                    document.location.href = url;
+                                }
+                            }
+
+                            var html5QrcodeScanner = new Html5QrcodeScanner(
+                                "qr-reader", {
+                                    fps: 10,
+                                    qrbox: 250
+                                });
+                            html5QrcodeScanner.render(onScanSuccess);
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 @stop
