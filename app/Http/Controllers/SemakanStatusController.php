@@ -43,8 +43,10 @@ class SemakanStatusController extends Controller
     {
         // dd($request);
         $qr = $request->query('qr');
+        
         //    dd($qr);
         $permohonans = Permohonan::find($qr);
+        // dd($permohonans);
         $currentDate = date("Y-m-d");
         return view('global.semakan-status-eps-keputusan', [
             'keputusan' => $permohonans,

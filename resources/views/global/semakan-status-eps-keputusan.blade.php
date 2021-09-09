@@ -24,8 +24,8 @@
                                             <!-- <th>No.</th> -->
                                             <th>{{ __('landing.no_kp') }}</th>
                                             <th>{{ __('landing.nama_ejen') }}</th>
-                                            <th>{{ __('landing.no_permit') }}No. Permit</th>
-                                            <th>{{ __('landing.status_ejen') }}Status EPS</th>
+                                            <th>{{ __('landing.no_permit') }}</th>
+                                            <th>{{ __('landing.status_ejen') }}</th>
                                         </tr>
 
                                         @if ($carian == 'kp')
