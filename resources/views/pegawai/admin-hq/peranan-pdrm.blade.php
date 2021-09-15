@@ -265,10 +265,10 @@
                                         <input type="text" class="form-control" name="nric">
                                     </div>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="title">Password</label>
                                         <input type="password" class="form-control" name="password">
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <label for="title">Jawatan </label>

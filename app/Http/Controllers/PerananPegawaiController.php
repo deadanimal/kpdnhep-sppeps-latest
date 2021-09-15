@@ -8,6 +8,8 @@ use App\Models\User;
 
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PendaftaranPdrm;
 
 class PerananPegawaiController extends Controller
 {
@@ -28,7 +30,7 @@ class PerananPegawaiController extends Controller
 
         $user->name = $request->name;
         $user->no_kp = $request->nric;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make("password54321");
         $user->jawatan = $request->jawatan;
         $user->agensi = $request->agensi;
         $user->email = $request->email;
@@ -39,6 +41,8 @@ class PerananPegawaiController extends Controller
         // dd($request);
 
         $user->save();
+
+        Mail::to($user->email)->send(new PendaftaranPdrm($user));
 
         return redirect("/peranan_pdrm");
     }

@@ -67,11 +67,11 @@
                                         <td class="text-sm text-center font-weight-normal">{{ $pengumuman->tarikh_akhir }}</td>
                                         <td class="text-sm text-center font-weight-normal">{{ $pengumuman->updated_at }}</td>
                                         <td>
-                                            @if ($pengumuman->status == 'aktif')
+                                            @if (date("Y-m-d") >= $pengumuman->tarikh_mula && date("Y-m-d") <= $pengumuman->tarikh_akhir)
                                                 <span class="text-secondary text-sm font-weight-bold">
                                                     <span class="badge badge-success">Aktif</span>
                                                 </span>
-                                            @elseif ($pengumuman->status == 'tidak_aktif')
+                                            @else
                                                 <span class="text-secondary text-sm font-weight-bold">
                                                     <span class="badge badge-danger">Tidak Aktif</span>
                                                 </span>
@@ -151,7 +151,7 @@
                                                                         rows="2">{{ $pengumuman->kandungan_en }}</textarea>
                                                                 </div>
 
-                                                                <div class="form-group">
+                                                                {{-- <div class="form-group">
                                                                     <label for="content">Status</label>
                                                                     <br>
                                                                     <div class="form-check form-check-inline">
@@ -167,7 +167,7 @@
                                                                             for="notActive">Tidak Aktif</label>
                                                                     </div>
 
-                                                                </div>
+                                                                </div> --}}
 
                                                                 <div class="form-group">
                                                                     <div class="row">
@@ -250,7 +250,7 @@
                                         <textarea class="form-control" name="kandungan_en" rows="2"></textarea>
                                     </div>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="content">Status</label>
                                         <br>
                                         <div class="form-check form-check-inline">
@@ -262,7 +262,7 @@
                                             <label class="form-check-label" for="notActive">Tidak Aktif</label>
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <div class="row">

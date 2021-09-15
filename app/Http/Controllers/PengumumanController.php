@@ -46,7 +46,7 @@ class PengumumanController extends Controller
         $pengumuman->tajuk_en = $request->tajuk_en;
         $pengumuman->kandungan_bm = $request->kandungan_bm;
         $pengumuman->kandungan_en = $request->kandungan_en;
-        $pengumuman->status = $request->status;
+        // $pengumuman->status = $request->status;
         $pengumuman->tarikh_mula = $request->tarikh_mula;
         $pengumuman->tarikh_akhir = $request->tarikh_akhir;
 
@@ -94,7 +94,7 @@ class PengumumanController extends Controller
         $pengumuman->tajuk_en = $request->tajuk_en;
         $pengumuman->kandungan_bm = $request->kandungan_bm;
         $pengumuman->kandungan_en = $request->kandungan_en;
-        $pengumuman->status = $request->status;
+        // $pengumuman->status = $request->status;
         $pengumuman->tarikh_mula = $request->tarikh_mula;
         $pengumuman->tarikh_akhir = $request->tarikh_akhir;
 

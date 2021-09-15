@@ -68,49 +68,51 @@ class PermohonanController extends Controller
 
         if ($request->status == 'HANTAR') {
 
-            $validated = $request->validate([
-                'negeri_kutipan_permit' => 'required',
-            ]);
-            # Write Manual Validation
-            // $validated = Validator::make($request->all(), [
-            //     'no_telefon' => 'required',
-            //     'emel' => 'required',
-            //     'alamat1' => 'required',
-            //     'alamat2' => 'required',
-            //     'alamat3' => 'required',
-            //     'poskod' => 'required',
-            //     'negeri' => 'required',
+            // $validated = $request->validate([
             //     'negeri_kutipan_permit' => 'required',
             // ]);
+            # Write Manual Validation
+            $validated = Validator::make($request->all(), [
+                'no_telefon' => 'required',
+                'emel' => 'required',
+                'alamat1' => 'required',
+                'alamat2' => 'required',
+                'alamat3' => 'required',
+                'poskod' => 'required',
+                'negeri' => 'required',
+                'negeri_kutipan_permit' => 'required',
+            ]);
 
             # Write Manual Redirect if Validation Fail
-            // if ($validated->fails()) {
-            //     if ($request->jenis_permohonan == "Baharu") {
-            //         $pemohons = User::where('id', $user_id)->get();
-            //         return view('pemohon.permohonan-baru', [
-            //             'pemohon' => $pemohons,
-            //             'errors' => $validated->errors()
-            //         ]);
-            //     } else if ($request->jenis_permohonan == "Pembaharuan") {
-            //         $pemohons = User::where('id', $user_id)->get();
-            //         return view('pemohon.permohonan-pembaharuan', [
-            //             'pemohon' => $pemohons,
-            //             'errors' => $validated->errors()
-            //         ]);
-            //     } else if ($request->jenis_permohonan == "Pendua") {
-            //         $pemohons = User::where('id', $user_id)->get();
-            //         return view('pemohon.permohonan-pendua', [
-            //             'pemohon' => $pemohons,
-            //             'errors' => $validated->errors()
-            //         ]);
-            //     } else if ($request->jenis_permohonan == "Rayuan") {
-            //         $pemohons = User::where('id', $user_id)->get();
-            //         return view('pemohon.permohonan-rayuan', [
-            //             'pemohon' => $pemohons,
-            //             'errors' => $validated->errors()
-            //         ]);
-            //     }
-            // };
+            if ($validated->fails()) {
+
+                
+                if ($request->jenis_permohonan == "Baharu") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-baru', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                } else if ($request->jenis_permohonan == "Pembaharuan") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pembaharuan', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                } else if ($request->jenis_permohonan == "Pendua") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-pendua', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                } else if ($request->jenis_permohonan == "Rayuan") {
+                    $pemohons = User::where('id', $user_id)->get();
+                    return view('pemohon.permohonan-rayuan', [
+                        'pemohon' => $pemohons,
+                        'errors' => $validated->errors()
+                    ]);
+                }
+            };
         }
 
         $permohonan->jenis_permohonan = $request->jenis_permohonan;
@@ -164,6 +166,7 @@ class PermohonanController extends Controller
 
                 # Write Manual Redirect if Validation Fail
                 if ($validated->fails()) {
+                    dd($validated->errors());
                     $pemohons = User::where('id', $user_id)->get();
                     return view('pemohon.permohonan-baru', [
                         'pemohon' => $pemohons,
@@ -818,7 +821,7 @@ class PermohonanController extends Controller
                 }
 
                 return redirect('/pelulus_hq_tugasan_selesai');
-                
+
             } else if ($request->jenis_tindakan == "tambah_senarai_hitam") {
                 // dd($request);
                 $permohonan->status_permohonan = 'disenarai hitam';

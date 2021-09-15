@@ -6,7 +6,7 @@
         <div class="row p-3">
 
             <div class="row">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
 
                         @foreach ($banlands as $banland)
@@ -24,12 +24,12 @@
                     @endforeach
 
                 </div>
-                <div class="min-vh-75 position-absolute w-100 top-0">
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                <div class="min-vh-50 position-absolute w-100 top-0 bottom-0">
+                    <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon position-absolute bottom-50" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                    <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
                         <span class="carousel-control-next-icon position-absolute bottom-50" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </a>

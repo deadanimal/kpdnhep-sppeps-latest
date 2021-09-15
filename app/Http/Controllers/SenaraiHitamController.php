@@ -72,7 +72,7 @@ class SenaraiHitamController extends Controller
             ['role', 'pemohon'],
         ])->get();
 
-         //dd($pemohon);
+        //dd($pemohon);
 
         return view('pegawai.hq.hq-tambah-senarai-hitam', [
             'pemohon' => $pemohon

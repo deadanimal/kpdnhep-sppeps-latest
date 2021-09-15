@@ -68,7 +68,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="min-vh-75 position-absolute w-100 top-0">
+                        <div class="min-vh-50 position-absolute w-100 top-0 bottom-0">
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
                                 data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon position-absolute bottom-50"
