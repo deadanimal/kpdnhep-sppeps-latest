@@ -131,4 +131,14 @@ class LocalizationController extends Controller
         session()->put('readable',false);
         return redirect()->back();
     }
+
+    public function reset_font_and_theme(){
+        session()->put('size','normal');
+        session()->put('font_color','normal');
+        session()->put('color','normal');
+        session()->put('readable',false);
+        session()->put('grayscale','false');
+        session()->put('negative','false');
+        return redirect()->back();
+    }
 }

@@ -511,7 +511,12 @@
                                                             <br>
                                                             <!-- //if yes appear -->
                                                             <div class="row" id="institusi_kewangan"
-                                                                style="display: none;">
+                                                                @if ($permohonan->berkerja_panel_atau_syarikat == 'Ya')
+                                                                style="display: block;"
+                                                            @else
+                                                                style="display: none;"
+                                                                @endif
+                                                                >
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
                                                                         <label for="bank"
@@ -546,8 +551,12 @@
                                                             </div>
 
                                                             <!-- if no appear -->
-                                                            <div class="row" id="maklumat_panel"
-                                                                style="display: none;">
+                                                            <div class="row" id="maklumat_panel" @if ($permohonan->berkerja_panel_atau_syarikat == 'Tidak')
+                                                                style="display: block;"
+                                                            @else
+                                                                style="display: none;"
+                                                                @endif
+                                                                >
                                                                 <div>
                                                                     <label class="pl-4">
                                                                         <strong>{{ __('landing.sila_nyatakan_panel___') }}
@@ -814,7 +823,8 @@
                                                     <div class="p-3 d-flex justify-content-center">
                                                         <a href="/permohonan" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2">{{ __('landing.batal') }}</a>
-                                                        <button type="submit" class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
+                                                        <button type="submit"
+                                                            class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
                                                             value="SIMPAN">{{ __('landing.simpan') }}</button>
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
@@ -826,7 +836,8 @@
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
                                                         <button class="btn bg-gradient-light mb-0 js-btn-prev"
-                                                            type="button" title="Prev">{{ __('landing.kembali') }}</button>
+                                                            type="button"
+                                                            title="Prev">{{ __('landing.kembali') }}</button>
                                                         <!-- <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button> -->
                                                     </div>
                                                 </div>

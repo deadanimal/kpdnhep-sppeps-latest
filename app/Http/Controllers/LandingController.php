@@ -13,8 +13,8 @@ class LandingController extends Controller
 
         $now = date('Y-m-d');
         $pengland = Pengumuman::where('status', 'aktif')
-        ->whereDate('tarikh_mula', '<', $now)
-        ->whereDate('tarikh_akhir', '>', $now)
+        ->whereDate('tarikh_mula', '<=', $now)
+        ->whereDate('tarikh_akhir', '>=', $now)
         ->get();
 
         $bannerland = Banner::where('status', 'aktif')->get();

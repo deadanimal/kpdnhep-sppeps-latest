@@ -9,7 +9,7 @@
                 <div class="p-3">
 
                     <div>
-                        <h5>Sokongan Permohonan</h5>
+                        <h5>Kelulusan Permohonan</h5>
                     </div>
 
                     <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -144,7 +144,7 @@
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
-                                                                {{ $permohonan->catatan_pegawai_hq }}</span>
+                                                                {{ $permohonan->catatan_pelulus }}</span>
                                                         </td>
 
                                                         <td class="align-middle text-center text-sm">
@@ -153,8 +153,7 @@
                                                                     PDRM</span>
                                                             @elseif ($permohonan->status_permohonan === 'Diluluskan')
                                                                 <span class="badge badge-success"> Diluluskan</span>
-                                                            @elseif ($permohonan->status_permohonan === 'Tidak
-                                                                Diluluskan')
+                                                            @elseif ($permohonan->status_permohonan === 'Tidak Diluluskan')
                                                                 <span class="badge badge-danger">Tidak Diluluskan</span>
                                                             @elseif ($permohonan->status_permohonan ===
                                                                 'hantar_ke_penyokong_negeri' ||

@@ -68,46 +68,49 @@ class PermohonanController extends Controller
 
         if ($request->status == 'HANTAR') {
 
-            # Write Manual Validation
-            $validated = Validator::make($request->all(), [
-                'no_telefon' => 'required',
-                'emel' => 'required',
-                'alamat1' => 'required',
-                'alamat2' => 'required',
-                'alamat3' => 'required',
-                'poskod' => 'required',
-                'negeri' => 'required',
+            $validated = $request->validate([
                 'negeri_kutipan_permit' => 'required',
             ]);
+            # Write Manual Validation
+            // $validated = Validator::make($request->all(), [
+            //     'no_telefon' => 'required',
+            //     'emel' => 'required',
+            //     'alamat1' => 'required',
+            //     'alamat2' => 'required',
+            //     'alamat3' => 'required',
+            //     'poskod' => 'required',
+            //     'negeri' => 'required',
+            //     'negeri_kutipan_permit' => 'required',
+            // ]);
 
             # Write Manual Redirect if Validation Fail
-            if ($validated->fails()) {
-                if ($request->jenis_permohonan == "Baharu") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-baru', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                } else if ($request->jenis_permohonan == "Pembaharuan") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pembaharuan', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                } else if ($request->jenis_permohonan == "Pendua") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pendua', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                } else if ($request->jenis_permohonan == "Rayuan") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-rayuan', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                }
-            };
+            // if ($validated->fails()) {
+            //     if ($request->jenis_permohonan == "Baharu") {
+            //         $pemohons = User::where('id', $user_id)->get();
+            //         return view('pemohon.permohonan-baru', [
+            //             'pemohon' => $pemohons,
+            //             'errors' => $validated->errors()
+            //         ]);
+            //     } else if ($request->jenis_permohonan == "Pembaharuan") {
+            //         $pemohons = User::where('id', $user_id)->get();
+            //         return view('pemohon.permohonan-pembaharuan', [
+            //             'pemohon' => $pemohons,
+            //             'errors' => $validated->errors()
+            //         ]);
+            //     } else if ($request->jenis_permohonan == "Pendua") {
+            //         $pemohons = User::where('id', $user_id)->get();
+            //         return view('pemohon.permohonan-pendua', [
+            //             'pemohon' => $pemohons,
+            //             'errors' => $validated->errors()
+            //         ]);
+            //     } else if ($request->jenis_permohonan == "Rayuan") {
+            //         $pemohons = User::where('id', $user_id)->get();
+            //         return view('pemohon.permohonan-rayuan', [
+            //             'pemohon' => $pemohons,
+            //             'errors' => $validated->errors()
+            //         ]);
+            //     }
+            // };
         }
 
         $permohonan->jenis_permohonan = $request->jenis_permohonan;
@@ -378,7 +381,7 @@ class PermohonanController extends Controller
             $permohonan->sebab_lain = $request->sebab_lain;
             $permohonan->rayuan_kali_ke = $request->rayuan_kali_ke;
             $permohonan->alasan_rayuan = $request->alasan_rayuan;
-            
+
 
             if ($request->hasFile('kp_depan')) {
                 $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
@@ -815,6 +818,7 @@ class PermohonanController extends Controller
                 }
 
                 return redirect('/pelulus_hq_tugasan_selesai');
+                
             } else if ($request->jenis_tindakan == "tambah_senarai_hitam") {
                 // dd($request);
                 $permohonan->status_permohonan = 'disenarai hitam';
@@ -946,10 +950,9 @@ class PermohonanController extends Controller
                 $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
                 $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
 
-                if ($request->status == 'HANTAR')
-                    $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-                else
-                    $permohonan->lesen_memandu =  $request->lesen_memandu;
+
+                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+
 
 
                 $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
@@ -1027,10 +1030,11 @@ class PermohonanController extends Controller
                 $permohonan->tahun_pekerjaan_eps = $request->tahun_pekerjaan_eps;
                 $permohonan->pekerjaan_tetap = $request->pekerjaan_tetap;
                 $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-                if ($request->status == 'HANTAR')
-                    $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-                else
-                    $permohonan->lesen_memandu =  $request->lesen_memandu;
+
+
+                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+
+
                 $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
                 $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
                 $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
@@ -1126,32 +1130,32 @@ class PermohonanController extends Controller
                     $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
                     $permohonan->salinan_kp_depan = $salinan_kp_depan;
                 }
-    
+
                 if ($request->hasFile('salinan_kp_belakang')) {
                     $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
                     $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
                 }
-    
+
                 if ($request->hasFile('salinan_tapisan_rekod_jenayah')) {
                     $salinan_tapisan_rekod_jenayah = $request->file('salinan_tapisan_rekod_jenayah')->store('dokumen');
                     $permohonan->salinan_tapisan_rekod_jenayah = $salinan_tapisan_rekod_jenayah;
                 }
-    
+
                 if ($request->hasFile('salinan_sokongan_institusi_kewangan')) {
                     $salinan_sokongan_institusi_kewangan = $request->file('salinan_sokongan_institusi_kewangan')->store('dokumen');
                     $permohonan->salinan_sokongan_institusi_kewangan = $salinan_sokongan_institusi_kewangan;
                 }
-    
+
                 if ($request->hasFile('salinan_dokumen_sokongan1')) {
                     $salinan_dokumen_sokongan1 = $request->file('salinan_dokumen_sokongan1')->store('dokumen');
                     $permohonan->salinan_dokumen_sokongan1 = $salinan_dokumen_sokongan1;
                 }
-    
+
                 if ($request->hasFile('salinan_dokumen_sokongan2')) {
                     $salinan_dokumen_sokongan2 = $request->file('salinan_dokumen_sokongan2')->store('dokumen');
                     $permohonan->salinan_dokumen_sokongan2 = $salinan_dokumen_sokongan2;
                 }
-    
+
                 if ($request->hasFile('salinan_dokumen_sokongan3')) {
                     $salinan_dokumen_sokongan3 = $request->file('salinan_dokumen_sokongan3')->store('dokumen');
                     $permohonan->salinan_dokumen_sokongan3 = $salinan_dokumen_sokongan3;

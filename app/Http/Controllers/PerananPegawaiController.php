@@ -48,7 +48,7 @@ class PerananPegawaiController extends Controller
         $user = User::find($request->id);
         // dd($user);
         $user->name = $request->name;
-        $user->no_kp = $request->nric;
+        $user->no_kp = $request->no_kp;
         // $user->password = Hash::make($request->password);
         $user->jawatan = $request->jawatan;
         $user->agensi = $request->agensi;

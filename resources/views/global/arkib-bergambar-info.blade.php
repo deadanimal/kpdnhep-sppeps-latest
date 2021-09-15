@@ -27,7 +27,7 @@
                                 <div class="carousel-item active">
                                     <div class="page-header min-vh-50 m-3 border-radius-xl">
                                         <img src="/storage/{{ $infogambar->jalan1 }}" class="d-block w-100" alt="..."
-                                            style="max-height: 400px">
+                                            style="height: 400px">
                                     </div>
                                 </div>
                             @endif
@@ -36,7 +36,7 @@
                                 <div class="carousel-item">
                                     <div class="page-header min-vh-50 m-3 border-radius-xl">
                                         <img src="/storage/{{ $infogambar->jalan2 }}" class="d-block w-100" alt="..."
-                                            style="max-height: 400px">
+                                            style="height: 400px">
                                     </div>
                                 </div>
                             @endif
@@ -45,7 +45,7 @@
                                 <div class="carousel-item">
                                     <div class="page-header min-vh-50 m-3 border-radius-xl">
                                         <img src="/storage/{{ $infogambar->jalan3 }}" class="d-block w-100" alt="..."
-                                            style="max-height: 400px">
+                                            style="height: 400px">
                                     </div>
                                 </div>
                             @endif
@@ -54,7 +54,7 @@
                                 <div class="carousel-item">
                                     <div class="page-header min-vh-50 m-3 border-radius-xl">
                                         <img src="/storage/{{ $infogambar->jalan4 }}" class="d-block w-100" alt="..."
-                                            style="max-height: 400px">
+                                            style="height: 400px">
                                     </div>
                                 </div>
                             @endif
@@ -63,7 +63,7 @@
                                 <div class="carousel-item">
                                     <div class="page-header min-vh-50 m-3 border-radius-xl">
                                         <img src="/storage/{{ $infogambar->jalan5 }}" class="d-block w-100" alt="..."
-                                            style="max-height: 400px">
+                                            style="height: 400px">
                                     </div>
                                 </div>
                             @endif
@@ -95,7 +95,8 @@
                         @endif
                     </p>
                     <p>{{ __('landing.tempat') }}: {{ $infogambar->lokasi }}</p>
-                    <p>{{ __('landing.tarikh') }} : {{ $infogambar->tarikh_mula }}</p>
+                    <p>{{ __('landing.tarikh_mula') }} : {{ $infogambar->tarikh_mula }}</p>
+                    <p>{{ __('landing.tarikh_akhir') }} : {{ $infogambar->tarikh_akhir }}</p>
                     <p>{{ __('landing.keterangan') }}</p>
                     <p> @if (Session::get('locale') == 'en')
                             {{ $infogambar->kandungan_en }}

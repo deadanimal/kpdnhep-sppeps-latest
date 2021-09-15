@@ -64,4 +64,19 @@ class AuditController extends Controller
             'pemohon' => $pemohon,
         ]);
     }
+
+    public function cari_log_pengguna(Request $request)
+    {
+        //dd($request);
+        $no_kp = $request->no_kp;
+        // dd($request);
+        $pegawais = User::where([
+            ['no_kp', "=", $no_kp], ['role', "!=", 'pemohon']
+        ])->get();
+        //dd($pengguna);
+
+        return view('pegawai.admin-hq.at-log-pengguna', [
+            'pegawais' => $pegawais,
+        ]);
+    }
 }

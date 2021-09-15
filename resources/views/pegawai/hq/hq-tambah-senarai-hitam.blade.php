@@ -9,7 +9,7 @@
                 <div class="p-3">
 
                     <div>
-                        <h5>Tambah Senarai Hitam Permohonan</h5>
+                        <h5>Tambah Senarai Hitam Pemohon</h5>
                     </div>
 
                     <div class="container-fluid mt-4" style="padding: 0px !important;">
@@ -96,9 +96,9 @@
                                                                 {{ $pemohon->negeri }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            @if ($pemohon->negeri === 'diluluskan')
+                                                            @if ($pemohon->status_permohonan === 'diluluskan')
                                                                 <span class="badge badge-success"> Diluluskan</span>
-                                                            @elseif ($pemohon->negeri === 'tidak_diluluskan')
+                                                            @elseif ($pemohon->status_permohonan === 'tidak_diluluskan')
                                                                 <span class="badge badge-danger">Tidak Diluluskan</span>
                                                             @else
                                                                 <span class="badge badge-secondary">Dalam Proses</span>

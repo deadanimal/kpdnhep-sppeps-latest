@@ -70,7 +70,7 @@
 
 
                                                 @if ($errors->any())
-                                                    <div class="alert alert-warning text-sm">
+                                                    <div class="alert alert-warning">
                                                         <ul>
                                                             @foreach ($errors->all() as $error)
                                                                 <li>{{ $error }}</li>
@@ -272,7 +272,8 @@
                                                                     <select class="form-control"
                                                                         aria-label="Default select example"
                                                                         name="negeri_kutipan_permit">
-                                                                        <option value="">--{{ __('landing.pilih_negeri') }}--</option>
+                                                                        <option value="">
+                                                                            --{{ __('landing.pilih_negeri') }}--</option>
                                                                         <option value="Perlis">Perlis</option>
                                                                         <option value="Kedah">Kedah</option>
                                                                         <option value="Pulau Pinang">Pulau Pinang</option>
@@ -376,7 +377,8 @@
                                                     </div>
 
                                                     <div class="form-group pb-2">
-                                                        <label for="education"><i class="fas fa-car"></i><strong> {{ __('landing.lesen_memandu') }}</strong></label>
+                                                        <label for="education"><i class="fas fa-car"></i><strong>
+                                                                {{ __('landing.lesen_memandu') }}</strong></label>
                                                         <!-- <input type="text" class="form-control" id="education" aria-describedby="education" placeholder=""> -->
                                                         <br>
                                                         <div class="row">
@@ -415,7 +417,8 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for=""><strong>{{ __('landing.pernah_bekarja_sebagai_panel_bank') }}</strong></label>
+                                                        <label
+                                                            for=""><strong>{{ __('landing.pernah_bekarja_sebagai_panel_bank') }}</strong></label>
                                                         <!-- <input type="text" class="form-control" id="state" aria-describedby="state" placeholder=""> -->
 
 
@@ -444,7 +447,8 @@
                                                                 <div class="col-5 form-group">
                                                                     <div class="form-group">
                                                                         <label for="bank"
-                                                                            class="col-sm"><strong>{{ __('landing.nama_institusi_kewangan') }} </strong></label>
+                                                                            class="col-sm"><strong>{{ __('landing.nama_institusi_kewangan') }}
+                                                                            </strong></label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -488,7 +492,8 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="nama_panel">
-                                                                                <strong> {{ __('landing.panel_name') }} </strong>
+                                                                                <strong> {{ __('landing.panel_name') }}
+                                                                                </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
@@ -501,7 +506,8 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="no_kp_panel">
-                                                                                <strong> {{ __('landing.no_kp') }} </strong>
+                                                                                <strong> {{ __('landing.no_kp') }}
+                                                                                </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
@@ -514,7 +520,8 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="no_permit_panel">
-                                                                                <strong>{{ __('landing.no_permit') }} </strong>
+                                                                                <strong>{{ __('landing.no_permit') }}
+                                                                                </strong>
                                                                             </label>
                                                                         </div>
                                                                         <div class="col">
@@ -527,7 +534,8 @@
                                                                     <div class="form-group row pl-4">
                                                                         <div class="col-md-3">
                                                                             <label for="no_telefon_panel">
-                                                                                <strong> {{ __('landing.no_telafon') }} </strong> </label>
+                                                                                <strong> {{ __('landing.no_telafon') }}
+                                                                                </strong> </label>
                                                                         </div>
                                                                         <div class="col">
                                                                             <input type="text"
@@ -547,7 +555,8 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="activityInfo"><strong> {{ __('landing.adakah_anda_tahu___') }}</strong></label>
+                                                        <label for="activityInfo"><strong>
+                                                                {{ __('landing.adakah_anda_tahu___') }}</strong></label>
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label>{{ __('landing.skop_tugas') }}</label>
@@ -555,7 +564,8 @@
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="radio"
                                                                             name="skop_tugas" value="Ya">
-                                                                        <label class="form-check-label">{{ __('landing.ya') }}</label>
+                                                                        <label
+                                                                            class="form-check-label">{{ __('landing.ya') }}</label>
                                                                     </div>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="radio"
@@ -591,55 +601,65 @@
                                                     <div class="form-group">
 
                                                         <div class="row form-group">
-                                                            <label class="pb-2"><strong> {{ __('landing.muat_naik_dokumen') }}</strong></label>
+                                                            <label class="pb-2"><strong>
+                                                                    {{ __('landing.muat_naik_dokumen') }}</strong></label>
                                                         </div>
 
                                                         <div class="form-group">
 
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1">{{ __('landing.ic_depan') }}</label>
+                                                                    <label
+                                                                        class="mt-1">{{ __('landing.ic_depan') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn" hidden
                                                                         name="kp_depan" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
+                                                                    <label for="actual-btn"
+                                                                        class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
+                                                                    <span id="file-chosen"
+                                                                        class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
 
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1" for="image"> {{ __('landing.ic_belakang') }}</label>
+                                                                    <label class="mt-1" for="image">
+                                                                        {{ __('landing.ic_belakang') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn2" hidden
                                                                         name="salinan_kp_belakang" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn2" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
+                                                                    <label for="actual-btn2"
+                                                                        class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen2" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
+                                                                    <span id="file-chosen2"
+                                                                        class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
 
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-3">
-                                                                    <label class="mt-1" for="image">{{ __('landing.lesen_memandu_s') }}</label>
+                                                                    <label class="mt-1"
+                                                                        for="image">{{ __('landing.lesen_memandu_s') }}</label>
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn3" hidden
                                                                         name="salinan_lesen_memandu" />
                                                                     <!-- our custom upload button -->
-                                                                    <label for="actual-btn3" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
+                                                                    <label for="actual-btn3"
+                                                                        class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                     <!-- name of file chosen -->
-                                                                    <span id="file-chosen3" class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
+                                                                    <span id="file-chosen3"
+                                                                        class="mt-1">{{ __('landing.tiada_fail_dipilih') }}</span>
 
                                                                 </div>
                                                             </div>
@@ -651,7 +671,8 @@
                                                     <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
                                                         title="Prev">{{ __('landing.kembali') }}</button>
                                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
-                                                        type="button" title="Next">{{ __('landing.seterusnya') }}</button>
+                                                        type="button"
+                                                        title="Next">{{ __('landing.seterusnya') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -660,7 +681,8 @@
                                             data-animation="FadeIn">
                                             <div class="row text-center">
                                                 <div class="col-12 mx-auto">
-                                                    <h5 class="font-weight-normal"><strong>C. {{ __('landing.pengesahan_permohonan') }}</strong>
+                                                    <h5 class="font-weight-normal"><strong>C.
+                                                            {{ __('landing.pengesahan_permohonan') }}</strong>
                                                     </h5>
                                                     <!-- <p>One thing I love about the later sunsets is the chance to go for a walk through the neighborhood woods before dinner</p> -->
                                                 </div>
@@ -674,8 +696,8 @@
                                                             <input class="form-check-input" type="checkbox"
                                                                 id="applicationStatement" name="applicationStatement"
                                                                 value="Agree" onchange="check_agree()">
-                                                            <label class="form-check-label"
-                                                                for="applicationStatement"> {{ __('landing.dengan_ini_saya_mengaku___') }}
+                                                            <label class="form-check-label" for="applicationStatement">
+                                                                {{ __('landing.dengan_ini_saya_mengaku___') }}
                                                             </label>
                                                         </div>
                                                     </div>
@@ -694,7 +716,8 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body text-center">
-                                                                    <p>{{ __('landing.permohonan_baharu_akan_dihantar') }}</p>
+                                                                    <p>{{ __('landing.permohonan_baharu_akan_dihantar') }}
+                                                                    </p>
                                                                     <p>{{ __('landing.adakah_anda_pasti') }}</p>
 
                                                                 </div>
@@ -702,7 +725,8 @@
                                                                     <button type="button" class="btn btn-danger  ml-auto"
                                                                         data-bs-dismiss="modal">{{ __('landing.batal') }}</button>
                                                                     <button type="submit" class="btn btn-success ml-auto"
-                                                                        name="status" value="HANTAR">{{ __('landing.ya') }}</button>
+                                                                        name="status"
+                                                                        value="HANTAR">{{ __('landing.ya') }}</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -711,7 +735,8 @@
                                                     <div class="p-3 d-flex justify-content-center">
                                                         <a href="/dashboard" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2 text-uppercase">{{ __('landing.batal') }}</a>
-                                                        <button type="submit" class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
+                                                        <button type="submit"
+                                                            class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
                                                             value="SIMPAN">{{ __('landing.simpan') }}</button>
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2 text-uppercase"
@@ -725,7 +750,8 @@
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
                                                         <button class="btn bg-gradient-light mb-0 js-btn-prev"
-                                                            type="button" title="Prev">{{ __('landing.kembali') }}</button>
+                                                            type="button"
+                                                            title="Prev">{{ __('landing.kembali') }}</button>
                                                         <!-- <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button> -->
                                                     </div>
                                                 </div>

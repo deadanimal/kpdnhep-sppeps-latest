@@ -496,7 +496,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn2" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1"><a
+                                                                <span id="file-chosen2" class="mt-1"><a
                                                                     href="/storage/{{ $permohonan->salinan_kp_belakang }}"
                                                                     target="_blank">{{ $permohonan->salinan_kp_belakang }}</a></span>
 
@@ -514,7 +514,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn3" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1"><a
+                                                                <span id="file-chosen3" class="mt-1"><a
                                                                     href="/storage/{{ $permohonan->salinan_tapisan_rekod_jenayah }}"
                                                                     target="_blank">{{ $permohonan->salinan_tapisan_rekod_jenayah }}</a></span>
                                                                 <br>
@@ -533,7 +533,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn4" class="upload-btn mt-0"> {{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1"><a
+                                                                <span id="file-chosen4" class="mt-1"><a
                                                                     href="/storage/{{ $permohonan->salinan_sokongan_institusi_kewangan }}"
                                                                     target="_blank">{{ $permohonan->salinan_sokongan_institusi_kewangan }}</a></span>
                                                                 <br>
@@ -552,7 +552,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn5" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1"><a
+                                                                <span id="file-chosen5" class="mt-1"><a
                                                                     href="/storage/{{ $permohonan->salinan_dokumen_sokongan1 }}"
                                                                     target="_blank">{{ $permohonan->salinan_dokumen_sokongan1 }}</a></span>
                                                                 <br>
@@ -571,7 +571,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn6" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1"><a
+                                                                <span id="file-chosen6" class="mt-1"><a
                                                                     href="/storage/{{ $permohonan->salinan_dokumen_sokongan2 }}"
                                                                     target="_blank">{{ $permohonan->salinan_dokumen_sokongan2 }}</a></span>
                                                                 <br>
@@ -590,7 +590,7 @@
                                                                 <!-- our custom upload button -->
                                                                 <label for="actual-btn7" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
-                                                                <span id="file-chosen" class="mt-1"><a
+                                                                <span id="file-chosen7" class="mt-1"><a
                                                                     href="/storage/{{ $permohonan->salinan_dokumen_sokongan3 }}"
                                                                     target="_blank">{{ $permohonan->salinan_dokumen_sokongan3 }}</a></span>
                                                                 <br>

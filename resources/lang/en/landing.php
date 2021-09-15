@@ -40,7 +40,8 @@ return [
     //arkib
     'nama_program' => 'Program Name',
     'tempat' => 'Location',
-    'tarikh' => 'Date',
+    'tarikh_mula' => 'Start Date',
+    'tarikh_akhir' => 'End Date',
     'keterangan' => 'Description',
     'tajuk' => 'Title',
     'tarikh_kemaskini' => 'Updated Date',

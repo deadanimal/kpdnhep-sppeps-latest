@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Provider\RouteServiceProvider;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -110,36 +111,42 @@ class ProfilController extends Controller
 
     public function login_via_insid(LoginRequest $request)
     {
-        $idpengguna = $request->idpengguna;
-        $katalaluan = $request->katalaluan;
+        $idpengguna = $request->no_kp;
+        $katalaluan = $request->password;
 
-        $url = 'http://apidev.kpdnhep.gov.my/api/staf';
+		//dd($request);
+         $url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
         $token_janaan = Http::post($url, [
             "name" => "janaToken",
             "param" => [
                 "app_id" => "sppeps",
-                "app_secret" => "[sppeps@bpm7]",
+                "app_secret" => "[sppepsdev@bpm7]",
                 "scope" => "staf",
             ]
-        ])->json()['result']['token'];
-
-
-
-        $url = 'http://apidev.kpdnhep.gov.my/api/staf';
+        ])->json()['response']['result']['token'];
+		
+		//dd($token_janaan);
+        //$url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
         $pengguna = Http::withToken($token_janaan)->post($url, [
             "name" => "login",
             "param" => [
                 "idpengguna" => $idpengguna,
-                "katalaluan " => $katalaluan
+				"katalaluan" => $katalaluan
             ]
-        ]);
+        ])->json();
+		
+		//dd($pengguna);
+		$respond = $pengguna['response']['status'];
+		//dd($respond);
 
-        if ($pengguna->successful()) {
+        if ($respond == 200) {
+			//dd("success");
             $request->authenticate();
             $request->session()->regenerate();
-            return redirect('/appp');
+            //return redirect('/appp');
+			//return redirect()->intended(RouteServiceProvider::HOME);
         } else {
             return redirect('/login')->withErrors('Salah username/kata laluan');
         }
@@ -147,28 +154,37 @@ class ProfilController extends Controller
 
     public function login_via_myhub(LoginRequest $request)
     {
+		//dd($request);
         $idpengguna = $request->idpengguna;
         $katalaluan = $request->katalaluan;
 
         $url = 'http://datajpndev.kpdnhep.gov.my/jwtapi/';
 
         $token_janaan = Http::post($url, [
-            "name" => "janaToken",
+            "name" => "generateToken",
             "param" => [
                 "user_id" => "No_Kad_Pengenalan",
                 "app_id" => "SPPEPSdev",
                 "app_secret" => "[SPPEPSdev@bpm123]",
             ]
-        ])->json()['result']['token'];
+        ])->json()['response']['result']['token'];
 
-        $pengguna = Http::withToken($token_janaan)->post($url, [
+		$pengguna = Http::withToken($token_janaan)->post($url, [
             "name" => "getMyIdentity",
             "param" => [
                 "nokp" => $idpengguna,
             ]
         ])->json();
+		
+		dd($pengguna);
+		$respond = $pengguna['status'];
+		//$pemohon = $pengguna['result'];
 
-        if ($pengguna->successful()) {
+        if ($respond == 200) {
+			
+			$user = User::where('no_kp', $idpengguna)->get();
+			dd($user);
+			
             $request->authenticate();
             $request->session()->regenerate();
             return redirect('/appp');

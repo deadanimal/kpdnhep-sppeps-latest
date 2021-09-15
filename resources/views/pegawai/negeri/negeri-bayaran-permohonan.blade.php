@@ -204,7 +204,7 @@
 
                                                                             <div class="text-center">
                                                                                 <button type="button"
-                                                                                    class="btn bg-gradient-danger mt-4 mb-0">Batal</button>
+                                                                                    class="btn bg-gradient-danger mt-4 mb-0" data-bs-dismiss="modal">Batal</button>
                                                                                 <button type="submit"
                                                                                     class="btn bg-gradient-success mt-4 mb-0">Simpan</button>
                                                                             </div>
@@ -275,7 +275,7 @@
 
                                                                             <div class="text-center">
                                                                                 <button type="button"
-                                                                                    class="btn bg-gradient-danger mt-4 mb-0">Batal</button>
+                                                                                    class="btn bg-gradient-danger mt-4 mb-0" data-bs-dismiss="modal">Batal</button>
                                                                                 <button type="submit"
                                                                                     class="btn bg-gradient-success mt-4 mb-0">Simpan</button>
                                                                             </div>

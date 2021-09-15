@@ -908,7 +908,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <p>Permohonan akan dihantar ke penyokong</p>
+                                                        <p>Permohonan akan dihantar ke pelulus</p>
                                                         <p>Adakah anda pasti mahu menghantar?</p>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center">
@@ -1023,7 +1023,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <p>Pengesahan permohonan akan dihantar.</p>
+                                                        <p>Kelulusan permohonan akan dihantar.</p>
                                                         <p>Adakah anda pasti mahu menghantar?</p>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center">

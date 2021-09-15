@@ -210,9 +210,9 @@
                                     <div class="col-sm-5">
                                         <select id="action" class="form-control" name="tindakan">
                                             <option selected>Sila Pilih</option>
-                                            <option value="Tiada Rekod Jenayah">Tiada Rekod Jenayah</option>
-                                            <option value="Ada Rekod Jenayah">Ada Rekod Jenayah</option>
-                                            <option value="Dalam Proses">Dalam Proses</option>
+                                            <option @if($permohonan->rekod_jenayah == "Tiada Rekod Jenayah") selected @endif value="Tiada Rekod Jenayah">Tiada Rekod Jenayah</option>
+                                            <option @if($permohonan->rekod_jenayah == "Ada Rekod Jenayah") selected @endif value="Ada Rekod Jenayah">Ada Rekod Jenayah</option>
+                                            <option @if($permohonan->status_permohonan == "Dalam Proses") selected @endif value="Dalam Proses">Dalam Proses</option>
                                         </select>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                                 <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                     <label for="comment" class="col-sm-2 ">Catatan</label>
                                     <div class="col-sm-5">
-                                        <textarea class="form-control" id="catatan" name="catatan_pdrm"></textarea>
+                                        <textarea class="form-control" id="catatan" name="catatan_pdrm">{{$permohonan->catatan_pdrm}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +236,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <p>Pengesahan permohonan akan dihantar.</p>
+                                            <p>Pengesahan tapisan rekod jenayah akan dihantar.</p>
                                             <p>Adakah anda pasti mahu menghantar?</p>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center">

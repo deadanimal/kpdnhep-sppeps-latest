@@ -41,6 +41,8 @@ return [
     'nama_program' => 'Nama Program',
     'tempat' => 'Tempat',
     'tarikh' => 'Tarikh',
+    'tarikh_mula' => 'Tarikh Mula',
+    'tarikh_akhir' => 'Tarikh Akhir',
     'keterangan' => 'Keterangan',
     'tajuk' => 'Tajuk',
     'tarikh_kemaskini' => 'Tarikh Kemaskini',
@@ -181,6 +183,7 @@ return [
     'permohonan_baharu_akan_dihantar' => 'Permohonan baharu anda akan dihantar',
     'permohonan_pembaharuan_akan_dihantar' => 'Permohonan pembaharuan anda akan dihantar',
     'permohonan_pendua_akan_dihantar' => 'Permohonan pendua anda akan dihantar',
+    'permohonan_rayuan_akan_dihantar' => 'Permohonan rayuan anda akan dihantar',
 
     'adakah_anda_pasti' => 'Adakah anda pasti mahu menghantar?',
     'hantar'=>'Hantar',

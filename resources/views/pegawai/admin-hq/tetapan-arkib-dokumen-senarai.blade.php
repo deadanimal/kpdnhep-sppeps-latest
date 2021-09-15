@@ -114,7 +114,7 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-arkib-dokumen-senarai/{{ $dokumeq->id }}">
+                                                                action="/tetapan-arkib-dokumen/{{ $dokumeq->id }}">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id"

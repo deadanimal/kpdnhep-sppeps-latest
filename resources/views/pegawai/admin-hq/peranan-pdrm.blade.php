@@ -108,9 +108,9 @@
                                                     </span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    @if ($pdrm->status === 'aktif')
+                                                    @if ($pdrm->status === 'Aktif')
                                                         <span class="badge badge-success"> Aktif</span>
-                                                    @elseif ($pdrm->status === "tidak_aktif")
+                                                    @elseif ($pdrm->status === "Tidak Aktif")
                                                         <span class="badge badge-danger"> Tidak Aktif</span>
                                                     @endif
                                                 </td>
@@ -191,14 +191,14 @@
                                                                                 <div class="form-check form-check-inline">
                                                                                     <input class="form-check-input"
                                                                                         type="radio" name="status"
-                                                                                        value="aktif" @if ($pdrm->status == 'aktif') checked @endif>
+                                                                                        value="Aktif" @if ($pdrm->status == 'Aktif') checked @endif>
                                                                                     <label class="form-check-label"
                                                                                         for="active">Aktif</label>
                                                                                 </div>
                                                                                 <div class="form-check form-check-inline">
                                                                                     <input class="form-check-input"
                                                                                         type="radio" name="status"
-                                                                                        value="tidak_aktif" @if ($pdrm->status == 'aktif') checked @endif>
+                                                                                        value="Tidak Aktif" @if ($pdrm->status == 'Tidak Aktif') checked @endif>
                                                                                     <label class="form-check-label"
                                                                                         for="notActive">Tidak Aktif</label>
                                                                                 </div>
@@ -294,11 +294,11 @@
                                         <label for="content">Status</label>
                                         <br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="status" value="aktif">
+                                            <input class="form-check-input" type="radio" name="status" value="Aktif">
                                             <label class="form-check-label" for="active">Aktif</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="status" value="tidak_aktif">
+                                            <input class="form-check-input" type="radio" name="status" value="Tidak Aktif">
                                             <label class="form-check-label" for="notActive">Tidak Aktif</label>
                                         </div>
                                     </div>
