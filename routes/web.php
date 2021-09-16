@@ -191,6 +191,10 @@ Route::post('/carian_pemohon', [CetakanPermitController::class, 'cari']);
 Route::resource('/tukar_kata_laluan', ChangePasswordController::class);
 Route::get('/tukar_kata_laluan_pegawai', [ChangePasswordController::class, 'tukar_password_pegawai']);
 
+
+Route::resource('change-password', ChangePasswordController::class);
+// Route::post('change-password', 'ChangePasswordController@store');
+
 //auth
 Route::get('/login_', function () {
     return view('auth.login_');

@@ -114,12 +114,14 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-arkib-dokumen/{{ $dokumeq->id }}"
+                                                                action="/tetapan-arkib-dokumen-senarai/{{ $dokumeq->id }}"
                                                                 enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $dokumeq->id }}">
+                                                                    <input type="hidden" name="id_arkibdokumen"
+                                                                    value="{{ $dokumeq->id_arkibdokumen }}">
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (MS)</label>
                                                                     <input type="text" class="form-control" name="tajuk_ms"

@@ -97,9 +97,9 @@
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             @if ($pemohon->status_permohonan === 'diluluskan')
-                                                                <span class="badge badge-success"> Diluluskan</span>
+                                                                <span class="badge badge-success"> Sah</span>
                                                             @elseif ($pemohon->status_permohonan === 'tidak_diluluskan')
-                                                                <span class="badge badge-danger">Tidak Diluluskan</span>
+                                                                <span class="badge badge-danger">Tidak Sah</span>
                                                             @else
                                                                 <span class="badge badge-secondary">Dalam Proses</span>
                                                             @endif

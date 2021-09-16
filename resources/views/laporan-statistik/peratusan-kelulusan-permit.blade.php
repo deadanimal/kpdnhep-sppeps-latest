@@ -281,6 +281,7 @@
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
             createSeries("WP Putrajaya", "W. P. Putrajaya");
             createSeries("WP Labuan", "W. P. Labuan");
+            createSeries("Perlis", "Perlis");
 
             // Legend
             chart.legend = new am4charts.Legend();

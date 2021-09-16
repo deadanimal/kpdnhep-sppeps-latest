@@ -148,7 +148,8 @@ class ProfilController extends Controller
             //return redirect('/appp');
 			return redirect()->intended(RouteServiceProvider::HOME);
         } else {
-            return redirect('/login')->withErrors('Salah username/kata laluan');
+            // return redirect('/login')->withErrors('Salah username/kata laluan');
+            return back()->with('error', 'Salah username/kata laluan');
         }
     }
 

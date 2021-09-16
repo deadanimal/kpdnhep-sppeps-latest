@@ -1,5 +1,3 @@
-
-
 @extends('layouts.base-admin-hq')
 
 @section('content')
@@ -14,69 +12,52 @@
     </style>
 
     <div id="container" class="container-fluid d-flex justify-content-center" style="height: initial;">
-        <div class="card card-frame mt-4" style="width: 40%;">
+        <div class="card card-frame mt-4 col-md-8 col-xs-2" style="width: 40%;">
             <div class="card-header text-center">
                 <h4><strong>Tukar Kata Laluan</strong> </h5>
             </div>
             <div class="card-body pt-0 text-center">
-                @if ($errors->any())
-                    <div class="alert alert-warning">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div><br />
-                @endif
-                
-                <form method="POST" action="/tukar_kata_laluan/{{$user = Auth::user()->id}}">
+                <form method="POST" action="/change-password">
                     @csrf
-                    @method('PUT')
-                    <div class="container">
 
+                    @foreach ($errors->all() as $error)
+                        <p class="text-danger">{{ $error }}</p>
+                    @endforeach
 
-                        <div class="form-group mt-3">
-                            <label>Kata Laluan Sekarang</label>
-                            <div class="input-group mb-4">
-                                <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
-                                <input class="form-control text-center" placeholder="Masukkan kata laluan sekarang"
-                                    type="password" name="current_password">
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label>Kata Laluan Baru</label>
-                            <div class="input-group mb-4">
-                                <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
-                                <input class="form-control text-center" placeholder="Masukkan kata laluan baru"
-                                    type="password" name="new_password">
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label>Pengesahan Kata Laluan Baru</label>
-                            <div class="input-group mb-4">
-                                <!-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> -->
-                                <input class="form-control text-center" placeholder="Masukkan pengasahan kata laluan baru"
-                                    type="password" name="new_confirm_password">
-                            </div>
-                        </div>
-                        <!-- <div class="form-group mt-3">
-                                <div class="input-group mb-4">
-                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                    <input class="form-control" placeholder="Kata laluan baru" type="password">
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <div class="input-group mb-4">
-                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                    <input class="form-control" placeholder="Pengesahan kata laluan baru" type="password">
-                                </div>
-                            </div> -->
-                        <div class="form-group mt-3">
-                            <div class="input-group mb-4">
-                                <input type="submit" class="btn bg-gradient-info btn-lg w-100" value="Tukar Kata Laluan">
-                            </div>
-                        </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Kata Laluan Sekarang</label>
 
+                        <div class="col-md-6">
+                            <input id="password" type="password" class="form-control" name="current_password"
+                                autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Kata Laluan Baru</label>
+
+                        <div class="col-md-6">
+                            <input id="new_password" type="password" class="form-control" name="new_password"
+                                autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Pengesahan Kata Laluan
+                            Baru</label>
+
+                        <div class="col-md-6">
+                            <input id="new_confirm_password" type="password" class="form-control"
+                                name="new_confirm_password" autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                Update Password
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

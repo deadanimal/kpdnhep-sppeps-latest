@@ -17,6 +17,12 @@
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            
+                            {{-- <input id="upload-Image" type="file" onchange="loadImageFile();" /> --}}
+
+                            <img id="original-Img" style="display: none"/>
+
+                            {{-- <img id="upload-Preview"/> --}}
 
                             <div class="form-group">
                                 <div class="row ">
@@ -25,10 +31,10 @@
                                             <div class="position-relative">
                                                 @if ($pemohon->gambar_profil === '/assets/img/icons/default_profile.png')
                                                     <img src="{{ $pemohon->gambar_profil }}" class="border-radius-md"
-                                                        width="150" height="150" id="gambar" />
+                                                        width="150" height="150" id="upload-Preview"/>
                                                 @else
                                                     <img src="/storage/{{ $pemohon->gambar_profil }}"
-                                                        class="border-radius-md" width="150" height="150" id="gambar"/>
+                                                        class="border-radius-md" width="150" height="150" id="upload-Preview"/>
                                                 @endif
 
                                                 <a
@@ -40,7 +46,7 @@
                                                         Image</span>
                                                 </a>
                                             </div>
-                                            <input type="file" style="display: none;" name="gambar_profil">
+                                            <input id="upload-Image" type="file" onchange="loadImageFile();" name="gambar_profil" style="display: none">
                                         </label>
                                     </div>
                                 </div>
@@ -190,7 +196,7 @@
 
     </div>
 
-    <script>
+    {{-- <script>
         $("input").change(function(e) {
 
             for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
@@ -206,6 +212,57 @@
                 $("#gambar").after(img);
             }
         });
+    </script> --}}
+
+    <script type="text/javascript">
+        var fileReader = new FileReader();
+        var filterType =
+            /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+        fileReader.onload = function(event) {
+            var image = new Image();
+
+            image.onload = function() {
+                document.getElementById("original-Img").src = image.src;
+                var canvas = document.createElement("canvas");
+                var context = canvas.getContext("2d");
+                // canvas.width = image.width / 4;
+                // canvas.height = image.height / 4;
+                canvas.width = 150;
+                canvas.height = 150;
+                context.drawImage(image,
+                    0,
+                    0,
+                    image.width,
+                    image.height,
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+                document.getElementById("upload-Preview").src = canvas.toDataURL();
+            }
+            image.src = event.target.result;
+        };
+
+        var loadImageFile = function() {
+            var uploadImage = document.getElementById("upload-Image");
+
+            //check and retuns the length of uploded file.
+            if (uploadImage.files.length === 0) {
+                return;
+            }
+
+            //Is Used for validate a valid file.
+            var uploadFile = document.getElementById("upload-Image").files[0];
+            if (!filterType.test(uploadFile.type)) {
+                alert("Please select a valid image.");
+                return;
+            }
+
+            fileReader.readAsDataURL(uploadFile);
+        }
     </script>
 
 @stop

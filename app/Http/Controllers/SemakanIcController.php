@@ -42,39 +42,39 @@ class SemakanIcController extends Controller
 
         if ($age > 21) {
 
-            //return $this->check_myidentity($no_kp, $age, $birth_date);
+            return $this->check_myidentity($no_kp, $age, $birth_date);
             
             //dd($pengguna);
-            return view('auth.register_', [
+            // return view('auth.register_', [
                 
-                'no_kp' => $no_kp,
-                'age' => $age,
-                'tarikh_lahir' => $birth_date,
-            ]);
+            //     'no_kp' => $no_kp,
+            //     'age' => $age,
+            //     'tarikh_lahir' => $birth_date,
+            // ]);
             //
         } else if ($age == 21) {
 
             if ($month_int < $current_month) {
 
-                //return $this->check_myidentity($no_kp, $age, $birth_date);
-                return view('auth.register_', [
+                return $this->check_myidentity($no_kp, $age, $birth_date);
+                // return view('auth.register_', [
                     
-                    'no_kp' => $no_kp,
-                    'age' => $age,
-                    'tarikh_lahir' => $birth_date,
-                ]);
+                //     'no_kp' => $no_kp,
+                //     'age' => $age,
+                //     'tarikh_lahir' => $birth_date,
+                // ]);
                 //
             } else if ($month_int == $current_month) {
                 if ($day_int <= $current_day) {
 
-                    //return $this->check_myidentity($no_kp, $age, $birth_date);
+                    return $this->check_myidentity($no_kp, $age, $birth_date);
                     
-                    return view('auth.register_', [
+                    // return view('auth.register_', [
                         
-                        'no_kp' => $no_kp,
-                        'age' => $age,
-                        'tarikh_lahir' => $birth_date,
-                    ]);
+                    //     'no_kp' => $no_kp,
+                    //     'age' => $age,
+                    //     'tarikh_lahir' => $birth_date,
+                    // ]);
                     //
                 } else {
                     return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan sah.');
@@ -128,7 +128,8 @@ class SemakanIcController extends Controller
             ]);
 
         } else {
-            return redirect('/semak-ic')->withErrors('No. kad pengenalan tidak wujud');
+            return back()->with('error', 'No. kad pengenalan tidak wujud');
+            // return redirect('/semak-ic')->withErrors('No. kad pengenalan tidak wujud');
         }
         
     }
