@@ -112,19 +112,21 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-arkib-bergambar/{{ $gambaq->id }}">
+                                                                action="/tetapan-arkib-bergambar-senarai/{{ $gambaq->id }}"
+                                                                enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id" value="{{ $gambaq->id }}">
+                                                                <input type="hidden" name="id_arkibgambar" value="{{ $gambaq->id_arkibgambar }}">
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (MS)</label>
-                                                                    <input type="text" class="form-control" name="nama_ms"
+                                                                    <input type="text" class="form-control" name="tajuk_ms"
                                                                         value="{{ $gambaq->tajuk_ms }}">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="title">Nama (EN)</label>
-                                                                    <input type="text" class="form-control" name="nama_en"
+                                                                    <input type="text" class="form-control" name="tajuk_en"
                                                                         value="{{ $gambaq->tajuk_en }}">
                                                                 </div>
 

@@ -43,7 +43,14 @@ class SemakanIcController extends Controller
         if ($age > 21) {
 
             return $this->check_myidentity($no_kp, $age, $birth_date);
-           
+            
+            //dd($pengguna);
+            // return view('auth.register_', [
+                
+            //     'no_kp' => $no_kp,
+            //     'age' => $age,
+            //     'tarikh_lahir' => $birth_date,
+            // ]);
             //
         } else if ($age == 21) {
 
@@ -51,6 +58,7 @@ class SemakanIcController extends Controller
 
                 return $this->check_myidentity($no_kp, $age, $birth_date);
                 // return view('auth.register_', [
+                    
                 //     'no_kp' => $no_kp,
                 //     'age' => $age,
                 //     'tarikh_lahir' => $birth_date,
@@ -60,7 +68,9 @@ class SemakanIcController extends Controller
                 if ($day_int <= $current_day) {
 
                     return $this->check_myidentity($no_kp, $age, $birth_date);
+                    
                     // return view('auth.register_', [
+                        
                     //     'no_kp' => $no_kp,
                     //     'age' => $age,
                     //     'tarikh_lahir' => $birth_date,
@@ -118,7 +128,8 @@ class SemakanIcController extends Controller
             ]);
 
         } else {
-            return redirect('/semak-ic')->withErrors('No. kad pengenalan tidak wujud');
+            return back()->with('error', 'No. kad pengenalan tidak wujud');
+            // return redirect('/semak-ic')->withErrors('No. kad pengenalan tidak wujud');
         }
         
     }

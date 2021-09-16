@@ -100,8 +100,6 @@ class SenaraigambarController extends Controller
 
         $senaraigambar->save();
 
-        $senaraigambars = Senaraigambar::where('id_arkibgambar', $request->id_arkibgambar)->get();
-
         return redirect('/tetapan-arkib-bergambar/'.$request->id_arkibgambar)->with('success', 'Berjaya disimpan!');
     }
 
@@ -136,6 +134,8 @@ class SenaraigambarController extends Controller
      */
     public function update(Request $request, Senaraigambar $senaraigambar)
     {
+        $senaraigambar = Senaraigambar::find($request->id);
+
         $senaraigambar->tajuk_ms = $request->tajuk_ms;
         $senaraigambar->tajuk_en = $request->tajuk_en;
         $senaraigambar->kandungan_ms = $request->kandungan_ms;
@@ -187,14 +187,11 @@ class SenaraigambarController extends Controller
             $senaraigambar->jalan1 = $jalan1;
         }
 
-        $senaraigambar->id_arkibgambar = $request->id_arkibgambar;
+        $id_ = $request->id_arkibgambar;
 
         $senaraigambar->save();
 
-        $senaraigambars = Senaraigambar::where('id_arkibgambar', $request->id_arkibgambar)->get();
-
-       
-        return redirect('/tetapan-arkib-bergambar/'.$request->id_arkibgambar)->with('success', 'Berjaya disimpan!');
+        return redirect('/tetapan-arkib-bergambar/'.$id_)->with('success', 'Berjaya disimpan!');
     }
 
     /**

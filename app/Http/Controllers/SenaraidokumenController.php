@@ -91,6 +91,8 @@ class SenaraidokumenController extends Controller
      */
     public function update(Request $request, Senaraidokumen $senaraidokumen)
     {
+        $senaraidokumen = Senaraidokumen::find($request->id);
+
         $senaraidokumen->tajuk_ms = $request->tajuk_ms;
         $senaraidokumen->tajuk_en = $request->tajuk_en;
         $senaraidokumen->kandungan_ms = $request->kandungan_ms;
@@ -101,13 +103,11 @@ class SenaraidokumenController extends Controller
             $senaraidokumen->jalan1 = $jalan1;
         }
 
-        $senaraidokumen->id_arkibdokumen = $request->id_arkibdokumen;
+        $id_ = $request->id_arkibdokumen;
         
         $senaraidokumen->save();
 
-        $senaraidokumens = Senaraidokumen::where('id_arkibdokumen', $request->id_arkibdokumen)->get();
-
-        return redirect('/tetapan-arkib-dokumen/'.$request->id_arkibdokumen)->with('success', 'Berjaya disimpan!');
+        return redirect('/tetapan-arkib-dokumen/'.$id_)->with('success', 'Berjaya disimpan!');
     }
 
     /**
