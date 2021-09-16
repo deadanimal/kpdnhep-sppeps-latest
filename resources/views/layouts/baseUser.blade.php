@@ -67,6 +67,14 @@ ight notice and this permission notice shall be included in all copies or substa
             opacity: 0 !important
         }
 
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* text-align: center; */
+        }
+
     </style>
     <script>
         (function(a, s, y, n, c, h, i, d, e) {
@@ -129,6 +137,17 @@ ight notice and this permission notice shall be included in all copies or substa
             </a>
 
             <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
+
+                @can('isPemohon')
+                    <li class="nav-item mx-2">
+                        <a role="button" href="/dashboard"
+                            class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
+                            aria-expanded="false">
+                            {{-- {{ __('landing.semakan_status_eps') }} --}}
+                            Permohonan
+                        </a>
+                    </li>
+                @endcan
                 <li class="nav-item dropdown dropdown-hover mx-2">
                     <a role="button"
                         class="nav-link font_color ps-2 d-flex justify-content-between cursor-pointer align-items-center"
@@ -145,7 +164,8 @@ ight notice and this permission notice shall be included in all copies or substa
                                             <div>
                                                 <h6
                                                     class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                    <i class="fas fa-rocket mr-2 text-secondary"></i> &nbsp; {{ __('landing.arkib_bergambar') }}
+                                                    <i class="fas fa-rocket mr-2 text-secondary"></i> &nbsp;
+                                                    {{ __('landing.arkib_bergambar') }}
                                                 </h6>
                                                 <!-- <span class="text-sm">All about overview, quick start, license and contents</span> -->
                                             </div>
@@ -158,7 +178,8 @@ ight notice and this permission notice shall be included in all copies or substa
                                             <div>
                                                 <h6
                                                     class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                    <i class="fas fa-book text-secondary"></i> &nbsp; {{ __('landing.arkib_dokumen') }}
+                                                    <i class="fas fa-book text-secondary"></i> &nbsp;
+                                                    {{ __('landing.arkib_dokumen') }}
                                                 </h6>
                                             </div>
                                         </div>
@@ -186,16 +207,17 @@ ight notice and this permission notice shall be included in all copies or substa
 
             </ul>
 
-
-            @can('isPemohon')
+            @can ('isPemohon')
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="d-sm-inline d-none text-white">{{ __('landing.selamat_datang') }} {{ Auth::user()->name }}</span>
+                            <span class="d-sm-inline d-none text-white">{{ __('landing.selamat_datang') }}
+                                {{ Auth::user()->name }}</span>
                             <i class="fa fa-user me-sm-1 text-white p-2"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
+                            aria-labelledby="dropdownMenuButton">
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="/profil">
                                     <div class="d-flex py-1">
@@ -206,7 +228,8 @@ ight notice and this permission notice shall be included in all copies or substa
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan">
                                     <div class="d-flex py-1">
-                                        <span class="d-sm-inline d-none text-dark">{{ __('landing.tukar_kata_laluan') }}</span>
+                                        <span
+                                            class="d-sm-inline d-none text-dark">{{ __('landing.tukar_kata_laluan') }}</span>
                                     </div>
                                 </a>
                             </li>
@@ -232,15 +255,13 @@ ight notice and this permission notice shall be included in all copies or substa
                         </ul>
                     </li>
                 </ul>
-
             @else
-
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center ">
                         <a href="/login_" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1 font_color"></i>
                             <span class="d-sm-inline d-none font_color">
-                                {{-- Log Masuk --}}
+
                                 {{ __('landing.log_masuk') }}
                             </span>
                         </a>
@@ -249,14 +270,14 @@ ight notice and this permission notice shall be included in all copies or substa
                         <a href="/semak-ic" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1 font_color"></i>
                             <span class="d-sm-inline d-none font_color">
-                                {{-- Daftar Akaun --}}
+
                                 {{ __('landing.daftar_akaun') }}
                             </span>
                         </a>
                     </li>
                 </ul>
-
             @endcan
+
 
 
         </nav>
@@ -311,8 +332,8 @@ ight notice and this permission notice shall be included in all copies or substa
                     <h6 class="mb-0">{{ __('landing.tukar_bahasa') }}</h6>
                 </div>
                 <div class="form-check form-switch ps-0">
-                    <a href="/ms">{{ __('landing.melayu') }}</a>
-                    <a href="/en">{{ __('landing.english') }}</a>
+                    <a href="/ms" class="btn btn-sm">{{ __('landing.melayu') }}</a>
+                    <a href="/en" class="btn btn-sm">{{ __('landing.english') }}</a>
                 </div>
 
                 <hr class="horizontal dark mb-1">
@@ -360,7 +381,8 @@ ight notice and this permission notice shall be included in all copies or substa
 
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="readable" @if (Session::get('readable') == 'true') checked @endif>
-                        <label class="form-check-label" for="readable">{{ __('landing.font_yang_boleh_dibaca') }}</label>
+                        <label class="form-check-label"
+                            for="readable">{{ __('landing.font_yang_boleh_dibaca') }}</label>
                     </div>
 
                 </div>
@@ -371,7 +393,8 @@ ight notice and this permission notice shall be included in all copies or substa
 
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="grayscale" @if (Session::get('grayscale') == 'true') checked @endif>
-                        <label class="form-check-label" for="grayscale">{{ __('landing.gambar_skala_kelabu') }}</label>
+                        <label class="form-check-label"
+                            for="grayscale">{{ __('landing.gambar_skala_kelabu') }}</label>
                     </div>
 
                 </div>
@@ -385,6 +408,10 @@ ight notice and this permission notice shall be included in all copies or substa
                         <label class="form-check-label" for="negative">{{ __('landing.warna_terbalik') }}</label>
                     </div>
 
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <a href="/reset" class="btn btn-sm bg-gradient-danger">Reset</a>
                 </div>
 
             </div>

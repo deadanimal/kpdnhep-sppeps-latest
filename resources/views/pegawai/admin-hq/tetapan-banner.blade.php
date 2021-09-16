@@ -75,12 +75,12 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $banner->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete-{{ $banner->id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
 
-                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="modaldelete-{{ $banner->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">

@@ -69,6 +69,15 @@
             opacity: 0 !important
         }
 
+        .footer {
+            position: fixed;
+            margin-top: 10px
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* text-align: center; */
+        }
+
     </style>
     <script>
         (function(a, s, y, n, c, h, i, d, e) {
@@ -160,8 +169,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
 
-                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link"
-                        aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link" aria-controls="dashboardsExamples"
+                        role="button" aria-expanded="false">
 
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -1279,8 +1288,7 @@
                 <hr class="horizontal dark my-sm-4">
                 <a class="btn bg-gradient-info w-100"
                     href="https://www.creative-tim.com/product/soft-ui-dashboard-pro">Buy now</a>
-                <a class="btn bg-gradient-dark w-100"
-                    href="https://www.creative-tim.com/product/soft-ui-dashboard">Free
+                <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard">Free
                     demo</a>
                 <a class="btn btn-outline-dark w-100"
                     href="https://www.creative-tim.com/learning-lab/bootstrap/overview/soft-ui-dashboard">View

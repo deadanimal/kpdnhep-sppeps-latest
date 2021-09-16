@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-flush" id="datatable-basic-pengumuman">
+                        <table class="stripe row-border order-column" style="width:100%" id="datatable-basic-pengumuman">
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
@@ -58,20 +58,20 @@
                             <tbody>
                                 @foreach ($anoouces as $pengumuman)
                                     <tr>
-                                        <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->tajuk_bm }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->tajuk_en }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->kandungan_bm }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->kandungan_en }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->tarikh_mula }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->tarikh_akhir }}</td>
-                                        <td class="text-sm font-weight-normal">{{ $pengumuman->updated_at }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $loop->index + 1 }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->tajuk_bm }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->tajuk_en }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->kandungan_bm }}</span></td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->kandungan_en }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->tarikh_mula }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->tarikh_akhir }}</td>
+                                        <td class="text-sm text-center font-weight-normal">{{ $pengumuman->updated_at }}</td>
                                         <td>
-                                            @if ($pengumuman->status === 'aktif')
+                                            @if (date("Y-m-d") >= $pengumuman->tarikh_mula && date("Y-m-d") <= $pengumuman->tarikh_akhir)
                                                 <span class="text-secondary text-sm font-weight-bold">
                                                     <span class="badge badge-success">Aktif</span>
                                                 </span>
-                                            @elseif ($pengumuman->status === 'tidak_aktif')
+                                            @else
                                                 <span class="text-secondary text-sm font-weight-bold">
                                                     <span class="badge badge-danger">Tidak Aktif</span>
                                                 </span>
@@ -81,12 +81,12 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $pengumuman->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete-{{ $pengumuman->id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
 
-                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="modaldelete-{{ $pengumuman->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
@@ -151,7 +151,7 @@
                                                                         rows="2">{{ $pengumuman->kandungan_en }}</textarea>
                                                                 </div>
 
-                                                                <div class="form-group">
+                                                                {{-- <div class="form-group">
                                                                     <label for="content">Status</label>
                                                                     <br>
                                                                     <div class="form-check form-check-inline">
@@ -167,7 +167,7 @@
                                                                             for="notActive">Tidak Aktif</label>
                                                                     </div>
 
-                                                                </div>
+                                                                </div> --}}
 
                                                                 <div class="form-group">
                                                                     <div class="row">
@@ -176,14 +176,14 @@
                                                                             <input type="date" class="form-control"
                                                                                 name="tarikh_mula"
                                                                                 value="{{ $pengumuman->tarikh_mula }}"
-                                                                                placeholder="">
+                                                                                min="<?php echo date("Y-m-d"); ?>">
                                                                         </div>
                                                                         <div class="col">
                                                                             <label for="title">Tarikh Akhir Papar</label>
                                                                             <input type="date" class="form-control"
                                                                                 name="tarikh_akhir"
                                                                                 value="{{ $pengumuman->tarikh_akhir }}"
-                                                                                placeholder="">
+                                                                                min="<?php echo date("Y-m-d"); ?>">
                                                                         </div>
 
                                                                     </div>
@@ -250,7 +250,7 @@
                                         <textarea class="form-control" name="kandungan_en" rows="2"></textarea>
                                     </div>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="content">Status</label>
                                         <br>
                                         <div class="form-check form-check-inline">
@@ -262,19 +262,19 @@
                                             <label class="form-check-label" for="notActive">Tidak Aktif</label>
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col">
                                                 <label for="title">Tarikh Mula Papar</label>
                                                 <input type="date" class="form-control" name="tarikh_mula"
-                                                    aria-describedby="title" placeholder="">
+                                                    aria-describedby="title" min="<?php echo date("Y-m-d"); ?>">
                                             </div>
                                             <div class="col">
                                                 <label for="title">Tarikh Akhir Papar</label>
                                                 <input type="date" class="form-control" name="tarikh_akhir"
-                                                    aria-describedby="title" placeholder="">
+                                                    aria-describedby="title" min="<?php echo date("Y-m-d"); ?>">
                                             </div>
 
                                         </div>
@@ -299,47 +299,49 @@
 
     <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
         type="text/javascript"></script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         const dataTableBasicPengumuman = new simpleDatatables.DataTable("#datatable-basic-pengumuman", {
             searchable: true,
-            fixedHeight: true
+            fixedHeight: true,
+            columnDefs: [{
+                width: '20%',
+                targets: 0
+            }],
+        });
+    </script> --}}
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // $('#datatable-basic-pengumuman').DataTable({
+            //     responsive: true
+            // });
+            var table = $('#datatable-basic-pengumuman').removeAttr('width').DataTable({
+                scrollX: true,
+                scrollCollapse: true,
+                paging: true,
+                columnDefs: [{
+                    width: 30,
+                    targets: 0
+                }],
+                fixedColumns: true
+            });
         });
     </script>
-    {{-- <script>
-        function buang(id) {
-            swal({
-                title: 'Padam?',
-                text: "Anda pasti!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Padam',
-                cancelButtonText: 'Tutup',
 
-            }).then(result => {
-                console.log("result", result);
-                if (result.value == true) {
-                    console.log("id", id);
-                    $.ajax({
-                        url: "/tetapan-pengumuman/" + id,
-                        type: "POST",
-                        data: {
-                            "id": id,
-                            "_token": "{{ csrf_token() }}",
-                            "_method": 'delete'
-                        },
-                        success: function(data) {
-                            location.reload();
-                        },
-                    });
-
-                } else if (result.dismiss == "cancel") {
-                    console.log("dismiss");
-                }
-            })
-        }
-    </script> --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
 

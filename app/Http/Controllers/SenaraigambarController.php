@@ -102,7 +102,7 @@ class SenaraigambarController extends Controller
 
         $senaraigambars = Senaraigambar::where('id_arkibgambar', $request->id_arkibgambar)->get();
 
-        return redirect('/tetapan-arkib-bergambar/'. $request->id_arkibgambar)->with('success', 'Berjaya disimpan!');
+        return redirect('/tetapan-arkib-bergambar/'.$request->id_arkibgambar)->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -206,6 +206,6 @@ class SenaraigambarController extends Controller
     public function destroy(Senaraigambar $senaraigambar)
     {
         $senaraigambar->delete();
-        return redirect('/tetapan-arkib-bergambar/' . $senaraigambar->id_arkibgambar)->with('success', 'Berjaya dipadam');
+        return redirect('/tetapan-arkib-bergambar/'.$senaraigambar->id_arkibgambar)->with('success', 'Berjaya dipadam');
     }
 }

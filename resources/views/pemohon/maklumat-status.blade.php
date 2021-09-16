@@ -261,9 +261,7 @@
                                         </ul>
                                     </div>
 
-                                @elseif ($permohonan->status_permohonan == 'disokong_hq' ||
-                                    $permohonan->status_permohonan
-                                    == 'disokong_negeri')
+                                @elseif ($permohonan->status_permohonan == 'disokong_hq' || $permohonan->status_permohonan == 'disokong_negeri')
 
                                     <div class="platform-tour-wrapper py-3">
                                         <!-- Nav tabs -->

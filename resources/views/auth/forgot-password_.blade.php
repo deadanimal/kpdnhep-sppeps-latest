@@ -21,7 +21,7 @@
                             <label>No. Kad Pengenalan</label>
                             <div class="input-group mb-4">
                                 {{-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> --}}
-                                <input class="form-control text-center" placeholder="e.g abc123@gmail.com" type="email"
+                                <input class="form-control text-center" placeholder="e.g abc123@gmail.com" type="text"
                                     id="email" name="email" :value="old('email')" required autofocus>
                             </div>
                         </div>

@@ -57,7 +57,7 @@ class SenaraidokumenController extends Controller
 
         $senaraidokumens = Senaraidokumen::where('id_arkibdokumen', $request->id_arkibdokumen)->get();
 
-        return redirect('/tetapan-arkib-dokumen/' . $request->id_arkibdokumen)->with('success', 'Berjaya disimpan!');
+        return redirect('/tetapan-arkib-dokumen/'.$request->id_arkibdokumen)->with('success', 'Berjaya disimpan!');
     }
 
     /**
@@ -107,7 +107,7 @@ class SenaraidokumenController extends Controller
 
         $senaraidokumens = Senaraidokumen::where('id_arkibdokumen', $request->id_arkibdokumen)->get();
 
-        return redirect('/tetapan-arkib-dokumen-senarai')->with('success', 'Berjaya disimpan!');
+        return redirect('/tetapan-arkib-dokumen/'.$request->id_arkibdokumen)->with('success', 'Berjaya disimpan!');
     }
 
     /**

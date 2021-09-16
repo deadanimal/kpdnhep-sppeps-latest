@@ -71,7 +71,10 @@ Route::get('/brown', [LocalizationController::class, 'color_brown']);
 Route::get('/font_default', [LocalizationController::class, 'color_font_default']);
 Route::get('/font_blue', [LocalizationController::class, 'color_font_blue']);
 Route::get('/font_brown', [LocalizationController::class, 'color_font_brown']);
-Route::get('/font_green', [LocalizationController::class, 'color_font_green']);
+Route::get('/font_green', [LocalizationController::class, 'color_font_green']); 
+
+//reset font and theme
+Route::get('/reset', [LocalizationController::class, 'reset_font_and_theme']); 
 
 // font size
 Route::get('/font_size_normal', [LocalizationController::class, 'font_size_normal']);
@@ -117,8 +120,8 @@ Route::post('/cari-senarai-hitam', [SenaraiHitamController::class, 'carisenaraih
 Route::post('/cari-tambah-senarai-hitam', [SenaraiHitamController::class, 'caritambahsenaraihitam']);
 
 Route::post('/register_user', [ProfilController::class, 'register']); //dummy
-Route::post('/profil/login-insid', [ProfilController::class, 'login_insid']);
-Route::post('/profil/login-myhub', [ProfilController::class, 'login_myhub']);
+Route::post('/profil/login-insid', [ProfilController::class, 'login_via_insid']);
+Route::post('/profil/login-myhub', [ProfilController::class, 'login_via_myhub']);
 Route::resource('/profil', ProfilController::class);
 Route::get('/profil_pegawai', [ProfilController::class, 'profil_pegawai']);
 
@@ -177,6 +180,7 @@ Route::resource('/log_pengguna', AuditController::class);
 Route::get('/log_pemohon', [AuditController::class, 'log_pemohon']);
 Route::get('/log_pemohon/{id}', [AuditController::class, 'lihat_log_pemohon']);
 Route::post('/cari_log_pemohon', [AuditController::class, 'cari_log_pemohon']);
+Route::post('/cari_log_pengguna', [AuditController::class, 'cari_log_pengguna']);
 
 Route::resource('/semakan_permohonan', SemakanPermohonanPegawaiController::class);
 

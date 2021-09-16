@@ -99,19 +99,32 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     {{-- <span class="badge badge-success"> </span> --}}
-                                                    {{ $permohonan->status_permohonan }}
+                                                    @if ($permohonan->status_permohonan == 'Diluluskan')
+                                                        <span class="badge badge-success">Diluluskan</span>
+                                                    @elseif ($permohonan->status_permohonan == "Tidak Diluluskan")
+                                                        <span class="badge badge-danger">Tidak Diluluskan</span>
+                                                    @else
+                                                        <span class="badge badge-secondary">Dalam Proses</span>
+                                                    @endif
+                                                    {{-- {{ $permohonan->status_permohonan }} --}}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <a href="/pengurusan-data/{{ $permohonan->id }}"
-                                                        class="btn btn-sm bg-gradient-info">
-                                                        Kemaskini
-                                                    </a>
 
-                                                    <button type="button" class="btn bg-gradient-danger btn-sm"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal-{{ $permohonan->id }}">
-                                                        Set Semula
-                                                    </button>
+                                                    @if ($permohonan->status_permohonan != 'Diluluskan' && $permohonan->status_permohonan != 'Tidak Diluluskan')
+                                                        <a href="/pengurusan-data/{{ $permohonan->id }}"
+                                                            class="btn btn-sm bg-gradient-info">
+                                                            Kemaskini
+                                                        </a>
+                                                    @endif
+
+                                                    @if ($permohonan->status_permohonan == 'Diluluskan')
+                                                        <button type="button" class="btn bg-gradient-danger btn-sm"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal-{{ $permohonan->id }}">
+                                                            Set Semula
+                                                        </button>
+                                                    @endif
+
 
 
                                                 </td>
@@ -124,14 +137,16 @@
                                             </button> --}}
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal-{{ $permohonan->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal-{{ $permohonan->id }}"
+                                                tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Notifikasi</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Notifikasi
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>

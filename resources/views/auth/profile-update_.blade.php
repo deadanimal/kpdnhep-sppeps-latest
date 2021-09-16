@@ -25,10 +25,10 @@
                                             <div class="position-relative">
                                                 @if ($pemohon->gambar_profil === '/assets/img/icons/default_profile.png')
                                                     <img src="{{ $pemohon->gambar_profil }}" class="border-radius-md"
-                                                        width="150" height="150" />
+                                                        width="150" height="150" id="gambar" />
                                                 @else
                                                     <img src="/storage/{{ $pemohon->gambar_profil }}"
-                                                        class="border-radius-md" width="150" height="150" />
+                                                        class="border-radius-md" width="150" height="150" id="gambar"/>
                                                 @endif
 
                                                 <a
@@ -189,5 +189,23 @@
         </div>
 
     </div>
+
+    <script>
+        $("input").change(function(e) {
+
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.createElement("img");
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $("#gambar").after(img);
+            }
+        });
+    </script>
 
 @stop

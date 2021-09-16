@@ -19,7 +19,7 @@ class CreatePengumumenTable extends Migration
             $table->string('tajuk_en', 255);
             $table->text('kandungan_bm');
             $table->text('kandungan_en');
-            $table->string('status', 255);
+            $table->string('status', 255)->nullable();
             $table->date('tarikh_mula');
             $table->date('tarikh_akhir');
             $table->timestamps();

@@ -7,14 +7,14 @@
                 <h5 class="h3 text-dark pt-4 text-center"><strong>{{ __('landing.arkib_bergambar') }}</strong></h5>
             </div>
         </div>
-        <div class="row d-flex justify-content-center text-center">
+        <div class="row d-flex mb-4 justify-content-center text-center">
 
             @foreach ($arkgamlans as $arkgamlan)
-                <div class="card col-3 move-on-hover">
+                <div class="card col-4 move-on-hover">
                     <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
                         <a href="/arkib-bergambar/{{ $arkgamlan->id }}" class="d-block">
                             <img src="/storage/{{ $arkgamlan->jalan }}" class="img-fluid border-radius-lg"
-                                style="max-height: 200px">
+                                style="height: 200px; width: auto">
                         </a>
                     </div>
 

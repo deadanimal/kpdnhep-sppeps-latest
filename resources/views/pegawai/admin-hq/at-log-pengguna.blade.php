@@ -18,14 +18,14 @@
 
                     <div class="card-body p-3">
                         <div class="row p-3 mb-0">
-                            <form method="POST" action="">
+                            <form method="POST" action="/cari_log_pengguna">
                                 @csrf
                                 <div class="row">
                                     <div class="col">
                                         <label for="tarikhmula">No. Kad Pengenalan</label>
-                                        <input class="form-control form-control-sm" type="text" name="ic" />
+                                        <input class="form-control form-control-sm" type="text" name="no_kp" />
                                     </div>
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <label for="tarikhmula">Tarikh Mula</label>
                                         <input class="form-control form-control-sm" type="date" name="tarikhmula" />
                                     </div>
@@ -33,7 +33,7 @@
                                     <div class="col">
                                         <label for="tarikhtamat">Tarikh Tamat</label>
                                         <input class="form-control form-control-sm" type="date" name="tarikhtamat" />
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col">
                                         <br>

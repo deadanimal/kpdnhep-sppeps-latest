@@ -11,7 +11,7 @@
         <div class="row d-flex justify-content-center text-center">
 
             @foreach ($arkibdokumens as $senaraidokumen)
-                <div class="card col-3 move-on-hover">
+                <div class="card col-4 move-on-hover">
                     <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
                         <a href="/arkib-dokumen-senarai/{{ $senaraidokumen->id }}" class="d-block">
                             <img src="/storage/{{ $senaraidokumen->jalan }}" class="img-fluid border-radius-lg"

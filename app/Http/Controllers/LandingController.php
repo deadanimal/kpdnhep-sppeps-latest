@@ -12,9 +12,8 @@ class LandingController extends Controller
     public function landing(){
 
         $now = date('Y-m-d');
-        $pengland = Pengumuman::where('status', 'aktif')
-        ->whereDate('tarikh_mula', '<', $now)
-        ->whereDate('tarikh_akhir', '>', $now)
+        $pengland = Pengumuman::whereDate('tarikh_mula', '<=', $now)
+        ->whereDate('tarikh_akhir', '>=', $now)
         ->get();
 
         $bannerland = Banner::where('status', 'aktif')->get();

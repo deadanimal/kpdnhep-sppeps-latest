@@ -66,15 +66,13 @@ class SenaraiHitamController extends Controller
 
     public function senaraiDiluluskan(Request $request)
     {
+        
         $pemohon = User::where([
-            ['status_permohonan', '!=' , 'disenarai_hitam'],
-            ['role', 'pemohon'],
-        ])->orWhere([
-            ['status_permohonan', '=' , null],
+            ['status_permohonan', '=' , 'diluluskan'],
             ['role', 'pemohon'],
         ])->get();
 
-        // dd($pemohon);
+        //dd($pemohon);
 
         return view('pegawai.hq.hq-tambah-senarai-hitam', [
             'pemohon' => $pemohon

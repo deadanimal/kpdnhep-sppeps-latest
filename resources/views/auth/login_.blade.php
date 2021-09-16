@@ -13,13 +13,13 @@
                         <li class="nav-item">
                             <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#preview-tabs-simple"
                                 role="tab" aria-selected="true">
-                                {{ __('landing.pemohon') }}
+                                Pemohon
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#code-tabs-simple" role="tab"
                                 aria-selected="false">
-                                {{ __('landing.pegawai_admin') }}
+                                Pegawai & Admin
                             </a>
                         </li>
                     </ul>
@@ -36,16 +36,15 @@
                                     <i class="fas fa-user-circle fa-8x text-dark"></i>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="ic">{{ __('landing.no_kp') }}</label>
+                                    <label for="ic">No. Kad Pengenalan</label>
                                     <div class="input-group mb-4">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text"
-                                            name="no_kp">
+                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="no_kp">
                                     </div>
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <label for="password">{{ __('landing.kata_laluan') }}</label>
+                                    <label for="password">Kata Laluan</label>
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -57,7 +56,7 @@
                                     <div class="input-group mb-4 d-flex justify-content-end">
                                         <a href="/lupa-kata-laluan">
                                             <small>
-                                                {{ __('landing.lupa_kata_laluan') }}
+                                                Lupa Kata Laluan?
                                             </small>
                                         </a>
                                     </div>
@@ -65,7 +64,7 @@
                                 <div class="form-group mt-3">
                                     <div class="input-group mb-4">
                                         <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize"
-                                            value="{{ __('landing.log_masuk') }}">
+                                            value="Log Masuk">
                                     </div>
                                 </div>
 
@@ -75,19 +74,18 @@
                     </div>
                     <div class="tab-pane text-center" id="code-tabs-simple">
 
-                        <form method="POST" action="/login">
+                        <form method="POST" action="/profil/login-insid">
                             @csrf
                             <div class="container mt-4">
                                 <div class="form-group row">
                                     <i class="fas fa-users fa-8x text-dark"></i>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="ic"> {{ __('landing.no_kp') }}</label>
+                                    <label for="ic">No. Kad Pengenalan</label>
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text"
-                                            name="no_kp">
+                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text" name="no_kp">
                                     </div>
                                 </div>
                                 {{-- <div class="form-group mt-3">
@@ -98,7 +96,7 @@
                                 </div>
                             </div> --}}
                                 <div class="form-group mt-3">
-                                    <label for="password">{{ __('landing.kata_laluan') }}</label>
+                                    <label for="password">Kata Laluan</label>
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -110,7 +108,7 @@
                                     <div class="input-group mb-4 d-flex justify-content-end">
                                         <a href="/lupa-kata-laluan">
                                             <small>
-                                                {{ __('landing.lupa_kata_laluan') }}
+                                                Lupa Kata Laluan?
                                             </small>
                                         </a>
                                     </div>
@@ -118,7 +116,7 @@
                                 <div class="form-group mt-3">
                                     <div class="input-group mb-4">
                                         <input type="submit" class="btn bg-gradient-info btn-lg w-100 text-capitalize"
-                                            value="{{ __('landing.log_masuk') }}">
+                                            value="Log Masuk">
                                     </div>
                                 </div>
 

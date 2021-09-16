@@ -14,7 +14,7 @@ class LolController extends Controller
         // $pdf = App::make('dompdf.wrapper');
         // $pdf->loadHTML('<h1>Test</h1>');
         $data = '';
-        $pdf = PDF::loadView('pdf.borang_permohonan', [
+        $pdf = PDF::loadView('pdf.lol', [
             'masa'=>time()
         ]);
         $nama_lesen = time().'-lesen';

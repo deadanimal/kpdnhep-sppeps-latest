@@ -13,7 +13,7 @@ class SemakanIcController extends Controller
 
         $request->validate([
             'no_kp' => 'required',
-            'captcha' => 'required|captcha'
+           // 'captcha' => 'required|captcha'
         ]);
 
         $year = substr($request->no_kp, 0, 2);
@@ -89,24 +89,33 @@ class SemakanIcController extends Controller
         $url = 'http://datajpndev.kpdnhep.gov.my/jwtapi/';
 
         $token_janaan = Http::post($url, [
-            "name" => "janaToken",
+            "name" => "generateToken",
             "param" => [
                 "user_id" => "No_Kad_Pengenalan",
                 "app_id" => "SPPEPSdev",
                 "app_secret" => "[SPPEPSdev@bpm123]",
             ]
-        ])->json()['result']['token'];
+        ])->json()['response']['result']['token'];
+		
+		//$token = $token_janaan['response']['result']['token'];
+		//dd($token_janaan);
 
         $pengguna = Http::withToken($token_janaan)->post($url, [
             "name" => "getMyIdentity",
             "param" => [
                 "nokp" => $idpengguna,
             ]
-        ])->json();
+        ])->json()['response'];
 
-        if ($pengguna->successful()) {
+        //$respond = [ $response = 200,];
+		$respond = $pengguna['status'];
+		$pemohon = $pengguna['result'];
+        
+        //dd($pemohon);
+
+        if ($respond == 200) {
             return view('auth.register_', [
-                'pengguna'=> $pengguna,
+                'pengguna'=> $pemohon,
                 'no_kp' => $no_kp,
                 'age' => $age,
                 'tarikh_lahir' => $birth_date,
@@ -117,7 +126,6 @@ class SemakanIcController extends Controller
         }
         
     }
-
     public function reloadCaptcha()
     {
         return response()->json(['captcha' => captcha_img()]);

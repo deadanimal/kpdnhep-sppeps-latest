@@ -89,7 +89,7 @@
                                         @foreach ($permohonan as $permohonan)
                                         <tr>
                                             <td>
-                                                <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                <span class="text-secondary text-sm font-weight-bold">{{ $loop->index+1}}</span>
                                             </td>
                                             <td>
                                                 <span class="text-secondary text-sm font-weight-bold">{{$permohonan->updated_at}}</span>

@@ -62,12 +62,12 @@
                                         <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $kategorifaq->id }}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a data-bs-toggle="modal" data-bs-target="#modaldeleteKategori">
+                                        <a data-bs-toggle="modal" data-bs-target="#modaldeleteKategori-{{ $kategorifaq->id }}">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
 
-                                    <div class="modal fade" id="modaldeleteKategori" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="modaldeleteKategori-{{ $kategorifaq->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -226,12 +226,12 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form4-{{ $faq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a data-bs-toggle="modal" data-bs-target="#modaldeleteFaq">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldeleteFaq-{{ $faq->id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
 
-                                        <div class="modal fade" id="modaldeleteFaq" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="modaldeleteFaq-{{ $faq->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">

@@ -381,6 +381,14 @@
                     //     title: 'Data export'
                     // }
                 ],
+                // "oLanguage": {
+                //     "sSearch": "Carian:",
+                //     "sZeroRecords": "Tiada rekod ditemui",
+                //     "oPaginate": {
+                //         "sNext": ">",
+                //         "sPrevious": "<",
+                //     }
+                // }
 
                 // initComplete: function() {
                 //     this.api().columns().every(function() {
