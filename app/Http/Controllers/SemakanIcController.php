@@ -13,7 +13,7 @@ class SemakanIcController extends Controller
 
         $request->validate([
             'no_kp' => 'required',
-           // 'captcha' => 'required|captcha'
+           'captcha' => 'required|captcha'
         ]);
 
         $year = substr($request->no_kp, 0, 2);
@@ -43,7 +43,10 @@ class SemakanIcController extends Controller
         if ($age > 21) {
 
             //return $this->check_myidentity($no_kp, $age, $birth_date);
+            
+            //dd($pengguna);
             return view('auth.register_', [
+                
                 'no_kp' => $no_kp,
                 'age' => $age,
                 'tarikh_lahir' => $birth_date,
@@ -55,6 +58,7 @@ class SemakanIcController extends Controller
 
                 //return $this->check_myidentity($no_kp, $age, $birth_date);
                 return view('auth.register_', [
+                    
                     'no_kp' => $no_kp,
                     'age' => $age,
                     'tarikh_lahir' => $birth_date,
@@ -64,7 +68,9 @@ class SemakanIcController extends Controller
                 if ($day_int <= $current_day) {
 
                     //return $this->check_myidentity($no_kp, $age, $birth_date);
+                    
                     return view('auth.register_', [
+                        
                         'no_kp' => $no_kp,
                         'age' => $age,
                         'tarikh_lahir' => $birth_date,
