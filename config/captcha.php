@@ -11,6 +11,7 @@ return [
         'expire' => 60,
         'encrypt' => false,
     ],
+    
     'math' => [
         'length' => 9,
         'width' => 120,

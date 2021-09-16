@@ -87,14 +87,14 @@
                                                     <div class="modal-body text-center">
                                                         <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
                                                         <br>
-                                                        Anda pasti mahu padam?
+                                                        Anda pasti mahu hapus?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn bg-gradient-secondary"
                                                             data-bs-dismiss="modal">Tutup</button>
                                                         <a href="/tetapan-banner/{{ $banner->id }}/delete"
                                                             class="btn btn-success">
-                                                            Padam
+                                                            Hapus
                                                         </a>
                                                     </div>
                                                 </div>
@@ -114,7 +114,7 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-banner/{{ $banner->id }}">
+                                                                action="/tetapan-banner/{{ $banner->id }}" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id" value="{{ $banner->id }}">

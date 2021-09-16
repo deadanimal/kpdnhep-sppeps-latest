@@ -13,7 +13,7 @@ class SemakanIcController extends Controller
 
         $request->validate([
             'no_kp' => 'required',
-           // 'captcha' => 'required|captcha'
+           'captcha' => 'required|captcha'
         ]);
 
         $year = substr($request->no_kp, 0, 2);
