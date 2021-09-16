@@ -265,7 +265,7 @@
                                                                 <select class="form-control"
                                                                     aria-label="Default select example"
                                                                     name="negeri_kutipan_permit">
-                                                                    <option >--{{ __('landing.pilih_negeri') }}--</option>
+                                                                    <option value="">--{{ __('landing.pilih_negeri') }}--</option>
                                                                     <option value="Perlis">Perlis</option>
                                                                     <option value="Kedah">Kedah</option>
                                                                     <option value="Pulau Pinang">Pulau Pinang</option>

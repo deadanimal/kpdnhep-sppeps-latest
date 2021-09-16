@@ -13,6 +13,7 @@ use App\Mail\KelulusanPermohonan;
 use App\Mail\SemakanPDRM;
 use App\Mail\PermohonanPemohon;
 use League\CommonMark\Node\Inline\Newline;
+use Illuminate\Support\Facades\Redirect;
 
 use PDF;
 use Dompdf\Dompdf;
@@ -68,8 +69,7 @@ class PermohonanController extends Controller
 
         if ($request->status == 'HANTAR') {
 
-            # Write Manual Validation
-            $validated = Validator::make($request->all(), [
+            $rules = [
                 'no_telefon' => 'required',
                 'emel' => 'required',
                 'alamat1' => 'required',
@@ -78,35 +78,19 @@ class PermohonanController extends Controller
                 'poskod' => 'required',
                 'negeri' => 'required',
                 'negeri_kutipan_permit' => 'required',
+            ];
+
+            // $messages = [
+            //     'required' => 'The :attribute is required',
+            // ];
+
+            $validator = Validator::make($request->all(), $rules, $messages = [
+                'required' => ' :attribute perlu diisi',
             ]);
 
-            # Write Manual Redirect if Validation Fail
-            if ($validated->fails()) {
-                if ($request->jenis_permohonan == "Baharu") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-baru', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                } else if ($request->jenis_permohonan == "Pembaharuan") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pembaharuan', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                } else if ($request->jenis_permohonan == "Pendua") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pendua', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                } else if ($request->jenis_permohonan == "Rayuan") {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-rayuan', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                }
+            // # Write Manual Redirect if Validation Fail
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator->errors());
             };
         }
 
@@ -134,8 +118,7 @@ class PermohonanController extends Controller
 
             if ($request->status == 'HANTAR') {
 
-                # Write Manual Validation
-                $validated = Validator::make($request->all(), [
+                $rules = [
                     'jantina' => 'required',
                     'pekerjaan_sekarang' => 'required',
                     'tahap_pendidikan' => 'required',
@@ -143,29 +126,37 @@ class PermohonanController extends Controller
                     'berkerja_panel_atau_syarikat' => 'required',
                     'skop_tugas' => 'required',
                     'prosedur_peraturan_eps' => 'required',
+                ];
+
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
                 ]);
 
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
+                };
+
+                ////////////////////
                 if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'nama_institusi_kewangan' => 'required',
                         'no_telefon_institusi_kewangan' => 'required',
-                    ]);
+                    ];
                 } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'nama_panel' => 'required',
                         'no_kp_panel' => 'required',
                         'no_permit_panel' => 'required',
                         'no_telefon_panel' => 'required',
-                    ]);
+                    ];
                 }
 
-                # Write Manual Redirect if Validation Fail
-                if ($validated->fails()) {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-baru', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
+                ]);
+
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
                 };
             }
 
@@ -208,53 +199,70 @@ class PermohonanController extends Controller
 
             if ($request->status == 'HANTAR') {
 
-                # Write Manual Validation
-                $validated = Validator::make($request->all(), [
+                $rules = [
                     'status_pekerjaan_eps' => 'required',
                     'tahap_pendidikan' => 'required',
                     'lesen_memandu' => 'required',
                     'berkerja_panel_atau_syarikat' => 'required',
                     'kehadiran_kursus_eps' => 'required',
+                ];
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
                 ]);
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
+                };
 
+                //////////////////////////
                 if ($request->status_pekerjaan_eps == 'sepenuh masa') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'tahun_pekerjaan_eps' => 'required',
-                    ]);
+                    ];
                 } elseif ($request->status_pekerjaan_eps == 'pekerjaan sampingan') {
-                    $validated = $request->validate([
+                    $rules = [
                         'pekerjaan_tetap' => 'required',
-                    ]);
+                    ];
                 }
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
+                ]);
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
+                };
 
+                //////////////////////
                 if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'nama_institusi_kewangan' => 'required',
                         'no_telefon_institusi_kewangan' => 'required',
-                    ]);
+                    ];
                 } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'nama_panel' => 'required',
                         'no_kp_panel' => 'required',
                         'no_permit_panel' => 'required',
                         'no_telefon_panel' => 'required',
-                    ]);
+                    ];
                 }
-
-                if ($request->kehadiran_kursus_eps == 'Ya') {
-                    $validated = Validator::make($request->all(), [
-                        'tahun_dihadiri' => 'required',
-                    ]);
-                }
-
-                # Write Manual Redirect if Validation Fail
-                if ($validated->fails()) {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pembaharuan', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
+                ]);
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
                 };
+
+                ///////////////////////
+                if ($request->kehadiran_kursus_eps == 'Ya') {
+                    $rules = [
+                        'tahun_dihadiri' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
+                    ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
+                }
             }
 
             $permohonan->no_permit = $request->no_permit;
@@ -299,28 +307,30 @@ class PermohonanController extends Controller
 
             if ($request->status == 'HANTAR') {
 
-                # Write Manual Validation
-                $validated = Validator::make($request->all(), [
+                $rules = [
                     'alasan_kehilangan' => 'required',
                     'penggantian_kali_ke' => 'required',
                     'negeri_laporan_polis' => 'required',
                     'no_laporan_polis' => 'required',
+                ];
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
                 ]);
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
+                };
 
                 if ($request->alasan_kehilangan == 'Lain-lain') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'alasan_lain' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
                     ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
                 }
-
-                # Write Manual Redirect if Validation Fail
-                if ($validated->fails()) {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-pendua', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                };
             }
 
             $permohonan->no_permit = $request->no_permit;
@@ -349,27 +359,29 @@ class PermohonanController extends Controller
 
             if ($request->status == 'HANTAR') {
 
-                # Write Manual Validation
-                $validated = Validator::make($request->all(), [
+                $rules = [
                     'sebab_permohonan_ditolak' => 'required',
                     'rayuan_kali_ke' => 'required',
                     'alasan_rayuan' => 'required',
+                ];
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
                 ]);
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
+                };
 
                 if ($request->sebab_permohonan_ditolak == 'Sebab-sebab Lain') {
-                    $validated = Validator::make($request->all(), [
+                    $rules = [
                         'sebab_lain' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
                     ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
                 }
-
-                # Write Manual Redirect if Validation Fail
-                if ($validated->fails()) {
-                    $pemohons = User::where('id', $user_id)->get();
-                    return view('pemohon.permohonan-rayuan', [
-                        'pemohon' => $pemohons,
-                        'errors' => $validated->errors()
-                    ]);
-                };
             }
 
             $permohonan->no_permit = $request->no_permit;
@@ -378,7 +390,7 @@ class PermohonanController extends Controller
             $permohonan->sebab_lain = $request->sebab_lain;
             $permohonan->rayuan_kali_ke = $request->rayuan_kali_ke;
             $permohonan->alasan_rayuan = $request->alasan_rayuan;
-            
+
 
             if ($request->hasFile('kp_depan')) {
                 $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
@@ -882,8 +894,12 @@ class PermohonanController extends Controller
             }
         } else if ($user_role == 'pemohon') {
 
+            //$permohonan->user_id = $user_id;
+            $permohonan->gambar_pemohon = $request->gambar_pemohon;
+
             if ($request->status == 'HANTAR') {
-                $validated = $request->validate([
+
+                $rules = [
                     'no_telefon' => 'required',
                     'emel' => 'required',
                     'alamat1' => 'required',
@@ -892,7 +908,20 @@ class PermohonanController extends Controller
                     'poskod' => 'required',
                     'negeri' => 'required',
                     'negeri_kutipan_permit' => 'required',
+                ];
+
+                // $messages = [
+                //     'required' => 'The :attribute is required',
+                // ];
+
+                $validator = Validator::make($request->all(), $rules, $messages = [
+                    'required' => ' :attribute perlu diisi',
                 ]);
+
+                // # Write Manual Redirect if Validation Fail
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator->errors());
+                };
             }
 
             $permohonan->jenis_permohonan = $request->jenis_permohonan;
@@ -918,7 +947,8 @@ class PermohonanController extends Controller
             if ($request->jenis_permohonan == 'Baharu') {
 
                 if ($request->status == 'HANTAR') {
-                    $validated = $request->validate([
+
+                    $rules = [
                         'jantina' => 'required',
                         'pekerjaan_sekarang' => 'required',
                         'tahap_pendidikan' => 'required',
@@ -926,30 +956,45 @@ class PermohonanController extends Controller
                         'berkerja_panel_atau_syarikat' => 'required',
                         'skop_tugas' => 'required',
                         'prosedur_peraturan_eps' => 'required',
+                    ];
+
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
                     ]);
 
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
+
+                    ////////////////////
                     if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                        $validated = $request->validate([
+                        $rules = [
                             'nama_institusi_kewangan' => 'required',
                             'no_telefon_institusi_kewangan' => 'required',
-                        ]);
+                        ];
                     } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                        $validated = $request->validate([
+                        $rules = [
                             'nama_panel' => 'required',
                             'no_kp_panel' => 'required',
                             'no_permit_panel' => 'required',
                             'no_telefon_panel' => 'required',
-                        ]);
+                        ];
                     }
+
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
+                    ]);
+
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
                 }
 
                 $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
                 $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
 
-                if ($request->status == 'HANTAR')
-                    $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-                else
-                    $permohonan->lesen_memandu =  $request->lesen_memandu;
+
+                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
 
 
                 $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
@@ -964,6 +1009,7 @@ class PermohonanController extends Controller
 
                 $permohonan->skop_tugas = $request->skop_tugas;
                 $permohonan->prosedur_peraturan_eps = $request->prosedur_peraturan_eps;
+
 
                 if ($request->hasFile('kp_depan')) {
                     $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
@@ -982,42 +1028,70 @@ class PermohonanController extends Controller
             } else if ($request->jenis_permohonan == 'Pembaharuan') {
 
                 if ($request->status == 'HANTAR') {
-                    $validated = $request->validate([
+
+                    $rules = [
                         'status_pekerjaan_eps' => 'required',
                         'tahap_pendidikan' => 'required',
                         'lesen_memandu' => 'required',
                         'berkerja_panel_atau_syarikat' => 'required',
                         'kehadiran_kursus_eps' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
                     ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
 
+                    //////////////////////////
                     if ($request->status_pekerjaan_eps == 'sepenuh masa') {
-                        $validated = $request->validate([
+                        $rules = [
                             'tahun_pekerjaan_eps' => 'required',
-                        ]);
+                        ];
                     } elseif ($request->status_pekerjaan_eps == 'pekerjaan sampingan') {
-                        $validated = $request->validate([
+                        $rules = [
                             'pekerjaan_tetap' => 'required',
-                        ]);
+                        ];
                     }
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
+                    ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
 
+                    //////////////////////
                     if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                        $validated = $request->validate([
+                        $rules = [
                             'nama_institusi_kewangan' => 'required',
                             'no_telefon_institusi_kewangan' => 'required',
-                        ]);
+                        ];
                     } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                        $validated = $request->validate([
+                        $rules = [
                             'nama_panel' => 'required',
                             'no_kp_panel' => 'required',
                             'no_permit_panel' => 'required',
                             'no_telefon_panel' => 'required',
-                        ]);
+                        ];
                     }
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
+                    ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
 
+                    ///////////////////////
                     if ($request->kehadiran_kursus_eps == 'Ya') {
-                        $validated = $request->validate([
+                        $rules = [
                             'tahun_dihadiri' => 'required',
+                        ];
+                        $validator = Validator::make($request->all(), $rules, $messages = [
+                            'required' => ' :attribute perlu diisi',
                         ]);
+                        if ($validator->fails()) {
+                            return Redirect::back()->withErrors($validator->errors());
+                        };
                     }
                 }
 
@@ -1027,10 +1101,9 @@ class PermohonanController extends Controller
                 $permohonan->tahun_pekerjaan_eps = $request->tahun_pekerjaan_eps;
                 $permohonan->pekerjaan_tetap = $request->pekerjaan_tetap;
                 $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
-                if ($request->status == 'HANTAR')
-                    $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
-                else
-                    $permohonan->lesen_memandu =  $request->lesen_memandu;
+
+                $permohonan->lesen_memandu = implode(",", $request->lesen_memandu);
+
                 $permohonan->berkerja_panel_atau_syarikat = $request->berkerja_panel_atau_syarikat;
                 $permohonan->nama_institusi_kewangan = $request->nama_institusi_kewangan;
                 $permohonan->no_telefon_institusi_kewangan = $request->no_telefon_institusi_kewangan;
@@ -1040,7 +1113,6 @@ class PermohonanController extends Controller
                 $permohonan->no_telefon_panel = $request->no_telefon_panel;
                 $permohonan->kehadiran_kursus_eps = $request->kehadiran_kursus_eps;
                 $permohonan->tahun_dihadiri = $request->tahun_dihadiri;
-
 
                 if ($request->hasFile('kp_depan')) {
                     $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
@@ -1064,16 +1136,30 @@ class PermohonanController extends Controller
             } else if ($request->jenis_permohonan == 'Pendua') {
 
                 if ($request->status == 'HANTAR') {
-                    $validated = $request->validate([
+
+                    $rules = [
                         'alasan_kehilangan' => 'required',
                         'penggantian_kali_ke' => 'required',
                         'negeri_laporan_polis' => 'required',
                         'no_laporan_polis' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
                     ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
+
                     if ($request->alasan_kehilangan == 'Lain-lain') {
-                        $validated = $request->validate([
+                        $rules = [
                             'alasan_lain' => 'required',
+                        ];
+                        $validator = Validator::make($request->all(), $rules, $messages = [
+                            'required' => ' :attribute perlu diisi',
                         ]);
+                        if ($validator->fails()) {
+                            return Redirect::back()->withErrors($validator->errors());
+                        };
                     }
                 }
 
@@ -1084,7 +1170,6 @@ class PermohonanController extends Controller
                 $permohonan->penggantian_kali_ke = $request->penggantian_kali_ke;
                 $permohonan->negeri_laporan_polis = $request->negeri_laporan_polis;
                 $permohonan->no_laporan_polis = $request->no_laporan_polis;
-
 
                 if ($request->hasFile('salinan_kp_depan')) {
                     $salinan_kp_depan = $request->file('salinan_kp_depan')->store('dokumen');
@@ -1103,15 +1188,29 @@ class PermohonanController extends Controller
             } else if ($request->jenis_permohonan == 'Rayuan') {
 
                 if ($request->status == 'HANTAR') {
-                    $validated = $request->validate([
+
+                    $rules = [
                         'sebab_permohonan_ditolak' => 'required',
                         'rayuan_kali_ke' => 'required',
                         'alasan_rayuan' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $rules, $messages = [
+                        'required' => ' :attribute perlu diisi',
                     ]);
+                    if ($validator->fails()) {
+                        return Redirect::back()->withErrors($validator->errors());
+                    };
+
                     if ($request->sebab_permohonan_ditolak == 'Sebab-sebab Lain') {
-                        $validated = $request->validate([
+                        $rules = [
                             'sebab_lain' => 'required',
+                        ];
+                        $validator = Validator::make($request->all(), $rules, $messages = [
+                            'required' => ' :attribute perlu diisi',
                         ]);
+                        if ($validator->fails()) {
+                            return Redirect::back()->withErrors($validator->errors());
+                        };
                     }
                 }
 
@@ -1122,36 +1221,37 @@ class PermohonanController extends Controller
                 $permohonan->rayuan_kali_ke = $request->rayuan_kali_ke;
                 $permohonan->alasan_rayuan = $request->alasan_rayuan;
 
+
                 if ($request->hasFile('kp_depan')) {
                     $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
                     $permohonan->salinan_kp_depan = $salinan_kp_depan;
                 }
-    
+
                 if ($request->hasFile('salinan_kp_belakang')) {
                     $salinan_kp_belakang = $request->file('salinan_kp_belakang')->store('dokumen');
                     $permohonan->salinan_kp_belakang = $salinan_kp_belakang;
                 }
-    
+
                 if ($request->hasFile('salinan_tapisan_rekod_jenayah')) {
                     $salinan_tapisan_rekod_jenayah = $request->file('salinan_tapisan_rekod_jenayah')->store('dokumen');
                     $permohonan->salinan_tapisan_rekod_jenayah = $salinan_tapisan_rekod_jenayah;
                 }
-    
+
                 if ($request->hasFile('salinan_sokongan_institusi_kewangan')) {
                     $salinan_sokongan_institusi_kewangan = $request->file('salinan_sokongan_institusi_kewangan')->store('dokumen');
                     $permohonan->salinan_sokongan_institusi_kewangan = $salinan_sokongan_institusi_kewangan;
                 }
-    
+
                 if ($request->hasFile('salinan_dokumen_sokongan1')) {
                     $salinan_dokumen_sokongan1 = $request->file('salinan_dokumen_sokongan1')->store('dokumen');
                     $permohonan->salinan_dokumen_sokongan1 = $salinan_dokumen_sokongan1;
                 }
-    
+
                 if ($request->hasFile('salinan_dokumen_sokongan2')) {
                     $salinan_dokumen_sokongan2 = $request->file('salinan_dokumen_sokongan2')->store('dokumen');
                     $permohonan->salinan_dokumen_sokongan2 = $salinan_dokumen_sokongan2;
                 }
-    
+
                 if ($request->hasFile('salinan_dokumen_sokongan3')) {
                     $salinan_dokumen_sokongan3 = $request->file('salinan_dokumen_sokongan3')->store('dokumen');
                     $permohonan->salinan_dokumen_sokongan3 = $salinan_dokumen_sokongan3;

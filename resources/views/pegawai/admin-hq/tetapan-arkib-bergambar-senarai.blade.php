@@ -73,26 +73,26 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $gambaq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete-{{ $gambaq->id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
 
-                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="modaldelete-{{ $gambaq->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-body text-center">
                                                         <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
                                                         <br>
-                                                        Anda pasti mahu padam?
+                                                        Anda pasti mahu hapus?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn bg-gradient-secondary"
                                                             data-bs-dismiss="modal">Tutup</button>
                                                         <a href="/tetapan-arkib-bergambar-senarai/{{ $gambaq->id }}/delete"
                                                             class="btn btn-success">
-                                                            Padam
+                                                            Hapus
                                                         </a>
                                                     </div>
                                                 </div>
@@ -112,7 +112,8 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-arkib-bergambar/{{ $gambaq->id }}">
+                                                                action="/tetapan-arkib-bergambar/{{ $gambaq->id }}"
+                                                                enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id" value="{{ $gambaq->id }}">

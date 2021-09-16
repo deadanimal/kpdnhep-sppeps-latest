@@ -42,7 +42,7 @@ class SemakanIcController extends Controller
 
         if ($age > 21) {
 
-            // return $this->check_myidentity($no_kp, $age, $birth_date);
+            //return $this->check_myidentity($no_kp, $age, $birth_date);
             return view('auth.register_', [
                 'no_kp' => $no_kp,
                 'age' => $age,
@@ -53,7 +53,7 @@ class SemakanIcController extends Controller
 
             if ($month_int < $current_month) {
 
-                // return $this->check_myidentity($no_kp, $age, $birth_date);
+                //return $this->check_myidentity($no_kp, $age, $birth_date);
                 return view('auth.register_', [
                     'no_kp' => $no_kp,
                     'age' => $age,
@@ -63,7 +63,7 @@ class SemakanIcController extends Controller
             } else if ($month_int == $current_month) {
                 if ($day_int <= $current_day) {
 
-                    // return $this->check_myidentity($no_kp, $age, $birth_date);
+                    //return $this->check_myidentity($no_kp, $age, $birth_date);
                     return view('auth.register_', [
                         'no_kp' => $no_kp,
                         'age' => $age,

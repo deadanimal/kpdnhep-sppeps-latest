@@ -74,7 +74,7 @@
                                             <a data-bs-toggle="modal" data-bs-target="#modal-form2-{{ $dokumeq->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                            <a data-bs-toggle="modal" data-bs-target="#modaldelete-{{ $dokumeq->id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                             </a>
@@ -87,14 +87,14 @@
                                                     <div class="modal-body text-center">
                                                         <i class="far fa-times-circle fa-7x" style="color: #ea0606"></i>
                                                         <br>
-                                                        Anda pasti mahu padam?
+                                                        Anda pasti mahu hapus?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn bg-gradient-secondary"
                                                             data-bs-dismiss="modal">Tutup</button>
                                                         <a href="/tetapan-arkib-dokumen-senarai/{{ $dokumeq->id }}/delete"
                                                             class="btn btn-success">
-                                                            Padam
+                                                            Hapus
                                                         </a>
                                                     </div>
                                                 </div>
@@ -114,7 +114,8 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <form role="form text-left" method="POST"
-                                                                action="/tetapan-arkib-dokumen-senarai/{{ $dokumeq->id }}">
+                                                                action="/tetapan-arkib-dokumen/{{ $dokumeq->id }}"
+                                                                enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="hidden" name="id"

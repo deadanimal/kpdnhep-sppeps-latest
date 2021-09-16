@@ -88,7 +88,7 @@
                                                                         class="border-radius-md" width="150" height="150" />
                                                                     {{-- <input type="hidden" name="gambar_pemohon" value="{{ $pemohon->gambar_profil}}"> --}}
                                                                     <input type="hidden" name="jenis_permohonan"
-                                                                        value="Baharu">
+                                                                        value="Pendua">
                                                                 </div>
                                                             </label>
                                                         </div>

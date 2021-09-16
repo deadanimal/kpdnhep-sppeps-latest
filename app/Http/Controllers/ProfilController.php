@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -139,7 +140,8 @@ class ProfilController extends Controller
         if ($pengguna->successful()) {
             $request->authenticate();
             $request->session()->regenerate();
-            return redirect('/appp');
+            //return redirect('/appp');
+			return redirect()->intended(RouteServiceProvider::HOME);
         } else {
             return redirect('/login')->withErrors('Salah username/kata laluan');
         }
