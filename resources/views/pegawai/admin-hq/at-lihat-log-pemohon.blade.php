@@ -37,6 +37,7 @@
                                 <p>Nama Pemohon : {{ $pemohon->name }}</p>
                                 <p>No. Kad Pengenalan : {{ $pemohon->no_kp }}</p>
                                 <p>Negeri : {{ $pemohon->negeri }}</p>
+                                <p>E-mel : {{ $pemohon->email }}</p>
                                 <!-- <p>Capaian : Pelulus</p> -->
                             @endforeach
 

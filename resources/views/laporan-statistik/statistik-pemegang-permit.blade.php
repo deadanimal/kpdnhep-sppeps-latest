@@ -191,13 +191,13 @@
                                                             {{ $pegangpermit->jenis_permohonan }}
                                                         </td>
                                                         <td class="text-sm font-weight-normal">
-                                                            {{ $pegangpermit->created_at }}
+                                                            {{ $pegangpermit->tempoh_kelulusan }}
                                                         </td>
                                                         <td class="text-sm font-weight-normal">
-                                                            {{ $pegangpermit->updated_at }}
+                                                            {{ $pegangpermit->tarikh_diluluskan }}
                                                         </td>
                                                         <td class="text-sm font-weight-normal">
-                                                            {{ $pegangpermit->updated_at }}
+                                                            {{ $pegangpermit->tarikh_tamat_permit }}
                                                         </td>
                                                     </tr>
                                                 @endforeach

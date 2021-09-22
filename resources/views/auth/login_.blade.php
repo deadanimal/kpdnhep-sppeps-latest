@@ -4,7 +4,7 @@
 
 
     <div id="container" class="container-fluid d-flex justify-content-center" style="height: 100vh;">
-        <div class="card card-frame" style="width: 40%;">
+        <div class="card card-frame col-md-6">
             <div class="card-body">
 
                 <!-- <div class="col-lg-3"> -->

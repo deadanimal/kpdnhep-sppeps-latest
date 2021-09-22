@@ -160,9 +160,9 @@
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                     Tempoh Sah Laku</th>
-                                                <th
+                                                {{-- <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Tarikh Bayaran</th>
+                                                    Tarikh Bayaran</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -180,12 +180,12 @@
                                                     <td class="text-sm font-weight-normal">
                                                         {{ $kutipanfi->jenis_permohonan }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kutipanfi->created_at }}
+                                                    <td class="text-sm font-weight-normal">{{ $kutipanfi->bayaran_fi }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kutipanfi->updated_at }}
+                                                    <td class="text-sm font-weight-normal">{{ $kutipanfi->tempoh_kelulusan }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kutipanfi->updated_at }}
-                                                    </td>
+                                                    {{-- <td class="text-sm font-weight-normal">{{ $kutipanfi->updated_at }}
+                                                    </td> --}}
                                                 </tr>
                                             @endforeach
                                         </tbody>

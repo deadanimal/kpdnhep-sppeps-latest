@@ -198,6 +198,9 @@ return [
     'pekerjaan_sampingan' => 'Pekerjaan Sampingan',
     'sila_nyatakan_pekerjaan___' => 'Sila nyatakan pekerjaan tetap anda',
 
+    'kementerian_perdagangan__'=>'Kementerian Perdagangan Dalam Negeri Hal Ehwal Pengguna',
+    'permohonan'=>'Permohonan',
+
 
 
 ];

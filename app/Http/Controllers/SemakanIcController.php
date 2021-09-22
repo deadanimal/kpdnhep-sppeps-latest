@@ -5,16 +5,44 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Support\Facades\Http;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class SemakanIcController extends Controller
 {
     public function semakanIc(Request $request)
     {
 
-        $request->validate([
+        // $request->validate([
+        //     'no_kp' => 'required',
+        //     'captcha' => 'required|captcha'
+        // ]);
+
+        $rules = [
             'no_kp' => 'required',
-           'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages = [
+            'no_kp.required' => 'No kad pengenalan perlu diisi',
+            'captcha.required' => 'captcha perlu diisi',
+            'captcha' => 'captcha tidak betul',
+            'max' => 'No kad pengenalan tidak boleh melebihi 12 nombor',
+            'min' => 'No kad pengenalan minimum 12 nombor',
         ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator->errors());
+        };
+
+        $no_kp = $request->no_kp;
+        $user = User::where('no_kp', $no_kp)->get()->first();
+        // dd($user);
+        if($user != null){
+            return Redirect::back()->withErrors('No kad pengenalan telah wujud');
+        }
 
         $year = substr($request->no_kp, 0, 2);
         $month = substr($request->no_kp, 2, 2);
@@ -43,10 +71,10 @@ class SemakanIcController extends Controller
         if ($age > 21) {
 
             return $this->check_myidentity($no_kp, $age, $birth_date);
-            
+
             //dd($pengguna);
             // return view('auth.register_', [
-                
+
             //     'no_kp' => $no_kp,
             //     'age' => $age,
             //     'tarikh_lahir' => $birth_date,
@@ -58,7 +86,7 @@ class SemakanIcController extends Controller
 
                 return $this->check_myidentity($no_kp, $age, $birth_date);
                 // return view('auth.register_', [
-                    
+
                 //     'no_kp' => $no_kp,
                 //     'age' => $age,
                 //     'tarikh_lahir' => $birth_date,
@@ -68,9 +96,9 @@ class SemakanIcController extends Controller
                 if ($day_int <= $current_day) {
 
                     return $this->check_myidentity($no_kp, $age, $birth_date);
-                    
+
                     // return view('auth.register_', [
-                        
+
                     //     'no_kp' => $no_kp,
                     //     'age' => $age,
                     //     'tarikh_lahir' => $birth_date,
@@ -102,9 +130,9 @@ class SemakanIcController extends Controller
                 "app_secret" => "[SPPEPSdev@bpm123]",
             ]
         ])->json()['response']['result']['token'];
-		
-		//$token = $token_janaan['response']['result']['token'];
-		//dd($token_janaan);
+
+        //$token = $token_janaan['response']['result']['token'];
+        //dd($token_janaan);
 
         $pengguna = Http::withToken($token_janaan)->post($url, [
             "name" => "getMyIdentity",
@@ -114,24 +142,25 @@ class SemakanIcController extends Controller
         ])->json()['response'];
 
         //$respond = [ $response = 200,];
-		$respond = $pengguna['status'];
-		$pemohon = $pengguna['result'];
-        
+        $respond = $pengguna['status'];
+        $pemohon = $pengguna['result'];
+
+        $ReplyIndicator = $pengguna['result']['ReplyIndicator'];
+
         //dd($pemohon);
 
-        if ($respond == 200) {
+        if ($respond == 200 && $ReplyIndicator != 0) {
             return view('auth.register_', [
-                'pengguna'=> $pemohon,
+                'pengguna' => $pemohon,
                 'no_kp' => $no_kp,
                 'age' => $age,
                 'tarikh_lahir' => $birth_date,
             ]);
-
         } else {
-            return back()->with('error', 'No. kad pengenalan tidak wujud');
+            return Redirect::back()->withErrors('No. kad pengenalan tidak wujud');
             // return redirect('/semak-ic')->withErrors('No. kad pengenalan tidak wujud');
         }
-        
+        return back()->with('error', 'No. kad pengenalan tidak wujud');
     }
     public function reloadCaptcha()
     {

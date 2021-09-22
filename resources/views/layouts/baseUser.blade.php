@@ -61,6 +61,8 @@ ight notice and this permission notice shall be included in all copies or substa
     <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.min.css?v=1.0.3" rel="stylesheet" />
     <!-- Anti-flicker snippet (recommended)  -->
 
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         .async-hide {
@@ -75,47 +77,118 @@ ight notice and this permission notice shall be included in all copies or substa
             /* text-align: center; */
         }
 
+        /* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        .header {
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin-left: 5rem;
+        }
+
+        .nav-link {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+
+        .nav-link:hover {
+            color: #482ff7;
+        }
+
+        .nav-logo {
+            font-size: 2.1rem;
+            font-weight: 500;
+            color: #482ff7;
+        }
+
+        @media only screen and (max-width: 768px) {
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 11rem;
+                flex-direction: column;
+                background-color: #fff;
+                width: 100%;
+                
+                text-align: center;
+                transition: 0.3s;
+                box-shadow:
+                    0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-menu.active {
+                left: 0;
+                
+                z-index: 3;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                color: white;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+                color: white;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+                color: white;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+                color: white;
+            }
+
+
+        } */
+
     </style>
-    <script>
-        (function(a, s, y, n, c, h, i, d, e) {
-            s.className += ' ' + y;
-            h.start = 1 * new Date;
-            h.end = i = function() {
-                s.className = s.className.replace(RegExp(' ?' + y), '')
-            };
-            (a[n] = a[n] || []).hide = h;
-            setTimeout(function() {
-                i();
-                h.end = null
-            }, c);
-            h.timeout = c;
-        })(window, document.documentElement, 'async-hide', 'dataLayer', 4000, {
-            'GTM-K9BGS8K': true
-        });
-    </script>
-    <!-- Analytics-Optimize Snippet -->
-    <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-46172202-22', 'auto', {
-            allowLinker: true
-        });
-        ga('set', 'anonymizeIp', true);
-        ga('require', 'GTM-K9BGS8K');
-        ga('require', 'displayfeatures');
-        ga('require', 'linker');
-        ga('linker:autoLink', ["2checkout.com", "avangate.com"]);
-    </script>
-    <!-- end Analytics-Optimize Snippet -->
+
 
 </head>
 
@@ -127,14 +200,201 @@ ight notice and this permission notice shall be included in all copies or substa
     <!-- End Google Tag Manager (noscript) -->
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        
+
+        {{-- <header class="header" id="navbar">
+            <nav class="navbar">
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <a href="/" class="nav-logo text-white text-start pl-3">
+                    <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
+                    <br>
+                    <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
+                </a>
+
+
+                <ul class="nav-menu">
+                    
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+
+                            Flags
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Deutsch
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    English(UK)
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    @can('isPemohon')
+                        <li class="nav-item mx-2">
+                            <a role="button" href="/dashboard"
+                                class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color dark"
+                                aria-expanded="false">
+                                {{ __('landing.permohonan') }}
+
+                            </a>
+                        </li>
+                    @endcan
+                    <li class="nav-item dropdown dropdown-hover mx-2">
+                        <a role="button"
+                            class="nav-link font_color ps-2 d-flex justify-content-between cursor-pointer align-items-center dark"
+                            id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('landing.arkib') }}&ensp;
+                            <i class="fas fa-angle-down"></i>
+                        </a>
+                        <div class="dropdown-menu  mt-0 mt-lg-3 border-radius-lg">
+                            <div class="d-none d-sm-block">
+                                <ul class="list-group">
+                                    <li class="nav-item list-group-item border-0 p-0">
+                                        <a class="dropdown-item py-2 border-radius-md" href="/arkib-bergambar">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <h6
+                                                        class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                        <i class="fas fa-rocket mr-2 text-secondary"></i> &nbsp;
+                                                        {{ __('landing.arkib_bergambar') }}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item list-group-item border-0 p-0">
+                                        <a class="dropdown-item py-2 border-radius-md" href="/arkib-dokumen">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <h6
+                                                        class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                        <i class="fas fa-book text-secondary"></i> &nbsp;
+                                                        {{ __('landing.arkib_dokumen') }}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a role="button" href="/semakan-status-eps"
+                            class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color dark"
+                            aria-expanded="false">
+                            {{ __('landing.semakan_status_eps') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a role="button" href="/faq"
+                            class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color dark"
+                            aria-expanded="false">
+                            {{ __('landing.faq') }}
+                        </a>
+                    </li>
+
+                    <li>
+                        @can('isPemohon')
+
+                            <ul class="navbar-nav  justify-content-end">
+                                <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                                    <a href="javascript:;" class="nav-link text-body p-0 dark" id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="d-sm-inline d-none text-white">{{ __('landing.selamat_datang') }}
+                                            {{ Auth::user()->name }}</span>
+                                        <i class="fa fa-user me-sm-1 text-white p-2"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <li class="mb-2">
+                                            <a class="dropdown-item border-radius-md dark" href="/profil">
+                                                <div class="d-flex py-1">
+                                                    <span
+                                                        class="d-sm-inline d-none text-dark">{{ __('landing.profil') }}</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <a class="dropdown-item border-radius-md dark" href="/tukar_kata_laluan">
+                                                <div class="d-flex py-1">
+                                                    <span
+                                                        class="d-sm-inline d-none text-dark">{{ __('landing.tukar_kata_laluan') }}</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <form method="POST" action="/logout">
+                                                @csrf
+                                                <a class="dropdown-item border-radius-md dark" href="#"
+                                                    onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                this.closest('form').submit();">
+                                                    <div class="d-flex py-1">
+
+                                                        {{ __('Log Out') }}
+
+                                                    </div>
+                                                </a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        @else
+                            <ul class="navbar-nav  justify-content-end">
+                                <li class="nav-item d-flex align-items-center ">
+                                    <a href="/login_" class="nav-link text-body font-weight-bold px-0 dark">
+                                        <i class="fa fa-user me-sm-1 font_color"></i>
+                                        <span class="d-sm-inline d-none font_color">
+
+                                            {{ __('landing.log_masuk') }}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item d-flex align-items-center ps-3 d-flex">
+                                    <a href="/semak-ic" class="nav-link text-body font-weight-bold px-0 dark">
+                                        <i class="fa fa-user me-sm-1 font_color"></i>
+                                        <span class="d-sm-inline d-none font_color">
+
+                                            {{ __('landing.daftar_akaun') }}
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        @endcan
+                    </li>
+                </ul>
+
+
+
+            </nav>
+        </header> --}}
+
         <!-- Navbar -->
+        
         <nav class="navbar navbar-expand-lg py-3" data-scroll="true" id="navbar">
 
-            <a href="/" class="text-white  pl-3">
+            <a href="/" class="text-white text-start pl-3">
                 <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
                 <br>
                 <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
             </a>
+
+            {{-- <a href="/lol" class="text-white text-start pl-3">
+                test
+            </a> --}}
+
 
             <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
 
@@ -143,8 +403,8 @@ ight notice and this permission notice shall be included in all copies or substa
                         <a role="button" href="/dashboard"
                             class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
                             aria-expanded="false">
-                            {{-- {{ __('landing.semakan_status_eps') }} --}}
-                            Permohonan
+                            {{ __('landing.permohonan') }}
+
                         </a>
                     </li>
                 @endcan
@@ -167,7 +427,6 @@ ight notice and this permission notice shall be included in all copies or substa
                                                     <i class="fas fa-rocket mr-2 text-secondary"></i> &nbsp;
                                                     {{ __('landing.arkib_bergambar') }}
                                                 </h6>
-                                                <!-- <span class="text-sm">All about overview, quick start, license and contents</span> -->
                                             </div>
                                         </div>
                                     </a>
@@ -207,7 +466,7 @@ ight notice and this permission notice shall be included in all copies or substa
 
             </ul>
 
-            @can ('isPemohon')
+            @can('isPemohon')
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
@@ -216,8 +475,7 @@ ight notice and this permission notice shall be included in all copies or substa
                                 {{ Auth::user()->name }}</span>
                             <i class="fa fa-user me-sm-1 text-white p-2"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
-                            aria-labelledby="dropdownMenuButton">
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="/profil">
                                     <div class="d-flex py-1">
@@ -238,16 +496,11 @@ ight notice and this permission notice shall be included in all copies or substa
                                     @csrf
                                     <a class="dropdown-item border-radius-md" href="#"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                this.closest('form').submit();">
+                                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">
                                         <div class="d-flex py-1">
 
-
-                                            <!-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                this.closest('form').submit();"> -->
                                             {{ __('Log Out') }}
-                                            <!-- </x-dropdown-link> -->
 
-                                            <!-- <span class="d-sm-inline d-none text-dark">Log Keluar</span> -->
                                         </div>
                                     </a>
                                 </form>
@@ -288,16 +541,15 @@ ight notice and this permission notice shall be included in all copies or substa
         <footer class="footer pt-3" id="footer">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="col-md-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
 
                             <p class="font_color">
-                                Kementerian Perdagangan Dalam Negeri Hal Ehwal Pengguna
+                                {{ __('landing.kementerian_perdagangan__') }}
                             </p>
-
                         </div>
                     </div>
-                    <div class="col-lg-6 d-flex justify-content-end">
+                    <div class="col-md-6 mb-lg-0 d-flex justify-content-end">
                         <p class="font_color">@all rights reserved</p>
                     </div>
                 </div>
@@ -350,8 +602,8 @@ ight notice and this permission notice shall be included in all copies or substa
                     <a href="/font_size_1_3" class="btn btn-sm">1.3</a>
                 </div>
 
-
                 <hr class="horizontal dark mb-1">
+
                 <div>
                     <h6 class="mb-0">{{ __('landing.warna_tema') }}</h6>
                 </div>
@@ -364,6 +616,7 @@ ight notice and this permission notice shall be included in all copies or substa
                 </div>
 
                 <hr class="horizontal dark mb-1">
+
                 <div>
                     <h6 class="mb-0">{{ __('landing.warna_tulisan') }}</h6>
                 </div>
@@ -608,6 +861,30 @@ ight notice and this permission notice shall be included in all copies or substa
         });
     </script>
 
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", mobileMenu);
+
+        function mobileMenu() {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+            $('.dark').css('color', 'black');
+        }
+    </script>
+
+    <script>
+        const navLink = document.querySelectorAll(".nav-link");
+
+        navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+        function closeMenu() {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            $('.dark').css('color', 'white');
+        }
+    </script>
 
 </body>
 

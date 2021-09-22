@@ -615,7 +615,7 @@
                                                                 <div class="col">
                                                                     <!-- actual upload which is hidden -->
                                                                     <input type="file" id="actual-btn" hidden
-                                                                        name="kp_depan" />
+                                                                        name="salinan_kp_depan" />
                                                                     <!-- our custom upload button -->
                                                                     <label for="actual-btn"
                                                                         class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>

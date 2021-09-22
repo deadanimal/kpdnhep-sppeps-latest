@@ -203,7 +203,7 @@
                                             </div>
 
                                             <div class="p-3 d-flex justify-content-center">
-                                                <a href="/tambah-peranan-pegawai" class="btn btn-danger text-capitalize m-1"
+                                                <a href="/senarai_pegawai" class="btn btn-danger text-capitalize m-1"
                                                     value="HANTAR">Batal</a>
 
                                                 <button type="submit" class="btn btn-success text-capitalize m-1"
@@ -298,7 +298,7 @@
                                             </div>
 
                                             <div class="p-3 d-flex justify-content-center">
-                                                <a href="/tambah-peranan-pegawai" class="btn btn-danger text-capitalize m-1"
+                                                <a href="/senarai_pegawai" class="btn btn-danger text-capitalize m-1"
                                                     value="HANTAR">Batal</a>
 
                                                 <button type="submit" class="btn btn-success text-capitalize m-1"

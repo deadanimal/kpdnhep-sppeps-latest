@@ -93,9 +93,11 @@ class CetakanPermitController extends Controller
 
         $pdf = PDF::loadView('pdf.cetak_permit', [
             'masa' => time(),
-            'permohonan' => $permohonan
-        ]);
-        $nama_lesen = time() . '-permohonan_baharu';
+            'permohonan' => $permohonan,
+            'user' => $user,
+            // 'lesen'=>$lesen_memandus
+        ])->setPaper('a5', 'landscape');
+        $nama_lesen = time() . '-Cetakan_permit';
         return $pdf->download($nama_lesen . '.pdf');
 
     }

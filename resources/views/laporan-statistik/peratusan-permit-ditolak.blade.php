@@ -166,9 +166,9 @@
                                                     </td>
                                                     <td class="text-sm font-weight-normal">{{ $penolakan->no_kp }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $penolakan->updated_at }}
-                                                    </td>
                                                     <td class="text-sm font-weight-normal">{{ $penolakan->negeri }}
+                                                    </td>
+                                                    <td class="text-sm font-weight-normal">{{ $penolakan->updated_at }}
                                                     </td>
                                                 </tr>
 

@@ -1,7 +1,7 @@
 @extends('layouts.baseUser')
 
 @section('content')
-    <div class="container-fluid p-0"
+    <div class="container-fluid pb-6"
         style="background-image: url('/assets/img/background/kpdnhep-building.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
         <div class="row p-3">
 

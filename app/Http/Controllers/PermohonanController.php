@@ -126,6 +126,8 @@ class PermohonanController extends Controller
                     'berkerja_panel_atau_syarikat' => 'required',
                     'skop_tugas' => 'required',
                     'prosedur_peraturan_eps' => 'required',
+                    'prosedur_peraturan_eps' => 'required',
+                    'salinan_kp_depan' => 'required',
                 ];
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
@@ -181,8 +183,8 @@ class PermohonanController extends Controller
             $permohonan->prosedur_peraturan_eps = $request->prosedur_peraturan_eps;
 
 
-            if ($request->hasFile('kp_depan')) {
-                $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
+            if ($request->hasFile('salinan_kp_depan')) {
+                $salinan_kp_depan = $request->file('salinan_kp_depan')->store('dokumen');
                 $permohonan->salinan_kp_depan = $salinan_kp_depan;
             }
 
@@ -433,7 +435,16 @@ class PermohonanController extends Controller
 
 
         if ($request->status == 'HANTAR') {
-            $penerimas_emails = User::where('role', 'pegawai_negeri')->get();
+            // $penerimas_emails = User::where([
+            //     ['roles', 'pemproses_negeri'],
+            //     // ['negeri', $permohonan->negeri_kutipan_permit]
+            // ])->get();
+
+            $penerimas_emails = User::whereHas("roles", function ($q) {
+                $q->where("name", "pemproses_negeri");
+            })->get();
+
+            // dd($penerimas_emails);
             foreach ($penerimas_emails as $recipient) {
                 Mail::to($recipient->email)->send(new NewPermohonan($permohonan));
             }
@@ -876,7 +887,11 @@ class PermohonanController extends Controller
                 $permohonan->catatan_pdrm = $request->catatan_pdrm;
                 $permohonan->save();
 
-                $penerimas_emails = User::where('role', 'pegawai_hq')->get();
+                $penerimas_emails = User::whereHas("roles", function ($q) {
+                    $q->where("name", "pemproses_hq");
+                })->get();
+
+                // $penerimas_emails = User::where('role', 'pegawai_hq')->get();
                 foreach ($penerimas_emails as $recipient) {
                     Mail::to($recipient->email)->send(new SemakanPDRM($permohonan));
                 }
@@ -1261,7 +1276,11 @@ class PermohonanController extends Controller
             $permohonan->save();
 
             if ($request->status == 'HANTAR') {
-                $penerimas_emails = User::where('role', 'pegawai_negeri')->get();
+                // $penerimas_emails = User::where('role', 'pegawai_negeri')->get();
+                $penerimas_emails = User::whereHas("roles", function ($q) {
+                    $q->where("name", "pemproses_negeri");
+                })->get();
+
                 foreach ($penerimas_emails as $recipient) {
                     Mail::to($recipient->email)->send(new NewPermohonan($permohonan));
                 }
@@ -1437,32 +1456,46 @@ class PermohonanController extends Controller
     {
         // dd($request);
         $permohonans = Permohonan::find($request->id);
+        $user = User::find($permohonans->user_id);
 
-        $data = '';
+        $lesen_memandus = explode(",", $permohonans->lesen_memandu);
 
-        // dd($permohonans);
+
 
         if ($permohonans->jenis_permohonan == "Baharu") {
+
             $pdf = PDF::loadView('pdf.permohonan_baharu', [
-                'permohonan' => $permohonans
+                'masa' => time(),
+                'permohonan' => $permohonans,
+                'user' => $user,
+                'lesen' => $lesen_memandus
             ]);
             $nama_lesen = time() . '-permohonan_baharu';
             return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Pembaharuan") {
-            $pdf = PDF::loadView('pdf.permohonan_pembaharuan', [
-                'permohonan' => $permohonans
+            $pdf = PDF::loadView('pdf.permohonan_baharu', [
+                'masa' => time(),
+                'permohonan' => $permohonans,
+                'user' => $user,
+                'lesen' => $lesen_memandus
             ]);
             $nama_lesen = time() . '-permohonan_pembaharuan';
             return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Pendua") {
-            $pdf = PDF::loadView('pdf.permohonan_pendua', [
-                'permohonan' => $permohonans
+            $pdf = PDF::loadView('pdf.permohonan_baharu', [
+                'masa' => time(),
+                'permohonan' => $permohonans,
+                'user' => $user,
+                'lesen' => $lesen_memandus
             ]);
             $nama_lesen = time() . '-permohonan_pendua';
             return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Rayuan") {
-            $pdf = PDF::loadView('pdf.permohonan_rayuan', [
-                'permohonan' => $permohonans
+            $pdf = PDF::loadView('pdf.permohonan_baharu', [
+                'masa' => time(),
+                'permohonan' => $permohonans,
+                'user' => $user,
+                'lesen' => $lesen_memandus
             ]);
             $nama_lesen = time() . '-permohonan_rayuan';
             return $pdf->download($nama_lesen . '.pdf');

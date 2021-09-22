@@ -7,7 +7,7 @@
         <div class="p-3">
 
             <div>
-                <h4>Laporan Permohonan Disenarai Hitam</h4>
+                <h4>Laporan Pemohon Disenarai Hitam</h4>
             </div>
 
             <div class="container-fluid mt-4">
@@ -55,7 +55,7 @@
 
                         <div class="row mb-0">
                             <div class="col">
-                                <h5> Permohonan Disenarai Hitam mengikut Jantina</h5>
+                                <h5> Pemohon Disenarai Hitam mengikut Jantina</h5>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
 
                         <div class="row mb-0">
                             <div class="col">
-                                <h5> Permohonan Disenarai Hitam mengikut Negeri</h5>
+                                <h5> Pemohon Disenarai Hitam mengikut Negeri</h5>
                             </div>
                         </div>
                     </div>
@@ -275,7 +275,7 @@
             chart.exporting.menu = new am4core.ExportMenu();
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
-            chart.exporting.filePrefix = "Permohonan Disenarai Hitam mengikut Jantina";
+            chart.exporting.filePrefix = "Pemohon Disenarai Hitam mengikut Jantina";
         });
 
         am4core.ready(function() {
@@ -308,7 +308,7 @@
             chart.exporting.menu = new am4core.ExportMenu();
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
-            chart.exporting.filePrefix = "Permohonan Disenarai Hitam mengikut Jantina";
+            chart.exporting.filePrefix = "Pemohon Disenarai Hitam mengikut Jantina";
 
         }); // end am4core.ready()
     </script>

@@ -156,9 +156,6 @@
                                                 <th
                                                     class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                                                     Tarikh Hantar Permohonan</th>
-                                                <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                                    Status Pekerjaan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -173,11 +170,15 @@
                                                     </td>
                                                     <td class="text-sm font-weight-normal">
                                                         {{ $sejarah->status_permohonan }}
+                                                        @if ($sejarah->status_permohonan == 'Diluluskan')
+                                                            Diluluskan
+                                                        @elseif ($sejarah->status_permohonan == 'Tidak Diluluskan')
+                                                            Tidak Diluluskan
+                                                        @else
+                                                            Dalam Proses
+                                                        @endif
                                                     </td>
                                                     <td class="text-sm font-weight-normal">{{ $sejarah->updated_at }}
-                                                    </td>
-                                                    <td class="text-sm font-weight-normal">
-                                                        {{ $sejarah->status_pekerjaan_eps }}
                                                     </td>
                                                 </tr>
                                             @endforeach

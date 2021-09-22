@@ -195,5 +195,7 @@ return [
     'pekerjaan_sampingan' => 'Side Jobs',
     'sila_nyatakan_pekerjaan___' => 'Please specify your permanent job',
 
+    'kementerian_perdagangan__'=>'Ministry of Domestic Trade Consumer Affairs',
+    'permohonan'=>'Application',
 ];
 // {{ __('landing.Pengumuman') }}

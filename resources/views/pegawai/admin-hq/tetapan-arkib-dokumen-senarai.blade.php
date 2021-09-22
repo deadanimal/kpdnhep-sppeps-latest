@@ -80,7 +80,7 @@
                                             </a>
                                         </td>
 
-                                        <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="modaldelete-{{ $dokumeq->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
