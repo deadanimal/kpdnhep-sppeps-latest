@@ -24,15 +24,14 @@ class LolController extends Controller
         //    dd($user);
         // dd("print");
 
-        $userrole = Auth::user()->roles;
+        // $userrole = Auth::user()->roles;
 
-        // dd($userrole);
-        foreach($userrole as $user){
-            if($user->name == "pemproses_negeri"){
-                dd("success");
-            }
-        }
-        
+
+        // foreach($userrole as $user){
+        //     if($user->name == "pemproses_negeri"){
+        //         dd("success");
+        //     }
+        // }
 
 
         $pdf = PDF::loadView('pdf.permohonan_rayuan', [

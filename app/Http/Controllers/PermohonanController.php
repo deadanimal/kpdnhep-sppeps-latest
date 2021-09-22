@@ -128,7 +128,10 @@ class PermohonanController extends Controller
                     'prosedur_peraturan_eps' => 'required',
                     'prosedur_peraturan_eps' => 'required',
                     'salinan_kp_depan' => 'required',
+                    'salinan_kp_belakang' => 'required',
+                    'salinan_lesen_memandu' => 'required',
                 ];
+
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
@@ -207,7 +210,12 @@ class PermohonanController extends Controller
                     'lesen_memandu' => 'required',
                     'berkerja_panel_atau_syarikat' => 'required',
                     'kehadiran_kursus_eps' => 'required',
+                    'kp_depan' => 'required',
+                    'salinan_kp_belakang' => 'required',
+                    'salinan_lesen_memandu' => 'required',
+                    'salinan_surat_sokongan' => 'required',
                 ];
+
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
                 ]);
@@ -314,7 +322,11 @@ class PermohonanController extends Controller
                     'penggantian_kali_ke' => 'required',
                     'negeri_laporan_polis' => 'required',
                     'no_laporan_polis' => 'required',
+                    'salinan_kp_depan' => 'required',
+                    'salinan_kp_belakang' => 'required',
+                    'salinan_laporan_polis' => 'required',
                 ];
+
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
                 ]);
@@ -365,7 +377,13 @@ class PermohonanController extends Controller
                     'sebab_permohonan_ditolak' => 'required',
                     'rayuan_kali_ke' => 'required',
                     'alasan_rayuan' => 'required',
+                    'kp_depan' => 'required',
+                    'salinan_kp_belakang' => 'required',
+                    'salinan_tapisan_rekod_jenayah' => 'required',
+                    'salinan_sokongan_institusi_kewangan' => 'required',
                 ];
+
+
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
                 ]);
@@ -705,8 +723,70 @@ class PermohonanController extends Controller
 
             return redirect('/tugasan-selesai');
         } else if ($user_role == 'pegawai_hq') {
+            if ($request->jenis_tindakan == "semakan_permohonan") {
+                if ($permohonan->jenis_permohonan == "Baharu" || $permohonan->jenis_permohonan == "Pembaharuan" || $permohonan->jenis_permohonan == "Rayuan") {
+                    if ($request->tindakan == "Permohonan Lengkap") {
+                        $permohonan->status_permohonan = "hantar_ke_pemproses_hq";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
-            if ($request->jenis_tindakan == "hantar_ke_pdrm") {
+                        $audit = new Audit;
+                        $audit->id_pegawai = $user->id;
+                        $audit->nama_pegawai = $user->name;
+                        $audit->model_name = 'Permohonan';
+                        $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
+                        $audit->description = 'Hantar permohonan lengkap ke pemproses HQ';
+                        $audit->save();
+                    } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+                        $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $penerimas_emails = $permohonan->emel;
+                        Mail::to($penerimas_emails)->send(new PermohonanTidakLengkap($permohonan));
+
+                        $audit = new Audit;
+                        $audit->id_pegawai = $user->id;
+                        $audit->nama_pegawai = $user->name;
+                        $audit->model_name = 'Permohonan';
+                        $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
+                        $audit->description = 'Kemaskini permohonan tidak lengkap';
+                        $audit->save();
+                    }
+                } else if ($permohonan->jenis_permohonan == "Pendua") {
+                    if ($request->tindakan == "Permohonan Lengkap") {
+                        $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $audit = new Audit;
+                        $audit->id_pegawai = $user->id;
+                        $audit->nama_pegawai = $user->name;
+                        $audit->model_name = 'Permohonan';
+                        $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
+                        $audit->description = 'Hantar permohonan lengkap ke pemproses negeri';
+                        $audit->save();
+                    } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+                        $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
+                        $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $penerimas_emails = $permohonan->emel;
+                        Mail::to($penerimas_emails)->send(new PermohonanTidakLengkap($permohonan));
+
+                        $audit = new Audit;
+                        $audit->id_pegawai = $user->id;
+                        $audit->nama_pegawai = $user->name;
+                        $audit->model_name = 'Permohonan';
+                        $audit->model_id = $permohonan->id;
+                        $audit->id_pemohon = $permohonan->user_id;
+                        $audit->description = 'Kemaskini permohonan tidak lengkap';
+                        $audit->save();
+                    }
+                }
+                $permohonan->save();
+
+                return redirect('/pemproses_negeri_tugasan_selesai');
+            } else if ($request->jenis_tindakan == "hantar_ke_pdrm") {
                 $permohonan->status_permohonan = "hantar ke pdrm";
                 $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
 
