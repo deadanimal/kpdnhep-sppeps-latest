@@ -14,7 +14,7 @@ use App\Mail\SemakanPDRM;
 use App\Mail\PermohonanPemohon;
 use League\CommonMark\Node\Inline\Newline;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Auth;
 use PDF;
 use Dompdf\Dompdf;
 
@@ -471,6 +471,14 @@ class PermohonanController extends Controller
             ]);
         }
         if ($user_role == 'pegawai_hq') {
+
+            $userrole = Auth::user()->roles;
+            foreach ($userrole as $user) {
+                return view('pegawai.negeri.negeri-maklumat-pemohon', [
+                    'permohonan' => $permohonan
+                ]);
+            }
+
             return view('pegawai.hq.hq-maklumat-pemohon', [
                 'permohonan' => $permohonan
             ]);

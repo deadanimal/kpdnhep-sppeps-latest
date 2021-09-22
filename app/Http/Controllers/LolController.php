@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Permohonan;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
+
 use PDF;
 
 class LolController extends Controller
@@ -21,6 +23,17 @@ class LolController extends Controller
 
         //    dd($user);
         // dd("print");
+
+        $userrole = Auth::user()->roles;
+
+        // dd($userrole);
+        foreach($userrole as $user){
+            if($user->name == "pemproses_negeri"){
+                dd("success");
+            }
+        }
+        
+
 
         $pdf = PDF::loadView('pdf.permohonan_rayuan', [
             'masa' => time(),
