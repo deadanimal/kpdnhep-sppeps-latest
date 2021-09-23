@@ -25,8 +25,6 @@ class LolController extends Controller
         // dd("print");
 
         // $userrole = Auth::user()->roles;
-
-
         // foreach($userrole as $user){
         //     if($user->name == "pemproses_negeri"){
         //         dd("success");

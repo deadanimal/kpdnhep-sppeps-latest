@@ -99,6 +99,7 @@ Route::get('/remove_negative', [LocalizationController::class, 'remove_negative'
 Route::resource('/tugasan-selesai', TugasanSelesaiController::class);
 
 Route::resource('/permohonan', PermohonanController::class);
+Route::get('/show_permohonan/{id}', [PermohonanController::class, 'show_pegawai_hq']);
 Route::post('/cari', [PermohonanController::class, 'cari']);
 Route::post('/maklumat_permohonan', [PermohonanController::class, 'maklumatPermohonan']);
 Route::post('/cetak_borang', [PermohonanController::class, 'cetak']);

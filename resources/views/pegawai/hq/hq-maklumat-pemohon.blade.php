@@ -963,7 +963,7 @@
                         </div>
                     </div>
 
-                @elseif ($permohonan->status_permohonan === 'hantar_ke_penyokong_hq')
+                @elseif ($permohonan->status_permohonan === 'hantar_ke_penyokong_hq' || $permohonan->status_permohonan === 'hantar_ke_penyokong_negeri')
 
                     <div class="card card-frame">
 
@@ -1057,7 +1057,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <p>Permohonan akan dihantar ke penyokong</p>
+                                                        <p>Permohonan akan dihantar ke pelulus</p>
                                                         <p>Adakah anda pasti mahu menghantar?</p>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center">

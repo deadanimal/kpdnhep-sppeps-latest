@@ -479,7 +479,6 @@ class PermohonanController extends Controller
 
     public function show(Permohonan $permohonan, Request $request)
     {
-
         $user = $request->user();
         $user_role = $user->role;
 
@@ -490,16 +489,19 @@ class PermohonanController extends Controller
         }
         if ($user_role == 'pegawai_hq') {
 
+           
             $userrole = Auth::user()->roles;
             foreach ($userrole as $user) {
-                return view('pegawai.negeri.negeri-maklumat-pemohon', [
-                    'permohonan' => $permohonan
-                ]);
+                if ($user->name == "pemproses_negeri") {
+                    return view('pegawai.negeri.negeri-maklumat-pemohon', [
+                        'permohonan' => $permohonan
+                    ]);
+                }
             }
 
-            return view('pegawai.hq.hq-maklumat-pemohon', [
-                'permohonan' => $permohonan
-            ]);
+            // return view('pegawai.hq.hq-maklumat-pemohon', [
+            //     'permohonan' => $permohonan
+            // ]);
         }
         if ($user_role == 'pegawai_pdrm') {
             return view('pegawai.pdrm.pdrm-maklumat-pemohon', [
@@ -541,6 +543,15 @@ class PermohonanController extends Controller
                 ]);
             }
         }
+    }
+
+    public function show_pegawai_hq($id){
+
+        // dd($id);
+        $permohonan = Permohonan::find($id);
+        return view('pegawai.hq.hq-maklumat-pemohon', [
+            'permohonan' => $permohonan
+        ]);
     }
 
     public function edit(Permohonan $permohonan)
@@ -723,6 +734,7 @@ class PermohonanController extends Controller
 
             return redirect('/tugasan-selesai');
         } else if ($user_role == 'pegawai_hq') {
+            
             if ($request->jenis_tindakan == "semakan_permohonan") {
                 if ($permohonan->jenis_permohonan == "Baharu" || $permohonan->jenis_permohonan == "Pembaharuan" || $permohonan->jenis_permohonan == "Rayuan") {
                     if ($request->tindakan == "Permohonan Lengkap") {

@@ -148,7 +148,7 @@
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="permohonan/{{ $permohonan->id }}">
+                                            <a href="show_permohonan/{{ $permohonan->id }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </td>

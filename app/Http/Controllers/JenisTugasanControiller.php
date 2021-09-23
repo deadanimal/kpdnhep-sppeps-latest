@@ -234,6 +234,10 @@ class JenisTugasanControiller extends Controller
 
         $permohonan = Permohonan::where([
             ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
+        ])->orWhere([
+            ['status_permohonan', '=', 'hantar_ke_penyokong_negeri'], ['negeri_kutipan_permit', '=', 'WP Putrajaya']
+        ])->orWhere([
+            ['jenis_permohonan', '=', 'Pendua'], ['negeri_kutipan_permit', '=', 'WP Putrajaya']
         ])->get();
 
         return view('pegawai.penyokong.penyokong-hq-tugasan-baru', [

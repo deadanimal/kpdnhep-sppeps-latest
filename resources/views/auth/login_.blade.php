@@ -13,7 +13,7 @@
                         <li class="nav-item">
                             <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#preview-tabs-simple"
                                 role="tab" aria-selected="true">
-                                Pemohon
+                                Pemohon & PDRM
                             </a>
                         </li>
                         <li class="nav-item">
