@@ -54,9 +54,9 @@ class CetakanPermitController extends Controller
         } else if($permohonan->negeri_kutipan_permit == "WP Kuala Lumpur"){
             $no_permit  = $request->no_permit." (WPKL)";
         } else if($permohonan->negeri_kutipan_permit == "WP Putrajaya"){
-            $no_permit  = $request->no_permit." (WPL)";
-        } else if($permohonan->negeri_kutipan_permit == "WP Labuan"){
             $no_permit  = $request->no_permit." (WPPJ)";
+        } else if($permohonan->negeri_kutipan_permit == "WP Labuan"){
+            $no_permit  = $request->no_permit." (WPL)";
         }
 
         $user = User::find($permohonan->user_id);

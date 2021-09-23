@@ -35,9 +35,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama MS
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama BM
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama EN
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama BI
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paparan
                                         Gambar</th>
@@ -126,14 +126,14 @@
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $arkibdokumen->id }}">
                                                                 <div class="form-group">
-                                                                    <label for="title">Nama (MS)</label>
+                                                                    <label for="title">Nama BM</label>
                                                                     <input type="text" class="form-control" name="nama_ms"
                                                                         value="{{ $arkibdokumen->nama_ms }}"
                                                                         placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Nama (EN)</label>
+                                                                    <label for="title">Nama BI</label>
                                                                     <input type="text" class="form-control" name="nama_en"
                                                                         value="{{ $arkibdokumen->nama_en }}"
                                                                         placeholder="">
@@ -207,12 +207,12 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="title">Nama MS</label>
+                                        <label for="title">Nama BM</label>
                                         <input type="text" class="form-control" name="nama_ms" placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Nama EN</label>
+                                        <label for="title">Nama BI</label>
                                         <input type="text" class="form-control" name="nama_en" placeholder="">
                                     </div>
 

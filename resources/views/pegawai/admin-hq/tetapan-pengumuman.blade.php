@@ -35,14 +35,14 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk MS
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk BM
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk EN
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk BI
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Kandungan MS</th>
+                                        Kandungan BM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Kandungan EN</th>
+                                        Kandungan BI</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh
                                         Mula Papar </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh
@@ -126,27 +126,27 @@
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $pengumuman->id }}">
                                                                 <div class="form-group">
-                                                                    <label for="title">Tajuk MS</label>
+                                                                    <label for="title">Tajuk BM</label>
                                                                     <input type="text" class="form-control" name="tajuk_bm"
                                                                         value="{{ $pengumuman->tajuk_bm }}"
                                                                         placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Tajuk EN</label>
+                                                                    <label for="title">Tajuk BI</label>
                                                                     <input type="text" class="form-control" name="tajuk_en"
                                                                         value="{{ $pengumuman->tajuk_en }}"
                                                                         placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Kandungan MS</label>
+                                                                    <label for="title">Kandungan BM</label>
                                                                     <textarea class="form-control" name="kandungan_bm"
                                                                         rows="2">{{ $pengumuman->kandungan_bm }}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Kandungan EN</label>
+                                                                    <label for="title">Kandungan BI</label>
                                                                     <textarea class="form-control" name="kandungan_en"
                                                                         rows="2">{{ $pengumuman->kandungan_en }}</textarea>
                                                                 </div>
@@ -231,7 +231,7 @@
                                 <form role="form text-left" method="POST" action="/tetapan-pengumuman">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="title">Tajuk MS</label>
+                                        <label for="title">Tajuk BM</label>
                                         <input type="text" class="form-control" name="tajuk_bm" placeholder="">
                                     </div>
 
@@ -241,12 +241,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Kandungan MS</label>
+                                        <label for="title">Kandungan BM</label>
                                         <textarea class="form-control" name="kandungan_bm" rows="2"></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Kandungan EN</label>
+                                        <label for="title">Kandungan BI</label>
                                         <textarea class="form-control" name="kandungan_en" rows="2"></textarea>
                                     </div>
 

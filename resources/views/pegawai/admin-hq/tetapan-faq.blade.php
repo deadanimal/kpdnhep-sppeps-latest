@@ -33,9 +33,9 @@
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                    Kategori MS</th>
+                                    Kategori BM</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                    Kategori EN</th>
+                                    Kategori BI</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tindakan
                                 </th>
@@ -107,14 +107,14 @@
                                                             <input type="hidden" name="jenis" value="category">
                                                             <input type="hidden" name="id" value="{{ $kategorifaq->id }}">
                                                             <div class="form-group">
-                                                                <label for="title">Nama Kategori MS</label>
+                                                                <label for="title">Nama Kategori BM</label>
                                                                 <input type="text" class="form-control"
                                                                     value="{{ $kategorifaq->nama_kategori_bm }} "
                                                                     name="nama_kategori_bm">
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="title">Nama Kategori EN</label>
+                                                                <label for="title">Nama Kategori BI</label>
                                                                 <input type="text" class="form-control"
                                                                     value="{{ $kategorifaq->nama_kategori_en }}"
                                                                     name="nama_kategori_en">
@@ -184,13 +184,13 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk
-                                        (BM)</th>
+                                        BM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk
-                                        (BI)</th>
+                                        BI</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Kandungan (BM)</th>
+                                        Kandungan BM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Kandungan (BI)</th>
+                                        Kandungan BI</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Turutan
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori
@@ -271,25 +271,25 @@
                                                                 <input type="hidden" name="jenis" value="senarai">
                                                                 <input type="hidden" name="id" value="{{ $faq->id }}">
                                                                 <div class="form-group">
-                                                                    <label for="title">Tajuk MS</label>
+                                                                    <label for="title">Tajuk BM</label>
                                                                     <input type="text" class="form-control" name="tajuk_bm"
                                                                         value="{{ $faq->tajuk_bm }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Tajuk EN</label>
+                                                                    <label for="title">Tajuk BI</label>
                                                                     <input type="text" class="form-control" name="tajuk_en"
                                                                         value="{{ $faq->tajuk_en }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Keterangan MS</label>
+                                                                    <label for="title">Keterangan BM</label>
                                                                     <textarea class="form-control" rows="3"
                                                                         name="kandungan_bm">{{ $faq->kandungan_bm }}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Keterangan EN</label>
+                                                                    <label for="title">Keterangan BI</label>
                                                                     <textarea class="form-control" rows="3"
                                                                         name="kandungan_en">{{ $faq->kandungan_en }}</textarea>
                                                                 </div>
@@ -400,11 +400,11 @@
                                     @csrf
                                     <input type="hidden" name="jenis" value="category">
                                     <div class="form-group">
-                                        <label for="title">Nama Kategori MS</label>
+                                        <label for="title">Nama Kategori BM</label>
                                         <input type="text" class="form-control" name="nama_kategori_bm" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Nama Kategori EN</label>
+                                        <label for="title">Nama Kategori BI</label>
                                         <input type="text" class="form-control" name="nama_kategori_en" placeholder="">
                                     </div>
 
@@ -454,22 +454,22 @@
                                     <input type="hidden" name="jenis" value="senarai">
 
                                     <div class="form-group">
-                                        <label for="title">Tajuk MS</label>
+                                        <label for="title">Tajuk BM</label>
                                         <input type="text" class="form-control" name="tajuk_bm" placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Tajuk EN</label>
+                                        <label for="title">Tajuk BI</label>
                                         <input type="text" class="form-control" name="tajuk_en" placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan MS</label>
+                                        <label for="title">Keterangan BM</label>
                                         <textarea class="form-control" rows="3" name="kandungan_bm"></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan EN</label>
+                                        <label for="title">Keterangan BI</label>
                                         <textarea class="form-control" rows="3" name="kandungan_en"></textarea>
                                     </div>
 

@@ -35,13 +35,13 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk
-                                        Dokumen MS</th>
+                                        Dokumen BM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk
-                                        Dokumen EN</th>
+                                        Dokumen BI</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Keterangan Dokumen MS</th>
+                                        Keterangan Dokumen BM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Keterangan Dokumen EN</th>
+                                        Keterangan Dokumen BI</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh
                                         Kemaskini</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
@@ -123,25 +123,25 @@
                                                                     <input type="hidden" name="id_arkibdokumen"
                                                                     value="{{ $dokumeq->id_arkibdokumen }}">
                                                                 <div class="form-group">
-                                                                    <label for="title">Nama (MS)</label>
+                                                                    <label for="title">Nama BM</label>
                                                                     <input type="text" class="form-control" name="tajuk_ms"
                                                                         value="{{ $dokumeq->tajuk_ms }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Nama (EN)</label>
+                                                                    <label for="title">Nama BI</label>
                                                                     <input type="text" class="form-control" name="tajuk_en"
                                                                         value="{{ $dokumeq->tajuk_en }}" placeholder="">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Keterangan MS</label>
+                                                                    <label for="title">Keterangan BM</label>
                                                                     <textarea class="form-control" rows="3"
                                                                         name="kandungan_ms">{{ $dokumeq->kandungan_ms }}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Keterangan EN</label>
+                                                                    <label for="title">Keterangan BI</label>
                                                                     <textarea class="form-control" rows="3"
                                                                         name="kandungan_en">{{ $dokumeq->kandungan_en }}</textarea>
                                                                 </div>
@@ -216,24 +216,24 @@
 
                                     <input type="hidden" name="id_arkibdokumen" value="{{ $arkibdokumenid }}">
                                     <div class="form-group">
-                                        <label for="title">Tajuk Dokumen MS</label>
+                                        <label for="title">Tajuk Dokumen BM</label>
                                         <input type="text" class="form-control form-control-sm" name="tajuk_ms"
                                             placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Tajuk Dokumen EN</label>
+                                        <label for="title">Tajuk Dokumen BI</label>
                                         <input type="text" class="form-control form-control-sm" name="tajuk_en"
                                             placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan Dokumen MS</label>
+                                        <label for="title">Keterangan Dokumen BM</label>
                                         <textarea class="form-control" rows="3" name="kandungan_ms"></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan Dokumen EN</label>
+                                        <label for="title">Keterangan Dokumen BI</label>
                                         <textarea class="form-control" rows="3" name="kandungan_en"></textarea>
                                     </div>
 

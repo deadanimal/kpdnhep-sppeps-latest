@@ -49,41 +49,152 @@
             </div>
 
             <div class="container-fluid mt-4">
-                <div class="card m-2">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card m-2">
 
-                    <div class="card-header" style="background-color: #f7e8ff;">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                        <div class="row mb-0">
-                            <div class="col">
-                                <h5> Kelulusan Permit Mengikut Jantina</h5>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Kelulusan Permit Mengikut Jantina</h5>
+                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="chart" style="height: initial;">
+                                    <div class="amchart" id="chartdiv" style="height: 400px;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col d-flex">
+                        <div class="card m-2">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                    <div class="card-body p-3">
-                        <div class="chart" style="height: initial;">
-                            <div class="amchart" id="chartdiv" style="height: 400px;"></div>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Kelulusan Permit Mengikut Jantina</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0" id="tablekelulusanpermitjantina">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    No.</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Jantina</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($kelulusanjantinas as $kelulusanjantina)
+                                                <tr>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusanjantina->jantina }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusanjantina->jumlah }}
+                                                    </td>
+                                                </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="container-fluid mt-4">
-                <div class="card m-2">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card m-2">
 
-                    <div class="card-header" style="background-color: #f7e8ff;">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                        <div class="row mb-0">
-                            <div class="col">
-                                <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="chart" style="height: initial;">
+                                    <div class="amchart" id="chartdiv2" style="height: 400px;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col d-flex">
+                        <div class="card m-2">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                    <div class="card-body p-3">
-                        <div class="chart" style="height: initial;">
-                            <div class="amchart" id="chartdiv2" style="height: 400px;"></div>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0" id="tablekelulusanpermitnegeri">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    No.</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Negeri</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($kelulusannegeris as $kelulusannegeri)
+                                                <tr>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusannegeri->negeri }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusannegeri->jumlah }}
+                                                        {{-- {{ $kelulusannegeri->jumlah ? $kelulusannegeri->jumlah : 0 }} --}}
+                                                    </td>
+                                                </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -136,50 +247,56 @@
                                     <table class="table align-items-center mb-0" id="tablekelulusanpermit">
                                         <thead>
                                             <tr>
-                                                <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                <th class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
                                                     No.</th>
                                                 <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     No. Permit</th>
                                                 {{-- <th
                                                     class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                                     Jenis Permohonan</th> --}}
                                                 <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Tarikh Permit lulus</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Tarikh Permit tamat</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Nama Pemohon</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     No. Kad Pengenalan</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Negeri</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($kelulusans as $kelulusan)
                                                 <tr>
-                                                    <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm font-weight-normal">{{ $kelulusan->no_permit }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusan->no_permit }}
                                                     </td>
                                                     {{-- <td class="text-sm font-weight-normal">
                                                         {{ $kelulusan->jenis_permohonan }}
                                                     </td> --}}
-                                                    <td class="text-sm font-weight-normal">{{ $kelulusan->created_at }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusan->created_at }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kelulusan->updated_at }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusan->updated_at }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kelulusan->nama }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusan->nama }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kelulusan->no_kp }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusan->no_kp }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $kelulusan->negeri }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $kelulusan->negeri }}
                                                     </td>
                                                 </tr>
 
@@ -235,7 +352,7 @@
             chart.data = data;
 
             var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.dataFields.category = "year";
+            categoryAxis.dataFields.category = "monthname";
             categoryAxis.renderer.grid.template.location = 0;
 
 
@@ -249,7 +366,7 @@
                 var series = chart.series.push(new am4charts.ColumnSeries());
                 series.name = name;
                 series.dataFields.valueY = field;
-                series.dataFields.categoryX = "year";
+                series.dataFields.categoryX = "monthname";
                 series.sequencedInterpolation = true;
 
                 series.stacked = true;
@@ -288,9 +405,26 @@
 
             // Enable export
             chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.items = [{
+                "label": "...",
+                "menu": [{
+                        "type": "png",
+                        "label": "PNG"
+                    },
+                    {
+                        "type": "pdf",
+                        "label": "PDF"
+                    },
+                ]
+            }];
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
-            chart.exporting.filePrefix = "Kelulusan Permit mengikut Jantina";
+            chart.exporting.filePrefix = "Kelulusan Permit mengikut Negeri";
+            var title = chart.titles.create();
+            title.text = "Kelulusan Permit mengikut Negeri";
+            var options = chart.exporting.getFormatOptions("pdf");
+            options.addURL = false;
+            chart.exporting.setFormatOptions("pdf", options);
         });
 
         am4core.ready(function() {
@@ -315,7 +449,7 @@
 
             // Add and configure Series
             var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.value = "total";
+            pieSeries.dataFields.value = "jumlah";
             pieSeries.dataFields.category = "jantina";
             pieSeries.slices.template.stroke = am4core.color("#fff");
             pieSeries.slices.template.strokeOpacity = 1;
@@ -329,9 +463,26 @@
 
             // Enable export
             chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.items = [{
+                "label": "...",
+                "menu": [{
+                        "type": "png",
+                        "label": "PNG"
+                    },
+                    {
+                        "type": "pdf",
+                        "label": "PDF"
+                    },
+                ]
+            }];
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
             chart.exporting.filePrefix = "Kelulusan Permit mengikut Jantina";
+            var title = chart.titles.create();
+            title.text = "Kelulusan Permit mengikut Jantina";
+            var options = chart.exporting.getFormatOptions("pdf");
+            options.addURL = false;
+            chart.exporting.setFormatOptions("pdf", options);
 
         }); // end am4core.ready()
     </script>
@@ -390,28 +541,42 @@
                 //         "sPrevious": "<",
                 //     }
                 // }
+            });
+        });
 
-                // initComplete: function() {
-                //     this.api().columns().every(function() {
-                //         var column = this;
-                //         var select = $('<select><option value=""></option></select>')
-                //             .appendTo($(column.footer()).empty())
-                //             .on('change', function() {
-                //                 var val = $.fn.dataTable.util.escapeRegex(
-                //                     $(this).val()
-                //                 );
+        $(document).ready(function() {
+            $('#tablekelulusanpermitjantina').DataTable({
+                dom: 'Bfrtip',
+                "searching": false,
+                "paging": false,
+                "info": false,
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Kelulusan Permit Mengikut Jantina'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Kelulusan Permit Mengikut Jantina',
+                    },
+                ],
+            });
+        });
 
-                //                 column
-                //                     .search(val ? '^' + val + '$' : '', true, false)
-                //                     .draw();
-                //             });
-
-                //         column.data().unique().sort().each(function(d, j) {
-                //             select.append('<option value="' + d + '">' + d +
-                //                 '</option>')
-                //         });
-                //     });
-                // }
+        $(document).ready(function() {
+            $('#tablekelulusanpermitnegeri').DataTable({
+                dom: 'Bfrtip',
+                "searching": false,
+                "info": false,
+                pageLength: 4,
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Kelulusan Permit Mengikut Negeri'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Kelulusan Permit Mengikut Negeri',
+                    },
+                ],
             });
         });
     </script>

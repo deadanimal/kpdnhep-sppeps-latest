@@ -12,378 +12,481 @@ class LaporanstatistikController extends Controller
 {
     public function kelulusanpermit(Request $request)
     {
-        $kelulusan = Permohonan::where('status_permohonan', 'Diluluskan')->get();
+        // $kelulusan = Permohonan::where('status_permohonan', 'Diluluskan')->get();
 
-        // if ($request) {
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
-        // }
 
-        $year_start = Carbon::parse($request->startdate)->format('Y');
-        $year_end = Carbon::parse($request->enddate)->format('Y');
-
-        $years = [];
-        if ($year_start == $year_end) {
-            array_push($years, $year_start);
-        } else {
-            $int_start = (int)$year_start;
-            $int_end = (int)$year_end;
-            $range = $int_end - $int_start;
-            for ($i = 0; $i <= $range; $i++) {
-                array_push($years, $int_start);
-                $int_start++;
-            }
-        }
-
+        //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
-            $mohons = Permohonan::where('status_permohonan', 'Diluluskan')
-                ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $kelulusan = Permohonan::where('status_permohonan', 'Diluluskan')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                // ->whereBetween('created_at', [$start, $end])
                 ->get();
         } else {
-            $mohons = Permohonan::where('status_permohonan', 'Diluluskan')
-                // ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $kelulusan = Permohonan::where('status_permohonan', 'Diluluskan')
                 ->get();
         }
 
-        foreach ($years as $year) {
-            $arr1 = [];
-            $arr1['year'] = $year;
-            foreach ($mohons as $m) {
-                if ($year == $m->year)
-                    $arr1[$m->negeri] = $m->total;
-            }
-            $arrays1[] = $arr1;
+        //utk bil jantina
+        if (($request->startdate && $request->enddate) != null) {
+            $kelulusanjantina = Permohonan::where('status_permohonan', 'Diluluskan')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
+        } else {
+            $kelulusanjantina = Permohonan::where('status_permohonan', 'Diluluskan')
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
         }
 
+        //utk bil negeri
+        if (($request->startdate && $request->enddate) != null) {
+            $kelulusannegeri = Permohonan::where('status_permohonan', 'Diluluskan')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        } else {
+            $kelulusannegeri = Permohonan::where('status_permohonan', 'Diluluskan')
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        }
+
+        //graf negeri
+        $mohon = Permohonan::where('status_permohonan', 'Diluluskan')
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('monthname', 'negeri')
+            ->orderBy('monthname')
+            ->get();
+
+        $arraynegeri = [];
+        foreach ($mohon as $mohons) {
+            $arraynegeri[] = ['monthname' => $mohons->monthname, $mohons->negeri => $mohons->jumlah];
+        }
+
+        //graf jantina
         $kel = Permohonan::where('status_permohonan', 'Diluluskan')
-            // ->whereBetween('created_at', [$start, $end])
-            // ->select('jantina', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-            // ->groupBy('jantina', DB::raw('YEAR(created_at)'))
-            ->select('jantina',  DB::raw('count(*) as total'))
+            ->select('jantina',  DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
             ->groupBy('jantina')
             ->get()->toArray();
 
         return view('laporan-statistik.peratusan-kelulusan-permit', [
             'kelulusans' => $kelulusan,
-            'kelulus' => $arrays1,
+            'kelulus' => $arraynegeri,
             'klels' => $kel,
+            'kelulusanjantinas' => $kelulusanjantina,
+            'kelulusannegeris' => $kelulusannegeri,
         ]);
     }
 
     public function permitditolak(Request $request)
     {
-        $penolakan = Permohonan::where('status_permohonan', 'Tidak Diluluskan')->get();
+        // $penolakan = Permohonan::where('status_permohonan', 'Tidak Diluluskan')->get();
 
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
 
-        $year_start = Carbon::parse($request->startdate)->format('Y');
-        $year_end = Carbon::parse($request->enddate)->format('Y');
-
-        $years = [];
-        if ($year_start == $year_end) {
-            array_push($years, $year_start);
-        } else {
-            $int_start = (int)$year_start;
-            $int_end = (int)$year_end;
-            $range = $int_end - $int_start;
-            for ($i = 0; $i <= $range; $i++) {
-                array_push($years, $int_start);
-                $int_start++;
-            }
-        }
-
+        //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
-            $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
-                ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $penolakan = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
                 ->get();
         } else {
-            $tolaks = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $penolakan = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
                 ->get();
         }
 
-        foreach ($years as $year) {
-            $arr1 = [];
-            $arr1['year'] = $year;
-            foreach ($tolaks as $m) {
-                if ($year == $m->year)
-                    $arr1[$m->negeri] = $m->total;
-            }
-            $arrays1[] = $arr1;
+        //utk bil jantina
+        if (($request->startdate && $request->enddate) != null) {
+            $penolakanjantina = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
+        } else {
+            $penolakanjantina = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
         }
 
-        $tol = Permohonan::where('status_permohonan', 'Diluluskan')
-            ->select('jantina',  DB::raw('count(*) as total'))
+        //utk bil negeri
+        if (($request->startdate && $request->enddate) != null) {
+            $penolakannegeri = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        } else {
+            $penolakannegeri = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        }
+
+        //graf negeri
+        $tolak = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('monthname', 'negeri')
+            ->orderBy('monthname')
+            ->get();
+
+        $arraynegeri = [];
+        foreach ($tolak as $tolaks) {
+            $arraynegeri[] = ['monthname' => $tolaks->monthname, $tolaks->negeri => $tolaks->jumlah];
+        }
+
+        //graf jantina
+        $tol = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
+            ->select('jantina',  DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
             ->groupBy('jantina')
             ->get()->toArray();
 
         return view('laporan-statistik.peratusan-permit-ditolak', [
             'penolakans' => $penolakan,
-            'penolaks' => $arrays1,
+            'penolaks' => $arraynegeri,
             'penollaks' => $tol,
+            'penolakanjantinas' => $penolakanjantina,
+            'penolakannegeris' => $penolakannegeri,
         ]);
     }
 
     public function sejarahpermohonan(Request $request)
     {
-        $sejarah = Permohonan::all();
+        // $sejarah = Permohonan::all();
 
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
 
-        $year_start = Carbon::parse($request->startdate)->format('Y');
-        $year_end = Carbon::parse($request->enddate)->format('Y');
-
-        $years = [];
-        if ($year_start == $year_end) {
-            array_push($years, $year_start);
-        } else {
-            $int_start = (int)$year_start;
-            $int_end = (int)$year_end;
-            $range = $int_end - $int_start;
-            for ($i = 0; $i <= $range; $i++) {
-                array_push($years, $int_start);
-                $int_start++;
-            }
-        }
-
+        //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
-            $sejar = DB::table('permohonans')
-                ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $sejarah = Permohonan::whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
                 ->get();
         } else {
-            $sejar = DB::table('permohonans')
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $sejarah = Permohonan::all();
+        }
+
+        //utk bil jantina
+        if (($request->startdate && $request->enddate) != null) {
+            $sejarahjantina = Permohonan::whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
+        } else {
+            $sejarahjantina = Permohonan::select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
                 ->get();
         }
 
-        foreach ($years as $year) {
-            $arr1 = [];
-            $arr1['year'] = $year;
-            foreach ($sejar as $m) {
-                if ($year == $m->year)
-                    $arr1[$m->negeri] = $m->total;
-            }
-            $arrays1[] = $arr1;
+        //utk bil negeri
+        if (($request->startdate && $request->enddate) != null) {
+            $sejarahnegeri = Permohonan::whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        } else {
+            $sejarahnegeri = Permohonan::select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
         }
 
+        //graf negeri
+        $grafsejarahnegeri = Permohonan::whereYear('created_at', date('Y'))
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->groupBy('monthname', 'negeri')
+            ->orderBy('monthname')
+            ->get();
+
+        $arraynegeri = [];
+        foreach ($grafsejarahnegeri as $grafsejarahnegeris) {
+            $arraynegeri[] = ['monthname' => $grafsejarahnegeris->monthname, $grafsejarahnegeris->negeri => $grafsejarahnegeris->jumlah];
+        }
+
+        //graf jantina
         $sej = DB::table('permohonans')
-            ->select('jantina',  DB::raw('count(*) as total'))
+            ->select('jantina',  DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
             ->groupBy('jantina')
             ->get()->toArray();
 
         return view('laporan-statistik.laporan-sejarah-permohonan', [
             'sejarahs' => $sejarah,
-            'sejahs' => $arrays1,
+            'sejahs' => $arraynegeri,
             'sejs' => $sej,
+            'sejarahjantinas' => $sejarahjantina,
+            'sejarahnegeris' => $sejarahnegeri,
         ]);
     }
 
     public function senaraihitam(Request $request)
     {
 
-        $senaraihitam = User::where([
-            ['status_permohonan', '=', 'disenarai_hitam'],
-            ['role', '=', 'pemohon']
-        ])->get();
+        // $senaraihitam = User::where([
+        //     ['status_permohonan', '=', 'disenarai_hitam'],
+        //     ['role', '=', 'pemohon']
+        // ])->get();
 
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
 
-        $year_start = Carbon::parse($request->startdate)->format('Y');
-        $year_end = Carbon::parse($request->enddate)->format('Y');
-
-        $years = [];
-        if ($year_start == $year_end) {
-            array_push($years, $year_start);
-        } else {
-            $int_start = (int)$year_start;
-            $int_end = (int)$year_end;
-            $range = $int_end - $int_start;
-            for ($i = 0; $i <= $range; $i++) {
-                array_push($years, $int_start);
-                $int_start++;
-            }
-        }
-
+        //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
-            $senaraihits = User::where([
+            $senaraihitam = User::where([
                 ['status_permohonan', '=', 'disenarai_hitam'],
                 ['role', '=', 'pemohon']
             ])
-                ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
                 ->get();
         } else {
-            $senaraihits = User::where('status_permohonan', 'disenarai_hitam')
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $senaraihitam = User::where([
+                ['status_permohonan', '=', 'disenarai_hitam'],
+                ['role', '=', 'pemohon']
+            ])
                 ->get();
         }
 
-        foreach ($years as $year) {
-            $arr1 = [];
-            $arr1['year'] = $year;
-            foreach ($senaraihits as $m) {
-                if ($year == $m->year)
-                    $arr1[$m->negeri] = $m->total;
-            }
-            $arrays1[] = $arr1;
+        //utk bil jantina
+        if (($request->startdate && $request->enddate) != null) {
+            $senaraihitamjantina = User::where([
+                ['status_permohonan', '=', 'disenarai_hitam'],
+                ['role', '=', 'pemohon']
+            ])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
+        } else {
+            $senaraihitamjantina = User::where([
+                ['status_permohonan', '=', 'disenarai_hitam'],
+                ['role', '=', 'pemohon']
+            ])
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
         }
 
+        //utk bil negeri
+        if (($request->startdate && $request->enddate) != null) {
+            $senaraihitamnegeri = User::where([
+                ['status_permohonan', '=', 'disenarai_hitam'],
+                ['role', '=', 'pemohon']
+            ])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        } else {
+            $senaraihitamnegeri = User::where([
+                ['status_permohonan', '=', 'disenarai_hitam'],
+                ['role', '=', 'pemohon']
+            ])
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        }
+
+        //graf negeri
+        $senaraihits = User::where([
+            ['status_permohonan', '=', 'disenarai_hitam'],
+            ['role', '=', 'pemohon']
+        ])
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('monthname', 'negeri')
+            ->orderBy('monthname')
+            ->get();
+
+        $arraynegeri = [];
+        foreach ($senaraihits as $senaraihit) {
+            $arraynegeri[] = ['monthname' => $senaraihit->monthname, $senaraihit->negeri => $senaraihit->jumlah];
+        }
+
+        //graf jantina
         $senhit = User::where('status_permohonan', 'disenarai_hitam')
-            ->select('jantina',  DB::raw('count(*) as total'))
+            ->select('jantina',  DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
             ->groupBy('jantina')
             ->get()->toArray();
 
         return view('laporan-statistik.laporan-senarai-hitam', [
             'senaraihitams' => $senaraihitam,
-            'senarhits' => $arrays1,
+            'senarhits' => $arraynegeri,
             'sentam' => $senhit,
+            'senaraihitamjantinas' => $senaraihitamjantina,
+            'senaraihitamnegeris' => $senaraihitamnegeri,
         ]);
     }
 
     public function pegangpermit(Request $request)
     {
 
-        $pegangpermit = Permohonan::all();
+        // $pegangpermit = Permohonan::all();
 
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
 
-        $year_start = Carbon::parse($request->startdate)->format('Y');
-        $year_end = Carbon::parse($request->enddate)->format('Y');
-
-        $years = [];
-        if ($year_start == $year_end) {
-            array_push($years, $year_start);
-        } else {
-            $int_start = (int)$year_start;
-            $int_end = (int)$year_end;
-            $range = $int_end - $int_start;
-            for ($i = 0; $i <= $range; $i++) {
-                array_push($years, $int_start);
-                $int_start++;
-            }
-        }
-
+        //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
-            $peggpermit = DB::table('permohonans')
-                ->where('cetak_status', '=', 1)
-                ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $pegangpermit = Permohonan::where('cetak_status', '=', '1')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
                 ->get();
         } else {
-            $peggpermit = DB::table('permohonans')
-                ->where('cetak_status', '=', '1')
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('count(*) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $pegangpermit = Permohonan::where('cetak_status', '=', '1')
                 ->get();
         }
 
-        foreach ($years as $year) {
-            $arr1 = [];
-            $arr1['year'] = $year;
-            foreach ($peggpermit as $m) {
-                if ($year == $m->year)
-                    $arr1[$m->negeri] = $m->total;
-            }
-            $arrays1[] = $arr1;
+        //utk bil jantina
+        if (($request->startdate && $request->enddate) != null) {
+            $pegangpermitjantina = Permohonan::where('cetak_status', '=', '1')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
+        } else {
+            $pegangpermitjantina = Permohonan::where('cetak_status', '=', '1')
+                ->select('jantina', DB::raw('count(*) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
         }
 
+        //utk bil negeri
+        if (($request->startdate && $request->enddate) != null) {
+            $pegangpermitnegeri = Permohonan::where('cetak_status', '=', '1')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        } else {
+            $pegangpermitnegeri = Permohonan::where('cetak_status', '=', '1')
+                ->select('negeri', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        }
+
+        //graf negeri
+        $peggpermit = DB::table('permohonans')
+            ->where('cetak_status', '=', '1')
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('monthname', 'negeri')
+            ->orderBy('monthname')
+            ->get();
+
+        $arraynegeri = [];
+        foreach ($peggpermit as $peggpermits) {
+            $arraynegeri[] = ['monthname' => $peggpermits->monthname, $peggpermits->negeri => $peggpermits->jumlah];
+        }
+
+        //graf jantina
         $pegpermits = DB::table('permohonans')
-            ->select('jantina',  DB::raw('count(*) as total'))
+            ->where('cetak_status', '=', '1')
+            ->whereYear('created_at', date('Y'))
+            ->select('jantina',  DB::raw('count(*) as jumlah'))
             ->groupBy('jantina')
             ->get()->toArray();
 
         return view('laporan-statistik.statistik-pemegang-permit', [
             'pegangpermits' => $pegangpermit,
-            'pegapermit' => $arrays1,
+            'pegapermit' => $arraynegeri,
             'pegpermit' => $pegpermits,
+            'pegangpermitjantinas' => $pegangpermitjantina,
+            'pegangpermitnegeris' => $pegangpermitnegeri,
         ]);
     }
 
     public function kutipanfi(Request $request)
     {
 
-        $kutipanfi = Permohonan::all();
+        // $kutipanfi = Permohonan::all();
 
         $start = Carbon::parse($request->startdate)->format('Y-m-d');
         $end = Carbon::parse($request->enddate)->format('Y-m-d');
 
-        $year_start = Carbon::parse($request->startdate)->format('Y');
-        $year_end = Carbon::parse($request->enddate)->format('Y');
-
-        $years = [];
-        if ($year_start == $year_end) {
-            array_push($years, $year_start);
-        } else {
-            $int_start = (int)$year_start;
-            $int_end = (int)$year_end;
-            $range = $int_end - $int_start;
-            for ($i = 0; $i <= $range; $i++) {
-                array_push($years, $int_start);
-                $int_start++;
-            }
-        }
-
+        //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
-            $kutipan = DB::table('permohonans')
-                ->whereBetween('created_at', [$start, $end])
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('sum(bayaran_fi) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $kutipanfi = Permohonan::whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
                 ->get();
         } else {
-            $kutipan = DB::table('permohonans')
-                ->select('negeri', DB::raw('YEAR(created_at) year'), DB::raw('sum(bayaran_fi) as total'))
-                ->groupBy('negeri', DB::raw('YEAR(created_at)'))
-                ->orderBy('year', 'desc')
+            $kutipanfi = Permohonan::all();
+        }
+
+        //utk bil jantina
+        if (($request->startdate && $request->enddate) != null) {
+            $kutipanfijantina = Permohonan::whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('jantina', DB::raw('sum(bayaran_fi) as jumlah'))
+                ->groupBy('jantina')
+                ->get();
+        } else {
+            $kutipanfijantina = Permohonan::select('jantina', DB::raw('sum(bayaran_fi) as jumlah'))
+                ->groupBy('jantina')
                 ->get();
         }
 
-        foreach ($years as $year) {
-            $arr1 = [];
-            $arr1['year'] = $year;
-            foreach ($kutipan as $m) {
-                if ($year == $m->year)
-                    $arr1[$m->negeri] = $m->total;
-            }
-            $arrays1[] = $arr1;
+        //utk bil negeri
+        if (($request->startdate && $request->enddate) != null) {
+            $kutipanfinegeri = Permohonan::whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->select('negeri', DB::raw('sum(bayaran_fi) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
+        } else {
+            $kutipanfinegeri = Permohonan::select('negeri', DB::raw('sum(bayaran_fi) as jumlah'))
+                ->groupBy('negeri')
+                ->get();
         }
 
-        $kutipfis = DB::table('permohonans')
-            ->select('jantina',  DB::raw('count(*) as total'))
-            ->groupBy('jantina')
-            ->get()->toArray();
+        //graf negeri
+        $kutipan = DB::table('permohonans')
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('sum(bayaran_fi) as jumlah'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('monthname', 'negeri')
+            ->orderBy('monthname')
+            ->get();
 
+        $arraynegeri = [];
+        foreach ($kutipan as $kutipans) {
+            $arraynegeri[] = ['monthname' => $kutipans->monthname, $kutipans->negeri => $kutipans->jumlah];
+        }
+
+        //graf jantina
+        $kutipfis = DB::table('permohonans')
+            ->whereYear('created_at', date('Y'))
+            ->select('jantina', DB::raw('sum(bayaran_fi) as jumlah'))
+            ->groupBy('jantina')
+            ->get();
+            // ->sum('bayaran_fi');
+        
         return view('laporan-statistik.statistik-kutipan-fi', [
             'kutipanfis' => $kutipanfi,
-            'kutipfis' => $arrays1,
+            'kutipfis' => $arraynegeri,
             'kutips' => $kutipfis,
+            'kutipanfiantinas' => $kutipanfijantina,
+            'kutipanfinegeris' => $kutipanfinegeri,
         ]);
     }
 }

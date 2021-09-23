@@ -48,6 +48,8 @@ class TugasanSelesaiController extends Controller
                 ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'disokong_negeri'],
             ])->orWhere([
                 ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'tidak_disokong_negeri'],
+            ])->orWhere([
+                ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Permohonan Tidak Lengkap'],
             ])->get();
 
             return view('pegawai.pdrm.pdrm-tugasan-selesai', [

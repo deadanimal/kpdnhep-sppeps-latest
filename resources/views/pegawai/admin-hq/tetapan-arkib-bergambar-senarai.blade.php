@@ -33,9 +33,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk MS
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk BM
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk EN
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk BI
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Keterangan MS</th>
@@ -119,25 +119,25 @@
                                                                 <input type="hidden" name="id" value="{{ $gambaq->id }}">
                                                                 <input type="hidden" name="id_arkibgambar" value="{{ $gambaq->id_arkibgambar }}">
                                                                 <div class="form-group">
-                                                                    <label for="title">Nama (MS)</label>
+                                                                    <label for="title">Nama BM</label>
                                                                     <input type="text" class="form-control" name="tajuk_ms"
                                                                         value="{{ $gambaq->tajuk_ms }}">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Nama (EN)</label>
+                                                                    <label for="title">Nama BI</label>
                                                                     <input type="text" class="form-control" name="tajuk_en"
                                                                         value="{{ $gambaq->tajuk_en }}">
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Keterangan MS</label>
+                                                                    <label for="title">Keterangan BM</label>
                                                                     <textarea class="form-control" rows="3"
                                                                         name="kandungan_ms">{{ $gambaq->kandungan_ms }}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="title">Keterangan EN</label>
+                                                                    <label for="title">Keterangan BI</label>
                                                                     <textarea class="form-control" rows="3"
                                                                         name="kandungan_en">{{ $gambaq->kandungan_en }}</textarea>
                                                                 </div>
@@ -295,24 +295,24 @@
 
                                     <input type="hidden" name="id_arkibgambar" value="{{ $arkibgambarid }}">
                                     <div class="form-group">
-                                        <label for="title">Tajuk MS</label>
+                                        <label for="title">Tajuk BM</label>
                                         <input type="text" class="form-control form-control-sm" name="tajuk_ms"
                                             placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Tajuk EN</label>
+                                        <label for="title">Tajuk BI</label>
                                         <input type="text" class="form-control form-control-sm" name="tajuk_en"
                                             placeholder="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan MS</label>
+                                        <label for="title">Keterangan BM</label>
                                         <textarea class="form-control" rows="3" name="kandungan_ms"></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan EN</label>
+                                        <label for="title">Keterangan BM</label>
                                         <textarea class="form-control" rows="3" name="kandungan_en"></textarea>
                                     </div>
 

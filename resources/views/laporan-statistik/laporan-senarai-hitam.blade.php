@@ -37,9 +37,9 @@
 
                                         <button class="btn  bg-gradient-info text-uppercases m-2 " type="submit"
                                             name="search"><i class="fas fa-search"></i> cari</button>
-                                        <button class="btn  bg-gradient-danger text-uppercases m-2" type="reset"
+                                        <a href="/laporan-statistik/laporan-senarai-hitam" class="btn  bg-gradient-danger text-uppercases m-2" type="reset"
                                             name="search" (click)="reset()">set
-                                            semula</button>
+                                            semula</a>
                                     </div>
                                 </div>
                             </form>
@@ -49,41 +49,147 @@
             </div>
 
             <div class="container-fluid mt-4">
-                <div class="card m-2">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card m-2">
 
-                    <div class="card-header" style="background-color: #f7e8ff;">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                        <div class="row mb-0">
-                            <div class="col">
-                                <h5> Pemohon Disenarai Hitam mengikut Jantina</h5>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Pemohon Disenarai Hitam Mengikut Jantina</h5>
+                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="chart" style="height: initial;">
+                                    <div class="amchart" id="chartdiv" style="height: 400px;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col d-flex">
+                        <div class="card m-2">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                    <div class="card-body p-3">
-                        <div class="chart" style="height: initial;">
-                            <div class="amchart" id="chartdiv" style="height: 400px;"></div>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Pemohon Disenarai Hitam Mengikut Jantina</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0" id="tablesenaraihitamjantina">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    No.</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Jantina</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($senaraihitamjantinas as $senaraihitamjantina)
+                                                <tr>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitamjantina->jantina }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitamjantina->jumlah }}
+                                                    </td>
+                                                </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="container-fluid mt-4">
-                <div class="card m-2">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card m-2">
 
-                    <div class="card-header" style="background-color: #f7e8ff;">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                        <div class="row mb-0">
-                            <div class="col">
-                                <h5> Pemohon Disenarai Hitam mengikut Negeri</h5>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Pemohon Disenarai Hitam Mengikut Negeri</h5>
+                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="chart" style="height: initial;">
+                                    <div class="amchart" id="chartdiv2" style="height: 400px;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col d-flex">
+                        <div class="card m-2">
+                            <div class="card-header" style="background-color: #f7e8ff;">
 
-                    <div class="card-body p-3">
-                        <div class="chart" style="height: initial;">
-                            <div class="amchart" id="chartdiv2" style="height: 400px;"></div>
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Pemohon Disenarai Hitam Mengikut Negeri</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0" id="tablesenaraihitamnegeri">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    No.</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Negeri</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($senaraihitamnegeris as $senaraihitamnegeri)
+                                                <tr>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitamnegeri->negeri }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitamnegeri->jumlah }}
+                                                    </td>
+                                                </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -102,33 +208,6 @@
 
                     <div class="card-body p-3">
 
-                        {{-- <div class="row p-3 mb-0">
-                            <div class="col form-group d-flex justify-content-start align-items-center p-0 mb-0">
-                                <label class="d-flex flex-nowrap mb-0">
-                                    <span class="p-2">Negeri</span>
-                                    <select name="datatable_length" aria-controls="datatable"
-                                        class="col form-control form-control-sm" (change)="updateStateFilter($event)">
-                                        <option selected>Semua</option>
-                                        <option value="Perlis">Perlis</option>
-                                        <option value="Kedah">Kedah</option>
-                                        <option value="Pulau Pinang">Pulau Pinang</option>
-                                        <option value="Perak">Perak</option>
-                                        <option value="Selangor">Selangor</option>
-                                        <option value="Melaka">Melaka</option>
-                                        <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                        <option value="Johor">Johor</option>
-                                        <option value="Pahang">Pahang</option>
-                                        <option value="Terengganu">Terengganu</option>
-                                        <option value="Kelantan">Kelantan</option>
-                                        <option value="Sabah">Sabah</option>
-                                        <option value="Sarawak">Sarawak</option>
-                                        <option value="WP Kuala Lumpur">W. P. Kuala Lumpur</option>
-                                        <option value="WP Putrajaya">W. P. Putrajaya</option>
-                                        <option value="WP Labuan">W. P. Labuan</option>
-                                    </select>
-                                </label>
-                            </div>
-                        </div> --}}
                         <div class="row">
                             <div class="card">
                                 <div class="table-responsive">
@@ -136,44 +215,38 @@
                                         <thead>
                                             <tr>
                                                 <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
                                                     No.</th>
                                                 <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     No. Permit</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Nama Pemohon</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     No. Kad Pengenalan</th>
                                                 <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Negeri</th>
-                                                {{-- <th
-                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Jenis Permohonan</th> --}}
                                                 <th
-                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Tarikh Disenarai Hitam</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($senaraihitams as $senaraihitam)
                                                 <tr>
-                                                    <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->no_permit }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->no_permit }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->name }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->name }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->no_kp }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->no_kp }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->negeri }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->negeri }}
                                                     </td>
-                                                    {{-- <td class="text-sm font-weight-normal">
-                                                        {{ $senaraihitam->jenis_permohonan }}
-                                                    </td> --}}
-                                                    <td class="text-sm font-weight-normal">{{ $senaraihitam->updated_at }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->updated_at }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -220,7 +293,7 @@
             chart.data = data;
 
             var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.dataFields.category = "year";
+            categoryAxis.dataFields.category = "monthname";
             categoryAxis.renderer.grid.template.location = 0;
 
 
@@ -234,7 +307,7 @@
                 var series = chart.series.push(new am4charts.ColumnSeries());
                 series.name = name;
                 series.dataFields.valueY = field;
-                series.dataFields.categoryX = "year";
+                series.dataFields.categoryX = "monthname";
                 series.sequencedInterpolation = true;
 
                 series.stacked = true;
@@ -273,9 +346,26 @@
 
             // Enable export
             chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.items = [{
+                "label": "...",
+                "menu": [{
+                        "type": "png",
+                        "label": "PNG"
+                    },
+                    {
+                        "type": "pdf",
+                        "label": "PDF"
+                    },
+                ]
+            }];
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
-            chart.exporting.filePrefix = "Pemohon Disenarai Hitam mengikut Jantina";
+            chart.exporting.filePrefix = "Pemohon Disenarai Hitam mengikut Negeri";
+            var title = chart.titles.create();
+            title.text = "Pemohon Disenarai Hitam mengikut Negeri";
+            var options = chart.exporting.getFormatOptions("pdf");
+            options.addURL = false;
+            chart.exporting.setFormatOptions("pdf", options);
         });
 
         am4core.ready(function() {
@@ -292,7 +382,7 @@
 
             // Add and configure Series
             var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.value = "total";
+            pieSeries.dataFields.value = "jumlah";
             pieSeries.dataFields.category = "jantina";
             pieSeries.slices.template.stroke = am4core.color("#fff");
             pieSeries.slices.template.strokeOpacity = 1;
@@ -306,10 +396,26 @@
 
             // Enable export
             chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.items = [{
+                "label": "...",
+                "menu": [{
+                        "type": "png",
+                        "label": "PNG"
+                    },
+                    {
+                        "type": "pdf",
+                        "label": "PDF"
+                    },
+                ]
+            }];
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
             chart.exporting.filePrefix = "Pemohon Disenarai Hitam mengikut Jantina";
-
+            var title = chart.titles.create();
+            title.text = "Pemohon Disenarai Hitam mengikut Jantina";
+            var options = chart.exporting.getFormatOptions("pdf");
+            options.addURL = false;
+            chart.exporting.setFormatOptions("pdf", options);
         }); // end am4core.ready()
     </script>
 
@@ -351,33 +457,43 @@
                         extend: 'pdfHtml5',
                         title: 'Senarai Pemohon Disenarai Hitam'
                     },
-                    // {
-                    //     extend: 'printHtml5',
-                    //     title: 'Data export'
-                    // }
                 ],
+            });
+        });
 
-                // initComplete: function() {
-                //     this.api().columns().every(function() {
-                //         var column = this;
-                //         var select = $('<select><option value=""></option></select>')
-                //             .appendTo($(column.footer()).empty())
-                //             .on('change', function() {
-                //                 var val = $.fn.dataTable.util.escapeRegex(
-                //                     $(this).val()
-                //                 );
+        $(document).ready(function() {
+            $('#tablesenaraihitamjantina').DataTable({
+                dom: 'Bfrtip',
+                "searching": false,
+                "paging": false,
+                "info": false,
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Kelulusan Permit Mengikut Jantina'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Kelulusan Permit Mengikut Jantina',
+                    },
+                ],
+            });
+        });
 
-                //                 column
-                //                     .search(val ? '^' + val + '$' : '', true, false)
-                //                     .draw();
-                //             });
-
-                //         column.data().unique().sort().each(function(d, j) {
-                //             select.append('<option value="' + d + '">' + d +
-                //                 '</option>')
-                //         });
-                //     });
-                // }
+        $(document).ready(function() {
+            $('#tablesenaraihitamnegeri').DataTable({
+                dom: 'Bfrtip',
+                "searching": false,
+                "info": false,
+                pageLength: 4,
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Kelulusan Permit Mengikut Negeri'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Kelulusan Permit Mengikut Negeri',
+                    },
+                ],
             });
         });
     </script>
