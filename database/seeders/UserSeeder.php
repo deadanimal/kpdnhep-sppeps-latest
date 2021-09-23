@@ -17,15 +17,15 @@ class UserSeeder extends Seeder
         //
         User::create([
             'name'=> 'pentadbir',
-            'email'=> 'iszmael97@gmail.com',
+            'email'=> 'pentadbir@gmail.com',
             'no_kp'=> '123456789012',
             'password'=> Hash::make('password'),
             'no_telefon_pejabat'=>'0123456789',
             'no_telefon_bimbit'=>'0123456789',
             'alamat1'=>'sunway',
             'alamat2'=>'lagoon',
-            'role'=> 'pentadbir',
-            'negeri'=>'Selangor'
+            'role'=> 'pegawai_hq',
+            'negeri'=>'WP Putrajaya'
             
         ]);
 
@@ -68,6 +68,34 @@ class UserSeeder extends Seeder
             'alamat2'=>'Taman Saujana Puchong',
             'role'=> 'pegawai_negeri',
             'negeri'=>'Kedah'
+        ]);
+
+        User::create([
+            'name'=> 'usertest1',
+            'email'=> 'usertest1@gmail.com',
+            'no_kp'=> '970203085558',
+            'password'=> Hash::make('password'),
+            'no_telefon_pejabat'=>'0123456789',
+            'no_telefon_bimbit'=>'0123456789',
+            'alamat1'=>'sunway',
+            'alamat2'=>'lagoon',
+            'role'=> 'pemohon',
+            'negeri'=>'WP Putrajaya'
+            
+        ]);
+
+        User::create([
+            'name'=> 'usertest2',
+            'email'=> 'usertest2@gmail.com',
+            'no_kp'=> '970203085559',
+            'password'=> Hash::make('password'),
+            'no_telefon_pejabat'=>'0123456789',
+            'no_telefon_bimbit'=>'0123456789',
+            'alamat1'=>'sunway',
+            'alamat2'=>'lagoon',
+            'role'=> 'pemohon',
+            'negeri'=>'Selangor'
+            
         ]);
 
     }
