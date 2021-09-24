@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginRequest extends FormRequest
 {
@@ -28,11 +30,27 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
+        // $rules = [
+        //     'no_kp' => 'required|max:12|min:12',
+        // ];
+
+        // $validator = Validator::make($request->all(), $rules, $messages = [
+        //     'no_kp.required' => 'No kad pengenalan perlu diisi',
+        //     'max' => 'No kad pengenalan tidak boleh melebihi 12 nombor',
+        //     'min' => 'No kad pengenalan minimum 12 nombor',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return Redirect::back()->withErrors($validator->errors());
+        // };
+
         return [
             'no_kp' => 'required|string',
             // 'email' => 'required|string|email',
             'password' => 'required|string',
         ];
+
+
     }
 
     /**

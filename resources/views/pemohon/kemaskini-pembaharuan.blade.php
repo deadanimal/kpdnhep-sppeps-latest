@@ -20,7 +20,7 @@
 
     </style>
 
-    <div class=" ">
+    <div class=" mb-3">
 
 
         <div class="ct-docs-main-container">
@@ -774,7 +774,7 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="button-row d-flex mt-4">
+                                                <div class="button-row d-flex mt-4 mb-4">
                                                     <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
                                                         title="Prev">{{ __('landing.kembali') }}</button>
                                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"

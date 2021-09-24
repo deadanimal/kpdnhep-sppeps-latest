@@ -21,7 +21,7 @@ class SemakanIcController extends Controller
         // ]);
 
         $rules = [
-            'no_kp' => 'required',
+            'no_kp' => 'required|min:12|max:12',
             'captcha' => 'required|captcha'
         ];
 
@@ -29,8 +29,8 @@ class SemakanIcController extends Controller
             'no_kp.required' => 'No kad pengenalan perlu diisi',
             'captcha.required' => 'captcha perlu diisi',
             'captcha' => 'captcha tidak betul',
-            'max' => 'No kad pengenalan tidak boleh melebihi 12 nombor',
-            'min' => 'No kad pengenalan minimum 12 nombor',
+            'max' => 'No kad pengenalan tidak boleh melebihi atau kurang dari 12 digit',
+            'min' => 'No kad pengenalan tidak boleh melebihi atau kurang dari 12 digit',
         ]);
 
         if ($validator->fails()) {

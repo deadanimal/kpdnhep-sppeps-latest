@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Http;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules\Password;
+
 class ProfilController extends Controller
 {
     public function index(Request $request)
@@ -114,8 +118,8 @@ class ProfilController extends Controller
         $idpengguna = $request->no_kp;
         $katalaluan = $request->password;
 
-		//dd($request);
-         $url = 'http://apidev.kpdnhep.gov.my/api/staf';
+        //dd($request);
+        $url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
         $token_janaan = Http::post($url, [
             "name" => "janaToken",
@@ -125,28 +129,28 @@ class ProfilController extends Controller
                 "scope" => "staf",
             ]
         ])->json()['response']['result']['token'];
-		
-		//dd($token_janaan);
+
+        //dd($token_janaan);
         //$url = 'http://apidev.kpdnhep.gov.my/api/staf';
 
         $pengguna = Http::withToken($token_janaan)->post($url, [
             "name" => "login",
             "param" => [
                 "idpengguna" => $idpengguna,
-				"katalaluan" => $katalaluan
+                "katalaluan" => $katalaluan
             ]
         ])->json();
-		
-		//dd($pengguna);
-		$respond = $pengguna['response']['status'];
-		//dd($respond);
+
+        //dd($pengguna);
+        $respond = $pengguna['response']['status'];
+        //dd($respond);
 
         if ($respond == 200) {
-			//dd("success");
+            //dd("success");
             $request->authenticate();
             $request->session()->regenerate();
             //return redirect('/appp');
-			return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(RouteServiceProvider::HOME);
         } else {
             // return redirect('/login')->withErrors('Salah username/kata laluan');
             return back()->with('error', 'Salah username/kata laluan');
@@ -155,7 +159,7 @@ class ProfilController extends Controller
 
     public function login_via_myhub(LoginRequest $request)
     {
-		//dd($request);
+        //dd($request);
         $idpengguna = $request->idpengguna;
         $katalaluan = $request->katalaluan;
 
@@ -170,22 +174,22 @@ class ProfilController extends Controller
             ]
         ])->json()['response']['result']['token'];
 
-		$pengguna = Http::withToken($token_janaan)->post($url, [
+        $pengguna = Http::withToken($token_janaan)->post($url, [
             "name" => "getMyIdentity",
             "param" => [
                 "nokp" => $idpengguna,
             ]
         ])->json();
-		
-		dd($pengguna);
-		$respond = $pengguna['status'];
-		//$pemohon = $pengguna['result'];
+
+        dd($pengguna);
+        $respond = $pengguna['status'];
+        //$pemohon = $pengguna['result'];
 
         if ($respond == 200) {
-			
-			$user = User::where('no_kp', $idpengguna)->get();
-			dd($user);
-			
+
+            $user = User::where('no_kp', $idpengguna)->get();
+            dd($user);
+
             $request->authenticate();
             $request->session()->regenerate();
             return redirect('/appp');
@@ -203,6 +207,35 @@ class ProfilController extends Controller
 
     public function register(Request $request)
     {
+
+        $rules = [
+            'email' => ['required'],
+            'password' => [
+                'required',
+                Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ],
+            'password_confirmation' => [
+                'same:new_password',
+                'required',
+            ],
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages = [
+            'required' => ':attribute is required',
+            // 'captcha' => 'captcha tidak betul',
+            'same' => 'New password not match',
+            // 'min' => 'Password must be minimum 8 digit',
+            // 'regex' => 'Password must be in alphanumeric'
+        ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator->errors());
+        };
+
         $user = new User();
 
         $user->umur = $request->age;

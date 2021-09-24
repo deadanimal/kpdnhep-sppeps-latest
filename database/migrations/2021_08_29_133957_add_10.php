@@ -15,6 +15,8 @@ class Add10 extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('catatan_senarai_hitam')->nullable();
+
+            // $table->date('tarikh_semakan_pdrm')->nullable();
         });
     }
 

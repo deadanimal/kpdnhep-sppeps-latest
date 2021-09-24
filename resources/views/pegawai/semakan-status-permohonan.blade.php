@@ -55,7 +55,7 @@
 
                         <div class="card">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center mb-0" id="datatable-basic">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
@@ -145,4 +145,15 @@
         </div>
 
     </div>
+
+    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+            searchable: false,
+            fixedHeight: true
+        });
+    </script>
+
+
 @stop

@@ -76,7 +76,7 @@
                         <div class="card">
 
                             <div class="card-header" style="background-color: #f5e7f2;">
-                                <h6> Pemohon yan Disenarai Hitam</h6>
+                                <h6> Pemohon yang Disenarai Hitam</h6>
                             </div>
 
                             <div class="card-body">

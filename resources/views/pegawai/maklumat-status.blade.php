@@ -248,7 +248,8 @@
                                                             <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                     Permohonan</strong>
                                                             </h4>
-                                                            <p>{{ $permohonan->created_at }}</p>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
+                                                            </p>
                                                             <p>Permohonan anda telah dihantar dan diterima oleh Pihak
                                                                 KPDNHEP
                                                             </p>
@@ -279,7 +280,8 @@
                                                             <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                     Permohonan</strong>
                                                             </h4>
-                                                            <p>{{ $permohonan->created_at }}</p>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
+                                                            </p>
                                                             <p>Permohonan anda telah dihantar dan diterima oleh Pihak
                                                                 KPDNHEP
                                                             </p>
@@ -296,7 +298,8 @@
                                                             <h4 class="h5 timeline-title"><strong>Pengesahan
                                                                     Dokumen</strong>
                                                             </h4>
-                                                            <p>{{ $permohonan->updated_at }}</p>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_pengesahan)) }}
+                                                            </p>
                                                             <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
                                                                 Pemproses </p>
                                                         </div>
@@ -326,7 +329,8 @@
                                                             <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                     Permohonan</strong>
                                                             </h4>
-                                                            <p>{{ $permohonan->created_at }}</p>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
+                                                            </p>
                                                             <p>Permohonan anda telah dihantar dan diterima oleh Pihak
                                                                 KPDNHEP
                                                             </p>
@@ -343,7 +347,8 @@
                                                             <h4 class="h5 timeline-title"><strong>Pengesahan
                                                                     Dokumen</strong>
                                                             </h4>
-                                                            <p>{{ $permohonan->updated_at }}</p>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_pengesahan)) }}
+                                                            </p>
                                                             <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
                                                                 Pemproses </p>
                                                         </div>
@@ -358,6 +363,8 @@
                                                         <div class="timeline-heading">
                                                             {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Tapisan PDRM</strong></h4>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_semakan_pdrm)) }}
+                                                            </p>
                                                             <p>
                                                                 Proses tapisan rekod jenayah oleh Pegawai PDRM
                                                             </p>
@@ -372,6 +379,8 @@
                                                         <div class="timeline-heading">
                                                             {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_sokongan)) }}
+                                                            </p>
                                                             <p>
                                                                 Proses syor/sokong permohonan oleh Pegawai Penyokong
                                                             </p>
@@ -386,6 +395,8 @@
                                                         <div class="timeline-heading">
                                                             {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Kelulusan</strong></h4>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_diluluskan)) }}
+                                                            </p>
                                                             <p>
                                                                 Proses kelulusan permohonan oleh Pegawai Pelulus
                                                             </p>
@@ -449,7 +460,8 @@
                                                             <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                     Permohonan</strong>
                                                             </h4>
-                                                            <p>{{ $permohonan->created_at }}</p>
+                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
+                                                            </p>
                                                             <p>Permohonan anda telah dihantar dan diterima oleh Pihak
                                                                 KPDNHEP
                                                             </p>

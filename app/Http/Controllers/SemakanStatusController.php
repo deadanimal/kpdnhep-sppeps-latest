@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permohonan;
+use App\Models\User;
 
 class SemakanStatusController extends Controller
 {
@@ -21,12 +22,16 @@ class SemakanStatusController extends Controller
 
         // dd($request);
         if ($request->no_kp_or_permit != null) {
-            $permohonans = Permohonan::where([
+            $user = User::where([
                 ['no_kp', '=', $request->no_kp_or_permit]
             ])->orWhere([
                 ['no_permit', '=', $request->no_kp_or_permit]
-            ])->get();
+            ])->get()->first();
 
+            $permohonans = Permohonan::where([
+                ['user_id', '=', $user->id]
+            ])->orderBy('created_at', 'desc')->get()->first();
+            // dd($permohonans);
             $currentDate = date("Y-m-d");
 
             return view('global.semakan-status-eps-keputusan', [

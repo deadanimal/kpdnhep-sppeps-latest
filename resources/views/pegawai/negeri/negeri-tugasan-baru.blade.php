@@ -152,14 +152,14 @@
         </div>
     </div>
 
-    <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
+    {{-- <script src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/js/plugins/datatables.js"
         type="text/javascript"></script>
     <script type="text/javascript">
         const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
             searchable: false,
             fixedHeight: true
         });
-    </script>
+    </script> --}}
 
 
 @stop

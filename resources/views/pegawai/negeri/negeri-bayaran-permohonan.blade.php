@@ -195,12 +195,12 @@
                                                                                     name="no_permit">
                                                                             </div>
 
-                                                                            <label>No. Siri</label>
+                                                                            {{-- <label>No. Siri</label>
                                                                             <div class="input-group mb-3">
                                                                                 <input type="text"
                                                                                     class="form-control form-control-sm"
                                                                                     name="no_siri">
-                                                                            </div>
+                                                                            </div> --}}
 
                                                                             <div class="text-center">
                                                                                 <button type="button"

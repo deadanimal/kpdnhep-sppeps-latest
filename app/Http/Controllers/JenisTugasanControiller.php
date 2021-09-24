@@ -237,7 +237,9 @@ class JenisTugasanControiller extends Controller
         ])->orWhere([
             ['status_permohonan', '=', 'hantar_ke_penyokong_negeri'], ['negeri_kutipan_permit', '=', 'WP Putrajaya']
         ])->orWhere([
-            ['jenis_permohonan', '=', 'Pendua'], ['negeri_kutipan_permit', '=', 'WP Putrajaya']
+            ['jenis_permohonan', '=', 'Pendua'], ['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['status_permohonan', '=', 'hantar_ke_penyokong_negeri']
+        ])->orWhere([
+            ['jenis_permohonan', '=', 'Pendua'], ['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['status_permohonan', '=', 'hantar_ke_penyokong_hq']
         ])->get();
 
         return view('pegawai.penyokong.penyokong-hq-tugasan-baru', [

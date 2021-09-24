@@ -219,7 +219,7 @@
                                         </ul>
                                     </div>
 
-                                @elseif ($permohonan->status_permohonan == 'disemak pdrm')
+                                @elseif ($permohonan->status_permohonan == 'disemak pdrm' || $permohonan->status_permohonan == 'hantar_ke_penyokong_hq' || $permohonan->status_permohonan == 'hantar_ke_penyokong_negeri')
                                     <div class="platform-tour-wrapper py-3 ">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">

@@ -15,12 +15,12 @@
 
 </head>
 
-<body> 
+<body>
     {{-- <img src="assets/img/borang/1.png" alt="" height="950px"> --}}
     {{-- //left --}}
 
     <img src="storage/{{ $permohonan->gambar_pemohon }}" alt="gambar_passport"
-        style="height: 95px; position: absolute; left: 258px; top: 185px;">
+        style="height: 95px; width: 80px; position: absolute; left: 258px; top: 185px;">
 
     {{-- <img src="/assets/img/borang/Capture.PNG" alt="gambar_passport"
         style="height: 95px; position: absolute; left: 258px; top: 185px; border-style: solid;"> --}}
@@ -36,7 +36,6 @@
                         -
                         {{ date('d/m/y', strtotime($permohonan->tarikh_tamat_permit)) }} </p>
 
-
                     {{-- </strong> --}}
                 </b>
             </small>
@@ -46,7 +45,7 @@
     {{-- //right --}}
 
     <img src="storage/{{ $permohonan->gambar_pemohon }}" alt="gambar_passport"
-        style="height: 95px; position: absolute; left: 573px; top: 185px;">
+        style="height: 95px; width: 80px; position: absolute; left: 573px; top: 185px;">
 
     <div style="position: absolute; left: 380px; top: 190px; width:5cm">
         <p style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-transform: uppercase;">

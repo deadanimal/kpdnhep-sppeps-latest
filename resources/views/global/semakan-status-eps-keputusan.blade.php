@@ -29,23 +29,24 @@
                                         </tr>
 
                                         @if ($carian == 'kp')
-                                            @foreach ($keputusan as $keputusan)
 
-                                                <tr>
-                                                    <!-- <td>1</td> -->
-                                                    <td>{{ $keputusan->no_kp }}</td>
-                                                    <td>{{ $keputusan->nama }}</td>
-                                                    <td>{{ $keputusan->no_permit }}</td>
-                                                    <td>
-                                                        @if ($keputusan->tarikh_diluluskan <= $currentDate && $keputusan->tarikh_tamat_permit >= $currentDate)
-                                                            <span class="badge badge-success">{{ __('landing.aktif') }}</span>
-                                                        @else
-                                                            <span class="badge badge-danger">{{ __('landing.tidak_aktif') }} </span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
 
-                                            @endforeach
+                                            <tr>
+                                                <!-- <td>1</td> -->
+                                                <td>{{ $keputusan->no_kp }}</td>
+                                                <td>{{ $keputusan->nama }}</td>
+                                                <td>{{ $keputusan->no_permit }}</td>
+                                                <td>
+                                                    @if ($currentDate >= $keputusan->tarikh_diluluskan && $currentDate <= $keputusan->tarikh_tamat_permit)
+                                                        <span class="badge badge-success">{{ __('landing.aktif') }}</span>
+                                                    @else
+                                                        <span class="badge badge-danger">{{ __('landing.tidak_aktif') }}
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+
+
 
                                         @elseif ($carian == 'qr')
                                             <tr>
@@ -55,9 +56,11 @@
                                                 <td>{{ $keputusan->no_permit }}</td>
                                                 <td>
                                                     @if ($keputusan->tarikh_diluluskan <= $currentDate && $keputusan->tarikh_tamat_permit >= $currentDate)
-                                                        <span class="badge badge-success">{{ __('landing.aktif') }}</span>
+                                                        <span
+                                                            class="badge badge-success">{{ __('landing.aktif') }}</span>
                                                     @else
-                                                        <span class="badge badge-danger">{{ __('landing.tidak_aktif') }}</span>
+                                                        <span
+                                                            class="badge badge-danger">{{ __('landing.tidak_aktif') }}</span>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -69,8 +72,8 @@
                                     </table>
                                 </div>
                                 <!-- <ng-template #null>
-                                                    <p>Your data does not exist. Please check your entered number or contact administrator for help.</p>
-                                                </ng-template> -->
+                                                        <p>Your data does not exist. Please check your entered number or contact administrator for help.</p>
+                                                    </ng-template> -->
                             </div>
                             <!-- add padding top -->
                             <div class="p-3 d-flex justify-content-center">

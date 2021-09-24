@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Storage;
 
 
 # import Validator
@@ -489,7 +490,7 @@ class PermohonanController extends Controller
         }
         if ($user_role == 'pegawai_hq') {
 
-           
+
             $userrole = Auth::user()->roles;
             foreach ($userrole as $user) {
                 if ($user->name == "pemproses_negeri") {
@@ -545,7 +546,8 @@ class PermohonanController extends Controller
         }
     }
 
-    public function show_pegawai_hq($id){
+    public function show_pegawai_hq($id)
+    {
 
         // dd($id);
         $permohonan = Permohonan::find($id);
@@ -573,6 +575,8 @@ class PermohonanController extends Controller
                     if ($request->tindakan == "Permohonan Lengkap") {
                         $permohonan->status_permohonan = "hantar_ke_pemproses_hq";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $permohonan->tarikh_pengesahan = date('Y-m-d');
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -602,6 +606,8 @@ class PermohonanController extends Controller
                     if ($request->tindakan == "Permohonan Lengkap") {
                         $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $permohonan->tarikh_pengesahan = date('Y-m-d');
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -638,6 +644,8 @@ class PermohonanController extends Controller
                     $permohonan->tempoh_kelulusan =  $request->tempoh_kelulusan;
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
 
+                    $permohonan->tarikh_sokongan = date('Y-m-d');
+
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
                     $audit->nama_pegawai = $user->name;
@@ -663,16 +671,6 @@ class PermohonanController extends Controller
                 $permohonan->save();
 
                 return redirect('/penyokong_negeri_tugasan_selesai');
-
-                // $permohonans = Permohonan::where([
-                //     ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
-                // ])->orWhere([
-                //     ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'tidak_disokong_negeri']
-                // ])->get();
-
-                // return view('pegawai.negeri.negeri-tugasan-selesai', [
-                //     'permohonan' => $permohonans
-                // ]);
             } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
 
                 $permohonan->status_permohonan = $request->tindakan;
@@ -695,7 +693,7 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Meluluskan permohonan ' . $permohonan->id;
+                    $audit->description = 'Meluluskan permohonan ' . $permohonan->no_kp;
                     $audit->save();
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
                     $permohonan->bayaran_fi = 20;
@@ -708,7 +706,7 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Tidak meluluskan permohonan ' . $permohonan->id;
+                    $audit->description = 'Tidak meluluskan permohonan ' . $permohonan->no_kp;
                     $audit->save();
                 }
 
@@ -717,6 +715,13 @@ class PermohonanController extends Controller
 
                     $user->status_permohonan = "tidak_diluluskan";
                     $user->save();
+                } else if ($request->tindakan == "Diluluskan") {
+                    $user = User::find($permohonan->user_id);
+
+                    $user->status_permohonan = "diluluskan";
+                    $user->save();
+
+                    $permohonan->tarikh_diluluskan = date('Y-m-d');
                 }
 
 
@@ -734,12 +739,14 @@ class PermohonanController extends Controller
 
             return redirect('/tugasan-selesai');
         } else if ($user_role == 'pegawai_hq') {
-            
+
             if ($request->jenis_tindakan == "semakan_permohonan") {
                 if ($permohonan->jenis_permohonan == "Baharu" || $permohonan->jenis_permohonan == "Pembaharuan" || $permohonan->jenis_permohonan == "Rayuan") {
                     if ($request->tindakan == "Permohonan Lengkap") {
                         $permohonan->status_permohonan = "hantar_ke_pemproses_hq";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $permohonan->tarikh_pengesahan = date('Y-m-d');
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -769,6 +776,8 @@ class PermohonanController extends Controller
                     if ($request->tindakan == "Permohonan Lengkap") {
                         $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
+
+                        $permohonan->tarikh_pengesahan = date('Y-m-d');
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -855,6 +864,8 @@ class PermohonanController extends Controller
                     $permohonan->tempoh_kelulusan =  $request->tempoh_kelulusan;
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
 
+                    $permohonan->tarikh_sokongan = date('Y-m-d');
+
                     $permohonan->save();
                     // $mael = "1";
                     $audit = new Audit;
@@ -891,6 +902,14 @@ class PermohonanController extends Controller
                 $permohonan->catatan_pelulus = $request->catatan_pelulus;
 
                 if ($request->tindakan == "Diluluskan") {
+
+                    // $permohonan->tarikh_pengesahan = date('Y-m-d H:i:s');
+
+                    $user = User::find($permohonan->user_id);
+
+                    $user->status_permohonan = "diluluskan";
+                    $user->save();
+
                     if ($permohonan->tempoh_kelulusan == "1 tahun") {
                         $permohonan->bayaran_fi = 10;
                         $permohonan->tarikh_diluluskan = date("Y-m-d");
@@ -983,6 +1002,8 @@ class PermohonanController extends Controller
             } else {
                 $permohonan->rekod_jenayah = $request->tindakan;
                 $permohonan->status_permohonan = 'disemak pdrm';
+
+                $permohonan->tarikh_semakan_pdrm = date('Y-m-d');
 
                 $permohonan->catatan_pdrm = $request->catatan_pdrm;
                 $permohonan->save();
@@ -1570,8 +1591,20 @@ class PermohonanController extends Controller
                 'user' => $user,
                 'lesen' => $lesen_memandus
             ]);
+
             $nama_lesen = time() . '-permohonan_baharu';
-            return $pdf->download($nama_lesen . '.pdf');
+            
+            Storage::put('/pdf/' . $nama_lesen, $pdf->output());
+
+            $file = public_path()."/storage/pdf/" . $nama_lesen;
+
+            $headers = [
+                'Content-Type' => 'application/pdf',
+            ];
+
+            return response()->download($file, $nama_lesen.'.pdf', $headers);
+
+            // return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Pembaharuan") {
             $pdf = PDF::loadView('pdf.permohonan_baharu', [
                 'masa' => time(),
