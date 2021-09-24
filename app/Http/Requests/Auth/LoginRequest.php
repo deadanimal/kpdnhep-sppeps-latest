@@ -75,6 +75,21 @@ class LoginRequest extends FormRequest
         RateLimiter::clear($this->throttleKey());
     }
 
+    // public function authenticate_pegawai()
+    // {
+    //     // $this->ensureIsNotRateLimited();
+
+    //     if (! Auth::attempt($this->only('no_kp'), $this->boolean('remember'))) {
+    //         RateLimiter::hit($this->throttleKey());
+
+    //         throw ValidationException::withMessages([
+    //             'email' => __('auth.failed'),
+    //         ]);
+    //     }
+
+    //     RateLimiter::clear($this->throttleKey());
+    // }
+
     /**
      * Ensure the login request is not rate limited.
      *

@@ -147,7 +147,7 @@ class ProfilController extends Controller
 
         if ($respond == 200) {
             //dd("success");
-            $request->authenticate();
+            $request->authenticate_pegawai();
             $request->session()->regenerate();
             //return redirect('/appp');
             return redirect()->intended(RouteServiceProvider::HOME);
@@ -192,6 +192,7 @@ class ProfilController extends Controller
 
             $request->authenticate();
             $request->session()->regenerate();
+            
             return redirect('/appp');
         } else {
             return redirect('/login')->withErrors('Salah username/kata laluan');
@@ -208,33 +209,33 @@ class ProfilController extends Controller
     public function register(Request $request)
     {
 
-        $rules = [
-            'email' => ['required'],
-            'password' => [
-                'required',
-                Password::min(8)
-                    ->letters()
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-            ],
-            'password_confirmation' => [
-                'same:new_password',
-                'required',
-            ],
-        ];
+        // $rules = [
+        //     'email' => ['required'],
+        //     'password' => [
+        //         'required',
+        //         Password::min(8)
+        //             ->letters()
+        //             ->mixedCase()
+        //             ->numbers()
+        //             ->symbols()
+        //     ],
+        //     'password_confirmation' => [
+        //         'same:new_password',
+        //         'required',
+        //     ],
+        // ];
 
-        $validator = Validator::make($request->all(), $rules, $messages = [
-            'required' => ':attribute is required',
-            // 'captcha' => 'captcha tidak betul',
-            'same' => 'New password not match',
-            // 'min' => 'Password must be minimum 8 digit',
-            // 'regex' => 'Password must be in alphanumeric'
-        ]);
+        // $validator = Validator::make($request->all(), $rules, $messages = [
+        //     'required' => ':attribute is required',
+        //     // 'captcha' => 'captcha tidak betul',
+        //     'same' => 'New password not match',
+        //     // 'min' => 'Password must be minimum 8 digit',
+        //     // 'regex' => 'Password must be in alphanumeric'
+        // ]);
 
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator->errors());
-        };
+        // if ($validator->fails()) {
+        //     return Redirect::back()->withErrors($validator->errors());
+        // };
 
         $user = new User();
 
