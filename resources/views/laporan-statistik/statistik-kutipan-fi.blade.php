@@ -51,7 +51,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -73,7 +73,7 @@ echo $year; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -97,7 +97,7 @@ echo $year; ?>
                                                     Jantina</th>
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Jumlah</th>
+                                                    Jumlah Bayaran (RM)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -126,14 +126,14 @@ echo $year; ?>
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
 
                                 <div class="row mb-0">
                                     <div class="col">
-                                        <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                        <h5> Kutipan FI Mengikut Negeri</h5>
                                         <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
 echo $year; ?>
                                             sahaja</label>
@@ -148,13 +148,13 @@ echo $year; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
                                 <div class="row mb-0">
                                     <div class="col">
-                                        <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                        <h5> Kutipan FI Mengikut Negeri</h5>
                                     </div>
                                 </div>
                             </div>
@@ -169,10 +169,10 @@ echo $year; ?>
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Jumlah</th>
+                                                    Jumlah Bayaran (RM)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -181,7 +181,7 @@ echo $year; ?>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $loop->index + 1 }}</td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kutipanfinegeri->negeri }}
+                                                        {{ $kutipanfinegeri->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $kutipanfinegeri->jumlah }}
@@ -233,13 +233,13 @@ echo $year; ?>
                                                     No. Kad Pengenalan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Jenis Permohonan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Jumlah Bayaran</th>
+                                                    Jumlah Bayaran (RM)</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Tempoh Sah Laku</th>
@@ -260,7 +260,7 @@ echo $year; ?>
                                                         {{ $kutipanfi->no_kp }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kutipanfi->negeri }}
+                                                        {{ $kutipanfi->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $kutipanfi->jenis_permohonan }}

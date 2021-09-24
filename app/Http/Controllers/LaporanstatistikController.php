@@ -49,27 +49,27 @@ class LaporanstatistikController extends Controller
             $kelulusannegeri = Permohonan::where('status_permohonan', 'Diluluskan')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         } else {
             $kelulusannegeri = Permohonan::where('status_permohonan', 'Diluluskan')
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         }
 
         //graf negeri
         $mohon = Permohonan::where('status_permohonan', 'Diluluskan')
-            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
             ->whereYear('created_at', date('Y'))
-            ->groupBy('monthname', 'negeri')
+            ->groupBy('monthname', 'negeri_kutipan_permit')
             ->orderBy('monthname')
             ->get();
 
         $arraynegeri = [];
         foreach ($mohon as $mohons) {
-            $arraynegeri[] = ['monthname' => $mohons->monthname, $mohons->negeri => $mohons->jumlah];
+            $arraynegeri[] = ['monthname' => $mohons->monthname, $mohons->negeri_kutipan_permit => $mohons->jumlah];
         }
 
         //graf jantina
@@ -126,27 +126,27 @@ class LaporanstatistikController extends Controller
             $penolakannegeri = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         } else {
             $penolakannegeri = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         }
 
         //graf negeri
         $tolak = Permohonan::where('status_permohonan', 'Tidak Diluluskan')
-            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
             ->whereYear('created_at', date('Y'))
-            ->groupBy('monthname', 'negeri')
+            ->groupBy('monthname', 'negeri_kutipan_permit')
             ->orderBy('monthname')
             ->get();
 
         $arraynegeri = [];
         foreach ($tolak as $tolaks) {
-            $arraynegeri[] = ['monthname' => $tolaks->monthname, $tolaks->negeri => $tolaks->jumlah];
+            $arraynegeri[] = ['monthname' => $tolaks->monthname, $tolaks->negeri_kutipan_permit => $tolaks->jumlah];
         }
 
         //graf jantina
@@ -198,25 +198,25 @@ class LaporanstatistikController extends Controller
         if (($request->startdate && $request->enddate) != null) {
             $sejarahnegeri = Permohonan::whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         } else {
-            $sejarahnegeri = Permohonan::select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+            $sejarahnegeri = Permohonan::select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         }
 
         //graf negeri
         $grafsejarahnegeri = Permohonan::whereYear('created_at', date('Y'))
-            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
-            ->groupBy('monthname', 'negeri')
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+            ->groupBy('monthname', 'negeri_kutipan_permit')
             ->orderBy('monthname')
             ->get();
 
         $arraynegeri = [];
         foreach ($grafsejarahnegeri as $grafsejarahnegeris) {
-            $arraynegeri[] = ['monthname' => $grafsejarahnegeris->monthname, $grafsejarahnegeris->negeri => $grafsejarahnegeris->jumlah];
+            $arraynegeri[] = ['monthname' => $grafsejarahnegeris->monthname, $grafsejarahnegeris->negeri_kutipan_permit => $grafsejarahnegeris->jumlah];
         }
 
         //graf jantina
@@ -376,28 +376,28 @@ class LaporanstatistikController extends Controller
             $pegangpermitnegeri = Permohonan::where('cetak_status', '=', '1')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         } else {
             $pegangpermitnegeri = Permohonan::where('cetak_status', '=', '1')
-                ->select('negeri', DB::raw('count(*) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         }
 
         //graf negeri
         $peggpermit = DB::table('permohonans')
             ->where('cetak_status', '=', '1')
-            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('count(*) as jumlah'))
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri_kutipan_permit', DB::raw('count(*) as jumlah'))
             ->whereYear('created_at', date('Y'))
-            ->groupBy('monthname', 'negeri')
+            ->groupBy('monthname', 'negeri_kutipan_permit')
             ->orderBy('monthname')
             ->get();
 
         $arraynegeri = [];
         foreach ($peggpermit as $peggpermits) {
-            $arraynegeri[] = ['monthname' => $peggpermits->monthname, $peggpermits->negeri => $peggpermits->jumlah];
+            $arraynegeri[] = ['monthname' => $peggpermits->monthname, $peggpermits->negeri_kutipan_permit => $peggpermits->jumlah];
         }
 
         //graf jantina
@@ -451,26 +451,26 @@ class LaporanstatistikController extends Controller
         if (($request->startdate && $request->enddate) != null) {
             $kutipanfinegeri = Permohonan::whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
-                ->select('negeri', DB::raw('sum(bayaran_fi) as jumlah'))
-                ->groupBy('negeri')
+                ->select('negeri_kutipan_permit', DB::raw('sum(bayaran_fi) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         } else {
-            $kutipanfinegeri = Permohonan::select('negeri', DB::raw('sum(bayaran_fi) as jumlah'))
-                ->groupBy('negeri')
+            $kutipanfinegeri = Permohonan::select('negeri_kutipan_permit', DB::raw('sum(bayaran_fi) as jumlah'))
+                ->groupBy('negeri_kutipan_permit')
                 ->get();
         }
 
         //graf negeri
         $kutipan = DB::table('permohonans')
-            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri', DB::raw('sum(bayaran_fi) as jumlah'))
+            ->select(DB::raw("CONCAT_WS('-',MONTHNAME(created_at),YEAR(created_at)) as monthname"), 'negeri_kutipan_permit', DB::raw('sum(bayaran_fi) as jumlah'))
             ->whereYear('created_at', date('Y'))
-            ->groupBy('monthname', 'negeri')
+            ->groupBy('monthname', 'negeri_kutipan_permit')
             ->orderBy('monthname')
             ->get();
 
         $arraynegeri = [];
         foreach ($kutipan as $kutipans) {
-            $arraynegeri[] = ['monthname' => $kutipans->monthname, $kutipans->negeri => $kutipans->jumlah];
+            $arraynegeri[] = ['monthname' => $kutipans->monthname, $kutipans->negeri_kutipan_permit => $kutipans->jumlah];
         }
 
         //graf jantina

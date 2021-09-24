@@ -941,7 +941,7 @@
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/laporan-statistik/laporan-senarai-hitam">
                                             <span class="sidenav-mini-icon"> F </span>
-                                            <span class="sidenav-normal"> Laporan Permohonan Disenarai Hitam</span>
+                                            <span class="sidenav-normal"> Laporan Pemohon Disenarai Hitam</span>
                                         </a>
                                     </li>
                                     <li class="nav-item ">

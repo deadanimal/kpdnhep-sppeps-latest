@@ -50,7 +50,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -72,7 +72,7 @@ echo $year; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -125,7 +125,7 @@ echo $year; ?>
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -147,7 +147,7 @@ echo $year; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -168,7 +168,7 @@ echo $year; ?>
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                     Jumlah</th>
@@ -180,7 +180,7 @@ echo $year; ?>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $loop->index + 1 }}</td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kelulusannegeri->negeri }}
+                                                        {{ $kelulusannegeri->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $kelulusannegeri->jumlah }}
@@ -269,7 +269,7 @@ echo $year; ?>
                                                     No. Kad Pengenalan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -284,10 +284,10 @@ echo $year; ?>
                                                         {{ $kelulusan->jenis_permohonan }}
                                                     </td> --}}
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kelulusan->created_at }}
+                                                        {{ date('d-m-Y', strtotime($kelulusan->tarikh_diluluskan)) }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kelulusan->updated_at }}
+                                                        {{ date('d-m-Y', strtotime($kelulusan->tarikh_tamat_permit)) }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $kelulusan->nama }}
@@ -296,7 +296,7 @@ echo $year; ?>
                                                         {{ $kelulusan->no_kp }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kelulusan->negeri }}
+                                                        {{ $kelulusan->negeri_kutipan_permit }}
                                                     </td>
                                                 </tr>
 

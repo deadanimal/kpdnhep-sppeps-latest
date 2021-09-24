@@ -50,7 +50,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -83,7 +83,7 @@
 
                             <div class="card-body p-3">
                                 <div class="table-responsive">
-                                    <table class="table align-items-center mb-0" id="tableksejarahjantina">
+                                    <table class="table align-items-center mb-0" id="tablesejarahjantina">
                                         <thead>
                                             <tr>
                                                 <th
@@ -123,7 +123,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -164,7 +164,7 @@
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                     Jumlah</th>
@@ -176,7 +176,7 @@
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $loop->index + 1 }}</td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $sejarahnegeri->negeri }}
+                                                        {{ $sejarahnegeri->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $sejarahnegeri->jumlah }}
@@ -225,7 +225,7 @@
                                                     No. Kad Pengenalan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Status Permohonan</th>
@@ -237,15 +237,15 @@
                                         <tbody>
                                             @foreach ($sejarahs as $sejarah)
                                                 <tr>
-                                                    <td class="text-sm font-weight-normal">{{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm font-weight-normal">{{ $sejarah->nama }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->nama }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $sejarah->no_kp }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->no_kp }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $sejarah->negeri }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->negeri_kutipan_permit }}
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">
-                                                        {{ $sejarah->status_permohonan }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{-- {{ $sejarah->status_permohonan }} --}}
                                                         @if ($sejarah->status_permohonan == 'Diluluskan')
                                                             Diluluskan
                                                         @elseif ($sejarah->status_permohonan == 'Tidak Diluluskan')
@@ -254,7 +254,7 @@
                                                             Dalam Proses
                                                         @endif
                                                     </td>
-                                                    <td class="text-sm font-weight-normal">{{ $sejarah->updated_at }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->updated_at->format('d-m-Y') }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -471,7 +471,7 @@
         });
 
         $(document).ready(function() {
-            $('#tablekesejarahjantina').DataTable({
+            $('#tablesejarahjantina').DataTable({
                 dom: 'Bfrtip',
                 "searching": false,
                 "paging": false,

@@ -50,7 +50,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -123,7 +123,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -246,7 +246,7 @@
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->negeri }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->updated_at }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->updated_at->format('d-m-Y') }}
                                                     </td>
                                                 </tr>
                                             @endforeach

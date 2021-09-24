@@ -141,13 +141,19 @@ class SemakanIcController extends Controller
             ]
         ])->json()['response'];
 
+        // $response = Http::withToken($token_janaan)->post($url, [
+        //     "name" => "getMyIdentity",
+        //     "param" => [
+        //         "nokp" => $idpengguna,
+        //     ]
+        // ])->object();
+
+
         //$respond = [ $response = 200,];
         $respond = $pengguna['status'];
         $pemohon = $pengguna['result'];
 
         $ReplyIndicator = $pengguna['result']['ReplyIndicator'];
-
-        //dd($pemohon);
 
         if ($respond == 200 && $ReplyIndicator != 0) {
             return view('auth.register_', [

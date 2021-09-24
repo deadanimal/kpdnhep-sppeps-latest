@@ -50,7 +50,7 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
@@ -123,14 +123,14 @@
 
             <div class="container-fluid mt-4">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card m-2">
 
                             <div class="card-header" style="background-color: #f7e8ff;">
 
                                 <div class="row mb-0">
                                     <div class="col">
-                                        <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                        <h5> Permit Ditolak Mengikut Negeri</h5>
                                         <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
                                     </div>
                                 </div>
@@ -143,13 +143,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
+                    <div class="col-lg-4 d-flex">
                         <div class="card m-2">
                             <div class="card-header" style="background-color: #f7e8ff;">
 
                                 <div class="row mb-0">
                                     <div class="col">
-                                        <h5> Kelulusan Permit Mengikut Negeri</h5>
+                                        <h5> Permit Ditolak Mengikut Negeri</h5>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                     Jumlah</th>
@@ -176,7 +176,7 @@
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $loop->index + 1 }}</td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $penolakannegeri->negeri }}
+                                                        {{ $penolakannegeri->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $penolakannegeri->jumlah }}
@@ -190,25 +190,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid mt-4">
-                <div class="card m-2">
-
-                    <div class="card-header" style="background-color: #f7e8ff;">
-                        <div class="row mb-0">
-                            <div class="col">
-                                <h5> Permit Ditolak mengikut Negeri</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body p-3">
-                        <div class="chart" style="height: initial;">
-                            <div class="amchart" id="chartdiv2" style="height: 400px;"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -246,7 +227,7 @@
                                                     No. Kad Pengenalan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Negeri</th>
+                                                    Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Tarikh Permit Ditolak</th>
@@ -263,9 +244,9 @@
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">{{ $penolakan->no_kp }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->negeri }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->negeri_kutipan_permit }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->updated_at }}
+                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->updated_at->format('d-m-Y') }}
                                                     </td>
                                                 </tr>
 
