@@ -59,7 +59,7 @@ class CustomAuthController extends Controller
             $user = User::where('no_kp', '=', $request->no_kp)->first();
             // dd($user);
             if (empty($user)) {
-                abort(404);
+                return redirect("/login_")->withErrors('No. kad pengenalan atau kata laluan tidak sah');
             }
             if (Auth::loginUsingId($user->id)) {
                 // dd('s');

@@ -71,8 +71,7 @@
 
         .footer {
             position: fixed;
-            margin-top: 10px
-            left: 0;
+            margin-top: 10px left: 0;
             bottom: 0;
             width: 100%;
             /* text-align: center; */
@@ -169,8 +168,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
 
-                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link" aria-controls="dashboardsExamples"
-                        role="button" aria-expanded="false">
+                    <a href="/dashboard" href="#dashboardsExamples" class="nav-link"
+                        aria-controls="dashboardsExamples" role="button" aria-expanded="false">
 
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -1149,13 +1148,15 @@
                                         </div>
                                     </a>
                                 </li>
-                                <li class="mb-2">
-                                    <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan_pegawai">
-                                        <div class="d-flex py-1">
-                                            <span class="d-sm-inline d-none text-dark">Tukar Kata Laluan</span>
-                                        </div>
-                                    </a>
-                                </li>
+                                @can('isPegawaiPdrm')
+                                    <li class="mb-2">
+                                        <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan_pegawai">
+                                            <div class="d-flex py-1">
+                                                <span class="d-sm-inline d-none text-dark">Tukar Kata Laluan</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endcan
                                 <li class="mb-2">
                                     <form method="POST" action="/logout">
                                         @csrf
@@ -1288,7 +1289,8 @@
                 <hr class="horizontal dark my-sm-4">
                 <a class="btn bg-gradient-info w-100"
                     href="https://www.creative-tim.com/product/soft-ui-dashboard-pro">Buy now</a>
-                <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard">Free
+                <a class="btn bg-gradient-dark w-100"
+                    href="https://www.creative-tim.com/product/soft-ui-dashboard">Free
                     demo</a>
                 <a class="btn btn-outline-dark w-100"
                     href="https://www.creative-tim.com/learning-lab/bootstrap/overview/soft-ui-dashboard">View

@@ -92,7 +92,7 @@
                                                 <span class="text-secondary text-sm font-weight-bold">{{ $loop->index+1}}</span>
                                             </td>
                                             <td>
-                                                <span class="text-secondary text-sm font-weight-bold">{{$permohonan->updated_at}}</span>
+                                                <span class="text-secondary text-sm font-weight-bold">{{ date('d-m-Y', strtotime($permohonan->updated_at)) }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold">{{$permohonan->jenis_permohonan}}</span>
@@ -104,7 +104,7 @@
                                                 <span class="text-secondary text-sm font-weight-bold">{{$permohonan->no_kp}}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->negeri}}</span>
+                                                <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->negeri_kutipan_permit}}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-sm font-weight-bold"> {{$permohonan->catatan_pdrm}} </span>

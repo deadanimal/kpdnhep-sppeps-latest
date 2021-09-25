@@ -4,7 +4,7 @@
 
     <div class="container-fluid py-4">
 
-        <div class="p-3">
+        <div class="p-1">
 
             <div>
                 <h4>Laporan Pemohon Disenarai Hitam</h4>
@@ -37,8 +37,9 @@
 
                                         <button class="btn  bg-gradient-info text-uppercases m-2 " type="submit"
                                             name="search"><i class="fas fa-search"></i> cari</button>
-                                        <a href="/laporan-statistik/laporan-senarai-hitam" class="btn  bg-gradient-danger text-uppercases m-2" type="reset"
-                                            name="search" (click)="reset()">set
+                                        <a href="/laporan-statistik/laporan-senarai-hitam"
+                                            class="btn  bg-gradient-danger text-uppercases m-2" type="reset" name="search"
+                                            (click)="reset()">set
                                             semula</a>
                                     </div>
                                 </div>
@@ -58,7 +59,9 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Pemohon Disenarai Hitam Mengikut Jantina</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
                                     </div>
                                 </div>
                             </div>
@@ -98,19 +101,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($senaraihitamjantinas as $senaraihitamjantina)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $senaraihitamjantina->jantina }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $senaraihitamjantina->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Lelaki
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamjantinalelakis == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamjantinalelakis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perempuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamjantinaperempuans == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamjantinaperempuans }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -131,7 +149,9 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Pemohon Disenarai Hitam Mengikut Negeri</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
                                     </div>
                                 </div>
                             </div>
@@ -171,19 +191,230 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($senaraihitamnegeris as $senaraihitamnegeri)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $senaraihitamnegeri->negeri }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $senaraihitamnegeri->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerijohor == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerijohor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerikedah == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerikedah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerikelantan == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerikelantan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerimelaka == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerimelaka }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerinegerisembilan == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerinegerisembilan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeripahang == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeripahang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeripulaupinang == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeripulaupinang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeriperak == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeriperak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeriperlis == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeriperlis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeriselangor == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeriselangor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeriterengganu == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeriterengganu }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerisabah == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerisabah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerisarawak == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerisarawak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerikualalumpur == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerikualalumpur }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegerilabuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegerilabuan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($senaraihitamnegeriputrajaya == null)
+                                                        0
+                                                    @else
+                                                        {{ $senaraihitamnegeriputrajaya }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -214,8 +445,7 @@
                                     <table class="table align-items-center mb-0" id="tablesenaraihitam">
                                         <thead>
                                             <tr>
-                                                <th
-                                                    class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
+                                                <th class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
@@ -237,16 +467,22 @@
                                         <tbody>
                                             @foreach ($senaraihitams as $senaraihitam)
                                                 <tr>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->no_permit }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitam->no_permit }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->name }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitam->name }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->no_kp }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitam->no_kp }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->negeri }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitam->negeri }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $senaraihitam->updated_at->format('d-m-Y') }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $senaraihitam->updated_at->format('d-m-Y') }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -267,10 +503,14 @@
 
     <!-- Styles -->
     <style>
-        #chartdiv,
-        #chartdiv2 {
+        #chartdiv {
             width: 100%;
             height: 500px;
+        }
+
+        #chartdiv2 {
+            width: 100%;
+            min-height: 700px;
         }
 
     </style>
@@ -324,22 +564,22 @@
                 return series;
             }
 
+            createSeries("Johor", "Johor");
             createSeries("Kedah", "Kedah");
-            createSeries("Selangor", "Selangor");
-            createSeries("Pulau Pinang", "Pulau Pinang");
-            createSeries("Perak", "Perak");
+            createSeries("Kelantan", "Kelantan");
             createSeries("Melaka", "Melaka");
             createSeries("Negeri Sembilan", "Negeri Sembilan");
-            createSeries("Johor", "Johor");
             createSeries("Pahang", "Pahang");
+            createSeries("Pulau Pinang", "Pulau Pinang");
+            createSeries("Perak", "Perak");
+            createSeries("Perlis", "Perlis");
+            createSeries("Selangor", "Selangor");
             createSeries("Terengganu", "Terengganu");
-            createSeries("Kelantan", "Kelantan");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
-            createSeries("WP Putrajaya", "W. P. Putrajaya");
             createSeries("WP Labuan", "W. P. Labuan");
-            createSeries("Perlis", "Perlis");
+            createSeries("WP Putrajaya", "W. P. Putrajaya");
 
             // Legend
             chart.legend = new am4charts.Legend();
@@ -484,6 +724,7 @@
                 dom: 'Bfrtip',
                 "searching": false,
                 "info": false,
+                "paging": false,
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',

@@ -91,7 +91,7 @@
                                                 </td>
                                                 <td>
                                                     <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $permohonan->created_at }}</span>
+                                                        class="text-secondary text-sm font-weight-bold">{{ date('d-m-Y', strtotime($permohonan->created_at)) }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold">

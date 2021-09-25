@@ -140,7 +140,7 @@
                                                 </td>
                                                 <td>
                                                     <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $permohonan->updated_at }}</span>
+                                                        class="text-secondary text-sm font-weight-bold">{{ date('d-m-Y', strtotime($permohonan->updated_at)) }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span
@@ -156,7 +156,7 @@
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $permohonan->negeri }}</span>
+                                                        class="text-secondary text-sm font-weight-bold">{{ $permohonan->negeri_kutipan_permit }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     @if ($permohonan->status_permohonan === 'hantar_ke_pemproses_hq')

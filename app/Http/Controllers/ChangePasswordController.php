@@ -45,8 +45,8 @@ class ChangePasswordController extends Controller
         $rules = [
             'current_password' => ['required', new MatchOldPassword],
             'new_password' => [
-                'required',
-                Password::min(8)
+                'required','min:8',
+                Password::min(0)
                     ->letters()
                     ->mixedCase()
                     ->numbers()
@@ -59,10 +59,10 @@ class ChangePasswordController extends Controller
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages = [
-            // 'required' => ':attribute is required',
-            // 'captcha' => 'captcha tidak betul',
-            'same' => 'New password not match',
-            // 'min' => 'Password must be minimum 8 digit',
+            'min'=>'Password must be at least 8 characters',
+            'required' => ':attribute is required',
+            'same' => 'New confirm password not match',
+            // 'new_password.Password::min(8)' => 'AAAAA',
             // 'regex' => 'Password must be in alphanumeric'
         ]);
 

@@ -4,7 +4,7 @@
 
     <div class="container-fluid py-4">
 
-        <div class="p-3">
+        <div class="p-1">
 
             <div>
                 <h4>Peratusan Permit Ditolak</h4>
@@ -37,8 +37,9 @@
 
                                         <button class="btn  bg-gradient-info text-uppercases m-2 " type="submit"
                                             name="search"><i class="fas fa-search"></i> cari</button>
-                                        <a href="/laporan-statistik/peratusan-permit-ditolak" class="btn  bg-gradient-danger text-uppercases m-2" type="reset"
-                                            name="search" (click)="reset()">set
+                                        <a href="/laporan-statistik/peratusan-permit-ditolak"
+                                            class="btn  bg-gradient-danger text-uppercases m-2" type="reset" name="search"
+                                            (click)="reset()">set
                                             semula</a>
                                     </div>
                                 </div>
@@ -58,7 +59,9 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Permit Ditolak mengikut Jantina</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
                                     </div>
                                 </div>
                             </div>
@@ -98,19 +101,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($penolakanjantinas as $penolakanjantina)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $penolakanjantina->jantina }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $penolakanjantina->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Lelaki
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakanjantinalelaki == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakanjantinalelaki }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perempuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakanjantinalelaki == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakanjantinalelaki }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -131,7 +149,9 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Permit Ditolak Mengikut Negeri</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
                                     </div>
                                 </div>
                             </div>
@@ -171,19 +191,230 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($penolakannegeris as $penolakannegeri)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $penolakannegeri->negeri_kutipan_permit }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $penolakannegeri->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerijohor == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerijohor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerikedah == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerikedah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerikelantan == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerikelantan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerimelaka == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerimelaka }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerinegerisembilan == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerinegerisembilan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeripahang == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeripahang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeripulaupinang == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeripulaupinang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeriperak == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeriperak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeriperlis == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeriperlis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeriselangor == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeriselangor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeriterengganu == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeriterengganu }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerisabah == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerisabah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerisarawak == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerisarawak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerikualalumpur == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerikualalumpur }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegerilabuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegerilabuan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($penolakannegeriputrajaya == null)
+                                                        0
+                                                    @else
+                                                        {{ $penolakannegeriputrajaya }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -213,8 +444,7 @@
                                     <table class="table align-items-center mb-0" id="tablepermitditolak">
                                         <thead>
                                             <tr>
-                                                <th
-                                                    class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
+                                                <th class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
@@ -236,17 +466,22 @@
                                         <tbody>
                                             @foreach ($penolakans as $penolakan)
                                                 <tr>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $penolakan->jenis_permohonan }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->nama }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $penolakan->nama }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->no_kp }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $penolakan->no_kp }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->negeri_kutipan_permit }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $penolakan->negeri_kutipan_permit }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $penolakan->updated_at->format('d-m-Y') }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $penolakan->updated_at->format('d-m-Y') }}
                                                     </td>
                                                 </tr>
 
@@ -268,10 +503,14 @@
 
     <!-- Styles -->
     <style>
-        #chartdiv,
-        #chartdiv2 {
+        #chartdiv {
             width: 100%;
             height: 500px;
+        }
+
+        #chartdiv2 {
+            width: 100%;
+            min-height: 700px;
         }
 
     </style>
@@ -325,22 +564,22 @@
                 return series;
             }
 
+            createSeries("Johor", "Johor");
             createSeries("Kedah", "Kedah");
-            createSeries("Selangor", "Selangor");
-            createSeries("Pulau Pinang", "Pulau Pinang");
-            createSeries("Perak", "Perak");
+            createSeries("Kelantan", "Kelantan");
             createSeries("Melaka", "Melaka");
             createSeries("Negeri Sembilan", "Negeri Sembilan");
-            createSeries("Johor", "Johor");
             createSeries("Pahang", "Pahang");
+            createSeries("Pulau Pinang", "Pulau Pinang");
+            createSeries("Perak", "Perak");
+            createSeries("Perlis", "Perlis");
+            createSeries("Selangor", "Selangor");
             createSeries("Terengganu", "Terengganu");
-            createSeries("Kelantan", "Kelantan");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
-            createSeries("WP Putrajaya", "W. P. Putrajaya");
             createSeries("WP Labuan", "W. P. Labuan");
-            createSeries("Perlis", "Perlis");
+            createSeries("WP Putrajaya", "W. P. Putrajaya");
 
             // Legend
             chart.legend = new am4charts.Legend();
@@ -486,6 +725,7 @@
                 dom: 'Bfrtip',
                 "searching": false,
                 "info": false,
+                "paging": false,
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',

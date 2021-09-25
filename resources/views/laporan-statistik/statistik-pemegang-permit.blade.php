@@ -5,7 +5,7 @@
     <div class="container-fluid py-4">
 
 
-        <div class="p-3">
+        <div class="p-1">
             <div>
                 <h4>Statistik Pemegang Permit</h4>
             </div>
@@ -59,7 +59,7 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Pemegang Permit yang Sah dan Aktif Mengikut Jantina</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
 echo $year; ?>
                                             sahaja</label>
                                     </div>
@@ -101,19 +101,34 @@ echo $year; ?>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($pegangpermitjantinas as $pegangpermitjantina)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $pegangpermitjantina->jantina }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $pegangpermitjantina->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Lelaki
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitjantinalelakis == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitjantinalelakis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perempuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitjantinaperempuans == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitjantinaperempuans }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -134,7 +149,7 @@ echo $year; ?>
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Pemegang Permit yang Sah dan Aktif Mengikut Negeri</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
 echo $year; ?>
                                             sahaja</label>
                                     </div>
@@ -176,19 +191,230 @@ echo $year; ?>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($pegangpermitnegeris as $pegangpermitnegeri)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $pegangpermitnegeri->negeri_kutipan_permit }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $pegangpermitnegeri->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerijohor == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerijohor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerikedah == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerikedah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerikelantan == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerikelantan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerimelaka == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerimelaka }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerinegerisembilan == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerinegerisembilan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeripahang == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeripahang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeripulaupinang == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeripulaupinang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeriperak == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeriperak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeriperlis == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeriperlis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeriselangor == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeriselangor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeriterengganu == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeriterengganu }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerisabah == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerisabah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerisarawak == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerisarawak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerikualalumpur == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerikualalumpur }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegerilabuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegerilabuan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($pegangpermitnegeriputrajaya == null)
+                                                        0
+                                                    @else
+                                                        {{ $pegangpermitnegeriputrajaya }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -294,10 +520,14 @@ echo $year; ?>
 
         <!-- Styles -->
         <style>
-            #chartdiv,
-            #chartdiv2 {
+            #chartdiv {
                 width: 100%;
                 height: 500px;
+            }
+
+            #chartdiv2 {
+                width: 100%;
+                min-height: 700px;
             }
 
         </style>
@@ -351,22 +581,22 @@ echo $year; ?>
                     return series;
                 }
 
+                createSeries("Johor", "Johor");
                 createSeries("Kedah", "Kedah");
-                createSeries("Selangor", "Selangor");
-                createSeries("Pulau Pinang", "Pulau Pinang");
-                createSeries("Perak", "Perak");
+                createSeries("Kelantan", "Kelantan");
                 createSeries("Melaka", "Melaka");
                 createSeries("Negeri Sembilan", "Negeri Sembilan");
-                createSeries("Johor", "Johor");
                 createSeries("Pahang", "Pahang");
+                createSeries("Pulau Pinang", "Pulau Pinang");
+                createSeries("Perak", "Perak");
+                createSeries("Perlis", "Perlis");
+                createSeries("Selangor", "Selangor");
                 createSeries("Terengganu", "Terengganu");
-                createSeries("Kelantan", "Kelantan");
                 createSeries("Sabah", "Sabah");
                 createSeries("Sarawak", "Sarawak");
                 createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
-                createSeries("WP Putrajaya", "W. P. Putrajaya");
                 createSeries("WP Labuan", "W. P. Labuan");
-                createSeries("Perlis", "Perlis");
+                createSeries("WP Putrajaya", "W. P. Putrajaya");
 
                 // Legend
                 chart.legend = new am4charts.Legend();
@@ -511,6 +741,7 @@ echo $year; ?>
                     dom: 'Bfrtip',
                     "searching": false,
                     "info": false,
+                    "paging": false,
                     pageLength: 4,
                     buttons: [{
                             extend: 'excelHtml5',

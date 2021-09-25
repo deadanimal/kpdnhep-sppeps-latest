@@ -96,6 +96,8 @@ class CreatePermohonansTable extends Migration
             $table->date('tarikh_semakan_pdrm')->nullable();
             $table->date('tarikh_sokongan')->nullable();
             $table->date('tarikh_diluluskan')->nullable();
+            $table->date('tarikh_bayaran')->nullable();
+            $table->date('tarikh_cetakan')->nullable();
             $table->date('tarikh_tamat_permit')->nullable();
             $table->string('bayaran_fi')->nullable();
 

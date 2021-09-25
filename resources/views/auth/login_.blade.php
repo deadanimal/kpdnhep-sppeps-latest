@@ -109,11 +109,11 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class="input-group mb-4 d-flex justify-content-end">
-                                        <a href="/lupa-kata-laluan">
+                                        {{-- <a href="/lupa-kata-laluan">
                                             <small>
                                                 Lupa Kata Laluan?
                                             </small>
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                                 <div class="form-group mt-3">

@@ -231,596 +231,134 @@
 
                         @if ($permohonan->jenis_permohonan == 'Baharu' || $permohonan->jenis_permohonan == 'Pembaharuan')
 
-                            @if ($permohonan->status_permohonan == 'hantar')
-                                <div class="container mb-5 ml-0">
-                                    <div class="row">
-                                        <div class="col-md offset-md-3"
-                                            style="margin-left: 5% !important; max-width: none; flex:none">
-                                            <!-- <h4>Latest News</h4> -->
-                                            <ul class="timeline">
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success"><i
-                                                            class="fas fa-file-alt text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                    Permohonan</strong>
-                                                            </h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
-                                                            </p>
-                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
-                                                                KPDNHEP
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            @elseif ($permohonan->status_permohonan == 'hantar_ke_pemproses_hq' ||
-                                $permohonan->status_permohonan == 'hantar ke pdrm' || $permohonan->status_permohonan ==
-                                'Dalam Proses')
-                                <div class="container mb-5 ml-0">
-                                    <div class="row">
-                                        <div class="col-md offset-md-3"
-                                            style="margin-left: 5% !important; max-width: none; flex:none">
-                                            <!-- <h4>Latest News</h4> -->
-                                            <ul class="timeline">
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success"><i
-                                                            class="fas fa-file-alt text-dark"></i>
+                            <div class="container mb-5 ml-0">
+                                <div class="row">
+                                    <div class="col-md offset-md-3"
+                                        style="margin-left: 5% !important; max-width: none; flex:none">
+
+                                        <ul class="timeline">
+                                            <li style="width: 90%;">
+                                                <div class="timeline-badge success"><i
+                                                        class="fas fa-file-alt text-dark"></i>
+                                                </div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+
+                                                        <h4 class="h5 timeline-title"><strong>Penerimaan
+                                                                Permohonan</strong>
+                                                        </h4>
+                                                        <p>{{ $permohonan->created_at }}</p>
+                                                        <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
+                                                        </p>
                                                     </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                    Permohonan</strong>
-                                                            </h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
-                                                            </p>
-                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
-                                                                KPDNHEP
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                </div>
+                                            </li>
+
+                                            @if ($permohonan->tarikh_pengesahan != null)
                                                 <li style="width: 90%;">
                                                     <div class="timeline-badge danger">
                                                         <i class="far fa-check-square text-dark"></i>
                                                     </div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Pengesahan
                                                                     Dokumen</strong>
                                                             </h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_pengesahan)) }}
-                                                            </p>
+                                                            <p>{{ $permohonan->tarikh_pengesahan }}</p>
                                                             <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
                                                                 Pemproses </p>
                                                         </div>
                                                     </div>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                            @endif
 
-                            @elseif ($permohonan->status_permohonan == 'disemak pdrm' || $permohonan->status_permohonan
-                                == 'hantar_ke_penyokong_hq' || $permohonan->status_permohonan ==
-                                'hantar_ke_penyokong_negeri')
-                                <div class="container mb-5 ml-0">
-                                    <div class="row">
-                                        <div class="col-md offset-md-3"
-                                            style="margin-left: 5% !important; max-width: none; flex:none">
-                                            <!-- <h4>Latest News</h4> -->
-                                            <ul class="timeline">
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success"><i
-                                                            class="fas fa-file-alt text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                    Permohonan</strong>
-                                                            </h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
-                                                            </p>
-                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
-                                                                KPDNHEP
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge danger">
-                                                        <i class="far fa-check-square text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Pengesahan
-                                                                    Dokumen</strong>
-                                                            </h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_pengesahan)) }}
-                                                            </p>
-                                                            <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
-                                                                Pemproses </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
+                                            @if ($permohonan->tarikh_semakan_pdrm != null)
                                                 <li style="width: 90%;">
                                                     <div class="timeline-badge primary"><i
                                                             class="fas fa-gavel text-dark"></i>
                                                     </div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Tapisan PDRM</strong></h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_semakan_pdrm)) }}
-                                                            </p>
+                                                            <p>{{ $permohonan->tarikh_semakan_pdrm }}</p>
                                                             <p>
                                                                 Proses tapisan rekod jenayah oleh Pegawai PDRM
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </li>
+                                            @endif
+
+                                            @if ($permohonan->tarikh_sokongan != null)
                                                 <li style="width: 90%;">
                                                     <div class="timeline-badge success">
                                                         <i class="fas fa-thumbs-up text-dark"></i>
                                                     </div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_sokongan)) }}
-                                                            </p>
+                                                            <p>{{ $permohonan->tarikh_sokongan }}</p>
                                                             <p>
                                                                 Proses syor/sokong permohonan oleh Pegawai Penyokong
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </li>
+
+                                            @endif
+
+                                            @if ($permohonan->tarikh_diluluskan != null)
                                                 <li style="width: 90%;">
                                                     <div class="timeline-badge danger">
                                                         <i class="fas fa-check-circle text-dark"></i>
                                                     </div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Kelulusan</strong></h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->tarikh_diluluskan)) }}
-                                                            </p>
+                                                            <p>{{ $permohonan->tarikh_diluluskan }}</p>
                                                             <p>
                                                                 Proses kelulusan permohonan oleh Pegawai Pelulus
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </li>
+                                            @endif
 
+                                            @if ($permohonan->tarikh_bayaran != null)
                                                 <li style="width: 90%;">
                                                     <div class="timeline-badge success">
                                                         <i class="fas fa-dollar-sign text-dark"></i>
                                                     </div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Bayaran</strong></h4>
+                                                            <p>{{ $permohonan->tarikh_bayaran }}</p>
                                                             <p>
                                                                 Proses bayaran EPS
-
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </li>
+                                            @endif
 
+                                            @if ($permohonan->tarikh_cetakan != null)
                                                 <li class="disable" style="width: 90%;">
                                                     <div class="timeline-badge primary">
                                                         <i class="far fa-address-card text-dark"></i>
                                                     </div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
                                                             <h4 class="h5 timeline-title"><strong>Cetakan Permit</strong>
                                                             </h4>
+                                                            <p>{{ $permohonan->tarikh_cetakan }}</p>
                                                             <p>
                                                                 Proses kutipan kad permit di KPDNHEP Negeri yang didaftarkan
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </li>
-
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @elseif ($permohonan->status_permohonan == 'disokong_negeri' ||
-                                $permohonan->status_permohonan == 'disokong_hq')
-                                <div class="container mb-5 ml-0">
-                                    <div class="row">
-                                        <div class="col-md offset-md-3"
-                                            style="margin-left: 5% !important; max-width: none; flex:none">
-                                            <!-- <h4>Latest News</h4> -->
-                                            <ul class="timeline">
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success"><i
-                                                            class="fas fa-file-alt text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                    Permohonan</strong>
-                                                            </h4>
-                                                            <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}
-                                                            </p>
-                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
-                                                                KPDNHEP
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge danger">
-                                                        <i class="far fa-check-square text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Pengesahan
-                                                                    Dokumen</strong>
-                                                            </h4>
-                                                            <p>{{ $permohonan->updated_at }}</p>
-                                                            <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
-                                                                Pemproses </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge primary"><i
-                                                            class="fas fa-gavel text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Tapisan PDRM</strong></h4>
-                                                            <p>
-                                                                Proses tapisan rekod jenayah oleh Pegawai PDRM
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success">
-                                                        <i class="fas fa-thumbs-up text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
-                                                            <p>
-                                                                Proses syor/sokong permohonan oleh Pegawai Penyokong
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @elseif ($permohonan->status_permohonan == 'Diluluskan')
-
-                                <div class="container mb-5 ml-0">
-                                    <div class="row">
-                                        <div class="col-md offset-md-3"
-                                            style="margin-left: 5% !important; max-width: none; flex:none">
-
-                                            <ul class="timeline">
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success"><i
-                                                            class="fas fa-file-alt text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-
-                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                    Permohonan</strong>
-                                                            </h4>
-                                                            <p>{{ $permohonan->created_at }}</p>
-                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
-                                                                KPDNHEP
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge danger">
-                                                        <i class="far fa-check-square text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Pengesahan
-                                                                    Dokumen</strong>
-                                                            </h4>
-                                                            <p>{{ $permohonan->updated_at }}</p>
-                                                            <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
-                                                                Pemproses </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge primary"><i
-                                                            class="fas fa-gavel text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Tapisan PDRM</strong>
-                                                            </h4>
-                                                            <p>
-                                                                Proses tapisan rekod jenayah oleh Pegawai PDRM
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success">
-                                                        <i class="fas fa-thumbs-up text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
-                                                            <p>
-                                                                Proses syor/sokong permohonan oleh Pegawai Penyokong
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge danger">
-                                                        <i class="fas fa-check-circle text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                            <h4 class="h5 timeline-title"><strong>Kelulusan</strong></h4>
-                                                            <p>
-                                                                Proses kelulusan permohonan oleh Pegawai Pelulus
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            {{-- <div class="container mb-5 ml-0">
-                                <div class="row">
-                                    <div class="col-md offset-md-3"
-                                        style="margin-left: 5% !important; max-width: none; flex:none">
-
-                                        <ul class="timeline">
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success"><i
-                                                        class="fas fa-file-alt text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-
-                                                        <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                Permohonan</strong>
-                                                        </h4>
-                                                        <p>{{ $permohonan->created_at }}</p>
-                                                        <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge danger">
-                                                    <i class="far fa-check-square text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h4 class="h5 timeline-title"><strong>Pengesahan Dokumen</strong>
-                                                        </h4>
-                                                        <p>{{ $permohonan->updated_at }}</p>
-                                                        <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
-                                                            Pemproses </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge primary"><i class="fas fa-gavel text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h4 class="h5 timeline-title"><strong>Tapisan PDRM</strong></h4>
-                                                        <p>
-                                                            Proses tapisan rekod jenayah oleh Pegawai PDRM
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success">
-                                                    <i class="fas fa-thumbs-up text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
-                                                        <p>
-                                                            Proses syor/sokong permohonan oleh Pegawai Penyokong
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge danger">
-                                                    <i class="fas fa-check-circle text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h4 class="h5 timeline-title"><strong>Kelulusan</strong></h4>
-                                                        <p>
-                                                            Proses kelulusan permohonan oleh Pegawai Pelulus
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success">
-                                                    <i class="fas fa-dollar-sign text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h4 class="h5 timeline-title"><strong>Bayaran</strong></h4>
-                                                        <p>
-                                                            Proses bayaran EPS
-
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li class="disable" style="width: 90%;">
-                                                <div class="timeline-badge primary">
-                                                    <i class="far fa-address-card text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h4 class="h5 timeline-title"><strong>Cetakan Permit</strong></h4>
-                                                        <p>
-                                                            Proses kutipan kad permit di KPDNHEP Negeri yang didaftarkan
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                        @elseif ($permohonan->jenis_permohonan == 'Rayuan' )
-
-                            {{-- @if ($permohonan->status_permohonan == 'hantar')
-                                <div class="container mb-5 ml-0">
-                                    <div class="row">
-                                        <div class="col-md offset-md-3"
-                                            style="margin-left: 5% !important; max-width: none; flex:none">
-                                            <ul class="timeline">
-                                                <li style="width: 90%;">
-                                                    <div class="timeline-badge success"><i
-                                                            class="fas fa-file-alt text-dark"></i>
-                                                    </div>
-                                                    <div class="timeline-panel">
-                                                        <div class="timeline-heading">
-                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                    Permohonan</strong>
-                                                            </h4>
-                                                            <p>{{ $permohonan->created_at }}</p>
-                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
-                                                                KPDNHEP
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @elseif ($permohonan->status_permohonan == 'hantar')
-
-                            @endif --}}
-
-                            <div class="container mb-5 ml-0">
-                                <div class="row">
-                                    <div class="col-md offset-md-3"
-                                        style="margin-left: 5% !important; max-width: none; flex:none">
-                                        <!-- <h4>Latest News</h4> -->
-                                        <ul class="timeline">
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success"><i
-                                                        class="fas fa-file-alt text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                Permohonan</strong>
-                                                        </h4>
-                                                        <p>{{ $permohonan->created_at }}</p>
-                                                        <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge danger">
-                                                    <i class="far fa-check-square text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Pengesahan Dokumen</strong>
-                                                        </h4>
-                                                        <p>{{ $permohonan->updated_at }}</p>
-                                                        <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
-                                                            Pemproses </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success">
-                                                    <i class="fas fa-dollar-sign text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Bayaran</strong></h4>
-                                                        <p>
-                                                            Proses bayaran EPS
-
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li class="disable" style="width: 90%;">
-                                                <div class="timeline-badge primary">
-                                                    <i class="far fa-address-card text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Cetakan Permit</strong></h4>
-                                                        <p>
-                                                            Proses kutipan kad permit di KPDNHEP Negeri yang didaftarkan
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            @endif
 
                                         </ul>
 
@@ -828,13 +366,13 @@
                                 </div>
                             </div>
 
-                        @elseif ($permohonan->jenis_permohonan == 'Rayuan' )
 
+                        @elseif ($permohonan->jenis_permohonan == 'Rayuan' )
                             <div class="container mb-5 ml-0">
                                 <div class="row">
                                     <div class="col-md offset-md-3"
                                         style="margin-left: 5% !important; max-width: none; flex:none">
-                                        <!-- <h4>Latest News</h4> -->
+
                                         <ul class="timeline">
                                             <li style="width: 90%;">
                                                 <div class="timeline-badge success"><i
@@ -842,7 +380,7 @@
                                                 </div>
                                                 <div class="timeline-panel">
                                                     <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
+
                                                         <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                 Permohonan</strong>
                                                         </h4>
@@ -853,65 +391,160 @@
                                                 </div>
                                             </li>
 
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success">
-                                                    <i class="fas fa-thumbs-up text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
-                                                        <p>
-                                                            Proses syor/sokong permohonan oleh Pegawai Penyokong
-                                                        </p>
+                                            @if ($permohonan->tarikh_pengesahan != null)
+                                                <li style="width: 90%;">
+                                                    <div class="timeline-badge danger">
+                                                        <i class="far fa-check-square text-dark"></i>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Pengesahan
+                                                                    Dokumen</strong>
+                                                            </h4>
+                                                            <p>{{ $permohonan->tarikh_pengesahan }}</p>
+                                                            <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
+                                                                Pemproses </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+
+                                            @if ($permohonan->tarikh_bayaran != null)
+                                                <li style="width: 90%;">
+                                                    <div class="timeline-badge success">
+                                                        <i class="fas fa-dollar-sign text-dark"></i>
+                                                    </div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Bayaran</strong></h4>
+                                                            <p>{{ $permohonan->tarikh_bayaran }}</p>
+                                                            <p>
+                                                                Proses bayaran EPS
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+
+                                            @if ($permohonan->tarikh_cetakan != null)
+                                                <li class="disable" style="width: 90%;">
+                                                    <div class="timeline-badge primary">
+                                                        <i class="far fa-address-card text-dark"></i>
+                                                    </div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Cetakan Permit</strong>
+                                                            </h4>
+                                                            <p>{{ $permohonan->tarikh_cetakan }}</p>
+                                                            <p>
+                                                                Proses kutipan kad permit di KPDNHEP Negeri yang didaftarkan
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        @elseif ($permohonan->jenis_permohonan == 'Pendua' )
+
+                            <div class="container mb-5 ml-0">
+                                <div class="row">
+                                    <div class="col-md offset-md-3"
+                                        style="margin-left: 5% !important; max-width: none; flex:none">
+
+                                        <ul class="timeline">
                                             <li style="width: 90%;">
-                                                <div class="timeline-badge danger">
-                                                    <i class="fas fa-check-circle text-dark"></i>
+                                                <div class="timeline-badge success"><i
+                                                        class="fas fa-file-alt text-dark"></i>
                                                 </div>
                                                 <div class="timeline-panel">
                                                     <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Kelulusan</strong></h4>
-                                                        <p>
-                                                            Proses kelulusan permohonan oleh Pegawai Pelulus
+
+                                                        <h4 class="h5 timeline-title"><strong>Penerimaan
+                                                                Permohonan</strong>
+                                                        </h4>
+                                                        <p>{{ $permohonan->created_at }}</p>
+                                                        <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
                                                         </p>
                                                     </div>
                                                 </div>
                                             </li>
 
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success">
-                                                    <i class="fas fa-dollar-sign text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Bayaran</strong></h4>
-                                                        <p>
-                                                            Proses bayaran EPS
-
-                                                        </p>
+                                            @if ($permohonan->tarikh_sokongan != null)
+                                                <li style="width: 90%;">
+                                                    <div class="timeline-badge success">
+                                                        <i class="fas fa-thumbs-up text-dark"></i>
                                                     </div>
-                                                </div>
-                                            </li>
-
-                                            <li class="disable" style="width: 90%;">
-                                                <div class="timeline-badge primary">
-                                                    <i class="far fa-address-card text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        {{-- <span class="text-muted">9 Mac 2021, 10.08 AM</span> --}}
-                                                        <h4 class="h5 timeline-title"><strong>Cetakan Permit</strong></h4>
-                                                        <p>
-                                                            Proses kutipan kad permit di KPDNHEP Negeri yang didaftarkan
-                                                        </p>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Syor</strong></h4>
+                                                            <p>{{ $permohonan->tarikh_sokongan }}</p>
+                                                            <p>
+                                                                Proses syor/sokong permohonan oleh Pegawai Penyokong
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+
+                                            @endif
+
+                                            @if ($permohonan->tarikh_diluluskan != null)
+                                                <li style="width: 90%;">
+                                                    <div class="timeline-badge danger">
+                                                        <i class="fas fa-check-circle text-dark"></i>
+                                                    </div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Kelulusan</strong></h4>
+                                                            <p>{{ $permohonan->tarikh_diluluskan }}</p>
+                                                            <p>
+                                                                Proses kelulusan permohonan oleh Pegawai Pelulus
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+
+                                            @if ($permohonan->tarikh_bayaran != null)
+                                                <li style="width: 90%;">
+                                                    <div class="timeline-badge success">
+                                                        <i class="fas fa-dollar-sign text-dark"></i>
+                                                    </div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Bayaran</strong></h4>
+                                                            <p>{{ $permohonan->tarikh_bayaran }}</p>
+                                                            <p>
+                                                                Proses bayaran EPS
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+
+                                            @if ($permohonan->tarikh_cetakan != null)
+                                                <li class="disable" style="width: 90%;">
+                                                    <div class="timeline-badge primary">
+                                                        <i class="far fa-address-card text-dark"></i>
+                                                    </div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="h5 timeline-title"><strong>Cetakan Permit</strong>
+                                                            </h4>
+                                                            <p>{{ $permohonan->tarikh_cetakan }}</p>
+                                                            <p>
+                                                                Proses kutipan kad permit di KPDNHEP Negeri yang didaftarkan
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
 
                                         </ul>
 

@@ -4,7 +4,7 @@
 
     <div class="container-fluid py-4">
 
-        <div class="p-3">
+        <div class="p-1">
 
             <div>
                 <h4>Statistik Kutipan FI</h4>
@@ -59,7 +59,7 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Kutipan FI Mengikut Jantina</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
 echo $year; ?>
                                             sahaja</label>
                                     </div>
@@ -101,19 +101,34 @@ echo $year; ?>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($kutipanfiantinas as $kutipanfiantina)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kutipanfiantina->jantina }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kutipanfiantina->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Lelaki
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfijantinalelakis == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfijantinalelakis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perempuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfijantinaperempuans == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfijantinaperempuans }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -134,7 +149,7 @@ echo $year; ?>
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Kutipan FI Mengikut Negeri</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date('Y');
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
 echo $year; ?>
                                             sahaja</label>
                                     </div>
@@ -176,19 +191,230 @@ echo $year; ?>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($kutipanfinegeris as $kutipanfinegeri)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kutipanfinegeri->negeri_kutipan_permit }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $kutipanfinegeri->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerijohor == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerijohor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerikedah == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerikedah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerikelantan == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerikelantan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerimelaka == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerimelaka }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerinegerisembilan == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerinegerisembilan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeripahang == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeripahang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeripulaupinang == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeripulaupinang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeriperak == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeriperak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeriperlis == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeriperlis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeriselangor == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeriselangor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeriterengganu == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeriterengganu }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerisabah == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerisabah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerisarawak == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerisarawak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerikualalumpur == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerikualalumpur }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegerilabuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegerilabuan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($kutipanfinegeriputrajaya == null)
+                                                        0
+                                                    @else
+                                                        {{ $kutipanfinegeriputrajaya }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -290,10 +516,14 @@ echo $year; ?>
 
     <!-- Styles -->
     <style>
-        #chartdiv,
-        #chartdiv2 {
+        #chartdiv {
             width: 100%;
             height: 500px;
+        }
+
+        #chartdiv2 {
+            width: 100%;
+            min-height: 700px;
         }
 
     </style>
@@ -347,22 +577,22 @@ echo $year; ?>
                 return series;
             }
 
+            createSeries("Johor", "Johor");
             createSeries("Kedah", "Kedah");
-            createSeries("Selangor", "Selangor");
-            createSeries("Pulau Pinang", "Pulau Pinang");
-            createSeries("Perak", "Perak");
+            createSeries("Kelantan", "Kelantan");
             createSeries("Melaka", "Melaka");
             createSeries("Negeri Sembilan", "Negeri Sembilan");
-            createSeries("Johor", "Johor");
             createSeries("Pahang", "Pahang");
+            createSeries("Pulau Pinang", "Pulau Pinang");
+            createSeries("Perak", "Perak");
+            createSeries("Perlis", "Perlis");
+            createSeries("Selangor", "Selangor");
             createSeries("Terengganu", "Terengganu");
-            createSeries("Kelantan", "Kelantan");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
-            createSeries("WP Putrajaya", "W. P. Putrajaya");
             createSeries("WP Labuan", "W. P. Labuan");
-            createSeries("Perlis", "Perlis");
+            createSeries("WP Putrajaya", "W. P. Putrajaya");
 
             // Legend
             chart.legend = new am4charts.Legend();
@@ -506,6 +736,7 @@ echo $year; ?>
                 dom: 'Bfrtip',
                 "searching": false,
                 "info": false,
+                "paging": false,
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',

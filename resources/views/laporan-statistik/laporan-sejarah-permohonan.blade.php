@@ -4,7 +4,7 @@
 
     <div class="container-fluid py-4">
 
-        <div class="p-3">
+        <div class="p-1">
 
             <div>
                 <h4>Laporan Sejarah Permohonan</h4>
@@ -37,8 +37,9 @@
 
                                         <button class="btn  bg-gradient-info text-uppercases m-2 " type="submit"
                                             name="search"><i class="fas fa-search"></i> cari</button>
-                                        <a href="/laporan-statistik/laporan-sejarah-permohonan" class="btn  bg-gradient-danger text-uppercases m-2" type="reset"
-                                            name="search" (click)="reset()">set
+                                        <a href="/laporan-statistik/laporan-sejarah-permohonan"
+                                            class="btn  bg-gradient-danger text-uppercases m-2" type="reset" name="search"
+                                            (click)="reset()">set
                                             semula</a>
                                     </div>
                                 </div>
@@ -58,7 +59,9 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Sejarah Permohonan mengikut Jantina</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
                                     </div>
                                 </div>
                             </div>
@@ -98,19 +101,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sejarahjantinas as $sejarahjantina)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $sejarahjantina->jantina }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $sejarahjantina->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Lelaki
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahjantinalelakis == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahjantinalelakis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perempuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahjantinaperempuans == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahjantinaperempuans }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -131,7 +149,9 @@
                                 <div class="row mb-0">
                                     <div class="col">
                                         <h5> Sejarah Permohonan mengikut Negeri</h5>
-                                        <label> Graf ini hanya menunjukkan bulan di dalam tahun <?php $year = date("Y"); echo $year; ?> sahaja</label>
+                                        <label> Graf ini hanya menunjukkan data bulanan pada tahun <?php $year = date('Y');
+echo $year; ?>
+                                            sahaja</label>
                                     </div>
                                 </div>
                             </div>
@@ -171,19 +191,230 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sejarahnegeris as $sejarahnegeri)
-                                                <tr>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $sejarahnegeri->negeri_kutipan_permit }}
-                                                    </td>
-                                                    <td class="text-sm text-center font-weight-normal">
-                                                        {{ $sejarahnegeri->jumlah }}
-                                                    </td>
-                                                </tr>
-
-                                            @endforeach
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohor == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedah == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelaka == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelaka }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahang == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinang == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinang }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlis == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlis }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangor == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangor }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganu }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabah == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabah }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawak }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpur == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpur }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuan }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajaya == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajaya }}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -214,8 +445,7 @@
                                     <table class="table align-items-center mb-0" id="tablesejarahpermohonan">
                                         <thead>
                                             <tr>
-                                                <th
-                                                    class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
+                                                <th class="text-uppercase text-center text-xs font-weight-bolder opacity-7">
                                                     No.</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
@@ -237,12 +467,16 @@
                                         <tbody>
                                             @foreach ($sejarahs as $sejarah)
                                                 <tr>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $loop->index + 1 }}</td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->nama }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $loop->index + 1 }}</td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $sejarah->nama }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->no_kp }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $sejarah->no_kp }}
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->negeri_kutipan_permit }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $sejarah->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{-- {{ $sejarah->status_permohonan }} --}}
@@ -254,7 +488,8 @@
                                                             Dalam Proses
                                                         @endif
                                                     </td>
-                                                    <td class="text-sm text-center font-weight-normal">{{ $sejarah->updated_at->format('d-m-Y') }}
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ $sejarah->updated_at->format('d-m-Y') }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -275,10 +510,14 @@
 
     <!-- Styles -->
     <style>
-        #chartdiv,
-        #chartdiv2 {
+        #chartdiv {
             width: 100%;
             height: 500px;
+        }
+
+        #chartdiv2 {
+            width: 100%;
+            min-height: 700px;
         }
 
     </style>
@@ -332,22 +571,22 @@
                 return series;
             }
 
+            createSeries("Johor", "Johor");
             createSeries("Kedah", "Kedah");
-            createSeries("Selangor", "Selangor");
-            createSeries("Pulau Pinang", "Pulau Pinang");
-            createSeries("Perak", "Perak");
+            createSeries("Kelantan", "Kelantan");
             createSeries("Melaka", "Melaka");
             createSeries("Negeri Sembilan", "Negeri Sembilan");
-            createSeries("Johor", "Johor");
             createSeries("Pahang", "Pahang");
+            createSeries("Pulau Pinang", "Pulau Pinang");
+            createSeries("Perak", "Perak");
+            createSeries("Perlis", "Perlis");
+            createSeries("Selangor", "Selangor");
             createSeries("Terengganu", "Terengganu");
-            createSeries("Kelantan", "Kelantan");
             createSeries("Sabah", "Sabah");
             createSeries("Sarawak", "Sarawak");
             createSeries("WP Kuala Lumpur", "W. P. Kuala Lumpur");
-            createSeries("WP Putrajaya", "W. P. Putrajaya");
             createSeries("WP Labuan", "W. P. Labuan");
-            createSeries("Perlis", "Perlis");
+            createSeries("WP Putrajaya", "W. P. Putrajaya");
 
             // Legend
             chart.legend = new am4charts.Legend();
@@ -493,6 +732,7 @@
                 dom: 'Bfrtip',
                 "searching": false,
                 "info": false,
+                "paging": false,
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',

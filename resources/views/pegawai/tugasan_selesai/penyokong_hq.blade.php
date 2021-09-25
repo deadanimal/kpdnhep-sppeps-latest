@@ -63,7 +63,8 @@
                                             <div class="col">
                                                 <button class="btn btn-sm btn-info text-uppercases text-white"
                                                     type="submit"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                                <a href="/penyokong_hq_tugasan_selesai" class="btn btn-sm btn-danger">Set Semula</a>
+                                                <a href="/penyokong_hq_tugasan_selesai" class="btn btn-sm btn-danger">Set
+                                                    Semula</a>
                                             </div>
                                         </div>
                                     </form>
@@ -120,11 +121,12 @@
                                                 @foreach ($permohonan as $permohonan)
                                                     <tr>
                                                         <td>
-                                                            <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                            <span
+                                                                class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                                         </td>
                                                         <td>
                                                             <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->updated_at }}</span>
+                                                                class="text-secondary text-sm font-weight-bold">{{ date('d-m-Y', strtotime($permohonan->updated_at)) }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
@@ -140,7 +142,7 @@
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
-                                                                {{ $permohonan->negeri }}</span>
+                                                                {{ $permohonan->negeri_kutipan_permit }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">

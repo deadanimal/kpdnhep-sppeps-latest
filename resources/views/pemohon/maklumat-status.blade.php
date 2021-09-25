@@ -114,8 +114,8 @@
 
             </div>
         </div>
-        <div class="row mt-4" style="width: 80%;">
-            <div class="card card-frame">
+        <div class="row mt-4 d-flex justify-content-center" style="width: 80%;">
+            <div class="card card-frame col-md-8 col-xs-1">
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
@@ -131,424 +131,210 @@
                         @foreach ($permohonan as $permohonan)
 
                             @if ($permohonan->jenis_permohonan == 'Baharu' || $permohonan->jenis_permohonan == 'Pembaharuan')
-                            
-                                @if ($permohonan->status_permohonan == 'hantar')
-                                
-                                    <!---------------Platform Tour----------------->
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
 
+                                <!---------------Platform Tour----------------->
+                                <div class="platform-tour-wrapper py-3 ">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
+                                        <li class="nav-item">
+                                            <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
+                                            </a>
+                                            <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                        </li>
+
+                                        @if ($permohonan->tarikh_pengesahan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>2</span></a>
+                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_semakan_pdrm != null)
+                                            <li class="nav-item active">
+                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                                <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
                                                 <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_sokongan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>4</span></a>
+                                                <h6 class="text-center mt-1">Syor</h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>4</span></a>
                                                 <h6 class="text-center mt-1">Syor</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_diluluskan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>5</span></a>
+                                                <h6 class="text-center mt-1">Kelulusan</h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
                                                 <h6 class="text-center mt-1">Kelulusan</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_bayaran != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>6</span></a>
+                                                <h6 class="text-center mt-1">Bayaran</h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
                                                 <h6 class="text-center mt-1">Bayaran</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_cetakan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>7</span></a>
+                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
                                                 <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
                                             </li>
-                                        </ul>
-                                    </div>
-
-                                @elseif ($permohonan->status_permohonan == 'hantar_ke_pemproses_hq')
-
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>4</span></a>
-                                                <h6 class="text-center mt-1">Syor</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
-                                                <h6 class="text-center mt-1">Kelulusan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                @elseif ($permohonan->status_permohonan == 'disemak pdrm' || $permohonan->status_permohonan == 'hantar_ke_penyokong_hq' || $permohonan->status_permohonan == 'hantar_ke_penyokong_negeri')
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>4</span></a>
-                                                <h6 class="text-center mt-1">Syor</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
-                                                <h6 class="text-center mt-1">Kelulusan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                @elseif ($permohonan->status_permohonan == 'disokong_hq' || $permohonan->status_permohonan == 'disokong_negeri')
-
-                                    <div class="platform-tour-wrapper py-3">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>4</span></a>
-                                                <h6 class="text-center mt-1">Syor</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
-                                                <h6 class="text-center mt-1">Kelulusan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        @endif
 
 
-
-                                @elseif ($permohonan->status_permohonan == 'Diluluskan')
-
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>4</span></a>
-                                                <h6 class="text-center mt-1">Syor</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>5</span></a>
-                                                <h6 class="text-center mt-1">Kelulusan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                @endif
+                                    </ul>
+                                </div>
 
                             @elseif ($permohonan->jenis_permohonan == 'Pendua')
 
-                                @if ($permohonan->status_permohonan == 'hantar')
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
+                                <!---------------Platform Tour----------------->
+                                <div class="platform-tour-wrapper py-3 ">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
+                                        <li class="nav-item">
+                                            <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
+                                            </a>
+                                            <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                        </li>
 
+                                        @if ($permohonan->tarikh_sokongan != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>2</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>4</span></a>
                                                 <h6 class="text-center mt-1">Syor</h6>
                                             </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Kelulusan</h6>
-                                            </li>
-
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>4</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>Î
-
-                                @elseif ($permohonan->status_permohonan == 'disokong_negeri')
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Syor</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_diluluskan != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>5</span></a>
                                                 <h6 class="text-center mt-1">Kelulusan</h6>
                                             </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>4</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>Î
-
-                                @elseif ($permohonan->status_permohonan == 'Diluluskan')
-
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Syor</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>3</span></a>
                                                 <h6 class="text-center mt-1">Kelulusan</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_bayaran != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>4</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>6</span></a>
                                                 <h6 class="text-center mt-1">Bayaran</h6>
                                             </li>
-
+                                        @else
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>5</span></a>
+                                                <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
+                                                <h6 class="text-center mt-1">Bayaran</h6>
+                                            </li>
+                                        @endif
+
+                                        @if ($permohonan->tarikh_cetakan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>7</span></a>
                                                 <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
                                             </li>
-                                        </ul>
-                                    </div>Î
+                                        @else
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
+                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
+                                            </li>
+                                        @endif
 
-                                @endif
 
+                                    </ul>
+                                </div>
 
 
                             @elseif ($permohonan->jenis_permohonan == 'Rayuan')
 
-                                @if ($permohonan->status_permohonan == 'hantar')
-                                    <div class="platform-tour-wrapper py-3 " style="width: 500px;">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps" style="width:500px">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
+                                <!---------------Platform Tour----------------->
+                                <div class="platform-tour-wrapper py-3 ">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
+                                        <li class="nav-item">
+                                            <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
+                                            </a>
+                                            <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                        </li>
 
+                                        @if ($permohonan->tarikh_pengesahan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>2</span></a>
+                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
+                                            </li>
+                                        @else
                                             <li class="nav-item">
                                                 <a class="nav-link m-2" data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_bayaran != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>6</span></a>
                                                 <h6 class="text-center mt-1">Bayaran</h6>
                                             </li>
-
+                                        @else
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                @elseif ($permohonan->status_permohonan == 'hantar_ke_pemproses_hq')
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                                <a class="nav-link m-2" data-toggle="tab"><span>6</span></a>
                                                 <h6 class="text-center mt-1">Bayaran</h6>
                                             </li>
+                                        @endif
 
+                                        @if ($permohonan->tarikh_cetakan != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>7</span></a>
                                                 <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
                                             </li>
-                                        </ul>
-                                    </div>
-
-                                @elseif ($permohonan->status_permohonan == 'Diluluskan')
-
-                                    <div class="platform-tour-wrapper py-3 ">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
+                                        @else
                                             <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                                </a>
-                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link active m-2" data-toggle="tab"><span>2</span></a>
-                                                <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
-                                                <h6 class="text-center mt-1">Bayaran</h6>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                                <a class="nav-link m-2" data-toggle="tab"><span>7</span></a>
                                                 <h6 class="text-center mt-1">Kutipan <br> Permit</h6>
                                             </li>
-                                        </ul>
-                                    </div>
+                                        @endif
 
-                                @endif
-
-
-
-
-
+                                    </ul>
+                                </div>
 
                             @endif
-
-
-
 
                         @endforeach
                     </div>

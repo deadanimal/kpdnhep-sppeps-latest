@@ -30,7 +30,7 @@
                         <div class="row p-3 mb-0">
 
                             {{-- @foreach (auth()->user()->roles as $role)
-                                @if($role->name ) 
+                                @if ($role->name) 
 
                                 @endif
                             @endforeach --}}
@@ -53,7 +53,8 @@
                                     <div class="col">
                                         <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"
                                             name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                        <a href="/pemproses_negeri_tugasan_baru" class="btn btn-sm btn-danger">Set Semula</a>
+                                        <a href="/pemproses_negeri_tugasan_baru" class="btn btn-sm btn-danger">Set
+                                            Semula</a>
                                     </div>
                                 </div>
                             </form>
@@ -108,7 +109,7 @@
                                                 </td>
                                                 <td>
                                                     <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $permohonan->updated_at }}</span>
+                                                        class="text-secondary text-sm font-weight-bold">{{ date('d-m-Y', strtotime($permohonan->updated_at)) }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span

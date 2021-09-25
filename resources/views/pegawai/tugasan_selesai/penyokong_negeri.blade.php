@@ -40,7 +40,8 @@
                                             <div class="col">
                                                 <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"
                                                     name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                                <a href="/penyokong_negeri_tugasan_selesai" class="btn btn-sm btn-danger">Set Semula</a>
+                                                <a href="/penyokong_negeri_tugasan_selesai"
+                                                    class="btn btn-sm btn-danger">Set Semula</a>
                                             </div>
                                         </div>
                                     </form>
@@ -93,11 +94,12 @@
                                                 @foreach ($permohonan as $permohonan)
                                                     <tr>
                                                         <td>
-                                                            <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                            <span
+                                                                class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                                         </td>
                                                         <td>
                                                             <span
-                                                                class="text-secondary text-sm font-weight-bold">{{ $permohonan->updated_at }}</span>
+                                                                class="text-secondary text-sm font-weight-bold">{{ date('d-m-Y', strtotime($permohonan->updated_at)) }}</span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="text-secondary text-sm font-weight-bold">
@@ -137,33 +139,33 @@
                                                     </tr>
                                                 @endforeach
                                                 <!-- <tr>
-                                                                                <td>
-                                                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <span class="text-secondary text-sm font-weight-bold">22-11-2021 10:39:12</span>
-                                                                                </td>
-                                                                                <td class="align-middle text-center text-sm">
-                                                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
-                                                                                </td>
-                                                                                <td class="align-middle text-center text-sm">
-                                                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                                                                </td>
-                                                                                <td class="align-middle text-center">
-                                                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                                                                </td>
-                                                                                <td class="align-middle text-center text-sm">
-                                                                                    <span class="text-secondary text-sm font-weight-bold">Catatan 1</span>
-                                                                                </td>
-                                                                                <td class="align-middle text-center text-sm">
-                                                                                    <span class="badge badge-success"> Telah Disemak</span>
-                                                                                </td>
-                                                                                <td class="align-middle text-center">
-                                                                                    <a href="">
-                                                                                        <i class="fas fa-edit"></i>
-                                                                                    </a>
-                                                                                </td>
-                                                                            </tr> -->
+                                                                                        <td>
+                                                                                            <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <span class="text-secondary text-sm font-weight-bold">22-11-2021 10:39:12</span>
+                                                                                        </td>
+                                                                                        <td class="align-middle text-center text-sm">
+                                                                                            <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
+                                                                                        </td>
+                                                                                        <td class="align-middle text-center text-sm">
+                                                                                            <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                                                        </td>
+                                                                                        <td class="align-middle text-center">
+                                                                                            <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                                                        </td>
+                                                                                        <td class="align-middle text-center text-sm">
+                                                                                            <span class="text-secondary text-sm font-weight-bold">Catatan 1</span>
+                                                                                        </td>
+                                                                                        <td class="align-middle text-center text-sm">
+                                                                                            <span class="badge badge-success"> Telah Disemak</span>
+                                                                                        </td>
+                                                                                        <td class="align-middle text-center">
+                                                                                            <a href="">
+                                                                                                <i class="fas fa-edit"></i>
+                                                                                            </a>
+                                                                                        </td>
+                                                                                    </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
