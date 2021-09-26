@@ -61,6 +61,10 @@ class CustomAuthController extends Controller
             if (empty($user)) {
                 return redirect("/login_")->withErrors('No. kad pengenalan atau kata laluan tidak sah');
             }
+            if ( $user->status == 0){
+                return redirect("/login_")->withErrors('Harap maaf, akaun anda tidak aktif');
+            }
+
             if (Auth::loginUsingId($user->id)) {
                 // dd('s');
                 return redirect()->intended(RouteServiceProvider::HOME);

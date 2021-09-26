@@ -240,7 +240,7 @@
 														<div class="form-check form-check-inline">
 															<input class="form-check-input" type="radio" name="status"
 																id="active" value="Aktif"
-																@if($pegawai->status ==  "Aktif")
+																@if($pegawai->status === "1")
 																	checked
 																@endif>
 															<label class="form-check-label" for="active">Aktif</label>
@@ -248,7 +248,7 @@
 														<div class="form-check form-check-inline">
 															<input class="form-check-input" type="radio" name="status"
 																id="notActive" value="Tidak Aktif"
-																@if($pegawai->status ==  "Tidak Aktif")
+																@if($pegawai->status === "0")
 																	checked
 																@endif>
 															<label class="form-check-label" for="notActive">Tidak
@@ -369,7 +369,7 @@
 														<div class="form-check form-check-inline">
 															<input class="form-check-input" type="radio" name="status"
 																id="active" value="Aktif"
-																@if($pegawai->status ==  "Aktif")
+																@if($pegawai->status === "1")
 																	checked
 																@endif>
 															<label class="form-check-label" for="active">Aktif</label>
@@ -377,7 +377,7 @@
 														<div class="form-check form-check-inline">
 															<input class="form-check-input" type="radio" name="status"
 																id="notActive" value="Tidak Aktif"
-																@if($pegawai->status ==  "Tidak Aktif")
+																@if($pegawai->status === "0")
 																	checked
 																@endif>
 															<label class="form-check-label" for="notActive">Tidak

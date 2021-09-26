@@ -157,10 +157,10 @@
                                                     </span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    @if ($pegawai->status === 'Aktif')
-                                                        <span class="badge badge-success"> {{ $pegawai->status }}</span>
+                                                    @if ($pegawai->status === "1")
+                                                        <span class="badge badge-success"> Aktif</span>
                                                     @else
-                                                        <span class="badge badge-danger"> {{ $pegawai->status }}</span>
+                                                        <span class="badge badge-danger">Tidak Aktif</span>
                                                     @endif
 
                                                 </td>

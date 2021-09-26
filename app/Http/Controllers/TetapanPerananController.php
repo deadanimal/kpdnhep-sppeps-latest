@@ -7,10 +7,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 # import Validator
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use App\Mail\PerananPegawai;
 
 class TetapanPerananController extends Controller
 {
@@ -45,7 +47,11 @@ class TetapanPerananController extends Controller
         $user->password = Hash::make('password');
         $user->role = $request->role;
 
-        $user->status = $request->status;
+        if ($request->status == "Aktif") {
+            $user->status = "1";
+        } else if ($request->status == "Tidak Aktif") {
+            $user->status = "0";
+        }
 
         $user->save();
 
@@ -70,6 +76,8 @@ class TetapanPerananController extends Controller
         if ($request->penguatkuasa != null) {
             $user->roles()->attach($request->penguatkuasa);
         }
+
+        Mail::to($user->email)->send(new PerananPegawai($user));
 
         return redirect('/peranan_pegawai');
     }
@@ -93,7 +101,12 @@ class TetapanPerananController extends Controller
 
         $user->roles()->detach([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-        $user->status = $request->status;
+        if ($request->status == "Aktif") {
+            $user->status = "1";
+        } else if ($request->status == "Tidak Aktif") {
+            $user->status = "0";
+        }
+
 
         if ($request->pemproses_negeri != null) {
             $user->roles()->attach($request->pemproses_negeri);
@@ -118,6 +131,8 @@ class TetapanPerananController extends Controller
         }
 
         $user->save();
+
+        Mail::to($user->email)->send(new PerananPegawai($user));
 
         return redirect('/peranan_pegawai');
     }
@@ -181,10 +196,10 @@ class TetapanPerananController extends Controller
         };
 
         $no_kp = $request->no_kp;
-        
+
         $user = User::where('no_kp', $no_kp)->get()->first();
         // dd($user);
-        if($user != null){
+        if ($user != null) {
             return Redirect::back()->withErrors('No kad pengenalan telah wujud');
         }
 
