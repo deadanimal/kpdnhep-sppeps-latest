@@ -198,7 +198,7 @@
                                 <h6> Maklumat Status</h6>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <a href="#" class="btn btn-sm bg-gradient-info">
+                                <a href="/semakan_permohonan" class="btn btn-sm bg-gradient-info">
                                     kembali
                                 </a>
 
@@ -469,7 +469,7 @@
                                                         <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                 Permohonan</strong>
                                                         </h4>
-                                                        <p>{{ $permohonan->created_at }}</p>
+                                                        <p>{{ date('d-m-Y', strtotime($permohonan->created_at)) }}</p>
                                                         <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
                                                         </p>
                                                     </div>

@@ -659,6 +659,8 @@ class PermohonanController extends Controller
                     $permohonan->sokongan = $request->tindakan;
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
 
+                    $permohonan->tarikh_sokongan = date('Y-m-d');
+
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
                     $audit->nama_pegawai = $user->name;
@@ -883,6 +885,8 @@ class PermohonanController extends Controller
                     $permohonan->sokongan = $request->tindakan;
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
 
+                    $permohonan->tarikh_sokongan = date('Y-m-d');
+
                     $permohonan->save();
 
                     $audit = new Audit;
@@ -899,7 +903,13 @@ class PermohonanController extends Controller
             } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
 
                 $permohonan->status_permohonan = $request->tindakan;
-                $permohonan->catatan_pelulus = $request->catatan_pelulus;
+                
+
+                if ($permohonan->jenis_permohonan == "Rayuan") {
+                    $permohonan->catatan_pelulus = $request->catatan_pegawai_hq;
+                } else {
+                    $permohonan->catatan_pelulus = $request->catatan_pelulus;
+                }
 
                 if ($request->tindakan == "Diluluskan") {
 

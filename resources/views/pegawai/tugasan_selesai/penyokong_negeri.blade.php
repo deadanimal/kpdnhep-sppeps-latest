@@ -86,8 +86,8 @@
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                         Status</th>
-                                                    <th class="text-uppercase text-center text-secondary text-xs opacity-7">
-                                                        Tindakan</th>
+                                                    {{-- <th class="text-uppercase text-center text-secondary text-xs opacity-7">
+                                                        Tindakan</th> --}}
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -129,13 +129,13 @@
                                                             @endif
 
                                                         </td>
-                                                        <td class="align-middle text-center">
+                                                        {{-- <td class="align-middle text-center">
                                                             @if ($permohonan->status_permohonan !== 'hantar' && $permohonan->status_permohonan !== 'Permohonan Tidak Lengkap')
                                                                 <a href="">
                                                                     <i class="fas fa-print"></i>
                                                                 </a>
                                                             @endif
-                                                        </td>
+                                                        </td> --}}
                                                     </tr>
                                                 @endforeach
                                                 <!-- <tr>

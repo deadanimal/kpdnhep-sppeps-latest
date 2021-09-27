@@ -144,19 +144,19 @@
 
                                         @if ($permohonan->tarikh_pengesahan != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2 active" data-toggle="tab"><span>2</span></a>
+                                                <a class="nav-link m-2 " data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
                                             </li>
                                         @else
                                             <li class="nav-item">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>2</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
                                             </li>
                                         @endif
 
-                                        @if ($permohonan->tarikh_semakan_pdrm != null)
-                                            <li class="nav-item active">
-                                                <a class="nav-link m-2" data-toggle="tab"><span>3</span></a>
+                                        @if ($permohonan->tarikh_semakan_pdrm !== null)
+                                            <li class="nav-item ">
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>3</span></a>
                                                 <h6 class="text-center mt-1">Tapisan <br> PDRM </h6>
                                             </li>
                                         @else

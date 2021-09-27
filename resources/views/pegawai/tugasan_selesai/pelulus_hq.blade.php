@@ -108,7 +108,7 @@
                                                         NEGERI</th>
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                        Catatan hq</th>
+                                                        Catatan</th>
 
                                                     <th
                                                         class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">

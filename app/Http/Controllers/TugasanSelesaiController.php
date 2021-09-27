@@ -134,8 +134,11 @@ class TugasanSelesaiController extends Controller
             ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
         ])->orWhere([
             ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+        ])->orWhere([
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Permohonan Tidak Lengkap']
         ])->get();
 
+        
         return view('pegawai.negeri.negeri-tugasan-selesai', [
             'permohonan' => $permohonan
         ]);
@@ -167,6 +170,8 @@ class TugasanSelesaiController extends Controller
                 ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
             ])->orWhere([
                 ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Permohonan Tidak Lengkap']
             ])->get();
         } else if ($request->no_kp == null && $request->jenis_permohonan != "null") {
             $permohonans = Permohonan::where([
@@ -189,6 +194,8 @@ class TugasanSelesaiController extends Controller
                 ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
             ])->orWhere([
                 ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+            ])->orWhere([
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Permohonan Tidak Lengkap']
             ])->get();
         } else {
             $permohonans = Permohonan::where([
@@ -211,6 +218,8 @@ class TugasanSelesaiController extends Controller
                 ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
             ])->orWhere([
                 ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
+            ])->orWhere([
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Permohonan Tidak Lengkap']
             ])->get();
         }
         return view('pegawai.negeri.negeri-tugasan-selesai', [

@@ -40,7 +40,8 @@
                                             <div class="col">
                                                 <button class="btn btn-sm btn-info text-uppercases text-white" type="submit"
                                                     name="search"><i class="fas fa-search fa-2x"></i> Cari</button>
-                                                <a href="/pemproses_negeri_tugasan_selesai" class="btn btn-sm btn-danger">Set Semula</a>
+                                                <a href="/pemproses_negeri_tugasan_selesai"
+                                                    class="btn btn-sm btn-danger">Set Semula</a>
                                             </div>
                                         </div>
                                     </form>
@@ -92,7 +93,8 @@
                                                 @foreach ($permohonan as $permohonan)
                                                     <tr>
                                                         <td>
-                                                            <span class="text-secondary text-sm font-weight-bold">{{$loop->index+1}}</span>
+                                                            <span
+                                                                class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                                         </td>
                                                         <td>
                                                             <span
@@ -116,31 +118,33 @@
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
 
-                                                            @if($permohonan->status_permohonan !== 'hantar')
+                                                            @if ($permohonan->status_permohonan === 'Permohonan Tidak Lengkap')
+                                                                <span class="badge badge-danger">Tidak Lengkap</span>
+                                                            @elseif ($permohonan->status_permohonan !== 'hantar')
+
                                                                 <span class="badge badge-success"> Telah
                                                                     Disemak</span>
                                                             @endif
-
-
 
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             @if ($permohonan->status_permohonan !== 'hantar' && $permohonan->status_permohonan !== 'Permohonan Tidak Lengkap')
                                                                 <form method="POST" action="/cetak_borang">
                                                                     @csrf
-                                                                    <input type="hidden" name="id" id="id" value="{{ $permohonan->id }}">
+                                                                    <input type="hidden" name="id" id="id"
+                                                                        value="{{ $permohonan->id }}">
                                                                     <input type="submit" name="submit" id="btn1" hidden>
                                                                     <label for="btn1">
                                                                         <i class="fas fa-print"></i>
                                                                     </label>
                                                                 </form>
-                                                                    
-                                                                
+
+
                                                             @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                               
+
                                             </tbody>
                                         </table>
                                     </div>
