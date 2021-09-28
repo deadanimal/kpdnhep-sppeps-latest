@@ -32,7 +32,7 @@ class PermohonanTidakLengkap extends Mailable
      */
     public function build()
     {
-        return $this->view('email.permohonan-tidak-lengkap')->with([
+        return $this->view('email.permohonan-tidak-lengkap')->subject('Permohonan Tidak Lengkap')->with([
             'jenis_permohonan'=>$this->permohonan->jenis_permohonan
         ]);
     }

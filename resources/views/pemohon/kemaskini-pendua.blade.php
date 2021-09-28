@@ -84,9 +84,16 @@
                                                         <div class="col d-flex justify-content-center flex-wrap">
                                                             <label>
                                                                 <div class="position-relative">
-                                                                    <img src="/storage/{{ $permohonan->gambar_pemohon }}"
-                                                                        class="border-radius-md" width="150" height="150" />
+                                                                    {{-- <img src="/storage/{{ $permohonan->gambar_pemohon }}"
+                                                                        class="border-radius-md" width="150" height="150" /> --}}
                                                                     {{-- <input type="hidden" name="gambar_pemohon" value="{{ $pemohon->gambar_profil}}"> --}}
+
+                                                                    <img src="/storage/{{ $pemohon->gambar_profil }}"
+                                                                        class="border-radius-md" width="150" height="150" />
+
+                                                                    <input type="hidden" name="gambar_pemohon"
+                                                                        value="{{ $pemohon->gambar_profil }}">
+
                                                                     <input type="hidden" name="jenis_permohonan"
                                                                         value="Pendua">
                                                                 </div>
@@ -533,7 +540,8 @@
                                                     </div>
 
                                                     <div class="form-group pb-2 text-start">
-                                                        <label for="reportNumber"><strong> {{ __('landing.no_repot_polis') }}</strong></label>
+                                                        <label for="reportNumber"><strong>
+                                                                {{ __('landing.no_repot_polis') }}</strong></label>
                                                         <input type="text" name="no_laporan_polis"
                                                             class="form-control col-4" id="reportNumber"
                                                             aria-describedby="reportNumber" placeholder=""
@@ -543,19 +551,22 @@
                                                     <div class="form-group text-start">
 
                                                         <div class="row form-group">
-                                                            <label class="pb-2"><strong> {{ __('landing.muat_naik_dokumen') }}</strong></label>
+                                                            <label class="pb-2"><strong>
+                                                                    {{ __('landing.muat_naik_dokumen') }}</strong></label>
                                                         </div>
 
                                                         <div class="row">
                                                             <div class="col-3">
-                                                                <label class="mt-1">{{ __('landing.ic_depan') }}</label>
+                                                                <label
+                                                                    class="mt-1">{{ __('landing.ic_depan') }}</label>
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
                                                                 <input type="file" id="actual-btn" hidden
                                                                     name="salinan_kp_depan" />
                                                                 <!-- our custom upload button -->
-                                                                <label for="actual-btn" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
+                                                                <label for="actual-btn"
+                                                                    class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
                                                                 <span id="file-chosen" class="mt-1"><a
                                                                         href="/storage/{{ $permohonan->salinan_kp_depan }}"
@@ -566,14 +577,16 @@
 
                                                         <div class="row">
                                                             <div class="col-3">
-                                                                <label class="mt-1" for="image">{{ __('landing.ic_belakang') }}</label>
+                                                                <label class="mt-1"
+                                                                    for="image">{{ __('landing.ic_belakang') }}</label>
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
                                                                 <input type="file" id="actual-btn2" hidden
                                                                     name="salinan_kp_belakang" />
                                                                 <!-- our custom upload button -->
-                                                                <label for="actual-btn2" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
+                                                                <label for="actual-btn2"
+                                                                    class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
                                                                 <span id="file-chosen" class="mt-1"><a
                                                                         href="/storage/{{ $permohonan->salinan_kp_belakang }}"
@@ -584,14 +597,16 @@
 
                                                         <div class="row">
                                                             <div class="col-3">
-                                                                <label class="col mt-1" for="image">{{ __('landing.salinan_repot_polis') }}</label>
+                                                                <label class="col mt-1"
+                                                                    for="image">{{ __('landing.salinan_repot_polis') }}</label>
                                                             </div>
                                                             <div class="col">
                                                                 <!-- actual upload which is hidden -->
                                                                 <input type="file" id="actual-btn3" hidden
                                                                     name="salinan_laporan_polis" />
                                                                 <!-- our custom upload button -->
-                                                                <label for="actual-btn3" class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
+                                                                <label for="actual-btn3"
+                                                                    class="upload-btn mt-0">{{ __('landing.pilih_fail') }}</label>
                                                                 <!-- name of file chosen -->
                                                                 <span id="file-chosen" class="mt-1"><a
                                                                         href="/storage/{{ $permohonan->salinan_laporan_polis }}"
@@ -609,7 +624,8 @@
                                                     <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
                                                         title="Prev">{{ __('landing.kembali') }}</button>
                                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
-                                                        type="button" title="Next">{{ __('landing.seterusnya') }}</button>
+                                                        type="button"
+                                                        title="Next">{{ __('landing.seterusnya') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -618,7 +634,8 @@
                                             data-animation="FadeIn">
                                             <div class="row text-center">
                                                 <div class="col-12 mx-auto">
-                                                    <h5 class="font-weight-normal"><strong>C. {{ __('landing.pengesahan_permohonan') }}</strong>
+                                                    <h5 class="font-weight-normal"><strong>C.
+                                                            {{ __('landing.pengesahan_permohonan') }}</strong>
                                                     </h5>
                                                     <!-- <p>One thing I love about the later sunsets is the chance to go for a walk through the neighborhood woods before dinner</p> -->
                                                 </div>
@@ -652,14 +669,16 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body text-center">
-                                                                    <p>{{ __('landing.permohonan_pendua_akan_dihantar') }}</p>
+                                                                    <p>{{ __('landing.permohonan_pendua_akan_dihantar') }}
+                                                                    </p>
                                                                     <p>{{ __('landing.adakah_anda_pasti') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer d-flex justify-content-center">
                                                                     <button type="button" class="btn btn-danger  ml-auto"
                                                                         data-bs-dismiss="modal">{{ __('landing.batal') }}</button>
                                                                     <button type="submit" class="btn btn-success ml-auto"
-                                                                        name="status" value="HANTAR">{{ __('landing.ya') }}</button>
+                                                                        name="status"
+                                                                        value="HANTAR">{{ __('landing.ya') }}</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -668,7 +687,8 @@
                                                     <div class="p-3 d-flex justify-content-center">
                                                         <a href="/permohonan" type="button"
                                                             class=" btn btn btn-danger btn-lg m-2 text-uppercase">{{ __('landing.batal') }}</a>
-                                                        <button type="submit" class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
+                                                        <button type="submit"
+                                                            class=" btn btn-info btn-lg m-2 text-uppercase" name="status"
                                                             value="SIMPAN">{{ __('landing.simpan') }}</button>
                                                         <button type="button"
                                                             class="btn btn-success btn-lg text-uppercase m-2"
@@ -680,7 +700,8 @@
                                                 <div class="row">
                                                     <div class="button-row d-flex mt-4 col-12">
                                                         <button class="btn bg-gradient-light mb-0 js-btn-prev"
-                                                            type="button" title="Prev">{{ __('landing.kembali') }}</button>
+                                                            type="button"
+                                                            title="Prev">{{ __('landing.kembali') }}</button>
                                                         <!-- <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button> -->
                                                     </div>
                                                 </div>

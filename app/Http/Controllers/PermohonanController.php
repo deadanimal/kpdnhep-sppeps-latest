@@ -510,6 +510,13 @@ class PermohonanController extends Controller
             ]);
         }
         if ($user_role == 'pemohon') {
+
+            $user = $request->user();
+            $user_role = $user->role;
+            $user_id = $user->id;
+
+            $pemohons = User::where('id', $user_id)->get()->first();
+
             if ($permohonan->jenis_permohonan == "Baharu") {
                 // dd($permohonan->lesen_memandu);
                 $lesen_memandus = explode(",", $permohonan->lesen_memandu);
@@ -520,6 +527,7 @@ class PermohonanController extends Controller
                     'lesen_memandu3' => $lesen_memandus,
                     'lesen_memandu4' => $lesen_memandus,
                     'lesen_memandu5' => $lesen_memandus,
+                    'pemohon' => $pemohons
                 ]);
             } else if ($permohonan->jenis_permohonan == "Pembaharuan") {
 
@@ -533,14 +541,17 @@ class PermohonanController extends Controller
                     'lesen_memandu3' => $lesen_memandus,
                     'lesen_memandu4' => $lesen_memandus,
                     'lesen_memandu5' => $lesen_memandus,
+                    'pemohon' => $pemohons
                 ]);
             } else if ($permohonan->jenis_permohonan == "Pendua") {
                 return view('pemohon.kemaskini-pendua', [
                     'permohonan' => $permohonan,
+                    'pemohon' => $pemohons
                 ]);
             } else if ($permohonan->jenis_permohonan == "Rayuan") {
                 return view('pemohon.kemaskini-rayuan', [
                     'permohonan' => $permohonan,
+                    'pemohon' => $pemohons
                 ]);
             }
         }
@@ -903,7 +914,7 @@ class PermohonanController extends Controller
             } else if ($request->jenis_tindakan == "kelulusan_permohonan") {
 
                 $permohonan->status_permohonan = $request->tindakan;
-                
+
 
                 if ($permohonan->jenis_permohonan == "Rayuan") {
                     $permohonan->catatan_pegawai_hq = $request->catatan_pelulus;
@@ -1604,16 +1615,16 @@ class PermohonanController extends Controller
             ]);
 
             $nama_lesen = time() . '-permohonan_baharu';
-            
+
             Storage::put('/pdf/' . $nama_lesen, $pdf->output());
 
-            $file = public_path()."/storage/pdf/" . $nama_lesen;
+            $file = public_path() . "/storage/pdf/" . $nama_lesen;
 
             $headers = [
                 'Content-Type' => 'application/pdf',
             ];
 
-            return response()->download($file, $nama_lesen.'.pdf', $headers);
+            return response()->download($file, $nama_lesen . '.pdf', $headers);
 
             // return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Pembaharuan") {

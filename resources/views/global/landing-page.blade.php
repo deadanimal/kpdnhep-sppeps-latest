@@ -69,11 +69,11 @@
                                 <h4 class="mb-4"><b>{{ __('landing.Pengumuman') }}</b></h4>
                                 @foreach ($penglands as $pengu)
                                     @if (Session::get('locale') == 'en')
-                                        <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_bm }}</h5>
-                                        <p class="mb-4">{{ $pengu->en }}</p>
-                                    @else
                                         <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_en }}</h5>
-                                        <p class="mb-4">{{ $pengu->bm }}</p>
+                                        <p class="mb-4">{{ $pengu->kandungan_en }}</p>
+                                    @else
+                                        <h5 style="text-transform:capitalize;">{{ $pengu->tajuk_bm }}</h5>
+                                        <p class="mb-4">{{ $pengu->kandungan_bm }}</p>
                                     @endif
 
                                 @endforeach

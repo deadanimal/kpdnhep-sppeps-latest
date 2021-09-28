@@ -38,9 +38,9 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tajuk BI
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Keterangan MS</th>
+                                        Keterangan BM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Keterangan EN</th>
+                                        Keterangan BI</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh
                                         Kemaskini</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
@@ -312,7 +312,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Keterangan BM</label>
+                                        <label for="title">Keterangan BI</label>
                                         <textarea class="form-control" rows="3" name="kandungan_en"></textarea>
                                     </div>
 

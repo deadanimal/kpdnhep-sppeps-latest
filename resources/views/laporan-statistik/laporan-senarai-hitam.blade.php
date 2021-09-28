@@ -482,7 +482,8 @@ echo $year; ?>
                                                         {{ $senaraihitam->negeri }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $senaraihitam->updated_at->format('d-m-Y') }}
+                                                        {{-- {{ $senaraihitam->updated_at }} --}}
+                                                        {{ date('d-m-Y', strtotime($senaraihitam->updated_at)) }}
                                                     </td>
                                                 </tr>
                                             @endforeach

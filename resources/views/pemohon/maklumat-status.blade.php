@@ -15,14 +15,15 @@
 
         .horizontal-tabs-steps .nav-item:after {
             content: "";
-            border-top: 5px dotted #4da3ff;
+            border-top: 5px solid #4da3ff;
             position: absolute;
             z-index: 0;
             top: 35px;
-            width: 160px;
+            width: 1000px;
             left: 0px;
             transition: border 1s ease-out;
             transition-delay: 0s, 0s, 0.1s;
+            overflow: hidden;
         }
 
         .horizontal-tabs-steps .nav-item:last-child:after {
@@ -105,15 +106,15 @@
         /*********** Steps End***************/
 
     </style>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="mt-5"><strong>Maklumat Status Permohonan</strong></h3>
+            <!-- <h5 class="text-secondary font-weight-normal">This information will let us know more about you.</h5> -->
+        </div>
+    </div>
 
     <div class="container-fluid d-flex justify-content-center flex-wrap">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3 class="mt-5"><strong>Maklumat Status Permohonan</strong></h3>
-                <!-- <h5 class="text-secondary font-weight-normal">This information will let us know more about you.</h5> -->
-
-            </div>
-        </div>
+        
         <div class="row mt-4 d-flex justify-content-center" style="width: 80%;">
             <div class="card card-frame col-md-8 col-xs-1">
                 <div class="card-header">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="container">
+                    <div class="container" style="overflow: hidden">
                         @foreach ($permohonan as $permohonan)
 
                             @if ($permohonan->jenis_permohonan == 'Baharu' || $permohonan->jenis_permohonan == 'Pembaharuan')

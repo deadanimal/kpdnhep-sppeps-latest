@@ -33,7 +33,7 @@ class KelulusanPermohonan extends Mailable
     public function build()
     {
         if($this->permohonan->status_permohonan == "Diluluskan"){
-            return $this->view('email.permohonan-diluluskan')->subject('Notifikasi Permit Diluluskan')->with([
+            return $this->view('email.permohonan-diluluskan')->subject('Notifikasi Permohonan Diluluskan')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
                 'nama'=>$this->permohonan->nama,
                 'no_kp'=>$this->permohonan->no_kp,
@@ -41,7 +41,7 @@ class KelulusanPermohonan extends Mailable
                 'bayaran_fi'=> $this->permohonan->bayaran_fi
             ]);
         } else if($this->permohonan->status_permohonan == "Tidak Diluluskan"){
-            return $this->view('email.permohonan-ditolak')->with([
+            return $this->view('email.permohonan-ditolak')->subject('Notifikasi Permohonan Ditolak')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
             ]);
         }

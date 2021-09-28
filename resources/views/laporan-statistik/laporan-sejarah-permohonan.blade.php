@@ -455,6 +455,9 @@ echo $year; ?>
                                                     No. Kad Pengenalan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
+                                                    Jenis Permohonan</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Negeri Kutipan Permit</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
@@ -475,6 +478,9 @@ echo $year; ?>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $sejarah->no_kp }}
                                                     </td>
+                                                    <td class="text-sm font-weight-normal">
+                                                        {{ $kelulusan->jenis_permohonan }}
+                                                    </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $sejarah->negeri_kutipan_permit }}
                                                     </td>
@@ -489,7 +495,8 @@ echo $year; ?>
                                                         @endif
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $sejarah->updated_at->format('d-m-Y') }}
+                                                        {{-- {{ $sejarah->updated_at }} --}}
+                                                        {{ date('d-m-Y', strtotime($sejarah->updated_at)) }}
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -34,7 +34,7 @@ class PendaftaranPdrm extends Mailable
     {
         //return $this->view('view.name');
 
-        return $this->view('email.daftar_pdrm')->with([
+        return $this->view('email.daftar_pdrm')->subject('Pendaftaran Baharu Pegawai PDRM')->with([
             'name'=>$this->user->name,
             'idpengguna'=>$this->user->no_kp,
             'password_temp'=>'password54321'

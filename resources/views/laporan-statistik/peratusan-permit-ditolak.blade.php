@@ -481,7 +481,8 @@ echo $year; ?>
                                                         {{ $penolakan->negeri_kutipan_permit }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{ $penolakan->updated_at->format('d-m-Y') }}
+                                                        {{ date('d-m-Y', strtotime($penolakan->updated_at)) }}
+                                                        {{-- {{ $penolakan->updated_at }} --}}
                                                     </td>
                                                 </tr>
 

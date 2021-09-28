@@ -78,10 +78,19 @@
                                                         <div class="col d-flex justify-content-center flex-wrap">
                                                             <label>
                                                                 <div class="position-relative">
-                                                                    <img src="/storage/{{ $permohonan->gambar_pemohon}}"
+                                                                    {{-- <img src="/storage/{{ $permohonan->gambar_pemohon}}"
                                                                         class="border-radius-md" width="150"
-                                                                        height="150" />
+                                                                        height="150" /> --}}
                                                                     {{-- <input type="hidden" name="gambar_pemohon" value="{{ $pemohon->gambar_profil}}"> --}}
+
+
+                                                                    <img src="/storage/{{ $pemohon->gambar_profil }}"
+                                                                        class="border-radius-md" width="150" height="150" />
+
+                                                                    <input type="hidden" name="gambar_pemohon"
+                                                                        value="{{ $pemohon->gambar_profil }}">
+
+                                                                        
                                                                     <input type="hidden" name="jenis_permohonan"
                                                                         value="Rayuan">
                                                                 </div>

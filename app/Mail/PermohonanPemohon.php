@@ -30,8 +30,26 @@ class PermohonanPemohon extends Mailable
      */
     public function build()
     {
-        return $this->view('email.permohonan-pemohon')->with([
-            'jenis_permohonan'=>$this->permohonan->jenis_permohonan
-        ]);
+        // return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+        //     'jenis_permohonan'=>$this->permohonan->jenis_permohonan
+        // ]);
+
+        if($this->permohonan->jenis_permohonan == "Baharu"){
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+                'jenis_permohonan'=>$this->permohonan->jenis_permohonan
+            ]);
+        } else if($this->permohonan->jenis_permohonan == "Pembaharuan"){
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+                'jenis_permohonan'=>$this->permohonan->jenis_permohonan
+            ]);
+        } else if($this->permohonan->jenis_permohonan == "Pendua"){
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+                'jenis_permohonan'=>$this->permohonan->jenis_permohonan
+            ]);
+        } else if($this->permohonan->jenis_permohonan == "Rayuan"){
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+                'jenis_permohonan'=>$this->permohonan->jenis_permohonan
+            ]);
+        }
     }
 }

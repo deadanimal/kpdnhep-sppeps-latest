@@ -21,6 +21,8 @@
 
 <body>
 
+    <br><br><br><br><br>
+
     <img src="assets/img/borang/6.png" alt="" height="510px">
 
     <p style="position: absolute; left: 250px; top: 60px;"><small>{{ $permohonan->nama }}</small> </p>

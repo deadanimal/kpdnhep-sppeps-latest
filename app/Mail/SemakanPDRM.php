@@ -31,7 +31,7 @@ class SemakanPDRM extends Mailable
      */
     public function build()
     {
-        return $this->view('email.semakan-pdrm')->with([
+        return $this->view('email.semakan-pdrm')->subject('Semakan PDRM')->with([
             'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
             'nama'=>$this->permohonan->nama,
             'no_kp'=>$this->permohonan->no_kp,

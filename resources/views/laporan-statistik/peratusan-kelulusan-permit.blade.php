@@ -510,10 +510,13 @@ echo $year; ?>
                                                     Jenis Permohonan</th> --}}
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Tarikh Permit lulus</th>
+                                                    Tarikh Permit Lulus</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
-                                                    Tarikh Permit tamat</th>
+                                                    Tarikh Mula Permit</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
+                                                    Tarikh Tamat Permit</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Nama Pemohon</th>
@@ -538,6 +541,9 @@ echo $year; ?>
                                                     </td> --}}
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ date('d-m-Y', strtotime($kelulusan->tarikh_diluluskan)) }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ date('d-m-Y', strtotime($kelulusan->tarikh_cetakan)) }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ date('d-m-Y', strtotime($kelulusan->tarikh_tamat_permit)) }}

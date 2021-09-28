@@ -41,11 +41,11 @@ class NewPasswordController extends Controller
                 'required',
                 'confirmed',
                 Rules\Password::defaults(),
-                Password::min(0)
-                    ->letters()
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
+                // Password::min(0)
+                //     ->letters()
+                //     ->mixedCase()
+                //     ->numbers()
+                //     ->symbols()
             ],
         ]);
 
