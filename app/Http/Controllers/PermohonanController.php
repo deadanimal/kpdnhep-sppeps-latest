@@ -906,7 +906,8 @@ class PermohonanController extends Controller
                 
 
                 if ($permohonan->jenis_permohonan == "Rayuan") {
-                    $permohonan->catatan_pelulus = $request->catatan_pegawai_hq;
+                    $permohonan->catatan_pegawai_hq = $request->catatan_pelulus;
+                    $permohonan->tempoh_kelulusan = $request->tempoh_kelulusan;
                 } else {
                     $permohonan->catatan_pelulus = $request->catatan_pelulus;
                 }
@@ -1616,7 +1617,7 @@ class PermohonanController extends Controller
 
             // return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Pembaharuan") {
-            $pdf = PDF::loadView('pdf.permohonan_baharu', [
+            $pdf = PDF::loadView('pdf.permohonan_pembaharuan', [
                 'masa' => time(),
                 'permohonan' => $permohonans,
                 'user' => $user,
@@ -1625,7 +1626,7 @@ class PermohonanController extends Controller
             $nama_lesen = time() . '-permohonan_pembaharuan';
             return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Pendua") {
-            $pdf = PDF::loadView('pdf.permohonan_baharu', [
+            $pdf = PDF::loadView('pdf.permohonan_pendua', [
                 'masa' => time(),
                 'permohonan' => $permohonans,
                 'user' => $user,
@@ -1634,7 +1635,7 @@ class PermohonanController extends Controller
             $nama_lesen = time() . '-permohonan_pendua';
             return $pdf->download($nama_lesen . '.pdf');
         } else if ($permohonans->jenis_permohonan == "Rayuan") {
-            $pdf = PDF::loadView('pdf.permohonan_baharu', [
+            $pdf = PDF::loadView('pdf.permohonan_rayuan', [
                 'masa' => time(),
                 'permohonan' => $permohonans,
                 'user' => $user,

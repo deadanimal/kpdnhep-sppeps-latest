@@ -24,7 +24,7 @@
 
                     <!-- Email Address -->
                     <div>
-                        <x-label for="email" :value="__('Email')" />
+                        <x-label for="email" :value="__('Emel')" />
 
                         <x-input id="email" class="block mt-1 w-full form-control" type="email" name="email"
                             :value="old('email', $request->email)" required autofocus />
@@ -32,14 +32,14 @@
 
                     <!-- Password -->
                     <div class="mt-4">
-                        <x-label for="password" :value="__('Password')" />
+                        <x-label for="password" :value="__('Kata Laluan')" />
 
                         <x-input id="password" class="block mt-1 w-full form-control" type="password" name="password" required />
                     </div>
 
                     <!-- Confirm Password -->
                     <div class="mt-4">
-                        <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                        <x-label for="password_confirmation" :value="__('Pengesahan Kata Laluan')" />
 
                         <x-input id="password_confirmation" class="block mt-1 w-full form-control" type="password"
                             name="password_confirmation" required />
@@ -47,7 +47,7 @@
 
                     <div class="flex items-center justify-end mt-4">
                         <x-button>
-                            {{ __('Reset Password') }}
+                            {{ __('Set Semula Kata Laluan') }}
                         </x-button>
                     </div>
                 </form>

@@ -225,9 +225,6 @@
 
                                         @endif
 
-
-
-
                                         <div class="d-flex flex-nowrap">
                                             <label>Adakah Pemohon tahu tentang aktiviti pemilikan semula barangan di bawah
                                                 Akta
@@ -300,7 +297,6 @@
                                                 <label for="panelName"><strong>Status Pekerjaan EPS</strong></label>
                                                 <input type="text" class="form-control col-9" disabled
                                                     value="{{ $permohonan->status_pekerjaan_eps }}">
-
                                             </div>
                                             <div class="col-1"></div>
                                             <div class="col form-group pr-0">

@@ -821,11 +821,40 @@
                                             <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                                 <label for="action" class="col-sm-3 ">Tindakan</label>
                                                 <div class="col-sm-5">
-                                                    <select id="action" class="form-control" name="tindakan">
+                                                    <select id="kelulusan" class="form-control" name="tindakan">
                                                         <option selected>Sila Pilih</option>
                                                         <option value="Diluluskan">Diluluskan</option>
                                                         <option value="Tidak Diluluskan">Tidak Diluluskan</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                                        <script type="text/javascript">
+                                            $(function() {
+                                                $("#kelulusan").change(function() {
+                                                    if ($(this).val() == "Diluluskan") {
+                                                        $("#dvPassport").show();
+                                                    } else {
+                                                        $("#dvPassport").hide();
+                                                    }
+                                                });
+                                            });
+                                        </script>
+
+                                        <div id="dvPassport" style="display: none">
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
+                                                    <label for="action" class="col-sm-3 ">Tempoh Kelulusan</label>
+                                                    <div class="col-sm-5">
+                                                        <select id="action" class="form-control"
+                                                            name="tempoh_kelulusan">
+                                                            <option>Sila Pilih</option>
+                                                            <option value="1 tahun">1 Tahun</option>
+                                                            <option value="2 tahun">2 Tahun</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -836,7 +865,7 @@
                                             <div class="form-group row d-flex flex-nowrap" style="width: 100%;">
                                                 <label for="comment" class="col-sm-3 ">Catatan</label>
                                                 <div class="col-sm-5">
-                                                    <textarea class="form-control" id="comment" rows="3"
+                                                    <textarea class="form-control" rows="3"
                                                         name="catatan_pelulus"></textarea>
                                                 </div>
                                             </div>

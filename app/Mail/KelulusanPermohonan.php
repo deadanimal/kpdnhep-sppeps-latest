@@ -33,7 +33,7 @@ class KelulusanPermohonan extends Mailable
     public function build()
     {
         if($this->permohonan->status_permohonan == "Diluluskan"){
-            return $this->view('email.permohonan-diluluskan')->with([
+            return $this->view('email.permohonan-diluluskan')->subject('Notifikasi Permit Diluluskan')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
                 'nama'=>$this->permohonan->nama,
                 'no_kp'=>$this->permohonan->no_kp,

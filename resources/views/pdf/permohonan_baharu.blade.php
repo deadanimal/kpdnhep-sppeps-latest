@@ -733,7 +733,7 @@
 
     <img src="assets/img/borang/1.png" alt="" height="950px">
     <div style="background-color: white; position: absolute; left: 530px; top: 110px; height:145px; width:200px"></div>
-    <img src="storage/{{ $permohonan->gambar_pemohon }}" alt="" height="140px"
+    <img src="storage/{{ $permohonan->gambar_pemohon }}" alt="" height="140px" width="100px"
         style="position: absolute; left: 540px; top: 110px; border-style: solid;">
     {{-- <p style="position: absolute; right: 0px; top: 150px;">A</p> --}}
     {{-- <br><br><br><br><br><br> --}}

@@ -499,7 +499,7 @@ ight notice and this permission notice shall be included in all copies or substa
                                                                                                                                                                                                                                                                                                                                         this.closest('form').submit();">
                                         <div class="d-flex py-1">
 
-                                            {{ __('Log Out') }}
+                                            {{ __('Log Keluar') }}
 
                                         </div>
                                     </a>

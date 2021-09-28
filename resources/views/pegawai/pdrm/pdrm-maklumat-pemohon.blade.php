@@ -24,15 +24,21 @@
 
                             <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="width: 90%;">
 
-                                <div class="row form-group p-3 d-flex justify-content-center">
-
-                                    <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" alt="..." class="avatar avatar-xxl">
+                                <div class="row ">
+                                    <div class="col d-flex justify-content-center flex-wrap">
+                                        <label>
+                                            <div class="position-relative">
+                                                <img src="/storage/{{ $permohonan->gambar_pemohon }}"
+                                                    class="border-radius-md" width="150" height="150" />
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <div class="d-flex flex-nowrap">
                                     <div class="col-6 form-group p-0">
                                         <label for="name">
-                                            <strong>Nama</strong>
+                                            <strong>Nama SSS</strong>
                                         </label>
                                         <div class="d-flex flex-nowrap align-items-center">
                                             <input type="text" class="form-control col-9" value="{{$permohonan->nama}}" disabled>

@@ -229,7 +229,7 @@
                                     <div class="d-flex justify-content-center flex-wrap" fxLayout="column"
                                         fxLayoutAlign="space-evenly stretch" style="width: 100%;">
 										
-										<input type="hidden" name="role" value="pegawai_hq">
+										<input type="hidden" name="role" value="pegawai_negeri">
 
                                         <div class="p-3" fxLayout="column" fxLayoutAlign="space-evenly stretch"
                                             style="width: 90%;">

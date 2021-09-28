@@ -34,7 +34,7 @@ class TetapanPerananController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
+        // dd($request);
         $user = new User();
 
         $user->no_kp = $request->nokp;

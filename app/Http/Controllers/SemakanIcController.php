@@ -52,7 +52,7 @@ class SemakanIcController extends Controller
         $month_int = (int)$month;
         $day_int = (int)$day;
         // dd($year_int);
-        if ($year_int >= 50) {
+        if ($year_int >= 30) {
             $year_int += 1900;
         } else {
             $year_int += 2000;
