@@ -81,9 +81,12 @@
                                                     {{ $audit->nama_pegawai }}
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold">
+                                                    <p class="text-secondary text-sm font-weight-bold">
                                                         {{ $audit->description }}
-                                                    </span>
+                                                    </p>
+                                                    <p class="text-secondary text-sm font-weight-bold">
+                                                        {{ $audit->info_pemohon }}
+                                                    </p>
                                                 </td>
 
                                             </tr>
