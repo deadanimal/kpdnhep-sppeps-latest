@@ -28,6 +28,12 @@ class SemakanStatusController extends Controller
                 ['no_permit', '=', $request->no_kp_or_permit]
             ])->get()->first();
 
+            // dd($user);
+            if($user == null){
+                // return back()->with('error', 'No. kad pengenalan atau no. permit tidak wujud');
+                return redirect("/semakan-status-eps")->withErrors('No. kad pengenalan atau no. permit tidak wujud');
+            }
+
             $permohonans = Permohonan::where([
                 ['user_id', '=', $user->id]
             ])->orderBy('created_at', 'desc')->get()->first();

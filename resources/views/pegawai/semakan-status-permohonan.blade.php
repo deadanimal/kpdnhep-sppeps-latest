@@ -11,7 +11,7 @@
             </div>
 
             <div class="row container-fluid mt-4" style="padding: 0px !important;">
-                <div class="card">
+                <div class="card p-0">
 
                     <div class="card-header" style="background-color: #f7e8ff;">
                         <h6>Carian Pemohon</h6>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="container-fluid mt-4" style="padding: 0px !important;">
-                <div class="card">
+                <div class="card p=0">
 
                     <div class="card-header" style="background-color: #f7e8ff;">
                         <h6> Senarai Status Permohonan</h6>

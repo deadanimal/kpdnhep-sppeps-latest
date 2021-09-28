@@ -38,16 +38,6 @@ class PengurusanDataController extends Controller
     {
         $permohonan = Permohonan::find($id);
         // dd($permohonan);
-        $validated = $request->validate([
-            'no_telefon' => 'required',
-            'emel' => 'required',
-            'alamat1' => 'required',
-            'alamat2' => 'required',
-            'alamat3' => 'required',
-            'poskod' => 'required',
-            'negeri' => 'required',
-            'negeri_kutipan_permit' => 'required',
-        ]);
 
         $permohonan->nama = $request->nama;
         $permohonan->no_kp = $request->no_kp;
@@ -65,31 +55,6 @@ class PengurusanDataController extends Controller
         if ($permohonan->jenis_permohonan == 'Baharu') {
 
             // dd($request);
-
-
-            $validated = $request->validate([
-                'jantina' => 'required',
-                'pekerjaan_sekarang' => 'required',
-                'tahap_pendidikan' => 'required',
-                'lesen_memandu' => 'required',
-                'berkerja_panel_atau_syarikat' => 'required',
-                'skop_tugas' => 'required',
-                'prosedur_peraturan_eps' => 'required',
-            ]);
-
-            if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                $validated = $request->validate([
-                    'nama_institusi_kewangan' => 'required',
-                    'no_telefon_institusi_kewangan' => 'required',
-                ]);
-            } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                $validated = $request->validate([
-                    'nama_panel' => 'required',
-                    'no_kp_panel' => 'required',
-                    'no_permit_panel' => 'required',
-                    'no_telefon_panel' => 'required',
-                ]);
-            }
 
             $permohonan->pekerjaan_sekarang = $request->pekerjaan_sekarang;
             $permohonan->tahap_pendidikan = $request->tahap_pendidikan;
@@ -113,44 +78,6 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_lesen_memandu = $request->salinan_lesen_memandu;
         } else if ($permohonan->jenis_permohonan == 'Pembaharuan') {
-
-            $validated = $request->validate([
-                'status_pekerjaan_eps' => 'required',
-                'tahap_pendidikan' => 'required',
-                'lesen_memandu' => 'required',
-                'berkerja_panel_atau_syarikat' => 'required',
-                'kehadiran_kursus_eps' => 'required',
-            ]);
-
-            if ($request->status_pekerjaan_eps == 'sepenuh masa') {
-                $validated = $request->validate([
-                    'tahun_pekerjaan_eps' => 'required',
-                ]);
-            } elseif ($request->status_pekerjaan_eps == 'pekerjaan sampingan') {
-                $validated = $request->validate([
-                    'pekerjaan_tetap' => 'required',
-                ]);
-            }
-
-            if ($request->berkerja_panel_atau_syarikat == 'Ya') {
-                $validated = $request->validate([
-                    'nama_institusi_kewangan' => 'required',
-                    'no_telefon_institusi_kewangan' => 'required',
-                ]);
-            } elseif ($request->berkerja_panel_atau_syarikat == 'Tidak') {
-                $validated = $request->validate([
-                    'nama_panel' => 'required',
-                    'no_kp_panel' => 'required',
-                    'no_permit_panel' => 'required',
-                    'no_telefon_panel' => 'required',
-                ]);
-            }
-
-            if ($request->kehadiran_kursus_eps == 'Ya') {
-                $validated = $request->validate([
-                    'tahun_dihadiri' => 'required',
-                ]);
-            }
 
 
             $permohonan->no_permit = $request->no_permit;
@@ -179,20 +106,6 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_surat_sokongan = $request->salinan_surat_sokongan;
         } else if ($permohonan->jenis_permohonan == 'Pendua') {
 
-
-            $validated = $request->validate([
-                'alasan_kehilangan' => 'required',
-                'penggantian_kali_ke' => 'required',
-                'negeri_laporan_polis' => 'required',
-                'no_laporan_polis' => 'required',
-            ]);
-            if ($request->alasan_kehilangan == 'Lain-lain') {
-                $validated = $request->validate([
-                    'alasan_lain' => 'required',
-                ]);
-            }
-
-
             $permohonan->no_permit = $request->no_permit;
 
             $permohonan->alasan_kehilangan = $request->alasan_kehilangan;
@@ -205,18 +118,6 @@ class PengurusanDataController extends Controller
             $permohonan->salinan_kp_belakang = $request->salinan_kp_belakang;
             $permohonan->salinan_laporan_polis = $request->salinan_laporan_polis;
         } else if ($permohonan->jenis_permohonan == 'Rayuan') {
-
-
-            $validated = $request->validate([
-                'sebab_permohonan_ditolak' => 'required',
-                'rayuan_kali_ke' => 'required',
-                'alasan_rayuan' => 'required',
-            ]);
-            if ($request->sebab_permohonan_ditolak == 'Sebab-sebab Lain') {
-                $validated = $request->validate([
-                    'sebab_lain' => 'required',
-                ]);
-            }
 
             $permohonan->no_permit = $request->no_permit;
 

@@ -479,7 +479,7 @@ echo $year; ?>
                                                         {{ $sejarah->no_kp }}
                                                     </td>
                                                     <td class="text-sm font-weight-normal">
-                                                        {{ $kelulusan->jenis_permohonan }}
+                                                        {{ $sejarah->jenis_permohonan }}
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
                                                         {{ $sejarah->negeri_kutipan_permit }}

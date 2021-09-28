@@ -54,6 +54,8 @@
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                                 No.</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                Jenis Permohonan</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                                                 NO KAD PENGENALAN</th>
@@ -80,6 +82,10 @@
                                                 <td>
                                                     <span
                                                         class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        class="text-secondary text-sm font-weight-bold">{{ $permohonan->jenis_permohonan }}</span>
                                                 </td>
                                                 <td>
                                                     <span
