@@ -32,32 +32,52 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+
         // dd($request);
         $pemohon = User::where([
             ['no_kp', $request->no_kp], ['role', 'pemohon']
-        ])->orWhere([
-            ['no_kp', '123456789012']
         ])->get()->first();
         // dd($pemohon);
-        if ($pemohon == null){
+
+        if ($request->no_kp == "123456789012") {
+            $request->authenticate();
+
+            $request->session()->regenerate();
+
+            $user = $request->user();
+            if ($user->role != 'pemohon') {
+                $audit = new Audit;
+                $audit->id_pegawai = $user->id;
+                $audit->description = $user->name . ' loggedin.';
+
+                $audit->save();
+            }
+
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+
+        if ($pemohon == null) {
             return Redirect::back()->withErrors('No. kad pengenalan atau kata laluan tidak sah');
         }
+        // dd($pemohon->role);
+        if ($pemohon->role == "pemohon") {
+            $request->authenticate();
 
+            $request->session()->regenerate();
 
-        $request->authenticate();
+            $user = $request->user();
+            if ($user->role != 'pemohon') {
+                $audit = new Audit;
+                $audit->id_pegawai = $user->id;
+                $audit->description = $user->name . ' loggedin.';
 
-        $request->session()->regenerate();
+                $audit->save();
+            }
 
-        $user = $request->user();
-        if ($user->role != 'pemohon') {
-            $audit = new Audit;
-            $audit->id_pegawai = $user->id;
-            $audit->description = $user->name. ' loggedin.';
-            
-            $audit->save();   
+            return redirect()->intended(RouteServiceProvider::HOME);
+        } else {
+            return Redirect::back()->withErrors('No. kad pengenalan atau kata laluan tidak sah');
         }
-
-        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
@@ -73,9 +93,9 @@ class AuthenticatedSessionController extends Controller
         if ($user->role != 'pemohon') {
             $audit = new Audit;
             $audit->id_pegawai = $user->id;
-            $audit->description = $user->name. ' logged out.';
-            
-            $audit->save();   
+            $audit->description = $user->name . ' logged out.';
+
+            $audit->save();
         }
 
         Auth::guard('web')->logout();

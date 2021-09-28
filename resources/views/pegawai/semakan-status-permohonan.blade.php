@@ -19,11 +19,11 @@
 
                     <div class="card-body p-3">
                         <div class="row p-3 mb-0">
-                            <form method="POST" action="">
+                            <form method="POST" action="/carian_semakan_pemohon">
                                 @csrf
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-sm" type="text" name="search"
+                                        <input class="form-control form-control-sm" type="text" name="no_kp"
                                             placeholder="No Kad Pengenalan" />
                                     </div>
                                     <!-- <div class="col">

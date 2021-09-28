@@ -184,6 +184,7 @@ Route::post('/cari_log_pemohon', [AuditController::class, 'cari_log_pemohon']);
 Route::post('/cari_log_pengguna', [AuditController::class, 'cari_log_pengguna']);
 
 Route::resource('/semakan_permohonan', SemakanPermohonanPegawaiController::class);
+Route::post('/carian_semakan_pemohon', [SemakanPermohonanPegawaiController::class, 'carian']);
 
 Route::resource('/cetakan_permit', CetakanPermitController::class);
 Route::get('/cetak_permit/{id}', [CetakanPermitController::class, 'cetakpermit']);

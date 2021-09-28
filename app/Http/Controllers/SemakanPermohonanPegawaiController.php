@@ -33,4 +33,16 @@ class SemakanPermohonanPegawaiController extends Controller
         ]);
     }
 
+    public function carian(Request $request){
+
+        $permohonan = Permohonan::where([
+            ['no_kp', $request->no_kp]
+        ])->get();
+
+        return view('pegawai.semakan-status-permohonan', [
+            'permohonan' => $permohonan
+        ]);
+
+    }
+
 }
