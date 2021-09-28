@@ -17,7 +17,6 @@
 
                         <div class="row">
                             <div class="col">
-
                                 <h6>Log Pemohon</h6>
                             </div>
                             <div class="col d-flex justify-content-end">
@@ -59,9 +58,9 @@
                                             <th
                                                 class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                                 deskripsi</th>
-                                            <th
+                                            {{-- <th
                                                 class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
-                                                Catatan</th>
+                                                Catatan</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>

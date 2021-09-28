@@ -89,7 +89,9 @@
                                         @endif
 
                                         @if ($permohonan->status_permohonan === 'Diluluskan' || $permohonan->status_permohonan === 'Tidak Diluluskan')
-                                            <form method="POST" action="/cetak_borang">
+                                            <a href="/cetak_borang/{{ $permohonan->id }}"><i
+                                                    class="fas fa-print"></i></a>
+                                            {{-- <form method="POST" action="/cetak_borang">
                                                 @csrf
                                                 <input type="hidden" name="id" id="id" value="{{ $permohonan->id }}">
                                                 <input type="submit" name="submit" id="btn1" hidden>
@@ -97,14 +99,14 @@
                                                     <button class="btn btn-primary btn-sm">Cetak</button>
                                                     
                                                 </label>
-                                            </form>
+                                            </form> --}}
                                         @endif
 
 
 
                                         <!-- <a href="javascript:;" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
-                                                    Bayar
-                                                </a> -->
+                                                        Bayar
+                                                    </a> -->
                                     </td>
                                 </tr>
                             @endforeach

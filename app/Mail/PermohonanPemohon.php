@@ -39,15 +39,15 @@ class PermohonanPemohon extends Mailable
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan
             ]);
         } else if($this->permohonan->jenis_permohonan == "Pembaharuan"){
-            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN PEMBAHARUAN')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan
             ]);
         } else if($this->permohonan->jenis_permohonan == "Pendua"){
-            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN PENDUA')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan
             ]);
         } else if($this->permohonan->jenis_permohonan == "Rayuan"){
-            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN BAHARU')->with([
+            return $this->view('email.permohonan-pemohon')->subject('NOTIFIKASI PERMOHONAN RAYUAN')->with([
                 'jenis_permohonan'=>$this->permohonan->jenis_permohonan
             ]);
         }

@@ -238,23 +238,28 @@
                                         style="margin-left: 5% !important; max-width: none; flex:none">
 
                                         <ul class="timeline">
-                                            <li style="width: 90%;">
-                                                <div class="timeline-badge success"><i
-                                                        class="fas fa-file-alt text-dark"></i>
-                                                </div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-
-                                                        <h4 class="h5 timeline-title"><strong>Penerimaan
-                                                                Permohonan</strong>
-                                                        </h4>
-                                                        <p>{{ date('d-m-Y H:i:s', strtotime($permohonan->created_at)) }}
-                                                        </p>
-                                                        <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
-                                                        </p>
+                                            @if ($permohonan->tarikh_penerimaan != null)
+                                                <li style="width: 90%;">
+                                                    <div class="timeline-badge success"><i
+                                                            class="fas fa-file-alt text-dark"></i>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+
+                                                            <h4 class="h5 timeline-title"><strong>Penerimaan
+                                                                    Permohonan</strong>
+                                                            </h4>
+                                                            <p>{{ date('d-m-Y H:i:s', strtotime($permohonan->tarikh_penerimaan)) }}
+                                                            </p>
+                                                            <p>Permohonan anda telah dihantar dan diterima oleh Pihak
+                                                                KPDNHEP
+                                                            </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_pegawai_negeri }}</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
 
                                             @if ($permohonan->tarikh_pengesahan != null)
                                                 <li style="width: 90%;">
@@ -270,6 +275,8 @@
                                                             </p>
                                                             <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
                                                                 Pemproses </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_pegawai_hq }}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -288,6 +295,8 @@
                                                             <p>
                                                                 Proses tapisan rekod jenayah oleh Pegawai PDRM
                                                             </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_pdrm }}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -306,6 +315,8 @@
                                                             <p>
                                                                 Proses syor/sokong permohonan oleh Pegawai Penyokong
                                                             </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_penyokong }}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -325,6 +336,8 @@
                                                             <p>
                                                                 Proses kelulusan permohonan oleh Pegawai Pelulus
                                                             </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_pelulus }}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -391,10 +404,12 @@
                                                         <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                 Permohonan</strong>
                                                         </h4>
-                                                        <p>{{ date('d-m-Y H:i:s', strtotime($permohonan->created_at)) }}
+                                                        <p>{{ date('d-m-Y H:i:s', strtotime($permohonan->tarikh_penerimaan)) }}
                                                         </p>
                                                         <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
                                                         </p>
+                                                        <p>Catatan:</p>
+                                                        <p>{{ $permohonan->catatan_pegawai_negeri }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -413,6 +428,8 @@
                                                             </p>
                                                             <p>Semakan Butiran permohonan dan dokumen sokongan oleh Pegawai
                                                                 Pemproses </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_pegawai_hq }}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -480,10 +497,12 @@
                                                         <h4 class="h5 timeline-title"><strong>Penerimaan
                                                                 Permohonan</strong>
                                                         </h4>
-                                                        <p>{{ date('d-m-Y H:i:s', strtotime($permohonan->created_at)) }}
+                                                        <p>{{ date('d-m-Y H:i:s', strtotime($permohonan->tarikh_penerimaan)) }}
                                                         </p>
                                                         <p>Permohonan anda telah dihantar dan diterima oleh Pihak KPDNHEP
                                                         </p>
+                                                        <p>Catatan:</p>
+                                                        <p>{{ $permohonan->catatan_pegawai_negeri }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -501,6 +520,8 @@
                                                             <p>
                                                                 Proses syor/sokong permohonan oleh Pegawai Penyokong
                                                             </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_penyokong }}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -520,6 +541,8 @@
                                                             <p>
                                                                 Proses kelulusan permohonan oleh Pegawai Pelulus
                                                             </p>
+                                                            <p>Catatan:</p>
+                                                            <p>{{ $permohonan->catatan_pelulus }}</p>
                                                         </div>
                                                     </div>
                                                 </li>

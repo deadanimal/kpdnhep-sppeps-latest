@@ -589,7 +589,7 @@ class PermohonanController extends Controller
                         $permohonan->status_permohonan = "hantar_ke_pemproses_hq";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
-                        $permohonan->tarikh_pengesahan = date('Y-m-d H:i:s');
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -598,8 +598,11 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses HQ';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
                         $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -613,10 +616,13 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     }
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
                     if ($request->tindakan == "Permohonan Lengkap") {
+
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
                         $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -629,8 +635,11 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses negeri';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
                         $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -644,6 +653,7 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     }
                 }
@@ -665,9 +675,11 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Menyokong permohonan ' . $permohonan->id;
+                    $audit->description = 'Menyokong permohonan';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
                 } else if ($request->tindakan == "Tidak Disokong") {
+                    
                     $permohonan->status_permohonan = "tidak_disokong_negeri";
                     $permohonan->sokongan = $request->tindakan;
                     $permohonan->catatan_penyokong = $request->catatan_penyokong;
@@ -680,7 +692,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Tidak menyokong permohonan ' . $permohonan->id;
+                    $audit->description = 'Tidak menyokong permohonan ';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
                 }
                 $permohonan->save();
@@ -708,7 +721,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Meluluskan permohonan ' . $permohonan->no_kp;
+                    $audit->description = 'Meluluskan permohonan';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
                     $permohonan->bayaran_fi = 20;
@@ -721,7 +735,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Tidak meluluskan permohonan ' . $permohonan->no_kp;
+                    $audit->description = 'Tidak meluluskan permohonan';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
                 }
 
@@ -762,7 +777,7 @@ class PermohonanController extends Controller
                         $permohonan->status_permohonan = "hantar_ke_pemproses_hq";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
-                        $permohonan->tarikh_pengesahan = date('Y-m-d H:i:s');
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -771,8 +786,11 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses HQ';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
                         $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -786,10 +804,13 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     }
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
                     if ($request->tindakan == "Permohonan Lengkap") {
+
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
                         $permohonan->status_permohonan = "hantar_ke_penyokong_negeri";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -802,8 +823,11 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Hantar permohonan lengkap ke pemproses negeri';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
+
+                        $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
                         $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -817,6 +841,7 @@ class PermohonanController extends Controller
                         $audit->model_id = $permohonan->id;
                         $audit->id_pemohon = $permohonan->user_id;
                         $audit->description = 'Kemaskini permohonan tidak lengkap';
+                        $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                         $audit->save();
                     }
                 }
@@ -824,6 +849,8 @@ class PermohonanController extends Controller
 
                 return redirect('/pemproses_negeri_tugasan_selesai');
             } else if ($request->jenis_tindakan == "hantar_ke_pdrm") {
+
+                $permohonan->tarikh_pengesahan = date('Y-m-d H:i:s');
                 $permohonan->status_permohonan = "hantar ke pdrm";
                 $permohonan->catatan_pegawai_hq = $request->catatan_pegawai_hq;
 
@@ -835,12 +862,14 @@ class PermohonanController extends Controller
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
-                $audit->description = 'Hantar permohonan ' . $permohonan->id . ' ke PDRM';
+                $audit->description = 'Hantar permohonan ke PDRM';
+                $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                 $audit->save();
 
                 return redirect('/pemproses_hq_tugasan_selesai');
             } else if ($request->jenis_tindakan == "hantar_ke_penyokong") {
                 if ($permohonan->jenis_permohonan == "Baharu") {
+                    
                     $permohonan->status_permohonan = "hantar_ke_penyokong_hq";
                     // dd($permohonan->status_permohonan);
 
@@ -853,6 +882,7 @@ class PermohonanController extends Controller
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Hantar Permohonan ke penyokong HQ';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
 
                     return redirect('/pemproses_hq_tugasan_selesai');
@@ -869,6 +899,7 @@ class PermohonanController extends Controller
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
                     $audit->description = 'Hantar Permohonan ke penyokong negeri';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
 
                     return redirect('/pemproses_hq_tugasan_selesai');
@@ -890,7 +921,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Menyokong permohonan' . $permohonan->id;
+                    $audit->description = 'Menyokong permohonan';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
 
                     return redirect('/penyokong_hq_tugasan_selesai');
@@ -909,7 +941,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = 'Tidak menyokong permohonan' . $permohonan->id;
+                    $audit->description = 'Tidak menyokong permohonan';
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
 
                     return redirect('/penyokong_hq_tugasan_selesai');
@@ -951,7 +984,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = "Meluluskan permohonan " . $permohonan->id;
+                    $audit->description = "Meluluskan permohonan";
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
                 } else if ($request->tindakan == "Tidak Diluluskan") {
 
@@ -968,7 +1002,8 @@ class PermohonanController extends Controller
                     $audit->model_name = 'Permohonan';
                     $audit->model_id = $permohonan->id;
                     $audit->id_pemohon = $permohonan->user_id;
-                    $audit->description = "Tidak meluluskan permohonan " . $permohonan->id;
+                    $audit->description = "Tidak meluluskan permohonan";
+                    $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                     $audit->save();
                 }
 
@@ -995,7 +1030,8 @@ class PermohonanController extends Controller
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
-                $audit->description = "Menyenarai hitam permohonan " . $permohonan->id;
+                $audit->description = "Menyenarai hitam permohonan";
+                $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                 $audit->save();
 
                 return redirect('/senarai-hitam');
@@ -1021,7 +1057,8 @@ class PermohonanController extends Controller
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
-                $audit->description = "Semak rekod jenayah " . $permohonan->id;
+                $audit->description = "Semak rekod jenayah";
+                $audit->info_pemohon = $permohonan->jenis_permohonan." ".$permohonan->nama." ".$permohonan->no_kp;
                 $audit->save();
 
                 return redirect('/permohonan');
@@ -1049,7 +1086,8 @@ class PermohonanController extends Controller
                 $audit->model_name = 'Permohonan';
                 $audit->model_id = $permohonan->id;
                 $audit->id_pemohon = $permohonan->user_id;
-                $audit->description = "Semak rekod jenayah " . $request->tindakan;
+                $audit->description = "Semak rekod jenayah";
+                $audit->info_pemohon = "Jenis Permohonan ". $permohonan->jenis_permohonan." "."Nama ".$permohonan->nama." "."no kad pengenalan ".$permohonan->no_kp;
                 $audit->save();
 
                 return redirect('/tugasan-selesai');

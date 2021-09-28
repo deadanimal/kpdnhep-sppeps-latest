@@ -825,10 +825,15 @@
     </p>
 
     <p style="position: absolute; left: 325px; top: 245px;">
-        <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_diluluskan)) }}</small>
+        @if ($permohonan->tarikh_diluluskan != null)
+            <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_diluluskan)) }}</small>
+        @endif
+
     </p>
     <p style="position: absolute; left: 470px; top: 245px;">
-        <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_tamat_permit)) }}</small>
+        @if ($permohonan->tarikh_tamat_permit != null)
+            <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_tamat_permit)) }}</small>
+        @endif
     </p>
 
     <p style="position: absolute; left: 220px; top: 460px;">
@@ -906,14 +911,20 @@
 
     @if ($permohonan->berkerja_panel_atau_syarikat == 'Ya')
         <p style="position: absolute; left: 310px; top: 265px;"><strong>/</strong> </p>
-        <p style="position: absolute; left: 490px; top: 260px;"><small>{{$permohonan->nama_institusi_kewangan}}</small> </p>
-        <p style="position: absolute; left: 560px; top: 278px;"><small>{{$permohonan->no_telefon_institusi_kewangan}}</small> </p>
+        <p style="position: absolute; left: 490px; top: 260px;">
+            <small>{{ $permohonan->nama_institusi_kewangan }}</small>
+        </p>
+        <p style="position: absolute; left: 560px; top: 278px;">
+            <small>{{ $permohonan->no_telefon_institusi_kewangan }}</small>
+        </p>
     @elseif ($permohonan->berkerja_panel_atau_syarikat == 'Tidak')
         <p style="position: absolute; left: 310px; top: 305px;"><strong>/</strong> </p>
-        <p style="position: absolute; left: 435px; top: 348px;"><small>{{$permohonan->nama_panel}}</small> </p>
-        <p style="position: absolute; left: 435px; top: 368px;"><small>{{$permohonan->no_kp_panel}}</small> </p>
-        <p style="position: absolute; left: 435px; top: 388px;"><small>{{$permohonan->no_permit_panel}}</small> </p>
-        <p style="position: absolute; left: 435px; top: 408px;"><small>{{$permohonan->no_telefon_panel}}</small> </p>
+        <p style="position: absolute; left: 435px; top: 348px;"><small>{{ $permohonan->nama_panel }}</small> </p>
+        <p style="position: absolute; left: 435px; top: 368px;"><small>{{ $permohonan->no_kp_panel }}</small> </p>
+        <p style="position: absolute; left: 435px; top: 388px;"><small>{{ $permohonan->no_permit_panel }}</small>
+        </p>
+        <p style="position: absolute; left: 435px; top: 408px;"><small>{{ $permohonan->no_telefon_panel }}</small>
+        </p>
 
     @endif
 
@@ -923,7 +934,7 @@
         <p style="position: absolute; left: 655px; top: 455px;"><strong>/</strong> </p>
     @endif
 
-    
+
     @if ($permohonan->prosedur_peraturan_eps == 'Ya')
         <p style="position: absolute; left: 568px; top: 488px;"><strong>/</strong> </p>
     @elseif ($permohonan->prosedur_peraturan == 'Tidak')

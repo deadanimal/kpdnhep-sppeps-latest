@@ -44,7 +44,7 @@ class TetapanPerananController extends Controller
         $user->jawatan = $request->jawatan;
         $user->no_telefon_pejabat = $request->no_tel;
 
-        $user->password = Hash::make('password');
+        $user->password = Hash::make('password321');
         $user->role = $request->role;
 
         if ($request->status == "Aktif") {

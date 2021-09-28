@@ -112,10 +112,16 @@
     </p>
 
     <p style="position: absolute; left: 325px; top: 245px;">
-        <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_diluluskan)) }}</small>
+        @if ($permohonan->tarikh_diluluskan != null)
+            <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_diluluskan)) }}</small>
+        @endif
+
     </p>
     <p style="position: absolute; left: 470px; top: 245px;">
-        <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_tamat_permit)) }}</small>
+        @if ($permohonan->tarikh_tamat_permit != null)
+            <small>{{ date('d/m/Y', strtotime($permohonan->tarikh_tamat_permit)) }}</small>
+        @endif
+
     </p>
 
     <p style="position: absolute; left: 220px; top: 460px;">

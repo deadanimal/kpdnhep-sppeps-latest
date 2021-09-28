@@ -33,8 +33,15 @@
                             <div class="col">
                                 @foreach ($pegawais as $pegawai)
                                     <p>ID Pengguna: {{ $pegawai->id }}</p>
+                                    <p>No. Kad Pengenalan : {{ $pegawai->no_kp }}</p>
                                     <p>Nama Pengguna : {{ $pegawai->name }}</p>
-                                    <p>Status : {{ $pegawai->status }}</p>
+                                    <p>Status :
+                                        @if ( $pegawai->status === "1")
+                                            Aktif
+                                        @elseif ( $pegawai->status === "0")
+                                            Tidak Aktif
+                                        @endif 
+                                    </p>
                                     {{-- <p>Log Masuk Terakhir : 13/08/2021 10:23</p> --}}
                                     <p>Peranan : <br>
                                         @foreach ($pegawai->roles as $role)
@@ -93,9 +100,12 @@
                                                 </td>
 
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="text-secondary text-sm font-weight-bold">
+                                                    <p class="text-secondary text-sm font-weight-bold">
                                                         {{ $audit->description }}
-                                                    </span>
+                                                    </p>
+                                                    <p class="text-secondary text-sm font-weight-bold">
+                                                        {{ $audit->info_pemohon }}
+                                                    </p>
                                                 </td>
 
                                             </tr>

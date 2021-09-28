@@ -24,11 +24,11 @@
                                         placeholder="Sila masukkan no. kad pengenalan tanpa '-'">
                                 </div>
                                 <div class="form-group d-flex justify-content-center pt-5">
-                                    <button type="button" class="btn m-1 text-white text-capitalize"
+                                    {{-- <button type="button" class="btn m-1 text-white text-capitalize"
                                         style="background-color: #1d1da1;" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
                                         {{ __('landing.imbas_kod_qr') }}
-                                    </button>
+                                    </button> --}}
                                     <h1 id="maelhensem"></h1>
                                     <input type="submit" class="btn text-white text-capitalize m-1"
                                         style="background-color: #1d1da1;" value="{{ __('landing.semak') }}">
