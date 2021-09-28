@@ -48,9 +48,25 @@ class ProfilController extends Controller
     public function update(Request $request, User $user)
     {
         // dd($user->name);
+		
 
         $user = $request->user();
         $user_id = $user->id;
+		
+		if ($user->profil_update == 0){
+			$rules = [
+				'gambar_profil' => ['required'],
+			];
+
+			$validator = Validator::make($request->all(), $rules, $messages = [
+				'required' => ':attribute diperlukan',
+           
+			]);
+
+			if ($validator->fails()) {
+				return Redirect::back()->withErrors($validator->errors());
+			};
+		}
 
         $user = User::find($user_id);
         // dd($user);
