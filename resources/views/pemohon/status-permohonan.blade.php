@@ -89,8 +89,7 @@
                                         @endif
 
                                         @if ($permohonan->status_permohonan === 'Diluluskan' || $permohonan->status_permohonan === 'Tidak Diluluskan')
-                                            <a href="/cetak_borang/{{ $permohonan->id }}"><i
-                                                    class="fas fa-print"></i></a>
+                                            <a class="btn btn-primary btn-sm" href="/cetak_borang/{{ $permohonan->id }}">Cetak Permohonan</a>
                                             {{-- <form method="POST" action="/cetak_borang">
                                                 @csrf
                                                 <input type="hidden" name="id" id="id" value="{{ $permohonan->id }}">
