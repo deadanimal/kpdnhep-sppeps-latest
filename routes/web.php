@@ -102,7 +102,7 @@ Route::resource('/permohonan', PermohonanController::class);
 Route::get('/show_permohonan/{id}', [PermohonanController::class, 'show_pegawai_hq']);
 Route::post('/cari', [PermohonanController::class, 'cari']);
 Route::post('/maklumat_permohonan', [PermohonanController::class, 'maklumatPermohonan']);
-Route::post('/cetak_borang', [PermohonanController::class, 'cetak']);
+Route::get('/cetak_borang/{id}', [PermohonanController::class, 'cetak']);
 
 Route::post('/cari-tugasan-selesai', [TugasanSelesaiController::class, 'cari']);
 

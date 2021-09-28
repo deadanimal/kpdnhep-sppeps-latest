@@ -129,7 +129,8 @@
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             @if ($permohonan->status_permohonan !== 'hantar' && $permohonan->status_permohonan !== 'Permohonan Tidak Lengkap')
-                                                                <form method="POST" action="/cetak_borang">
+                                                                <a href="/cetak_borang/{{ $permohonan->id }}"><i class="fas fa-print"></i></a>
+                                                                {{-- <form method="POST" action="/cetak_borang">
                                                                     @csrf
                                                                     <input type="hidden" name="id" id="id"
                                                                         value="{{ $permohonan->id }}">
@@ -137,7 +138,7 @@
                                                                     <label for="btn1">
                                                                         <i class="fas fa-print"></i>
                                                                     </label>
-                                                                </form>
+                                                                </form> --}}
 
 
                                                             @endif

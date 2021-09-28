@@ -1599,10 +1599,10 @@ class PermohonanController extends Controller
         }
     }
 
-    public function cetak(Request $request)
+    public function cetak($id)
     {
         // dd($request);
-        $permohonans = Permohonan::find($request->id);
+        $permohonans = Permohonan::find($id);
         $user = User::find($permohonans->user_id);
 
         $lesen_memandus = explode(",", $permohonans->lesen_memandu);
