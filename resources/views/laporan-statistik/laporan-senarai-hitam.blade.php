@@ -710,11 +710,11 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina'
+                        title: 'Pemohon Disenarai Hitam Mengikut Jantina'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina',
+                        title: 'Pemohon Disenarai Hitam Mengikut Jantina',
                     },
                 ],
             });
@@ -729,11 +729,11 @@ echo $year; ?>
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri'
+                        title: 'Pemohon Disenarai Hitam Mengikut Negeri'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri',
+                        title: 'Pemohon Disenarai Hitam Mengikut Negeri',
                     },
                 ],
             });

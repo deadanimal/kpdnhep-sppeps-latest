@@ -48,25 +48,25 @@ class ProfilController extends Controller
     public function update(Request $request, User $user)
     {
         // dd($user->name);
-		
+
 
         $user = $request->user();
         $user_id = $user->id;
-		
-		if ($user->profil_update == 0){
-			$rules = [
-				'gambar_profil' => ['required'],
-			];
 
-			$validator = Validator::make($request->all(), $rules, $messages = [
-				'required' => ':attribute diperlukan',
-           
-			]);
+        if ($user->profil_update == 0) {
+            $rules = [
+                'gambar_profil' => ['required'],
+            ];
 
-			if ($validator->fails()) {
-				return Redirect::back()->withErrors($validator->errors());
-			};
-		}
+            $validator = Validator::make($request->all(), $rules, $messages = [
+                'required' => ':attribute diperlukan',
+
+            ]);
+
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator->errors());
+            };
+        }
 
         $user = User::find($user_id);
         // dd($user);
@@ -208,7 +208,7 @@ class ProfilController extends Controller
 
             $request->authenticate();
             $request->session()->regenerate();
-            
+
             return redirect('/appp');
         } else {
             return redirect('/login')->withErrors('Salah username/kata laluan');
@@ -225,33 +225,65 @@ class ProfilController extends Controller
     public function register(Request $request)
     {
 
-        // $rules = [
-        //     'email' => ['required'],
-        //     'password' => [
-        //         'required',
-        //         Password::min(8)
-        //             ->letters()
-        //             ->mixedCase()
-        //             ->numbers()
-        //             ->symbols()
-        //     ],
-        //     'password_confirmation' => [
-        //         'same:new_password',
-        //         'required',
-        //     ],
-        // ];
+        $rules = [
+            'email' => ['required'],
+            'password' => [
+                'required',
+                Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ],
+            'password_confirmation' => [
+                'same:password',
+                'required',
+            ],
+        ];
 
-        // $validator = Validator::make($request->all(), $rules, $messages = [
-        //     'required' => ':attribute is required',
-        //     // 'captcha' => 'captcha tidak betul',
-        //     'same' => 'New password not match',
-        //     // 'min' => 'Password must be minimum 8 digit',
-        //     // 'regex' => 'Password must be in alphanumeric'
-        // ]);
+        $validator = Validator::make($request->all(), $rules, $messages = [
+            'required' => ':attribute is required',
+            // 'captcha' => 'captcha tidak betul',
+            'same' => 'New password not match',
+            // 'min' => 'Password must be minimum 8 digit',
+            // 'regex' => 'Password must be in alphanumeric'
+        ]);
 
-        // if ($validator->fails()) {
-        //     return Redirect::back()->withErrors($validator->errors());
-        // };
+        if ($validator->fails()) {
+            //dd($validator->errors());
+
+            $idpengguna = $request->no_kp;
+
+            $url = 'http://datajpndev.kpdnhep.gov.my/jwtapi/';
+
+            $token_janaan = Http::post($url, [
+                "name" => "generateToken",
+                "param" => [
+                    "user_id" => "No_Kad_Pengenalan",
+                    "app_id" => "SPPEPSdev",
+                    "app_secret" => "[SPPEPSdev@bpm123]",
+                ]
+            ])->json()['response']['result']['token'];
+
+
+            $pengguna = Http::withToken($token_janaan)->post($url, [
+                "name" => "getMyIdentity",
+                "param" => [
+                    "nokp" => $idpengguna,
+                ]
+            ])->json()['response'];
+
+            $respond = $pengguna['status'];
+            $pemohon = $pengguna['result'];
+
+            $ReplyIndicator = $pengguna['result']['ReplyIndicator'];
+            return view('auth.register_', [
+                'pengguna' => $pemohon,
+                'no_kp' => $request->no_kp,
+                'age' => $request->age,
+                'tarikh_lahir' => $request->tarikh_lahir,
+            ])->withErrors($validator->errors());
+        };
 
         $user = new User();
 

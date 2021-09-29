@@ -36,8 +36,10 @@ class AuthenticatedSessionController extends Controller
         // dd($request);
         $pemohon = User::where([
             ['no_kp', $request->no_kp], ['role', 'pemohon']
-        ])->get()->first();
-        // dd($pemohon);
+        ])->orWhere([
+			['no_kp', $request->no_kp], ['role', 'pegawai_pdrm']
+		])->get()->first();
+        //dd($pemohon);
 
         if ($request->no_kp == "123456789012") {
             $request->authenticate();
@@ -60,7 +62,7 @@ class AuthenticatedSessionController extends Controller
             return Redirect::back()->withErrors('No. kad pengenalan atau kata laluan tidak sah');
         }
         // dd($pemohon->role);
-        if ($pemohon->role == "pemohon") {
+        if ($pemohon->role == "pemohon" || $pemohon->role == "pegawai_pdrm") {
             $request->authenticate();
 
             $request->session()->regenerate();

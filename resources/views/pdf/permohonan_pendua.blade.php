@@ -147,64 +147,65 @@
 
 
     {{-- //////////////////////////////////////////// --}}
-    <br><br><br><br>
+    <br><br><br><br><br>
 
     <img src="assets/img/borang/5.png" alt="" height="400px">
 
-    <p style="position: absolute; left: 250px; top: 70px;"><small>{{ $permohonan->nama }}</small> </p>
+    <p style="position: absolute; left: 250px; top: 90px;"><small>{{ $permohonan->nama }}</small> </p>
 
     @if ($permohonan->jantina == 'Lelaki')
-        <p style="position: absolute; left: 360px; top: 95px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 360px; top: 115px;"><strong>/</strong> </p>
     @elseif ($permohonan->jantina == 'Perempuan')
-        <p style="position: absolute; left: 550px; top: 95px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 550px; top: 115px;"><strong>/</strong> </p>
     @else
 
     @endif
 
     @if ($permohonan->alasan_kehilangan == 'Kecurian')
         {{-- curi --}}
-        <p style="position: absolute; left: 360px; top: 125px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 360px; top: 145px;"><strong>/</strong> </p>
 
     @elseif ($permohonan->alasan_kehilangan == 'Kebakaran')
         {{-- bakar --}}
-        <p style="position: absolute; left: 360px; top: 170px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 360px; top: 190px;"><strong>/</strong> </p>
 
     @elseif ($permohonan->alasan_kehilangan == 'Keciciran')
         {{-- cicir --}}
-        <p style="position: absolute; left: 545px; top: 130px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 545px; top: 150px;"><strong>/</strong> </p>
 
     @elseif ($permohonan->alasan_kehilangan == 'Lain-lain')
         {{-- lain2 --}}
-        <p style="position: absolute; left: 545px; top: 170px;"><strong>/</strong> </p>
-        <p style="position: absolute; left: 430px; top: 205px;"><small>{{ $permohonan->alasan_lain }}</small> </p>
+        <p style="position: absolute; left: 545px; top: 190px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 430px; top: 225px;"><small>{{ $permohonan->alasan_lain }}</small> </p>
     @else
 
     @endif
-
+<p style="position: absolute; left: 540px; top: 280px;"><strong>/</strong> </p>
+<p style="position: absolute; left: 315px; top: 250px;"><strong>/</strong> </p>
     @if ($permohonan->penggantian_kali_ke == '1')
 
-        <p style="position: absolute; left: 315px; top: 230px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 315px; top: 250px;"><strong>/</strong> </p>
 
     @elseif ($permohonan->penggantian_kali_ke == '2')
 
-        <p style="position: absolute; left: 395px; top: 230px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 395px; top: 250px;"><strong>/</strong> </p>
 
     @elseif ($permohonan->penggantian_kali_ke == '3')
-        <p style="position: absolute; left: 540px; top: 230px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 540px; top: 250px;"><strong>/</strong> </p>
     @elseif ($permohonan->penggantian_kali_ke == '4')
-        <p style="position: absolute; left: 315px; top: 260px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 315px; top: 280px;"><strong>/</strong> </p>
     @elseif ($permohonan->penggantian_kali_ke == '5')
-        <p style="position: absolute; left: 395px; top: 260px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 395px; top: 280px;"><strong>/</strong> </p>
     @elseif ($permohonan->penggantian_kali_ke == '6')
-        <p style="position: absolute; left: 540px; top: 260px;"><strong>/</strong> </p>
+        <p style="position: absolute; left: 540px; top: 280px;"><strong>/</strong> </p>
     @else
 
     @endif
 
-    <p style="position: absolute; left: 250px; top: 300px;"><small>{{ $permohonan->negeri_laporan_polis }}</small>
+    <p style="position: absolute; left: 250px; top: 320px;"><small>{{ $permohonan->negeri_laporan_polis }}</small>
     </p>
 
-    <p style="position: absolute; left: 250px; top: 330px;"><small>{{ $permohonan->no_laporan_polis }}</small> </p>
+    <p style="position: absolute; left: 250px; top: 350px;"><small>{{ $permohonan->no_laporan_polis }}</small> </p>
 
 
 </body>

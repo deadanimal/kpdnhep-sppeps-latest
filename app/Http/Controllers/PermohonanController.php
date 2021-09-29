@@ -137,6 +137,7 @@ class PermohonanController extends Controller
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
+                    'max' => 'Size file :attribute tidak boleh melebihi 500kb'
                 ]);
 
                 if ($validator->fails()) {

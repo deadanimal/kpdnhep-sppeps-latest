@@ -138,7 +138,7 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
 
-                                        @if ($permohonan->tarikh_pengesahan != null)
+                                        @if ($permohonan->tarikh_penerimaan != null)
                                             <li class="nav-item">
                                                 <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
                                                 </a>
@@ -155,12 +155,12 @@
 
                                         @if ($permohonan->tarikh_pengesahan != null)
                                             <li class="nav-item">
-                                                <a class="nav-link m-2 " data-toggle="tab"><span>2</span></a>
+                                                <a class="nav-link m-2 active" data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
                                             </li>
                                         @else
                                             <li class="nav-item">
-                                                <a class="nav-link m-2 active" data-toggle="tab"><span>2</span></a>
+                                                <a class="nav-link m-2 " data-toggle="tab"><span>2</span></a>
                                                 <h6 class="text-center mt-1">Pengesahan <br> Permohonan</h6>
                                             </li>
                                         @endif
@@ -235,11 +235,19 @@
                                 <div class="platform-tour-wrapper py-3 ">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                        <li class="nav-item">
-                                            <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                            </a>
-                                            <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                        </li>
+                                        @if ($permohonan->tarikh_penerimaan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
+                                                </a>
+                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                            </li>
+                                        @else
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2" data-toggle="tab"><span>1</span>
+                                                </a>
+                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                            </li>
+                                        @endif
 
                                         @if ($permohonan->tarikh_sokongan != null)
                                             <li class="nav-item">
@@ -300,11 +308,19 @@
                                 <div class="platform-tour-wrapper py-3 ">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs justify-content-between border-0 horizontal-tabs-steps">
-                                        <li class="nav-item">
-                                            <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
-                                            </a>
-                                            <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
-                                        </li>
+                                        @if ($permohonan->tarikh_penerimaan != null)
+                                            <li class="nav-item">
+                                                <a class="nav-link active m-2" data-toggle="tab"><span>1</span>
+                                                </a>
+                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                            </li>
+                                        @else
+                                            <li class="nav-item">
+                                                <a class="nav-link m-2" data-toggle="tab"><span>1</span>
+                                                </a>
+                                                <h6 class="text-center mt-1">Penerimaan <br> Permohonan</h6>
+                                            </li>
+                                        @endif
 
                                         @if ($permohonan->tarikh_pengesahan != null)
                                             <li class="nav-item">

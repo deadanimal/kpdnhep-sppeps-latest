@@ -662,7 +662,7 @@ echo $year; ?>
             }];
             chart.exporting.menu.align = "right";
             chart.exporting.menu.verticalAlign = "top";
-            chart.exporting.filePrefix = "Kutipan FIt mengikut Jantina";
+            chart.exporting.filePrefix = "Kutipan FI mengikut Jantina";
             var title = chart.titles.create();
             title.text = "Kutipan FI mengikut Jantina";
             var options = chart.exporting.getFormatOptions("pdf");
@@ -721,11 +721,11 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina'
+                        title: 'Kutipan FI Mengikut Jantina'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina',
+                        title: 'Kutipan FI Mengikut Jantina',
                     },
                 ],
             });
@@ -740,11 +740,11 @@ echo $year; ?>
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri'
+                        title: 'Kutipan FI Mengikut Negeri'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri',
+                        title: 'Kutipan FI Mengikut Negeri',
                     },
                 ],
             });

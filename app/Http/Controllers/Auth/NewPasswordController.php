@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+// use Illuminate\Validation\Rules\Password;
 
 class NewPasswordController extends Controller
 {
@@ -34,26 +37,56 @@ class NewPasswordController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $request->validate([
+        // $request->validate([
+        //     'token' => 'required',
+        //     'email' => 'required|email',
+        //     'password' => [
+        //         'required',
+        //         'confirmed',
+        //         Rules\Password::defaults(),
+        //         // Password::min(0)
+        //         //     ->letters()
+        //         //     ->mixedCase()
+        //         //     ->numbers()
+        //         //     ->symbols()
+        //     ],
+        // ]);
+
+        $rules = [
             'token' => 'required',
             'email' => 'required|email',
             'password' => [
-                'required',
+                'required', 'min:8',
                 'confirmed',
                 Rules\Password::defaults(),
-                // Password::min(0)
-                //     ->letters()
-                //     ->mixedCase()
-                //     ->numbers()
-                //     ->symbols()
+                Rules\Password::min(0)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
             ],
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages = [
+            'min' => 'Password must be at least 8 characters',
+            'required' => ':attribute is required',
+            'same' => 'New confirm password not match',
+            // 'new_password.Password::min(8)' => 'AAAAA',
+            // 'regex' => 'Password must be in alphanumeric'
         ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator->errors());
+        };
+		
+		//dd($request->password);
 
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            $request->only('email','password', 'password_confirmation', 'token'),
+			
             function ($user) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($request->password),

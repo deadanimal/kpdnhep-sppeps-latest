@@ -119,12 +119,11 @@
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
 
-                                                            @if ($permohonan->status_permohonan === 'Diluluskan')
+                                                            @if ($permohonan->status_permohonan == 'Diluluskan')
                                                                 <span class="badge badge-success">
                                                                     Diluluskan
                                                                 </span>
-                                                            @elseif($permohonan->status_permohonan === 'Tidak
-                                                                Diluluskan')
+                                                            @elseif($permohonan->status_permohonan == 'Tidak Diluluskan')
                                                                 <span class="badge badge-danger">Tidak
                                                                     Diluluskan
                                                                 </span>

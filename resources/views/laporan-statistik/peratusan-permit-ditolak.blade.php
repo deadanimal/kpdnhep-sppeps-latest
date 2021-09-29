@@ -711,11 +711,11 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina'
+                        title: 'Permit Ditolak Mengikut Jantina'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina',
+                        title: 'Permit Ditolak Mengikut Jantina',
                     },
                 ],
             });
@@ -730,11 +730,11 @@ echo $year; ?>
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri'
+                        title: 'Permit Ditolak Mengikut Negeri'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri',
+                        title: 'Permit Ditolak Mengikut Negeri',
                     },
                 ],
             });

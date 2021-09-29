@@ -13,6 +13,16 @@
 
                 <form method="POST" action="/register_user">
                     @csrf
+					
+					@if ($errors->any())
+                                                    <div class="alert alert-warning">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endif
 
                     <input type="hidden" name="age" value="{{ $age }}">
                     <input type="hidden" name="tarikh_lahir" value="{{ $tarikh_lahir }}">

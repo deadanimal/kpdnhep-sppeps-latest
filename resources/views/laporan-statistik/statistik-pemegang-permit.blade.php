@@ -726,11 +726,11 @@ echo $year; ?>
                     "info": false,
                     buttons: [{
                             extend: 'excelHtml5',
-                            title: 'Kelulusan Permit Mengikut Jantina'
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina'
                         },
                         {
                             extend: 'pdfHtml5',
-                            title: 'Kelulusan Permit Mengikut Jantina',
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina',
                         },
                     ],
                 });
@@ -745,11 +745,11 @@ echo $year; ?>
                     pageLength: 4,
                     buttons: [{
                             extend: 'excelHtml5',
-                            title: 'Kelulusan Permit Mengikut Negeri'
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri'
                         },
                         {
                             extend: 'pdfHtml5',
-                            title: 'Kelulusan Permit Mengikut Negeri',
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri',
                         },
                     ],
                 });

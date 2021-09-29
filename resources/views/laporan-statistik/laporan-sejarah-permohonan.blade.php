@@ -724,11 +724,11 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina'
+                        title: 'Sejarah Permohonan Mengikut Jantina'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina',
+                        title: 'Sejarah Permohonan Mengikut Jantina',
                     },
                 ],
             });
@@ -743,11 +743,11 @@ echo $year; ?>
                 pageLength: 4,
                 buttons: [{
                         extend: 'excelHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri'
+                        title: 'Sejarah Permohonan Mengikut Negeri'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri',
+                        title: 'Sejarah Permohonan Mengikut Negeri',
                     },
                 ],
             });

@@ -233,13 +233,13 @@ class TugasanSelesaiController extends Controller
         $user_negeri = $user->negeri;
 
         $permohonan = Permohonan::where([
-            ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'disokong_negeri']
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
         ])->orWhere([
-            ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'tidak_disokong_negeri']
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'tidak_disokong_negeri']
         ])->orWhere([
-            ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Diluluskan']
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
         ])->orWhere([
-            ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Tidak Diluluskan']
+            ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
         ])->get();
 
         return view('pegawai.tugasan_selesai.penyokong_negeri', [
@@ -255,35 +255,35 @@ class TugasanSelesaiController extends Controller
         if ($request->no_kp != null && $request->jenis_permohonan == "null") {
 
             $permohonans = Permohonan::where([
-                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'disokong_negeri']
+                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
             ])->orWhere([
-                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'tidak_disokong_negeri']
+                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'tidak_disokong_negeri']
             ])->orWhere([
-                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Diluluskan']
+                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
             ])->orWhere([
-                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Tidak Diluluskan']
+                ['no_kp', '=', $request->no_kp], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
             ])->get();
         } else if ($request->no_kp == null && $request->jenis_permohonan != "null") {
 
             $permohonans = Permohonan::where([
-                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'disokong_negeri']
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
             ])->orWhere([
-                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'tidak_disokong_negeri']
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'tidak_disokong_negeri']
             ])->orWhere([
-                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Diluluskan']
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
             ])->orWhere([
-                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Tidak Diluluskan']
+                ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
             ])->get();
         } else {
 
             $permohonans = Permohonan::where([
-                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'disokong_negeri']
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'disokong_negeri']
             ])->orWhere([
-                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'tidak_disokong_negeri']
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'tidak_disokong_negeri']
             ])->orWhere([
-                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Diluluskan']
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Diluluskan']
             ])->orWhere([
-                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['sokongan', '=', 'Tidak Diluluskan']
+                ['no_kp', '=', $request->no_kp], ['jenis_permohonan', '=', $request->jenis_permohonan], ['negeri_kutipan_permit', '=', $user_negeri], ['status_permohonan', '=', 'Tidak Diluluskan']
             ])->get();
         }
         return view('pegawai.tugasan_selesai.penyokong_negeri', [
