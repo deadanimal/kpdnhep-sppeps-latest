@@ -21,7 +21,7 @@
                             <label>No. Kad Pengenalan</label>
                             <div class="input-group mb-4">
                                 {{-- <span class="input-group-text"><i class="fas fa-envelope"></i></span> --}}
-                                <input class="form-control text-center" placeholder="No. Kad Pengenalan" type="text"
+                                <input class="form-control text-center" placeholder="No. Kad Pengenalan" type="number"
                                     id="no_kp" name="no_kp" required autofocus>
                             </div>
                         </div>

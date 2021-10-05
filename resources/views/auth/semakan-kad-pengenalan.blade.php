@@ -37,7 +37,7 @@
 
                     <div class="form-group mt-3">
                         <label for="nric">{{ __('landing.no_kp') }}</label>
-                        <input type="text" class="form-control" name="no_kp" placeholder="e.g XXXXXXXXXXXX">
+                        <input type="number" class="form-control" name="no_kp" placeholder="e.g XXXXXXXXXXXX">
                     </div>
 
                     <div class="form-group mt-4 mb-4">

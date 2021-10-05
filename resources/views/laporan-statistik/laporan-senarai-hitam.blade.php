@@ -692,11 +692,33 @@ echo $year; ?>
                 dom: 'Bfrtip',
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Pemohon Disenarai Hitam ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Pemohon Disenarai Hitam'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Pemohon Disenarai Hitam ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Pemohon Disenarai Hitam'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -710,11 +732,33 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Pemohon Disenarai Hitam Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Pemohon Disenarai Hitam Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Pemohon Disenarai Hitam Mengikut Jantina',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Pemohon Disenarai Hitam Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Pemohon Disenarai Hitam Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -726,14 +770,36 @@ echo $year; ?>
                 "searching": false,
                 "info": false,
                 "paging": false,
-                pageLength: 4,
+                pageLength: 16,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Pemohon Disenarai Hitam Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Pemohon Disenarai Hitam Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Pemohon Disenarai Hitam Mengikut Negeri',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Pemohon Disenarai Hitam Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Pemohon Disenarai Hitam Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });

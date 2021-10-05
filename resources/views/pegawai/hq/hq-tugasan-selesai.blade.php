@@ -25,7 +25,7 @@
                                         @csrf
                                         <div class="row">
                                             <div class="col">
-                                                <input class="form-control form-control-sm" type="text" name="no_kp"
+                                                <input class="form-control form-control-sm" type="number" name="no_kp"
                                                     placeholder="No Kad Pengenalan" />
                                             </div>
 
@@ -121,7 +121,8 @@
                                                 @foreach ($permohonan as $permohonan)
                                                     <tr>
                                                         <td>
-                                                            <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                            <span
+                                                                class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
                                                         </td>
                                                         <td>
                                                             <span
@@ -154,7 +155,8 @@
                                                                     PDRM</span>
                                                             @elseif ($permohonan->status_permohonan === 'Diluluskan')
                                                                 <span class="badge badge-success"> Diluluskan</span>
-                                                            @elseif ($permohonan->status_permohonan === 'Tidak Diluluskan')
+                                                            @elseif ($permohonan->status_permohonan === 'Tidak
+                                                                Diluluskan')
                                                                 <span class="badge badge-danger">Tidak Diluluskan</span>
                                                             @elseif ($permohonan->status_permohonan ===
                                                                 'hantar_ke_penyokong_negeri' ||
@@ -167,130 +169,130 @@
                                                 @endforeach
 
                                                 <!-- <tr>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Catatan 1</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="badge badge-success"> Telah Dihantar ke PDRM</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <a href="">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr> -->
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Catatan 1</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="badge badge-success"> Telah Dihantar ke PDRM</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <a href="">
+                                                                            <i class="fas fa-edit"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr> -->
                                                 <!-- <tr>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Catatan 2</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="badge badge-success"> Telah Dihantar Ke Penyokong</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <a href="">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Permohonan Baharu</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Catatan 2</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="badge badge-success"> Telah Dihantar Ke Penyokong</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <a href="">
+                                                                            <i class="fas fa-edit"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
 
-                                                            <tr>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Rayuan</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Catatan 3</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="badge badge-success">Diluluskan</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <a href="">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">1</span>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Permohonan Pendua</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <span class="text-secondary text-sm font-weight-bold">981209089989</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="text-secondary text-sm font-weight-bold">Catatan 4 </span>
-                                                                </td>
-                                                                <td class="align-middle text-center text-sm">
-                                                                    <span class="badge badge-danger"> Tidak Diluluskan</span>
-                                                                </td>
-                                                                <td class="align-middle text-center">
-                                                                    <a href="">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr> -->
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Permohonan Rayuan</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Catatan 3</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="badge badge-success">Diluluskan</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <a href="">
+                                                                            <i class="fas fa-edit"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">1</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="text-secondary text-sm font-weight-bold">22/11/2021 10:39:12</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Permohonan Pendua</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Abu Samad</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <span class="text-secondary text-sm font-weight-bold">981209089989</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold"> Selangor</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="text-secondary text-sm font-weight-bold">Catatan 4 </span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center text-sm">
+                                                                        <span class="badge badge-danger"> Tidak Diluluskan</span>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <a href="">
+                                                                            <i class="fas fa-edit"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>

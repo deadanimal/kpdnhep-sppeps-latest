@@ -198,10 +198,14 @@ return [
     'pekerjaan_sampingan' => 'Pekerjaan Sampingan',
     'sila_nyatakan_pekerjaan___' => 'Sila nyatakan pekerjaan tetap anda',
 
-    'kementerian_perdagangan__'=>'Kementerian Perdagangan Dalam Negeri Hal Ehwal Pengguna',
+    'kementerian_perdagangan__'=>'Kementerian Perdagangan Dalam Negeri dan Hal Ehwal Pengguna',
     'permohonan'=>'Permohonan',
 
+    'tarikh_kelulusan'=>'Tarikh Kelulusan',
+    'tarikh_tamat'=>'Tarikh Tamat Permit',
 
+    'tarikh_sah_laku_permit'=> 'Tarikh Sah Laku Permit',
+    
 
 ];
 // {{ __('landing.Pengumuman') }}

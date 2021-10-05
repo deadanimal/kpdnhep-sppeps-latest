@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="title">{{ __('landing.tarikh_lahir') }}</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="" name="tarikh_lahir"
-                                    value="{{ $pemohon->tarikh_lahir }}" readonly>
+                                    value="{{ date('d-m-Y', strtotime($pemohon->tarikh_lahir)) }}" readonly>
                             </div>
 
                             <div class="form-group">
@@ -162,19 +162,19 @@
 
                             <div class="form-group">
                                 <label for="title">{{ __('landing.no_telefon_bimbit') }}</label>
-                                <input type="text" class="form-control form-control-sm" name="no_telefon_bimbit"
+                                <input type="number" class="form-control form-control-sm" name="no_telefon_bimbit"
                                     value="{{ $pemohon->no_telefon_bimbit }}" placeholder="e.g 1234567890">
                             </div>
 
                             <div class="form-group">
                                 <label for="title"> {{ __('landing.no_telefon_rumah') }}</label>
-                                <input type="text" class="form-control form-control-sm" name="no_telefon_rumah"
+                                <input type="number" class="form-control form-control-sm" name="no_telefon_rumah"
                                     value="{{ $pemohon->no_telefon_rumah }}" placeholder="e.g 1234567890">
                             </div>
 
                             <div class="form-group">
                                 <label for="title"> {{ __('landing.no_telefon_pejabat') }}</label>
-                                <input type="text" class="form-control form-control-sm" name="no_telefon_pejabat"
+                                <input type="number" class="form-control form-control-sm" name="no_telefon_pejabat"
                                     value="{{ $pemohon->no_telefon_pejabat }}" placeholder="e.g 1234567890">
                             </div>
                             <div class="text-center d-flex justify-content-end">

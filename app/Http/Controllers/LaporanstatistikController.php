@@ -14,8 +14,8 @@ class LaporanstatistikController extends Controller
     {
         // $kelulusan = Permohonan::where('status_permohonan', 'Diluluskan')->get();
 
-        $start = Carbon::parse($request->startdate)->format('Y-m-d');
-        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        $start = Carbon::parse($request->startdate)->format('d-m-Y');
+        $end = Carbon::parse($request->enddate)->format('d-m-Y');
 
         //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
@@ -296,6 +296,8 @@ class LaporanstatistikController extends Controller
             ->get()->toArray();
 
         return view('laporan-statistik.peratusan-kelulusan-permit', [
+            'start_time' => $request->startdate,
+            'end_time' => $request->enddate,
             'kelulusans' => $kelulusan,
             'kelulus' => $arraynegeri,
             'klels' => $kel,
@@ -326,8 +328,8 @@ class LaporanstatistikController extends Controller
     {
         // $penolakan = Permohonan::where('status_permohonan', '=', 'Tidak Diluluskan')->get();
 
-        $start = Carbon::parse($request->startdate)->format('Y-m-d');
-        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        $start = Carbon::parse($request->startdate)->format('d-m-Y');
+        $end = Carbon::parse($request->enddate)->format('d-m-Y');
 
         //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
@@ -587,6 +589,8 @@ class LaporanstatistikController extends Controller
             ->get()->toArray();
 
         return view('laporan-statistik.peratusan-permit-ditolak', [
+            'start_time' => $request->startdate,
+            'end_time' => $request->enddate,
             'penolakans' => $penolakan,
             'penolaks' => $arraynegeri,
             'penollaks' => $tol,
@@ -615,8 +619,8 @@ class LaporanstatistikController extends Controller
     {
         // $sejarah = Permohonan::all();
 
-        $start = Carbon::parse($request->startdate)->format('Y-m-d');
-        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        $start = Carbon::parse($request->startdate)->format('d-m-Y');
+        $end = Carbon::parse($request->enddate)->format('d-m-Y');
 
         //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
@@ -656,77 +660,764 @@ class LaporanstatistikController extends Controller
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegerijohorbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerijohorpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegerikedah = Permohonan::where('negeri_kutipan_permit', '=', 'Kedah')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegerikedahbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikedahpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegerikelantan = Permohonan::where('negeri_kutipan_permit', '=', 'Kelantan')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegerikelantanbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikelantanpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegerimelaka = Permohonan::where('negeri_kutipan_permit', '=', 'Melaka')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegerimelakabaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakabaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakabaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakabaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakapembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakapembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakapembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerimelakapembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegerinegerisembilan = Permohonan::where('negeri_kutipan_permit', '=', 'Negeri Sembilan')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegerinegerisembilanbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegeripahang = Permohonan::where('negeri_kutipan_permit', '=', 'Pahang')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegeripahangbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripahangpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegeripulaupinang = Permohonan::where('negeri_kutipan_permit', '=', 'Pulau Pinang')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegeripulaupinangbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegeriperak = Permohonan::where('negeri_kutipan_permit', '=', 'Perak')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegeriperakbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperakpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegeriperlis = Permohonan::where('negeri_kutipan_permit', '=', 'Perlis')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegeriperlisbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlisbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlisbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlisbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlispembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlispembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlispembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriperlispembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegeriselangor = Permohonan::where('negeri_kutipan_permit', '=', 'Selangor')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegeriselangorbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriselangorpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegeriterengganu = Permohonan::where('negeri_kutipan_permit', '=', 'Terengganu')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegeriterengganubaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganubaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganubaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganubaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganupembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganupembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganupembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriterengganupembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegerisabah = Permohonan::where('negeri_kutipan_permit', '=', 'Sabah')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegerisabahbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisabahpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegerisarawak = Permohonan::where('negeri_kutipan_permit', '=', 'Sarawak')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegerisarawakbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerisarawakpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegerikualalumpur = Permohonan::where('negeri_kutipan_permit', '=', 'WP Kuala Lumpur')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
+
+            $sejarahnegerikualalumpurbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
 
             $sejarahnegerilabuan = Permohonan::where('negeri_kutipan_permit', '=', 'WP Labuan')
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
 
+            $sejarahnegerilabuanbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegerilabuanpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+
             $sejarahnegeriputrajaya = Permohonan::where('negeri_kutipan_permit', '=', 'WP Putrajaya')
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayabaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayabaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayabaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayabaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->whereDate('created_at', '>=', $start)
+                ->whereDate('created_at', '<=', $end)
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
                 ->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)
                 ->count();
@@ -735,49 +1426,480 @@ class LaporanstatistikController extends Controller
             $sejarahnegerijohor = Permohonan::where('negeri_kutipan_permit', '=', 'Johor')
                 ->count();
 
+            $sejarahnegerijohorbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerijohorbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerijohorbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerijohorbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerijohorpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerijohorpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerijohorpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerijohorpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Johor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegerikedah = Permohonan::where('negeri_kutipan_permit', '=', 'Kedah')
                 ->count();
+
+            $sejarahnegerikedahbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerikedahbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerikedahbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerikedahbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerikedahpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerikedahpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerikedahpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerikedahpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kedah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegerikelantan = Permohonan::where('negeri_kutipan_permit', '=', 'Kelantan')
                 ->count();
 
+            $sejarahnegerikelantanbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerikelantanbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerikelantanbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerikelantanbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerikelantanpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerikelantanpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerikelantanpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerikelantanpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Kelantan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegerimelaka = Permohonan::where('negeri_kutipan_permit', '=', 'Melaka')
                 ->count();
+
+            $sejarahnegerimelakabaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerimelakabaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerimelakabaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerimelakabaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerimelakapembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerimelakapembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerimelakapembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerimelakapembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Melaka'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegerinegerisembilan = Permohonan::where('negeri_kutipan_permit', '=', 'Negeri Sembilan')
                 ->count();
 
+            $sejarahnegerinegerisembilanbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerinegerisembilanbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerinegerisembilanbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerinegerisembilanbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerinegerisembilanpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Negeri Sembilan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegeripahang = Permohonan::where('negeri_kutipan_permit', '=', 'Pahang')
                 ->count();
+
+            $sejarahnegeripahangbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeripahangbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeripahangbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeripahangbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeripahangpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeripahangpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeripahangpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeripahangpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pahang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegeripulaupinang = Permohonan::where('negeri_kutipan_permit', '=', 'Pulau Pinang')
                 ->count();
 
+            $sejarahnegeripulaupinangbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeripulaupinangbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeripulaupinangbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeripulaupinangbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeripulaupinangpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Pulau Pinang'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegeriperak = Permohonan::where('negeri_kutipan_permit', '=', 'Perak')
                 ->count();
+
+            $sejarahnegeriperakbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeriperakbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperakbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperakbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeriperakpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeriperakpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperakpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperakpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegeriperlis = Permohonan::where('negeri_kutipan_permit', '=', 'Perlis')
                 ->count();
 
+            $sejarahnegeriperlisbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeriperlisbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperlisbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperlisbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeriperlispembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeriperlispembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperlispembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriperlispembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Perlis'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegeriselangor = Permohonan::where('negeri_kutipan_permit', '=', 'Selangor')
                 ->count();
+
+            $sejarahnegeriselangorbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeriselangorbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriselangorbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriselangorbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeriselangorpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeriselangorpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriselangorpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriselangorpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Selangor'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegeriterengganu = Permohonan::where('negeri_kutipan_permit', '=', 'Terengganu')
                 ->count();
 
+            $sejarahnegeriterengganubaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeriterengganubaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriterengganubaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriterengganubaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeriterengganupembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeriterengganupembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriterengganupembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriterengganupembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Terengganu'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegerisabah = Permohonan::where('negeri_kutipan_permit', '=', 'Sabah')
                 ->count();
+
+            $sejarahnegerisabahbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerisabahbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerisabahbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerisabahbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerisabahpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerisabahpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerisabahpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerisabahpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sabah'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegerisarawak = Permohonan::where('negeri_kutipan_permit', '=', 'Sarawak')
                 ->count();
 
+            $sejarahnegerisarawakbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerisarawakbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerisarawakbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerisarawakbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerisarawakpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerisarawakpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerisarawakpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerisarawakpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'Sarawak'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegerikualalumpur = Permohonan::where('negeri_kutipan_permit', '=', 'WP Kuala Lumpur')
                 ->count();
+
+            $sejarahnegerikualalumpurbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerikualalumpurbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerikualalumpurbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerikualalumpurbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerikualalumpurpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Kuala Lumpur'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
 
             $sejarahnegerilabuan = Permohonan::where('negeri_kutipan_permit', '=', 'WP Labuan')
                 ->count();
 
+            $sejarahnegerilabuanbaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegerilabuanbaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerilabuanbaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerilabuanbaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegerilabuanpembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegerilabuanpembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegerilabuanpembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegerilabuanpembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Labuan'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+
             $sejarahnegeriputrajaya = Permohonan::where('negeri_kutipan_permit', '=', 'WP Putrajaya')
+                ->count();
+
+            $sejarahnegeriputrajayabaharu = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu']])
+                ->count();
+
+            $sejarahnegeriputrajayabaharululus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriputrajayabaharutolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriputrajayabaharuproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Baharu']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuan = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuanlulus = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Diluluskan']])
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuantolak = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan'], ['status_permohonan', '=', 'Tidak Diluluskan']])
+                ->count();
+
+            $sejarahnegeriputrajayapembaharuanproses = Permohonan::where([['negeri_kutipan_permit', '=', 'WP Putrajaya'], ['jenis_permohonan', '=', 'Pembaharuan']])
+                ->whereNotIn('status_permohonan', ['Diluluskan', 'Tidak Diluluskan'])
                 ->count();
         }
 
@@ -801,27 +1923,157 @@ class LaporanstatistikController extends Controller
             ->get()->toArray();
 
         return view('laporan-statistik.laporan-sejarah-permohonan', [
+            'start_time' => $request->startdate,
+            'end_time' => $request->enddate,
             'sejarahs' => $sejarah,
             'sejahs' => $arraynegeri,
             'sejs' => $sej,
             'sejarahjantinalelakis' => $sejarahjantinalelaki,
             'sejarahjantinaperempuans' => $sejarahjantinaperempuan,
             'sejarahnegerijohor' => $sejarahnegerijohor,
+            'sejarahnegerijohorbaharu' => $sejarahnegerijohorbaharu,
+            'sejarahnegerijohorbaharululus' => $sejarahnegerijohorbaharululus,
+            'sejarahnegerijohorbaharutolak' => $sejarahnegerijohorbaharutolak,
+            'sejarahnegerijohorbaharuproses' => $sejarahnegerijohorbaharuproses,
+            'sejarahnegerijohorpembaharuan' => $sejarahnegerijohorpembaharuan,
+            'sejarahnegerijohorpembaharuanlulus' => $sejarahnegerijohorpembaharuanlulus,
+            'sejarahnegerijohorpembaharuantolak' => $sejarahnegerijohorpembaharuantolak,
+            'sejarahnegerijohorpembaharuanproses' => $sejarahnegerijohorpembaharuanproses,
             'sejarahnegerikedah' => $sejarahnegerikedah,
+            'sejarahnegerikedahbaharu' => $sejarahnegerikedahbaharu,
+            'sejarahnegerikedahbaharululus' => $sejarahnegerikedahbaharululus,
+            'sejarahnegerikedahbaharutolak' => $sejarahnegerikedahbaharutolak,
+            'sejarahnegerikedahbaharuproses' => $sejarahnegerikedahbaharuproses,
+            'sejarahnegerikedahpembaharuan' => $sejarahnegerikedahpembaharuan,
+            'sejarahnegerikedahpembaharuanlulus' => $sejarahnegerikedahpembaharuanlulus,
+            'sejarahnegerikedahpembaharuantolak' => $sejarahnegerikedahpembaharuantolak,
+            'sejarahnegerikedahpembaharuanproses' => $sejarahnegerikedahpembaharuanproses,
             'sejarahnegerikelantan' => $sejarahnegerikelantan,
+            'sejarahnegerikelantanbaharu' => $sejarahnegerikelantanbaharu,
+            'sejarahnegerikelantanbaharululus' => $sejarahnegerikelantanbaharululus,
+            'sejarahnegerikelantanbaharutolak' => $sejarahnegerikelantanbaharutolak,
+            'sejarahnegerikelantanbaharuproses' => $sejarahnegerikelantanbaharuproses,
+            'sejarahnegerikelantanpembaharuan' => $sejarahnegerikelantanpembaharuan,
+            'sejarahnegerikelantanpembaharuanlulus' => $sejarahnegerikelantanpembaharuanlulus,
+            'sejarahnegerikelantanpembaharuantolak' => $sejarahnegerikelantanpembaharuantolak,
+            'sejarahnegerikelantanpembaharuanproses' => $sejarahnegerikelantanpembaharuanproses,
             'sejarahnegerimelaka' => $sejarahnegerimelaka,
+            'sejarahnegerimelakabaharu' => $sejarahnegerimelakabaharu,
+            'sejarahnegerimelakabaharululus' => $sejarahnegerimelakabaharululus,
+            'sejarahnegerimelakabaharutolak' => $sejarahnegerimelakabaharutolak,
+            'sejarahnegerimelakabaharuproses' => $sejarahnegerimelakabaharuproses,
+            'sejarahnegerimelakapembaharuan' => $sejarahnegerimelakapembaharuan,
+            'sejarahnegerimelakapembaharuanlulus' => $sejarahnegerimelakapembaharuanlulus,
+            'sejarahnegerimelakapembaharuantolak' => $sejarahnegerimelakapembaharuantolak,
+            'sejarahnegerimelakapembaharuanproses' => $sejarahnegerimelakapembaharuanproses,
             'sejarahnegerinegerisembilan' => $sejarahnegerinegerisembilan,
+            'sejarahnegerinegerisembilanbaharu' => $sejarahnegerinegerisembilanbaharu,
+            'sejarahnegerinegerisembilanbaharululus' => $sejarahnegerinegerisembilanbaharululus,
+            'sejarahnegerinegerisembilanbaharutolak' => $sejarahnegerinegerisembilanbaharutolak,
+            'sejarahnegerinegerisembilanbaharuproses' => $sejarahnegerinegerisembilanbaharuproses,
+            'sejarahnegerinegerisembilanpembaharuan' => $sejarahnegerinegerisembilanpembaharuan,
+            'sejarahnegerinegerisembilanpembaharuanlulus' => $sejarahnegerinegerisembilanpembaharuanlulus,
+            'sejarahnegerinegerisembilanpembaharuantolak' => $sejarahnegerinegerisembilanpembaharuantolak,
+            'sejarahnegerinegerisembilanpembaharuanproses' => $sejarahnegerinegerisembilanpembaharuanproses,
             'sejarahnegeripahang' => $sejarahnegeripahang,
+            'sejarahnegeripahangbaharu' => $sejarahnegeripahangbaharu,
+            'sejarahnegeripahangbaharululus' => $sejarahnegeripahangbaharululus,
+            'sejarahnegeripahangbaharutolak' => $sejarahnegeripahangbaharutolak,
+            'sejarahnegeripahangbaharuproses' => $sejarahnegeripahangbaharuproses,
+            'sejarahnegeripahangpembaharuan' => $sejarahnegeripahangpembaharuan,
+            'sejarahnegeripahangpembaharuanlulus' => $sejarahnegeripahangpembaharuanlulus,
+            'sejarahnegeripahangpembaharuantolak' => $sejarahnegeripahangpembaharuantolak,
+            'sejarahnegeripahangpembaharuanproses' => $sejarahnegeripahangpembaharuanproses,
             'sejarahnegeripulaupinang' => $sejarahnegeripulaupinang,
+            'sejarahnegeripulaupinangbaharu' => $sejarahnegeripulaupinangbaharu,
+            'sejarahnegeripulaupinangbaharululus' => $sejarahnegeripulaupinangbaharululus,
+            'sejarahnegeripulaupinangbaharutolak' => $sejarahnegeripulaupinangbaharutolak,
+            'sejarahnegeripulaupinangbaharuproses' => $sejarahnegeripulaupinangbaharuproses,
+            'sejarahnegeripulaupinangpembaharuan' => $sejarahnegeripulaupinangpembaharuan,
+            'sejarahnegeripulaupinangpembaharuanlulus' => $sejarahnegeripulaupinangpembaharuanlulus,
+            'sejarahnegeripulaupinangpembaharuantolak' => $sejarahnegeripulaupinangpembaharuantolak,
+            'sejarahnegeripulaupinangpembaharuanproses' => $sejarahnegeripulaupinangpembaharuanproses,
             'sejarahnegeriperak' => $sejarahnegeriperak,
+            'sejarahnegeriperakbaharu' => $sejarahnegeriperakbaharu,
+            'sejarahnegeriperakbaharululus' => $sejarahnegeriperakbaharululus,
+            'sejarahnegeriperakbaharutolak' => $sejarahnegeriperakbaharutolak,
+            'sejarahnegeriperakbaharuproses' => $sejarahnegeriperakbaharuproses,
+            'sejarahnegeriperakpembaharuan' => $sejarahnegeriperakpembaharuan,
+            'sejarahnegeriperakpembaharuanlulus' => $sejarahnegeriperakpembaharuanlulus,
+            'sejarahnegeriperakpembaharuantolak' => $sejarahnegeriperakpembaharuantolak,
+            'sejarahnegeriperakpembaharuanproses' => $sejarahnegeriperakpembaharuanproses,
             'sejarahnegeriperlis' => $sejarahnegeriperlis,
+            'sejarahnegeriperlisbaharu' => $sejarahnegeriperlisbaharu,
+            'sejarahnegeriperlisbaharululus' => $sejarahnegeriperlisbaharululus,
+            'sejarahnegeriperlisbaharutolak' => $sejarahnegeriperlisbaharutolak,
+            'sejarahnegeriperlisbaharuproses' => $sejarahnegeriperlisbaharuproses,
+            'sejarahnegeriperlispembaharuan' => $sejarahnegeriperlispembaharuan,
+            'sejarahnegeriperlispembaharuanlulus' => $sejarahnegeriperlispembaharuanlulus,
+            'sejarahnegeriperlispembaharuantolak' => $sejarahnegeriperlispembaharuantolak,
+            'sejarahnegeriperlispembaharuanproses' => $sejarahnegeriperlispembaharuanproses,
             'sejarahnegeriselangor' => $sejarahnegeriselangor,
+            'sejarahnegeriselangorbaharu' => $sejarahnegeriselangorbaharu,
+            'sejarahnegeriselangorbaharululus' => $sejarahnegeriselangorbaharululus,
+            'sejarahnegeriselangorbaharutolak' => $sejarahnegeriselangorbaharutolak,
+            'sejarahnegeriselangorbaharuproses' => $sejarahnegeriselangorbaharuproses,
+            'sejarahnegeriselangorpembaharuan' => $sejarahnegeriselangorpembaharuan,
+            'sejarahnegeriselangorpembaharuanlulus' => $sejarahnegeriselangorpembaharuanlulus,
+            'sejarahnegeriselangorpembaharuantolak' => $sejarahnegeriselangorpembaharuantolak,
+            'sejarahnegeriselangorpembaharuanproses' => $sejarahnegeriselangorpembaharuanproses,
             'sejarahnegeriterengganu' => $sejarahnegeriterengganu,
+            'sejarahnegeriterengganubaharu' => $sejarahnegeriterengganubaharu,
+            'sejarahnegeriterengganubaharululus' => $sejarahnegeriterengganubaharululus,
+            'sejarahnegeriterengganubaharutolak' => $sejarahnegeriterengganubaharutolak,
+            'sejarahnegeriterengganubaharuproses' => $sejarahnegeriterengganubaharuproses,
+            'sejarahnegeriterengganupembaharuan' => $sejarahnegeriterengganupembaharuan,
+            'sejarahnegeriterengganupembaharuanlulus' => $sejarahnegeriterengganupembaharuanlulus,
+            'sejarahnegeriterengganupembaharuantolak' => $sejarahnegeriterengganupembaharuantolak,
+            'sejarahnegeriterengganupembaharuanproses' => $sejarahnegeriterengganupembaharuanproses,
             'sejarahnegerisabah' => $sejarahnegerisabah,
+            'sejarahnegerisabahbaharu' => $sejarahnegerisabahbaharu,
+            'sejarahnegerisabahbaharululus' => $sejarahnegerisabahbaharululus,
+            'sejarahnegerisabahbaharutolak' => $sejarahnegerisabahbaharutolak,
+            'sejarahnegerisabahbaharuproses' => $sejarahnegerisabahbaharuproses,
+            'sejarahnegerisabahpembaharuan' => $sejarahnegerisabahpembaharuan,
+            'sejarahnegerisabahpembaharuanlulus' => $sejarahnegerisabahpembaharuanlulus,
+            'sejarahnegerisabahpembaharuantolak' => $sejarahnegerisabahpembaharuantolak,
+            'sejarahnegerisabahpembaharuanproses' => $sejarahnegerisabahpembaharuanproses,
             'sejarahnegerisarawak' => $sejarahnegerisarawak,
+            'sejarahnegerisarawakbaharu' => $sejarahnegerisarawakbaharu,
+            'sejarahnegerisarawakbaharululus' => $sejarahnegerisarawakbaharululus,
+            'sejarahnegerisarawakbaharutolak' => $sejarahnegerisarawakbaharutolak,
+            'sejarahnegerisarawakbaharuproses' => $sejarahnegerisarawakbaharuproses,
+            'sejarahnegerisarawakpembaharuan' => $sejarahnegerisarawakpembaharuan,
+            'sejarahnegerisarawakpembaharuanlulus' => $sejarahnegerisarawakpembaharuanlulus,
+            'sejarahnegerisarawakpembaharuantolak' => $sejarahnegerisarawakpembaharuantolak,
+            'sejarahnegerisarawakpembaharuanproses' => $sejarahnegerisarawakpembaharuanproses,
             'sejarahnegerikualalumpur' => $sejarahnegerikualalumpur,
+            'sejarahnegerikualalumpurbaharu' => $sejarahnegerikualalumpurbaharu,
+            'sejarahnegerikualalumpurbaharululus' => $sejarahnegerikualalumpurbaharululus,
+            'sejarahnegerikualalumpurbaharutolak' => $sejarahnegerikualalumpurbaharutolak,
+            'sejarahnegerikualalumpurbaharuproses' => $sejarahnegerikualalumpurbaharuproses,
+            'sejarahnegerikualalumpurpembaharuan' => $sejarahnegerikualalumpurpembaharuan,
+            'sejarahnegerikualalumpurpembaharuanlulus' => $sejarahnegerikualalumpurpembaharuanlulus,
+            'sejarahnegerikualalumpurpembaharuantolak' => $sejarahnegerikualalumpurpembaharuantolak,
+            'sejarahnegerikualalumpurpembaharuanproses' => $sejarahnegerikualalumpurpembaharuanproses,
             'sejarahnegerilabuan' => $sejarahnegerilabuan,
+            'sejarahnegerilabuanbaharu' => $sejarahnegerilabuanbaharu,
+            'sejarahnegerilabuanbaharululus' => $sejarahnegerilabuanbaharululus,
+            'sejarahnegerilabuanbaharutolak' => $sejarahnegerilabuanbaharutolak,
+            'sejarahnegerilabuanbaharuproses' => $sejarahnegerilabuanbaharuproses,
+            'sejarahnegerilabuanpembaharuan' => $sejarahnegerilabuanpembaharuan,
+            'sejarahnegerilabuanpembaharuanlulus' => $sejarahnegerilabuanpembaharuanlulus,
+            'sejarahnegerilabuanpembaharuantolak' => $sejarahnegerilabuanpembaharuantolak,
+            'sejarahnegerilabuanpembaharuanproses' => $sejarahnegerilabuanpembaharuanproses,
             'sejarahnegeriputrajaya' => $sejarahnegeriputrajaya,
+            'sejarahnegeriputrajayabaharu' => $sejarahnegeriputrajayabaharu,
+            'sejarahnegeriputrajayabaharululus' => $sejarahnegeriputrajayabaharululus,
+            'sejarahnegeriputrajayabaharutolak' => $sejarahnegeriputrajayabaharutolak,
+            'sejarahnegeriputrajayabaharuproses' => $sejarahnegeriputrajayabaharuproses,
+            'sejarahnegeriputrajayapembaharuan' => $sejarahnegeriputrajayapembaharuan,
+            'sejarahnegeriputrajayapembaharuanlulus' => $sejarahnegeriputrajayapembaharuanlulus,
+            'sejarahnegeriputrajayapembaharuantolak' => $sejarahnegeriputrajayapembaharuantolak,
+            'sejarahnegeriputrajayapembaharuanproses' => $sejarahnegeriputrajayapembaharuanproses,
         ]);
     }
 
@@ -833,8 +2085,8 @@ class LaporanstatistikController extends Controller
         //     ['role', '=', 'pemohon']
         // ])->get();
 
-        $start = Carbon::parse($request->startdate)->format('Y-m-d');
-        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        $start = Carbon::parse($request->startdate)->format('d-m-Y');
+        $end = Carbon::parse($request->enddate)->format('d-m-Y');
 
         //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
@@ -1031,6 +2283,8 @@ class LaporanstatistikController extends Controller
             ->get()->toArray();
 
         return view('laporan-statistik.laporan-senarai-hitam', [
+            'start_time' => $request->startdate,
+            'end_time' => $request->enddate,
             'senaraihitams' => $senaraihitam,
             'senarhits' => $arraynegeri,
             'sentam' => $senhit,
@@ -1060,8 +2314,8 @@ class LaporanstatistikController extends Controller
 
         // $pegangpermit = Permohonan::all();
 
-        $start = Carbon::parse($request->startdate)->format('Y-m-d');
-        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        $start = Carbon::parse($request->startdate)->format('d-m-Y');
+        $end = Carbon::parse($request->enddate)->format('d-m-Y');
 
         //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
@@ -1323,6 +2577,8 @@ class LaporanstatistikController extends Controller
             ->get()->toArray();
 
         return view('laporan-statistik.statistik-pemegang-permit', [
+            'start_time' => $request->startdate,
+            'end_time' => $request->enddate,
             'pegangpermits' => $pegangpermit,
             'pegapermit' => $arraynegeri,
             'pegpermit' => $pegpermits,
@@ -1352,8 +2608,8 @@ class LaporanstatistikController extends Controller
 
         // $kutipanfi = Permohonan::all();
 
-        $start = Carbon::parse($request->startdate)->format('Y-m-d');
-        $end = Carbon::parse($request->enddate)->format('Y-m-d');
+        $start = Carbon::parse($request->startdate)->format('d-m-Y');
+        $end = Carbon::parse($request->enddate)->format('d-m-Y');
 
         //utk senarai semua
         if (($request->startdate && $request->enddate) != null) {
@@ -1543,6 +2799,8 @@ class LaporanstatistikController extends Controller
             ->get();
 
         return view('laporan-statistik.statistik-kutipan-fi', [
+            'start_time' => $request->startdate,
+            'end_time' => $request->enddate,
             'kutipanfis' => $kutipanfi,
             'kutipfis' => $arraynegeri,
             'kutips' => $kutipfis,

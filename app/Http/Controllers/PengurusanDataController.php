@@ -148,7 +148,7 @@ class PengurusanDataController extends Controller
     public function cari(Request $request){
         // dd($request);
 
-        $permohonans = Permohonan::where('no_kp', $request->no_kp)->get();
+        $permohonans = Permohonan::where('no_kp', $request->no_kp)->orderBy('updated_at', 'DESC')->get();
         // dd($permohonans);
         return view('pegawai.admin-hq.pengurusan-data', [
             'permohonans' => $permohonans,

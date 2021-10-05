@@ -151,7 +151,7 @@
                                                                     <strong> {{ __('landing.no_telafon') }}</strong>
                                                                 </label>
                                                                 <div class="d-flex flex-nowrap align-items-center">
-                                                                    <input type="text" class="form-control col-2"
+                                                                    <input type="number" class="form-control col-2"
                                                                         id="phone1" aria-describedby="phone"
                                                                         name="no_telefon"
                                                                         value="{{ $pemohon->no_telefon_bimbit }}">

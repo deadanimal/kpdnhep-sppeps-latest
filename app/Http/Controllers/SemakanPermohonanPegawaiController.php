@@ -37,7 +37,7 @@ class SemakanPermohonanPegawaiController extends Controller
 
         $permohonan = Permohonan::where([
             ['no_kp', $request->no_kp]
-        ])->get();
+        ])->orderBy('updated_at', 'DESC')->get();
 
         return view('pegawai.semakan-status-permohonan', [
             'permohonan' => $permohonan

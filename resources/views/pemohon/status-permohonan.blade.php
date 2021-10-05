@@ -24,8 +24,11 @@
                                     Jenis Permohonan</th>
                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                     No.Kad Pengenalan</th>
+
                                 <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
                                     Status</th>
+                                <th class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                    Catatan</th>
                                 <th class="text-uppercase text-center text-secondary text-xs opacity-7">Tindakan</th>
                             </tr>
                         </thead>
@@ -48,6 +51,7 @@
                                         <span
                                             class="text-secondary text-sm font-weight-bold">{{ $permohonan->no_kp }}</span>
                                     </td>
+
                                     <td class="align-middle text-center">
                                         @if ($permohonan->status_permohonan === 'simpan')
                                             <span class="text-secondary text-sm font-weight-bold">
@@ -71,6 +75,19 @@
                                             </span>
                                         @endif
                                     </td>
+                                    <td class="align-middle text-center">
+                                        <span class="text-secondary text-sm font-weight-bold">
+                                            @if ($permohonan->status_permohonan === 'Permohonan Tidak Lengkap')
+                                                {{-- {{ $permohonan->catatan_pegawai_negeri }} --}}
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn bg-gradient-primary btn-sm"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal-{{ $permohonan->id }}">
+                                                    Lihat
+                                                </button>
+                                            @endif
+                                        </span>
+                                    </td>
                                     <td class="align-middle">
                                         @if ($permohonan->status_permohonan === 'simpan' || $permohonan->status_permohonan === 'Permohonan Tidak Lengkap')
                                             <a href="permohonan/{{ $permohonan->id }}" class="btn btn-sm btn-primary"
@@ -89,7 +106,8 @@
                                         @endif
 
                                         @if ($permohonan->status_permohonan === 'Diluluskan' || $permohonan->status_permohonan === 'Tidak Diluluskan')
-                                            <a class="btn btn-primary btn-sm" href="/cetak_borang/{{ $permohonan->id }}">Cetak Permohonan</a>
+                                            <a class="btn btn-primary btn-sm"
+                                                href="/cetak_borang/{{ $permohonan->id }}">Cetak Permohonan</a>
                                             {{-- <form method="POST" action="/cetak_borang">
                                                 @csrf
                                                 <input type="hidden" name="id" id="id" value="{{ $permohonan->id }}">
@@ -104,10 +122,35 @@
 
 
                                         <!-- <a href="javascript:;" class="btn btn-sm btn-primary" data-toggle="tooltip" data-original-title="Edit user">
-                                                        Bayar
-                                                    </a> -->
+                                                                                    Bayar
+                                                                                </a> -->
                                     </td>
                                 </tr>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal-{{ $permohonan->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Catatan Pegawai</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ $permohonan->catatan_pegawai_negeri }}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn bg-gradient-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                {{-- <button type="button" class="btn bg-gradient-primary">Save changes</button> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>

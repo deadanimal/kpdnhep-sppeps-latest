@@ -5,7 +5,7 @@
 
 
     <div id="container" class="container-fluid d-flex justify-content-center">
-        <div class="card card-frame" style="width: 45%;">
+        <div class="card card-frame">
             <div class="card-body">
                 <div class="container mt-4">
                     <h3>Daftar Akaun</h3>
@@ -13,16 +13,16 @@
 
                 <form method="POST" action="/register_user">
                     @csrf
-					
-					@if ($errors->any())
-                                                    <div class="alert alert-warning">
-                                                        <ul>
-                                                            @foreach ($errors->all() as $error)
-                                                                <li>{{ $error }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-warning">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <input type="hidden" name="age" value="{{ $age }}">
                     <input type="hidden" name="tarikh_lahir" value="{{ $tarikh_lahir }}">
@@ -35,7 +35,8 @@
 
                         <div class="form-group">
                             <label for="email">Nama</label>
-                            <input type="text" name="name" class="form-control" id="name" value="{{ $pengguna['Name'] }}" readonly>
+                            <input type="text" name="name" class="form-control" id="name" value="{{ $pengguna['Name'] }}"
+                                readonly>
                             {{-- <input type="text" name="name" class="form-control" id="name" value="test" readonly> --}}
 
                         </div>

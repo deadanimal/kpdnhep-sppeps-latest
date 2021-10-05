@@ -55,6 +55,8 @@ use App\Http\Controllers\LocalizationController;
 
 require __DIR__ . '/auth.php';
 
+Route::get('test', fn () => phpinfo());
+
 Route::get('/lol', [LolController::class, 'asd']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');

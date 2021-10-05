@@ -13,7 +13,7 @@ class SenaraiHitamController extends Controller
         $pemohon = User::where([
             ['status_permohonan', 'disenarai_hitam'],
             ['role', 'pemohon'],
-        ])->get();
+        ])->orderBy('updated_at', 'DESC')->get();
 
         return view('pegawai.hq.hq-senarai-hitam', [
             'pemohon' => $pemohon
@@ -48,15 +48,15 @@ class SenaraiHitamController extends Controller
         if ($no_kp != null && $negeri == "null") {
             $pemohon = User::where([
                 ['no_kp', '=', $no_kp], ['role', '=', 'pemohon'], ['status_permohonan', '=', 'disenarai_hitam']
-            ])->get();
+            ])->orderBy('updated_at', 'DESC')->get();
         } else if ($no_kp == null && $negeri != "null") {
             $pemohon = User::where([
                 ['negeri', '=', $negeri], ['role', '=', 'pemohon'], ['status_permohonan', '=', 'disenarai_hitam']
-            ])->get();
+            ])->orderBy('updated_at', 'DESC')->get();
         } else {
             $pemohon = User::where([
                 ['negeri', '=', $negeri], ['no_kp', '=', $no_kp], ['status_permohonan', '=', 'disenarai_hitam']
-            ])->get();
+            ])->orderBy('updated_at', 'DESC')->get();
         }
 
         return view('pegawai.hq.hq-senarai-hitam', [
@@ -70,7 +70,7 @@ class SenaraiHitamController extends Controller
         $pemohon = User::where([
             ['status_permohonan', '=' , 'diluluskan'],
             ['role', 'pemohon'],
-        ])->get();
+        ])->orderBy('updated_at', 'DESC')->get();
 
         //dd($pemohon);
 
@@ -83,7 +83,7 @@ class SenaraiHitamController extends Controller
     {
         $pemohon = User::where([
             ['no_kp', '=', $request->no_kp]
-        ])->get();
+        ])->orderBy('updated_at', 'DESC')->get();
 
         return view('pegawai.hq.hq-tambah-senarai-hitam', [
             'pemohon' => $pemohon,

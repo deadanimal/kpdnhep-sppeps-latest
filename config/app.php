@@ -178,7 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Mews\Captcha\CaptchaServiceProvider::class,
-
+        
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
     ],
 
     /*
@@ -236,6 +237,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];

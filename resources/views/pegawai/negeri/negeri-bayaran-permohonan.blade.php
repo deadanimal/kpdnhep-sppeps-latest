@@ -24,7 +24,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" name="no_kp" class="form-control" placeholder="No Kad Pengenalan">
+                                    <input type="number" name="no_kp" class="form-control" placeholder="No Kad Pengenalan">
                                 </div>
                                 <div class="col">
                                     <input type="submit" class="btn btn-info">

@@ -25,7 +25,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-sm" type="text" name="no_kp" placeholder="No Kad Pengenalan" />
+                                        <input class="form-control form-control-sm" type="number" name="no_kp" placeholder="No Kad Pengenalan" />
                                     </div>
 
                                     <div class="col">

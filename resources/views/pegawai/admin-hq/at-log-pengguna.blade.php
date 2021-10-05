@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="tarikhmula">No. Kad Pengenalan</label>
-                                        <input class="form-control form-control-sm" type="text" name="no_kp" />
+                                        <input class="form-control form-control-sm" type="number" name="no_kp" />
                                     </div>
                                     {{-- <div class="col">
                                         <label for="tarikhmula">Tarikh Mula</label>

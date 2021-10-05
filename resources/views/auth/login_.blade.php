@@ -39,7 +39,7 @@
                                     <label for="ic">No. Kad Pengenalan</label>
                                     <div class="input-group mb-4">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text"
+                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="number" 
                                             name="no_kp">
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                     <div class="input-group mb-4">
 
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="text"
+                                        <input class="form-control" placeholder="e.g XXXXXXXXXXXX" type="number"
                                             name="no_kp">
                                     </div>
                                 </div>

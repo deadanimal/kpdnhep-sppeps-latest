@@ -703,11 +703,33 @@ echo $year; ?>
                 dom: 'Bfrtip',
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Jumlah Kutipan FI ({{ date('d-m-Y', strtotime($start_time)) }} - {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Jumlah Kutipan FI'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Jumlah Kutipan FI ({{ date('d-m-Y', strtotime($start_time)) }} - {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Jumlah Kutipan FI'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -721,11 +743,33 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kutipan FI Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} - {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Kutipan FI Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kutipan FI Mengikut Jantina',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kutipan FI Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} - {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Kutipan FI Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -737,14 +781,36 @@ echo $year; ?>
                 "searching": false,
                 "info": false,
                 "paging": false,
-                pageLength: 4,
+                pageLength: 16,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kutipan FI Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} - {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Kutipan FI Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kutipan FI Mengikut Negeri',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kutipan FI Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} - {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Kutipan FI Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });

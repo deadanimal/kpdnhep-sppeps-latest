@@ -59,6 +59,10 @@ ight notice and this permission notice shall be included in all copies or substa
     <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.min.css?v=1.0.3" rel="stylesheet" />
+
+    <link id="pagestyle"
+        href="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/css/soft-design-system-pro.min.css?v=1.0.8"
+        rel="stylesheet" />
     <!-- Anti-flicker snippet (recommended)  -->
 
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
@@ -70,122 +74,23 @@ ight notice and this permission notice shall be included in all copies or substa
         }
 
         .footer {
-            position: fixed;
+            /* position: fixed; */
             left: 0;
             bottom: 0;
             width: 100%;
-            /* text-align: center; */
         }
 
-        /* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+        .content {
+            padding: 0px;
+            /* padding-bottom: 300px; */
+            height: 100vh;
+        }
 
-        * {
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
- 
-        .header {
-            border-bottom: 1px solid #E2E8F0;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-        }
-
-        .hamburger {
-            display: none;
-        }
-
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            background-color: white;
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-item {
-            margin-left: 5rem;
-        }
-
-        .nav-link {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: #475569;
-        }
-
-        .nav-link:hover {
-            color: #482ff7;
-        }
-
-        .nav-logo {
-            font-size: 2.1rem;
-            font-weight: 500;
-            color: #482ff7;
-        }
-
-        @media only screen and (max-width: 768px) {
-
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 11rem;
-                flex-direction: column;
-                background-color: #fff;
-                width: 100%;
-                
-                text-align: center;
-                transition: 0.3s;
-                box-shadow:
-                    0 10px 27px rgba(0, 0, 0, 0.05);
-            }
-
-            .nav-menu.active {
-                left: 0;
-                
-                z-index: 3;
-            }
-
-            .nav-item {
-                margin: 1rem 0;
-
-            }
-
-            .hamburger {
-                display: block;
-                cursor: pointer;
-                color: white;
-            }
-
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-                color: white;
-            }
-
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-                color: white;
-            }
-
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-                color: white;
-            }
-
-
-        } */
 
     </style>
 
@@ -200,7 +105,7 @@ ight notice and this permission notice shall be included in all copies or substa
     <!-- End Google Tag Manager (noscript) -->
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        
+
 
         {{-- <header class="header" id="navbar">
             <nav class="navbar">
@@ -382,174 +287,421 @@ ight notice and this permission notice shall be included in all copies or substa
         </header> --}}
 
         <!-- Navbar -->
-        
-        <nav class="navbar navbar-expand-lg py-3" data-scroll="true" id="navbar">
 
-            <a href="/" class="text-white text-start pl-3">
+        <nav class="navbar navbar-expand-lg top-0 z-index-fixed start-0 end-0 " data-scroll="true" id="navbar">
+
+            <a href="/" class="text-white text-start pl-3  font-weight-bolder ms-sm-3">
                 <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
                 <br>
                 <h5 class="text-white">Sistem Percetakan Permit Ejen Pemilikan Semula</h5>
             </a>
 
-            {{-- <a href="/lol" class="text-white text-start pl-3">
-                test
-            </a> --}}
+            {{-- <a href="https://www.creative-tim.com/product/soft-ui-design-system-pro#pricingCard"
+                class="btn btn-sm  bg-gradient-primary  btn-round mb-0 ms-auto d-lg-none d-block">Buy Now</a> --}}
 
+            <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon mt-2 ">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+                <ul class="navbar-nav navbar-nav-hover mx-auto">
 
-            <ul class="navbar-nav navbar-nav-hover mx-auto d-flex align-items-center">
+                    @can('isPemohon')
+                        <li class="nav-item mx-2">
+                            <a role="button" href="/dashboard"
+                                class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
+                                aria-expanded="false">
+                                {{ __('landing.permohonan') }}
 
-                @can('isPemohon')
+                            </a>
+                        </li>
+                    @endcan
+                    <li class="nav-item dropdown dropdown-hover mx-2">
+                        <a role="button"
+                            class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
+                            id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('landing.arkib') }}
+                            <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg"
+                            aria-labelledby="dropdownMenuDocs">
+                            <div class="d-none d-lg-block">
+                                <ul class="list-group">
+
+                                    <li class="nav-item list-group-item border-0 p-0">
+                                        <a class="dropdown-item py-2 ps-3 border-radius-md" href="/arkib-dokumen">
+                                            <div class="d-flex">
+                                                <div class="icon h-10 me-3 d-flex mt-1">
+                                                    <svg class="text-secondary" width="16px" height="16px"
+                                                        viewBox="0 0 40 44" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <title>switches</title>
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <g transform="translate(-1870.000000, -440.000000)"
+                                                                fill="#FFFFFF" fill-rule="nonzero">
+                                                                <g transform="translate(1716.000000, 291.000000)">
+                                                                    <g transform="translate(154.000000, 149.000000)">
+                                                                        <path class="color-background"
+                                                                            d="M10,20 L30,20 C35.4545455,20 40,15.4545455 40,10 C40,4.54545455 35.4545455,0 30,0 L10,0 C4.54545455,0 0,4.54545455 0,10 C0,15.4545455 4.54545455,20 10,20 Z M10,3.63636364 C13.4545455,3.63636364 16.3636364,6.54545455 16.3636364,10 C16.3636364,13.4545455 13.4545455,16.3636364 10,16.3636364 C6.54545455,16.3636364 3.63636364,13.4545455 3.63636364,10 C3.63636364,6.54545455 6.54545455,3.63636364 10,3.63636364 Z"
+                                                                            opacity="0.6"></path>
+                                                                        <path class="color-background"
+                                                                            d="M30,23.6363636 L10,23.6363636 C4.54545455,23.6363636 0,28.1818182 0,33.6363636 C0,39.0909091 4.54545455,43.6363636 10,43.6363636 L30,43.6363636 C35.4545455,43.6363636 40,39.0909091 40,33.6363636 C40,28.1818182 35.4545455,23.6363636 30,23.6363636 Z M30,40 C26.5454545,40 23.6363636,37.0909091 23.6363636,33.6363636 C23.6363636,30.1818182 26.5454545,27.2727273 30,27.2727273 C33.4545455,27.2727273 36.3636364,30.1818182 36.3636364,33.6363636 C36.3636364,37.0909091 33.4545455,40 30,40 Z">
+                                                                        </path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <h6
+                                                        class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                        {{ __('landing.arkib_dokumen') }}</h6>
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item list-group-item border-0 p-0">
+                                        <a class="dropdown-item py-2 ps-3 border-radius-md" href="/arkib-bergambar">
+                                            <div class="d-flex">
+                                                <div class="icon h-10 me-3 d-flex mt-1">
+                                                    <svg class="text-secondary" width="16px" height="16px"
+                                                        viewBox="0 0 40 40" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <title>settings</title>
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <g transform="translate(-2020.000000, -442.000000)"
+                                                                fill="#FFFFFF" fill-rule="nonzero">
+                                                                <g transform="translate(1716.000000, 291.000000)">
+                                                                    <g transform="translate(304.000000, 151.000000)">
+                                                                        <polygon class="color-background"
+                                                                            opacity="0.596981957"
+                                                                            points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
+                                                                        </polygon>
+                                                                        <path class="color-background"
+                                                                            d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
+                                                                            opacity="0.596981957"></path>
+                                                                        <path class="color-background"
+                                                                            d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
+                                                                        </path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <h6
+                                                        class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                        {{ __('landing.arkib_bergambar') }}</h6>
+                                                    {{-- <span class="text-sm">For those who want flexibility, use our
+                                                        utility classes</span> --}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="row d-lg-none bg-white">
+                                <div class="col-md-12 g-0">
+                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href="/arkib-dokumen">
+                                        <div class="d-flex">
+                                            <div class="icon h-10 me-3 d-flex mt-1">
+                                                <svg class="text-secondary" width="16px" height="16px"
+                                                    viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <title>switches</title>
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-1870.000000, -440.000000)"
+                                                            fill="#FFFFFF" fill-rule="nonzero">
+                                                            <g transform="translate(1716.000000, 291.000000)">
+                                                                <g transform="translate(154.000000, 149.000000)">
+                                                                    <path class="color-background"
+                                                                        d="M10,20 L30,20 C35.4545455,20 40,15.4545455 40,10 C40,4.54545455 35.4545455,0 30,0 L10,0 C4.54545455,0 0,4.54545455 0,10 C0,15.4545455 4.54545455,20 10,20 Z M10,3.63636364 C13.4545455,3.63636364 16.3636364,6.54545455 16.3636364,10 C16.3636364,13.4545455 13.4545455,16.3636364 10,16.3636364 C6.54545455,16.3636364 3.63636364,13.4545455 3.63636364,10 C3.63636364,6.54545455 6.54545455,3.63636364 10,3.63636364 Z"
+                                                                        opacity="0.6"></path>
+                                                                    <path class="color-background"
+                                                                        d="M30,23.6363636 L10,23.6363636 C4.54545455,23.6363636 0,28.1818182 0,33.6363636 C0,39.0909091 4.54545455,43.6363636 10,43.6363636 L30,43.6363636 C35.4545455,43.6363636 40,39.0909091 40,33.6363636 C40,28.1818182 35.4545455,23.6363636 30,23.6363636 Z M30,40 C26.5454545,40 23.6363636,37.0909091 23.6363636,33.6363636 C23.6363636,30.1818182 26.5454545,27.2727273 30,27.2727273 C33.4545455,27.2727273 36.3636364,30.1818182 36.3636364,33.6363636 C36.3636364,37.0909091 33.4545455,40 30,40 Z">
+                                                                    </path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h6
+                                                    class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                    {{ __('landing.arkib_dokumen') }}</h6>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href="/arkib-bergambar">
+                                        <div class="d-flex">
+                                            <div class="icon h-10 me-3 d-flex mt-1">
+                                                <svg class="text-secondary" width="16px" height="16px"
+                                                    viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <title>settings</title>
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-2020.000000, -442.000000)"
+                                                            fill="#FFFFFF" fill-rule="nonzero">
+                                                            <g transform="translate(1716.000000, 291.000000)">
+                                                                <g transform="translate(304.000000, 151.000000)">
+                                                                    <polygon class="color-background"
+                                                                        opacity="0.596981957"
+                                                                        points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
+                                                                    </polygon>
+                                                                    <path class="color-background"
+                                                                        d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
+                                                                        opacity="0.596981957"></path>
+                                                                    <path class="color-background"
+                                                                        d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
+                                                                    </path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h6
+                                                    class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                    {{ __('landing.arkib_bergambar') }}</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
                     <li class="nav-item mx-2">
-                        <a role="button" href="/dashboard"
+                        <a role="button" href="/semakan-status-eps"
                             class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
                             aria-expanded="false">
-                            {{ __('landing.permohonan') }}
-
+                            {{ __('landing.semakan_status_eps') }}
                         </a>
                     </li>
-                @endcan
-                <li class="nav-item dropdown dropdown-hover mx-2">
-                    <a role="button"
-                        class="nav-link font_color ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                        id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ __('landing.arkib') }}&ensp;
-                        <i class="fas fa-angle-down"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-animation dropdown-lg mt-0 mt-lg-3 p-3 border-radius-lg">
-                        <div class="d-none d-lg-block">
-                            <ul class="list-group">
-                                <li class="nav-item list-group-item border-0 p-0">
-                                    <a class="dropdown-item py-2 border-radius-md" href="/arkib-bergambar">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h6
-                                                    class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                    <i class="fas fa-rocket mr-2 text-secondary"></i> &nbsp;
-                                                    {{ __('landing.arkib_bergambar') }}
-                                                </h6>
+
+                    <li class="nav-item mx-2">
+                        <a role="button" href="/faq"
+                            class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
+                            aria-expanded="false">
+                            {{ __('landing.faq') }}
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                @can('isPemohon')
+                    <ul class="navbar-nav mx-auto">
+
+
+                        <li class="nav-item dropdown dropdown-hover mx-2">
+                            <a role="button"
+                                class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
+                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('landing.selamat_datang') }}
+                                    {{ Auth::user()->name }}
+                                    <i class="fa fa-user me-sm-1 text-white p-2"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-animation dropdown mt-0 mt-lg-3 p-3 border-radius-lg"
+                                aria-labelledby="dropdownMenuButton">
+                                <div class="d-none d-lg-block">
+                                    <ul class="list-group">
+
+                                        <li class="nav-item list-group-item border-0 p-0">
+                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="/profil">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h6
+                                                            class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            {{ __('landing.profil') }}</h6>
+
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item list-group-item border-0 p-0">
+                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="/tukar_kata_laluan">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h6
+                                                            class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            {{ __('landing.tukar_kata_laluan') }}</h6>
+                                                        {{-- <span class="text-sm">For those who want flexibility, use our
+                                                            utility classes</span> --}}
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item list-group-item border-0 p-0">
+                                            <form method="POST" action="/logout">
+                                                @csrf
+                                                <a class="dropdown-item border-radius-md" href="#"
+                                                    onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                                            this.closest('form').submit();">
+                                                    <div class="d-flex py-1">
+        
+                                                        {{ __('Log Keluar') }}
+        
+                                                    </div>
+                                                </a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row d-lg-none bg-white">
+                                    <div class="col-md-12 g-0">
+                                        <a class="dropdown-item py-2 ps-3 border-radius-md" href="/profil">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <h6
+                                                        class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                        {{ __('landing.profil') }}</h6>
+
+                                                </div>
                                             </div>
+                                        </a>
+                                        <a class="dropdown-item py-2 ps-3 border-radius-md" href="/tukar_kata_laluan">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <h6
+                                                        class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                        {{ __('landing.tukar_kata_laluan') }}</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item py-2 ps-3 border-radius-md">
+                                            <form method="POST" action="/logout">
+                                                @csrf
+                                                <a class="dropdown-item border-radius-md" href="#"
+                                                    onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                                            this.closest('form').submit();">
+                                                    <div class="d-flex py-1">
+        
+                                                        {{ __('Log Keluar') }}
+        
+                                                    </div>
+                                                </a>
+                                            </form>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        {{-- <li class="nav-item dropdown dropdown-hover mx-2">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="d-sm-inline d-none text-white">{{ __('landing.selamat_datang') }}
+                                    {{ Auth::user()->name }}</span>
+                                <i class="fa fa-user me-sm-1 text-white p-2"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
+                                aria-labelledby="dropdownMenuButton">
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="/profil">
+                                        <div class="d-flex py-1">
+                                            <span class="d-sm-inline d-none text-dark">{{ __('landing.profil') }}</span>
                                         </div>
                                     </a>
                                 </li>
-                                <li class="nav-item list-group-item border-0 p-0">
-                                    <a class="dropdown-item py-2 border-radius-md" href="/arkib-dokumen">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h6
-                                                    class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                    <i class="fas fa-book text-secondary"></i> &nbsp;
-                                                    {{ __('landing.arkib_dokumen') }}
-                                                </h6>
-                                            </div>
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan">
+                                        <div class="d-flex py-1">
+                                            <span
+                                                class="d-sm-inline d-none text-dark">{{ __('landing.tukar_kata_laluan') }}</span>
                                         </div>
                                     </a>
+                                </li>
+                                <li class="mb-2">
+                                    <form method="POST" action="/logout">
+                                        @csrf
+                                        <a class="dropdown-item border-radius-md" href="#"
+                                            onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                                    this.closest('form').submit();">
+                                            <div class="d-flex py-1">
+
+                                                {{ __('Log Keluar') }}
+
+                                            </div>
+                                        </a>
+                                    </form>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item mx-2">
-                    <a role="button" href="/semakan-status-eps"
-                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
-                        aria-expanded="false">
-                        {{ __('landing.semakan_status_eps') }}
-                    </a>
-                </li>
+                        </li> --}}
+                    </ul>
+                @else
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item mx-2">
+                            <a href="/login_" class="nav-link ps-2 d-flex cursor-pointer align-items-center font_color">
+                                <i class="fa fa-user me-sm-1 font_color"></i>
 
-                <li class="nav-item mx-2">
-                    <a role="button" href="/faq"
-                        class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font_color"
-                        aria-expanded="false">
-                        {{ __('landing.faq') }}
-                    </a>
-                </li>
-
-            </ul>
-
-            @can('isPemohon')
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="d-sm-inline d-none text-white">{{ __('landing.selamat_datang') }}
-                                {{ Auth::user()->name }}</span>
-                            <i class="fa fa-user me-sm-1 text-white p-2"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="/profil">
-                                    <div class="d-flex py-1">
-                                        <span class="d-sm-inline d-none text-dark">{{ __('landing.profil') }}</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="/tukar_kata_laluan">
-                                    <div class="d-flex py-1">
-                                        <span
-                                            class="d-sm-inline d-none text-dark">{{ __('landing.tukar_kata_laluan') }}</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <form method="POST" action="/logout">
-                                    @csrf
-                                    <a class="dropdown-item border-radius-md" href="#"
-                                        onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">
-                                        <div class="d-flex py-1">
-
-                                            {{ __('Log Keluar') }}
-
-                                        </div>
-                                    </a>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            @else
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-flex align-items-center ">
-                        <a href="/login_" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1 font_color"></i>
-                            <span class="d-sm-inline d-none font_color">
 
                                 {{ __('landing.log_masuk') }}
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center ps-3 d-flex">
-                        <a href="/semak-ic" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1 font_color"></i>
-                            <span class="d-sm-inline d-none font_color">
+
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="/semak-ic" class="nav-link ps-2 d-flex cursor-pointer align-items-center font_color">
+                                <i class="fa fa-user me-sm-1 font_color"></i>
+
 
                                 {{ __('landing.daftar_akaun') }}
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            @endcan
 
-
+                            </a>
+                        </li>
+                    </ul>
+                @endcan
+            </div>
 
         </nav>
         <!-- End Navbar -->
 
-        @yield('content')
+
+        <div class="container-fluid content">
+            @yield('content')
+        </div>
+
 
         <footer class="footer pt-3" id="footer">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-md-6 mb-lg-0 mb-4">
+
+                    <div class="col-md-1 col-xs-2 mb-lg-0 d-flex justify-content-center justify-content-xs-center ">
+                        <p class="font_color"><img src="/assets/img/logos/jata_negara.png" height="70px" alt="">
+                        </p>
+                    </div>
+
+                    <div class="col-md-5 col-xs-2 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
 
                             <p class="font_color">
                                 {{ __('landing.kementerian_perdagangan__') }}
+                                <br>
+                                No. 13, Persiaran Perdana, Presint 2,
+                                <br>
+                                62633 Putrajaya, Wilayah Persekutuan Putrajaya
+
+
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-lg-0 d-flex justify-content-end">
+                    <div class="col-md-5 col-xs-2 mb-lg-0 d-flex justify-content-md-end justify-content-xs-center">
                         <p class="font_color">@all rights reserved</p>
                     </div>
                 </div>
@@ -566,7 +718,7 @@ ight notice and this permission notice shall be included in all copies or substa
             <div class="card-header pb-0 pt-3  bg-transparent ">
                 <div class="float-start">
                     <h5 class="mt-3 mb-0">{{ __('landing.tetapan') }}</h5>
-                    {{-- <p>See our dashboard options.</p> --}}
+
                 </div>
                 <div class="float-end mt-4">
                     <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">

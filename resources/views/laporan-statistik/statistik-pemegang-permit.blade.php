@@ -708,11 +708,33 @@ echo $year; ?>
                     dom: 'Bfrtip',
                     buttons: [{
                             extend: 'excelHtml5',
+                            <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                            title: 'Senarai Pemegang Permit yang Sah dan Aktif ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                            <?php
+                                }
+                                else{
+                                    ?>
                             title: 'Senarai Pemegang Permit yang Sah dan Aktif'
+                            <?php
+                                }
+                        ?>
                         },
                         {
                             extend: 'pdfHtml5',
+                            <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                            title: 'Senarai Pemegang Permit yang Sah dan Aktif ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                            <?php
+                                }
+                                else{
+                                    ?>
                             title: 'Senarai Pemegang Permit yang Sah dan Aktif'
+                            <?php
+                                }
+                        ?>
                         },
                     ],
                 });
@@ -726,11 +748,33 @@ echo $year; ?>
                     "info": false,
                     buttons: [{
                             extend: 'excelHtml5',
+                            <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                            <?php
+                                }
+                                else{
+                                    ?>
                             title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina'
+                            <?php
+                                }
+                        ?>
                         },
                         {
                             extend: 'pdfHtml5',
-                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina',
+                            <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                            <?php
+                                }
+                                else{
+                                    ?>
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Jantina'
+                            <?php
+                                }
+                        ?>
                         },
                     ],
                 });
@@ -742,14 +786,36 @@ echo $year; ?>
                     "searching": false,
                     "info": false,
                     "paging": false,
-                    pageLength: 4,
+                    pageLength: 16,
                     buttons: [{
                             extend: 'excelHtml5',
+                            <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                            <?php
+                                }
+                                else{
+                                    ?>
                             title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri'
+                            <?php
+                                }
+                        ?>
                         },
                         {
                             extend: 'pdfHtml5',
-                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri',
+                            <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                            <?php
+                                }
+                                else{
+                                    ?>
+                            title: 'Pemegang Permit yang Sah dan Aktif Mengikut Negeri'
+                            <?php
+                                }
+                        ?>
                         },
                     ],
                 });

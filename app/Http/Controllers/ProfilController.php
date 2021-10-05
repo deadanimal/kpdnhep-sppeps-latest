@@ -55,12 +55,12 @@ class ProfilController extends Controller
 
         if ($user->profil_update == 0) {
             $rules = [
-                'gambar_profil' => ['required'],
+                'gambar_profil' => 'required|max:1024',
             ];
 
             $validator = Validator::make($request->all(), $rules, $messages = [
                 'required' => ':attribute diperlukan',
-
+                'max' => 'Size file :attribute tidak boleh melebihi 1mb'
             ]);
 
             if ($validator->fails()) {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Audit;
+use App\Models\Permohonan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,11 @@ class AuditController extends Controller
     public function log_pemohon()
     {
         $pemohon = User::where('role', "=", 'pemohon')->get();
-
+        $permohonan = Permohonan::orderBy('created_at', 'DESC')->get();
+        // $permohonan = Permohonan::all();
         return view('pegawai.admin-hq.at-log-pemohon', [
             'pemohon' => $pemohon,
+            'permohonan' => $permohonan
         ]);
     }
 

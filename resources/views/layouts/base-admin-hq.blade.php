@@ -77,6 +77,12 @@
             /* text-align: center; */
         }
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
     </style>
     <script>
         (function(a, s, y, n, c, h, i, d, e) {

@@ -16,8 +16,18 @@
 </head>
 
 <body>
-    {{-- <img src="assets/img/borang/1.png" alt="" height="950px"> --}}
-    {{-- //left --}}
+
+    @if ($permohonan->jenis_permohonan == 'Pembaharuan')
+        <img src="data:image/png;base64, {{ $lol }} "
+            style="position: absolute; left: 100px; top: 154px; height: 31.5px; ">
+    @else
+        <img src="data:image/png;base64, {{ $lol }} "
+            style="position: absolute; left: 100px; top: 148px; height: 31.5px; ">
+
+    @endif
+
+
+
 
     <img src="storage/{{ $permohonan->gambar_pemohon }}" alt="gambar_passport"
         style="height: 95px; width: 80px; position: absolute; left: 258px; top: 185px;">
@@ -43,6 +53,17 @@
     </div>
 
     {{-- //right --}}
+
+    @if ($permohonan->jenis_permohonan == 'Pembaharuan')
+        <img src="data:image/png;base64, {{ $lol }} "
+            style="position: absolute; left: 415px; top: 154px; height: 31.5px; ">
+    @else
+        <img src="data:image/png;base64, {{ $lol }} "
+            style="position: absolute; left: 415px; top: 148px; height: 31.5px; ">
+
+    @endif
+
+
 
     <img src="storage/{{ $permohonan->gambar_pemohon }}" alt="gambar_passport"
         style="height: 95px; width: 80px; position: absolute; left: 573px; top: 185px;">

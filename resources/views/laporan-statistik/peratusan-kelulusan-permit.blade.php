@@ -791,19 +791,50 @@ echo $year; ?>
                 dom: 'Bfrtip',
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Permit Lulus ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Permit Lulus'
+                        <?php
+                                }
+                                    ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Senarai Permit Lulus',
-                        orientation: 'landscape',
-                        pageSize: 'LEGAL'
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Permit Lulus ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Senarai Permit Lulus'
+                        <?php
+                                }
+                                    ?>
                     },
-                    // {
-                    //     extend: 'printHtml5',
-                    //     title: 'Data export'
-                    // }
                 ],
+                // buttons: [{
+                //         extend: 'excelHtml5',
+                //         title: 'Senarai Permit Lulus'
+                //     },
+                //     {
+                //         extend: 'pdfHtml5',
+                //         title: 'Senarai Permit Lulus',
+                //         orientation: 'landscape',
+                //         pageSize: 'LEGAL'
+                //     },
+                //     // {
+                //     //     extend: 'printHtml5',
+                //     //     title: 'Data export'
+                //     // }
+                // ],
                 // "oLanguage": {
                 //     "sSearch": "Carian:",
                 //     "sZeroRecords": "Tiada rekod ditemui",
@@ -823,13 +854,44 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kelulusan Permit Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Kelulusan Permit Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Jantina',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kelulusan Permit Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Kelulusan Permit Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
+                // buttons: [{
+                //         extend: 'excelHtml5',
+                //         title: 'Kelulusan Permit Mengikut Jantina'
+                //     },
+                //     {
+                //         extend: 'pdfHtml5',
+                //         title: 'Kelulusan Permit Mengikut Jantina',
+                //     },
+                // ],
             });
         });
 
@@ -842,13 +904,44 @@ echo $year; ?>
                 pageLength: 16,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kelulusan Permit Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Kelulusan Permit Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Kelulusan Permit Mengikut Negeri',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Kelulusan Permit Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Kelulusan Permit Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
+                // buttons: [{
+                //         extend: 'excelHtml5',
+                //         title: 'Kelulusan Permit Mengikut Negeri'
+                //     },
+                //     {
+                //         extend: 'pdfHtml5',
+                //         title: 'Kelulusan Permit Mengikut Negeri',
+                //     },
+                // ],
             });
         });
     </script>

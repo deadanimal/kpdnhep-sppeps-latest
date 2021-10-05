@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="ic">No. Kad Pengenalan</label>
-                                        <input class="form-control form-control-sm" type="text" name="no_kp" />
+                                        <input class="form-control form-control-sm" type="number" name="no_kp" />
                                     </div>
 
                                     <div class="col">
@@ -47,6 +47,9 @@
                     </div>
 
                     <div class="card-body p-3">
+                        {{-- @foreach ($permohonan as $permohonan)
+                            {{ gettype($permohonan->user_id) }}
+                        @endforeach --}}
 
 
                         <div class="card">
@@ -75,7 +78,8 @@
                                             <tr>
                                                 <td>
                                                     <span
-                                                        class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}</span>
+                                                        class="text-secondary text-sm font-weight-bold">{{ $loop->index + 1 }}
+                                                    </span>
                                                 </td>
                                                 <td>
                                                     <span
@@ -87,7 +91,17 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="text-secondary text-sm font-weight-bold">
-                                                        {{ $pemohon->negeri }}
+                                                        @foreach ($permohonan as $permohonans)
+
+                                                            {{-- {{ $permohonans->negeri_kutipan_permit }} --}}
+                                                            @if ($pemohon->id == $permohonans->user_id)
+                                                                {{-- {{ $pemohon->id }},
+                                                                {{ $permohonans->user_id }} --}}
+                                                                {{ $permohonans->negeri_kutipan_permit }} <br>
+                                                                @break
+                                                            @endif
+                                                            
+                                                        @endforeach
                                                     </span>
                                                 </td>
                                                 <td class="align-middle text-center">

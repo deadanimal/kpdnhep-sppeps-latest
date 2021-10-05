@@ -19,7 +19,7 @@
                             <div id="qr-reader-results"></div>
                         </div>
 
-                        <script type="text/javascript" src="{{ URL::asset('js/html5-qrcode.min.js') }}"></script>
+                        {{-- <script type="text/javascript" src="{{ URL::asset('js/html5-qrcode.min.js') }}"></script>
                         <script>
                             var resultContainer = document.getElementById('qr-reader-results');
                             console.log('resultContainer', resultContainer)
@@ -50,6 +50,45 @@
                                 // }, success: function (result) {
                                 //     console.log(result)
                                 // })
+                                if (decodedText !== lastResult) {
+                                    ++countResults;
+                                    lastResult = decodedText;
+                                    // Handle on success condition with the decoded message.
+                                    // document.getElementById('maelhensem').innerText = 'lollll';
+                                    console.log(`Scan result ${decodedText}`, decodedResult);
+                                    // document.getElementById('maelhensem').innerText = 'lollll';
+                                    //document.getElementById('maelhensem').innerText = 'lollll';
+                                    id = `${decodedText}`;
+                                    // console.log('id', id)
+
+                                    var url = '/keputusan_qr_penguatkuasa?qr=' + id;
+                                    // maelhensem.innerHTML = decodedText;
+                                    document.location.href = url;
+                                }
+                            }
+
+                            var html5QrcodeScanner = new Html5QrcodeScanner(
+                                "qr-reader", {
+                                    fps: 10,
+                                    qrbox: 250
+                                });
+                            html5QrcodeScanner.render(onScanSuccess);
+                        </script> --}}
+
+                        <script type="text/javascript" src="{{ URL::asset('js/html5-qrcode.min.js') }}"></script>
+                        <script>
+                            var resultContainer = document.getElementById('qr-reader-results');
+                            console.log('resultContainer', resultContainer)
+                            var lastResult, countResults = 0;
+
+                            function ismaelPegawai(url) {
+                                window.location.assign(url);
+                            }
+
+
+                            function onScanSuccess(decodedText, decodedResult) {
+                                console.log('onScanSuccess')
+
                                 if (decodedText !== lastResult) {
                                     ++countResults;
                                     lastResult = decodedText;

@@ -46,7 +46,7 @@ class PermohonanController extends Controller
         } else if ($user_role == 'pentadbir') {
             $permohonan = Permohonan::where('status_permohonan', 'disemak')->get();
         } else if ($user_role == 'pemohon') {
-            $permohonan = Permohonan::where('user_id', $user_id)->get();
+            $permohonan = Permohonan::where('user_id', $user_id)->orderBy('updated_at', 'DESC')->get();
             return view('pemohon.status-permohonan', [
                 'permohonan' => $permohonan
             ]);
@@ -118,6 +118,19 @@ class PermohonanController extends Controller
 
         if ($request->jenis_permohonan == 'Baharu') {
 
+            $rules = [
+                'salinan_kp_depan' => 'max:500',
+                'salinan_kp_belakang' => 'max:1024',
+                'salinan_lesen_memandu' => 'max:1024',
+            ];
+            $validator = Validator::make($request->all(), $rules, $messages = [
+                'max' => 'Size file :attribute tidak boleh melebihi 1mb'
+            ]);
+            if ($validator->fails()) {
+                // $validator->errors()= "";
+                return Redirect::back()->withErrors($validator->errors());
+            };
+
             if ($request->status == 'HANTAR') {
 
                 $rules = [
@@ -129,15 +142,15 @@ class PermohonanController extends Controller
                     'skop_tugas' => 'required',
                     'prosedur_peraturan_eps' => 'required',
                     'prosedur_peraturan_eps' => 'required',
-                    'salinan_kp_depan' => 'required',
-                    'salinan_kp_belakang' => 'required',
-                    'salinan_lesen_memandu' => 'required',
+                    'salinan_kp_depan' => 'required|max:500',
+                    'salinan_kp_belakang' => 'required|max:500',
+                    'salinan_lesen_memandu' => 'required|max:500',
                 ];
 
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
-                    'max' => 'Size file :attribute tidak boleh melebihi 500kb'
+                    'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                 ]);
 
                 if ($validator->fails()) {
@@ -214,14 +227,16 @@ class PermohonanController extends Controller
                     'berkerja_panel_atau_syarikat' => 'required',
                     'kehadiran_kursus_eps' => 'required',
                     'kp_depan' => 'required',
-                    'salinan_kp_belakang' => 'required',
-                    'salinan_lesen_memandu' => 'required',
-                    'salinan_surat_sokongan' => 'required',
+                    'salinan_kp_belakang' => 'required|max:1024',
+                    'salinan_lesen_memandu' => 'required|max:1024',
+                    'salinan_surat_sokongan' => 'required|max:1024',
                 ];
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
+                    'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                 ]);
+
                 if ($validator->fails()) {
                     return Redirect::back()->withErrors($validator->errors());
                 };
@@ -325,13 +340,14 @@ class PermohonanController extends Controller
                     'penggantian_kali_ke' => 'required',
                     'negeri_laporan_polis' => 'required',
                     'no_laporan_polis' => 'required',
-                    'salinan_kp_depan' => 'required',
-                    'salinan_kp_belakang' => 'required',
-                    'salinan_laporan_polis' => 'required',
+                    'salinan_kp_depan' => 'required|max:1024',
+                    'salinan_kp_belakang' => 'required|max:1024',
+                    'salinan_laporan_polis' => 'required|max:1024',
                 ];
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
+                    'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                 ]);
                 if ($validator->fails()) {
                     return Redirect::back()->withErrors($validator->errors());
@@ -381,14 +397,18 @@ class PermohonanController extends Controller
                     'rayuan_kali_ke' => 'required',
                     'alasan_rayuan' => 'required',
                     'kp_depan' => 'required',
-                    'salinan_kp_belakang' => 'required',
-                    'salinan_tapisan_rekod_jenayah' => 'required',
-                    'salinan_sokongan_institusi_kewangan' => 'required',
+                    'salinan_kp_belakang' => 'required|max:1024',
+                    'salinan_tapisan_rekod_jenayah' => 'required|max:1024',
+                    'salinan_sokongan_institusi_kewangan' => 'required|max:1024',
+                    'salinan_dokumen_sokongan1' => 'max:1024',
+                    'salinan_dokumen_sokongan2' => 'max:1024',
+                    'salinan_dokumen_sokongan3' => 'max:1024',
                 ];
 
 
                 $validator = Validator::make($request->all(), $rules, $messages = [
                     'required' => ' :attribute perlu diisi',
+                    'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                 ]);
                 if ($validator->fails()) {
                     return Redirect::back()->withErrors($validator->errors());
@@ -592,7 +612,7 @@ class PermohonanController extends Controller
 
                         $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
 
-                        
+
 
                         $audit = new Audit;
                         $audit->id_pegawai = $user->id;
@@ -606,7 +626,7 @@ class PermohonanController extends Controller
                     } else if ($request->tindakan == "Permohonan Tidak Lengkap") {
 
                         $permohonan->tarikh_penerimaan = date('Y-m-d H:i:s');
-                        
+
                         $permohonan->status_permohonan = "Permohonan Tidak Lengkap";
                         $permohonan->catatan_pegawai_negeri = $request->catatan_pegawai_negeri;
 
@@ -712,11 +732,11 @@ class PermohonanController extends Controller
                     if ($permohonan->tempoh_kelulusan == "1 tahun") {
                         $permohonan->bayaran_fi = 10;
                         $permohonan->tarikh_diluluskan = date("Y-m-d H:i:s");
-                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
+                        // $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years -1 days'));
                     } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
                         $permohonan->bayaran_fi = 20;
                         $permohonan->tarikh_diluluskan = date("Y-m-d H:i:s");
-                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
+                        // $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years -1 days'));
                     }
 
                     $audit = new Audit;
@@ -731,7 +751,7 @@ class PermohonanController extends Controller
                 } else if ($permohonan->jenis_permohonan == "Pendua") {
                     $permohonan->bayaran_fi = 20;
                     $permohonan->tarikh_diluluskan = date("Y-m-d H:i:s");
-                    $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
+                    // $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
 
                     $audit = new Audit;
                     $audit->id_pegawai = $user->id;
@@ -975,11 +995,11 @@ class PermohonanController extends Controller
                     if ($permohonan->tempoh_kelulusan == "1 tahun") {
                         $permohonan->bayaran_fi = 10;
                         $permohonan->tarikh_diluluskan = date("Y-m-d H:i:s");
-                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years'));
+                        // $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+1 years -1 days'));
                     } else if ($permohonan->tempoh_kelulusan == "2 tahun") {
                         $permohonan->bayaran_fi = 20;
                         $permohonan->tarikh_diluluskan = date("Y-m-d H:i:s");
-                        $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years'));
+                        // $permohonan->tarikh_tamat_permit = date('Y-m-d', strtotime('+2 years -1 days'));
                     }
 
                     $audit = new Audit;
@@ -1101,6 +1121,8 @@ class PermohonanController extends Controller
             //$permohonan->user_id = $user_id;
             $permohonan->gambar_pemohon = $request->gambar_pemohon;
 
+            $permohonan->gambar_pemohon = $request->gambar_pemohon;
+
             if ($request->status == 'HANTAR') {
 
                 $rules = [
@@ -1160,10 +1182,16 @@ class PermohonanController extends Controller
                         'berkerja_panel_atau_syarikat' => 'required',
                         'skop_tugas' => 'required',
                         'prosedur_peraturan_eps' => 'required',
+                        'prosedur_peraturan_eps' => 'required',
+                        'salinan_kp_depan' => 'required|max:1024',
+                        'salinan_kp_belakang' => 'required|max:1024',
+                        'salinan_lesen_memandu' => 'required|max:1024',
                     ];
+
 
                     $validator = Validator::make($request->all(), $rules, $messages = [
                         'required' => ' :attribute perlu diisi',
+                        'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                     ]);
 
                     if ($validator->fails()) {
@@ -1215,8 +1243,8 @@ class PermohonanController extends Controller
                 $permohonan->prosedur_peraturan_eps = $request->prosedur_peraturan_eps;
 
 
-                if ($request->hasFile('kp_depan')) {
-                    $salinan_kp_depan = $request->file('kp_depan')->store('dokumen');
+                if ($request->hasFile('salinan_kp_depan')) {
+                    $salinan_kp_depan = $request->file('salinan_kp_depan')->store('dokumen');
                     $permohonan->salinan_kp_depan = $salinan_kp_depan;
                 }
 
@@ -1239,10 +1267,17 @@ class PermohonanController extends Controller
                         'lesen_memandu' => 'required',
                         'berkerja_panel_atau_syarikat' => 'required',
                         'kehadiran_kursus_eps' => 'required',
+                        'kp_depan' => 'required',
+                        'salinan_kp_belakang' => 'required|max:1024',
+                        'salinan_lesen_memandu' => 'required|max:1024',
+                        'salinan_surat_sokongan' => 'required|max:1024',
                     ];
+
                     $validator = Validator::make($request->all(), $rules, $messages = [
                         'required' => ' :attribute perlu diisi',
+                        'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                     ]);
+
                     if ($validator->fails()) {
                         return Redirect::back()->withErrors($validator->errors());
                     };
@@ -1346,9 +1381,14 @@ class PermohonanController extends Controller
                         'penggantian_kali_ke' => 'required',
                         'negeri_laporan_polis' => 'required',
                         'no_laporan_polis' => 'required',
+                        'salinan_kp_depan' => 'required|max:1024',
+                        'salinan_kp_belakang' => 'required|max:1024',
+                        'salinan_laporan_polis' => 'required|max:1024',
                     ];
+
                     $validator = Validator::make($request->all(), $rules, $messages = [
                         'required' => ' :attribute perlu diisi',
+                        'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                     ]);
                     if ($validator->fails()) {
                         return Redirect::back()->withErrors($validator->errors());
@@ -1397,9 +1437,19 @@ class PermohonanController extends Controller
                         'sebab_permohonan_ditolak' => 'required',
                         'rayuan_kali_ke' => 'required',
                         'alasan_rayuan' => 'required',
+                        'kp_depan' => 'required',
+                        'salinan_kp_belakang' => 'required|max:1024',
+                        'salinan_tapisan_rekod_jenayah' => 'required|max:1024',
+                        'salinan_sokongan_institusi_kewangan' => 'required|max:1024',
+                        'salinan_dokumen_sokongan1' => 'max:1024',
+                        'salinan_dokumen_sokongan2' => 'max:1024',
+                        'salinan_dokumen_sokongan3' => 'max:1024',
                     ];
+
+
                     $validator = Validator::make($request->all(), $rules, $messages = [
                         'required' => ' :attribute perlu diisi',
+                        'max' => 'Size file :attribute tidak boleh melebihi 1mb'
                     ]);
                     if ($validator->fails()) {
                         return Redirect::back()->withErrors($validator->errors());
@@ -1461,7 +1511,6 @@ class PermohonanController extends Controller
                     $permohonan->salinan_dokumen_sokongan3 = $salinan_dokumen_sokongan3;
                 }
             }
-
             $permohonan->save();
 
             if ($request->status == 'HANTAR') {

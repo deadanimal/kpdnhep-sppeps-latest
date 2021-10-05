@@ -426,6 +426,1224 @@ echo $year; ?>
             </div>
 
             <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card m-2">
+                            <div class="card-header" style="background-color: #f7e8ff;">
+
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Sejarah Permohonan mengikut Negeri (Baharu)</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0" id="tablesejarahnegeribaharu">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    No.</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Negeri Kutipan Permit</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Baharu</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Lulus</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Tolak</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Dalam Proses</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakabaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakabaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakabaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakabaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakabaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakabaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakabaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakabaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlisbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlisbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlisbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlisbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlisbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlisbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlisbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlisbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganubaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganubaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganubaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganubaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganubaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganubaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganubaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganubaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanbaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanbaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanbaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanbaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanbaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanbaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanbaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanbaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayabaharu == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayabaharu }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayabaharululus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayabaharululus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayabaharutolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayabaharutolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayabaharuproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayabaharuproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card m-2">
+                            <div class="card-header" style="background-color: #f7e8ff;">
+
+                                <div class="row mb-0">
+                                    <div class="col">
+                                        <h5> Sejarah Permohonan mengikut Negeri (Pembaharuan)</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0" id="tablesejarahnegeripembaharuan">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                                    No.</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Negeri Kutipan Permit</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Pembaharuan</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Lulus</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Tolak</th>
+                                                <th
+                                                    class="text-uppercase text-center  text-secondary text-xs font-weight-bolder opacity-7">
+                                                    Dalam Proses</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    1</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Johor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerijohorpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerijohorpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    2</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kedah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikedahpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikedahpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    3</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Kelantan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikelantanpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikelantanpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    4</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Melaka
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakapembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakapembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakapembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakapembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakapembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakapembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerimelakapembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerimelakapembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    5</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Negeri Sembilan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerinegerisembilanpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerinegerisembilanpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    6</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pahang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripahangpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripahangpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    7</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Pulau Pinang
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeripulaupinangpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeripulaupinangpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    8</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperakpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperakpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    9</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Perlis
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlispembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlispembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlispembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlispembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlispembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlispembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriperlispembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriperlispembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    10</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Selangor
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriselangorpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriselangorpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    11</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Terengganu
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganupembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganupembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganupembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganupembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganupembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganupembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriterengganupembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriterengganupembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    12</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sabah
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisabahpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisabahpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    13</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    Sarawak
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerisarawakpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerisarawakpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    14</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Kuala Lumpur
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerikualalumpurpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerikualalumpurpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    15</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Labuan
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanpembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanpembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanpembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanpembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanpembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanpembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegerilabuanpembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegerilabuanpembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    16</td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    W.P. Putrajaya
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayapembaharuan == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayapembaharuan }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayapembaharuanlulus == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayapembaharuanlulus }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayapembaharuantolak == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayapembaharuantolak }}
+                                                    @endif
+                                                </td>
+                                                <td class="text-sm text-center font-weight-normal">
+                                                    @if ($sejarahnegeriputrajayapembaharuanproses == null)
+                                                        0
+                                                    @else
+                                                        {{ $sejarahnegeriputrajayapembaharuanproses }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid mt-4">
                 <div class="card m-2">
 
                     <div class="card-header" style="background-color: #f7e8ff;">
@@ -464,6 +1682,12 @@ echo $year; ?>
                                                     Status Permohonan</th>
                                                 <th
                                                     class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
+                                                    Tarikh Lulus Permit</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
+                                                    Tarikh Tamat Permit</th>
+                                                <th
+                                                    class="text-uppercase text-center text-secondary font-weight-bolder opacity-7">
                                                     Tarikh Hantar Permohonan</th>
                                             </tr>
                                         </thead>
@@ -495,7 +1719,12 @@ echo $year; ?>
                                                         @endif
                                                     </td>
                                                     <td class="text-sm text-center font-weight-normal">
-                                                        {{-- {{ $sejarah->updated_at }} --}}
+                                                        {{ date('d-m-Y', strtotime($sejarah->tarikh_diluluskan)) }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
+                                                        {{ date('d-m-Y', strtotime($sejarah->tarikh_tamat_permit)) }}
+                                                    </td>
+                                                    <td class="text-sm text-center font-weight-normal">
                                                         {{ date('d-m-Y', strtotime($sejarah->updated_at)) }}
                                                     </td>
                                                 </tr>
@@ -706,11 +1935,35 @@ echo $year; ?>
                 dom: 'Bfrtip',
                 buttons: [{
                         extend: 'excelHtml5',
+                        // title: 'Senarai Sejarah Permohonan Pemohon'
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Sejarah Permohonan Pemohon ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Sejarah Permohonan Pemohon'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Sejarah Permohonan Pemohon ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Sejarah Permohonan Pemohon'
+                        <?php
+                                }
+                        ?>
+                        // title: 'Senarai Sejarah Permohonan Pemohon'
                     },
                 ],
             });
@@ -724,11 +1977,38 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
+                        // title: 'Sejarah Permohonan Mengikut Jantina'
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Sejarah Permohonan Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
+                    // {
+                    //     extend: 'pdfHtml5',
+                    //     title: 'Sejarah Permohonan Mengikut Jantina',
+                    // },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Sejarah Permohonan Mengikut Jantina',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -740,14 +2020,132 @@ echo $year; ?>
                 "searching": false,
                 "info": false,
                 "paging": false,
-                pageLength: 4,
+                pageLength: 16,
                 buttons: [{
                         extend: 'excelHtml5',
+                        // title: 'Sejarah Permohonan Mengikut Negeri'
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Sejarah Permohonan Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
+                    // {
+                    //     extend: 'pdfHtml5',
+                    //     title: 'Sejarah Permohonan Mengikut Negeri',
+                    // },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Sejarah Permohonan Mengikut Negeri',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
+                    },
+                ],
+            });
+        });
+
+        $(document).ready(function() {
+            $('#tablesejarahnegeribaharu').DataTable({
+                dom: 'Bfrtip',
+                "searching": false,
+                "info": false,
+                "paging": false,
+                pageLength: 16,
+                buttons: [{
+                        extend: 'excelHtml5',
+                        // title: 'Sejarah Permohonan Mengikut Negeri (Baharu)'
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Baharu) ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Baharu)'
+                        <?php
+                                }
+                        ?>
+                    },
+                    // {
+                    //     extend: 'pdfHtml5',
+                    //     title: 'Sejarah Permohonan Mengikut Negeri',
+                    // },
+                    {
+                        extend: 'pdfHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Baharu) ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Baharu)'
+                        <?php
+                                }
+                        ?>
+                    },
+                ],
+            });
+        });
+        $(document).ready(function() {
+            $('#tablesejarahnegeripembaharuan').DataTable({
+                dom: 'Bfrtip',
+                "searching": false,
+                "info": false,
+                "paging": false,
+                pageLength: 16,
+                buttons: [{
+                        extend: 'excelHtml5',
+                        // title: 'Sejarah Permohonan Mengikut Negeri (Pembaharuan)'
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Pembaharuan) ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Pembaharuan)'
+                        <?php
+                                }
+                        ?>
+                    },
+                    // {
+                    //     extend: 'pdfHtml5',
+                    //     title: 'Sejarah Permohonan Mengikut Negeri',
+                    // },
+                    {
+                        extend: 'pdfHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Pembaharuan) ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Sejarah Permohonan Mengikut Negeri (Pembaharuan)'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });

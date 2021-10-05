@@ -123,7 +123,7 @@
                                                             <div class="col form-group pr-0">
                                                                 <label for="ic"><i class="fas fa-id-card"></i><strong>
                                                                         {{ __('landing.no_kp') }}</strong></label>
-                                                                <input type="text" name="no_kp" class="form-control"
+                                                                <input type="number" name="no_kp" class="form-control"
                                                                     readonly value="{{ $pemohon->no_kp }}">
                                                             </div>
                                                         </div>
@@ -167,7 +167,7 @@
                                                                     <strong> {{ __('landing.no_telafon') }}</strong>
                                                                 </label>
                                                                 <div class="d-flex flex-nowrap align-items-center">
-                                                                    <input type="text" class="form-control col-2"
+                                                                    <input type="number" class="form-control col-2"
                                                                         id="phone1" name="no_telefon"
                                                                         aria-describedby="phone"
                                                                         value="{{ $pemohon->no_telefon_bimbit }}">
@@ -466,7 +466,7 @@
                                                                         </label>
                                                                         <div class="col-sm-8">
 
-                                                                            <input type="text"
+                                                                            <input type="number"
                                                                                 name="no_telefon_institusi_kewangan"
                                                                                 id="phoneNumber"
                                                                                 class="form-control form-control-sm"
@@ -538,7 +538,7 @@
                                                                                 </strong> </label>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <input type="text"
+                                                                            <input type="number"
                                                                                 class="form-control form-control-sm"
                                                                                 id="no_telefon_panel"
                                                                                 name="no_telefon_panel">

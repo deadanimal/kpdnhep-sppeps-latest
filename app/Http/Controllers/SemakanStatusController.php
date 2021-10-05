@@ -37,6 +37,11 @@ class SemakanStatusController extends Controller
             $permohonans = Permohonan::where([
                 ['user_id', '=', $user->id]
             ])->orderBy('created_at', 'desc')->get()->first();
+
+            if($permohonans->tarikh_tamat_permit == null){
+                // return back()->with('error', 'No. kad pengenalan atau no. permit tidak wujud');
+                return redirect("/semakan-status-eps")->withErrors('No. kad pengenalan atau no. permit tidak wujud');
+            }
             // dd($permohonans);
             $currentDate = date("Y-m-d");
 

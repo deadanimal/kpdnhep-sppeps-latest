@@ -693,11 +693,33 @@ echo $year; ?>
                 dom: 'Bfrtip',
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Permit Ditolak ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Permit Ditolak'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Senarai Permit Ditolak ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Senarai Permit Ditolak'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -711,11 +733,33 @@ echo $year; ?>
                 "info": false,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Permit Ditolak Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Permit Ditolak Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Permit Ditolak Mengikut Jantina',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Permit Ditolak Mengikut Jantina ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Permit Ditolak Mengikut Jantina'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });
@@ -727,14 +771,36 @@ echo $year; ?>
                 "searching": false,
                 "info": false,
                 "paging": false,
-                pageLength: 4,
+                pageLength: 16,
                 buttons: [{
                         extend: 'excelHtml5',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Permit Ditolak Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
                         title: 'Permit Ditolak Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Permit Ditolak Mengikut Negeri',
+                        <?php 
+                                if ($start_time != null && $end_time != null){
+                                    ?>
+                        title: 'Permit Ditolak Mengikut Negeri ({{ date('d-m-Y', strtotime($start_time)) }} sehingga {{ date('d-m-Y', strtotime($end_time)) }})'
+                        <?php
+                                }
+                                else{
+                                    ?>
+                        title: 'Permit Ditolak Mengikut Negeri'
+                        <?php
+                                }
+                        ?>
                     },
                 ],
             });

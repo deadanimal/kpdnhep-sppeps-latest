@@ -25,7 +25,9 @@
                                             <th>{{ __('landing.no_kp') }}</th>
                                             <th>{{ __('landing.nama_ejen') }}</th>
                                             <th>{{ __('landing.no_permit') }}</th>
-                                            <th>{{ __('landing.status_ejen') }}</th>
+                                            <th>{{ __('landing.tarikh_sah_laku_permit') }}</th>
+                                            {{-- <th>{{ __('landing.tarikh_tamat') }}</th> --}}
+                                            {{-- <th>{{ __('landing.status_ejen') }}</th> --}}
                                         </tr>
 
                                         @if ($carian == 'kp')
@@ -37,12 +39,9 @@
                                                 <td>{{ $keputusan->nama }}</td>
                                                 <td>{{ $keputusan->no_permit }}</td>
                                                 <td>
-                                                    @if ($currentDate >= $keputusan->tarikh_diluluskan && $currentDate <= $keputusan->tarikh_tamat_permit)
-                                                        <span class="badge badge-success">{{ __('landing.aktif') }}</span>
-                                                    @else
-                                                        <span class="badge badge-danger">{{ __('landing.tidak_aktif') }}
-                                                        </span>
-                                                    @endif
+                                                    {{ date('d-m-Y', strtotime($keputusan->tarikh_cetakan)) }} - {{ date('d-m-Y', strtotime($keputusan->tarikh_tamat_permit)) }}
+                                                
+                                                    
                                                 </td>
                                             </tr>
 
@@ -55,13 +54,7 @@
                                                 <td>{{ $keputusan->nama }}</td>
                                                 <td>{{ $keputusan->no_permit }}</td>
                                                 <td>
-                                                    @if ($keputusan->tarikh_diluluskan <= $currentDate && $keputusan->tarikh_tamat_permit >= $currentDate)
-                                                        <span
-                                                            class="badge badge-success">{{ __('landing.aktif') }}</span>
-                                                    @else
-                                                        <span
-                                                            class="badge badge-danger">{{ __('landing.tidak_aktif') }}</span>
-                                                    @endif
+                                                    {{ date('d-m-Y', strtotime($keputusan->tarikh_cetakan)) }} - {{ date('d-m-Y', strtotime($keputusan->tarikh_tamat_permit)) }}
                                                 </td>
                                             </tr>
 
@@ -72,8 +65,8 @@
                                     </table>
                                 </div>
                                 <!-- <ng-template #null>
-                                                        <p>Your data does not exist. Please check your entered number or contact administrator for help.</p>
-                                                    </ng-template> -->
+                                                                        <p>Your data does not exist. Please check your entered number or contact administrator for help.</p>
+                                                                    </ng-template> -->
                             </div>
                             <!-- add padding top -->
                             <div class="p-3 d-flex justify-content-center">

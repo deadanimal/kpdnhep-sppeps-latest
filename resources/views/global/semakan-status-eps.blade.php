@@ -20,15 +20,15 @@
                                 <div class="form-group text-capitalize d-flex justify-content-center flex-wrap">
                                     <label class="pb-3 pt-3" for="nric"><strong>{{ __('landing.no_kp') }}</strong>
                                     </label>
-                                    <input type="text" class="form-control text-center" id="nric" name="no_kp_or_permit"
+                                    <input type="number" class="form-control text-center" id="nric" name="no_kp_or_permit"
                                         placeholder="Sila masukkan no. kad pengenalan tanpa '-'">
                                 </div>
                                 <div class="form-group d-flex justify-content-center pt-5">
-                                    {{-- <button type="button" class="btn m-1 text-white text-capitalize"
+                                    <button type="button" class="btn m-1 text-white text-capitalize"
                                         style="background-color: #1d1da1;" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
                                         {{ __('landing.imbas_kod_qr') }}
-                                    </button> --}}
+                                    </button>
                                     <h1 id="maelhensem"></h1>
                                     <input type="submit" class="btn text-white text-capitalize m-1"
                                         style="background-color: #1d1da1;" value="{{ __('landing.semak') }}">
@@ -80,24 +80,7 @@
 
                             function onScanSuccess(decodedText, decodedResult) {
                                 console.log('onScanSuccess')
-                                //console.log(`Scan result ${decodedText}`, decodedResult);
-                                // var url = 'http://127.0.0.1:8000/keputusan_qr?qr=' + id_saja;
-                                // var maelhensem = document.getElementById('maelhensem');
-                                // maelhensem.innerHTML = decodedText;
-                                //ismaelPegawai(url);
-                                // location.replace('https://google.com');
-                                // document.location.href = 'https://google.com',true;
-                                // return false;
-                                // var id_saja = 1;'/keputusan_qr?qr=' + id_saja
-                                // fetch()
-                                //     .then((response)=> {
-                                //         console.log(response)
-                                // })
-                                // $.ajax({
-                                //     url: '/keputusan_qr?qr=1',                                    
-                                // }, success: function (result) {
-                                //     console.log(result)
-                                // })
+                               
                                 if (decodedText !== lastResult) {
                                     ++countResults;
                                     lastResult = decodedText;

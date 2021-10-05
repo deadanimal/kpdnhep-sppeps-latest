@@ -105,13 +105,13 @@ class SemakanIcController extends Controller
                     // ]);
                     //
                 } else {
-                    return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan sah.');
+                    return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan semula.');
                 }
             } else {
-                return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan sah.');
+                return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan semula.');
             }
         } else {
-            return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan sah.');
+            return back()->with('error', 'Harap Maaf! Warganegara Malaysia yang berumur 21 tahun ke bawah tidak boleh memohon permit ejen pemilikan semula.');
         }
     }
 

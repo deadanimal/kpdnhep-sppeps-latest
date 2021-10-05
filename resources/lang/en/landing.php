@@ -195,7 +195,13 @@ return [
     'pekerjaan_sampingan' => 'Side Jobs',
     'sila_nyatakan_pekerjaan___' => 'Please specify your permanent job',
 
-    'kementerian_perdagangan__'=>'Ministry of Domestic Trade Consumer Affairs',
+    'kementerian_perdagangan__'=>'Ministry of Domestic Trade and Consumer Affairs',
     'permohonan'=>'Application',
+
+
+    'tarikh_kelulusan'=>'Date of Approval',
+    'tarikh_tamat'=>'Permit Expiry Date',
+
+    'tarikh_sah_laku_permit'=> 'Permit Validity Date'
 ];
 // {{ __('landing.Pengumuman') }}

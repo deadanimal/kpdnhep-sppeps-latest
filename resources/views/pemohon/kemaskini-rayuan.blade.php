@@ -90,7 +90,7 @@
                                                                     <input type="hidden" name="gambar_pemohon"
                                                                         value="{{ $pemohon->gambar_profil }}">
 
-                                                                        
+
                                                                     <input type="hidden" name="jenis_permohonan"
                                                                         value="Rayuan">
                                                                 </div>
@@ -139,7 +139,7 @@
                                                         <div class="col-1"></div>
                                                         <div class="col form-group pr-0 text-start">
                                                             <label for="ic"><i class="fas fa-id-card"></i><strong> {{ __('landing.no_kp') }}</strong></label>
-                                                            <input type="text" class="form-control" id="ic"
+                                                            <input type="number" class="form-control" id="ic"
                                                                 aria-describedby="ic" name="no_kp" readonly
                                                                 value="{{ $permohonan->no_kp }}">
                                                         </div>
@@ -158,7 +158,7 @@
                                                                 <strong> {{ __('landing.no_telafon') }}</strong>
                                                             </label>
                                                             <div class="d-flex flex-nowrap align-items-center">
-                                                                <input type="text" class="form-control col-2" id="phone1"
+                                                                <input type="number" class="form-control col-2" id="phone1"
                                                                     aria-describedby="phone" name="no_telefon"
                                                                     value="{{ $permohonan->no_telefon }}">
 

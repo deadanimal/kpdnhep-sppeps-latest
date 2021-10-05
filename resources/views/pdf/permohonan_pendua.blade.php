@@ -143,6 +143,9 @@
     <p style="position: absolute; left: 130px; top: 645px;">
         <small>{{ $permohonan->catatan_pelulus }}</small>
     </p>
+    <p style="position: absolute; left: 130px; top: 0px;">
+        {{-- <small>{{ $permohonan->catatan_pelulus }}</small> --}}
+    </p>
 
 
 
@@ -180,8 +183,8 @@
     @else
 
     @endif
-<p style="position: absolute; left: 540px; top: 280px;"><strong>/</strong> </p>
-<p style="position: absolute; left: 315px; top: 250px;"><strong>/</strong> </p>
+{{-- <p style="position: absolute; left: 540px; top: 280px;"><strong>/</strong> </p>
+<p style="position: absolute; left: 315px; top: 250px;"><strong>/</strong> </p> --}}
     @if ($permohonan->penggantian_kali_ke == '1')
 
         <p style="position: absolute; left: 315px; top: 250px;"><strong>/</strong> </p>
