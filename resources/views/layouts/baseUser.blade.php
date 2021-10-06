@@ -288,7 +288,7 @@ ight notice and this permission notice shall be included in all copies or substa
 
         <!-- Navbar -->
 
-        <nav class="navbar navbar-expand-lg " data-scroll="true" id="navbar" style="position: initial; z-index:100;">
+        <nav class="navbar navbar-expand-lg " data-scroll="true" id="navbar" >
 
             <a href="/" class="text-white text-start pl-3  font-weight-bolder ms-sm-3">
                 <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
@@ -308,8 +308,8 @@ ight notice and this permission notice shall be included in all copies or substa
                     <span class="navbar-toggler-bar bar3"></span>
                 </span>
             </button>
-            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
-                <ul class="navbar-nav navbar-nav-hover mx-auto">
+            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 " id="navigation">
+                <ul class="navbar-nav navbar-nav-hover mx-auto " style="position: static; z-index:100;">
 
                     @can('isPemohon')
                         <li class="nav-item mx-2">
