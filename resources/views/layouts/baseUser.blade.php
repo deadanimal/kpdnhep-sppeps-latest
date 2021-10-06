@@ -328,7 +328,7 @@ ight notice and this permission notice shall be included in all copies or substa
                             {{ __('landing.arkib') }}
                             <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" style="position: relative; z-index:5"
+                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" style="overflow: visible"
                             aria-labelledby="dropdownMenuDocs">
                             <div class="d-none d-lg-block">
                                 <ul class="list-group">
