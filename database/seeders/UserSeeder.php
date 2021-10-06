@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name'=> 'Mohd Norhadi bin Mohd Said',
-            'email'=> 'mnorhadi@kpdnhep.gov.my',
+            'email'=> 'mnorhad@kpdnhep.gov.my',
             'no_kp'=> '810419015207',
             'password'=> Hash::make('password'),
             'no_telefon_pejabat'=>'054010471',
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name'=> 'Ramanan A/l Ragupathy',
-            'email'=> 'ramanan@kpdnhep.gov.my',
+            'email'=> 'ramana@kpdnhep.gov.my',
             'no_kp'=> '800622086407',
             'password'=> Hash::make('password'),
             'no_telefon_pejabat'=>'0388825589',
@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name'=> 'Noorhaslizawati Binti Zukilfi',
-            'email'=> 'haslizawati@kpdnhep.gov.my',
+            'email'=> 'haslizawat@kpdnhep.gov.my',
             'no_kp'=> '860516295736',
             'password'=> Hash::make('password'),
             'no_telefon_pejabat'=>'0388826993',
