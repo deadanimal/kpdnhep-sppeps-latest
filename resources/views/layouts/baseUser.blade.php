@@ -309,7 +309,7 @@ ight notice and this permission notice shall be included in all copies or substa
                 </span>
             </button>
             <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 " id="navigation">
-                <ul class="navbar-nav navbar-nav-hover mx-auto " style="position: static; z-index:100;">
+                <ul class="navbar-nav navbar-nav-hover mx-auto ">
 
                     @can('isPemohon')
                         <li class="nav-item mx-2">
@@ -328,7 +328,7 @@ ight notice and this permission notice shall be included in all copies or substa
                             {{ __('landing.arkib') }}
                             <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg "
+                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" style="position: relative; z-index:5"
                             aria-labelledby="dropdownMenuDocs">
                             <div class="d-none d-lg-block">
                                 <ul class="list-group">
