@@ -288,7 +288,7 @@ ight notice and this permission notice shall be included in all copies or substa
 
         <!-- Navbar -->
 
-        <nav class="navbar navbar-expand-lg " data-scroll="true" id="navbar">
+        <nav class="navbar navbar-expand-lg " data-scroll="true" id="navbar" style="position: initial; z-index:100;">
 
             <a href="/" class="text-white text-start pl-3  font-weight-bolder ms-sm-3">
                 <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
@@ -328,9 +328,9 @@ ight notice and this permission notice shall be included in all copies or substa
                             {{ __('landing.arkib') }}
                             <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg"
+                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg "
                             aria-labelledby="dropdownMenuDocs">
-                            <div class="d-none d-lg-block z-index-4">
+                            <div class="d-none d-lg-block">
                                 <ul class="list-group">
 
                                     <li class="nav-item list-group-item border-0 p-0">
