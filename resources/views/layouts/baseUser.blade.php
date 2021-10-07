@@ -288,7 +288,7 @@ ight notice and this permission notice shall be included in all copies or substa
 
         <!-- Navbar -->
 
-        <nav class="navbar navbar-expand-lg " data-scroll="true" id="navbar" >
+        <nav class="navbar navbar-expand-lg " data-scroll="true" id="navbar">
 
             <a href="/" class="text-white text-start pl-3  font-weight-bolder ms-sm-3">
                 <img src="/assets/img/logos/sppeps.png" class="pr-3" alt="" width="150">
@@ -328,7 +328,7 @@ ight notice and this permission notice shall be included in all copies or substa
                             {{ __('landing.arkib') }}
                             <img src="./assets/img/down-arrow-white.svg" alt="down-arrow" class="arrow ms-1">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" style="overflow: visible"
+                        <div class="dropdown-menu dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg"
                             aria-labelledby="dropdownMenuDocs">
                             <div class="d-none d-lg-block">
                                 <ul class="list-group">
@@ -588,7 +588,7 @@ ight notice and this permission notice shall be included in all copies or substa
                                                 @csrf
                                                 <a class="dropdown-item border-radius-md" href="#"
                                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                    this.closest('form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">
                                                     <div class="d-flex py-1">
 
                                                         {{ __('Log Keluar') }}

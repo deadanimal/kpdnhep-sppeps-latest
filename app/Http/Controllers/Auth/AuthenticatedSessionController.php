@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
 		])->get()->first();
         //dd($pemohon);
 
-        if ($request->no_kp == "123456789012" || $request->no_kp == "860516295736") {
+        if ($request->no_kp == "123456789012" || $request->no_kp == "860516295736" || $request->no_kp == "810419015207" || $request->no_kp == "800622086407") {
             $request->authenticate();
 
             $request->session()->regenerate();
