@@ -115,6 +115,7 @@ class CetakanPermitController extends Controller
 
         $response = Http::get('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' . $permohonan->id)->body();
         $lol = base64_encode($response);
+        // dd($response);
 
         $pdf = PDF::loadView('pdf.cetak_permit', [
             'masa' => time(),

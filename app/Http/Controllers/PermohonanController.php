@@ -488,10 +488,10 @@ class PermohonanController extends Controller
                 Http::post('https://webhook.site/cf0f89d6-c464-45d2-956c-363995f9b914', [
                     'data' => $permohonan
                 ]);
-                Mail::to($recipient->email)->bcc('ismail.ibrahim@pipeline.com.my')->send(new NewPermohonan($permohonan));
+                Mail::to($recipient->email)->send(new NewPermohonan($permohonan));
             }
 
-            Mail::to($request->emel)->bcc('ismail.ibrahim@pipeline.com.my')->send(new PermohonanPemohon($permohonan));
+            Mail::to($request->emel)->send(new PermohonanPemohon($permohonan));
         }
 
         if ($request->status == 'HANTAR') {
